@@ -232,19 +232,22 @@ class ChameleonTemplate extends BaseTemplate {
 									echo $this->makeListItem( $key, $tbitem );
 								}
 								wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) );
-								?>
-								<li class='dropup' id='p-lang'<?php echo Linker::tooltip( 'p-lang' ) ?>>
+								if ( $this->data['language_urls'] ) {
+									?>
+									<li class='dropup' id='p-lang'<?php echo Linker::tooltip( 'p-lang' ) ?>>
 
-									<a href='#' data-target="#" class="dropdown-toggle" data-toggle="dropdown">
-										<?php echo htmlspecialchars( $this->getMsg( 'otherlanguages' )->text() ); ?>
-									</a>
-									<ul class='dropdown-menu' >
-										<?php foreach ( $this->data['language_urls'] as $key => $langlink ) { ?>
-											<?php echo $this->makeListItem( $key, $langlink ); ?>
-										<?php } ?>
-
-									</ul>
-								</li>
+										<a href='#' data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+											<?php echo htmlspecialchars( $this->getMsg( 'otherlanguages' )->text() ); ?>
+										</a>
+										<ul class='dropdown-menu' >
+											<?php
+											foreach ( $this->data['language_urls'] as $key => $langlink ) {
+												echo $this->makeListItem( $key, $langlink );
+											}
+											?>
+										</ul>
+									</li>
+								<?php } ?>
 							</ul>
 						</div>
 					</div>
@@ -262,7 +265,7 @@ class ChameleonTemplate extends BaseTemplate {
 								?>
 								<!-- <?php echo htmlspecialchars( $category ); ?> -->
 								<?php foreach ( $links as $key ) { ?>
-									<li><?php $this->html( $key ) ?></li>
+								<li><small><?php $this->html( $key ) ?></small></li>
 									<?php
 								}
 							}
@@ -274,7 +277,7 @@ class ChameleonTemplate extends BaseTemplate {
 						<?php if ( array_key_exists( 'places', $footerlinks ) ) { ?>
 							<!-- places -->
 							<?php foreach ( $footerlinks['places'] as $key ) { ?>
-								<li><?php $this->html( $key ) ?></li>
+								<li><small><?php $this->html( $key ) ?></small></li>
 								<?php
 							}
 						}

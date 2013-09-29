@@ -66,7 +66,7 @@ class ChameleonTemplate extends BaseTemplate {
 		?>
 		<div class="container-fluid">
 
-			<div class="row-fluid">
+			<div class="row-fluid" id="userlinks">
 
 				<!-- personal tools as an unordered list -->
 				<div class="span12 text-right">
@@ -84,7 +84,7 @@ class ChameleonTemplate extends BaseTemplate {
 			</div>
 
 			<!-- Logo and main page link -->
-			<div class="row-fluid">
+			<div class="row-fluid" id="logo">
 				<div class="span6">
 					<?php
 					echo Html::rawElement( 'a', array(
@@ -118,7 +118,7 @@ class ChameleonTemplate extends BaseTemplate {
 			</div>
 
 
-			<div class="row-fluid">
+			<div class="row-fluid" id="navigation">
 				<div class="span12">
 					<div class='navbar'>
 						<div class="navbar-inner">
@@ -153,7 +153,7 @@ class ChameleonTemplate extends BaseTemplate {
 				</div>
 			</div>
 
-			<div class="row-fluid">
+			<div class="row-fluid" id="p-views">
 				<div class="span12 text-center">
 					<ul class="inline">
 						<!-- list of tabs (Page, Discussion, View, Edit, etc.) sorted by category -->
@@ -182,7 +182,7 @@ class ChameleonTemplate extends BaseTemplate {
 				</div>
 			<?php } ?>
 
-			<div class="row-fluid">
+			<div class="row-fluid" id="content-wrapper">
 				<div class="span12">
 
 					<div id="mw-js-message" style="display:none;"<?php $this->html( 'userlangattributes' ) ?>></div>
@@ -221,7 +221,7 @@ class ChameleonTemplate extends BaseTemplate {
 				</div>
 			</div>
 
-			<div class="row-fluid">
+			<div class="row-fluid" id="toolbox">
 				<div class="span12">
 					<div class='navbar' id='p-tb'<?php echo Linker::tooltip( 'p-tb' ) ?> >
 						<div class="navbar-inner">
@@ -254,7 +254,7 @@ class ChameleonTemplate extends BaseTemplate {
 				</div>
 			</div>
 
-			<div class="row-fluid">
+			<div class="row-fluid" id="footer">
 				<div class="span12">
 					<!-- footer links (license line, about, privacy policy, and disclaimer links) -->
 					<?php $footerlinks = $this->getFooterLinks(); ?>

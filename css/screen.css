@@ -22,51 +22,57 @@
  * @ingroup Skins
  */
 
+/*
 li.new a, a.new {
-	/* color: text-error */
+	*/
+/* color: text-error *//*
+
 	color: #b94a48;
 }
+*/
 
-li.selected a {
-	/* font-style: em */
+.p-contentnavigation a.selected {
 	font-style: italic;
 }
 
 #siteSub {
-	display:none
+	display: none
 }
 
-#content {
+.mw-body {
 	padding: 0 2em;
+	margin: 1em 0;
 }
 
-#contentSub, #contentSub2 {
-	/* color: muted - set in php */
-    font-size: 84%;
-    line-height: 1.2em;
-    /*margin: 0 0 1.4em 1em;*/
-    width: auto;
-}
-
-#catlinks {
+.catlinks {
 	margin: 2em 0 0;
 }
 
-#p-tb {
-	padding-top: 2em;
-}
-
-#firstHeading {
-  border-bottom: 1px solid #eeeeee;
-  padding-bottom: 9px;
+.firstHeading {
+	border-bottom:  1px solid #eeeeee;
+	padding-bottom: .2em;
+	margin-bottom: .2em;
 }
 
 .contentHeader {
-  margin: 20px 0 30px;
-  border-bottom: 0px;
-  padding-bottom: 0px;
+	margin:         1em 0 1.5em;
+	border-bottom:  0;
+	padding-bottom: 0;
 }
 
-.footerInfo {
+.footer-info {
 	padding-left: 5px;
+}
+
+.p-tb.navbar {
+	min-height: 0;
+}
+
+.p-tb .navbar-nav > li > a {
+	padding: 5px 15px;
+}
+
+.p-contentnavigation a.new,
+.p-personal a.new {
+	color: #aaaaaa;
 }

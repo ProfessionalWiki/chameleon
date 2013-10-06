@@ -41,6 +41,7 @@ if ( !defined( 'BS_VERSION' ) ) {
 	die( '<b>Error:</b> The <a href="https://www.mediawiki.org/wiki/Skin:Chameleon">Chameleon</a> skin depends on the Bootstrap extension. You need to install the <a href="https://www.mediawiki.org/wiki/Extension:Bootstrap">Bootstrap</a> extension first.' );
 }
 
+// define the skin's version
 define( 'CHAMELEON_VERSION', '0.1 alpha' );
 
 // set extension credits
@@ -56,11 +57,37 @@ $wgExtensionCredits['skin'][] = array(
 // register skin
 $wgValidSkinNames['chameleon'] = 'Chameleon';
 
+// register hook handlers
+$wgHooks['BeforeInitialize'][] = '\\skins\\chameleon\\Hooks::onBeforeInitialize';
+
 // register skin class (must be 'Skin' . SkinName)
 $wgAutoloadClasses['SkinChameleon'] = dirname( __FILE__ ) . '/Chameleon.skin.php';
 
+$chameleonComponents = array(
+	'Component',
+	'NavbarHorizontal',
+	'TabList',
+	'NewtalkNotifier',
+	'PersonalTools',
+	'Logo',
+	'SearchForm',
+	'SiteNotice',
+	'ToolbarHorizontal',
+	'FooterInfo',
+	'FooterPlaces',
+	'FooterIcons',
+	'MainContent',
+);
+
+// register other classes
+$wgAutoloadClasses['skins\\chameleon\\Hooks'] = dirname( __FILE__ ) . '/Hooks.php';
+
+foreach ( $chameleonComponents as $component ) {
+	$wgAutoloadClasses['skins\\chameleon\\components\\' . $component] = dirname( __FILE__ ) . '/components/' . $component. '.php';
+}
+
 // register message file for i18n
-$wgExtensionMessagesFiles['MySkin'] = dirname( __FILE__ ) . '/Chameleon.i18n.php';
+$wgExtensionMessagesFiles['Chameleon'] = dirname( __FILE__ ) . '/Chameleon.i18n.php';
 
 // register resource modules
 $wgResourceModules['skins.chameleon'] = array(

@@ -42,23 +42,26 @@ class PersonalTools extends Component {
 	public function getHtml() {
 
 		$ret = $this->indent() . '<!-- personal tools -->' .
-				$this->indent() . '<ul class="list-inline pull-right p-personal" id="p-personal" >';
+				$this->indent() . '<div class="p-personal" id="p-personal" >';
 
 		// include message to a user about new messages on their talkpage
 		// TODO: make including the NewTalkNotifier dependent on an option (PREPEND, APPEND, OFF)
 		$newtalkNotifier = new NewtalkNotifier( $this->getSkinTemplate(), $this->getIndent() + 2 );
 
-		$ret .= $this->indent( 1 ) . '<li>' .
-				$newtalkNotifier->getHtml() .
-				$this->indent() .'</li>';
+		$ret .= '<ul class="p-personal-tools list-inline pull-right" >';
 
 		// add personal tools (links to user page, user talk, prefs, ...)
 		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
 			$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
 		}
 
-		$ret .= $this->indent( -1 ) . '</ul>' . "\n";
+		$ret .= $this->indent( -1 ) . '</ul>';
 
+		$ret .= $this->indent( 1 ) . '<div class="newtalk-notifier pull-right">' .
+				$newtalkNotifier->getHtml() .
+				$this->indent() .'</div>';
+
+		$ret .= $this->indent( -1 ) . '</div>' . "\n";
 		return $ret;
 	}
 

@@ -89,18 +89,21 @@ namespace skins\chameleon {
 			<div class="container">
 
 				<div class="row">
-					<div class="col-lg-6"><?php $component = new components\Logo( $this, 6 ); echo $component->getHtml(); ?>
+					<div class="col-lg-3 col-md-3 col-sm-3">
+						<?php $component = new components\Logo( $this, 6 ); echo $component->getHtml(); ?>
 					</div>
 
-					<div class="col-lg-6">
+					<div class="col-lg-9 col-md-9 col-sm-9">
 
 						<div class="row">
-							<div class="col-lg-12"><?php $component = new components\PersonalTools( $this, 8 ); echo $component->getHtml(); ?>
+							<div class="col-lg-12">
+								<?php $component = new components\PersonalTools( $this, 8 ); echo $component->getHtml(); ?>
 							</div>
 						</div>
 
 						<div class="row">
-							<div class="col-lg-12"><?php $component = new components\SearchForm( $this, 8 ); echo $component->getHtml(); ?>
+							<div class="col-lg-12">
+								<?php $component = new components\SearchForm( $this, 8 ); echo $component->getHtml(); ?>
 							</div>
 						</div>
 

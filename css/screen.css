@@ -41,7 +41,7 @@ li.new a, a.new {
 
 .mw-body {
 	padding: 0 2em;
-	margin: 1em 0;
+	margin:  1em 0;
 }
 
 .catlinks {
@@ -51,7 +51,7 @@ li.new a, a.new {
 .firstHeading {
 	border-bottom:  1px solid #eeeeee;
 	padding-bottom: .2em;
-	margin-bottom: .2em;
+	margin-bottom:  .2em;
 }
 
 .contentHeader {
@@ -72,7 +72,15 @@ li.new a, a.new {
 	padding: 5px 15px;
 }
 
+.newtalk-notifier {
+	margin-bottom: 10px;
+}
+
 .p-contentnavigation a.new,
 .p-personal a.new {
 	color: #aaaaaa;
+}
+
+.p-personal-tools {
+	margin: 0 0 0 1ex;
 }

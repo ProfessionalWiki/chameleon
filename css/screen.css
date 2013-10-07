@@ -84,3 +84,7 @@ li.new a, a.new {
 .p-personal-tools {
 	margin: 0 0 0 1ex;
 }
+
+#wpTextbox1 {
+	width: 100%;
+}

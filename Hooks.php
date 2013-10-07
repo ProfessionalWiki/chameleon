@@ -49,12 +49,7 @@ class Hooks {
 	 */
 	static public function onBeforeInitialize( &$title, &$article, &$output, &$user, $request, $mediaWiki ) {
 
-		global $wgEnableBootstrap;
-
-		// enable bootstrap for this skin
-		if ( RequestContext::getMain()->getSkin()->getSkinName() === 'chameleon' ) {
-			$wgEnableBootstrap = true;
-		}
+		// do some Bootstrap initialization here
 
 		return true;
 	}

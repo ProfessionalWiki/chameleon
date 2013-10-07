@@ -42,9 +42,22 @@ namespace {
 		 */
 		function setupSkinUserCss( OutputPage $out ) {
 			parent::setupSkinUserCss( $out );
+
+			// load Bootstrap styles
+			$out->addModuleStyles( 'ext.bootstrap.styles' );
 			$out->addModuleStyles( 'skins.chameleon' );
 		}
 
+		/**
+		 * @param \OutputPage $out
+		 */
+		function initPage( OutputPage $out ) {
+
+			parent::initPage( $out );
+
+			// load Bootstrap scripts
+			$out->addModules( array( 'ext.bootstrap.scripts' ) );
+		}
 	}
 
 }
@@ -76,18 +89,22 @@ namespace skins\chameleon {
 			<div class="container">
 
 				<div class="row">
-					<div class="col-lg-12"><?php $component = new components\PersonalTools( $this, 6 ); echo $component->getHtml(); ?>
-					</div>
-				</div>
-
-				<div class="row">
-
 					<div class="col-lg-6"><?php $component = new components\Logo( $this, 6 ); echo $component->getHtml(); ?>
 					</div>
 
-					<div class="col-lg-6"><?php $component = new components\SearchForm( $this, 6 ); echo $component->getHtml(); ?>
-					</div>
+					<div class="col-lg-6">
 
+						<div class="row">
+							<div class="col-lg-12"><?php $component = new components\PersonalTools( $this, 8 ); echo $component->getHtml(); ?>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-lg-12"><?php $component = new components\SearchForm( $this, 8 ); echo $component->getHtml(); ?>
+							</div>
+						</div>
+
+					</div>
 				</div>
 
 

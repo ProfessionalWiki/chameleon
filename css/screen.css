@@ -22,15 +22,6 @@
  * @ingroup Skins
  */
 
-/*
-li.new a, a.new {
-	*/
-/* color: text-error *//*
-
-	color: #b94a48;
-}
-*/
-
 .p-contentnavigation a.selected {
 	font-style: italic;
 }

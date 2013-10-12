@@ -3,7 +3,7 @@
  * File holding the FooterPlaces class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
  * The Chameleon extension is free software: you can redistribute it and/or
@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Chameleon
+ * @ingroup   Chameleon
  */
 
 namespace skins\chameleon\components;
@@ -42,7 +42,7 @@ class FooterPlaces extends Component {
 	 */
 	public function getHtml() {
 
-		$ret = null;
+		$ret         = null;
 		$footerlinks = $this->getSkinTemplate()->getFooterLinks();
 
 		if ( array_key_exists( 'places', $footerlinks ) ) {
@@ -50,11 +50,11 @@ class FooterPlaces extends Component {
 			$ret = $this->indent() . '<!-- places -->' .
 				   $this->indent() . '<ul class="list-inline footer-places" id="footer-places">';
 
-			$this->indent(1);
-			foreach ( $footerlinks['places'] as $key ) {
+			$this->indent( 1 );
+			foreach ( $footerlinks[ 'places' ] as $key ) {
 				$ret .= $this->indent() . '<li><small>' . $this->getSkinTemplate()->get( $key ) . '</small></li>';
 			}
-			$ret .= $this->indent(-1) . '</ul>' . "\n";
+			$ret .= $this->indent( -1 ) . '</ul>' . "\n";
 		}
 
 		return $ret;

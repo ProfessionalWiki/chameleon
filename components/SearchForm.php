@@ -3,7 +3,7 @@
  * File holding the SearchForm class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
  * The Chameleon extension is free software: you can redistribute it and/or
@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Chameleon
+ * @ingroup   Chameleon
  */
 
 namespace skins\chameleon\components;
@@ -62,15 +62,17 @@ class SearchForm extends Component {
 	}
 
 	private function getGoButton() {
+
 		// For an image button use something like
 		// $this->makeSearchButton( 'image', array( 'id' => 'searchButton', 'src' => $this->getSkin()->getSkinStylePath( 'images/searchbutton.png') );
 		return $this->indent() . '<!-- The "Go" button -->' .
-				$this->indent() . $this->getSkinTemplate()->makeSearchButton( 'go', array( 'id' => 'searchGoButton', 'class' => 'searchButton btn btn-default' ) );
+			   $this->indent() . $this->getSkinTemplate()->makeSearchButton( 'go', array( 'id' => 'searchGoButton', 'class' => 'searchButton btn btn-default' ) );
 	}
 
 	private function getSearchButton() {
+
 		return $this->indent() . '<!-- The "Search" button -->' .
-				$this->indent() . $this->getSkinTemplate()->makeSearchButton( 'fulltext', array( 'id' => 'mw-searchButton', 'class' => 'searchButton btn btn-default' ) );
+			   $this->indent() . $this->getSkinTemplate()->makeSearchButton( 'fulltext', array( 'id' => 'mw-searchButton', 'class' => 'searchButton btn btn-default' ) );
 	}
 
 }

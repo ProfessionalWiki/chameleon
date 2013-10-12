@@ -3,7 +3,7 @@
  * File containing the Component class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki skin Chameleon.
  * The Chameleon skin is free software: you can redistribute it and/or
@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Skins
+ * @ingroup   Skins
  */
 
 namespace skins\chameleon\components;
@@ -38,34 +38,26 @@ abstract class Component {
 	private $mIndent = 0;
 
 	public function __construct( ChameleonTemplate $template, $indent = 0 ) {
+
 		$this->mSkinTemplate = $template;
-		$this->mIndent = $indent;
+		$this->mIndent       = $indent;
 	}
 
 	/**
 	 * @return ChameleonTemplate
 	 */
 	public function getSkinTemplate() {
+
 		return $this->mSkinTemplate;
 	}
-
-	/**
-	 * Adds $indent to (or subtracts from if negative) the current indentation level.
-	 * Inserts a new line and a number of tabs according to the new indentation level.
-	 *
-	 * @param int $indent
-	 *
-	 * @return string
-	 */protected function indent ( $indent = 0 ) {
-		$this->mIndent += $indent;
-		return "\n" . str_repeat("\t", $this->mIndent );
-}
 
 	/**
 	 * Returns the current indentation level
 	 *
 	 * @return int
-	 */public function getIndent() {
+	 */
+	public function getIndent() {
+
 		return $this->mIndent;
 	}
 
@@ -75,5 +67,20 @@ abstract class Component {
 	 * @return String the HTML code
 	 */
 	abstract public function getHtml();
+
+	/**
+	 * Adds $indent to (or subtracts from if negative) the current indentation level.
+	 * Inserts a new line and a number of tabs according to the new indentation level.
+	 *
+	 * @param int $indent
+	 *
+	 * @return string
+	 */
+	protected function indent( $indent = 0 ) {
+
+		$this->mIndent += $indent;
+
+		return "\n" . str_repeat( "\t", $this->mIndent );
+	}
 
 }

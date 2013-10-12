@@ -3,7 +3,7 @@
  * File holding the MainContent class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
  * The Chameleon extension is free software: you can redistribute it and/or
@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Chameleon
+ * @ingroup   Chameleon
  */
 
 namespace skins\chameleon\components;
@@ -45,12 +45,12 @@ class MainContent extends Component {
 	public function getHtml() {
 
 		$skintemplate = $this->getSkinTemplate();
-		
+
 		$ret = $this->indent() . '<div id="mw-js-message" style="display:none;" ' . $skintemplate->get( 'userlangattributes' ) . '></div>' .
 			   $this->indent() . '<!-- start the content area -->' .
 			   $this->indent() . '<div id="content" class="mw-body">' .
-			   $this->indent(1) . '<div class ="contentHeader">' .
-			   $this->indent(1) . '<!-- title of the page -->' .
+			   $this->indent( 1 ) . '<div class ="contentHeader">' .
+			   $this->indent( 1 ) . '<!-- title of the page -->' .
 			   $this->indent() . '<h1 id="firstHeading" class="firstHeading">' . $skintemplate->get( 'title' ) . '</h1>' .
 			   $this->indent() . '<!-- tagline; usually goes something like "From WikiName"	primary purpose of this seems to be for printing to identify the source of the content -->' .
 			   $this->indent() . '<div id="siteSub" >' . $skintemplate->getMsg( 'tagline' ) . '</div>';
@@ -61,11 +61,10 @@ class MainContent extends Component {
 		}
 
 		if ( $skintemplate->data[ 'undelete' ] ) {
-			$ret .= $this->indent() . '<!-- undelete message -->' .
-				'<div id="contentSub2">' . $skintemplate->get( 'undelete' ) . '</div>';
+			$ret .= $this->indent() . '<!-- undelete message -->' . '<div id="contentSub2">' . $skintemplate->get( 'undelete' ) . '</div>';
 		}
 
-		$ret .= $this->indent(-1) . '</div>' .
+		$ret .= $this->indent( -1 ) . '</div>' .
 				$this->indent() . '<!-- body text -->' . "\n" .
 				$this->indent() . $skintemplate->get( 'bodytext' ) .
 				$this->indent() . '<!-- category links -->' .
@@ -73,10 +72,10 @@ class MainContent extends Component {
 
 		if ( $skintemplate->data[ 'dataAfterContent' ] ) {
 			$ret .= $this->indent() . '<!-- data blocks which should go somewhere after the body text, but not before the catlinks block-->' .
-				$this->indent() . $skintemplate->get( 'dataAfterContent' );
+					$this->indent() . $skintemplate->get( 'dataAfterContent' );
 		}
 
-		$ret .= $this->indent(-1) . '</div>' . "\n";
+		$ret .= $this->indent( -1 ) . '</div>' . "\n";
 
 		return $ret;
 	}

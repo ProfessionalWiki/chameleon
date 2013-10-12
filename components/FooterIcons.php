@@ -3,7 +3,7 @@
  * File holding the FooterIcons class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
  * The Chameleon extension is free software: you can redistribute it and/or
@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Chameleon
+ * @ingroup   Chameleon
  */
 
 /**
@@ -56,7 +56,8 @@ class FooterIcons extends Component {
 				$ret .= $this->indent() . '<!-- ' . htmlspecialchars( $blockName ) . ' -->';
 
 				foreach ( $footerIcons as $icon ) {
-					$ret .= $this->indent() . '<li>' . $this->getSkinTemplate()->getSkin()->makeFooterIcon( $icon ) . '</li>';
+					$ret .= $this->indent() . '<li>' .
+							$this->getSkinTemplate()->getSkin()->makeFooterIcon( $icon ) . '</li>';
 				}
 
 			}

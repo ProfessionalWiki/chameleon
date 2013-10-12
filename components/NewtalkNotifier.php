@@ -3,7 +3,7 @@
  * File holding the NewtalkNotifier class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
  * The Chameleon extension is free software: you can redistribute it and/or
@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Chameleon
+ * @ingroup   Chameleon
  */
 
 namespace skins\chameleon\components;
@@ -41,9 +41,9 @@ class NewtalkNotifier extends Component {
 	 */
 	public function getHtml() {
 
-		if ( $this->getSkinTemplate()->data['newtalk'] ) {
-			return $this->indent() . '<!-- message to a user about new messages on their talkpage -->'
-					. $this->indent() . '<span class="usermessage">' . $this->getSkinTemplate()->data['newtalk'] . '</span>';
+		if ( $this->getSkinTemplate()->data[ 'newtalk' ] ) {
+			return $this->indent() . '<!-- message to a user about new messages on their talkpage -->' .
+				   $this->indent() . '<span class="usermessage">' . $this->getSkinTemplate()->data[ 'newtalk' ] . '</span>';
 		} else {
 			return '';
 		}

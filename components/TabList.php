@@ -3,7 +3,7 @@
  * File holding the TabList class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
  * The Chameleon extension is free software: you can redistribute it and/or
@@ -20,14 +20,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Chameleon
+ * @ingroup   Chameleon
  */
 
 namespace skins\chameleon\components;
 
 use Html,
-	Linker,
-	Sanitizer;
+		Linker,
+		Sanitizer;
 
 /**
  * The TabList class.
@@ -50,35 +50,43 @@ class TabList extends Component {
 		$ret = $this->indent() . '<!-- Content navigation -->' .
 			   $this->indent() . '<ul class="list-inline p-contentnavigation text-center" id="p-contentnavigation">';
 
-		$navigation = $this->getSkinTemplate()->data['content_navigation'];
+		$navigation = $this->getSkinTemplate()->data[ 'content_navigation' ];
 
 		$this->indent( 1 );
 		foreach ( $navigation as $category => $tabs ) {
 
 			// TODO: visually group all links of one category (e.g. some space between categories)
 
+			if ( empty( $tabs ) ) {
+				continue;
+			}
+
 			// output the name of the current category (e.g. 'namespaces', 'views', ...)
 			$ret .= $this->indent() . '<!-- ' . $category . ' -->' .
-					$this->indent() . '<li id="p-' . $category . '" ><ul class="list-inline" >';
+					$this->indent() . '<li id="p-' . $category . '" >' .
+					$this->indent( 1 ) . '<ul class="list-inline" >';
 
+			$this->indent( 1 );
 			foreach ( $tabs as $key => $tab ) {
 
 				// skip redundant links (i.e. the 'view' link)
 				// TODO: make this dependent on an option
-				if ( array_key_exists( 'redundant', $tab ) && $tab['redundant']  === true ) {
+				if ( array_key_exists( 'redundant', $tab ) && $tab[ 'redundant' ] === true ) {
 					continue;
 				}
 
 				// apply a link class if specified, e.g. for the currently active namespace
 				$options = array();
 				if ( array_key_exists( 'class', $tab ) ) {
-					$options['link-class'] = $tab['class'];
+					$options[ 'link-class' ] = $tab[ 'class' ];
 				}
 
 				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $tab, $options );
 
 			}
-			$ret .= $this->indent() . "</ul></li>";
+
+			$ret .= $this->indent( -1 ) . '</ul>' .
+					$this->indent( -1 ) . '</li>';
 		}
 
 		$ret .= $this->indent( -1 ) . '</ul>' . "\n";

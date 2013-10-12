@@ -3,7 +3,7 @@
  * File holding the NavbarHorizontal class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
  * The Chameleon extension is free software: you can redistribute it and/or
@@ -20,14 +20,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Chameleon
+ * @ingroup   Chameleon
  */
 
 namespace skins\chameleon\components;
 
 use Html,
-	Linker,
-	Sanitizer;
+		Linker,
+		Sanitizer;
 
 /**
  * The NavbarHorizontal class.
@@ -63,7 +63,7 @@ class NavbarHorizontal extends Component {
 
 		$ret .= $this->indent( -1 ) . '</ul>' .
 				$this->indent( -1 ) . '</nav>' . "\n";
-		
+
 		return $ret;
 	}
 
@@ -74,28 +74,31 @@ class NavbarHorizontal extends Component {
 	 * @param $box
 	 *
 	 * @return string
-	 */private function getDropdown( $boxName, $box ) {
+	 */
+	private function getDropdown( $boxName, $box ) {
 
 		// open list item containing the dropdown
 		$ret = $this->indent() . '<!-- ' . $boxName . ' -->' .
-			   $this->indent() . Html::openElement( 'li', array(
-					'class' => 'dropdown',
-					'id' => Sanitizer::escapeId( $box['id'] ),
-					'title' => Linker::titleAttrib( $box['id'] )
-				) );
+			   $this->indent() . Html::openElement( 'li',
+					array(
+						 'class' => 'dropdown',
+						 'id'    => Sanitizer::escapeId( $box[ 'id' ] ),
+						 'title' => Linker::titleAttrib( $box[ 'id' ] )
+					) );
 
 		$this->indent( 1 );
-		if ( is_array( $box['content'] ) ) {
+		if ( is_array( $box[ 'content' ] ) ) {
 
 			// the dropdown toggle
-			$ret .= $this->indent() . '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' . htmlspecialchars( $box['header'] ) . ' <b class="caret"></b></a>';
+			$ret .= $this->indent() . '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' .
+					htmlspecialchars( $box[ 'header' ] ) . ' <b class="caret"></b></a>';
 
 			// open list of dropdown menu items
 			$ret .= $this->indent() . '<ul class="dropdown-menu">';
 
 			// output dropdown menu items
 			$this->indent( 1 );
-			foreach ( $box['content'] as $key => $item ) {
+			foreach ( $box[ 'content' ] as $key => $item ) {
 				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
 			}
 
@@ -103,7 +106,7 @@ class NavbarHorizontal extends Component {
 			$ret .= $this->indent( -1 ) . '</ul>';
 
 		} else {
-			$ret = $this->indent() . $box['content'];
+			$ret = $this->indent() . $box[ 'content' ];
 		}
 		$this->indent( -1 );
 

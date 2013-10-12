@@ -3,7 +3,7 @@
  * File holding the PersonalTools class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
  * The Chameleon extension is free software: you can redistribute it and/or
@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Chameleon
+ * @ingroup   Chameleon
  */
 
 namespace skins\chameleon\components;
@@ -42,26 +42,26 @@ class PersonalTools extends Component {
 	public function getHtml() {
 
 		$ret = $this->indent() . '<!-- personal tools -->' .
-				$this->indent() . '<div class="p-personal" id="p-personal" >';
+			   $this->indent() . '<div class="p-personal" id="p-personal" >';
 
 		// include message to a user about new messages on their talkpage
 		// TODO: make including the NewTalkNotifier dependent on an option (PREPEND, APPEND, OFF)
 		$newtalkNotifier = new NewtalkNotifier( $this->getSkinTemplate(), $this->getIndent() + 2 );
 
-		$ret .= '<ul class="p-personal-tools list-inline pull-right" >';
+		$ret .= $this->indent( 1 ) . '<ul class="p-personal-tools list-inline pull-right" >';
+
+		$this->indent( 1 );
 
 		// add personal tools (links to user page, user talk, prefs, ...)
 		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
 			$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
 		}
 
-		$ret .= $this->indent( -1 ) . '</ul>';
+		$ret .= $this->indent( -1 ) . '</ul>' .
+				$this->indent() . '<div class="newtalk-notifier pull-right">' . $newtalkNotifier->getHtml() .
+				$this->indent() . '</div>' .
+				$this->indent( -1 ) . '</div>' . "\n";
 
-		$ret .= $this->indent( 1 ) . '<div class="newtalk-notifier pull-right">' .
-				$newtalkNotifier->getHtml() .
-				$this->indent() .'</div>';
-
-		$ret .= $this->indent( -1 ) . '</div>' . "\n";
 		return $ret;
 	}
 

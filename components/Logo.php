@@ -45,7 +45,7 @@ class Logo extends Component {
 	public function getHtml() {
 
 		$attribs  = array( 'href' => $this->getSkinTemplate()->data[ 'nav_urls' ][ 'mainpage' ][ 'href' ] ) + Linker::tooltipAndAccesskeyAttribs( 'p-logo' );
-		$contents = Html::element( 'img', array( 'src' => $this->getSkinTemplate()->data[ 'logopath' ] ) );
+		$contents = Html::element( 'img', array( 'src' => $this->getSkinTemplate()->data[ 'logopath' ], 'alt' => $GLOBALS[ 'wgSitename' ] ) );
 
 		return $this->indent() . '<!-- logo and main page link -->' .
 			   $this->indent() . '<div id="p-logo" class="p-logo" role="banner">' .

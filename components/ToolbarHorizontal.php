@@ -75,10 +75,10 @@ class ToolbarHorizontal extends Component {
 
 			$this->indent( 1 );
 			foreach ( $skinTemplate->data[ 'language_urls' ] as $key => $langlink ) {
-				$ret .= $this->indent() . $skinTemplate->makeListItem( $key, $langlink, array( 'link-class' => 'small') );
+				$ret .= $this->indent() . $skinTemplate->makeListItem( $key, $langlink, array( 'link-class' => 'small' ) );
 			}
 
-			$ret .= $this->indent(-1) . '</ul>' .
+			$ret .= $this->indent( -1 ) . '</ul>' .
 					$this->indent( -1 ) . '</li>';
 		}
 

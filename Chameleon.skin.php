@@ -41,10 +41,11 @@ namespace {
 		 * @param $out OutputPage object
 		 */
 		function setupSkinUserCss( OutputPage $out ) {
+
 			parent::setupSkinUserCss( $out );
 
 			// load Bootstrap styles
-			$out->addModuleStyles( 'ext.bootstrap.styles' );
+			$out->addModuleStyles( 'ext.bootstrap' );
 			$out->addModuleStyles( 'skins.chameleon' );
 		}
 
@@ -56,7 +57,7 @@ namespace {
 			parent::initPage( $out );
 
 			// load Bootstrap scripts
-			$out->addModules( array( 'ext.bootstrap.scripts' ) );
+			$out->addModules( array( 'ext.bootstrap' ) );
 		}
 	}
 
@@ -65,7 +66,6 @@ namespace {
 namespace skins\chameleon {
 
 	use BaseTemplate;
-	use Html, Linker, Sanitizer;
 
 	/**
 	 * BaseTemplate class for Chameleon skin
@@ -78,6 +78,7 @@ namespace skins\chameleon {
 		 * Outputs the entire contents of the page
 		 */
 		public function execute() {
+
 			// Suppress warnings to prevent notices about missing indexes in $this->data
 			wfSuppressWarnings();
 
@@ -86,6 +87,7 @@ namespace skins\chameleon {
 			// To add attributes or classes to the body tag override addToBodyAttributes() in SkinChameleon
 			$this->html( 'headelement' );
 			?>
+
 			<div class="container">
 
 				<div class="row">
@@ -96,14 +98,12 @@ namespace skins\chameleon {
 					<div class="col-lg-9 col-md-9 col-sm-9">
 
 						<div class="row">
-							<div class="col-lg-12">
-								<?php $component = new components\PersonalTools( $this, 8 ); echo $component->getHtml(); ?>
+							<div class="col-lg-12"><?php $component = new components\PersonalTools( $this, 8 ); echo $component->getHtml(); ?>
 							</div>
 						</div>
 
 						<div class="row">
-							<div class="col-lg-12">
-								<?php $component = new components\SearchForm( $this, 8 ); echo $component->getHtml(); ?>
+							<div class="col-lg-12"><?php $component = new components\SearchForm( $this, 8 ); echo $component->getHtml(); ?>
 							</div>
 						</div>
 
@@ -149,9 +149,10 @@ namespace skins\chameleon {
 				</div>
 
 			</div>
-			<?php $this->printTrail(); ?>
-			</body>
-			</html><?php
+<?php $this->printTrail(); ?>
+
+</body>
+</html><?php
 			wfRestoreWarnings();
 		}
 

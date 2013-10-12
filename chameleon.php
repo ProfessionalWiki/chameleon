@@ -57,9 +57,6 @@ $wgExtensionCredits['skin'][] = array(
 // register skin
 $wgValidSkinNames['chameleon'] = 'Chameleon';
 
-// register hook handlers
-$wgHooks['BeforeInitialize'][] = '\\skins\\chameleon\\Hooks::onBeforeInitialize';
-
 // register skin class (must be 'Skin' . SkinName)
 $wgAutoloadClasses['SkinChameleon'] = dirname( __FILE__ ) . '/Chameleon.skin.php';
 
@@ -79,9 +76,6 @@ $chameleonComponents = array(
 	'MainContent',
 );
 
-// register other classes
-$wgAutoloadClasses['skins\\chameleon\\Hooks'] = dirname( __FILE__ ) . '/Hooks.php';
-
 foreach ( $chameleonComponents as $component ) {
 	$wgAutoloadClasses['skins\\chameleon\\components\\' . $component] = dirname( __FILE__ ) . '/components/' . $component. '.php';
 }
@@ -97,3 +91,6 @@ $wgResourceModules['skins.chameleon'] = array(
 	'remoteBasePath' => &$GLOBALS['wgStylePath'],
 	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
 );
+
+// register Bootstrap modules (for now, just register everything)
+Bootstrap::getBootstrap()->addAllBootstrapModules();

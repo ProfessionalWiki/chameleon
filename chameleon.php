@@ -83,14 +83,6 @@ foreach ( $chameleonComponents as $component ) {
 // register message file for i18n
 $wgExtensionMessagesFiles['Chameleon'] = dirname( __FILE__ ) . '/Chameleon.i18n.php';
 
-// register resource modules
-$wgResourceModules['skins.chameleon'] = array(
-	'styles' => array(
-		'chameleon/css/screen.css' => array( 'media' => 'screen' ),
-	),
-	'remoteBasePath' => &$GLOBALS['wgStylePath'],
-	'localBasePath' => &$GLOBALS['wgStyleDirectory'],
-);
-
 // register Bootstrap modules (for now, just register everything)
 Bootstrap::getBootstrap()->addAllBootstrapModules();
+Bootstrap::getBootstrap()->addExternalModule( __DIR__, '/css/screen.less' );

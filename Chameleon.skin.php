@@ -46,7 +46,6 @@ namespace {
 
 			// load Bootstrap styles
 			$out->addModuleStyles( 'ext.bootstrap' );
-			$out->addModuleStyles( 'skins.chameleon' );
 		}
 
 		/**

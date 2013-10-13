@@ -34,7 +34,7 @@ use Linker;
  *
  * The toolbar is an unordered list in a nav element: <nav role="navigation" id="p-tb" >
  *
- * @ingroup Chameleon
+ * @ingroup Skins
  */
 class ToolbarHorizontal extends Component {
 

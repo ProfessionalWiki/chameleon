@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup   Chameleon
+ * @ingroup   Skins
  */
 
 namespace skins\chameleon\components;
@@ -30,7 +30,7 @@ namespace skins\chameleon\components;
  *
  * An unordered list of personal tools: <ul id="p-personal" >...
  *
- * @ingroup Chameleon
+ * @ingroup Skins
  */
 class PersonalTools extends Component {
 

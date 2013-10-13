@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup   Chameleon
+ * @ingroup   Skins
  */
 
 namespace skins\chameleon\components;
@@ -33,7 +33,7 @@ use Linker;
  *
  * The logo image as a link to the wiki main page wrapped in a div: <div id="p-logo" role="banner">
  *
- * @ingroup Chameleon
+ * @ingroup Skins
  */
 class Logo extends Component {
 

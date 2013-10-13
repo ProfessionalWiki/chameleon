@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup   Chameleon
+ * @ingroup   Skins
  */
 
 namespace skins\chameleon\components;
@@ -30,7 +30,7 @@ namespace skins\chameleon\components;
  *
  * A simple div containing the site notice text: <div id="siteNotice" >
  *
- * @ingroup Chameleon
+ * @ingroup Skins
  */
 class SiteNotice extends Component {
 

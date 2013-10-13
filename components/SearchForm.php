@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup   Chameleon
+ * @ingroup   Skins
  */
 
 namespace skins\chameleon\components;
@@ -32,7 +32,7 @@ use \Linker;
  *
  * The search form wrapped in a div: <div id="p-search" role="search" >
  *
- * @ingroup Chameleon
+ * @ingroup Skins
  */
 class SearchForm extends Component {
 

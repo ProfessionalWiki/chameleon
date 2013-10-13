@@ -30,7 +30,7 @@ use skins\chameleon\ChameleonTemplate;
 /**
  * Component class
  *
- * @ingroup Chameleon
+ * @ingroup Skins
  */
 abstract class Component {
 

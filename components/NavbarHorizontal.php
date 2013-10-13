@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup   Chameleon
+ * @ingroup   Skins
  */
 
 namespace skins\chameleon\components;
@@ -37,7 +37,7 @@ use Html,
  *
  * The navbar is a list of lists wrapped in a nav element: <nav role="navigation" id="p-navbar" >
  *
- * @ingroup Chameleon
+ * @ingroup Skins
  */
 class NavbarHorizontal extends Component {
 

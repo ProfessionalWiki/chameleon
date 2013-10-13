@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup   Chameleon
+ * @ingroup   Skins
  */
 
 namespace skins\chameleon\components;
@@ -36,7 +36,7 @@ use Html,
  *
  * The tab list is a list of lists: '<ul id="p-contentnavigation">
  *
- * @ingroup Chameleon
+ * @ingroup Skins
  */
 class TabList extends Component {
 

@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup   Chameleon
+ * @ingroup   Skins
  */
 
 namespace skins\chameleon\components;
@@ -30,7 +30,7 @@ namespace skins\chameleon\components;
  *
  * A message to a user about new messages on their talkpage
  *
- * @ingroup Chameleon
+ * @ingroup Skins
  */
 class NewtalkNotifier extends Component {
 

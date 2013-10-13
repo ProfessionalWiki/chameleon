@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup   Chameleon
+ * @ingroup   Skins
  */
 
 namespace skins\chameleon\components;
@@ -31,7 +31,7 @@ namespace skins\chameleon\components;
  *
  * A inline list containing links to places (about, privacy policy, and disclaimer links): <ul id="footer-places">
  *
- * @ingroup Chameleon
+ * @ingroup Skins
  */
 class FooterPlaces extends Component {
 

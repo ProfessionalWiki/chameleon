@@ -1,6 +1,6 @@
 <?php
 /**
- * File holding the Logo class
+ * File holding the Cell class
  *
  * @copyright (C) 2013, Stephan Gambke
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
@@ -23,34 +23,46 @@
  * @ingroup   Skins
  */
 
+
 namespace skins\chameleon\components;
 
-use Html;
-use Linker;
 
 /**
- * The Logo class.
- *
- * The logo image as a link to the wiki main page wrapped in a div: <div id="p-logo" role="banner">
+ * The Cell class.
  *
  * @ingroup Skins
  */
-class Logo extends Component {
+class Cell extends Component {
 
 	/**
 	 * Builds the HTML code for this component
 	 *
 	 * @return String the HTML code
 	 */
-	public function getHtml() {
+	public function getHtml(){
 
-		$attribs  = array( 'href' => $this->getSkinTemplate()->data[ 'nav_urls' ][ 'mainpage' ][ 'href' ] ) + Linker::tooltipAndAccesskeyAttribs( 'p-logo' );
-		$contents = Html::element( 'img', array( 'src' => $this->getSkinTemplate()->data[ 'logopath' ], 'alt' => $GLOBALS[ 'wgSitename' ] ) );
+		$span = $this->getDomElement()->getAttribute( 'span' );
 
-		return $this->indent() . '<!-- logo and main page link -->' .
-			   $this->indent() . '<div id="p-logo" class="p-logo ' . $this->getClass() . '" role="banner">' .
-			   $this->indent( 1 ) . Html::rawElement( 'a', $attribs, $contents ) .
-			   $this->indent( -1 ) . '</div>' . "\n";
+		if ( !is_numeric( $span ) || ( $span < 1 ) || ( $span > 12 ) ) {
+			$span = '12';
+		}
+
+		$ret = $this->indent() . '<div class="col-lg-' . $span . ' ' . $this->getClass() . '" >';
+
+		$children = $this->getDomElement()->childNodes;
+
+		$this->indent( 1 );
+
+		foreach ( $children as $child ) {
+			if ( is_a( $child, 'DOMElement' ) ) {
+				$component = $this->getSkinTemplate()->getComponent( $child, $this->getIndent() );
+				$ret .= $component->getHtml();
+			}
+		}
+
+		$ret .= $this->indent( -1 ) . '</div>';
+
+		return $ret;
 	}
 
 }

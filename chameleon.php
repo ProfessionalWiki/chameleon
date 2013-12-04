@@ -60,9 +60,16 @@ $wgValidSkinNames['chameleon'] = 'Chameleon';
 // register skin class (must be 'Skin' . SkinName)
 $wgAutoloadClasses['SkinChameleon'] = dirname( __FILE__ ) . '/Chameleon.skin.php';
 
+
+$egChameleonLayoutFile= dirname( __FILE__ ) . '/layouts/standard.xml';
+
 $chameleonComponents = array(
 	'Component',
+	'Container',
+	'Row',
+	'Cell',
 	'NavbarHorizontal',
+	'NavHead',
 	'TabList',
 	'NewtalkNotifier',
 	'PersonalTools',

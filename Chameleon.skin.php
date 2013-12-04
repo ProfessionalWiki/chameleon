@@ -65,6 +65,8 @@ namespace {
 namespace skins\chameleon {
 
 	use BaseTemplate;
+	use DOMDocument;
+	use skins\chameleon\components\Container;
 
 	/**
 	 * BaseTemplate class for Chameleon skin
@@ -72,6 +74,9 @@ namespace skins\chameleon {
 	 * @ingroup Skins
 	 */
 	class ChameleonTemplate extends BaseTemplate {
+
+		// the root component of the page; should be of type Container
+		private $mRootComponent = null;
 
 		/**
 		 * Outputs the entire contents of the page
@@ -85,76 +90,73 @@ namespace skins\chameleon {
 			// The headelement defines the <body> tag itself, it shouldn't be included in the html text
 			// To add attributes or classes to the body tag override addToBodyAttributes() in SkinChameleon
 			$this->html( 'headelement' );
-			?>
-
-			<div class="container">
-
-				<div class="row">
-					<div class="col-lg-3 col-md-3 col-sm-3">
-						<?php $component = new components\Logo( $this, 6 ); echo $component->getHtml(); ?>
-					</div>
-
-					<div class="col-lg-9 col-md-9 col-sm-9">
-
-						<div class="row">
-							<div class="col-lg-12"><?php $component = new components\PersonalTools( $this, 8 ); echo $component->getHtml(); ?>
-							</div>
-						</div>
-
-						<div class="row">
-							<div class="col-lg-12"><?php $component = new components\SearchForm( $this, 8 ); echo $component->getHtml(); ?>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-
-				<div class="row">
-					<div class="col-lg-12"><?php $component = new components\NavbarHorizontal( $this, 6 ); echo $component->getHtml();?>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-lg-12"><?php $component = new components\TabList( $this, 6 ); echo $component->getHtml(); ?>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-lg-12"><?php $component = new components\SiteNotice( $this, 6 ); echo $component->getHtml(); ?>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-lg-12"><?php $component = new components\MainContent( $this, 6 ); echo $component->getHtml(); ?>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-lg-12"><?php $component = new components\ToolbarHorizontal( $this, 6 ); echo $component->getHtml(); ?>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-lg-12"><?php $component = new components\FooterInfo( $this, 6 ); echo $component->getHtml(); ?>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-lg-6"><?php $component = new components\FooterPlaces( $this, 6 ); echo $component->getHtml(); ?>
-					</div>
-					<div class="col-lg-6"><?php $component = new components\FooterIcons( $this, 6 ); echo $component->getHtml(); ?>
-					</div>
-				</div>
-
-			</div>
-<?php $this->printTrail(); ?>
+			echo $this->getRootComponent()->getHtml();
+			$this->printTrail(); ?>
 
 </body>
 </html><?php
 			wfRestoreWarnings();
 		}
 
+		protected function getRootComponent() {
+
+			global $egChameleonLayoutFile;
+
+			if ( $this->mRootComponent === null ) {
+
+				$doc = new DOMDocument();
+
+				$doc->load( $egChameleonLayoutFile ); //TODO: error handling (file not found, file empty)
+
+				$doc->normalizeDocument();
+
+				// TODO: only create new root component the first time
+				$roots = $doc->getElementsByTagName( 'structure' );
+
+				if ( $roots->length > 0 ) {
+
+					$this->mRootComponent = $this->getComponent( $roots->item( 0 ) );
+
+				} else {
+					throw new \MWException( 'XML description is missing an element: structure' );
+				}
+			}
+
+			return $this->mRootComponent;
+
+		}
+
+		/**
+		 * @param \DOMElement $description
+		 */
+		public function getComponent( \DOMElement $description, $indent = 0, $htmlClassAttribute = '' ) {
+
+			$class = 'skins\\chameleon\\components\\';
+
+			switch ($description->nodeName) {
+			case 'structure':
+				$class .= 'Container';
+				break;
+			case 'row':
+				$class .= 'Row';
+				break;
+			case 'cell':
+				$class .= 'Cell';
+				break;
+			default:
+				if ( $description->hasAttribute('type')) {
+					$class .= $description->getAttribute('type');
+				} else {
+					$class .= 'Container';
+				}
+			}
+
+			if ( class_exists( $class ) && is_subclass_of( $class, 'skins\\chameleon\\components\\Component' )) {
+				return new $class( $this, $description, $indent, $htmlClassAttribute );
+			} else {
+				return new Container( $this, $description, $indent, $htmlClassAttribute );
+			}
+		}
 	}
 
 }

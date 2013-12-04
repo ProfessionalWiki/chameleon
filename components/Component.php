@@ -36,11 +36,21 @@ abstract class Component {
 
 	private $mSkinTemplate;
 	private $mIndent = 0;
+	private $mClass = '';
+	private $mDomElement = null;
 
-	public function __construct( ChameleonTemplate $template, $indent = 0 ) {
+	/**
+	 * @param ChameleonTemplate $template
+	 * @param \DOMElement|null  $domElement
+	 * @param int               $indent
+	 * @param string            $class
+	 */
+	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0, $class = '' ) {
 
 		$this->mSkinTemplate = $template;
 		$this->mIndent       = $indent;
+		$this->mClass        = $class;
+		$this->mDomElement   = $domElement;
 	}
 
 	/**
@@ -59,6 +69,25 @@ abstract class Component {
 	public function getIndent() {
 
 		return $this->mIndent;
+	}
+
+	/**
+	 * Returns the class string that should be assigned to the top-level html element of this component
+	 *
+	 * @return string
+	 */
+	public function getClass() {
+
+		return $this->mClass;
+	}
+
+	/**
+	 * Returns the DOMElement from the description XML file associated with this element.
+	 *
+	 * @return \DOMElement
+	 */
+	public function getDomElement() {
+		return $this->mDomElement;
 	}
 
 	/**

@@ -22,12 +22,100 @@
  * @ingroup Skins
  */
 
-.p-contentnavigation a.selected {
-	font-style: italic;
+// logo will be scaled down to this height to fit into the navbar (should be <= navbar-height)
+@navbar-logo-height: .9 * @navbar-height;
+
+@navbar-user-loggedin : @brand-primary;
+@navbar-user-loggedin-hover: darken(@navbar-newtalk-available, 20%);
+
+@navbar-newtalk-available: @brand-primary;
+@navbar-newtalk-available-hover: darken(@navbar-newtalk-available, 20%);
+
+// if the navbar is in the first row (i.e. at the top of the page) add some margin
+.container > *:first-child .navbar {
+	margin-top: (@grid-gutter-width / 2);
 }
 
-#siteSub {
-	display: none
+// override some navbar-brand styles to accommodate an image and include a separator to the rest of the navbar
+.navbar-brand {
+
+	padding: (( @navbar-height - @navbar-logo-height ) / 2 );
+	line-height: normal;
+
+	// separator for logo
+	border-right: 1px solid @navbar-default-border;
+
+	img {
+		max-height: @navbar-logo-height;
+	}
+}
+
+// styles for personal tools in the navhead component
+.navbar-personaltools {
+
+	.nav();
+	.navbar-nav();
+
+	height: @navbar-height;
+	display: table;
+
+	// separator for user's personal tools
+	border-left: 1px solid @navbar-default-border;
+
+	> li {
+		display: table-row;
+		float: none;
+
+		> a {
+			display: table-cell;
+			vertical-align: middle;
+			line-height: normal;
+			padding: 0 10px; // TODO: put this in a variable
+			border-color: @navbar-default-border;
+			border-bottom: 1px solid @navbar-default-border;
+
+			&.navbar-newtalk-available {
+				color: @navbar-newtalk-available;
+
+				&:hover {
+					color: @navbar-newtalk-available-hover;
+				}
+			}
+
+			&.navbar-userloggedin {
+				color: @navbar-user-loggedin;
+
+				&:hover {
+					color: @navbar-user-loggedin-hover;
+				}
+			}
+
+		}
+
+		&.open {
+			> a, > a:hover, > a:focus {
+
+				border-color: @navbar-default-border;
+				border-bottom: 1px solid @navbar-default-border;
+
+				&.navbar-userloggedin {
+					color: @navbar-user-loggedin;
+
+					&:hover {
+						color: @navbar-user-loggedin-hover;
+					}
+				}
+
+			}
+
+		}
+
+		&:last-child > a, &.open:last-child > a  {
+			border: none;
+		}
+
+	}
+
 }
 
 .mw-body {
@@ -55,19 +143,31 @@
 	padding-left: 5px;
 }
 
-.p-tb.navbar {
-	min-height: 0;
-}
+.p-tb {
+	&.navbar {
+		min-height: 0;
+	}
 
-.p-tb .navbar-nav > li > a {
-	padding: 5px 15px;
+	.navbar-nav > li > a {
+		padding: 5px 15px;
+	}
 }
 
 .newtalk-notifier {
 	margin-bottom: 10px;
 }
 
-.p-contentnavigation a.new,
+.p-contentnavigation{
+
+	a.selected {
+		font-style: italic;
+	}
+
+	a.new {
+		color: #aaaaaa;
+	}
+}
+
 .p-personal a.new {
 	color: #aaaaaa;
 }
@@ -76,10 +176,15 @@
 	margin: 0 0 0 1ex;
 }
 
+#siteSub {
+	display: none
+}
+
 #wpTextbox1 {
 	width: 100%;
 }
 
+// style horizontal toolbar
 #preftoc {
 	.nav;
 	.nav-tabs;
@@ -95,11 +200,11 @@
 		&,
 		&:hover,
 		&:focus {
-			color: @nav-tabs-active-link-hover-color;
-			background-color: @nav-tabs-active-link-hover-bg;
-			border: 1px solid @nav-tabs-active-link-hover-border-color;
+			color:               @nav-tabs-active-link-hover-color;
+			background-color:    @nav-tabs-active-link-hover-bg;
+			border:              1px solid @nav-tabs-active-link-hover-border-color;
 			border-bottom-color: transparent;
-			cursor: default;
+			cursor:              default;
 		}
 	}
 }

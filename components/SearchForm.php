@@ -3,7 +3,7 @@
  * File holding the SearchForm class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
  * The Chameleon extension is free software: you can redistribute it and/or
@@ -20,11 +20,12 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup   Skins
+ * @ingroup       Skins
  */
 
 namespace skins\chameleon\components;
 
+use Html;
 use \Linker;
 
 /**
@@ -44,35 +45,61 @@ class SearchForm extends Component {
 	public function getHtml() {
 
 		$ret = $this->indent() . '<!-- search form -->' .
-			   $this->indent() . '<div id="p-search" class="pull-right p-search" ' . Linker::tooltip( 'p-search' ) . ' role="search" >' .
-			   $this->indent( 1 ) . '<form id="searchform" class="mw-search form-inline" action="' .
-			   $this->getSkinTemplate()->data[ 'wgScript' ] . '">' .
-			   $this->indent( 1 ) . '<input type="hidden" name="title" value="' .
-			   $this->getSkinTemplate()->data[ 'searchtitle' ] . '" />' .
-			   $this->indent() . '<div class="form-group">' .
-			   $this->indent( 1 ) .
-			   $this->getSkinTemplate()->makeSearchInput( array( 'id' => 'searchInput', 'type' => 'text', 'class' => 'form-control' ) ) .
+			   $this->indent() . '<div id="p-search" class="pull-right p-search ' . $this->getClass() . '" ' . Linker::tooltip( 'p-search' ) . ' role="search" >' .
+			   $this->indent( 1 ) . '<form id="searchform" class="mw-search form-inline" action="' . $this->getSkinTemplate()->data[ 'wgScript' ] . '">' .
+			   $this->indent( 1 ) . '<input type="hidden" name="title" value="' . $this->getSkinTemplate()->data[ 'searchtitle' ] . '" />' .
+			   $this->indent() . '<div class="input-group">' .
+			   $this->indent( 1 ) . $this->getSkinTemplate()->makeSearchInput( array( 'id' => 'searchInput', 'type' => 'text', 'class' => 'form-control' ) ) .
+			   $this->indent() . '<div class="input-group-btn">' .
+			   $this->indent( 1 ) . $this->getSearchButton( 'go' ) . $this->getSearchButton( 'fulltext' ) .
 			   $this->indent( -1 ) . '</div>' .
-			   $this->getGoButton() .
-			   $this->getSearchButton() .
+			   $this->indent( -1 ) . '</div>' .
 			   $this->indent( -1 ) . '</form>' .
 			   $this->indent( -1 ) . '</div>' . "\n";
 
 		return $ret;
 	}
 
-	private function getGoButton() {
+	/**
+	 * This method basically replicates SkinTemplate::makeSearchButton, but uses buttons instead of inputs to ensure
+	 * proper styling by Bootstrap
+	 *
+	 * @param string $mode 'go' or 'fulltext', optional, default='fulltext'
+	 *
+	 * @return string
+	 */
+	private function getSearchButton( $mode = 'fulltext' ) {
 
-		// For an image button use something like
-		// $this->makeSearchButton( 'image', array( 'id' => 'searchButton', 'src' => $this->getSkin()->getSkinStylePath( 'images/searchbutton.png') );
-		return $this->indent() . '<!-- The "Go" button -->' .
-			   $this->indent() . $this->getSkinTemplate()->makeSearchButton( 'go', array( 'id' => 'searchGoButton', 'class' => 'searchButton btn btn-default' ) );
-	}
+		if ( $mode === 'go' ) {
 
-	private function getSearchButton() {
+			$buttonAttrs = array(
+				'value' => $this->getSkinTemplate()->translator->translate( 'searcharticle' ),
+				'id'    => 'searchGoButton',
+			);
 
-		return $this->indent() . '<!-- The "Search" button -->' .
-			   $this->indent() . $this->getSkinTemplate()->makeSearchButton( 'fulltext', array( 'id' => 'mw-searchButton', 'class' => 'searchButton btn btn-default' ) );
+			$glyphicon = 'share-alt';
+
+		} else {
+
+			$buttonAttrs = array(
+				'value' => $this->getSkinTemplate()->translator->translate( 'searchbutton' ),
+				'id'    => 'mw-searchButton',
+			);
+
+			$glyphicon = 'search';
+		}
+
+		$buttonAttrs = array_merge(
+			$buttonAttrs,
+			Linker::tooltipAndAccesskeyAttribs( "search-$mode" ),
+			array(
+				 'type'  => 'submit',
+				 'name'  => 'fulltext',
+				 'class' => $buttonAttrs[ 'id' ] . ' btn btn-default'
+			)
+		);
+
+		return Html::rawElement( 'button', $buttonAttrs, '<span class="glyphicon glyphicon-' . $glyphicon . '"></span>' );
 	}
 
 }

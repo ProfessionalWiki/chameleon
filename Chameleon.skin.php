@@ -118,6 +118,7 @@ namespace skins\chameleon {
 					$this->mRootComponent = $this->getComponent( $roots->item( 0 ) );
 
 				} else {
+					// TODO: catch other errors, e.g. malformed XML
 					throw new \MWException( 'XML description is missing an element: structure' );
 				}
 			}
@@ -135,7 +136,10 @@ namespace skins\chameleon {
 
 			switch ($description->nodeName) {
 			case 'structure':
-				$class .= 'Container';
+				$class .= 'Structure';
+				break;
+			case 'grid':
+				$class .= 'Grid';
 				break;
 			case 'row':
 				$class .= 'Row';

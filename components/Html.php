@@ -1,6 +1,6 @@
 <?php
 /**
- * File holding the Row class
+ * File holding the Html class
  *
  * @copyright (C) 2013, Stephan Gambke
  * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
@@ -26,18 +26,29 @@
 
 namespace skins\chameleon\components;
 
-use skins\chameleon\ChameleonTemplate;
-
 
 /**
- * The Row class.
+ * The Html class.
  *
  * @ingroup Skins
  */
-class Row extends Container {
+class Html extends Component {
 
-	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0, $class = '' ) {
+	/**
+	 * Builds the HTML code for the main container
+	 *
+	 * @return String the HTML code
+	 */
+	public function getHtml() {
 
-		parent::__construct( $template, $domElement, $indent, "row $class" );
+		$dom = $this->getDomElement()->ownerDocument;
+		$ret = '';
+
+		foreach ( $this->getDomElement()->childNodes as $node ) {
+			$ret .= $dom->saveHTML( $node );
+		}
+
+		return $ret;
 	}
+
 }

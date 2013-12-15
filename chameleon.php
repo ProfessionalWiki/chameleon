@@ -65,9 +65,11 @@ $egChameleonLayoutFile= dirname( __FILE__ ) . '/layouts/standard.xml';
 
 $chameleonComponents = array(
 	'Component',
+	'Structure',
 	'Container',
 	'Row',
 	'Cell',
+	'Grid',
 	'NavbarHorizontal',
 	'NavHead',
 	'TabList',
@@ -81,6 +83,7 @@ $chameleonComponents = array(
 	'FooterPlaces',
 	'FooterIcons',
 	'MainContent',
+	'Html',
 );
 
 foreach ( $chameleonComponents as $component ) {

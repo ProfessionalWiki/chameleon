@@ -3,7 +3,7 @@
  * File holding the Cell class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
  * The Chameleon extension is free software: you can redistribute it and/or
@@ -20,11 +20,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup   Skins
+ * @ingroup       Skins
  */
 
 
 namespace skins\chameleon\components;
+
+use skins\chameleon\ChameleonTemplate;
 
 
 /**
@@ -32,37 +34,17 @@ namespace skins\chameleon\components;
  *
  * @ingroup Skins
  */
-class Cell extends Component {
+class Cell extends Container {
 
-	/**
-	 * Builds the HTML code for this component
-	 *
-	 * @return String the HTML code
-	 */
-	public function getHtml(){
+	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0, $class = '' ) {
 
-		$span = $this->getDomElement()->getAttribute( 'span' );
+		$span = $domElement->getAttribute( 'span' );
 
 		if ( !is_numeric( $span ) || ( $span < 1 ) || ( $span > 12 ) ) {
 			$span = '12';
 		}
 
-		$ret = $this->indent() . '<div class="col-lg-' . $span . ' ' . $this->getClass() . '" >';
-
-		$children = $this->getDomElement()->childNodes;
-
-		$this->indent( 1 );
-
-		foreach ( $children as $child ) {
-			if ( is_a( $child, 'DOMElement' ) ) {
-				$component = $this->getSkinTemplate()->getComponent( $child, $this->getIndent() );
-				$ret .= $component->getHtml();
-			}
-		}
-
-		$ret .= $this->indent( -1 ) . '</div>';
-
-		return $ret;
+		parent::__construct( $template, $domElement, $indent, "col-lg-$span $class" );
 	}
 
 }

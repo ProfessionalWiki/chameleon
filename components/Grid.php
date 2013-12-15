@@ -1,6 +1,6 @@
 <?php
 /**
- * File holding the Row class
+ * File holding the Grid class
  *
  * @copyright (C) 2013, Stephan Gambke
  * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
@@ -30,14 +30,14 @@ use skins\chameleon\ChameleonTemplate;
 
 
 /**
- * The Row class.
+ * The Grid class.
  *
  * @ingroup Skins
  */
-class Row extends Container {
+class Grid extends Container {
 
 	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0, $class = '' ) {
 
-		parent::__construct( $template, $domElement, $indent, "row $class" );
+		parent::__construct( $template, $domElement, $indent, "container $class" );
 	}
 }

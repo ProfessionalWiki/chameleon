@@ -25,9 +25,8 @@
 
 namespace skins\chameleon\components;
 
-use Html,
-		Linker,
-		Sanitizer;
+use Linker;
+use Sanitizer;
 
 /**
  * The NavbarHorizontal class.
@@ -79,7 +78,7 @@ class NavbarHorizontal extends Component {
 
 		// open list item containing the dropdown
 		$ret = $this->indent() . '<!-- ' . $boxName . ' -->' .
-			   $this->indent() . Html::openElement( 'li',
+			   $this->indent() . \Html::openElement( 'li',
 					array(
 						 'class' => 'dropdown',
 						 'id'    => Sanitizer::escapeId( $box[ 'id' ] ),

@@ -25,7 +25,6 @@
 
 namespace skins\chameleon\components;
 
-use Html;
 use \Linker;
 
 /**
@@ -99,7 +98,7 @@ class SearchForm extends Component {
 			)
 		);
 
-		return Html::rawElement( 'button', $buttonAttrs, '<span class="glyphicon glyphicon-' . $glyphicon . '"></span>' );
+		return \Html::rawElement( 'button', $buttonAttrs, '<span class="glyphicon glyphicon-' . $glyphicon . '"></span>' );
 	}
 
 }

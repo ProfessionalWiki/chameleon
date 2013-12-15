@@ -32,7 +32,7 @@ namespace skins\chameleon\components;
  *
  * @ingroup Skins
  */
-class Container extends Component {
+class Container extends Structure {
 
 	/**
 	 * Builds the HTML code for the main container
@@ -41,18 +41,9 @@ class Container extends Component {
 	 */
 	public function getHtml(){
 
-		$ret = $this->indent() . '<div class="container ' . $this->getClass() . '" >';
+		$ret = $this->indent() . '<div class="' . $this->getClass() . '" >';
 
-		$children = $this->getDomElement()->childNodes;
-
-		$this->indent( 1 );
-
-		foreach ( $children as $child ) {
-			if ( is_a( $child, 'DOMElement' ) ) {
-				$component = $this->getSkinTemplate()->getComponent( $child, $this->getIndent() );
-				$ret .= $component->getHtml();
-			}
-		}
+		$ret .= parent::getHtml();
 
 		$ret .= $this->indent( -1 ) . '</div>';
 

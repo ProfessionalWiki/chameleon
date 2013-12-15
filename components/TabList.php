@@ -25,10 +25,6 @@
 
 namespace skins\chameleon\components;
 
-use Html,
-		Linker,
-		Sanitizer;
-
 /**
  * The TabList class.
  *

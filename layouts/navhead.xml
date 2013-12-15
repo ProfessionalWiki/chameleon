@@ -1,48 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <structure>
-	<row>
-		<cell span="12">
-			<component type="NavHead"></component>
-		</cell>
-	</row>
+	<grid>
+		<row>
+			<cell span="12">
+				<component type="NavHead"></component>
+			</cell>
+		</row>
 
-	<row>
-		<cell span="12">
-			<component type="TabList"></component>
-		</cell>
-	</row>
+		<row>
+			<cell span="12">
+				<component type="TabList"></component>
+			</cell>
+		</row>
 
-	<row>
-		<cell span="12">
-			<component type="SiteNotice"></component>
-		</cell>
-	</row>
+		<row>
+			<cell span="12">
+				<component type="SiteNotice"></component>
+			</cell>
+		</row>
 
-	<row>
-		<cell span="12">
-			<component type="MainContent"></component>
-		</cell>
-	</row>
+		<row>
+			<cell span="12">
+				<component type="MainContent"></component>
+			</cell>
+		</row>
 
-	<row>
-		<cell span="12">
-			<component type="ToolbarHorizontal"></component>
-		</cell>
-	</row>
+		<row>
+			<cell span="12">
+				<component type="ToolbarHorizontal"></component>
+			</cell>
+		</row>
 
-	<row>
-		<cell span="12">
-			<component type="FooterInfo"></component>
-		</cell>
-	</row>
+		<row>
+			<cell span="12">
+				<component type="FooterInfo"></component>
+			</cell>
+		</row>
 
-	<row>
-		<cell span="6">
-			<component type="FooterPlaces"></component>
-		</cell>
-		<cell span="6">
-			<component type="FooterIcons"></component>
-		</cell>
-	</row>
-
+		<row>
+			<cell span="6">
+				<component type="FooterPlaces"></component>
+			</cell>
+			<cell span="6">
+				<component type="FooterIcons"></component>
+			</cell>
+		</row>
+	</grid>
 </structure>

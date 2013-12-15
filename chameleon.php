@@ -42,7 +42,7 @@ if ( !defined( 'BS_VERSION' ) ) {
 }
 
 // define the skin's version
-define( 'CHAMELEON_VERSION', '0.1' );
+define( 'CHAMELEON_VERSION', '0.2 alpha' );
 
 // set extension credits
 $wgExtensionCredits['skin'][] = array(

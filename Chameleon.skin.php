@@ -57,6 +57,9 @@ namespace {
 
 			// load Bootstrap scripts
 			$out->addModules( array( 'ext.bootstrap' ) );
+
+			// Enable responsive behaviour on mobile browsers
+			$out->addMeta( 'viewport', 'width=device-width, initial-scale=1.0' );
 		}
 	}
 

@@ -45,7 +45,7 @@ class SiteNotice extends Component {
 
 		if ( $siteNotice ) {
 			return $this->indent() . '<!-- sitenotice -->' .
-				   $this->indent() . '<div id="siteNotice" class="siteNotice" >' . $siteNotice . '</div>'
+				   $this->indent() . '<div id="siteNotice" class="siteNotice ' . $this->getClass() . '" >' . $siteNotice . '</div>'
 				   . "\n";
 		} else {
 			return "\n";

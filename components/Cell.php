@@ -36,7 +36,7 @@ use skins\chameleon\ChameleonTemplate;
  */
 class Cell extends Container {
 
-	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0, $class = '' ) {
+	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0 ) {
 
 		$span = $domElement->getAttribute( 'span' );
 
@@ -44,7 +44,9 @@ class Cell extends Container {
 			$span = '12';
 		}
 
-		parent::__construct( $template, $domElement, $indent, "col-lg-$span $class" );
+		parent::__construct( $template, $domElement, $indent );
+
+		$this->addClass( "col-lg-$span" );
 	}
 
 }

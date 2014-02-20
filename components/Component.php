@@ -45,12 +45,12 @@ abstract class Component {
 	 * @param int               $indent
 	 * @param string            $class
 	 */
-	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0, $class = '' ) {
+	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0 ) {
 
 		$this->mSkinTemplate = $template;
 		$this->mIndent       = $indent;
-		$this->mClass        = $class;
 		$this->mDomElement   = $domElement;
+		$this->mClass        = $domElement !== null ? $domElement->getAttribute( 'class' ) : '';
 	}
 
 	/**
@@ -79,6 +79,28 @@ abstract class Component {
 	public function getClass() {
 
 		return $this->mClass;
+	}
+
+	/**
+	 * Sets the class string that should be assigned to the top-level html element of this component
+	 *
+	 * @param $class
+	 * @return string
+	 */
+	public function setClass( $class ) {
+
+		$this->mClass = $class;
+	}
+
+	/**
+	 * Adds the given class to the class string that should be assigned to the top-level html element of this component
+	 *
+	 * @param $class
+	 * @return string
+	 */
+	public function addClass( $class ) {
+
+		$this->mClass .= ' ' . $class;
 	}
 
 	/**

@@ -44,7 +44,7 @@ class TabList extends Component {
 	public function getHtml() {
 
 		$ret = $this->indent() . '<!-- Content navigation -->' .
-			   $this->indent() . '<ul class="list-inline p-contentnavigation text-center" id="p-contentnavigation">';
+			   $this->indent() . '<ul class="list-inline p-contentnavigation text-center ' . $this->getClass() . '" id="p-contentnavigation">';
 
 		$navigation = $this->getSkinTemplate()->data[ 'content_navigation' ];
 

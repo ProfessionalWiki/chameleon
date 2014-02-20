@@ -48,7 +48,7 @@ class NavbarHorizontal extends Component {
 	public function getHtml() {
 
 		$ret = $this->indent() . '<!-- navigation bar -->' .
-			   $this->indent() . '<nav class="navbar navbar-default p-navbar" role="navigation" id="p-navbar" >' .
+			   $this->indent() . '<nav class="navbar navbar-default p-navbar ' . $this->getClass() . '" role="navigation" id="p-navbar" >' .
 			   $this->indent( 1 ) . '<ul class="nav navbar-nav">';
 
 		$this->indent( 1 );

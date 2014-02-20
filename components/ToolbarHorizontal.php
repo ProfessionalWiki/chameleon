@@ -48,7 +48,7 @@ class ToolbarHorizontal extends Component {
 		$skinTemplate = $this->getSkinTemplate();
 
 		$ret = $this->indent() . '<!-- ' . htmlspecialchars( $skinTemplate->getMsg( 'toolbox' )->text() ) . '-->' .
-			   $this->indent() . '<nav class="navbar navbar-default p-tb" id="p-tb" ' . Linker::tooltip( 'p-tb' ) . ' >' .
+			   $this->indent() . '<nav class="navbar navbar-default p-tb ' . $this->getClass() . '" id="p-tb" ' . Linker::tooltip( 'p-tb' ) . ' >' .
 			   $this->indent( 1 ) . '<ul class="nav navbar-nav small">';
 
 		// insert toolbox items

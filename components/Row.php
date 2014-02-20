@@ -36,8 +36,9 @@ use skins\chameleon\ChameleonTemplate;
  */
 class Row extends Container {
 
-	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0, $class = '' ) {
+	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0 ) {
 
-		parent::__construct( $template, $domElement, $indent, "row $class" );
+		parent::__construct( $template, $domElement, $indent );
+		$this->addClass( 'row' );
 	}
 }

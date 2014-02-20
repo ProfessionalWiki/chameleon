@@ -49,11 +49,13 @@ class NavHead extends Component {
 
 		$ret = $this->indent() . '<!-- navigation bar -->' .
 			   $this->indent() . '<nav class="navbar navbar-default p-navbar" role="navigation" id="p-navbar" >';
+//		$this->indent() . '<nav class="navbar navbar-default p-navbar ' . $this->getClass() . '" role="navigation" id="p-navbar" >';
 
 		$this->indent( 1 );
 
 		// add logo
-		$logo = new Logo( $this->getSkinTemplate(), null, $this->getIndent(), 'navbar-brand' );
+		$logo = new Logo( $this->getSkinTemplate(), null, $this->getIndent() );
+		$logo->addClass( 'navbar-brand' );
 		$ret .= $logo->getHtml();
 
 		// add nav menu
@@ -63,7 +65,8 @@ class NavHead extends Component {
 		$ret .= $this->makePersonalTools();
 
 		// add search form
-		$search = new SearchForm( $this->getSkinTemplate(), null, $this->getIndent(), 'navbar-form' );
+		$search = new SearchForm( $this->getSkinTemplate(), null, $this->getIndent() );
+		$search->addClass( 'navbar-form' );
 		$ret .= $search->getHtml();
 
 		$ret .= $this->indent( -1 ) . '</nav>' . "\n";

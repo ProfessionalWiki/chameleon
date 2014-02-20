@@ -43,7 +43,7 @@ class NewtalkNotifier extends Component {
 
 		if ( $this->getSkinTemplate()->data[ 'newtalk' ] ) {
 			return $this->indent() . '<!-- message to a user about new messages on their talkpage -->' .
-				   $this->indent() . '<span class="usermessage">' . $this->getSkinTemplate()->data[ 'newtalk' ] . '</span>';
+				   $this->indent() . '<span class="usermessage ' . $this->getClass() . '">' . $this->getSkinTemplate()->data[ 'newtalk' ] . '</span>';
 		} else {
 			return '';
 		}

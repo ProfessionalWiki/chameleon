@@ -16,7 +16,7 @@
 
 				<row>
 					<cell span="12">
-						<component type="SearchForm"></component>
+						<component type="SearchBar"></component>
 					</cell>
 				</row>
 
@@ -25,13 +25,15 @@
 
 		<row>
 			<cell span="12">
-				<component type="NavbarHorizontal"></component>
+				<component type="NavbarHorizontal">
+                    <component type="NavMenu"></component>
+				</component>
 			</cell>
 		</row>
 
 		<row>
 			<cell span="12">
-				<component type="TabList"></component>
+				<component type="PageTools"></component>
 			</cell>
 		</row>
 

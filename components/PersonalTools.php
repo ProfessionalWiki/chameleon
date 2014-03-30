@@ -42,7 +42,7 @@ class PersonalTools extends Component {
 	public function getHtml() {
 
 		$ret = $this->indent() . '<!-- personal tools -->' .
-			   $this->indent() . '<div class="p-personal ' . $this->getClass() . '" id="p-personal" >';
+			   $this->indent() . '<div class="p-personal ' . $this->getClassString() . '" id="p-personal" >';
 
 		// include message to a user about new messages on their talkpage
 		// TODO: make including the NewTalkNotifier dependent on an option (PREPEND, APPEND, OFF)

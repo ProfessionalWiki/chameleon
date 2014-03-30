@@ -48,7 +48,7 @@ class FooterPlaces extends Component {
 		if ( array_key_exists( 'places', $footerlinks ) ) {
 
 			$ret = $this->indent() . '<!-- places -->' .
-				   $this->indent() . '<ul class="list-inline footer-places ' . $this->getClass() . '" id="footer-places">';
+				   $this->indent() . '<ul class="list-inline footer-places ' . $this->getClassString() . '" id="footer-places">';
 
 			$this->indent( 1 );
 			foreach ( $footerlinks[ 'places' ] as $key ) {

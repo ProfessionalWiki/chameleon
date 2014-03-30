@@ -1,6 +1,6 @@
 <?php
 /**
- * File holding the SearchForm class
+ * File holding the SearchBar class
  *
  * @copyright (C) 2013, Stephan Gambke
  * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
@@ -28,13 +28,13 @@ namespace skins\chameleon\components;
 use \Linker;
 
 /**
- * The SearchForm class.
+ * The SearchBar class.
  *
  * The search form wrapped in a div: <div id="p-search" role="search" >
  *
  * @ingroup Skins
  */
-class SearchForm extends Component {
+class SearchBar extends Component {
 
 	/**
 	 * Builds the HTML code for this component
@@ -44,7 +44,7 @@ class SearchForm extends Component {
 	public function getHtml() {
 
 		$ret = $this->indent() . '<!-- search form -->' .
-			   $this->indent() . '<div id="p-search" class="pull-right p-search ' . $this->getClass() . '" ' . Linker::tooltip( 'p-search' ) . ' role="search" >' .
+			   $this->indent() . '<div id="p-search" class="pull-right p-search ' . $this->getClassString() . '" ' . Linker::tooltip( 'p-search' ) . ' role="search" >' .
 			   $this->indent( 1 ) . '<form id="searchform" class="mw-search form-inline" action="' . $this->getSkinTemplate()->data[ 'wgScript' ] . '">' .
 			   $this->indent( 1 ) . '<input type="hidden" name="title" value="' . $this->getSkinTemplate()->data[ 'searchtitle' ] . '" />' .
 			   $this->indent() . '<div class="input-group">' .

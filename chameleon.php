@@ -5,7 +5,7 @@
  * @see https://www.mediawiki.org/wiki/Skin:Chameleon
  *
  * @author Stephan Gambke
- * @version 0.1
+ * @version 0.2 alpha-1
  *
  */
 
@@ -42,7 +42,7 @@ if ( !defined( 'BS_VERSION' ) ) {
 }
 
 // define the skin's version
-define( 'CHAMELEON_VERSION', '0.2 alpha' );
+define( 'CHAMELEON_VERSION', '0.2 alpha-1' );
 
 // set extension credits
 $wgExtensionCredits['skin'][] = array(
@@ -72,11 +72,11 @@ $chameleonComponents = array(
 	'Grid',
 	'NavbarHorizontal',
 	'NavHead',
-	'TabList',
+	'PageTools',
 	'NewtalkNotifier',
 	'PersonalTools',
 	'Logo',
-	'SearchForm',
+	'SearchBar',
 	'SiteNotice',
 	'ToolbarHorizontal',
 	'FooterInfo',

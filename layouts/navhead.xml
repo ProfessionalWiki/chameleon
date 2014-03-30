@@ -3,13 +3,13 @@
 	<grid>
 		<row>
 			<cell span="12">
-				<component type="NavHead"></component>
-			</cell>
-		</row>
-
-		<row>
-			<cell span="12">
-				<component type="TabList"></component>
+				<component type="NavbarHorizontal">
+                    <component type="Logo"></component>
+                    <component type="NavMenu"></component>
+                    <component type="PageTools"></component>
+                    <component type="PersonalTools"></component>
+                    <component type="SearchBar"></component>
+				</component>
 			</cell>
 		</row>
 

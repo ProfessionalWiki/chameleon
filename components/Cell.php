@@ -46,7 +46,7 @@ class Cell extends Container {
 
 		parent::__construct( $template, $domElement, $indent );
 
-		$this->addClass( "col-lg-$span" );
+		$this->addClasses( "col-lg-$span" );
 	}
 
 }

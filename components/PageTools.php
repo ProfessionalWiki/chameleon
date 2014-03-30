@@ -1,6 +1,6 @@
 <?php
 /**
- * File holding the TabList class
+ * File holding the PageTools class
  *
  * @copyright (C) 2013, Stephan Gambke
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
@@ -25,8 +25,10 @@
 
 namespace skins\chameleon\components;
 
+use skins\chameleon\ChameleonTemplate;
+
 /**
- * The TabList class.
+ * The PageTools class.
  *
  * A unordered list containing content navigation links (Page, Discussion, Edit, History, Move, ...)
  *
@@ -34,7 +36,16 @@ namespace skins\chameleon\components;
  *
  * @ingroup Skins
  */
-class TabList extends Component {
+class PageTools extends Component {
+
+	private $mFlat = false;
+
+	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0 ) {
+
+		parent::__construct( $template, $domElement, $indent );
+
+		$this->addClasses( 'text-center' );
+	}
 
 	/**
 	 * Builds the HTML code for this component
@@ -44,7 +55,7 @@ class TabList extends Component {
 	public function getHtml() {
 
 		$ret = $this->indent() . '<!-- Content navigation -->' .
-			   $this->indent() . '<ul class="list-inline p-contentnavigation text-center ' . $this->getClass() . '" id="p-contentnavigation">';
+			   $this->indent() . '<ul class="list-inline p-contentnavigation ' . $this->getClassString() . '" id="p-contentnavigation">';
 
 		$navigation = $this->getSkinTemplate()->data[ 'content_navigation' ];
 
@@ -57,10 +68,13 @@ class TabList extends Component {
 				continue;
 			}
 
-			// output the name of the current category (e.g. 'namespaces', 'views', ...)
-			$ret .= $this->indent() . '<!-- ' . $category . ' -->' .
-					$this->indent() . '<li id="p-' . $category . '" >' .
-					$this->indent( 1 ) . '<ul class="list-inline" >';
+			$ret .= $this->indent() . '<!-- ' . $category . ' -->';
+
+			if ( !$this->mFlat ) {
+				// output the name of the current category (e.g. 'namespaces', 'views', ...)
+				$ret .= $this->indent() . '<li id="p-' . $category . '" >' .
+						$this->indent( 1 ) . '<ul class="list-inline" >';
+			}
 
 			$this->indent( 1 );
 			foreach ( $tabs as $key => $tab ) {
@@ -81,13 +95,24 @@ class TabList extends Component {
 
 			}
 
-			$ret .= $this->indent( -1 ) . '</ul>' .
-					$this->indent( -1 ) . '</li>';
+			if ( !$this->mFlat ) {
+				$ret .= $this->indent( -1 ) . '</ul>' .
+						$this->indent( -1 ) . '</li>';
+			}
 		}
 
 		$ret .= $this->indent( -1 ) . '</ul>' . "\n";
 
 		return $ret;
+	}
+
+	/**
+	 * Set the page tool menu to have submenus or not
+	 *
+	 * @param $flat
+	 */
+	public function setFlat( $flat ) {
+		$this->mFlat = $flat;
 	}
 
 }

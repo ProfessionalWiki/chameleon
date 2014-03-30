@@ -48,7 +48,7 @@ class MainContent extends Component {
 
 		$ret = $this->indent() . '<div id="mw-js-message" style="display:none;" ' . $skintemplate->get( 'userlangattributes' ) . '></div>' .
 			   $this->indent() . '<!-- start the content area -->' .
-			   $this->indent() . '<div id="content" class="mw-body ' . $this->getClass() . '">' .
+			   $this->indent() . '<div id="content" class="mw-body ' . $this->getClassString() . '">' .
 			   $this->indent( 1 ) . '<div class ="contentHeader">' .
 			   $this->indent( 1 ) . '<!-- title of the page -->' .
 			   $this->indent() . '<h1 id="firstHeading" class="firstHeading">' . $skintemplate->get( 'title' ) . '</h1>' .

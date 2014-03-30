@@ -36,7 +36,7 @@ abstract class Component {
 
 	private $mSkinTemplate;
 	private $mIndent = 0;
-	private $mClass = '';
+	private $mClasses = array();
 	private $mDomElement = null;
 
 	/**
@@ -50,7 +50,10 @@ abstract class Component {
 		$this->mSkinTemplate = $template;
 		$this->mIndent       = $indent;
 		$this->mDomElement   = $domElement;
-		$this->mClass        = $domElement !== null ? $domElement->getAttribute( 'class' ) : '';
+
+		if ( $domElement !== null ) {
+			$this->setClasses( $domElement->getAttribute( 'class' ) );
+		}
 	}
 
 	/**
@@ -76,31 +79,70 @@ abstract class Component {
 	 *
 	 * @return string
 	 */
-	public function getClass() {
+	public function getClassString() {
 
-		return $this->mClass;
+		return implode( ' ', $this->mClasses );
 	}
 
 	/**
 	 * Sets the class string that should be assigned to the top-level html element of this component
 	 *
-	 * @param $class
+	 * @param $classes
+	 *
+	 */
+	public function setClasses( $classes ) {
+
+		$this->mClasses = array();
+		$this->addClasses( $classes );
+
+	}
+
+	/**
+	 * Removes the given class from the class string that should be assigned to the top-level html element of this component
+	 *
+	 * @param $classes
+	 *
+	 * @internal param $class
 	 * @return string
 	 */
-	public function setClass( $class ) {
+	public function removeClasses( $classes ) {
 
-		$this->mClass = $class;
+		if ( empty( $classes ) ) {
+			return;
+		}
+
+		if ( is_string( $classes ) ) {
+			$classesArray = explode( ' ', $classes );
+		} else {
+			$classesArray = $classes;
+		}
+
+
+		$this->mClasses = array_diff( $this->mClasses, $classesArray );
 	}
 
 	/**
 	 * Adds the given class to the class string that should be assigned to the top-level html element of this component
 	 *
-	 * @param $class
+	 * @param $classes
+	 *
 	 * @return string
 	 */
-	public function addClass( $class ) {
+	public function addClasses( $classes ) {
 
-		$this->mClass .= ' ' . $class;
+		if ( empty( $classes ) ) {
+			return;
+		}
+
+		if ( is_string( $classes ) ) {
+			$classesArray = explode( ' ', $classes );
+		} else {
+			$classesArray = $classes;
+		}
+
+		$classesArray = array_combine( $classesArray, $classesArray );
+
+		$this->mClasses = array_merge( $this->mClasses, $classesArray );
 	}
 
 	/**
@@ -134,4 +176,30 @@ abstract class Component {
 		return "\n" . str_repeat( "\t", $this->mIndent );
 	}
 
+	/**
+	 * Calls the handler for each child element of this components DOM element.
+	 *
+	 * Signature of the handler: function handler( DOMElement $element )
+	 *
+	 * @param $handler
+	 *
+	 * @internal param $handler $
+	 */
+	protected function eachChild( $handler ) {
+
+		if ( is_callable( $handler ) ) {
+
+			$children = $this->getDomElement()->childNodes;
+
+			foreach ( $children as $child ) {
+
+				if ( is_a( $child, 'DOMElement' ) ) {
+					call_user_func( $handler, $child );
+				}
+
+			}
+
+		}
+
+	}
 }

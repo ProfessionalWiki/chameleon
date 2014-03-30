@@ -48,7 +48,7 @@ class FooterIcons extends Component {
 		if ( $icons !== null && count( $icons ) > 0 ) {
 
 			$ret = $this->indent() . '<!-- footer icons -->' .
-				   $this->indent() . '<ul class="list-inline pull-right footer-icons ' . $this->getClass() . '" id="footer-icons" >';
+				   $this->indent() . '<ul class="list-inline pull-right footer-icons ' . $this->getClassString() . '" id="footer-icons" >';
 
 			$this->indent( 1 );
 			foreach ( $icons as $blockName => $footerIcons ) {

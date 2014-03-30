@@ -3,7 +3,7 @@
  * File holding the NavbarHorizontal class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
  * The Chameleon extension is free software: you can redistribute it and/or
@@ -20,7 +20,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup   Skins
+ * @ingroup       Skins
  */
 
 namespace skins\chameleon\components;
@@ -40,6 +40,8 @@ use Sanitizer;
  */
 class NavbarHorizontal extends Component {
 
+	private $mHtml = '';
+
 	/**
 	 * Builds the HTML code for this component
 	 *
@@ -47,21 +49,97 @@ class NavbarHorizontal extends Component {
 	 */
 	public function getHtml() {
 
-		$ret = $this->indent() . '<!-- navigation bar -->' .
-			   $this->indent() . '<nav class="navbar navbar-default p-navbar ' . $this->getClass() . '" role="navigation" id="p-navbar" >' .
-			   $this->indent( 1 ) . '<ul class="nav navbar-nav">';
+		$this->mHtml =
+			$this->indent() . '<!-- navigation bar -->' .
+			$this->indent() . '<nav class="navbar navbar-default p-navbar ' . $this->getClassString() . '" role="navigation" id="p-navbar" >' .
+			$this->indent( 1 ) . '<ul class="nav navbar-nav">';
+
+		// add components
+		$this->eachChild( function ( \DOMElement $node ) {
+
+				if ( $node->tagName !== 'component' || !$node->hasAttribute( 'type' ) ) {
+					return;
+				}
+
+				switch ( $node->getAttribute( 'type' ) ) {
+					case 'Logo':
+						$this->mHtml .= $this->getLogo();
+						break;
+					case 'NavMenu':
+						$this->mHtml .= $this->getNavMenu();
+						break;
+					case 'PageTools':
+						$this->mHtml .= $this->getPageTools();
+						break;
+					case 'SearchBar':
+						$this->mHtml .= $this->getSearchBar();
+						break;
+					case 'PersonalTools':
+						$this->mHtml .= $this->getPersonalTools();
+						break;
+				}
+			}
+		);
+
+		$this->mHtml .= $this->indent( -1 ) . '</ul>' .
+			$this->indent( -1 ) . '</nav>' . "\n";
+
+		return $this->mHtml;
+	}
+
+	/**
+	 * Creates HTML code for the wiki logo in a navbar
+	 *
+	 * @return String
+	 */
+	protected function getLogo() {
+
+		$logo = new Logo( $this->getSkinTemplate(), null, $this->getIndent() );
+		$logo->addClasses( 'navbar-brand' );
+
+		return $logo->getHtml();
+	}
+
+	/**
+	 * Create a dropdown containing the page tools (page, talk, edit, history, ...)
+	 *
+	 * @return string
+	 */
+	protected function getPageTools() {
+
+		$pageTools = new PageTools( $this->getSkinTemplate(), null, $this->indent( 1 ) );
+		$pageTools->addClasses( 'dropdown-menu' );
+		$pageTools->setFlat( true );
+		$pageTools->removeClasses( 'text-center' );
+
+		$ret = $this->indent() . '<!-- page tools -->' .
+			$this->indent() . \Html::openElement( 'li', array( 'class' => 'dropdown' ) );
+
+		$ret .= '<a data-toggle="dropdown" class="dropdown-toggle" href="#">Page Tools <b class="caret"></b></a>' . $pageTools->getHtml() . '</li>';
+
+		return $ret;
+	}
+
+	/**
+	 * Creates a list of navigational links usually found in the sidebar
+	 *
+	 * @return string
+	 */
+	protected function getNavMenu() {
+
+		$ret = '';
 
 		$this->indent( 1 );
-		$sidebar = $this->getSkinTemplate()->getSidebar( array( 'search' => false, 'toolbox' => false, 'languages' => false ) );
+		$sidebar = $this->getSkinTemplate()->getSidebar( array(
+				'search' => false, 'toolbox' => false, 'languages' => false
+			)
+		);
 
 		// create a dropdown for each sidebar box
 		foreach ( $sidebar as $boxName => $box ) {
 
-			$ret .= $this->getDropdown( $boxName, $box );
+			$ret .= $this->getDropdownForNavMenu( $boxName, $box );
 		}
-
-		$ret .= $this->indent( -1 ) . '</ul>' .
-				$this->indent( -1 ) . '</nav>' . "\n";
 
 		return $ret;
 	}
@@ -74,23 +152,24 @@ class NavbarHorizontal extends Component {
 	 *
 	 * @return string
 	 */
-	private function getDropdown( $boxName, $box ) {
+	protected function getDropdownForNavMenu( $boxName, $box ) {
 
 		// open list item containing the dropdown
 		$ret = $this->indent() . '<!-- ' . $boxName . ' -->' .
-			   $this->indent() . \Html::openElement( 'li',
-					array(
-						 'class' => 'dropdown',
-						 'id'    => Sanitizer::escapeId( $box[ 'id' ] ),
-						 'title' => Linker::titleAttrib( $box[ 'id' ] )
-					) );
+			$this->indent() . \Html::openElement( 'li',
+				array(
+					'class' => 'dropdown',
+					'id'    => Sanitizer::escapeId( $box[ 'id' ] ),
+					'title' => Linker::titleAttrib( $box[ 'id' ] )
+				)
+			);
 
 		$this->indent( 1 );
 		if ( is_array( $box[ 'content' ] ) && count( $box[ 'content' ] ) > 0 ) {
 
 			// the dropdown toggle
 			$ret .= $this->indent() . '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' .
-					htmlspecialchars( $box[ 'header' ] ) . ' <b class="caret"></b></a>';
+				htmlspecialchars( $box[ 'header' ] ) . ' <b class="caret"></b></a>';
 
 			// open list of dropdown menu items
 			$ret .= $this->indent() . '<ul class="dropdown-menu">';
@@ -113,6 +192,82 @@ class NavbarHorizontal extends Component {
 		$ret .= $this->indent() . '</li>';
 
 		return $ret;
+	}
+
+	/**
+	 * Creates a user's personal tools and the newtalk notifier
+	 *
+	 * @return string
+	 */
+	protected function getPersonalTools() {
+
+		$user = $this->getSkinTemplate()->getSkin()->getUser();
+
+
+		if ( $user->isLoggedIn() ) {
+			$toolsClass    = 'navbar-userloggedin';
+			$toolsLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-loggedin' )->params( $user->getName() )->text();
+		} else {
+			$toolsClass    = 'navbar-usernotloggedin';
+			$toolsLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-notloggedin' )->text();
+		}
+
+		// start personal tools element
+
+		$ret = $this->indent() . '<ul class="navbar-right navbar-nav navbar-personaltools" >' .
+			$this->indent( 1 ) . '<li class="dropdown navbar-personaltools-tools">' .
+			$this->indent( 1 ) . '<a class="dropdown-toggle glyphicon glyphicon-user ' . $toolsClass . '" href="#" data-toggle="dropdown" title="' . $toolsLinkText . '" ></a>' .
+			$this->indent() . '<ul class="p-personal-tools dropdown-menu" >';
+
+		$this->indent( 1 );
+
+		// add personal tools (links to user page, user talk, prefs, ...)
+		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
+			$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
+		}
+
+		$ret .= $this->indent( -1 ) . '</ul>' .
+			$this->indent( -1 ) . '</li>';
+
+		// if the user is logged in, add the newtalk notifier
+		if ( $user->isLoggedIn() ) {
+
+			$newMessagesAlert = '';
+			$newtalks         = $user->getNewMessageLinks();
+			$out              = $this->getSkinTemplate()->getSkin()->getOutput();
+
+			// Allow extensions to disable the new messages alert;
+			// since we do not display the link text, we ignore the actual value returned in $newMessagesAlert
+			if ( wfRunHooks( 'GetNewMessagesAlert', array( &$newMessagesAlert, $newtalks, $user, $out ) ) ) {
+
+				if ( count( $user->getNewMessageLinks() ) > 0 ) {
+					$newtalkClass    = 'navbar-newtalk-available';
+					$newtalkLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-newmessages' )->text();
+				} else {
+					$newtalkClass    = 'navbar-newtalk-unavailable';
+					$newtalkLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-nonewmessages' )->text();
+				}
+
+				$ret .= $this->indent() . '<li class="navbar-newtalk-notifier">' .
+					$this->indent( 1 ) . '<a class="dropdown-toggle glyphicon glyphicon-envelope ' . $newtalkClass . '" title="' .
+					$newtalkLinkText . '" href="' . $user->getTalkPage()->getLinkURL() . '?redirect=no"></a>' .
+					$this->indent( -1 ) . '</li>';
+
+			}
+
+		}
+
+		$ret .= $this->indent( -1 ) . '</ul>' . "\n";
+
+		return $ret;
+	}
+
+	protected function getSearchBar() {
+
+		$search = new SearchBar( $this->getSkinTemplate(), null, $this->getIndent() );
+		$search->addClasses( 'navbar-form' );
+
+		return $search->getHtml();
 	}
 
 }

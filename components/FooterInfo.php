@@ -46,7 +46,7 @@ class FooterInfo extends Component {
 	public function getHtml() {
 
 		$ret = $this->indent() . '<!-- footer links -->' .
-			   $this->indent() . '<ul class="list-unstyled footer-info small ' . $this->getClass() . '" id="footer-info" >';
+			   $this->indent() . '<ul class="list-unstyled footer-info small ' . $this->getClassString() . '" id="footer-info" >';
 
 		$footerlinks = $this->getSkinTemplate()->getFooterLinks();
 		$this->indent( 1 );

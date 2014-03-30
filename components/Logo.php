@@ -47,7 +47,7 @@ class Logo extends Component {
 		$contents = \Html::element( 'img', array( 'src' => $this->getSkinTemplate()->data[ 'logopath' ], 'alt' => $GLOBALS[ 'wgSitename' ] ) );
 
 		return $this->indent() . '<!-- logo and main page link -->' .
-			   $this->indent() . '<div id="p-logo" class="p-logo ' . $this->getClass() . '" role="banner">' .
+			   $this->indent() . '<div id="p-logo" class="p-logo ' . $this->getClassString() . '" role="banner">' .
 			   $this->indent( 1 ) . \Html::rawElement( 'a', $attribs, $contents ) .
 			   $this->indent( -1 ) . '</div>' . "\n";
 	}

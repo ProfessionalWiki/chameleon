@@ -44,7 +44,7 @@ class SkinChameleon extends SkinTemplate {
 		parent::setupSkinUserCss( $out );
 
 		// load Bootstrap styles
-		$out->addModuleStyles( 'ext.bootstrap' );
+		$out->addModuleStyles( 'ext.bootstrap.styles' );
 	}
 
 	/**
@@ -55,7 +55,7 @@ class SkinChameleon extends SkinTemplate {
 		parent::initPage( $out );
 
 		// load Bootstrap scripts
-		$out->addModules( array( 'ext.bootstrap' ) );
+		$out->addModules( array( 'ext.bootstrap.scripts' ) );
 
 		// Enable responsive behaviour on mobile browsers
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1.0' );

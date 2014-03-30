@@ -44,7 +44,9 @@ class PageTools extends Component {
 
 		parent::__construct( $template, $domElement, $indent );
 
-		$this->addClasses( 'text-center' );
+		// add classes for the normal case where the page tools are displayed as a first class element;
+		// these classes should be removed if the page tools are part of another element, e.g. nav bar
+		$this->addClasses( 'list-inline text-center' );
 	}
 
 	/**
@@ -55,7 +57,7 @@ class PageTools extends Component {
 	public function getHtml() {
 
 		$ret = $this->indent() . '<!-- Content navigation -->' .
-			   $this->indent() . '<ul class="list-inline p-contentnavigation ' . $this->getClassString() . '" id="p-contentnavigation">';
+			   $this->indent() . '<ul class="p-contentnavigation ' . $this->getClassString() . '" id="p-contentnavigation">';
 
 		$navigation = $this->getSkinTemplate()->data[ 'content_navigation' ];
 

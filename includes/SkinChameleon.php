@@ -1,8 +1,8 @@
 <?php
 /**
- * File holding the Html class
+ * File holding the SkinChameleon class
  *
- * @copyright (C) 2013, Stephan Gambke
+ * @copyright (C) 2014, Stephan Gambke
  * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
@@ -24,31 +24,40 @@
  */
 
 
-namespace skins\chameleon\components;
-
-
 /**
- * The Html class.
+ * SkinTemplate class for the Chameleon skin
  *
  * @ingroup Skins
  */
-class Html extends Component {
+class SkinChameleon extends SkinTemplate {
+
+	var $skinname = 'chameleon';
+	var $stylename = 'chameleon';
+	var $template = '\skins\chameleon\ChameleonTemplate';
+	var $useHeadElement = true;
 
 	/**
-	 * Builds the HTML code for the main container
-	 *
-	 * @return String the HTML code
+	 * @param $out OutputPage object
 	 */
-	public function getHtml() {
+	function setupSkinUserCss( OutputPage $out ) {
 
-		$dom = $this->getDomElement()->ownerDocument;
-		$ret = '';
+		parent::setupSkinUserCss( $out );
 
-		foreach ( $this->getDomElement()->childNodes as $node ) {
-			$ret .= $dom->saveHTML( $node );
-		}
-
-		return $ret;
+		// load Bootstrap styles
+		$out->addModuleStyles( 'ext.bootstrap' );
 	}
 
+	/**
+	 * @param \OutputPage $out
+	 */
+	function initPage( OutputPage $out ) {
+
+		parent::initPage( $out );
+
+		// load Bootstrap scripts
+		$out->addModules( array( 'ext.bootstrap' ) );
+
+		// Enable responsive behaviour on mobile browsers
+		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1.0' );
+	}
 }

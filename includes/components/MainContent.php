@@ -24,6 +24,7 @@
  */
 
 namespace skins\chameleon\components;
+use skins\chameleon\IdRegistry;
 
 /**
  * The NavbarHorizontal class.
@@ -46,22 +47,30 @@ class MainContent extends Component {
 
 		$skintemplate = $this->getSkinTemplate();
 
-		$ret = $this->indent() . '<div id="mw-js-message" style="display:none;" ' . $skintemplate->get( 'userlangattributes' ) . '></div>' .
-			   $this->indent() . '<!-- start the content area -->' .
-			   $this->indent() . '<div id="content" class="mw-body ' . $this->getClassString() . '">' .
-			   $this->indent( 1 ) . '<div class ="contentHeader">' .
-			   $this->indent( 1 ) . '<!-- title of the page -->' .
-			   $this->indent() . '<h1 id="firstHeading" class="firstHeading">' . $skintemplate->get( 'title' ) . '</h1>' .
-			   $this->indent() . '<!-- tagline; usually goes something like "From WikiName"	primary purpose of this seems to be for printing to identify the source of the content -->' .
-			   $this->indent() . '<div id="siteSub" >' . $skintemplate->getMsg( 'tagline' ) . '</div>';
+		$ret =
+			$this->indent() . '<div id="' . IdRegistry::getRegistry()->getId( 'mw-js-message' ) . '" style="display:none;" ' . $skintemplate->get( 'userlangattributes' ) . '></div>' .
+			$this->indent() . '<!-- start the content area -->' .
+			$this->indent() .
+			\Html::openElement( 'div',
+				array(
+					'id'    => IdRegistry::getRegistry()->getId( 'content' ),
+					'class' => 'mw_body ' . $this->getClassString(),
+				)
+			) .
+			$this->indent( 1 ) . '<div class ="contentHeader">' .
+			$this->indent( 1 ) . '<!-- title of the page -->' .
+			$this->indent() . '<h1 id="' . IdRegistry::getRegistry()->getId( 'firstHeading' ) . '" class="firstHeading">' . $skintemplate->get( 'title' ) . '</h1>' .
+			$this->indent() . '<!-- tagline; usually goes something like "From WikiName"	primary purpose of this seems to be for printing to identify the source of the content -->' .
+			$this->indent() . '<div id="' . IdRegistry::getRegistry()->getId( 'siteSub' ) . '" >' . $skintemplate->getMsg( 'tagline' ) . '</div>';
 
 		if ( $skintemplate->data[ 'subtitle' ] ) {
-			$ret .= $this->indent() . '<!-- subtitle line; used for various things like the subpage hierarchy -->' .
-					$this->indent() . '<div id="contentSub" class="small">' . $skintemplate->get( 'subtitle' ) . '</div>';
+			$ret .=
+				$this->indent() . '<!-- subtitle line; used for various things like the subpage hierarchy -->' .
+				$this->indent() . '<div id="' . IdRegistry::getRegistry()->getId( 'contentSub' ) . '" class="small">' . $skintemplate->get( 'subtitle' ) . '</div>';
 		}
 
 		if ( $skintemplate->data[ 'undelete' ] ) {
-			$ret .= $this->indent() . '<!-- undelete message -->' . '<div id="contentSub2">' . $skintemplate->get( 'undelete' ) . '</div>';
+			$ret .= $this->indent() . '<!-- undelete message -->' . '<div id="' . IdRegistry::getRegistry()->getId( 'contentSub2' ) . '">' . $skintemplate->get( 'undelete' ) . '</div>';
 		}
 
 		$ret .= $this->indent( -1 ) . '</div>' .

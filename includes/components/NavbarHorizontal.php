@@ -27,6 +27,7 @@ namespace skins\chameleon\components;
 
 use Linker;
 use Sanitizer;
+use skins\chameleon\IdRegistry;
 
 /**
  * The NavbarHorizontal class.
@@ -51,7 +52,12 @@ class NavbarHorizontal extends Component {
 
 		$this->mHtml =
 			$this->indent() . '<!-- navigation bar -->' .
-			$this->indent() . '<nav class="navbar navbar-default p-navbar ' . $this->getClassString() . '" role="navigation" id="p-navbar" >' .
+			$this->indent() .
+			\HTML::openElement( 'nav', array(
+					'class' => 'navbar navbar-default p-navbar ' . $this->getClassString(),
+					'role' => 'navigation',
+					'id' => IdRegistry::getRegistry()->getId('p-navbar')
+				)) .
 			$this->indent( 1 ) . '<ul class="nav navbar-nav">';
 
 		// add components
@@ -108,9 +114,10 @@ class NavbarHorizontal extends Component {
 	protected function getPageTools() {
 
 		$pageTools = new PageTools( $this->getSkinTemplate(), null, $this->indent( 1 ) );
-		$pageTools->addClasses( 'dropdown-menu' );
+
 		$pageTools->setFlat( true );
-		$pageTools->removeClasses( 'text-center' );
+		$pageTools->removeClasses( 'text-center list-inline' );
+		$pageTools->addClasses( 'dropdown-menu' );
 
 		$ret = $this->indent() . '<!-- page tools -->' .
 			$this->indent() . \Html::openElement( 'li', array( 'class' => 'dropdown' ) );
@@ -159,7 +166,6 @@ class NavbarHorizontal extends Component {
 			$this->indent() . \Html::openElement( 'li',
 				array(
 					'class' => 'dropdown',
-					'id'    => Sanitizer::escapeId( $box[ 'id' ] ),
 					'title' => Linker::titleAttrib( $box[ 'id' ] )
 				)
 			);
@@ -172,7 +178,13 @@ class NavbarHorizontal extends Component {
 				htmlspecialchars( $box[ 'header' ] ) . ' <b class="caret"></b></a>';
 
 			// open list of dropdown menu items
-			$ret .= $this->indent() . '<ul class="dropdown-menu">';
+			$ret .= $this->indent() .
+			$this->indent() . \Html::openElement( 'ul',
+				array(
+					'class' => 'dropdown-menu ' . Sanitizer::escapeId( $box[ 'id' ] ),
+					'id'    => IdRegistry::getRegistry()->getId( Sanitizer::escapeId( $box[ 'id' ] ) ),
+				)
+			);
 
 			// output dropdown menu items
 			$this->indent( 1 );

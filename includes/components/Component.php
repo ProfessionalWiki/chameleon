@@ -43,9 +43,8 @@ abstract class Component {
 	 * @param ChameleonTemplate $template
 	 * @param \DOMElement|null  $domElement
 	 * @param int               $indent
-	 * @param string            $class
 	 */
-	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0 ) {
+	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
 
 		$this->mSkinTemplate = $template;
 		$this->mIndent       = $indent;
@@ -102,7 +101,6 @@ abstract class Component {
 	 *
 	 * @param $classes
 	 *
-	 * @internal param $class
 	 * @return string
 	 */
 	public function removeClasses( $classes ) {
@@ -182,8 +180,6 @@ abstract class Component {
 	 * Signature of the handler: function handler( DOMElement $element )
 	 *
 	 * @param $handler
-	 *
-	 * @internal param $handler $
 	 */
 	protected function eachChild( $handler ) {
 

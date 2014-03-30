@@ -24,6 +24,8 @@
  */
 
 namespace skins\chameleon\components;
+use skins\chameleon\ChameleonTemplate;
+use skins\chameleon\IdRegistry;
 
 
 /**
@@ -38,6 +40,11 @@ namespace skins\chameleon\components;
  */
 class FooterInfo extends Component {
 
+	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
+		parent::__construct( $template, $domElement , $indent );
+		$this->addClasses( 'list-unstyled small' );
+	}
+
 	/**
 	 * Builds the HTML code for this component
 	 *
@@ -46,7 +53,12 @@ class FooterInfo extends Component {
 	public function getHtml() {
 
 		$ret = $this->indent() . '<!-- footer links -->' .
-			   $this->indent() . '<ul class="list-unstyled footer-info small ' . $this->getClassString() . '" id="footer-info" >';
+			$this->indent() .
+			\Html::openElement( 'ul', array(
+					'class' =>  'footer-info ' . $this->getClassString(),
+					'id' => IdRegistry::getRegistry()->getId( 'footer-info' ),
+				)
+			);
 
 		$footerlinks = $this->getSkinTemplate()->getFooterLinks();
 		$this->indent( 1 );

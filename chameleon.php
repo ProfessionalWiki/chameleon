@@ -58,7 +58,9 @@ $wgExtensionCredits['skin'][] = array(
 $wgValidSkinNames['chameleon'] = 'Chameleon';
 
 // register skin class (must be 'Skin' . SkinName)
-$wgAutoloadClasses['SkinChameleon'] = dirname( __FILE__ ) . '/Chameleon.skin.php';
+$wgAutoloadClasses['SkinChameleon'] = dirname( __FILE__ ) . '/includes/SkinChameleon.php';
+$wgAutoloadClasses['skins\\chameleon\\ChameleonTemplate'] = dirname( __FILE__ ) . '/includes/ChameleonTemplate.php';
+$wgAutoloadClasses['skins\\chameleon\\IdRegistry'] = dirname( __FILE__ ) . '/includes/IdRegistry.php';
 
 
 $egChameleonLayoutFile= dirname( __FILE__ ) . '/layouts/standard.xml';
@@ -87,7 +89,7 @@ $chameleonComponents = array(
 );
 
 foreach ( $chameleonComponents as $component ) {
-	$wgAutoloadClasses['skins\\chameleon\\components\\' . $component] = dirname( __FILE__ ) . '/components/' . $component. '.php';
+	$wgAutoloadClasses['skins\\chameleon\\components\\' . $component] = dirname( __FILE__ ) . '/includes/components/' . $component. '.php';
 }
 
 // register message file for i18n
@@ -95,4 +97,4 @@ $wgExtensionMessagesFiles['Chameleon'] = dirname( __FILE__ ) . '/Chameleon.i18n.
 
 // register Bootstrap modules (for now, just register everything)
 Bootstrap::getBootstrap()->addAllBootstrapModules();
-Bootstrap::getBootstrap()->addExternalModule( __DIR__, '/css/screen.less' );
+Bootstrap::getBootstrap()->addExternalModule( __DIR__, '/styles/screen.less' );

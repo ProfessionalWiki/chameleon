@@ -25,7 +25,9 @@
 
 namespace skins\chameleon\components;
 
+use MWNamespace;
 use skins\chameleon\ChameleonTemplate;
+use skins\chameleon\IdRegistry;
 
 /**
  * The PageTools class.
@@ -40,7 +42,7 @@ class PageTools extends Component {
 
 	private $mFlat = false;
 
-	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0 ) {
+	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
 
 		parent::__construct( $template, $domElement, $indent );
 
@@ -56,12 +58,18 @@ class PageTools extends Component {
 	 */
 	public function getHtml() {
 
-		$ret = $this->indent() . '<!-- Content navigation -->' .
-			   $this->indent() . '<ul class="p-contentnavigation ' . $this->getClassString() . '" id="p-contentnavigation">';
-
 		$navigation = $this->getSkinTemplate()->data[ 'content_navigation' ];
 
-		$this->indent( 1 );
+		$hideSelectedNameSpace = filter_var( $this->getDomElement()->getAttribute( 'hideSelectedNameSpace' ), FILTER_VALIDATE_BOOLEAN );
+
+		if ( $hideSelectedNameSpace ) {
+			$namespacekey = $this->getNamespaceKey();
+			unset( $navigation['namespaces'][ $namespacekey ] );
+		}
+
+		$ret = '';
+
+		$this->indent( 2 );
 		foreach ( $navigation as $category => $tabs ) {
 
 			// TODO: visually group all links of one category (e.g. some space between categories)
@@ -74,11 +82,13 @@ class PageTools extends Component {
 
 			if ( !$this->mFlat ) {
 				// output the name of the current category (e.g. 'namespaces', 'views', ...)
-				$ret .= $this->indent() . '<li id="p-' . $category . '" >' .
-						$this->indent( 1 ) . '<ul class="list-inline" >';
+				$ret .= $this->indent() .
+					\Html::openElement( 'li', array( 'id' => IdRegistry::getRegistry()->getId( 'p-' . $category ) ) ) .
+					$this->indent( 1 ) . '<ul class="list-inline" >';
+
+				$this->indent( 1 );
 			}
 
-			$this->indent( 1 );
 			foreach ( $tabs as $key => $tab ) {
 
 				// skip redundant links (i.e. the 'view' link)
@@ -102,8 +112,19 @@ class PageTools extends Component {
 						$this->indent( -1 ) . '</li>';
 			}
 		}
+		$this->indent( -2 );
 
-		$ret .= $this->indent( -1 ) . '</ul>' . "\n";
+		if ( $ret !== '' ){
+		$ret = $this->indent( 1 ) . '<!-- Content navigation -->' .
+			$this->indent() .
+			\Html::openElement( 'ul',
+				array(
+					'class' => 'p-contentnavigation ' . $this->getClassString(),
+					'id' => IdRegistry::getRegistry()->getId( 'p-contentnavigation' ),
+				) ) .
+			$ret .
+			$this->indent() . '</ul>';
+		}
 
 		return $ret;
 	}
@@ -116,5 +137,44 @@ class PageTools extends Component {
 	public function setFlat( $flat ) {
 		$this->mFlat = $flat;
 	}
+
+	/**
+	 * Generate strings used for xml 'id' names in tabs
+	 *
+	 * Stolen from MW's Title::getNamespaceKey()
+	 *
+	 * Difference: This function here reports the actual namespace while the one in Title reports the subject namespace,
+	 * i.e. no talk namespaces
+	 *
+	 * @return mixed|string
+	 */
+	public function getNamespaceKey() {
+		global $wgContLang;
+
+		// Gets the subject namespace if this title
+		$namespace = $this->getSkinTemplate()->getSkin()->getTitle()->getNamespace();
+
+		// Checks if canonical namespace name exists for namespace
+		if ( MWNamespace::exists( $this->getSkinTemplate()->getSkin()->getTitle()->getNamespace() ) ) {
+			// Uses canonical namespace name
+			$namespaceKey = MWNamespace::getCanonicalName( $namespace );
+		} else {
+			// Uses text of namespace
+			$namespaceKey = $this->getSkinTemplate()->getSkin()->getTitle()->getNsText();
+		}
+
+		// Makes namespace key lowercase
+		$namespaceKey = $wgContLang->lc( $namespaceKey );
+		// Uses main
+		if ( $namespaceKey == '' ) {
+			$namespaceKey = 'main';
+		}
+		// Changes file to image for backwards compatibility
+		if ( $namespaceKey == 'file' ) {
+			$namespaceKey = 'image';
+		}
+		return $namespaceKey;
+	}
+
 
 }

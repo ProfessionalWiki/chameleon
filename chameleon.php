@@ -73,7 +73,7 @@ $chameleonComponents = array(
 	'Cell',
 	'Grid',
 	'NavbarHorizontal',
-	'NavHead',
+	'NavMenu',
 	'PageTools',
 	'NewtalkNotifier',
 	'PersonalTools',

@@ -5,8 +5,8 @@
 			<cell span="12">
 				<component type="NavbarHorizontal">
                     <component type="Logo"></component>
-                    <component type="NavMenu"></component>
-                    <component type="PageTools"></component>
+                    <component type="NavMenu" flatten="navigation"></component>
+                    <component type="PageTools" hideSelectedNameSpace="1"></component>
                     <component type="PersonalTools"></component>
                     <component type="SearchBar"></component>
 				</component>

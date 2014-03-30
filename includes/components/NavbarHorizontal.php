@@ -26,7 +26,6 @@
 namespace skins\chameleon\components;
 
 use Linker;
-use Sanitizer;
 use skins\chameleon\IdRegistry;
 
 /**
@@ -55,10 +54,13 @@ class NavbarHorizontal extends Component {
 			$this->indent() .
 			\HTML::openElement( 'nav', array(
 					'class' => 'navbar navbar-default p-navbar ' . $this->getClassString(),
-					'role' => 'navigation',
-					'id' => IdRegistry::getRegistry()->getId('p-navbar')
-				)) .
+					'role'  => 'navigation',
+					'id'    => IdRegistry::getRegistry()->getId( 'p-navbar' )
+				)
+			) .
 			$this->indent( 1 ) . '<ul class="nav navbar-nav">';
+
+		$this->indent( 1 );
 
 		// add components
 		$this->eachChild( function ( \DOMElement $node ) {
@@ -69,19 +71,19 @@ class NavbarHorizontal extends Component {
 
 				switch ( $node->getAttribute( 'type' ) ) {
 					case 'Logo':
-						$this->mHtml .= $this->getLogo();
+						$this->mHtml .= $this->getLogo( $node );
 						break;
 					case 'NavMenu':
-						$this->mHtml .= $this->getNavMenu();
+						$this->mHtml .= $this->getNavMenu( $node );
 						break;
 					case 'PageTools':
-						$this->mHtml .= $this->getPageTools();
+						$this->mHtml .= $this->getPageTools( $node );
 						break;
 					case 'SearchBar':
-						$this->mHtml .= $this->getSearchBar();
+						$this->mHtml .= $this->getSearchBar( $node );
 						break;
 					case 'PersonalTools':
-						$this->mHtml .= $this->getPersonalTools();
+						$this->mHtml .= $this->getPersonalTools( $node );
 						break;
 				}
 			}
@@ -96,11 +98,13 @@ class NavbarHorizontal extends Component {
 	/**
 	 * Creates HTML code for the wiki logo in a navbar
 	 *
+	 * @param \DOMElement $domElement
+	 *
 	 * @return String
 	 */
-	protected function getLogo() {
+	protected function getLogo( \DOMElement $domElement = null ) {
 
-		$logo = new Logo( $this->getSkinTemplate(), null, $this->getIndent() );
+		$logo = new Logo( $this->getSkinTemplate(), $domElement, $this->getIndent() );
 		$logo->addClasses( 'navbar-brand' );
 
 		return $logo->getHtml();
@@ -109,112 +113,56 @@ class NavbarHorizontal extends Component {
 	/**
 	 * Create a dropdown containing the page tools (page, talk, edit, history, ...)
 	 *
+	 * @param \DOMElement $domElement
+	 *
 	 * @return string
 	 */
-	protected function getPageTools() {
+	protected function getPageTools( \DOMElement $domElement = null ) {
 
-		$pageTools = new PageTools( $this->getSkinTemplate(), null, $this->indent( 1 ) );
+		$pageTools = new PageTools( $this->getSkinTemplate(), $domElement, $this->getIndent() );
 
 		$pageTools->setFlat( true );
 		$pageTools->removeClasses( 'text-center list-inline' );
 		$pageTools->addClasses( 'dropdown-menu' );
 
-		$ret = $this->indent() . '<!-- page tools -->' .
-			$this->indent() . \Html::openElement( 'li', array( 'class' => 'dropdown' ) );
+		$ret = $pageTools->getHtml();
 
-		$ret .= '<a data-toggle="dropdown" class="dropdown-toggle" href="#">Page Tools <b class="caret"></b></a>' . $pageTools->getHtml() . '</li>';
-
+		if ( $ret !== '' ) {
+			$ret =
+				$this->indent() . '<!-- page tools -->' .
+				$this->indent() . \Html::openElement( 'li', array( 'class' => 'dropdown' ) ) .
+				$this->indent( 1 ) . '<a data-toggle="dropdown" class="dropdown-toggle" href="#">Page Tools <b class="caret"></b></a>' .
+				$ret .
+				$this->indent( -1 ) . '</li>' . "\n";
+		}
 		return $ret;
 	}
 
 	/**
 	 * Creates a list of navigational links usually found in the sidebar
 	 *
-	 * @return string
-	 */
-	protected function getNavMenu() {
-
-		$ret = '';
-
-		$this->indent( 1 );
-		$sidebar = $this->getSkinTemplate()->getSidebar( array(
-				'search' => false, 'toolbox' => false, 'languages' => false
-			)
-		);
-
-		// create a dropdown for each sidebar box
-		foreach ( $sidebar as $boxName => $box ) {
-
-			$ret .= $this->getDropdownForNavMenu( $boxName, $box );
-		}
-
-		return $ret;
-	}
-
-	/**
-	 * Create a single dropdown
-	 *
-	 * @param $boxName
-	 * @param $box
+	 * @param \DOMElement $domElement
 	 *
 	 * @return string
 	 */
-	protected function getDropdownForNavMenu( $boxName, $box ) {
+	protected function getNavMenu( \DOMElement $domElement = null ) {
 
-		// open list item containing the dropdown
-		$ret = $this->indent() . '<!-- ' . $boxName . ' -->' .
-			$this->indent() . \Html::openElement( 'li',
-				array(
-					'class' => 'dropdown',
-					'title' => Linker::titleAttrib( $box[ 'id' ] )
-				)
-			);
+		$navMenu = new NavMenu( $this->getSkinTemplate(), $domElement, $this->getIndent() );
 
-		$this->indent( 1 );
-		if ( is_array( $box[ 'content' ] ) && count( $box[ 'content' ] ) > 0 ) {
+		return $navMenu->getHtml() . "\n";
 
-			// the dropdown toggle
-			$ret .= $this->indent() . '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' .
-				htmlspecialchars( $box[ 'header' ] ) . ' <b class="caret"></b></a>';
-
-			// open list of dropdown menu items
-			$ret .= $this->indent() .
-			$this->indent() . \Html::openElement( 'ul',
-				array(
-					'class' => 'dropdown-menu ' . Sanitizer::escapeId( $box[ 'id' ] ),
-					'id'    => IdRegistry::getRegistry()->getId( Sanitizer::escapeId( $box[ 'id' ] ) ),
-				)
-			);
-
-			// output dropdown menu items
-			$this->indent( 1 );
-			foreach ( $box[ 'content' ] as $key => $item ) {
-				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
-			}
-
-			// close list of dropdown menu items
-			$ret .= $this->indent( -1 ) . '</ul>';
-
-		} else {
-			$ret .= $this->indent() . '<a href="#">' . htmlspecialchars( $box[ 'header' ] ) . '</a>';
-		}
-		$this->indent( -1 );
-
-		// close list item
-		$ret .= $this->indent() . '</li>';
-
-		return $ret;
 	}
 
 	/**
 	 * Creates a user's personal tools and the newtalk notifier
 	 *
+	 * @param \DOMElement $domElement
+	 *
 	 * @return string
 	 */
-	protected function getPersonalTools() {
+	protected function getPersonalTools( \DOMElement $domElement = null ) {
 
 		$user = $this->getSkinTemplate()->getSkin()->getUser();
-
 
 		if ( $user->isLoggedIn() ) {
 			$toolsClass    = 'navbar-userloggedin';
@@ -226,7 +174,9 @@ class NavbarHorizontal extends Component {
 
 		// start personal tools element
 
-		$ret = $this->indent() . '<ul class="navbar-right navbar-nav navbar-personaltools" >' .
+		$ret =
+			$this->indent() . '<!-- personal tools -->' .
+			$this->indent() . '<ul class="navbar-right navbar-nav navbar-personaltools" >' .
 			$this->indent( 1 ) . '<li class="dropdown navbar-personaltools-tools">' .
 			$this->indent( 1 ) . '<a class="dropdown-toggle glyphicon glyphicon-user ' . $toolsClass . '" href="#" data-toggle="dropdown" title="' . $toolsLinkText . '" ></a>' .
 			$this->indent() . '<ul class="p-personal-tools dropdown-menu" >';
@@ -274,9 +224,9 @@ class NavbarHorizontal extends Component {
 		return $ret;
 	}
 
-	protected function getSearchBar() {
+	protected function getSearchBar( \DOMElement $domElement = null ) {
 
-		$search = new SearchBar( $this->getSkinTemplate(), null, $this->getIndent() );
+		$search = new SearchBar( $this->getSkinTemplate(), $domElement, $this->getIndent() );
 		$search->addClasses( 'navbar-form' );
 
 		return $search->getHtml();

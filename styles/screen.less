@@ -31,14 +31,18 @@
 @navbar-newtalk-available: @brand-primary;
 @navbar-newtalk-available-hover: darken(@navbar-newtalk-available, 20%);
 
-// if the navbar is in the first row (i.e. at the top of the page) add some margin
+// if the navbar is in the first row (i.e. at the top of the page) add some margin at the top
 .container > *:first-child .navbar {
 	margin-top: (@grid-gutter-width / 2);
 }
 
+.navbar {
 
-.navbar .nav {
-  width: 100%;
+	z-index: auto;
+
+	.nav {
+		width: 100%;
+	}
 }
 
 // override some navbar-brand styles to accommodate an image and include a separator to the rest of the navbar
@@ -55,7 +59,7 @@
 	}
 }
 
-// styles for personal tools in the navhead component
+// styles for personal tools in the navbar component
 .navbar-personaltools {
 
 	.nav();
@@ -115,7 +119,7 @@
 
 		}
 
-		&:last-child > a, &.open:last-child > a  {
+		&:last-child > a, &.open:last-child > a {
 			border: none;
 		}
 
@@ -125,7 +129,7 @@
 
 .mw-body {
 	padding: 0 2em;
-	margin:  1em 0;
+	margin: 1em 0;
 }
 
 .catlinks {
@@ -133,14 +137,14 @@
 }
 
 .firstHeading {
-	border-bottom:  1px solid #eeeeee;
+	border-bottom: 1px solid #eeeeee;
 	padding-bottom: .2em;
-	margin-bottom:  .2em;
+	margin-bottom: .2em;
 }
 
 .contentHeader {
-	margin:         1em 0 1.5em;
-	border-bottom:  0;
+	margin: 1em 0 1.5em;
+	border-bottom: 0;
 	padding-bottom: 0;
 }
 
@@ -162,7 +166,7 @@
 	margin-bottom: 10px;
 }
 
-.p-contentnavigation{
+.p-contentnavigation {
 
 	a.selected {
 		font-style: italic;
@@ -205,11 +209,11 @@
 		&,
 		&:hover,
 		&:focus {
-			color:               @nav-tabs-active-link-hover-color;
-			background-color:    @nav-tabs-active-link-hover-bg;
-			border:              1px solid @nav-tabs-active-link-hover-border-color;
+			color: @nav-tabs-active-link-hover-color;
+			background-color: @nav-tabs-active-link-hover-bg;
+			border: 1px solid @nav-tabs-active-link-hover-border-color;
 			border-bottom-color: transparent;
-			cursor:              default;
+			cursor: default;
 		}
 	}
 }
@@ -217,3 +221,4 @@
 .navbar .p-contentnavigation li {
 	display: block;
 }
+

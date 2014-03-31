@@ -54,7 +54,7 @@ class MainContent extends Component {
 			\Html::openElement( 'div',
 				array(
 					'id'    => IdRegistry::getRegistry()->getId( 'content' ),
-					'class' => 'mw_body ' . $this->getClassString(),
+					'class' => 'mw-body ' . $this->getClassString(),
 				)
 			) .
 			$this->indent( 1 ) . '<div class ="contentHeader">' .

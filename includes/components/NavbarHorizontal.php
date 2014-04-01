@@ -55,7 +55,7 @@ class NavbarHorizontal extends Component {
 			\HTML::openElement( 'nav', array(
 					'class' => 'navbar navbar-default p-navbar ' . $this->getClassString(),
 					'role'  => 'navigation',
-					'id'    => IdRegistry::getRegistry()->getId( 'p-navbar' )
+					'id'    => IdRegistry::getRegistry()->getId( 'mw-navigation' )
 				)
 			) .
 			$this->indent( 1 ) . '<ul class="nav navbar-nav">';

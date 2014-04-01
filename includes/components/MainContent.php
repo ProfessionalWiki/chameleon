@@ -46,38 +46,78 @@ class MainContent extends Component {
 	public function getHtml() {
 
 		$skintemplate = $this->getSkinTemplate();
+		$idRegistry = IdRegistry::getRegistry();
 
+		// START content
 		$ret =
-			$this->indent() . '<div id="' . IdRegistry::getRegistry()->getId( 'mw-js-message' ) . '" style="display:none;" ' . $skintemplate->get( 'userlangattributes' ) . '></div>' .
 			$this->indent() . '<!-- start the content area -->' .
-			$this->indent() .
-			\Html::openElement( 'div',
-				array(
-					'id'    => IdRegistry::getRegistry()->getId( 'content' ),
-					'class' => 'mw-body ' . $this->getClassString(),
-				)
+			$this->indent() . $idRegistry->openElement( 'div',
+				array( 'id' => 'content', 'class' => 'mw-body ' . $this->getClassString() )
 			) .
-			$this->indent( 1 ) . '<div class ="contentHeader">' .
+
+			$idRegistry->element( 'a', array( 'id' => 'top' ) ) .
+
+			$this->indent() . '<div ' . \Html::expandAttributes( array(
+					'id'    => $idRegistry->getId( 'mw-js-message' ),
+					'style' => 'display:none;'
+
+				)
+			) . $skintemplate->get( 'userlangattributes' ) . '></div>';
+
+
+		// START contentHeader
+		$ret .=	$this->indent( 1 ) . '<div class ="contentHeader">' .
+
 			$this->indent( 1 ) . '<!-- title of the page -->' .
-			$this->indent() . '<h1 id="' . IdRegistry::getRegistry()->getId( 'firstHeading' ) . '" class="firstHeading">' . $skintemplate->get( 'title' ) . '</h1>' .
-			$this->indent() . '<!-- tagline; usually goes something like "From WikiName"	primary purpose of this seems to be for printing to identify the source of the content -->' .
-			$this->indent() . '<div id="' . IdRegistry::getRegistry()->getId( 'siteSub' ) . '" >' . $skintemplate->getMsg( 'tagline' ) . '</div>';
+			$this->indent() . $idRegistry->element('h1', array( 'id' => 'firstHeading','class'=>'firstHeading') , $skintemplate->get( 'title' ) ) .
+
+			$this->indent() . '<!-- tagline; usually goes something like "From WikiName" primary purpose of this seems to be for printing to identify the source of the content -->' .
+			$this->indent() . $idRegistry->element( 'div', array( 'id'=> 'siteSub' ), $skintemplate->getMsg( 'tagline' )->escaped() );
 
 		if ( $skintemplate->data[ 'subtitle' ] ) {
+
+			// TODO: should not use class 'small', better use class 'contentSub' and do styling in a less file
 			$ret .=
 				$this->indent() . '<!-- subtitle line; used for various things like the subpage hierarchy -->' .
-				$this->indent() . '<div id="' . IdRegistry::getRegistry()->getId( 'contentSub' ) . '" class="small">' . $skintemplate->get( 'subtitle' ) . '</div>';
+				$this->indent() . $idRegistry->element( 'div', array( 'id' => 'contentSub', 'class' => 'small' ), $skintemplate->get( 'subtitle' ) );
+
 		}
 
 		if ( $skintemplate->data[ 'undelete' ] ) {
-			$ret .= $this->indent() . '<!-- undelete message -->' . '<div id="' . IdRegistry::getRegistry()->getId( 'contentSub2' ) . '">' . $skintemplate->get( 'undelete' ) . '</div>';
+			// TODO: should not use class 'small', better use class 'contentSub2' and do styling in a less file
+			$ret .=
+				$this->indent() . '<!-- undelete message -->' .
+				$this->indent() . $idRegistry->element( 'div', array( 'id' => 'contentSub2', 'class' => 'small' ), $skintemplate->get( 'undelete' ) );
 		}
 
-		$ret .= $this->indent( -1 ) . '</div>' .
-				$this->indent() . '<!-- body text -->' . "\n" .
-				$this->indent() . $skintemplate->get( 'bodytext' ) .
-				$this->indent() . '<!-- category links -->' .
+		// TODO: Do we need this? Seems to be an accessibility thing. It's used in vector to jump to the nav wich is at the bottom of the document, but our nav is usually at the top
+		$ret .= $idRegistry->element( 'div', array(	'id' => 'jump-to-nav', 'class' => 'mw-jump'	),
+			$skintemplate->getMsg( 'jumpto' )->escaped() . '<a href="#mw-navigation">' . $skintemplate->getMsg( 'jumptonavigation' )->escaped() . '</a>' .
+			$skintemplate->getMsg( 'comma-separator' )->escaped() . '<a href="#p-search">' . $skintemplate->getMsg( 'jumptosearch' )->escaped() . '</a>'
+		);
+
+		$ret .= $this->indent( -1 ) . '</div>';
+		// END contentHeader
+
+
+		// START content body
+		$ret .= $idRegistry->element( 'div', array( 'id' => 'bodyContent' ),
+			$this->indent() . '<!-- body text -->' . "\n" .
+			$this->indent() . $skintemplate->get( 'bodytext' )
+		);
+		// END content body
+
+		if ( $skintemplate->data['printfooter'] ) {
+			$ret .= '<div class="printfooter">' . $skintemplate->get( 'printfooter' ) . '</div>';
+		}
+
+		// TODO: Category links should be a separate component, but
+		// * dataAfterContent should come after the the category links.
+		// * only one extension is known to use it dataAfterContent and it is geared specifically towards MonoBook
+		// => provide an attribut hideCatLinks for the XML and -if present- hide category links and assume somebody knows what they are doing
+		$ret .= $this->indent() . '<!-- category links -->' .
 				$this->indent() . $skintemplate->get( 'catlinks' );
+
 
 		if ( $skintemplate->data[ 'dataAfterContent' ] ) {
 			$ret .= $this->indent() . '<!-- data blocks which should go somewhere after the body text, but not before the catlinks block-->' .
@@ -85,6 +125,7 @@ class MainContent extends Component {
 		}
 
 		$ret .= $this->indent( -1 ) . '</div>' . "\n";
+		// END content
 
 		return $ret;
 	}

@@ -76,4 +76,42 @@ class IdRegistry {
 		}
 	}
 
+	/**
+	 * Returns the opening tag of an HTML element in a string.
+	 *
+	 * The advantage over Html::openElement is that any id attribute is ensured to be unique.
+	 *
+	 * @param string $tag
+	 * @param array  $attributes
+	 *
+	 * @return string
+	 */
+	public function openElement( $tag, $attributes = array() ) {
+
+		if ( is_array( $attributes ) && isset( $attributes[ 'id' ] ) ) {
+			$attributes[ 'id' ] = $this->getId( $attributes[ 'id' ] );
+		}
+
+		return \Html::openElement( $tag, $attributes );
+	}
+
+	/**
+	 * Returns an HTML element in a string. The contents are NOT escaped.
+	 *
+	 * The advantage over Html::rawElement is that any id attribute is ensured to be unique.
+	 *
+	 * @param string $tag
+	 * @param array  $attributes
+	 * @param string $contents
+	 *
+	 * @return string
+	 */
+	public function element( $tag, $attributes = array(), $contents = '' ) {
+
+		if ( is_array( $attributes ) && isset( $attributes[ 'id' ] ) ) {
+			$attributes[ 'id' ] = $this->getId( $attributes[ 'id' ] );
+		}
+
+		return \Html::rawElement( $tag, $attributes, $contents );
+	}
 }

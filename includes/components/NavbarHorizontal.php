@@ -49,7 +49,22 @@ class NavbarHorizontal extends Component {
 	 */
 	public function getHtml() {
 
-		$this->mHtml =
+		$this->mHtml = '';
+
+		// if a fixed navbar is requested
+        if ( filter_var( $this->getDomElement()->getAttribute( 'fixed' ), FILTER_VALIDATE_BOOLEAN ) ) {
+
+			// first build the actual navbar and set a class so it will be fixed
+            $this->getDomElement()->setAttribute( 'fixed', '0' );
+            $realNav = new self( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );
+            $realNav->addClasses( 'fixed-nav' );
+            $this->mHtml .= $realNav->getHtml();
+
+			// add a class to hide this copy of the nav bar so it will act as a spacer
+            $this->addClasses( 'fixed-hidden' );
+        }
+
+		$this->mHtml .=
 			$this->indent() . '<!-- navigation bar -->' .
 			$this->indent() .
 			\HTML::openElement( 'nav', array(
@@ -91,6 +106,8 @@ class NavbarHorizontal extends Component {
 
 		$this->mHtml .= $this->indent( -1 ) . '</ul>' .
 			$this->indent( -1 ) . '</nav>' . "\n";
+
+
 
 		return $this->mHtml;
 	}

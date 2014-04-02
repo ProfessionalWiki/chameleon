@@ -26,6 +26,7 @@
 namespace skins\chameleon\components;
 
 use \Linker;
+use skins\chameleon\IdRegistry;
 
 /**
  * The SearchBar class.
@@ -44,17 +45,29 @@ class SearchBar extends Component {
 	public function getHtml() {
 
 		$ret = $this->indent() . '<!-- search form -->' .
-			   $this->indent() . '<div id="p-search" class="pull-right p-search ' . $this->getClassString() . '" ' . Linker::tooltip( 'p-search' ) . ' role="search" >' .
-			   $this->indent( 1 ) . '<form id="searchform" class="mw-search form-inline" action="' . $this->getSkinTemplate()->data[ 'wgScript' ] . '">' .
-			   $this->indent( 1 ) . '<input type="hidden" name="title" value="' . $this->getSkinTemplate()->data[ 'searchtitle' ] . '" />' .
-			   $this->indent() . '<div class="input-group">' .
-			   $this->indent( 1 ) . $this->getSkinTemplate()->makeSearchInput( array( 'id' => 'searchInput', 'type' => 'text', 'class' => 'form-control' ) ) .
-			   $this->indent() . '<div class="input-group-btn">' .
-			   $this->indent( 1 ) . $this->getSearchButton( 'go' ) . $this->getSearchButton( 'fulltext' ) .
-			   $this->indent( -1 ) . '</div>' .
-			   $this->indent( -1 ) . '</div>' .
-			   $this->indent( -1 ) . '</form>' .
-			   $this->indent( -1 ) . '</div>' . "\n";
+
+			$this->indent() . '<div ' . \Html::expandAttributes( array(
+					'id'    => IdRegistry::getRegistry()->getId( 'p-search' ),
+					'class' => 'pull-right p-search ' . $this->getClassString(),
+					'role'  => 'search',
+				)
+			) . Linker::tooltip( 'p-search' ) . '  >' .
+
+			$this->indent( 1 ) . '<form ' . \Html::expandAttributes( array(
+					'id'    => IdRegistry::getRegistry()->getId( 'searchform' ),
+					'class' => 'mw-search form-inline',
+				)
+			) . 'action="' . $this->getSkinTemplate()->data[ 'wgScript' ] . '">' .
+
+			$this->indent( 1 ) . '<input type="hidden" name="title" value="' . $this->getSkinTemplate()->data[ 'searchtitle' ] . '" />' .
+			$this->indent() . '<div class="input-group">' .
+			$this->indent( 1 ) . $this->getSkinTemplate()->makeSearchInput( array( 'id' => IdRegistry::getRegistry()->getId( 'searchInput' ), 'type' => 'text', 'class' => 'form-control' ) ) .
+			$this->indent() . '<div class="input-group-btn">' .
+			$this->indent( 1 ) . $this->getSearchButton( 'go' ) . $this->getSearchButton( 'fulltext' ) .
+			$this->indent( -1 ) . '</div>' .
+			$this->indent( -1 ) . '</div>' .
+			$this->indent( -1 ) . '</form>' .
+			$this->indent( -1 ) . '</div>' . "\n";
 
 		return $ret;
 	}
@@ -73,7 +86,8 @@ class SearchBar extends Component {
 
 			$buttonAttrs = array(
 				'value' => $this->getSkinTemplate()->translator->translate( 'searcharticle' ),
-				'id'    => 'searchGoButton',
+				'id'    => IdRegistry::getRegistry()->getId( 'searchGoButton' ),
+				'name'  => 'go',
 			);
 
 			$glyphicon = 'share-alt';
@@ -82,7 +96,8 @@ class SearchBar extends Component {
 
 			$buttonAttrs = array(
 				'value' => $this->getSkinTemplate()->translator->translate( 'searchbutton' ),
-				'id'    => 'mw-searchButton',
+				'id'    => IdRegistry::getRegistry()->getId( 'mw-searchButton' ),
+				'name'  => 'fulltext',
 			);
 
 			$glyphicon = 'search';
@@ -93,7 +108,6 @@ class SearchBar extends Component {
 			Linker::tooltipAndAccesskeyAttribs( "search-$mode" ),
 			array(
 				 'type'  => 'submit',
-				 'name'  => 'fulltext',
 				 'class' => $buttonAttrs[ 'id' ] . ' btn btn-default'
 			)
 		);

@@ -60,7 +60,6 @@ class MainContent extends Component {
 			$this->indent() . '<div ' . \Html::expandAttributes( array(
 					'id'    => $idRegistry->getId( 'mw-js-message' ),
 					'style' => 'display:none;'
-
 				)
 			) . $skintemplate->get( 'userlangattributes' ) . '></div>';
 

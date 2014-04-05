@@ -1,0 +1,45 @@
+{
+	"name"       : "mediawiki/chameleon-skin",
+	"type"       : "mediawiki-skin",
+	"description": "A highly flexible MediaWiki skin using Twitter Bootstrap 3",
+	"keywords"   : [
+		"wiki",
+		"MediaWiki",
+		"skin",
+		"Twitter",
+		"Bootstrap"
+	],
+	"homepage"   : "https://www.mediawiki.org/wiki/Skin:Chameleon",
+	"license"    : "GPL-3.0+",
+	"authors"    : [
+		{
+			"name" : "Stephan Gambke",
+			"email": "s7eph4n@gmail.com",
+			"role" : "Developer"
+		}
+	],
+	"support": {
+		"wiki": "https://www.mediawiki.org/wiki/Skin:Chameleon",
+		"forum": "https://www.mediawiki.org/wiki/Skin_talk:Chameleon",
+		"source": "https://git.wikimedia.org/tree/mediawiki%2Fskins%2Fchameleon.git",
+		"issues": "https://bugzilla.wikimedia.org/buglist.cgi?component=Chameleon&product=MediaWiki%20extensions",
+		"irc": "irc://irc.freenode.org/mediawiki"
+	},
+	"require"    : {
+		"php"    : ">=5.3.0",
+		"ext-dom": "*",
+		"ext-filter": "*",
+		"composer/installers"                        : ">1.0.12"
+	},
+	"autoload"   : {
+		"files": [
+			"chameleon.php"
+		]
+	},
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+
+        }
+    }
+}

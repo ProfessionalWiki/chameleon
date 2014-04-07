@@ -28,6 +28,7 @@ namespace skins\chameleon;
 use BaseTemplate;
 use DOMDocument;
 use skins\chameleon\components\Container;
+use RuntimeException;
 
 /**
  * BaseTemplate class for the Chameleon skin
@@ -60,13 +61,11 @@ class ChameleonTemplate extends BaseTemplate {
 
 	protected function getRootComponent() {
 
-		global $egChameleonLayoutFile;
-
 		if ( $this->mRootComponent === null ) {
 
 			$doc = new DOMDocument();
 
-			$doc->load( $egChameleonLayoutFile ); //TODO: error handling (file not found, file empty)
+			$doc->load( $this->getLayoutFile() );
 
 			$doc->normalizeDocument();
 
@@ -153,4 +152,16 @@ class ChameleonTemplate extends BaseTemplate {
 
 		return parent::makeListItem( $key, $item, $options );
 	}
+
+	protected function getLayoutFile() {
+
+		$file = str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, $GLOBALS['egChameleonLayoutFile'] );
+
+		if ( is_readable( $file ) ) {
+			return $file;
+		}
+
+		throw new RuntimeException( "Expected an accessible {$file} layout file" );
+	}
+
 }

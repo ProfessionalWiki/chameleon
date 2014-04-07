@@ -34,7 +34,7 @@ use bootstrap\BootstrapManager;
  */
 class Hooks {
 
-	function onSetupAfterCache() {
+	public static function onSetupAfterCache() {
 		// register Bootstrap modules (for now, just register everything)
 		BootstrapManager::getBootstrapManager()->addAllBootstrapModules();
 		BootstrapManager::getBootstrapManager()->addExternalModule( $GLOBALS['wgStyleDirectory'] . '/chameleon/styles/screen.less', $GLOBALS[ 'wgStylePath'] . '/chameleon/styles' );

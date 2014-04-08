@@ -52,17 +52,17 @@ class NavbarHorizontal extends Component {
 		$this->mHtml = '';
 
 		// if a fixed navbar is requested
-        if ( filter_var( $this->getDomElement()->getAttribute( 'fixed' ), FILTER_VALIDATE_BOOLEAN ) ) {
+		if ( filter_var( $this->getDomElement()->getAttribute( 'fixed' ), FILTER_VALIDATE_BOOLEAN ) ) {
 
 			// first build the actual navbar and set a class so it will be fixed
-            $this->getDomElement()->setAttribute( 'fixed', '0' );
-            $realNav = new self( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );
-            $realNav->addClasses( 'fixed-nav' );
-            $this->mHtml .= $realNav->getHtml();
+			$this->getDomElement()->setAttribute( 'fixed', '0' );
+			$realNav = new self( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );
+			$realNav->addClasses( 'navbar-fixed-top' );
+			$this->mHtml .= $realNav->getHtml();
 
-			// add a class to hide this copy of the nav bar so it will act as a spacer
-            $this->addClasses( 'fixed-hidden' );
-        }
+			// then add an invisible copy of the nav bar that will act as a spacer
+			$this->addClasses( 'navbar-static-top invisible' );
+		}
 
 		$this->mHtml .=
 			$this->indent() . '<!-- navigation bar -->' .

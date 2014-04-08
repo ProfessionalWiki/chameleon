@@ -31,31 +31,13 @@
 @navbar-newtalk-available: @brand-primary;
 @navbar-newtalk-available-hover: darken(@navbar-newtalk-available, 20%);
 
-// if the navbar is in the first row (i.e. at the top of the page) add some margin at the top
+// if the navbar is in the first row (i.e. at the top of the page), but inside a container (i.e. not a fixed head),
+// add some margin at the top
 .container > *:first-child .navbar {
 	margin-top: (@grid-gutter-width / 2);
 }
 
 .navbar {
-
-	position: static;
-
-	&.fixed-nav, &.fixed-hidden {
-		border-radius: 0;
-		left: 0;
-		top: 0;
-		width: 100%;
-	}
-
-	&.fixed-nav {
-		position: fixed;
-	}
-
-	&.fixed-hidden {
-		position: static;
-		visibility: hidden;
-	}
-
 	.nav {
 		width: 100%;
 	}

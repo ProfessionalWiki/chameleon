@@ -1,4 +1,10 @@
 <?php
+
+namespace Skins\Chameleon\Components;
+
+use Linker;
+use Skins\Chameleon\IdRegistry;
+
 /**
  * File holding the NavbarHorizontal class
  *
@@ -22,11 +28,6 @@
  * @file
  * @ingroup       Skins
  */
-
-namespace skins\chameleon\components;
-
-use Linker;
-use skins\chameleon\IdRegistry;
 
 /**
  * The NavbarHorizontal class.

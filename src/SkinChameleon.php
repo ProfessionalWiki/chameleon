@@ -1,8 +1,8 @@
 <?php
 /**
- * File holding the Row class
+ * File holding the SkinChameleon class
  *
- * @copyright (C) 2013, Stephan Gambke
+ * @copyright (C) 2014, Stephan Gambke
  * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
@@ -24,21 +24,40 @@
  */
 
 
-namespace skins\chameleon\components;
-
-use skins\chameleon\ChameleonTemplate;
-
-
 /**
- * The Row class.
+ * SkinTemplate class for the Chameleon skin
  *
  * @ingroup Skins
  */
-class Row extends Container {
+class SkinChameleon extends SkinTemplate {
 
-	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0 ) {
+	var $skinname = 'chameleon';
+	var $stylename = 'chameleon';
+	var $template = '\Skins\Chameleon\ChameleonTemplate';
+	var $useHeadElement = true;
 
-		parent::__construct( $template, $domElement, $indent );
-		$this->addClasses( 'row' );
+	/**
+	 * @param $out OutputPage object
+	 */
+	function setupSkinUserCss( OutputPage $out ) {
+
+		parent::setupSkinUserCss( $out );
+
+		// load Bootstrap styles
+		$out->addModuleStyles( 'ext.bootstrap.styles' );
+	}
+
+	/**
+	 * @param \OutputPage $out
+	 */
+	function initPage( OutputPage $out ) {
+
+		parent::initPage( $out );
+
+		// load Bootstrap scripts
+		$out->addModules( array( 'ext.bootstrap.scripts' ) );
+
+		// Enable responsive behaviour on mobile browsers
+		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1.0' );
 	}
 }

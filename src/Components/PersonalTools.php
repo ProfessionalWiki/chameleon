@@ -1,4 +1,7 @@
 <?php
+
+namespace Skins\Chameleon\Components;
+
 /**
  * File holding the PersonalTools class
  *
@@ -22,8 +25,6 @@
  * @file
  * @ingroup   Skins
  */
-
-namespace skins\chameleon\components;
 
 /**
  * The PersonalTools class.

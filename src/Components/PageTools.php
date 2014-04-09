@@ -1,4 +1,11 @@
 <?php
+
+namespace Skins\Chameleon\Components;
+
+use MWNamespace;
+use Skins\Chameleon\ChameleonTemplate;
+use Skins\Chameleon\IdRegistry;
+
 /**
  * File holding the PageTools class
  *
@@ -22,12 +29,6 @@
  * @file
  * @ingroup   Skins
  */
-
-namespace skins\chameleon\components;
-
-use MWNamespace;
-use skins\chameleon\ChameleonTemplate;
-use skins\chameleon\IdRegistry;
 
 /**
  * The PageTools class.

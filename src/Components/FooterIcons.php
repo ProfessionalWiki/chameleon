@@ -1,4 +1,7 @@
 <?php
+
+namespace Skins\Chameleon\Components;
+
 /**
  * File holding the FooterIcons class
  *
@@ -30,9 +33,6 @@
  *
  * @ingroup Chameleon
  */
-namespace skins\chameleon\components;
-
-
 class FooterIcons extends Component {
 
 	/**

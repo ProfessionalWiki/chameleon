@@ -1,6 +1,12 @@
 <?php
+
+namespace Skins\Chameleon\Components;
+
+use Linker;
+use Skins\Chameleon\IdRegistry;
+
 /**
- * File holding the SiteNotice class
+ * File holding the Logo class
  *
  * @copyright (C) 2013, Stephan Gambke
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
@@ -23,16 +29,14 @@
  * @ingroup   Skins
  */
 
-namespace skins\chameleon\components;
-
 /**
- * The SiteNotice class.
+ * The Logo class.
  *
- * A simple div containing the site notice text: <div id="siteNotice" >
+ * The logo image as a link to the wiki main page wrapped in a div: <div id="p-logo" role="banner">
  *
  * @ingroup Skins
  */
-class SiteNotice extends Component {
+class Logo extends Component {
 
 	/**
 	 * Builds the HTML code for this component
@@ -41,15 +45,29 @@ class SiteNotice extends Component {
 	 */
 	public function getHtml() {
 
-		$siteNotice = $this->getSkinTemplate()->data[ 'sitenotice' ];
+		$attribs  = array_merge(
+			array( 'href' => $this->getSkinTemplate()->data[ 'nav_urls' ][ 'mainpage' ][ 'href' ] ),
+			Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
+		);
 
-		if ( $siteNotice ) {
-			return $this->indent() . '<!-- sitenotice -->' .
-				   $this->indent() . '<div id="siteNotice" class="siteNotice ' . $this->getClassString() . '" >' . $siteNotice . '</div>'
-				   . "\n";
-		} else {
-			return "\n";
-		}
+		$contents = \Html::element( 'img',
+			array(
+				'src' => $this->getSkinTemplate()->data[ 'logopath' ],
+				'alt' => $GLOBALS[ 'wgSitename' ]
+			)
+		);
+
+		return
+			$this->indent() . '<!-- logo and main page link -->' .
+			$this->indent() . \Html::openElement( 'div',
+				array(
+					'id'    => IdRegistry::getRegistry()->getId( 'p-logo' ),
+					'class' => 'p-logo ' . $this->getClassString(),
+					'role'  => 'banner'
+				)
+			) .
+			$this->indent( 1 ) . \Html::rawElement( 'a', $attribs, $contents ) .
+			$this->indent( -1 ) . '</div>' . "\n";
 	}
 
 }

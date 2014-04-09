@@ -1,6 +1,11 @@
 <?php
+
+namespace Skins\Chameleon\Components;
+
+use Skins\Chameleon\ChameleonTemplate;
+
 /**
- * File holding the Html class
+ * File holding the Cell class
  *
  * @copyright (C) 2013, Stephan Gambke
  * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
@@ -23,36 +28,24 @@
  * @ingroup       Skins
  */
 
-
-namespace skins\chameleon\components;
-
-
 /**
- * The Html class.
+ * The Cell class.
  *
  * @ingroup Skins
  */
-class Html extends Component {
+class Cell extends Container {
 
-	/**
-	 * Builds the HTML code for the main container
-	 *
-	 * @return String the HTML code
-	 */
-	public function getHtml() {
+	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0 ) {
 
-		$ret = '';
+		$span = $domElement->getAttribute( 'span' );
 
-		if ( $this->getDomElement() !== null ) {
-
-			$dom = $this->getDomElement()->ownerDocument;
-
-			foreach ( $this->getDomElement()->childNodes as $node ) {
-				$ret .= $dom->saveHTML( $node );
-			}
+		if ( !is_numeric( $span ) || ( $span < 1 ) || ( $span > 12 ) ) {
+			$span = '12';
 		}
 
-		return $ret;
+		parent::__construct( $template, $domElement, $indent );
+
+		$this->addClasses( "col-lg-$span" );
 	}
 
 }

@@ -1,4 +1,9 @@
 <?php
+
+namespace Skins\Chameleon\Components;
+
+use Linker;
+
 /**
  * File containing the ToolbarHorizontal class
  *
@@ -22,10 +27,6 @@
  * @file
  * @ingroup   Skins
  */
-
-namespace skins\chameleon\components;
-
-use Linker;
 
 /**
  * ToolbarHorizontal class

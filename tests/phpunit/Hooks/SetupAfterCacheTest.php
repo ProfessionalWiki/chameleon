@@ -1,11 +1,11 @@
 <?php
 
-namespace skins\tests\chameleon\hooks;
+namespace Skins\Tests\Chameleon\Hooks;
 
-use skins\chameleon\hooks\SetupAfterCache;
+use Skins\Chameleon\Hooks\SetupAfterCache;
 
 /**
- * @covers \skins\chameleon\hooks\SetupAfterCache
+ * @covers \Skins\Chameleon\Hooks\SetupAfterCache
  *
  * @ingroup Test
  *
@@ -28,7 +28,7 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 		$configuration = array();
 
 		$this->assertInstanceOf(
-			'\skins\chameleon\hooks\SetupAfterCache',
+			'\Skins\Chameleon\Hooks\SetupAfterCache',
 			new SetupAfterCache( $bootstrapManager, $configuration )
 		);
 	}
@@ -139,6 +139,5 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 
 		$instance->process();
 	}
-
 
 }

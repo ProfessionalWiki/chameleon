@@ -2,7 +2,7 @@
 
 namespace Skins\Tests\Chameleon;
 
-use skins\chameleon\ChameleonTemplate;
+use Skins\Chameleon\ChameleonTemplate;
 
 /**
  * @covers \Skins\Chameleon\ChameleonTemplate
@@ -12,7 +12,7 @@ use skins\chameleon\ChameleonTemplate;
  * @group skins-chameleon
  * @group mediawiki-databaseless
  *
- * @licence GNU GPL v2+
+ * @licence GNU GPL v3+
  * @since 1.0
  *
  * @author mwjames

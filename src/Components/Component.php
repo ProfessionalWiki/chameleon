@@ -1,4 +1,9 @@
 <?php
+
+namespace Skins\Chameleon\Components;
+
+use Skins\Chameleon\ChameleonTemplate;
+
 /**
  * File containing the Component class
  *
@@ -22,10 +27,6 @@
  * @file
  * @ingroup   Skins
  */
-
-namespace skins\chameleon\components;
-
-use skins\chameleon\ChameleonTemplate;
 
 /**
  * Component class

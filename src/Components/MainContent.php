@@ -1,4 +1,9 @@
 <?php
+
+namespace Skins\Chameleon\Components;
+
+use Skins\Chameleon\IdRegistry;
+
 /**
  * File holding the MainContent class
  *
@@ -22,9 +27,6 @@
  * @file
  * @ingroup   Skins
  */
-
-namespace skins\chameleon\components;
-use skins\chameleon\IdRegistry;
 
 /**
  * The NavbarHorizontal class.

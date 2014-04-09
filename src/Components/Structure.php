@@ -1,9 +1,12 @@
 <?php
+
+namespace Skins\Chameleon\Components;
+
 /**
- * File holding the Cell class
+ * File holding the Structure class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
  * The Chameleon extension is free software: you can redistribute it and/or
@@ -20,33 +23,37 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup       Skins
+ * @ingroup   Skins
  */
 
-
-namespace skins\chameleon\components;
-
-use skins\chameleon\ChameleonTemplate;
-
-
 /**
- * The Cell class.
+ * The Structure class.
  *
  * @ingroup Skins
  */
-class Cell extends Container {
+class Structure extends Component {
 
-	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0 ) {
+	/**
+	 * Builds the HTML code for the component
+	 *
+	 * @return String the HTML code
+	 */
+	public function getHtml(){
 
-		$span = $domElement->getAttribute( 'span' );
+		$children = $this->getDomElement()->childNodes;
 
-		if ( !is_numeric( $span ) || ( $span < 1 ) || ( $span > 12 ) ) {
-			$span = '12';
+		$ret = '';
+
+		$this->indent(1);
+
+		foreach ( $children as $child ) {
+			if ( is_a( $child, 'DOMElement' ) ) {
+				$component = $this->getSkinTemplate()->getComponent( $child, $this->getIndent() );
+				$ret .= $component->getHtml();
+			}
 		}
 
-		parent::__construct( $template, $domElement, $indent );
-
-		$this->addClasses( "col-lg-$span" );
+		return $ret;
 	}
 
 }

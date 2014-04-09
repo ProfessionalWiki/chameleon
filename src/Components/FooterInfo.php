@@ -1,4 +1,10 @@
 <?php
+
+namespace Skins\Chameleon\Components;
+
+use Skins\Chameleon\ChameleonTemplate;
+use Skins\Chameleon\IdRegistry;
+
 /**
  * File holding the FooterInfo class
  *
@@ -22,11 +28,6 @@
  * @file
  * @ingroup   Chameleon
  */
-
-namespace skins\chameleon\components;
-use skins\chameleon\ChameleonTemplate;
-use skins\chameleon\IdRegistry;
-
 
 /**
  * The FooterInfo class.

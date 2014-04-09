@@ -8,7 +8,6 @@
  * @version 1.0-alpha
  *
  */
-use Bootstrap\BootstrapManager;
 
 /**
  * The main file of the Chameleon skin
@@ -87,16 +86,14 @@ call_user_func( function () {
 	);
 
 	foreach ( $chameleonComponents as $component ) {
-		$GLOBALS[ 'wgAutoloadClasses' ][ 'skins\\chameleon\\components\\' . $component ] = __DIR__ . '/includes/components/' . $component . '.php';
+		$GLOBALS[ 'wgAutoloadClasses' ][ 'Skins\\Chameleon\\Components\\' . $component ] = __DIR__ . '/src/Components/' . $component . '.php';
 	}
 
 
-	$GLOBALS[ 'wgAutoloadClasses' ][ 'SkinChameleon' ] = dirname( __FILE__ ) . '/includes/SkinChameleon.php'; // register skin class (must be 'Skin' . SkinName)
-	$GLOBALS[ 'wgAutoloadClasses' ][ 'skins\chameleon\ChameleonTemplate' ] = dirname( __FILE__ ) . '/includes/ChameleonTemplate.php';
-	$GLOBALS[ 'wgAutoloadClasses' ][ 'skins\chameleon\IdRegistry' ] = dirname( __FILE__ ) . '/includes/IdRegistry.php';
-
-	// FIXME Ought to fix the namespace usage here
-	$GLOBALS[ 'wgAutoloadClasses' ][ 'skins\chameleon\hooks\SetupAfterCache' ] = __DIR__ . '/includes/Hooks/SetupAfterCache.php';
+	$GLOBALS[ 'wgAutoloadClasses' ][ 'SkinChameleon' ] = dirname( __FILE__ ) . '/src/SkinChameleon.php'; // register skin class (must be 'Skin' . SkinName)
+	$GLOBALS[ 'wgAutoloadClasses' ][ 'Skins\Chameleon\ChameleonTemplate' ] = dirname( __FILE__ ) . '/src/ChameleonTemplate.php';
+	$GLOBALS[ 'wgAutoloadClasses' ][ 'Skins\Chameleon\IdRegistry' ] = dirname( __FILE__ ) . '/src/IdRegistry.php';
+	$GLOBALS[ 'wgAutoloadClasses' ][ 'Skins\Chameleon\Hooks\SetupAfterCache' ] = __DIR__ . '/src/Hooks/SetupAfterCache.php';
 
 	/**
 	 * Using callbacks for hook registration
@@ -121,7 +118,7 @@ call_user_func( function () {
 			'wgStylePath'                      => $GLOBALS['wgStylePath']
 		);
 
-		$setupAfterCache = new \skins\chameleon\hooks\SetupAfterCache(
+		$setupAfterCache = new \Skins\Chameleon\Hooks\SetupAfterCache(
 			\bootstrap\BootstrapManager::getBootstrapManager(),
 			$configuration
 		);

@@ -1,4 +1,7 @@
 <?php
+
+namespace Skins\Chameleon\Components;
+
 /**
  * File holding the FooterPlaces class
  *
@@ -22,9 +25,6 @@
  * @file
  * @ingroup   Skins
  */
-
-namespace skins\chameleon\components;
-
 
 /**
  * The FooterInfo class.

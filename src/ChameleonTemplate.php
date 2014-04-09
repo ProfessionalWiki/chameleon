@@ -1,4 +1,12 @@
 <?php
+
+namespace Skins\Chameleon;
+
+use BaseTemplate;
+use DOMDocument;
+use Skins\Chameleon\Components\Container;
+use RuntimeException;
+
 /**
  * File holding the ChameleonTemplate class
  *
@@ -22,13 +30,6 @@
  * @file
  * @ingroup       Skins
  */
-
-namespace skins\chameleon;
-
-use BaseTemplate;
-use DOMDocument;
-use skins\chameleon\components\Container;
-use RuntimeException;
 
 /**
  * BaseTemplate class for the Chameleon skin
@@ -91,11 +92,11 @@ class ChameleonTemplate extends BaseTemplate {
 	 * @param int         $indent
 	 * @param string      $htmlClassAttribute
 	 *
-	 * @return \skins\chameleon\components\Container
+	 * @return \Skins\Chameleon\Components\Container
 	 */
 	public function getComponent( \DOMElement $description, $indent = 0, $htmlClassAttribute = '' ) {
 
-		$class = 'skins\\chameleon\\components\\';
+		$class = 'Skins\\Chameleon\\Components\\';
 
 		switch ( $description->nodeName ) {
 			case 'structure':
@@ -118,7 +119,7 @@ class ChameleonTemplate extends BaseTemplate {
 				}
 		}
 
-		if ( class_exists( $class ) && is_subclass_of( $class, 'skins\\chameleon\\components\\Component' ) ) {
+		if ( class_exists( $class ) && is_subclass_of( $class, 'Skins\\Chameleon\\Components\\Component' ) ) {
 			return new $class( $this, $description, $indent, $htmlClassAttribute );
 		} else {
 			return new Container( $this, $description, $indent, $htmlClassAttribute );

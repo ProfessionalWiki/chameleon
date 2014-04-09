@@ -1,9 +1,14 @@
 <?php
+
+namespace Skins\Chameleon\Components;
+
+use Skins\Chameleon\ChameleonTemplate;
+
 /**
- * File holding the Container class
+ * File holding the Row class
  *
  * @copyright (C) 2013, Stephan Gambke
- * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki extension Chameleon.
  * The Chameleon extension is free software: you can redistribute it and/or
@@ -20,39 +25,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup   Skins
+ * @ingroup       Skins
  */
 
-
-namespace skins\chameleon\components;
-
-
 /**
- * The Container class.
- *
- * It will wrap its content elements in a DIV.
- *
- * Supported attributes:
- * - class
+ * The Row class.
  *
  * @ingroup Skins
  */
-class Container extends Structure {
+class Row extends Container {
 
-	/**
-	 * Builds the HTML code for the main container
-	 *
-	 * @return String the HTML code
-	 */
-	public function getHtml(){
+	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0 ) {
 
-		$ret = $this->indent() . \Html::openElement( 'div', array( 'class' => $this->getClassString() ) );
-
-		$ret .= parent::getHtml();
-
-		$ret .= $this->indent( -1 ) . '</div>';
-
-		return $ret;
+		parent::__construct( $template, $domElement, $indent );
+		$this->addClasses( 'row' );
 	}
-
 }

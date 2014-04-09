@@ -1,6 +1,6 @@
 <?php
 
-namespace skins\chameleon\hooks;
+namespace Skins\Chameleon\Hooks;
 
 use bootstrap\BootstrapManager;
 use RuntimeException;

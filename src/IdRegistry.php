@@ -1,4 +1,7 @@
 <?php
+
+namespace Skins\Chameleon;
+
 /**
  * File holding the IdRegistry class
  *
@@ -23,13 +26,10 @@
  * @ingroup       Skins
  */
 
-
-namespace skins\chameleon;
-
 /**
  * Class IdRegistry provides a registry and access methods to ensure each id is only used once per HTML page.
  *
- * @package skins\chameleon
+ * @package Skins\Chameleon
  */
 class IdRegistry {
 

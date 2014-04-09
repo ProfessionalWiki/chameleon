@@ -94,9 +94,40 @@ call_user_func( function () {
 	$GLOBALS[ 'wgAutoloadClasses' ][ 'SkinChameleon' ] = dirname( __FILE__ ) . '/includes/SkinChameleon.php'; // register skin class (must be 'Skin' . SkinName)
 	$GLOBALS[ 'wgAutoloadClasses' ][ 'skins\chameleon\ChameleonTemplate' ] = dirname( __FILE__ ) . '/includes/ChameleonTemplate.php';
 	$GLOBALS[ 'wgAutoloadClasses' ][ 'skins\chameleon\IdRegistry' ] = dirname( __FILE__ ) . '/includes/IdRegistry.php';
-	$GLOBALS[ 'wgAutoloadClasses' ][ 'skins\chameleon\Hooks' ] = dirname( __FILE__ ) . '/includes/Hooks.php';
 
-	$GLOBALS[ 'wgHooks' ][ 'SetupAfterCache' ][ ] = 'skins\chameleon\Hooks::onSetupAfterCache';
+	// FIXME Ought to fix the namespace usage here
+	$GLOBALS[ 'wgAutoloadClasses' ][ 'skins\chameleon\hooks\SetupAfterCache' ] = __DIR__ . '/includes/Hooks/SetupAfterCache.php';
+
+	/**
+	 * Using callbacks for hook registration
+	 *
+	 * The hook registry should contain as less knowledge about a process as
+	 * necessary therefore a callback is used as Factory/Builder that instantiates
+	 * a business / domain object.
+	 *
+	 * GLOBAL state should be encapsulated by the callback and not leaked into
+	 * a instantiated class
+	 */
+
+	/**
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/SetupAfterCache
+	 */
+	$GLOBALS[ 'wgHooks' ][ 'SetupAfterCache' ][ ] = function() {
+
+		$configuration = array(
+			'egChameleonExternalStyleModules'  => isset( $GLOBALS[ 'egChameleonExternalStyleModules' ] ) ? $GLOBALS[ 'egChameleonExternalStyleModules' ] : array(),
+			'egChameleonExternalLessVariables' => isset( $GLOBALS[ 'egChameleonExternalLessVariables' ] ) ? $GLOBALS[ 'egChameleonExternalLessVariables' ] : array(),
+			'wgStyleDirectory'                 => $GLOBALS['wgStyleDirectory'],
+			'wgStylePath'                      => $GLOBALS['wgStylePath']
+		);
+
+		$setupAfterCache = new \skins\chameleon\hooks\SetupAfterCache(
+			\bootstrap\BootstrapManager::getBootstrapManager(),
+			$configuration
+		);
+
+		$setupAfterCache->process();
+	};
 
 	// set default skin layout
 	$GLOBALS[ 'egChameleonLayoutFile' ] = dirname( __FILE__ ) . '/layouts/standard.xml';

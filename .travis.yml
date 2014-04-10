@@ -1,0 +1,17 @@
+language: php
+
+env:
+  - THENEEDFORTHIS=FAIL
+
+matrix:
+  include:
+    - env: DBTYPE=mysql; MW=master
+      php: 5.3
+    - env: DBTYPE=sqlite; MW=1.22.0
+      php: 5.5
+
+  exclude:
+    - env: THENEEDFORTHIS=FAIL
+
+script:
+    - bash ./build/travis/script.sh

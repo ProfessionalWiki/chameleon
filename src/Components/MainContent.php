@@ -108,10 +108,6 @@ class MainContent extends Component {
 		);
 		// END content body
 
-		if ( $skintemplate->data['printfooter'] ) {
-			$ret .= '<div class="printfooter">' . $skintemplate->get( 'printfooter' ) . '</div>';
-		}
-
 		// TODO: Category links should be a separate component, but
 		// * dataAfterContent should come after the the category links.
 		// * only one extension is known to use it dataAfterContent and it is geared specifically towards MonoBook

@@ -78,12 +78,12 @@ class NavbarHorizontal extends Component {
 
 		$this->indent( 1 );
 
-		// add components
-		$this->eachChild( function ( \DOMElement $node ) {
+		$children = $this->getDomElement()->childNodes;
 
-				if ( $node->tagName !== 'component' || !$node->hasAttribute( 'type' ) ) {
-					return;
-				}
+		// add components
+		foreach ( $children as $node ) {
+
+			if ( is_a( $node, 'DOMElement' ) && $node->tagName === 'component' && $node->hasAttribute( 'type' ) ) {
 
 				switch ( $node->getAttribute( 'type' ) ) {
 					case 'Logo':
@@ -103,12 +103,10 @@ class NavbarHorizontal extends Component {
 						break;
 				}
 			}
-		);
+		}
 
 		$this->mHtml .= $this->indent( -1 ) . '</ul>' .
 			$this->indent( -1 ) . '</nav>' . "\n";
-
-
 
 		return $this->mHtml;
 	}

@@ -52,13 +52,13 @@ class SearchBar extends Component {
 					'class' => 'pull-right p-search ' . $this->getClassString(),
 					'role'  => 'search',
 				)
-			) . Linker::tooltip( 'p-search' ) . '  >' .
+			) . Linker::tooltip( 'p-search' ) . '>' .
 
 			$this->indent( 1 ) . '<form ' . \Html::expandAttributes( array(
 					'id'    => IdRegistry::getRegistry()->getId( 'searchform' ),
 					'class' => 'mw-search form-inline',
 				)
-			) . 'action="' . $this->getSkinTemplate()->data[ 'wgScript' ] . '">' .
+			) . ' action="' . $this->getSkinTemplate()->data[ 'wgScript' ] . '">' .
 
 			$this->indent( 1 ) . '<input type="hidden" name="title" value="' . $this->getSkinTemplate()->data[ 'searchtitle' ] . '" />' .
 			$this->indent() . '<div class="input-group">' .

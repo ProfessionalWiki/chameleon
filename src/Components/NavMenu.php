@@ -54,9 +54,9 @@ class NavMenu extends Component {
 		$msg = \Message::newFromKey( 'skin-chameleon-navmenu-flatten' );
 
 		if ( $msg->exists() ) {
-			$flatten = array_map( trim, explode( ';', $msg->plain() ) );
+			$flatten = array_map( 'trim', explode( ';', $msg->plain() ) );
 		} elseif ( $this->getDomElement() !== null ) {
-			$flatten = array_map( trim, explode( ';', $this->getDomElement()->getAttribute( 'flatten' ) ) );
+			$flatten = array_map( 'trim', explode( ';', $this->getDomElement()->getAttribute( 'flatten' ) ) );
 		} else {
 			$flatten = array();
 		}

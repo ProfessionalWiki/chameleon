@@ -1,6 +1,6 @@
 <?php
 
-namespace Skins\Tests\Chameleon\Components;
+namespace Skins\Chameleon\Tests\Components;
 
 use Skins\Chameleon\Components\MainContent;
 

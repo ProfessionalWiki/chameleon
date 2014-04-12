@@ -1,6 +1,6 @@
 <?php
 
-namespace Skins\Tests\Chameleon;
+namespace Skins\Chameleon\Tests;
 
 use Skins\Chameleon\ChameleonTemplate;
 

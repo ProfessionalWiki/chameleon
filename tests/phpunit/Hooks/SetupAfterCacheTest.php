@@ -1,6 +1,6 @@
 <?php
 
-namespace Skins\Tests\Chameleon\Hooks;
+namespace Skins\Chameleon\Tests\Hooks;
 
 use Skins\Chameleon\Hooks\SetupAfterCache;
 

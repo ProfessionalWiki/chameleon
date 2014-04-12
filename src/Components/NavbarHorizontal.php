@@ -52,6 +52,10 @@ class NavbarHorizontal extends Component {
 
 		$this->mHtml = '';
 
+		if ( $this->getDomElement() === null ) {
+			return $this->mHtml;
+		}
+
 		// if a fixed navbar is requested
 		if ( filter_var( $this->getDomElement()->getAttribute( 'fixed' ), FILTER_VALIDATE_BOOLEAN ) ) {
 
@@ -78,7 +82,7 @@ class NavbarHorizontal extends Component {
 
 		$this->indent( 1 );
 
-		$children = $this->getDomElement()->childNodes;
+		$children = $this->getDomElement()->hasChildNodes() ? $this->getDomElement()->childNodes : array();
 
 		// add components
 		foreach ( $children as $node ) {

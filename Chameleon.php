@@ -119,7 +119,7 @@ call_user_func( function () {
 		);
 
 		$setupAfterCache = new \Skins\Chameleon\Hooks\SetupAfterCache(
-			\bootstrap\BootstrapManager::getBootstrapManager(),
+			\Bootstrap\BootstrapManager::getInstance(),
 			$configuration
 		);
 

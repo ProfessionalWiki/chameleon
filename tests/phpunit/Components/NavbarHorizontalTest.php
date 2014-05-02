@@ -2,21 +2,22 @@
 
 namespace Skins\Chameleon\Tests\Components;
 
+use Skins\Chameleon\Tests\Util\XmlFileProvider;
+use Skins\Chameleon\Tests\Util\DocumentElementFinder;
+
 use Skins\Chameleon\Components\NavbarHorizontal;
-use Skins\Chameleon\Tests\XmlFileProvider;
-use Skins\Chameleon\Tests\DocumentElementFinder;
 
 use Title;
 
 /**
- * @covers \Skins\Chameleon\Components\NavbarHorizontal
+ * @uses \Skins\Chameleon\Components\NavbarHorizontal
  *
  * @ingroup Test
  *
  * @group skins-chameleon
  * @group mediawiki-databaseless
  *
- * @licence GNU GPL v3+
+ * @license GNU GPL v3+
  * @since 1.0
  *
  * @author mwjames

@@ -1,6 +1,6 @@
 <?php
 
-namespace Skins\Chameleon\Tests;
+namespace Skins\Chameleon\Tests\Util;
 
 use DOMDocument;
 use DOMElement;
@@ -13,7 +13,7 @@ use RuntimeException;
  * @group skins-chameleon
  * @group mediawiki-databaseless
  *
- * @licence GNU GPL v3+
+ * @license GNU GPL v3+
  * @since 1.0
  *
  * @author mwjames

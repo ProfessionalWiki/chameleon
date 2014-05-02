@@ -31,8 +31,9 @@
  *
  * @file
  * @ingroup       Skins
+ *
+ * @codeCoverageIgnore
  */
-
 call_user_func( function () {
 
 	if ( !defined( 'MEDIAWIKI' ) ) {
@@ -88,7 +89,6 @@ call_user_func( function () {
 	foreach ( $chameleonComponents as $component ) {
 		$GLOBALS[ 'wgAutoloadClasses' ][ 'Skins\\Chameleon\\Components\\' . $component ] = __DIR__ . '/src/Components/' . $component . '.php';
 	}
-
 
 	$GLOBALS[ 'wgAutoloadClasses' ][ 'SkinChameleon' ] = dirname( __FILE__ ) . '/src/SkinChameleon.php'; // register skin class (must be 'Skin' . SkinName)
 	$GLOBALS[ 'wgAutoloadClasses' ][ 'Skins\Chameleon\ChameleonTemplate' ] = dirname( __FILE__ ) . '/src/ChameleonTemplate.php';

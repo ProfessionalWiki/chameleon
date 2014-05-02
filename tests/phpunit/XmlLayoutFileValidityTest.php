@@ -2,6 +2,8 @@
 
 namespace Skins\Chameleon\Tests;
 
+use Skins\Chameleon\Tests\Util\XmlFileProvider;
+
 use DOMDocument;
 use RuntimeException;
 
@@ -11,7 +13,7 @@ use RuntimeException;
  * @group skins-chameleon
  * @group mediawiki-databaseless
  *
- * @licence GNU GPL v3+
+ * @license GNU GPL v3+
  * @since 1.0
  *
  * @author mwjames

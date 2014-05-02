@@ -2,7 +2,7 @@
 
 namespace Skins\Chameleon\Hooks;
 
-use bootstrap\BootstrapManager;
+use Bootstrap\BootstrapManager;
 use RuntimeException;
 
 /**
@@ -86,13 +86,13 @@ class SetupAfterCache {
 		return array( $localFile, $remotePath );
 	}
 
-	protected function isReadableFile( $path ) {
+	protected function isReadableFile( $file ) {
 
-		if ( is_readable( $path ) ) {
-			return $path;
+		if ( is_readable( $file ) ) {
+			return $file;
 		}
 
-		throw new RuntimeException( "Expected an accessible {$path} file" );
+		throw new RuntimeException( "Expected an accessible {$file} file" );
 	}
 
 }

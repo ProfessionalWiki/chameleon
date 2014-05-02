@@ -5,14 +5,14 @@ namespace Skins\Chameleon\Tests\Components;
 use Skins\Chameleon\Components\MainContent;
 
 /**
- * @covers \Skins\Chameleon\Components\MainContent
+ * @uses \Skins\Chameleon\Components\MainContent
  *
  * @ingroup Test
  *
  * @group skins-chameleon
  * @group mediawiki-databaseless
  *
- * @licence GNU GPL v3+
+ * @license GNU GPL v3+
  * @since 1.0
  *
  * @author mwjames

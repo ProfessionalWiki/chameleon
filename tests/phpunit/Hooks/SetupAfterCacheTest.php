@@ -5,23 +5,31 @@ namespace Skins\Chameleon\Tests\Hooks;
 use Skins\Chameleon\Hooks\SetupAfterCache;
 
 /**
- * @covers \Skins\Chameleon\Hooks\SetupAfterCache
+ * @uses \Skins\Chameleon\Hooks\SetupAfterCache
  *
  * @ingroup Test
  *
  * @group skins-chameleon
  * @group mediawiki-databaseless
  *
- * @licence GNU GPL v3+
+ * @license GNU GPL v3+
  * @since 1.0
  *
  * @author mwjames
  */
 class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 
+	protected $dummyExternalModule = null;
+
+	protected function setUp() {
+		parent::setUp();
+
+		$this->dummyExternalModule = __DIR__ . '/../Util/Fixture/' . 'externalmodule.less';
+	}
+
 	public function testCanConstruct() {
 
-		$bootstrapManager = $this->getMockBuilder( '\bootstrap\BootstrapManager' )
+		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -35,7 +43,7 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 
 	public function testProcessWithValidExternalModuleWithoutLessVariables() {
 
-		$bootstrapManager = $this->getMockBuilder( '\bootstrap\BootstrapManager' )
+		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -45,21 +53,21 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 		$bootstrapManager->expects( $this->at( 2 ) )
 			->method( 'addExternalModule' )
 			->with(
-				$this->equalTo( __DIR__ . '/../Fixture/' . 'externalmodule.less' ),
+				$this->equalTo( $this->dummyExternalModule ),
 				$this->equalTo( '' ) );
 
 		$bootstrapManager->expects( $this->at( 3 ) )
 			->method( 'addExternalModule' )
 			->with(
-				$this->equalTo( __DIR__ . '/../Fixture/' . 'externalmodule.less' ),
+				$this->equalTo( $this->dummyExternalModule  ),
 				$this->equalTo( 'someRemoteWeDontCheck' ) );
 
 		$bootstrapManager->expects( $this->never() )
 			->method( 'setLessVariable' );
 
 		$mixedExternalStyleModules = array(
-			__DIR__ . '/../Fixture/' . 'externalmodule.less',
-			__DIR__ . '/../Fixture/' . 'externalmodule.less' => 'someRemoteWeDontCheck'
+			$this->dummyExternalModule ,
+			$this->dummyExternalModule  => 'someRemoteWeDontCheck'
 		);
 
 		$configuration = array(
@@ -78,9 +86,7 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 
 	public function testProcessWithInvalidExternalModuleThrowsException() {
 
-		$this->setExpectedException( 'RuntimeException' );
-
-		$bootstrapManager = $this->getMockBuilder( '\bootstrap\BootstrapManager' )
+		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -89,7 +95,7 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 			->will( $this->returnValue( true ) );
 
 		$externalStyleModules = array(
-			__DIR__ . '/../Fixture/' . 'externalmoduleDoesNotExist.less'
+			__DIR__ . '/../Util/Fixture/' . 'externalmoduleDoesNotExist.less'
 		);
 
 		$configuration = array(
@@ -103,12 +109,14 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 			$configuration
 		);
 
+		$this->setExpectedException( 'RuntimeException' );
+
 		$instance->process();
 	}
 
 	public function testProcessWithLessVariables() {
 
-		$bootstrapManager = $this->getMockBuilder( '\bootstrap\BootstrapManager' )
+		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
 			->disableOriginalConstructor()
 			->getMock();
 

@@ -8,20 +8,20 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'MediaWiki is not available for the test environment' );
 }
 
-function registerAutoLoader( $path, $message ) {
-	print( $message );
+function registerAutoloaderPath( $identifier, $path ) {
+	print( "\nUsing the {$identifier} vendor autoloader ...\n\n" );
 	return require $path;
 }
 
-function useTestAutoLoader() {
+function runTestAutoLoader( $autoLoader = null ) {
 
 	$mwVendorPath = __DIR__ . '/../../../vendor/autoload.php';
 	$localVendorPath = __DIR__ . '/../vendor/autoload.php';
 
 	if ( is_readable( $localVendorPath ) ) {
-		$autoLoader = registerAutoLoader( $localVendorPath, "\Using the local vendor class loader ...\n" );
+		$autoLoader = registerAutoloaderPath( 'local', $localVendorPath );
 	} elseif ( is_readable( $mwVendorPath ) ) {
-		$autoLoader = registerAutoLoader( $mwVendorPath, "\nUsing the MediaWiki vendor class loader ...\n" );
+		$autoLoader = registerAutoloaderPath( 'MediaWiki', $mwVendorPath  );
 	}
 
 	if ( !$autoLoader instanceof \Composer\Autoload\ClassLoader ) {
@@ -33,6 +33,6 @@ function useTestAutoLoader() {
 	return true;
 }
 
-if ( !useTestAutoLoader() ) {
+if ( !runTestAutoLoader() ) {
 	die( 'Required test class loader was not accessible' );
 }

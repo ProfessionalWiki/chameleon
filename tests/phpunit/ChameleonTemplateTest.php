@@ -5,14 +5,14 @@ namespace Skins\Chameleon\Tests;
 use Skins\Chameleon\ChameleonTemplate;
 
 /**
- * @covers \Skins\Chameleon\ChameleonTemplate
+ * @uses \Skins\Chameleon\ChameleonTemplate
  *
  * @ingroup Test
  *
  * @group skins-chameleon
  * @group mediawiki-databaseless
  *
- * @licence GNU GPL v3+
+ * @license GNU GPL v3+
  * @since 1.0
  *
  * @author mwjames
@@ -24,13 +24,15 @@ class ChameleonTemplateTest extends \PHPUnit_Framework_TestCase {
 	protected $egChameleonLayoutFile = null;
 
 	protected function setUp() {
-		$this->egChameleonLayoutFile = $GLOBALS['egChameleonLayoutFile'];
 		parent::setUp();
+
+		$this->egChameleonLayoutFile = $GLOBALS['egChameleonLayoutFile'];
 	}
 
 	protected function tearDown() {
-		parent::tearDown();
 		$GLOBALS['egChameleonLayoutFile'] = $this->egChameleonLayoutFile;
+
+		parent::tearDown();
 	}
 
 	public function testCanConstruct() {

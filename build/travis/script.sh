@@ -21,7 +21,9 @@ function installSkinViaComposerOnMediaWikiRoot {
 
 	# dev is only needed for as long no stable release is available
 	composer init --stability dev
-	composer require mediawiki/chameleon-skin "dev-master"
+
+	composer require 'phpunit/phpunit=3.7.*' --prefer-source
+	composer require 'mediawiki/chameleon-skin=@dev' --prefer-source
 
 	cd skins
 	cd chameleon

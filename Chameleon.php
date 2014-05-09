@@ -61,7 +61,8 @@ call_user_func( function () {
 	$GLOBALS[ 'wgValidSkinNames' ][ 'chameleon' ] = 'Chameleon';
 
 	// register message file for i18n
-	$GLOBALS[ 'wgExtensionMessagesFiles' ][ 'Chameleon' ] = dirname( __FILE__ ) . '/Chameleon.i18n.php';
+	$GLOBALS[ 'wgExtensionMessagesFiles' ][ 'Chameleon' ] = __DIR__ . '/Chameleon.i18n.php';
+    $GLOBALS[ 'wgMessagesDirs' ][ 'Chameleon' ] = __DIR__ . '/i18n';
 
 	$chameleonComponents = array(
 		'Component',

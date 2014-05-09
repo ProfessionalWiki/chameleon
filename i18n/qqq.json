@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Gambke"
+		]
+	},
+	"skinname-chameleon": "The name of this skin",
+	"chameleon-desc": "{{desc|name=Chameleon|url=http://www.mediawiki.org/wiki/Skin:Chameleon}}",
+	"chameleon-loggedin": "Text shown, when the user is logged in.",
+	"chameleon-notloggedin": "Text shown, when the user is not logged in.",
+	"chameleon-newmessages": "Text shown, when the user has new messages.",
+	"chameleon-nonewmessages": "Text shown, when the user has no new messages."
+}

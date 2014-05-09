@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Stephan Gambke"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "The Chameleon skin.",
+	"chameleon-loggedin": "You are logged in as $1.",
+	"chameleon-notloggedin": "You are not logged in",
+	"chameleon-newmessages": "You have new messages.",
+	"chameleon-nonewmessages": "You have no new messages."
+}

@@ -112,12 +112,16 @@ call_user_func( function () {
 	 */
 	$GLOBALS[ 'wgHooks' ][ 'SetupAfterCache' ][ ] = function() {
 
-		$configuration = array(
-			'egChameleonExternalStyleModules'  => isset( $GLOBALS[ 'egChameleonExternalStyleModules' ] ) ? $GLOBALS[ 'egChameleonExternalStyleModules' ] : array(),
-			'egChameleonExternalLessVariables' => isset( $GLOBALS[ 'egChameleonExternalLessVariables' ] ) ? $GLOBALS[ 'egChameleonExternalLessVariables' ] : array(),
-			'wgStyleDirectory'                 => $GLOBALS['wgStyleDirectory'],
-			'wgStylePath'                      => $GLOBALS['wgStylePath']
+		$configKeysToCopy = array(
+			'egChameleonExternalStyleModules',
+			'egChameleonExternalLessVariables',
+			'egChameleonEnableVisualEditor',
+			'wgStyleDirectory',
+			'wgStylePath',
+			'wgVisualEditorSupportedSkins',
 		);
+
+		$configuration = array_intersect_key( $GLOBALS, array_flip( $configKeysToCopy));
 
 		$setupAfterCache = new \Skins\Chameleon\Hooks\SetupAfterCache(
 			\Bootstrap\BootstrapManager::getInstance(),
@@ -125,9 +129,15 @@ call_user_func( function () {
 		);
 
 		$setupAfterCache->process();
+
+		$setupAfterCache->adjustConfiguration( $GLOBALS );
+
 	};
 
 	// set default skin layout
 	$GLOBALS[ 'egChameleonLayoutFile' ] = dirname( __FILE__ ) . '/layouts/standard.xml';
+
+	// enable the VisualEditor for this skin
+	$GLOBALS[ 'egChameleonEnableVisualEditor' ] = true;
 
 } );

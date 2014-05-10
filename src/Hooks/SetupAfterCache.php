@@ -34,9 +34,52 @@ class SetupAfterCache {
 	 * @since  1.0
 	 */
 	public function process() {
+		$this->doLateSettings();
 		$this->registerCommonBootstrapModules();
 		$this->registerExternalStyleModules();
 		$this->registerExternalLessVariables();
+	}
+
+	/**
+	 * @since 1.0
+	 * @return array
+	 */
+	public function getConfiguration() {
+		return $this->configuration;
+	}
+
+	/**
+	 * @since 1.0
+	 * @param array $configuration
+	 */
+	public function adjustConfiguration( array &$configuration ) {
+
+		foreach ( $this->configuration as $key => $value ) {
+			$configuration[ $key ] = $value;
+		}
+
+	}
+
+	protected function doLateSettings()
+	{
+
+		// if Visual Editor is installed and there is a setting to enable or disable it
+		if ( isset( $this->configuration[ 'wgVisualEditorSupportedSkins' ] ) && isset ( $this->configuration[ 'egChameleonEnableVisualEditor' ] ) ) {
+
+			// if VE should be enabled
+			if ( $this->configuration[ 'egChameleonEnableVisualEditor' ] === true ) {
+
+				// if Chameleon is not yet in the list of VE-enabled skins
+				if ( !in_array( 'chameleon', $this->configuration[ 'wgVisualEditorSupportedSkins' ] ) ) {
+					$this->configuration[ 'wgVisualEditorSupportedSkins' ][ ] = 'chameleon';
+				}
+
+			} else {
+				// remove all entries of Chameleon from the list of VE-enabled skins
+				$this->configuration[ 'wgVisualEditorSupportedSkins' ] = array_diff($this->configuration[ 'wgVisualEditorSupportedSkins' ], array('chameleon'));
+			}
+
+		}
 	}
 
 	protected function registerCommonBootstrapModules() {

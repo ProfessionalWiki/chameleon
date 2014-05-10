@@ -148,4 +148,141 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 		$instance->process();
 	}
 
+	/**
+	 * @dataProvider lateSettingsProvider
+	 */
+	public function testProcessDoesLateSettings( $configuration, $expected )
+	{
+
+		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$defaultConfiguration = array(
+			'wgStyleDirectory' => 'notTestingwgStyleDirectory',
+			'wgStylePath' => 'notTestingwgStylePath'
+		);
+
+		$configurationToBeAdjusted = array();
+
+		$instance = new SetupAfterCache(
+			$bootstrapManager,
+			$configuration + $defaultConfiguration
+		);
+
+		$instance->process();
+		$instance->adjustConfiguration( $configurationToBeAdjusted );
+
+		$this->assertEquals(
+			$expected + $defaultConfiguration,
+			$configurationToBeAdjusted
+		);
+	}
+
+	/**
+	 * @dataProvider adjustConfigurationProvider
+	 */
+	public function testAdjustConfiguration( $origConfig, $changes, $expected){
+
+		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$instance = new SetupAfterCache(
+			$bootstrapManager,
+			$changes
+		);
+
+		$instance->adjustConfiguration( $origConfig );
+
+		$this->assertEquals( $expected, $origConfig );
+	}
+
+	/**
+	 * Provides test data for the lateSettings test
+	 */
+	public function lateSettingsProvider() {
+
+		return array(
+
+			array (
+				array(
+				),
+				array(
+				),
+			),
+
+			array (
+				array(
+					'wgVisualEditorSupportedSkins'	=> array(),
+				),
+				array(
+					'wgVisualEditorSupportedSkins'	=> array(),
+				),
+			),
+
+			array (
+				array(
+					'egChameleonEnableVisualEditor'	=> true,
+				),
+				array(
+					'egChameleonEnableVisualEditor'	=> true,
+				),
+			),
+
+			array (
+				array(
+					'egChameleonEnableVisualEditor'	=> true,
+					'wgVisualEditorSupportedSkins'	=> array( 'foo'),
+				),
+				array(
+					'egChameleonEnableVisualEditor'	=> true,
+					'wgVisualEditorSupportedSkins'	=> array( 'foo', 'chameleon' ),
+				),
+			),
+
+			array (
+				array(
+					'egChameleonEnableVisualEditor'	=> true,
+					'wgVisualEditorSupportedSkins'	=> array( 'foo', 'chameleon' ),
+				),
+				array(
+					'egChameleonEnableVisualEditor'	=> true,
+					'wgVisualEditorSupportedSkins'	=> array( 'foo', 'chameleon' ),
+				),
+			),
+
+			array (
+				array(
+					'egChameleonEnableVisualEditor'	=> false,
+					'wgVisualEditorSupportedSkins'	=> array( 'chameleon', 'foo' => 'chameleon', 'foo' ),
+				),
+				array(
+					'egChameleonEnableVisualEditor'	=> false,
+					'wgVisualEditorSupportedSkins'	=> array( 1 => 'foo' ),
+				),
+			),
+
+		);
+	}
+
+	public function adjustConfigurationProvider() {
+		return array(
+			array(
+				array(
+					'key1' => 'value1',
+					'key2' => 'value2',
+				),
+				array(
+					'key2' => 'value2changed',
+					'key3' => 'value3changed',
+				),
+				array(
+					'key1' => 'value1',
+					'key2' => 'value2changed',
+					'key3' => 'value3changed',
+				),
+			),
+		);
+	}
 }

@@ -26,7 +26,10 @@ The recommended way to install this skin is by using [Composer][composer]. Just 
 
 ## Tests
 
-The extension provides unit tests that covers core-functionality normally run by a continues integration platform. Tests can also be executed manually using the [PHPUnit][mw-testing] configuration file found in the root directory.
+The extension provides unit tests that covers core-functionality normally run by a continues integration platform. Tests can also be executed manually using the [PHPUnit][mw-testing] configuration file found in the root directory:
+```sh
+php <MW-path>/tests/phpunit/phpunit.php -c <MW-path>/skins/chameleon/phpunit.xml.dist --group skins-chameleon
+```
 
 [mw-chameleon-skin]: https://www.mediawiki.org/wiki/Skin:Chameleon
 [mw-bootstrap]: https://www.mediawiki.org/wiki/Extension:Bootstrap

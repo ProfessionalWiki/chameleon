@@ -32,24 +32,21 @@ class SetupAfterCache {
 
 	/**
 	 * @since  1.0
+	 *
+	 * @return self
 	 */
 	public function process() {
-		$this->doLateSettings();
+		$this->addLateSettings();
 		$this->registerCommonBootstrapModules();
 		$this->registerExternalStyleModules();
 		$this->registerExternalLessVariables();
+
+		return $this;
 	}
 
 	/**
 	 * @since 1.0
-	 * @return array
-	 */
-	public function getConfiguration() {
-		return $this->configuration;
-	}
-
-	/**
-	 * @since 1.0
+	 *
 	 * @param array $configuration
 	 */
 	public function adjustConfiguration( array &$configuration ) {
@@ -57,14 +54,12 @@ class SetupAfterCache {
 		foreach ( $this->configuration as $key => $value ) {
 			$configuration[ $key ] = $value;
 		}
-
 	}
 
-	protected function doLateSettings()
-	{
+	protected function addLateSettings() {
 
 		// if Visual Editor is installed and there is a setting to enable or disable it
-		if ( isset( $this->configuration[ 'wgVisualEditorSupportedSkins' ] ) && isset ( $this->configuration[ 'egChameleonEnableVisualEditor' ] ) ) {
+		if ( $this->hasConfiguration( 'wgVisualEditorSupportedSkins' ) && $this->hasConfiguration( 'egChameleonEnableVisualEditor' ) ) {
 
 			// if VE should be enabled
 			if ( $this->configuration[ 'egChameleonEnableVisualEditor' ] === true ) {
@@ -76,13 +71,19 @@ class SetupAfterCache {
 
 			} else {
 				// remove all entries of Chameleon from the list of VE-enabled skins
-				$this->configuration[ 'wgVisualEditorSupportedSkins' ] = array_diff($this->configuration[ 'wgVisualEditorSupportedSkins' ], array('chameleon'));
+				$this->configuration[ 'wgVisualEditorSupportedSkins' ] = array_diff(
+					$this->configuration[ 'wgVisualEditorSupportedSkins' ],
+					array( 'chameleon' )
+				);
 			}
-
 		}
 	}
 
 	protected function registerCommonBootstrapModules() {
+
+		// Should we check for
+		// $this->isReadableFile( $this->configuration['wgStyleDirectory'] . '/chameleon/styles/' . 'screen.less' )
+
 		$this->bootstrapManager->addAllBootstrapModules();
 		$this->bootstrapManager->addExternalModule(
 			$this->configuration['wgStyleDirectory'] . '/chameleon/styles/' . 'screen.less',
@@ -92,7 +93,7 @@ class SetupAfterCache {
 
 	protected function registerExternalStyleModules() {
 
-		if ( $this->hasConfiguration( 'egChameleonExternalStyleModules' )  ) {
+		if ( $this->hasConfigurationOfTypeArray( 'egChameleonExternalStyleModules' )  ) {
 
 			foreach ( $this->configuration['egChameleonExternalStyleModules'] as $localFile => $remotePath ) {
 
@@ -108,7 +109,7 @@ class SetupAfterCache {
 
 	protected function registerExternalLessVariables() {
 
-		if ( $this->hasConfiguration( 'egChameleonExternalLessVariables' )  ) {
+		if ( $this->hasConfigurationOfTypeArray( 'egChameleonExternalLessVariables' )  ) {
 
 			foreach ( $this->configuration['egChameleonExternalLessVariables'] as $key => $value ) {
 				$this->bootstrapManager->setLessVariable( $key, $value );
@@ -116,11 +117,15 @@ class SetupAfterCache {
 		}
 	}
 
-	protected function hasConfiguration( $id ) {
-		return isset( $this->configuration[ $id ] ) && is_array( $this->configuration[ $id ] );
+	private function hasConfiguration( $id ) {
+		return isset( $this->configuration[ $id ] );
 	}
 
-	protected function matchAssociativeElement( $localFile , $remotePath ) {
+	private function hasConfigurationOfTypeArray( $id ) {
+		return $this->hasConfiguration( $id ) && is_array( $this->configuration[ $id ] );
+	}
+
+	private function matchAssociativeElement( $localFile , $remotePath ) {
 
 		if ( is_integer( $localFile ) ) {
 			return array( $remotePath, '' );
@@ -129,7 +134,7 @@ class SetupAfterCache {
 		return array( $localFile, $remotePath );
 	}
 
-	protected function isReadableFile( $file ) {
+	private function isReadableFile( $file ) {
 
 		if ( is_readable( $file ) ) {
 			return $file;

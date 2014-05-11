@@ -151,8 +151,7 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider lateSettingsProvider
 	 */
-	public function testProcessDoesLateSettings( $configuration, $expected )
-	{
+	public function testProcessWithLateSettingsToAdjustConfiguration( $configuration, $expected ) {
 
 		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
 			->disableOriginalConstructor()
@@ -170,8 +169,9 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 			$configuration + $defaultConfiguration
 		);
 
-		$instance->process();
-		$instance->adjustConfiguration( $configurationToBeAdjusted );
+		$instance
+			->process()
+			->adjustConfiguration( $configurationToBeAdjusted );
 
 		$this->assertEquals(
 			$expected + $defaultConfiguration,
@@ -182,7 +182,7 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @dataProvider adjustConfigurationProvider
 	 */
-	public function testAdjustConfiguration( $origConfig, $changes, $expected){
+	public function testAdjustConfiguration( $origConfig, $changes, $expected ) {
 
 		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
 			->disableOriginalConstructor()
@@ -203,86 +203,88 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function lateSettingsProvider() {
 
-		return array(
+		$provider = array();
 
-			array (
-				array(
-				),
-				array(
-				),
-			),
-
-			array (
-				array(
-					'wgVisualEditorSupportedSkins'	=> array(),
-				),
-				array(
-					'wgVisualEditorSupportedSkins'	=> array(),
-				),
-			),
-
-			array (
-				array(
-					'egChameleonEnableVisualEditor'	=> true,
-				),
-				array(
-					'egChameleonEnableVisualEditor'	=> true,
-				),
-			),
-
-			array (
-				array(
-					'egChameleonEnableVisualEditor'	=> true,
-					'wgVisualEditorSupportedSkins'	=> array( 'foo'),
-				),
-				array(
-					'egChameleonEnableVisualEditor'	=> true,
-					'wgVisualEditorSupportedSkins'	=> array( 'foo', 'chameleon' ),
-				),
-			),
-
-			array (
-				array(
-					'egChameleonEnableVisualEditor'	=> true,
-					'wgVisualEditorSupportedSkins'	=> array( 'foo', 'chameleon' ),
-				),
-				array(
-					'egChameleonEnableVisualEditor'	=> true,
-					'wgVisualEditorSupportedSkins'	=> array( 'foo', 'chameleon' ),
-				),
-			),
-
-			array (
-				array(
-					'egChameleonEnableVisualEditor'	=> false,
-					'wgVisualEditorSupportedSkins'	=> array( 'chameleon', 'foo' => 'chameleon', 'foo' ),
-				),
-				array(
-					'egChameleonEnableVisualEditor'	=> false,
-					'wgVisualEditorSupportedSkins'	=> array( 1 => 'foo' ),
-				),
-			),
-
+		$provider[] = array(
+			array(),
+			array()
 		);
+
+		$provider[] = array(
+			array(
+				'wgVisualEditorSupportedSkins' => array(),
+			),
+			array(
+				'wgVisualEditorSupportedSkins' => array(),
+			)
+		);
+
+		$provider[] = array(
+			array(
+				'egChameleonEnableVisualEditor' => true,
+			),
+			array(
+				'egChameleonEnableVisualEditor' => true,
+			)
+		);
+
+		$provider[] = array(
+			array(
+				'egChameleonEnableVisualEditor' => true,
+				'wgVisualEditorSupportedSkins'  => array( 'foo'),
+			),
+			array(
+				'egChameleonEnableVisualEditor' => true,
+				'wgVisualEditorSupportedSkins'  => array( 'foo', 'chameleon' ),
+			)
+		);
+
+		$provider[] = array(
+			array(
+				'egChameleonEnableVisualEditor' => true,
+				'wgVisualEditorSupportedSkins'  => array( 'foo', 'chameleon' ),
+			),
+			array(
+				'egChameleonEnableVisualEditor' => true,
+				'wgVisualEditorSupportedSkins'  => array( 'foo', 'chameleon' ),
+			)
+		);
+
+		$provider[] = array(
+			array(
+				'egChameleonEnableVisualEditor' => false,
+				'wgVisualEditorSupportedSkins'  => array( 'chameleon', 'foo' => 'chameleon', 'foo' ),
+			),
+			array(
+				'egChameleonEnableVisualEditor' => false,
+				'wgVisualEditorSupportedSkins'  => array( 1 => 'foo' ),
+			)
+		);
+
+		return $provider;
 	}
 
 	public function adjustConfigurationProvider() {
-		return array(
+
+		$provider = array();
+
+		$provider[] = array(
 			array(
-				array(
-					'key1' => 'value1',
-					'key2' => 'value2',
-				),
-				array(
-					'key2' => 'value2changed',
-					'key3' => 'value3changed',
-				),
-				array(
-					'key1' => 'value1',
-					'key2' => 'value2changed',
-					'key3' => 'value3changed',
-				),
+				'key1' => 'value1',
+				'key2' => 'value2',
 			),
+			array(
+				'key2' => 'value2changed',
+				'key3' => 'value3changed',
+			),
+			array(
+				'key1' => 'value1',
+				'key2' => 'value2changed',
+				'key3' => 'value3changed',
+			)
 		);
+
+		return $provider;
 	}
+
 }

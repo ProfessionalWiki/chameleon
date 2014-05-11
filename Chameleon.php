@@ -121,17 +121,17 @@ call_user_func( function () {
 			'wgVisualEditorSupportedSkins',
 		);
 
-		$configuration = array_intersect_key( $GLOBALS, array_flip( $configKeysToCopy));
+		$configuration = array_intersect_key(
+			$GLOBALS,
+			array_flip( $configKeysToCopy )
+		);
 
 		$setupAfterCache = new \Skins\Chameleon\Hooks\SetupAfterCache(
 			\Bootstrap\BootstrapManager::getInstance(),
 			$configuration
 		);
 
-		$setupAfterCache->process();
-
-		$setupAfterCache->adjustConfiguration( $GLOBALS );
-
+		$setupAfterCache->process()->adjustConfiguration( $GLOBALS );
 	};
 
 	// set default skin layout

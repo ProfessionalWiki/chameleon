@@ -35,11 +35,17 @@ use Skins\Chameleon\ChameleonTemplate;
  */
 class Cell extends Container {
 
-	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0 ) {
+	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
 
-		$span = $domElement->getAttribute( 'span' );
+		if ( !is_null( $domElement ) ) {
 
-		if ( !is_numeric( $span ) || ( $span < 1 ) || ( $span > 12 ) ) {
+			$span = $domElement->getAttribute( 'span' );
+
+			if ( ( !is_int( $span ) && !ctype_digit( $span ) ) || ( $span < 1 ) || ( $span > 12 ) ) {
+				$span = '12';
+			}
+
+		} else {
 			$span = '12';
 		}
 

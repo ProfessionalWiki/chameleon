@@ -2,41 +2,32 @@
 
 namespace Skins\Chameleon\Tests\Components;
 
-use Skins\Chameleon\Tests\Util\XmlFileProvider;
-use Skins\Chameleon\Tests\Util\DocumentElementFinder;
-
 use Skins\Chameleon\Components\NavbarHorizontal;
-
-use Title;
+use Skins\Chameleon\Tests\Util\MockupFactory;
 
 /**
- * @uses \Skins\Chameleon\Components\NavbarHorizontal
- *
  * @ingroup Test
  *
- * @group skins-chameleon
- * @group mediawiki-databaseless
- *
  * @license GNU GPL v3+
- * @since 1.0
+ * @since   1.0
  *
- * @author mwjames
+ * @author  mwjames
+ *
+ * @coversDefaultClass \Skins\Chameleon\Components\NavbarHorizontal
+ * @covers ::<private>
+ * @covers ::<protected>
+ *
+ * @group   skins-chameleon
+ * @group   mediawiki-databaseless
  */
-class NavbarHorizontalTest extends \PHPUnit_Framework_TestCase {
+class NavbarHorizontalTest extends ChameleonSkinComponentTestCase {
 
-	public function testCanConstruct() {
+	protected $classUnderTest = '\Skins\Chameleon\Components\NavbarHorizontal';
 
-		$chameleonTemplate = $this->getMockBuilder( '\Skins\Chameleon\ChameleonTemplate' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$this->assertInstanceOf(
-			'\Skins\Chameleon\Components\NavbarHorizontal',
-			new NavbarHorizontal( $chameleonTemplate )
-		);
-	}
-
-	public function testGetHtmlToMatchNavElement() {
+	/**
+	 * @covers ::getHtml
+	 */
+	public function testGetHtml_containsNavElement() {
 
 		$element = $this->getMockBuilder( '\DOMElement' )
 			->disableOriginalConstructor()
@@ -64,120 +55,39 @@ class NavbarHorizontalTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @dataProvider xmlFileProvider
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
-	public function testValidityForGetHtmlOnDeployedLayoutXml( $xmlFile ) {
+	public function testGetHtml_LoggedInUserHasNewMessages( $domElement ) {
 
-		$message = $this->getMockBuilder( '\Message' )
-			->disableOriginalConstructor()
-			->getMock();
+		$factory = MockupFactory::makeFactory( $this );
+		$factory->set( 'UserIsLoggedIn', true );
+		$factory->set( 'UserNewMessageLinks', array( 'foo' ) );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 
-		$chameleonTemplate = $this->getMockBuilder( '\Skins\Chameleon\ChameleonTemplate' )
-			->disableOriginalConstructor()
-			->getMock();
+		/** @var $instance Component */
+		$instance = new $this->classUnderTest ( $chameleonTemplate, $domElement );
 
-		$chameleonTemplate->expects( $this->any() )
-			->method( 'getMsg' )
-			->will( $this->returnValue( $message ) );
-
-		$chameleonTemplate->expects( $this->any() )
-			->method( 'getSidebar' )
-			->will( $this->returnValue( array() ) );
-
-		$chameleonTemplate->expects( $this->any() )
-			->method( 'getSkin' )
-			->will( $this->returnValue( $this->getSkinStub() ) );
-
-		$chameleonTemplate->expects( $this->any() )
-			->method( 'getPersonalTools' )
-			->will( $this->returnValue( array() ) );
-
-		$chameleonTemplate->data = $this->getSkinTemplateDummyDataSetForMainNamespace();
-		$chameleonTemplate->translator = $this->getTranslatorStub();
-
-		$elementFinder = new DocumentElementFinder( $xmlFile );
-
-		$instance = new NavbarHorizontal(
-			$chameleonTemplate,
-			$elementFinder->getComponentByTypeAttribute( 'NavbarHorizontal' )
-		);
-
-		$this->assertInternalType( 'string', $instance->getHtml() );
-	}
-
-	public function xmlFileProvider() {
-
-		$xmlFileProvider = new XmlFileProvider( __DIR__ . '/../../../layouts' );
-		$provider = array_chunk( $xmlFileProvider->getFiles(), 1 );
-
-		return $provider;
-	}
-
-	private function getSkinStub() {
-
-		$title = Title::newFromText( 'FOO' );
-
-		$user = $this->getMockBuilder( '\User' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$skin = $this->getMockBuilder( '\Skin' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$skin->expects( $this->any() )
-			->method( 'getTitle' )
-			->will( $this->returnValue( $title ) );
-
-		$skin->expects( $this->any() )
-			->method( 'getUser' )
-			->will( $this->returnValue( $user ) );
-
-		return $skin;
-	}
-
-	private function getTranslatorStub() {
-
-		$translator = $this->getMockBuilder( '\stdClass' )
-			->setMethods( array( 'translate' ) )
-			->getMock();
-
-		$translator->expects( $this->any() )
-			->method( 'translate' )
-			->will( $this->returnValue( 'translate' ) );
-
-		return $translator;
+		$matcher = array( 'class' => 'navbar-newtalk-available' );
+		$this->assertTag( $matcher, $instance->getHtml() );
 	}
 
 	/**
-	 * Dummy values are by no means to represent a particular intention or
-	 * objective and merely used to pass through the respective method
-	 *
-	 * Testing specific conditions should be done separately in each sub
-	 * component
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
-	private function getSkinTemplateDummyDataSetForMainNamespace() {
-		return array(
+	public function testGetHtml_LoggedInUserHasNoNewMessages( $domElement ) {
 
-			// Required by Logo
-			'logopath' => 'foo',
+		$factory = MockupFactory::makeFactory( $this );
+		$factory->set( 'UserIsLoggedIn', true );
+		$factory->set( 'UserNewMessageLinks', array() );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 
-			// Required by NavMenu
-			'nav_urls' => array(
-				'mainpage' => array( 'href' => 'bat' )
-			),
+		/** @var $instance Component */
+		$instance = new $this->classUnderTest ( $chameleonTemplate, $domElement );
 
-			// Required by PageTools
-			'content_navigation' => array(
-				'namespaces' => array(
-					'main' => array( '' )
-				)
-			),
-
-			// Required by SearchBar
-			'wgScript' => 'bam',
-			'searchtitle' => 'jouy'
-		);
+		$matcher = array( 'class' => 'navbar-newtalk-unavailable' );
+		$this->assertTag( $matcher, $instance->getHtml() );
 	}
 
 }

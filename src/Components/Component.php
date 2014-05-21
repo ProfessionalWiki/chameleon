@@ -48,7 +48,7 @@ abstract class Component {
 	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
 
 		$this->mSkinTemplate = $template;
-		$this->mIndent       = $indent;
+		$this->mIndent       = (int) $indent;
 		$this->mDomElement   = $domElement;
 
 		if ( $domElement !== null ) {
@@ -87,7 +87,7 @@ abstract class Component {
 	/**
 	 * Sets the class string that should be assigned to the top-level html element of this component
 	 *
-	 * @param $classes
+	 * @param string | array | null $classes
 	 *
 	 */
 	public function setClasses( $classes ) {
@@ -100,22 +100,13 @@ abstract class Component {
 	/**
 	 * Removes the given class from the class string that should be assigned to the top-level html element of this component
 	 *
-	 * @param $classes
+	 * @param string | array | null $classes
 	 *
 	 * @return string
 	 */
 	public function removeClasses( $classes ) {
 
-		if ( empty( $classes ) ) {
-			return;
-		}
-
-		if ( is_string( $classes ) ) {
-			$classesArray = explode( ' ', $classes );
-		} else {
-			$classesArray = $classes;
-		}
-
+		$classesArray = $this->transformClassesToArray( $classes );
 
 		$this->mClasses = array_diff( $this->mClasses, $classesArray );
 	}
@@ -123,25 +114,37 @@ abstract class Component {
 	/**
 	 * Adds the given class to the class string that should be assigned to the top-level html element of this component
 	 *
-	 * @param $classes
+	 * @param string | array | null $classes
 	 *
-	 * @return string
+	 * @return string | array
 	 */
 	public function addClasses( $classes ) {
 
-		if ( empty( $classes ) ) {
-			return;
-		}
-
-		if ( is_string( $classes ) ) {
-			$classesArray = explode( ' ', $classes );
-		} else {
-			$classesArray = $classes;
-		}
+		$classesArray = $this->transformClassesToArray( $classes );
 
 		$classesArray = array_combine( $classesArray, $classesArray );
 
 		$this->mClasses = array_merge( $this->mClasses, $classesArray );
+	}
+
+	/**
+	 * @param string | array | null $classes
+	 *
+	 * @return array
+	 * @throws \MWException
+	 */
+	protected function transformClassesToArray ( $classes ) {
+
+		if ( empty( $classes ) ) {
+			return array();
+		} elseif ( is_array( $classes )) {
+			return $classes;
+		} elseif ( is_string( $classes ) ) {
+			return explode( ' ', $classes );
+		} else {
+			throw new \MWException( __METHOD__ . ': Expected String or Array; ' . getType( $classes ) . ' given.' );
+		}
+
 	}
 
 	/**
@@ -170,33 +173,8 @@ abstract class Component {
 	 */
 	protected function indent( $indent = 0 ) {
 
-		$this->mIndent += $indent;
+		$this->mIndent += (int) $indent;
 
 		return "\n" . str_repeat( "\t", $this->mIndent );
-	}
-
-	/**
-	 * Calls the handler for each child element of this components DOM element.
-	 *
-	 * Signature of the handler: function handler( DOMElement $element )
-	 *
-	 * @param $handler
-	 */
-	protected function eachChild( $handler ) {
-
-		if ( is_callable( $handler ) ) {
-
-			$children = $this->getDomElement()->childNodes;
-
-			foreach ( $children as $child ) {
-
-				if ( is_a( $child, 'DOMElement' ) ) {
-					call_user_func( $handler, $child );
-				}
-
-			}
-
-		}
-
 	}
 }

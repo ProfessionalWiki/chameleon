@@ -6,20 +6,27 @@
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
-         stopOnError="false"
+		 printerClass="Skins\Chameleon\Tests\Util\ColoringTextUIResultPrinter"
+		 stopOnError="false"
          stopOnFailure="false"
          stopOnIncomplete="false"
          stopOnSkipped="false"
-         strict="true"
+		 beStrictAboutOutputDuringTests="true"
+		 beStrictAboutTestsThatDoNotTestAnything="true"
+		 checkForUnintentionallyCoveredCode="false"
          verbose="true">
     <testsuites>
-        <testsuite name="skins-chameleon">
-            <directory>tests/phpunit</directory>
-        </testsuite>
+		<testsuite name="skins-chameleon">
+			<directory>tests/phpunit</directory>
+		</testsuite>
     </testsuites>
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">includes</directory>
+			<directory suffix=".php">src</directory>
+			<directory suffix=".php">tests/Util</directory>
         </whitelist>
     </filter>
+	<php>
+		<const name="USE_EXTERNAL_HTML_VALIDATOR" value="false"/>
+	</php>
 </phpunit>

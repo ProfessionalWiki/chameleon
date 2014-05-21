@@ -5,55 +5,39 @@ namespace Skins\Chameleon\Tests\Components;
 use Skins\Chameleon\Components\MainContent;
 
 /**
- * @uses \Skins\Chameleon\Components\MainContent
- *
  * @ingroup Test
  *
- * @group skins-chameleon
- * @group mediawiki-databaseless
- *
  * @license GNU GPL v3+
- * @since 1.0
+ * @since   1.0
  *
- * @author mwjames
+ * @author  mwjames
+ *
+ * @coversDefaultClass \Skins\Chameleon\Components\MainContent
+ * @covers ::<private>
+ * @covers ::<protected>
+ *
+ * @group   skins-chameleon
+ * @group   mediawiki-databaseless
  */
-class MainContentTest extends \PHPUnit_Framework_TestCase {
+class MainContentTest extends ChameleonSkinComponentTestCase {
 
-	public function testCanConstruct() {
+	protected $classUnderTest = '\Skins\Chameleon\Components\MainContent';
 
-		$chameleonTemplate = $this->getMockBuilder( '\Skins\Chameleon\ChameleonTemplate' )
-			->disableOriginalConstructor()
-			->getMock();
+	/**
+	 * @covers ::getHtml
+	 */
+	public function testGetHtml_OnEmptyDataProperty() {
 
-		$this->assertInstanceOf(
-			'\Skins\Chameleon\Components\MainContent',
-			new MainContent( $chameleonTemplate )
-		);
-	}
-
-	public function testGetHtmlOnEmptyDataProperty() {
-
-		$message = $this->getMockBuilder( '\Message' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$chameleonTemplate = $this->getMockBuilder( '\Skins\Chameleon\ChameleonTemplate' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$chameleonTemplate->expects( $this->atLeastOnce() )
-			->method( 'getMsg' )
-			->will( $this->returnValue( $message ) );
+		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
 		$chameleonTemplate->data = array(
-			'subtitle' => '',
-			'undelete' => '',
-			'printfooter' => '',
+			'subtitle'         => '',
+			'undelete'         => '',
+			'printfooter'      => '',
 			'dataAfterContent' => ''
 		);
 
 		$instance = new MainContent( $chameleonTemplate );
 		$this->assertInternalType( 'string', $instance->getHtml() );
 	}
-
 }

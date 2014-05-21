@@ -127,7 +127,7 @@ class NavbarHorizontal extends Component {
 		$logo = new Logo( $this->getSkinTemplate(), $domElement, $this->getIndent() );
 		$logo->addClasses( 'navbar-brand' );
 
-		return $logo->getHtml();
+		return \Html::rawElement( 'li', array(), $logo->getHtml() );
 	}
 
 	/**
@@ -195,8 +195,9 @@ class NavbarHorizontal extends Component {
 		// start personal tools element
 
 		$ret =
+			$this->indent() . '<li class="pull-right">' .
 			$this->indent() . '<!-- personal tools -->' .
-			$this->indent() . '<ul class="navbar-right navbar-nav navbar-personaltools" >' .
+			$this->indent() . '<ul class="navbar-nav navbar-personaltools" >' .
 			$this->indent( 1 ) . '<li class="dropdown navbar-personaltools-tools">' .
 			$this->indent( 1 ) . '<a class="dropdown-toggle glyphicon glyphicon-user ' . $toolsClass . '" href="#" data-toggle="dropdown" title="' . $toolsLinkText . '" ></a>' .
 			$this->indent() . '<ul class="p-personal-tools dropdown-menu" >';
@@ -239,7 +240,7 @@ class NavbarHorizontal extends Component {
 
 		}
 
-		$ret .= $this->indent( -1 ) . '</ul>' . "\n";
+		$ret .= $this->indent( -1 ) . '</ul></li>' . "\n";
 
 		return $ret;
 	}
@@ -249,7 +250,7 @@ class NavbarHorizontal extends Component {
 		$search = new SearchBar( $this->getSkinTemplate(), $domElement, $this->getIndent() );
 		$search->addClasses( 'navbar-form' );
 
-		return $search->getHtml();
+		return '<li class="pull-right">' . $search->getHtml() . '</li>';
 	}
 
 }

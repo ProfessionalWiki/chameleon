@@ -46,9 +46,6 @@ class ChameleonTemplate extends BaseTemplate {
 	 */
 	public function execute() {
 
-		// Suppress warnings to prevent notices about missing indexes in $this->data
-		wfSuppressWarnings();
-
 		// output the head element
 		// The headelement defines the <body> tag itself, it shouldn't be included in the html text
 		// To add attributes or classes to the body tag override addToBodyAttributes() in SkinChameleon
@@ -57,7 +54,15 @@ class ChameleonTemplate extends BaseTemplate {
 		$this->printTrail();
 		echo "</body>\n</html>";
 
-		wfRestoreWarnings();
+	}
+
+	/**
+	 * Overrides method in parent class that is unprotected against non-existent indexes in $this->data
+	 *
+	 * @param $key
+	 */
+	function html( $key ) {
+		echo $this->get( $key );
 	}
 
 	protected function getRootComponent() {

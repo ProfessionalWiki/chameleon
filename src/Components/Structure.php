@@ -40,7 +40,13 @@ class Structure extends Component {
 	 */
 	public function getHtml(){
 
-		$children = $this->getDomElement()->childNodes;
+		$domElement = $this->getDomElement();
+
+		if ( is_a( $domElement, 'DomElement' ) ) {
+			$children = $this->getDomElement()->childNodes;
+		} else {
+			$children = array();
+		}
 
 		$ret = '';
 

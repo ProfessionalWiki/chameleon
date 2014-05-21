@@ -10,13 +10,14 @@ use RuntimeException;
 /**
  * @ingroup Test
  *
- * @group skins-chameleon
- * @group mediawiki-databaseless
- *
  * @license GNU GPL v3+
  * @since 1.0
  *
  * @author mwjames
+ *
+ * @coversNothing
+ * @group skins-chameleon
+ * @group mediawiki-databaseless
  */
 class XmlLayoutFileValidityTest extends \PHPUnit_Framework_TestCase {
 

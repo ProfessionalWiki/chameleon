@@ -33,9 +33,10 @@
 		"mediawiki/bootstrap": "~1.0"
 	},
 	"autoload"   : {
-		"files": [
-			"Chameleon.php"
-		]
+		"files": [ "Chameleon.php" ],
+		"psr-4": {
+			"Skins\\Chameleon\\Tests\\Util\\" : "tests/Util"
+		}
 	},
 	"extra"      : {
 		"branch-alias": {

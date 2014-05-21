@@ -29,6 +29,8 @@ namespace Skins\Chameleon\Components;
 /**
  * The Html class.
  *
+ * This component allows insertion of raw HTML into the page.
+ *
  * @ingroup Skins
  */
 class Html extends Component {

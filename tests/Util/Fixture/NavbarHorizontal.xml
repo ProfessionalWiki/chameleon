@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure>
+	<component type="NavbarHorizontal">
+		<component type="Logo"></component>
+		<component type="NavMenu" flatten="navigation"></component>
+		<component type="PageTools" hideSelectedNameSpace="1"></component>
+		<component type="PersonalTools"></component>
+		<component type="SearchBar"></component>
+	</component>
+</structure>
+

@@ -21,6 +21,7 @@ use RuntimeException;
 class DocumentElementFinder {
 
 	protected $file = null;
+	protected $document = null;
 
 	/**
 	 * @since 1.0
@@ -40,17 +41,46 @@ class DocumentElementFinder {
 	 */
 	public function getComponentByTypeAttribute( $type ) {
 
-		foreach ( $this->getDocument()->getElementsByTagName( 'component' ) as $elements ) {
+		$elements = $this->getComponentsByTypeAttribute( $type );
 
-			if ( $elements instanceOf DOMElement && $elements->hasAttribute( 'type' ) && $elements->getAttribute( 'type' ) === $type ) {
-				return $elements;
-			}
+		if ( count( $elements ) > 0 ) {
+			return array_shift( $elements );
 		}
 
 		return null;
 	}
 
+	/**
+	 * @since 1.0
+	 *
+	 * @param string $type
+	 *
+	 * @return DOMElement[]
+	 */
+	public function getComponentsByTypeAttribute( $type ) {
+
+		$elements = array();
+
+		$elementList = $this->getDocument()->getElementsByTagName( strtolower( $type ) );
+		foreach( $elementList as $element ){
+			$elements[] = $element;
+		}
+
+		$elementList = $this->getDocument()->getElementsByTagName( 'component' );
+		foreach ( $elementList as $element ) {
+			if ( $element instanceOf DOMElement && $element->hasAttribute( 'type' ) && $element->getAttribute( 'type' ) === $type ) {
+				$elements[] = $element;
+			}
+		}
+
+		return $elements;
+	}
+
 	protected function getDocument() {
+
+		if ( $this->document !== null ) {
+			return $this->document;
+		}
 
 		$file = str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, $this->file );
 

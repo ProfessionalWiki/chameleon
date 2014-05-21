@@ -75,7 +75,7 @@ class MainContent extends Component {
 			$this->indent() . '<!-- tagline; usually goes something like "From WikiName" primary purpose of this seems to be for printing to identify the source of the content -->' .
 			$this->indent() . $idRegistry->element( 'div', array( 'id'=> 'siteSub' ), $skintemplate->getMsg( 'tagline' )->escaped() );
 
-		if ( $skintemplate->data[ 'subtitle' ] ) {
+		if ( $skintemplate->get( 'subtitle' ) ) {
 
 			// TODO: should not use class 'small', better use class 'contentSub' and do styling in a less file
 			$ret .=
@@ -84,7 +84,7 @@ class MainContent extends Component {
 
 		}
 
-		if ( $skintemplate->data[ 'undelete' ] ) {
+		if ( $skintemplate->get( 'undelete' ) ) {
 			// TODO: should not use class 'small', better use class 'contentSub2' and do styling in a less file
 			$ret .=
 				$this->indent() . '<!-- undelete message -->' .
@@ -116,7 +116,7 @@ class MainContent extends Component {
 				$this->indent() . $skintemplate->get( 'catlinks' );
 
 
-		if ( $skintemplate->data[ 'dataAfterContent' ] ) {
+		if ( $skintemplate->get( 'dataAfterContent' ) ) {
 			$ret .= $this->indent() . '<!-- data blocks which should go somewhere after the body text, but not before the catlinks block-->' .
 					$this->indent() . $skintemplate->get( 'dataAfterContent' );
 		}

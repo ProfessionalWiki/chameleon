@@ -42,8 +42,8 @@ class FooterIcons extends Component {
 	 */
 	public function getHtml() {
 
-		$ret   = null;
-		$icons = $this->getSkinTemplate()->getFooterIcons( "icononly" );
+		$ret   = '';
+		$icons = $this->getSkinTemplate()->getFooterIcons( 'icononly' );
 
 		if ( $icons !== null && count( $icons ) > 0 ) {
 

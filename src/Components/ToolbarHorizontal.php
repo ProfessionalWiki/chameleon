@@ -67,7 +67,7 @@ class ToolbarHorizontal extends Component {
 		ob_end_clean();
 
 		// insert language links
-		if ( $skinTemplate->data[ 'language_urls' ] ) {
+		if ( array_key_exists( 'language_urls', $skinTemplate->data ) && $skinTemplate->data[ 'language_urls' ] ) {
 
 			$ret .= $this->indent() . '<li class="dropdown dropup p-lang" id="p-lang" ' . Linker::tooltip( 'p-lang' ) . ' >' .
 					$this->indent( 1 ) . '<a href="#" data-target="#" class="dropdown-toggle" data-toggle="dropdown">' .

@@ -42,11 +42,12 @@ class SiteNotice extends Component {
 	 */
 	public function getHtml() {
 
-		$siteNotice = $this->getSkinTemplate()->data[ 'sitenotice' ];
+		$data = $this->getSkinTemplate()->data;
 
-		if ( $siteNotice ) {
+		if ( array_key_exists( 'sitenotice', $data ) && $data[ 'sitenotice' ] ) {
+
 			return $this->indent() . '<!-- sitenotice -->' .
-				   $this->indent() . '<div id="siteNotice" class="siteNotice ' . $this->getClassString() . '" >' . $siteNotice . '</div>'
+				   $this->indent() . '<div id="siteNotice" class="siteNotice ' . $this->getClassString() . '" >' . $data[ 'sitenotice' ] . '</div>'
 				   . "\n";
 		} else {
 			return "\n";

@@ -61,7 +61,10 @@ class PageTools extends Component {
 
 		$navigation = $this->getSkinTemplate()->data[ 'content_navigation' ];
 
-		$hideSelectedNameSpace = filter_var( $this->getDomElement()->getAttribute( 'hideSelectedNameSpace' ), FILTER_VALIDATE_BOOLEAN );
+		$hideSelectedNameSpace = false;
+		if ( $this->getDomElement() !== null ) {
+			$hideSelectedNameSpace = filter_var( $this->getDomElement()->getAttribute( 'hideSelectedNameSpace' ), FILTER_VALIDATE_BOOLEAN );
+		}
 
 		if ( $hideSelectedNameSpace ) {
 			$namespacekey = $this->getNamespaceKey();

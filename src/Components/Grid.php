@@ -35,7 +35,7 @@ use Skins\Chameleon\ChameleonTemplate;
  */
 class Grid extends Container {
 
-	public function __construct( ChameleonTemplate $template, $domElement, $indent = 0 ) {
+	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
 
 		parent::__construct( $template, $domElement, $indent );
 		$this->addClasses( 'container' );

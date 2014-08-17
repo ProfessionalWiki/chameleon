@@ -31,10 +31,10 @@
  */
 class SkinChameleon extends SkinTemplate {
 
-	var $skinname = 'chameleon';
-	var $stylename = 'chameleon';
-	var $template = '\Skins\Chameleon\ChameleonTemplate';
-	var $useHeadElement = true;
+	public $skinname = 'chameleon';
+	public $stylename = 'chameleon';
+	public $template = '\Skins\Chameleon\ChameleonTemplate';
+	public $useHeadElement = true;
 
 	/**
 	 * @param $out OutputPage object

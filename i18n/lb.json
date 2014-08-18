@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "D'Chameleon Ausgesinn.",
+	"chameleon-loggedin": "Dir sidd als $1 ageloggt.",
+	"chameleon-notloggedin": "Dir sidd net ageloggt",
+	"chameleon-newmessages": "Dir hutt nei Messagen.",
+	"chameleon-nonewmessages": "Dir hutt keng nei Messagen."
+}

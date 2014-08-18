@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Metalhead64"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "Die Chameleon-Benutzeroberfläche.",
+	"chameleon-loggedin": "Du bist als $1 angemeldet.",
+	"chameleon-notloggedin": "Du bist nicht angemeldet",
+	"chameleon-newmessages": "Du hast neue Nachrichten.",
+	"chameleon-nonewmessages": "Du hast keine neuen Nachrichten."
+}

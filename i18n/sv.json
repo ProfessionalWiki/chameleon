@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lokal Profil"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "Chameleon-utseendet.",
+	"chameleon-loggedin": "Du är inloggad som $1.",
+	"chameleon-notloggedin": "Du är inte inloggad",
+	"chameleon-newmessages": "Du har nya meddelanden.",
+	"chameleon-nonewmessages": "Du har inga nya meddelanden."
+}

@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Matma Rex",
+			"Ty221"
+		]
+	},
+	"skinname-chameleon": "Kameleon",
+	"chameleon-desc": "Skórka Kameleon.",
+	"chameleon-loggedin": "Jesteś zalogowany jako $1.",
+	"chameleon-notloggedin": "Nie jesteś zalogowany",
+	"chameleon-newmessages": "Masz nowe wiadomości.",
+	"chameleon-nonewmessages": "Nie masz nowych wiadomości."
+}

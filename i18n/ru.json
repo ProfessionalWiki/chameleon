@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Okras"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "Тема оформления Chameleon.",
+	"chameleon-loggedin": "Вы вошли как $1.",
+	"chameleon-notloggedin": "Вы не вошли в систему",
+	"chameleon-newmessages": "У вас есть новые сообщения.",
+	"chameleon-nonewmessages": "У вас нет новых сообщений."
+}

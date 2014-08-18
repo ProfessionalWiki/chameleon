@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "La apariencia Chameleon.",
+	"chameleon-loggedin": "Has accedido como $1.",
+	"chameleon-notloggedin": "No has accedido",
+	"chameleon-newmessages": "Tienes mensajes nuevos.",
+	"chameleon-nonewmessages": "No tienes mensajes nuevos."
+}

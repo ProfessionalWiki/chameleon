@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gazimagomedov"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "Chameleon сипат-сурат.",
+	"chameleon-loggedin": "Мун $1 гIадин жаниве лъугьана",
+	"chameleon-notloggedin": "Мун жаниве лъугьун гьечIо",
+	"chameleon-newmessages": "Духъе цIиял кагътал руго.",
+	"chameleon-nonewmessages": "Духъе цIиял кагътал гьечIо."
+}

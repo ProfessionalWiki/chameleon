@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Arifin.wijaya"
+		]
+	},
+	"skinname-chameleon": "Bunglon",
+	"chameleon-desc": "Kulit Bunglon.",
+	"chameleon-loggedin": "Anda telah masuk log sebagai $1.",
+	"chameleon-notloggedin": "Anda belum masuk log",
+	"chameleon-newmessages": "Anda memiliki pesan baru.",
+	"chameleon-nonewmessages": "Anda tidak memiliki pesan baru."
+}

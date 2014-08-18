@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Baloch Afghanistan"
+		]
+	},
+	"chameleon-loggedin": "شما  سایتِ تا $1 داخل بوته گیت",
+	"chameleon-notloggedin": "شما تا هنون  سایتِ تا داخل نه بوته ایت"
+}

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"skinname-chameleon": "Камелеон",
+	"chameleon-loggedin": "Пријављени сте као $1.",
+	"chameleon-notloggedin": "Нисте пријављени"
+}

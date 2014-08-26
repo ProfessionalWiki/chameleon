@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cwlin0416"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "變色龍外觀。",
+	"chameleon-loggedin": "您已登入為 $1。",
+	"chameleon-notloggedin": "您尚未登入",
+	"chameleon-newmessages": "您有新訊息。",
+	"chameleon-nonewmessages": "你沒有新訊息。"
+}

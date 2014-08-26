@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"skinname-chameleon": "カメレオン",
+	"chameleon-loggedin": "$1 としてログインしています。",
+	"chameleon-notloggedin": "ログインしていません",
+	"chameleon-newmessages": "新着メッセージがあります。"
+}

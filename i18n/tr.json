@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sayginer"
+		]
+	},
+	"chameleon-loggedin": "$1 olarak oturum açtınız.",
+	"chameleon-notloggedin": "Oturum açmadınız",
+	"chameleon-newmessages": "Yeni mesajınız var.",
+	"chameleon-nonewmessages": "Yeni mesajınız yok."
+}

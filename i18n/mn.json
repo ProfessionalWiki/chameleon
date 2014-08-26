@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wisdom"
+		]
+	},
+	"chameleon-loggedin": "$1 -ээр логин хийгээгүй байна.",
+	"chameleon-notloggedin": "Та логин хийгээгүй байна",
+	"chameleon-newmessages": "Танд шинэ мэдээ ирсэн байна.",
+	"chameleon-nonewmessages": "Танд ямар мэдээ ирээгүй байна."
+}

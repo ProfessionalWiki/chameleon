@@ -4,5 +4,9 @@
 			"Beta16"
 		]
 	},
-	"chameleon-desc": "Skin Chameleon‎."
+	"chameleon-desc": "Skin Chameleon‎.",
+	"chameleon-loggedin": "Hai effettuato l'accesso come $1.",
+	"chameleon-notloggedin": "Non hai effettuato l'accesso",
+	"chameleon-newmessages": "Hai nuovi messaggi.",
+	"chameleon-nonewmessages": "Non hai nuovi messaggi."
 }

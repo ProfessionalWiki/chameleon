@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nikosguard"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-loggedin": "Έχετε συνδεθεί ως $1.",
+	"chameleon-notloggedin": "Δεν έχετε συνδεθεί",
+	"chameleon-newmessages": "Έχετε νέα μηνύματα.",
+	"chameleon-nonewmessages": "Δεν έχετε νέα μηνύματα."
+}

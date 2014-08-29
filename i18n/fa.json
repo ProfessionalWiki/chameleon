@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Reza1615"
+		]
+	},
+	"skinname-chameleon": "آفتابپرست",
+	"chameleon-desc": "پوسته آفتاب‌پرست.",
+	"chameleon-loggedin": "شما به عنوان  $1 وارد شدید.",
+	"chameleon-notloggedin": "شما وارد نشده‌ايد",
+	"chameleon-newmessages": "پیام‌های جدیدی دارید",
+	"chameleon-nonewmessages": "پیام جدید ندارید."
+}

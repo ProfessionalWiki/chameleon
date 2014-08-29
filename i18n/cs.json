@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mormegil"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "Vzhled Chameleon",
+	"chameleon-loggedin": "Jste {{GENDER:|přihlášen|přihlášena|přihlášeni}} jako $1.",
+	"chameleon-notloggedin": "Nejste přihlášeni",
+	"chameleon-newmessages": "Máte nové zprávy.",
+	"chameleon-nonewmessages": "Nemáte žádné nové zprávy."
+}

@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xuacu"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "El tema Chameleon.",
+	"chameleon-loggedin": "Aniciasti sesión como $1.",
+	"chameleon-notloggedin": "Nun aniciasti sesión",
+	"chameleon-newmessages": "Tienes mensaxes nuevos.",
+	"chameleon-nonewmessages": "Nun tienes mensaxes nuevos."
+}

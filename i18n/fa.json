@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Reza1615"
+			"Reza1615",
+			"Alirezaaa"
 		]
 	},
 	"skinname-chameleon": "آفتابپرست",
@@ -9,5 +10,5 @@
 	"chameleon-loggedin": "شما به عنوان  $1 وارد شدید.",
 	"chameleon-notloggedin": "شما وارد نشده‌ايد",
 	"chameleon-newmessages": "پیام‌های جدیدی دارید",
-	"chameleon-nonewmessages": "پیام جدید ندارید."
+	"chameleon-nonewmessages": "پیام تازه ندارید."
 }

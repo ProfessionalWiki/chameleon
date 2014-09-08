@@ -22,6 +22,18 @@
  * @ingroup Skins
  */
 
+@import "./thumbnails.less";
+
+.center {
+	text-align: center;
+	width: 100%;
+
+	* {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
 // logo will be scaled down to this height to fit into the navbar (should be <= navbar-height)
 @navbar-logo-height: .9 * @navbar-height;
 

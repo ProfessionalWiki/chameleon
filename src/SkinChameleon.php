@@ -41,7 +41,8 @@ class SkinChameleon extends SkinTemplate {
 	 */
 	function setupSkinUserCss( OutputPage $out ) {
 
-		parent::setupSkinUserCss( $out );
+		// do not use non-standard MW less files anymore
+//		parent::setupSkinUserCss( $out );
 
 		// load Bootstrap styles
 		$out->addModuleStyles( 'ext.bootstrap.styles' );

@@ -1,5 +1,7 @@
-/*
- * Style file for the Chameleon skin
+/**
+ * Styles dump for the Chameleon skin
+ *
+ * @todo This is a mess. Needs rework.
  *
  * @copyright (C) 2013, Stephan Gambke
  * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
@@ -17,12 +19,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @file
- * @ingroup Skins
  */
-
-@import "./thumbnails.less";
 
 .center {
 	text-align: center;
@@ -33,15 +30,6 @@
 		margin-right: auto;
 	}
 }
-
-// logo will be scaled down to this height to fit into the navbar (should be <= navbar-height)
-@navbar-logo-height: .9 * @navbar-height;
-
-@navbar-user-loggedin : @brand-primary;
-@navbar-user-loggedin-hover: darken(@navbar-newtalk-available, 20%);
-
-@navbar-newtalk-available: @brand-primary;
-@navbar-newtalk-available-hover: darken(@navbar-newtalk-available, 20%);
 
 // if the navbar is in the first row (i.e. at the top of the page), but inside a container (i.e. not a fixed head),
 // add some margin at the top

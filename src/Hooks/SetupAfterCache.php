@@ -86,7 +86,7 @@ class SetupAfterCache {
 
 		$this->bootstrapManager->addAllBootstrapModules();
 		$this->bootstrapManager->addExternalModule(
-			$this->configuration['wgStyleDirectory'] . '/chameleon/styles/' . 'screen.less',
+			$this->configuration['wgStyleDirectory'] . '/chameleon/styles/' . 'core.less',
 			$this->configuration['wgStylePath'] . '/chameleon/styles/'
 		);
 	}

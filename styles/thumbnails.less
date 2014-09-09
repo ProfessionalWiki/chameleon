@@ -22,6 +22,8 @@
 
 .thumbinner {
 	.thumbnail;
+
+	overflow: hidden;
 }
 
 /* Default styles when there's no .mw-content-ltr or .mw-content-rtl, overridden below */
@@ -40,6 +42,7 @@ div.magnify {
 		.glyphicon-zoom-in;
 
 		color: lighten( @thumbnail-caption-color, 15% );
+		top: 4px;
 
 		&:hover {
 			text-decoration: none;

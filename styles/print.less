@@ -1,7 +1,9 @@
 /**
- * Utility classes
+ * Styles related to printing
  *
- * @todo This is a mess. Needs rework.
+ * This file contains styles that mostly hide certain elements depending on the
+ * media, e.g. some (like nav bars) for printing, some others (like the print
+ * footer) on screens
  *
  * @copyright (C) 2013, Stephan Gambke
  * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
@@ -21,36 +23,16 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-.center {
-	text-align: center;
-	width: 100%;
+@media not print {
 
-	* {
-		margin-left: auto;
-		margin-right: auto;
+	.printfooter {
+		display: none;
 	}
 }
 
-.floatright {
-	clear: right;
-	float: right;
-	margin: 0 0 0.5em 0.5em;
-}
+@media print {
+	.navbar, .mw-editsection, .mw-editsection-like, .toctoggle, .magnify {
+		display: none;
+	}
 
-div.tright {
-	.floatright;
-
-	margin: 0.5em 0 1.3em 1.4em;
-}
-
-.floatleft {
-	clear: left;
-	float: left;
-	margin: 0 0.5em 0.5em 0;
-}
-
-div.tleft {
-	.floatright;
-
-	margin: 0.5em 1.4em 1.3em 0;
 }

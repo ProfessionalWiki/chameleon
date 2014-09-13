@@ -21,16 +21,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-@media not print {
-
-	.printfooter {
-		display: none;
-	}
-}
-
 /* Display editsection links smaller and next to headings */
-.mw-editsection,
 .mw-editsection-like {
 	font-size: @font-size-small;
 	font-weight: normal;
@@ -45,6 +36,10 @@
 	display: inline-block;
 }
 
+.mw-editsection {
+	.mw-editsection-like();
+}
+
 /* Correct directionality when page dir is different from site/user dir */
 /* @noflip */
 .mw-content-ltr .mw-editsection,
@@ -57,7 +52,6 @@
 .mw-content-ltr .mw-content-rtl .mw-editsection {
 	margin-right: 1em;
 }
-
 
 // if the navbar is in the first row (i.e. at the top of the page), but inside a container (i.e. not a fixed head),
 // add some margin at the top
@@ -151,6 +145,53 @@
 
 	}
 
+}
+
+.mw-jump {
+	height: 0;
+	overflow: hidden;
+}
+
+.toc {
+	#toctitle {
+		margin-bottom: 1ex;
+
+		h2 {
+			display: inline;
+			font-size: @toctitle-font-size;
+		}
+
+		.toctoggle {
+			.mw-editsection-like();
+		}
+	}
+
+	ul {
+		list-style-image: none;
+		list-style-type: none;
+		margin-left: 0.5em;
+		padding: 0;
+		text-align: left;
+		display: table;
+
+		li {
+			display: table-row-group;
+
+			a {
+				display: table-row;
+
+				.tocnumber {
+					display: table-cell;
+					padding-right: 1ex;
+				}
+
+				.toctext {
+					display: table-cell;
+				}
+			}
+		}
+
+	}
 }
 
 .mw-body {

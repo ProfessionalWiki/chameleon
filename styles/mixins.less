@@ -1,5 +1,5 @@
 /**
- * MediaWiki Images
+ * Mixins used for the Chameleon skin styles
  *
  * @copyright (C) 2014, Stephan Gambke
  * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
@@ -19,14 +19,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-/* Inline Elements */
-img {
-	border: none;
-	vertical-align: middle;
-
-	.thumbborder {
-		border: 1px solid @thumbnail-border;
+/**
+ * Colors for links
+ *
+ * :hover MUST come after :link and :visited
+ * :active MUST come after :hover
+ */
+.link( @color ) {
+	&:link {
+		color: @color;
+	}
+	&:visited {
+		color: darken(@color, 20%);
+	}
+	&:focus {
+		color: darken(@color, 15%);
+	}
+	&:hover {
+		color: darken(@color, 15%);
+	}
+	&:active {
+		color: difference(@color, #ffffff);
+	}
+	&:visited:focus {
+		color: darken(@color, 30%);
+	}
+	&:visited:hover {
+		color: darken(@color, 30%);
 	}
 }
-

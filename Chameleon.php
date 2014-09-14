@@ -116,6 +116,7 @@ call_user_func( function () {
 			'egChameleonExternalStyleModules',
 			'egChameleonExternalLessVariables',
 			'egChameleonEnableVisualEditor',
+			'IP',
 			'wgStyleDirectory',
 			'wgStylePath',
 			'wgVisualEditorSupportedSkins',

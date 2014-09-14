@@ -19,6 +19,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// Global textual link colors.
+@link-color: @brand-primary;
+@link-new-color: #b52b27;
+
+@link-stub-color: @link-color;
+@link-interwiki-color: @link-color;
+@link-external-color: @link-color;
+
+@ul-level1-bullet: "\26ab"; // bullet
+@ul-level2-bullet: "\2022"; // bullet
+@ul-level3-bullet: "\2219"; // bullet
+@list-bullet-color: @gray-light;
+
 @thumbnail-caption-padding: 3px;
 
 @toctitle-font-size: @font-size-large;
@@ -27,7 +40,4 @@
 @navbar-logo-height: .9 * @navbar-height;
 
 @navbar-user-loggedin : @brand-primary;
-@navbar-user-loggedin-hover: darken(@navbar-newtalk-available, 20%);
-
 @navbar-newtalk-available: @brand-primary;
-@navbar-newtalk-available-hover: darken(@navbar-newtalk-available, 20%);

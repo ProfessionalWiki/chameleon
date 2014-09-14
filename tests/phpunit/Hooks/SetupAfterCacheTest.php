@@ -80,7 +80,8 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 
 		$configuration = array(
 			'egChameleonExternalStyleModules' => $mixedExternalStyleModules,
-			'wgStyleDirectory'                => 'notTestinwgStyleDirectory',
+			'IP'                              => 'notTestingIP',
+			'wgStyleDirectory'                => 'notTestingwgStyleDirectory',
 			'wgStylePath'                     => 'notTestingwgStylePath'
 		);
 
@@ -112,7 +113,8 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 
 		$configuration = array(
 			'egChameleonExternalStyleModules' => $externalStyleModules,
-			'wgStyleDirectory'                => 'notTestinwgStyleDirectory',
+			'IP'                              => 'notTestingIP',
+			'wgStyleDirectory'                => 'notTestingwgStyleDirectory',
 			'wgStylePath'                     => 'notTestingwgStylePath'
 		);
 
@@ -152,7 +154,8 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 
 		$configuration = array(
 			'egChameleonExternalLessVariables' => $externalLessVariables,
-			'wgStyleDirectory'                => 'notTestinwgStyleDirectory',
+			'IP'                              => 'notTestingIP',
+			'wgStyleDirectory'                => 'notTestingwgStyleDirectory',
 			'wgStylePath'                     => 'notTestingwgStylePath'
 		);
 
@@ -200,8 +203,9 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 			->getMock();
 
 		$defaultConfiguration = array(
-			'wgStyleDirectory' => 'notTestingwgStyleDirectory',
-			'wgStylePath' => 'notTestingwgStylePath'
+			'IP'                              => 'notTestingIP',
+			'wgStyleDirectory'                => 'notTestingwgStyleDirectory',
+			'wgStylePath'                     => 'notTestingwgStylePath'
 		);
 
 		$configurationToBeAdjusted = array();

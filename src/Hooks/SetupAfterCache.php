@@ -85,6 +85,17 @@ class SetupAfterCache {
 		// $this->isReadableFile( $this->configuration['wgStyleDirectory'] . '/chameleon/styles/' . 'screen.less' )
 
 		$this->bootstrapManager->addAllBootstrapModules();
+
+		if ( file_exists( $this->configuration['wgStyleDirectory'] . '/common/shared.css' ) ) { // MW < 1.24
+			$this->bootstrapManager->addExternalModule(
+				$this->configuration['wgStyleDirectory'] . '/common/shared.css'
+			);
+		} else if ( file_exists( $this->configuration['IP'] . '/resources/src/mediawiki.legacy/shared.css') ) { // MW >= 1.24
+			$this->bootstrapManager->addExternalModule(
+				$this->configuration['IP'] . '/resources/src/mediawiki.legacy/shared.css'
+			);
+		}
+
 		$this->bootstrapManager->addExternalModule(
 			$this->configuration['wgStyleDirectory'] . '/chameleon/styles/' . 'core.less',
 			$this->configuration['wgStylePath'] . '/chameleon/styles/'

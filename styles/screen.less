@@ -21,6 +21,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+.mw-body {
+	padding: 0 2em;
+	margin: 1em 0;
+}
+
+
 /* Display editsection links smaller and next to headings */
 .mw-editsection-like {
 	font-size: @font-size-small;
@@ -40,7 +47,7 @@
 	.mw-editsection-like();
 }
 
-/* Correct directionality when page dir is different from site/user dir */
+/* Correct directionality when page directionality is different from site/user directionality */
 /* @noflip */
 .mw-content-ltr .mw-editsection,
 .mw-content-rtl .mw-content-ltr .mw-editsection {
@@ -51,88 +58,6 @@
 .mw-content-rtl .mw-editsection,
 .mw-content-ltr .mw-content-rtl .mw-editsection {
 	margin-right: 1em;
-}
-
-// if the navbar is in the first row (i.e. at the top of the page), but inside a container (i.e. not a fixed head),
-// add some margin at the top
-.container > *:first-child .navbar {
-	margin-top: (@grid-gutter-width / 2);
-}
-
-.navbar {
-	.nav {
-		width: 100%;
-	}
-}
-
-// override some navbar-brand styles to accommodate an image and include a separator to the rest of the navbar
-.navbar-brand {
-
-	padding: (( @navbar-height - @navbar-logo-height ) / 2 );
-	line-height: normal;
-
-	// separator for logo
-	border-right: 1px solid @navbar-default-border;
-
-	img {
-		max-height: @navbar-logo-height;
-	}
-}
-
-// styles for personal tools in the navbar component
-.navbar-personaltools {
-
-	.nav();
-	.navbar-nav();
-
-	height: @navbar-height;
-	display: table;
-
-	// separator for user's personal tools
-	border-left: 1px solid @navbar-default-border;
-
-	> li {
-		display: table-row;
-		float: none;
-
-		> a {
-			display: table-cell;
-			vertical-align: middle;
-			line-height: normal;
-			padding: 0 10px; // TODO: put this in a variable
-			border-color: @navbar-default-border;
-			border-bottom: 1px solid @navbar-default-border;
-
-			&.navbar-newtalk-available {
-				.link( @navbar-newtalk-available );
-			}
-
-			&.navbar-userloggedin {
-				.link( @navbar-user-loggedin );
-			}
-
-		}
-
-		&.open {
-			> a, > a:hover, > a:focus {
-
-				border-color: @navbar-default-border;
-				border-bottom: 1px solid @navbar-default-border;
-
-				&.navbar-userloggedin {
-					.link( @navbar-user-loggedin );
-				}
-
-			}
-
-		}
-
-		&:last-child > a, &.open:last-child > a {
-			border: none;
-		}
-
-	}
-
 }
 
 .mw-jump {
@@ -194,11 +119,6 @@
 /* have to insert id based rule here to over-rule MW core's shared.css */
 #toc ul {
 	margin-left: 0.5em;
-}
-
-.mw-body {
-	padding: 0 2em;
-	margin: 1em 0;
 }
 
 .catlinks {
@@ -487,4 +407,18 @@ table.small {
 	margin-left: 50px;
 	margin-right: 50px;
 	text-align: center;
+}
+
+.mw-changeslist-legend {
+	dt {
+		clear: left;
+	}
+
+	dt, dd {
+		line-height: 1.3em;
+	}
+}
+
+table.mw-recentchanges-table {
+	width: 100%;
 }

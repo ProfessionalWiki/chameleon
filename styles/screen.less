@@ -243,37 +243,43 @@ a.new, #p-personal a.new {
 * Lists
 */
 .mw-body {
-	ul {
-		list-style: none;
-		padding-left: 3ex;
-		text-indent: -2.5ex;
-		margin: 0;
-		> li:before {
-			color: @list-bullet-color;
-			padding-right: 0.2ex;
-
-		}
-	}
-
 	ol {
 		text-indent: 0ex;
 	}
 
-	ul > li:before {
-		content: @ul-level1-bullet;
-	}
+	ul {
+		list-style: none;
+		text-indent: -2ex;
 
+		> li:before {
+			background-color: @list-bullet-color;
+			content: "";
+			display: inline-block;
 
-	ul, ol {
-		ul > li:before {
-			content: @ul-level2-bullet;
+			height: @list-bullet-size;
+			width: @list-bullet-size;
+			border-radius: 50%;
+
+			margin-right: @list-bullet-size;
+			margin-bottom: 1.1ex - @list-bullet-size;
 		}
 	}
 
-	ul, ol {
+	ol, ul {
+		padding-left: @list-level-indent;
+		margin: 0;
+
+		ul > li:before {
+			font-size: 80%;
+			margin-right: @list-bullet-size * 0.8;
+			margin-bottom: (1.1ex - @list-bullet-size) / 0.8;
+		}
+
 		ul, ol {
 			ul > li:before {
-				content: @ul-level3-bullet;
+				font-size: 50%;
+				margin-right: @list-bullet-size * 0.5;
+				margin-bottom: (1.1ex - @list-bullet-size) / 0.5;
 			}
 		}
 	}

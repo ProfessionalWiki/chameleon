@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Minh Nguyen"
+		]
+	},
+	"skinname-chameleon": "Tắc kè hoa",
+	"chameleon-desc": "Giao diện Tắc kè hoa",
+	"chameleon-loggedin": "Bạn đã đăng nhập với tên $1.",
+	"chameleon-notloggedin": "Bạn chưa đăng nhập",
+	"chameleon-newmessages": "Bạn có tin nhắn mới.",
+	"chameleon-nonewmessages": "Bạn không có tin nhắn mới."
+}

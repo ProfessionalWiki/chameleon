@@ -122,9 +122,10 @@ abstract class Component {
 
 		$classesArray = $this->transformClassesToArray( $classes );
 
-		$classesArray = array_combine( $classesArray, $classesArray );
-
-		$this->mClasses = array_merge( $this->mClasses, $classesArray );
+		if ( !empty( $classesArray ) ) {
+			$classesArray   = array_combine( $classesArray, $classesArray );
+			$this->mClasses = array_merge( $this->mClasses, $classesArray );
+		}
 	}
 
 	/**

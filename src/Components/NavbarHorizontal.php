@@ -57,12 +57,14 @@ class NavbarHorizontal extends Component {
 		}
 
 		// if a fixed navbar is requested
-		if ( filter_var( $this->getDomElement()->getAttribute( 'fixed' ), FILTER_VALIDATE_BOOLEAN ) ) {
+		if ( filter_var( $this->getDomElement()->getAttribute( 'fixed' ), FILTER_VALIDATE_BOOLEAN ) ||
+			$this->getDomElement()->getAttribute( 'position' ) === 'fixed' ) {
 
 			// first build the actual navbar and set a class so it will be fixed
 			$this->getDomElement()->setAttribute( 'fixed', '0' );
+			$this->getDomElement()->setAttribute( 'position', '' );
 			$realNav = new self( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );
-			$realNav->addClasses( 'navbar-fixed-top' );
+			$realNav->setClasses( $this->getClassString() . ' navbar-fixed-top' );
 			$this->mHtml .= $realNav->getHtml();
 
 			// then add an invisible copy of the nav bar that will act as a spacer
@@ -104,6 +106,9 @@ class NavbarHorizontal extends Component {
 						break;
 					case 'PersonalTools':
 						$this->mHtml .= $this->getPersonalTools( $node );
+						break;
+					case 'Menu':
+						$this->mHtml .= $this->getMenu( $node );
 						break;
 				}
 			}
@@ -170,6 +175,21 @@ class NavbarHorizontal extends Component {
 		$navMenu = new NavMenu( $this->getSkinTemplate(), $domElement, $this->getIndent() );
 
 		return $navMenu->getHtml() . "\n";
+
+	}
+
+	/**
+	 * Creates a list of navigational links from a message key or message text
+	 *
+	 * @param \DOMElement $domElement
+	 *
+	 * @return string
+	 */
+	protected function getMenu( \DOMElement $domElement = null ) {
+
+		$menu = new Menu( $this->getSkinTemplate(), $domElement, $this->getIndent() );
+
+		return $menu->getHtml() . "\n";
 
 	}
 

@@ -23,7 +23,6 @@
  * @ingroup       Skins
  */
 
-
 /**
  * SkinTemplate class for the Chameleon skin
  *

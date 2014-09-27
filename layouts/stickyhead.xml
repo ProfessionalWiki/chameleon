@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure>
+
+	<component type="NavbarHorizontal" position="fixed" >
+		<component type="Logo"></component>
+		<component type="NavMenu"></component>
+		<component type="PageTools" hideSelectedNameSpace="1"></component>
+		<component type="PersonalTools"></component>
+		<component type="SearchBar"></component>
+	</component>
+
+	<component type="NavbarHorizontal" position="sticky" >
+		<component type="Menu" message="sticky-menu"></component>
+	</component>
+
+	<grid>
+		<row>
+			<cell span="12">
+				<component type="SiteNotice"></component>
+			</cell>
+		</row>
+
+		<row>
+			<cell span="12">
+				<component type="MainContent"></component>
+			</cell>
+		</row>
+
+		<row>
+			<cell span="12">
+				<component type="ToolbarHorizontal"></component>
+			</cell>
+		</row>
+
+		<row>
+			<cell span="12">
+				<component type="FooterInfo"></component>
+			</cell>
+		</row>
+
+		<row>
+			<cell span="6">
+				<component type="FooterPlaces"></component>
+			</cell>
+			<cell span="6">
+				<component type="FooterIcons"></component>
+			</cell>
+		</row>
+	</grid>
+</structure>

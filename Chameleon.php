@@ -64,38 +64,6 @@ call_user_func( function () {
 	$GLOBALS[ 'wgExtensionMessagesFiles' ][ 'Chameleon' ] = __DIR__ . '/Chameleon.i18n.php';
     $GLOBALS[ 'wgMessagesDirs' ][ 'Chameleon' ] = __DIR__ . '/i18n';
 
-	$chameleonComponents = array(
-		'Component',
-		'Structure',
-		'Container',
-		'Row',
-		'Cell',
-		'Grid',
-		'NavbarHorizontal',
-		'NavMenu',
-		'PageTools',
-		'NewtalkNotifier',
-		'PersonalTools',
-		'Logo',
-		'SearchBar',
-		'SiteNotice',
-		'ToolbarHorizontal',
-		'FooterInfo',
-		'FooterPlaces',
-		'FooterIcons',
-		'MainContent',
-		'Html',
-	);
-
-	foreach ( $chameleonComponents as $component ) {
-		$GLOBALS[ 'wgAutoloadClasses' ][ 'Skins\\Chameleon\\Components\\' . $component ] = __DIR__ . '/src/Components/' . $component . '.php';
-	}
-
-	$GLOBALS[ 'wgAutoloadClasses' ][ 'SkinChameleon' ] = dirname( __FILE__ ) . '/src/SkinChameleon.php'; // register skin class (must be 'Skin' . SkinName)
-	$GLOBALS[ 'wgAutoloadClasses' ][ 'Skins\Chameleon\ChameleonTemplate' ] = dirname( __FILE__ ) . '/src/ChameleonTemplate.php';
-	$GLOBALS[ 'wgAutoloadClasses' ][ 'Skins\Chameleon\IdRegistry' ] = dirname( __FILE__ ) . '/src/IdRegistry.php';
-	$GLOBALS[ 'wgAutoloadClasses' ][ 'Skins\Chameleon\Hooks\SetupAfterCache' ] = __DIR__ . '/src/Hooks/SetupAfterCache.php';
-
 	/**
 	 * Using callbacks for hook registration
 	 *

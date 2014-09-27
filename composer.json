@@ -33,9 +33,10 @@
 		"mediawiki/bootstrap": "~1.0"
 	},
 	"autoload"   : {
-		"files": [ "Chameleon.php" ],
+		"files": [ "Chameleon.php", "src/SkinChameleon.php" ],
 		"psr-4": {
-			"Skins\\Chameleon\\Tests\\Util\\" : "tests/Util"
+			"Skins\\Chameleon\\Tests\\" : "tests",
+			"Skins\\Chameleon\\" : "src"
 		}
 	},
 	"extra"      : {

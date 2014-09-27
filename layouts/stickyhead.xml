@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <structure>
 
-	<component type="NavbarHorizontal" position="fixed" >
+	<component type="NavbarHorizontal" style="full-width no-margin" >
+		<modification type="NoMargin"></modification>
+		<modification type="FullWidth"></modification>
+		<component type="Menu" message="sticky-menu"></component>
+	</component>
+
+	<component type="NavbarHorizontal" style="full-width no-margin">
+		<modification type="FullWidth"></modification>
 		<component type="Logo"></component>
 		<component type="NavMenu"></component>
 		<component type="PageTools" hideSelectedNameSpace="1"></component>
 		<component type="PersonalTools"></component>
 		<component type="SearchBar"></component>
-	</component>
-
-	<component type="NavbarHorizontal" position="sticky" >
-		<component type="Menu" message="sticky-menu"></component>
 	</component>
 
 	<grid>

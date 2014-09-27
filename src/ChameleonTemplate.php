@@ -4,6 +4,7 @@ namespace Skins\Chameleon;
 
 use BaseTemplate;
 use DOMDocument;
+use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\Components\Container;
 use RuntimeException;
 
@@ -67,6 +68,10 @@ class ChameleonTemplate extends BaseTemplate {
 		echo $this->get( $key );
 	}
 
+	/**
+	 * @return Container
+	 * @throws \MWException
+	 */
 	protected function getRootComponent() {
 
 		if ( $this->mRootComponent === null ) {
@@ -77,7 +82,6 @@ class ChameleonTemplate extends BaseTemplate {
 
 			$doc->normalizeDocument();
 
-			// TODO: only create new root component the first time
 			$roots = $doc->getElementsByTagName( 'structure' );
 
 			if ( $roots->length > 0 ) {
@@ -86,7 +90,7 @@ class ChameleonTemplate extends BaseTemplate {
 
 			} else {
 				// TODO: catch other errors, e.g. malformed XML
-				throw new \MWException( 'XML description is missing an element: structure' );
+				throw new \MWException( sprintf( '%s: XML description is missing an element: structure.', $this->getLayoutFile() ) );
 			}
 		}
 
@@ -99,38 +103,71 @@ class ChameleonTemplate extends BaseTemplate {
 	 * @param int         $indent
 	 * @param string      $htmlClassAttribute
 	 *
+	 * @throws \MWException
 	 * @return \Skins\Chameleon\Components\Container
 	 */
 	public function getComponent( \DOMElement $description, $indent = 0, $htmlClassAttribute = '' ) {
 
 		$class = 'Skins\\Chameleon\\Components\\';
 
-		switch ( $description->nodeName ) {
+		$nodeName = strtolower( $description->nodeName );
+
+		switch ( $nodeName ) {
 			case 'structure':
-				$class .= 'Structure';
-				break;
 			case 'grid':
-				$class .= 'Grid';
-				break;
 			case 'row':
-				$class .= 'Row';
-				break;
 			case 'cell':
-				$class .= 'Cell';
+				$class .= ucfirst( $nodeName );
 				break;
-			default:
+			case 'component':
 				if ( $description->hasAttribute( 'type' ) ) {
 					$class .= $description->getAttribute( 'type' );
 				} else {
 					$class .= 'Container';
 				}
+				break;
+			default:
+				throw new \MWException( sprintf( '%s (line %d): XML element not allowed here: %s.', $this->getLayoutFile(), $description->getLineNo(), $description->nodeName ) );
 		}
 
-		if ( class_exists( $class ) && is_subclass_of( $class, 'Skins\\Chameleon\\Components\\Component' ) ) {
-			return new $class( $this, $description, $indent, $htmlClassAttribute );
-		} else {
-			return new Container( $this, $description, $indent, $htmlClassAttribute );
+		if ( ! class_exists( $class ) || !is_subclass_of( $class, 'Skins\\Chameleon\\Components\\Component' ) ) {
+			throw new \MWException( sprintf( '%s (line %d): Invalid component type: %s.', $this->getLayoutFile(), $description->getLineNo(), $description->getAttribute( 'type' ) ) );
 		}
+
+		$component = new $class( $this, $description, $indent, $htmlClassAttribute );
+
+		$children = $description->childNodes;
+
+		foreach ( $children as $child ) {
+			if ( is_a( $child, 'DOMElement' ) && strtolower( $child->nodeName ) === 'modification' ) {
+				$component = $this->getModifiedComponent( $child, $component );
+			}
+		}
+
+		return $component;
+	}
+
+	/**
+	 * @param \DOMElement $description
+	 * @param Component   $component
+	 *
+	 * @return mixed
+	 * @throws \MWException
+	 */
+	protected function getModifiedComponent( \DOMElement $description, Component $component ) {
+
+		if ( !$description->hasAttribute( 'type' ) ) {
+			throw new \MWException( sprintf( '%s (line %d): Modification element missing an attribute: type.', $this->getLayoutFile(), $description->getLineNo() ) );
+		}
+
+		$className = 'Skins\\Chameleon\\Components\\Modifications\\' . $description->getAttribute( 'type' );
+
+		if ( !class_exists( $className ) || !is_subclass_of( $className, 'Skins\\Chameleon\\Components\\Modifications\\Modification' ) ) {
+			throw new \MWException( sprintf( '%s (line %d): Invalid modification type: %s.', $this->getLayoutFile(), $description->getLineNo(), $description->getAttribute( 'type' ) ) );
+		}
+
+		return new $className( $component, $description );
+
 	}
 
 	/**
@@ -161,15 +198,19 @@ class ChameleonTemplate extends BaseTemplate {
 		return parent::makeListItem( $key, $item, $options );
 	}
 
+	/**
+	 * @return string
+	 * @throws RuntimeException
+	 */
 	protected function getLayoutFile() {
 
 		$file = str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, $GLOBALS['egChameleonLayoutFile'] );
 
-		if ( is_readable( $file ) ) {
-			return $file;
+		if ( !is_readable( $file ) ) {
+			throw new RuntimeException( "Expected an accessible {$file} layout file" );
 		}
 
-		throw new RuntimeException( "Expected an accessible {$file} layout file" );
+		return $file;
 	}
 
 }

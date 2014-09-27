@@ -1,10 +1,9 @@
+<?php
 /**
- * Utility classes
+ * File containing the NoMargin class
  *
- * @todo This is a mess. Needs rework.
- *
- * @copyright (C) 2013, Stephan Gambke
- * @license http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
+ * @copyright (C) 2014, Stephan Gambke
+ * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
  * This file is part of the MediaWiki skin Chameleon.
  * The Chameleon skin is free software: you can redistribute it and/or
@@ -19,49 +18,22 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @file
+ * @ingroup       Skins
  */
 
-.center {
-	text-align: center;
-	width: 100%;
+namespace Skins\Chameleon\Components\Modifications;
 
-	* {
-		margin-left: auto;
-		margin-right: auto;
+/**
+ * Class NoMargin
+ *
+ * @package Skins\Chameleon\Components\Modifications
+ * @ingroup Skins
+ */
+class NoMargin extends Modification {
+
+	protected function applyModification() {
+		$this->getComponent()->addClasses( 'no-margin' );
 	}
-}
-
-.floatright {
-	clear: right;
-	float: right;
-	margin: 0 0 0.5em 0.5em;
-}
-
-div.tright {
-	.floatright;
-
-	margin: 0.5em 0 1.3em 1.4em;
-}
-
-.floatleft {
-	clear: left;
-	float: left;
-	margin: 0 0.5em 0.5em 0;
-}
-
-div.tleft {
-	.floatright;
-
-	margin: 0.5em 1.4em 1.3em 0;
-}
-
-.no-margin {
-	margin: 0;
-}
-
-.full-width {
-	width: 100%;
-	border-radius: 0;
-	border-left: none;
-	border-right: none;
 }

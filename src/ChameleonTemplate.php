@@ -60,6 +60,8 @@ class ChameleonTemplate extends BaseTemplate {
 	 * Overrides method in parent class that is unprotected against non-existent indexes in $this->data
 	 *
 	 * @param $key
+	 *
+	 * @return string|void
 	 */
 	function html( $key ) {
 		echo $this->get( $key );

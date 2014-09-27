@@ -31,6 +31,8 @@ use Skins\Chameleon\ChameleonTemplate;
 /**
  * Component class
  *
+ * This is the base class of all components.
+ *
  * @ingroup Skins
  */
 abstract class Component {
@@ -57,34 +59,6 @@ abstract class Component {
 	}
 
 	/**
-	 * @return ChameleonTemplate
-	 */
-	public function getSkinTemplate() {
-
-		return $this->mSkinTemplate;
-	}
-
-	/**
-	 * Returns the current indentation level
-	 *
-	 * @return int
-	 */
-	public function getIndent() {
-
-		return $this->mIndent;
-	}
-
-	/**
-	 * Returns the class string that should be assigned to the top-level html element of this component
-	 *
-	 * @return string
-	 */
-	public function getClassString() {
-
-		return implode( ' ', $this->mClasses );
-	}
-
-	/**
 	 * Sets the class string that should be assigned to the top-level html element of this component
 	 *
 	 * @param string | array | null $classes
@@ -95,20 +69,6 @@ abstract class Component {
 		$this->mClasses = array();
 		$this->addClasses( $classes );
 
-	}
-
-	/**
-	 * Removes the given class from the class string that should be assigned to the top-level html element of this component
-	 *
-	 * @param string | array | null $classes
-	 *
-	 * @return string
-	 */
-	public function removeClasses( $classes ) {
-
-		$classesArray = $this->transformClassesToArray( $classes );
-
-		$this->mClasses = array_diff( $this->mClasses, $classesArray );
 	}
 
 	/**
@@ -146,6 +106,48 @@ abstract class Component {
 			throw new \MWException( __METHOD__ . ': Expected String or Array; ' . getType( $classes ) . ' given.' );
 		}
 
+	}
+
+	/**
+	 * @return ChameleonTemplate
+	 */
+	public function getSkinTemplate() {
+
+		return $this->mSkinTemplate;
+	}
+
+	/**
+	 * Returns the current indentation level
+	 *
+	 * @return int
+	 */
+	public function getIndent() {
+
+		return $this->mIndent;
+	}
+
+	/**
+	 * Returns the class string that should be assigned to the top-level html element of this component
+	 *
+	 * @return string
+	 */
+	public function getClassString() {
+
+		return implode( ' ', $this->mClasses );
+	}
+
+	/**
+	 * Removes the given class from the class string that should be assigned to the top-level html element of this component
+	 *
+	 * @param string | array | null $classes
+	 *
+	 * @return string
+	 */
+	public function removeClasses( $classes ) {
+
+		$classesArray = $this->transformClassesToArray( $classes );
+
+		$this->mClasses = array_diff( $this->mClasses, $classesArray );
 	}
 
 	/**

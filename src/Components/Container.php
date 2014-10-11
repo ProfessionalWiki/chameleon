@@ -46,6 +46,7 @@ class Container extends Structure {
 	public function getHtml(){
 
 		$ret = $this->indent() . \Html::openElement( 'div', array( 'class' => $this->getClassString() ) );
+		$this->indent( 1 );
 
 		$ret .= parent::getHtml();
 

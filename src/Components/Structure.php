@@ -33,33 +33,61 @@ namespace Skins\Chameleon\Components;
  */
 class Structure extends Component {
 
+	private $subcomponents;
+
 	/**
 	 * Builds the HTML code for the component
 	 *
 	 * @return String the HTML code
 	 */
 	public function getHtml(){
-
-		$domElement = $this->getDomElement();
-
-		if ( is_a( $domElement, 'DomElement' ) ) {
-			$children = $this->getDomElement()->childNodes;
-		} else {
-			$children = array();
-		}
-
 		$ret = '';
 
-		$this->indent(1);
-
-		foreach ( $children as $child ) {
-			if ( is_a( $child, 'DOMElement' ) ) {
-				$component = $this->getSkinTemplate()->getComponent( $child, $this->getIndent() );
-				$ret .= $component->getHtml();
-			}
+		foreach ( $this->getSubcomponents() as $component ) {
+			$ret .= $component->getHtml();
 		}
 
 		return $ret;
+	}
+
+	/**
+	 * @return array the resource loader modules needed by this component
+	 */
+	public function getResourceLoaderModules() {
+		$modules = array();
+
+		foreach ( $this->getSubcomponents() as $component ) {
+			$modules = array_merge( $modules, $component->getResourceLoaderModules() );
+		}
+
+		return $modules;
+	}
+
+	/**
+	 * @return Component[]
+	 */
+	protected function getSubcomponents() {
+
+		if ( !isset ( $this->subcomponents ) ) {
+
+			$this->subcomponents = array();
+
+			$domElement = $this->getDomElement();
+
+			if ( is_a( $domElement, 'DomElement' ) ) {
+
+				$children = $this->getDomElement()->childNodes;
+
+				foreach ( $children as $child ) {
+					if ( is_a( $child, 'DOMElement' ) ) {
+						$this->subcomponents[ ] = $this->getSkinTemplate()->getComponent( $child, $this->getIndent() + 1 );
+					}
+				}
+
+			}
+		}
+
+		return $this->subcomponents;
 	}
 
 }

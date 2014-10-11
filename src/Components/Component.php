@@ -167,6 +167,13 @@ abstract class Component {
 	abstract public function getHtml();
 
 	/**
+	 * @return array the resource loader modules needed by this component
+	 */
+	public function getResourceLoaderModules() {
+		return array();
+	}
+
+	/**
 	 * Adds $indent to (or subtracts from if negative) the current indentation level.
 	 * Inserts a new line and a number of tabs according to the new indentation level.
 	 *

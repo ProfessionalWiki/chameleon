@@ -1,7 +1,7 @@
-<?php
 /**
- * File containing the NoMargin class
+ * Central Chameleon style file
  *
+ * @author Stephan Gambke
  * @copyright (C) 2014, Stephan Gambke
  * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
  *
@@ -18,22 +18,27 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @file
- * @ingroup       Skins
  */
 
-namespace Skins\Chameleon\Components\Modifications;
 
-/**
- * Class NoMargin
- *
- * @package Skins\Chameleon\Components\Modifications
- * @ingroup Skins
- */
-class NoMargin extends Modification {
+/*global window, document, jQuery, mediaWiki */
 
-	protected function applyModification() {
-		$this->getComponent()->addClasses( 'no-margin' );
-	}
-}
+;
+( function (window, document, $, mw, undefined) {
+
+	'use strict';
+
+	$(function ($) {
+
+		$('.sticky').each(function (index) {
+
+			var stickyElement = this;
+
+			mw.loader.using('skin.chameleon.jquery-sticky', function () {
+				$(stickyElement).sticky({topSpacing: 0, getWidthFrom: $(stickyElement).parent()});
+			});
+
+		});
+
+	});
+}(window, document, jQuery, mediaWiki) );

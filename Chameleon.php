@@ -109,4 +109,10 @@ call_user_func( function () {
 	// enable the VisualEditor for this skin
 	$GLOBALS[ 'egChameleonEnableVisualEditor' ] = true;
 
+	$GLOBALS[ 'wgResourceModules' ][ 'skin.chameleon.jquery-sticky' ] = array(
+		'localBasePath'  => __DIR__ . DIRECTORY_SEPARATOR . 'resources',
+		'remoteBasePath' => 'skins/chameleon/resources',
+		'group'          => 'skin.chameleon',
+		'skinScripts'    => array( 'chameleon' => array( 'jquery-sticky/jquery.sticky.js', 'Components/Modifications/sticky.js' ) )
+	);
 } );

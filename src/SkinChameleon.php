@@ -22,6 +22,7 @@
  * @file
  * @ingroup       Skins
  */
+use Skins\Chameleon\ComponentFactory;
 
 /**
  * SkinTemplate class for the Chameleon skin
@@ -35,6 +36,9 @@ class SkinChameleon extends SkinTemplate {
 	public $template = '\Skins\Chameleon\ChameleonTemplate';
 	public $useHeadElement = true;
 
+	private $componentFactory;
+	private $output;
+
 	/**
 	 * @param $out OutputPage object
 	 */
@@ -42,6 +46,8 @@ class SkinChameleon extends SkinTemplate {
 
 		// do not use non-standard MW less files anymore
 //		parent::setupSkinUserCss( $out );
+
+		$this->output = $out;
 
 		// load Bootstrap styles
 		$out->addModuleStyles( 'ext.bootstrap.styles' );
@@ -54,10 +60,27 @@ class SkinChameleon extends SkinTemplate {
 
 		parent::initPage( $out );
 
-		// load Bootstrap scripts
-		$out->addModules( array( 'ext.bootstrap.scripts' ) );
-
 		// Enable responsive behaviour on mobile browsers
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1.0' );
+	}
+
+	/**
+	 * @return ComponentFactory
+	 */
+	public function getComponentFactory() {
+
+		if ( ! isset( $this->componentFactory ) ) {
+			$this->componentFactory = new \Skins\Chameleon\ComponentFactory( $GLOBALS['egChameleonLayoutFile'] );
+		}
+
+		return $this->componentFactory;
+	}
+
+	public function addSkinModulesToOutput() {
+		// load Bootstrap scripts
+		$out = $this->output;
+		$out->addModules( array( 'ext.bootstrap.scripts' ) );
+		$out->addModules( $this->getComponentFactory()->getRootComponent()->getResourceLoaderModules() );
+
 	}
 }

@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <structure>
 
-	<component type="NavbarHorizontal" style="full-width no-margin" >
-		<modification type="NoMargin"></modification>
-		<modification type="FullWidth"></modification>
-		<component type="Menu" message="sticky-menu"></component>
+	<component type="NavbarHorizontal" class="full-width no-margin no-bottom-border">
+		<component type="Menu" message="secondary-menu"></component>
 	</component>
 
-	<component type="NavbarHorizontal" style="full-width no-margin">
-		<modification type="FullWidth"></modification>
+	<component type="NavbarHorizontal" class="full-width">
+		<modification type="Sticky"></modification>
 		<component type="Logo"></component>
 		<component type="NavMenu"></component>
 		<component type="PageTools" hideSelectedNameSpace="1"></component>

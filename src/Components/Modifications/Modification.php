@@ -151,4 +151,10 @@ abstract class Modification extends Component {
 		return $this->getComponent()->getHtml();
 	}
 
+	/**
+	 * @return array the resource loader modules needed by this component
+	 */
+	public function getResourceLoaderModules() {
+		return $this->getComponent()->getResourceLoaderModules();
+	}
 }

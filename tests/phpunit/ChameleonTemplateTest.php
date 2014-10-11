@@ -49,7 +49,10 @@ class ChameleonTemplateTest extends \PHPUnit_Framework_TestCase {
 
 		$GLOBALS['egChameleonLayoutFile'] = 'setInaccessibleLayoutFile';
 
+		$skin = new \SkinChameleon();
+
 		$instance = new ChameleonTemplate;
+		$instance->set( 'skin', $skin );
 		$instance->execute();
 	}
 

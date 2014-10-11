@@ -1,5 +1,6 @@
+<?php
 /**
- * Central Chameleon style file
+ * File containing the Sticky class
  *
  * @copyright (C) 2014, Stephan Gambke
  * @license       http://www.gnu.org/licenses/gpl-3.0.html GNU General Public License, version 3 (or later)
@@ -17,22 +18,32 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @file
+ * @ingroup       Skins
  */
 
-@import "./variables.less";
-@import "./mixins.less";
-@import "./utils.less";
-@import "./images.less";
-@import "./forms.less";
-@import "./thumbnails.less";
-@import "./screen.less";
-@import "./print.less";
+namespace Skins\Chameleon\Components\Modifications;
 
 /**
- * Component styles
+ * Class Sticky
  *
- * TODO: Include them programmatically only when necessary
+ * @package Skins\Chameleon\Components\Modifications
+ * @ingroup Skins
  */
+class Sticky extends Modification {
 
-@import "./Components/NavbarHorizontal.less";
-@import "./Components/Modifications/Sticky.less";
+	protected function applyModification() {
+		$this->getComponent()->addClasses( 'sticky' );
+	}
+
+	/**
+	 * @return array the resource loader modules needed by this component
+	 */
+	public function getResourceLoaderModules() {
+		$modules = parent::getResourceLoaderModules();
+		$modules[] = 'skin.chameleon.jquery-sticky';
+		return $modules;
+	}
+
+}

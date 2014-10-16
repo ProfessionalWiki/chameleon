@@ -10,7 +10,7 @@
 		"Bootstrap"
 	],
 	"homepage"   : "https://www.mediawiki.org/wiki/Skin:Chameleon",
-	"license"    : "GPL-3.0+",
+	"license"    : "GPLv3+",
 	"authors"    : [
 		{
 			"name" : "Stephan Gambke",
@@ -26,7 +26,7 @@
 		"irc"   : "irc://irc.freenode.org/mediawiki"
 	},
 	"require"    : {
-		"php"                : ">=5.3.0",
+		"php"                : ">=5.3.2",
 		"ext-dom"            : "*",
 		"ext-filter"         : "*",
 		"composer/installers": ">1.0.12",

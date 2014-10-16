@@ -1,3 +1,4 @@
+<pre>
 The license text below "----" applies to all files within this distribution,
 other than those that are in a directory which contains files named "LICENSE"
 or "COPYING", or a subdirectory thereof. For those files, the license text
@@ -681,3 +682,4 @@ may consider it more useful to permit linking proprietary applications with
 the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <http://www.gnu.org/philosophy/why-not-lgpl.html>.
+</pre>

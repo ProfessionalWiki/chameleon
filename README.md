@@ -4,41 +4,37 @@
 [![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/d/total.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 [![Dependency Status](https://www.versioneye.com/php/mediawiki:chameleon-skin/badge.png)](https://www.versioneye.com/php/mediawiki:chameleon-skin)
 
-The [Chameleon skin][mw-chameleon-skin] uses Twitter's Bootstrap to provide a customizable mediawiki skin.
+The [Chameleon skin][mw-chameleon-skin] uses [Twitter's Bootstrap 3][twbs] to
+provide a customizable MediaWiki skin.
 
 ## Requirements
 
 - PHP 5.3.2 or later
 - MediaWiki 1.22 or later
-- [Bootstrap extension][mw-bootstrap] 1.0 or later
+- [Composer][composer]
+
+Further required software packages will be installed automatically.
 
 ## Installation
 
-The recommended way to install this skin is by using [Composer][composer]. Just add the following to the MediaWiki `composer.json` file and run the `php composer.phar install/update` command.
+1. Got to your MediaWiki installation directory
+2. If necessary (on MediaWiki up to 1.23) copy the file `composer.json.example` 
+   to `composer.json`  
+3. With Composer installed, run
+   `composer require "mediawiki/chameleon-skin:~1.0"`
+4. Navigate to _Special:Version_ on your wiki to verify that the skin is
+   successfully installed.
 
-```json
-{
-	"require": {
-		"mediawiki/chameleon-skin": "~1.0"
-	}
-}
-```
+## Documentation
 
-## Tests
-
-This extension provides unit tests that can be run by a [continues integration platform][travis] or manually by executing the `mw-phpunit-runner.php` script or [`phpunit`][mw-testing] together with the PHPUnit configuration file found in the root directory.
-
-```sh
-php mw-phpunit-runner.php [options]
-```
+For further documentation see the [Chameleon][mw-chameleon-skin] website and
+have a look at what is contained in the [docs] sub-directory.
 
 ## License
 
-[GNU General Public License 3.0][license].
+[GNU General Public License, version 3][license] (or any later version)
 
 [mw-chameleon-skin]: https://www.mediawiki.org/wiki/Skin:Chameleon
-[mw-bootstrap]: https://www.mediawiki.org/wiki/Extension:Bootstrap
-[mw-testing]: https://www.mediawiki.org/wiki/Manual:PHP_unit_testing
 [composer]: https://getcomposer.org/
-[travis]: https://travis-ci.org/wikimedia/mediawiki-skins-chameleon
+[twbs]: http://getbootstrap.com/
 [license]: https://www.gnu.org/copyleft/gpl.html

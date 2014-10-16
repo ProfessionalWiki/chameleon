@@ -1,7 +1,7 @@
 ## Contact
 
 For bug reports and feature requests please use the [bug tracker][bugs]. See
-also [contribute.md].
+also the [Contribute](contribute.md) section.
 
 For general questions, comments or suggestions you might use the
 [Chameleon skin talk page on MediaWiki.org][chameleon-talk].

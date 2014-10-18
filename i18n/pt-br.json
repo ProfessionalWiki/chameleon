@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jaideraf"
+		]
+	},
+	"chameleon-desc": "O tema Chameleon.",
+	"chameleon-loggedin": "Você está logado como $1.",
+	"chameleon-notloggedin": "Você não está logado",
+	"chameleon-newmessages": "Você tem novas mensagens.",
+	"chameleon-nonewmessages": "Você não tem novas mensagens."
+}

@@ -280,7 +280,7 @@ class NavbarHorizontal extends Component {
 
 		$ret =
 			$this->indent() . '<!-- personal tools -->' .
-			$this->indent() . '<ul class="navbar-personaltools" >' .
+			$this->indent() . '<ul class="navbar-personaltools navbar-nav" >' .
 			$this->indent( 1 ) . '<li class="dropdown navbar-personaltools-tools">' .
 			$this->indent( 1 ) . '<a class="dropdown-toggle glyphicon glyphicon-user ' . $toolsClass . '" href="#" data-toggle="dropdown" title="' . $toolsLinkText . '" ></a>' .
 			$this->indent() . '<ul class="p-personal-tools dropdown-menu dropdown-menu-right" >';

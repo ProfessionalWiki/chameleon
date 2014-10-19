@@ -94,6 +94,23 @@
 		> a {
 			line-height: normal;
 			padding: 0 10px; // TODO: put this in a variable
+
+			&.navbar-newtalk-available {
+				.link(@navbar-newtalk-available);
+			}
+
+			&.navbar-newtalk-not-available {
+				.link(@navbar-newtalk-not-available);
+			}
+
+			&.navbar-userloggedin {
+				.link(@navbar-user-loggedin);
+			}
+
+			&.navbar-usernotloggedin {
+				.link(@navbar-user-not-loggedin);
+			}
+
 		}
 
 		&.open {
@@ -172,23 +189,6 @@
 
 	}
 }
-
-.navbar-newtalk-available {
-	.link(@navbar-newtalk-available);
-}
-
-.navbar-newtalk-not-available {
-	.link(@navbar-newtalk-not-available);
-}
-
-.navbar-userloggedin {
-	.link(@navbar-user-loggedin);
-}
-
-.navbar-usernotloggedin {
-	.link(@navbar-user-not-loggedin);
-}
-
 .dropdown-menu {
 	ul {
 		list-style: outside none none;

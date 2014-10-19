@@ -306,7 +306,7 @@ class ChameleonSkinComponentTestCase extends \PHPUnit_Framework_TestCase {
 		$response = json_decode( $response, true );
 
 		if ( $response === null ) {
-			$this->markTestIncomplete( 'Validation service returned an invalid response (invalid JSON).' );
+			$this->markTestIncomplete( 'Validation service returned an invalid response (invalid JSON): ' . $response );
 		}
 
 		// fail if errors or warnings

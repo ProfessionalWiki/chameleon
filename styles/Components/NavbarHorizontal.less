@@ -24,75 +24,87 @@
  * @ingroup Skins
  */
 
-
-// if the navbar is in the first row (i.e. at the top of the page), but inside a container (i.e. not a fixed head),
-// add some margin at the top
-.container > *:first-child .navbar {
-	margin-top: (@grid-gutter-width / 2);
-}
-
+// if the navbar is in the first row (i.e. at the top of the page), but inside a
+// container (i.e. not a fixed head), add some margin at the top
 .navbar {
-	.nav {
-		width: 100%;
+	.container > *:first-child & {
+		margin-top: (@grid-gutter-width / 2);
 	}
 }
 
-// override some navbar-brand styles to accommodate an image and include a separator to the rest of the navbar
+// override some navbar-brand styles to accommodate an image and include a
+// separator to the rest of the navbar
 .navbar-brand {
 
 	padding: (( @navbar-height - @navbar-logo-height ) / 2 );
 	line-height: normal;
 
-	// separator for logo
-	border-right: 1px solid @navbar-default-border;
-
 	img {
 		max-height: @navbar-logo-height;
+	}
+
+	@media (min-width: @grid-float-breakpoint) {
+		// separator for logo
+		border-right: 1px solid @navbar-default-border;
+	}
+
+	@media (max-width: @grid-float-breakpoint) {
+		float: none
 	}
 }
 
 // styles for personal tools in the navbar component
 .navbar-personaltools {
-
 	.nav();
 	.navbar-nav();
+}
 
-	height: @navbar-height;
-	display: table;
+.navbar-collapse {
+	@media (min-width: @grid-float-breakpoint) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
 
-	// separator for user's personal tools
-	border-left: 1px solid @navbar-default-border;
+.navbar-right-aligned {
+	@media (min-width: @grid-float-breakpoint) {
+
+		.pull-right();
+
+		> * {
+			float: left;
+		}
+
+		.navbar-personaltools {
+			margin-right: 0 - ( @grid-gutter-width / 2 );
+			margin-left: 5px;
+		}
+
+		.navbar-form {
+			padding: 0;
+			margin-right: 5px;
+			margin-left: 5px;
+		}
+	}
+}
+
+.navbar-personaltools {
 
 	> li {
-		display: table-row;
-		float: none;
-
 		> a {
-			display: table-cell;
-			vertical-align: middle;
 			line-height: normal;
 			padding: 0 10px; // TODO: put this in a variable
-			border-color: @navbar-default-border;
-			border-bottom: 1px solid @navbar-default-border;
-
-			&.navbar-newtalk-available {
-				.link( @navbar-newtalk-available );
-			}
-
-			&.navbar-userloggedin {
-				.link( @navbar-user-loggedin );
-			}
-
 		}
 
 		&.open {
 			> a, > a:hover, > a:focus {
 
-				border-color: @navbar-default-border;
-				border-bottom: 1px solid @navbar-default-border;
-
 				&.navbar-userloggedin {
-					.link( @navbar-user-loggedin );
+					.link(@navbar-user-loggedin);
+				}
+
+				&.navbar-usernotloggedin {
+					.link(@navbar-user-not-loggedin);
 				}
 
 			}
@@ -105,4 +117,89 @@
 
 	}
 
+	@media (min-width: @grid-float-breakpoint) {
+
+		height: @navbar-height;
+		display: table;
+
+		// separator for user's personal tools
+		border-left: 1px solid @navbar-default-border;
+
+		> li {
+			display: table-row;
+			float: none;
+
+			> a {
+				display: table-cell;
+				vertical-align: middle;
+				line-height: normal;
+				padding: 0 10px; // TODO: put this in a variable
+				border-color: @navbar-default-border;
+				border-bottom: 1px solid @navbar-default-border;
+
+			}
+
+			&.open {
+				> a, > a:hover, > a:focus {
+
+					border-color: @navbar-default-border;
+					border-bottom: 1px solid @navbar-default-border;
+
+					&.navbar-userloggedin {
+						.link(@navbar-user-loggedin);
+					}
+
+					&.navbar-usernotloggedin {
+						.link(@navbar-user-not-loggedin);
+					}
+
+				}
+
+			}
+
+			&:last-child > a, &.open:last-child > a {
+				border: none;
+			}
+
+		}
+
+	}
+	@media (max-width: @grid-float-breakpoint) {
+
+		> li {
+			float: left;
+		}
+
+	}
+}
+
+.navbar-newtalk-available {
+	.link(@navbar-newtalk-available);
+}
+
+.navbar-newtalk-not-available {
+	.link(@navbar-newtalk-not-available);
+}
+
+.navbar-userloggedin {
+	.link(@navbar-user-loggedin);
+}
+
+.navbar-usernotloggedin {
+	.link(@navbar-user-not-loggedin);
+}
+
+.dropdown-menu {
+	ul {
+		list-style: outside none none;
+		li > a {
+			display: block;
+			padding: 3px 20px;
+			clear: both;
+			font-weight: normal;
+			line-height: @line-height-base;
+			color: @dropdown-link-color;
+			white-space: nowrap; // prevent links from randomly breaking onto new lines
+		}
+	}
 }

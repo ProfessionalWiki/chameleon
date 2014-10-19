@@ -69,7 +69,7 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @covers ::process
 	 * @covers ::registerCommonBootstrapModules
-	 * @covers ::registerExternalStyleModules
+	 * @covers ::registerExternalLessModules
 	 */
 	public function testProcessWithValidExternalModuleWithoutLessVariables() {
 
@@ -103,8 +103,9 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 		$configuration = array(
 			'egChameleonExternalStyleModules' => $mixedExternalStyleModules,
 			'IP'                              => 'notTestingIP',
+			'wgScriptPath'                    => 'notTestingwgScriptPath',
 			'wgStyleDirectory'                => 'notTestingwgStyleDirectory',
-			'wgStylePath'                     => 'notTestingwgStylePath'
+			'wgStylePath'                     => 'notTestingwgStylePath',
 		);
 
 		$instance = new SetupAfterCache(
@@ -117,7 +118,7 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 * @covers ::process
-	 * @covers ::registerExternalStyleModules
+	 * @covers ::registerExternalLessModules
 	 */
 	public function testProcessWithInvalidExternalModuleThrowsException() {
 
@@ -136,6 +137,7 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 		$configuration = array(
 			'egChameleonExternalStyleModules' => $externalStyleModules,
 			'IP'                              => 'notTestingIP',
+			'wgScriptPath'                    => 'notTestingwgScriptPath',
 			'wgStyleDirectory'                => 'notTestingwgStyleDirectory',
 			'wgStylePath'                     => 'notTestingwgStylePath'
 		);
@@ -177,6 +179,7 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 		$configuration = array(
 			'egChameleonExternalLessVariables' => $externalLessVariables,
 			'IP'                              => 'notTestingIP',
+			'wgScriptPath'                    => 'notTestingwgScriptPath',
 			'wgStyleDirectory'                => 'notTestingwgStyleDirectory',
 			'wgStylePath'                     => 'notTestingwgStylePath'
 		);
@@ -226,22 +229,30 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 
 		$defaultConfiguration = array(
 			'IP'                              => 'notTestingIP',
+            'wgScriptPath'                    => 'notTestingwgScriptPath',
 			'wgStyleDirectory'                => 'notTestingwgStyleDirectory',
-			'wgStylePath'                     => 'notTestingwgStylePath'
+			'wgStylePath'                     => 'notTestingwgStylePath',
+            'wgResourceModules'               => array(),
 		);
 
-		$configurationToBeAdjusted = array();
+        $configurationToBeAdjusted = $configuration + $defaultConfiguration;
 
 		$instance = new SetupAfterCache(
 			$bootstrapManager,
-			$configuration + $defaultConfiguration
+			$configurationToBeAdjusted
 		);
 
-		$instance
-			->process()
-			->adjustConfiguration( $configurationToBeAdjusted );
+		$instance->process();
 
-		$this->assertEquals(
+		$expected[ 'wgResourceModules' ] = array();
+		$expected[ 'wgResourceModules' ][ 'skin.chameleon.jquery-sticky' ] = array(
+			'localBasePath'  => $defaultConfiguration[ 'wgStyleDirectory' ] . implode( DIRECTORY_SEPARATOR, array( '', 'chameleon', 'resources' ) ),
+			'remoteBasePath' => $defaultConfiguration[ 'wgScriptPath' ] . '/skins/chameleon/resources',
+			'group' => 'skin.chameleon',
+			'skinScripts' => array( 'chameleon' => array( 'jquery-sticky/jquery.sticky.js', 'Components/Modifications/sticky.js' ) )
+		);
+
+        $this->assertEquals(
 			$expected + $defaultConfiguration,
 			$configurationToBeAdjusted
 		);

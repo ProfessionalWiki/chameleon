@@ -25,11 +25,11 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 <structure>
 
 	<component type="NavbarHorizontal" fixed="1">
-		<component type="Logo"></component>
+		<component type="Logo" position="head"></component>
 		<component type="NavMenu" flatten="navigation"></component>
 		<component type="PageTools" hideSelectedNameSpace="1"></component>
-		<component type="PersonalTools"></component>
-		<component type="SearchBar"></component>
+		<component type="SearchBar" position="right"></component>
+		<component type="PersonalTools" position="right"></component>
 	</component>
 
 	<grid>

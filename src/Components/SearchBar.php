@@ -51,7 +51,7 @@ class SearchBar extends Component {
 
 			$this->indent() . '<div ' . \Html::expandAttributes( array(
 					'id'    => IdRegistry::getRegistry()->getId( 'p-search' ),
-					'class' => 'pull-right p-search ' . $this->getClassString(),
+					'class' => 'p-search ' . $this->getClassString(),
 					'role'  => 'search',
 				)
 			) . Linker::tooltip( 'p-search' ) . '>' .

@@ -50,9 +50,9 @@ class SetupAfterCache {
 	 * @param BootstrapManager $bootstrapManager
 	 * @param array $configuration
 	 */
-	public function __construct( BootstrapManager $bootstrapManager, array $configuration ) {
+	public function __construct( BootstrapManager $bootstrapManager, array &$configuration ) {
 		$this->bootstrapManager = $bootstrapManager;
-		$this->configuration = $configuration;
+		$this->configuration = &$configuration;
 	}
 
 	/**
@@ -63,7 +63,7 @@ class SetupAfterCache {
 	public function process() {
 		$this->addLateSettings();
 		$this->registerCommonBootstrapModules();
-		$this->registerExternalStyleModules();
+		$this->registerExternalLessModules();
 		$this->registerExternalLessVariables();
 
 		return $this;
@@ -102,6 +102,14 @@ class SetupAfterCache {
 				);
 			}
 		}
+
+		$this->configuration[ 'wgResourceModules' ][ 'skin.chameleon.jquery-sticky' ] = array(
+			'localBasePath' => $this->configuration[ 'wgStyleDirectory' ] . implode( DIRECTORY_SEPARATOR, array( '', 'chameleon', 'resources' ) ),
+			'remoteBasePath' => $this->configuration[ 'wgScriptPath' ] . '/skins/chameleon/resources',
+			'group' => 'skin.chameleon',
+			'skinScripts' => array( 'chameleon' => array( 'jquery-sticky/jquery.sticky.js', 'Components/Modifications/sticky.js' ) )
+		);
+
 	}
 
 	protected function registerCommonBootstrapModules() {
@@ -111,27 +119,29 @@ class SetupAfterCache {
 
 		$this->bootstrapManager->addAllBootstrapModules();
 
-		if ( file_exists( $this->configuration['wgStyleDirectory'] . '/common/shared.css' ) ) { // MW < 1.24
+		if ( file_exists( $this->configuration[ 'wgStyleDirectory' ] . '/common/shared.css' ) ) { // MW < 1.24
 			$this->bootstrapManager->addExternalModule(
-				$this->configuration['wgStyleDirectory'] . '/common/shared.css'
+				$this->configuration[ 'wgStyleDirectory' ] . '/common/shared.css'
 			);
-		} else if ( file_exists( $this->configuration['IP'] . '/resources/src/mediawiki.legacy/shared.css') ) { // MW >= 1.24
-			$this->bootstrapManager->addExternalModule(
-				$this->configuration['IP'] . '/resources/src/mediawiki.legacy/shared.css'
-			);
+		} else {
+			if ( file_exists( $this->configuration[ 'IP' ] . '/resources/src/mediawiki.legacy/shared.css' ) ) { // MW >= 1.24
+				$this->bootstrapManager->addExternalModule(
+					$this->configuration[ 'IP' ] . '/resources/src/mediawiki.legacy/shared.css'
+				);
+			}
 		}
 
 		$this->bootstrapManager->addExternalModule(
-			$this->configuration['wgStyleDirectory'] . '/chameleon/styles/' . 'core.less',
-			$this->configuration['wgStylePath'] . '/chameleon/styles/'
+			$this->configuration[ 'wgStyleDirectory' ] . '/chameleon/styles/' . 'core.less',
+			$this->configuration[ 'wgStylePath' ] . '/chameleon/styles/'
 		);
 	}
 
-	protected function registerExternalStyleModules() {
+	protected function registerExternalLessModules() {
 
-		if ( $this->hasConfigurationOfTypeArray( 'egChameleonExternalStyleModules' )  ) {
+		if ( $this->hasConfigurationOfTypeArray( 'egChameleonExternalStyleModules' ) ) {
 
-			foreach ( $this->configuration['egChameleonExternalStyleModules'] as $localFile => $remotePath ) {
+			foreach ( $this->configuration[ 'egChameleonExternalStyleModules' ] as $localFile => $remotePath ) {
 
 				list( $localFile, $remotePath ) = $this->matchAssociativeElement( $localFile, $remotePath );
 
@@ -145,9 +155,9 @@ class SetupAfterCache {
 
 	protected function registerExternalLessVariables() {
 
-		if ( $this->hasConfigurationOfTypeArray( 'egChameleonExternalLessVariables' )  ) {
+		if ( $this->hasConfigurationOfTypeArray( 'egChameleonExternalLessVariables' ) ) {
 
-			foreach ( $this->configuration['egChameleonExternalLessVariables'] as $key => $value ) {
+			foreach ( $this->configuration[ 'egChameleonExternalLessVariables' ] as $key => $value ) {
 				$this->bootstrapManager->setLessVariable( $key, $value );
 			}
 		}
@@ -161,7 +171,7 @@ class SetupAfterCache {
 		return $this->hasConfiguration( $id ) && is_array( $this->configuration[ $id ] );
 	}
 
-	private function matchAssociativeElement( $localFile , $remotePath ) {
+	private function matchAssociativeElement( $localFile, $remotePath ) {
 
 		if ( is_integer( $localFile ) ) {
 			return array( $remotePath, '' );

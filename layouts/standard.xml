@@ -33,13 +33,13 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 				<row>
 					<cell span="12">
-						<component type="PersonalTools"></component>
+						<component type="PersonalTools" class="pull-right"></component>
 					</cell>
 				</row>
 
 				<row>
 					<cell span="12">
-						<component type="SearchBar"></component>
+						<component type="SearchBar" class="pull-right"></component>
 					</cell>
 				</row>
 
@@ -49,7 +49,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<row>
 			<cell span="12">
 				<component type="NavbarHorizontal">
-                    <component type="NavMenu"></component>
+					<component type="NavMenu"></component>
 				</component>
 			</cell>
 		</row>

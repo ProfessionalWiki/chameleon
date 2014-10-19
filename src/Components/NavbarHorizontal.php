@@ -26,7 +26,6 @@
 
 namespace Skins\Chameleon\Components;
 
-use Linker;
 use Skins\Chameleon\IdRegistry;
 
 /**
@@ -43,7 +42,8 @@ use Skins\Chameleon\IdRegistry;
  */
 class NavbarHorizontal extends Component {
 
-	private $mHtml = '';
+	private $mHtml = null;
+	private $htmlId = null;
 
 	/**
 	 * Builds the HTML code for this component
@@ -52,6 +52,10 @@ class NavbarHorizontal extends Component {
 	 */
 	public function getHtml() {
 
+		if ( $this->mHtml !== null ) {
+			return $this->mHtml;
+		}
+
 		$this->mHtml = '';
 
 		if ( $this->getDomElement() === null ) {
@@ -59,12 +63,14 @@ class NavbarHorizontal extends Component {
 		}
 
 		// if a fixed navbar is requested
-		if ( filter_var( $this->getDomElement()->getAttribute( 'fixed' ), FILTER_VALIDATE_BOOLEAN ) ||
-			$this->getDomElement()->getAttribute( 'position' ) === 'fixed' ) {
+		if ( filter_var( $this->getDomElement()->getAttribute( 'fixed' ), FILTER_VALIDATE_BOOLEAN ) === true ||
+			$this->getDomElement()->getAttribute( 'position' ) === 'fixed'
+		) {
 
 			// first build the actual navbar and set a class so it will be fixed
 			$this->getDomElement()->setAttribute( 'fixed', '0' );
 			$this->getDomElement()->setAttribute( 'position', '' );
+
 			$realNav = new self( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );
 			$realNav->setClasses( $this->getClassString() . ' navbar-fixed-top' );
 			$this->mHtml .= $realNav->getHtml();
@@ -78,13 +84,17 @@ class NavbarHorizontal extends Component {
 			$this->indent() .
 			\HTML::openElement( 'nav', array(
 					'class' => 'navbar navbar-default p-navbar ' . $this->getClassString(),
-					'role'  => 'navigation',
-					'id'    => IdRegistry::getRegistry()->getId( 'mw-navigation' )
+					'role' => 'navigation',
+					'id' => $this->getHtmlId()
 				)
 			) .
-			$this->indent( 1 ) . '<ul class="nav navbar-nav">';
+			$this->indent( 1 ) . '<div class="container-fluid">';
 
 		$this->indent( 1 );
+
+		$headElements = array();
+		$leftElements = array();
+		$rightElements = array();
 
 		$children = $this->getDomElement()->hasChildNodes() ? $this->getDomElement()->childNodes : array();
 
@@ -95,31 +105,82 @@ class NavbarHorizontal extends Component {
 
 				switch ( $node->getAttribute( 'type' ) ) {
 					case 'Logo':
-						$this->mHtml .= $this->getLogo( $node );
+						$html = $this->getLogo( $node );
 						break;
 					case 'NavMenu':
-						$this->mHtml .= $this->getNavMenu( $node );
+						$html = $this->getNavMenu( $node );
 						break;
 					case 'PageTools':
-						$this->mHtml .= $this->getPageTools( $node );
+						$html = $this->getPageTools( $node );
 						break;
 					case 'SearchBar':
-						$this->mHtml .= $this->getSearchBar( $node );
+						$html = $this->getSearchBar( $node );
 						break;
 					case 'PersonalTools':
-						$this->mHtml .= $this->getPersonalTools( $node );
+						$html = $this->getPersonalTools( $node );
 						break;
 					case 'Menu':
-						$this->mHtml .= $this->getMenu( $node );
+						$html = $this->getMenu( $node );
 						break;
+					default:
+						$html = '';
+				}
+
+				$position = $node->getAttribute( 'position' );
+
+				switch ( $position ) {
+					case 'head':
+						$headElements[ ] = $html;
+						break;
+					case 'right':
+						$rightElements[ ] = $html;
+						break;
+					case 'left':
+					default:
+						$leftElements[ ] = $html;
 				}
 			}
 		}
 
-		$this->mHtml .= $this->indent( -1 ) . '</ul>' .
+		if ( !empty( $rightElements ) ) {
+			$leftElements[ ] =
+				'<div class="navbar-right-aligned">' .
+				implode( $rightElements ) .
+				'</div>';
+		}
+
+		$this->mHtml .=
+			$this->buildHead( $headElements ) .
+			$this->buildTail( $leftElements ) .
+			$this->indent( -1 ) . '</div>' .
 			$this->indent( -1 ) . '</nav>' . "\n";
 
 		return $this->mHtml;
+	}
+
+	protected function buildHead( $headElements ) {
+		// TODO: Break this down in several properly indented elements
+		$head = "<div class=\"navbar-header\">
+      <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#" . $this->getHtmlId() . "-collapse\">
+        <span class=\"sr-only\">Toggle navigation</span>" .
+			str_repeat( "<span class=\"icon-bar\"></span>", 3 ) .
+			"</button>" .
+			implode( '', $headElements ) . "</div>";
+
+		return $head;
+	}
+
+	protected function buildTail( $tailElements ) {
+
+		return '<div class="collapse navbar-collapse" id="' . $this->getHtmlId() . '-collapse">' .
+		implode( '', $tailElements ) . '</div><!-- /.navbar-collapse -->';
+	}
+
+	private function getHtmlId() {
+		if ( $this->htmlId === null ) {
+			$this->htmlId = IdRegistry::getRegistry()->getId( 'mw-navigation' );
+		}
+		return $this->htmlId;
 	}
 
 	/**
@@ -134,7 +195,8 @@ class NavbarHorizontal extends Component {
 		$logo = new Logo( $this->getSkinTemplate(), $domElement, $this->getIndent() );
 		$logo->addClasses( 'navbar-brand' );
 
-		return \Html::rawElement( 'li', array(), $logo->getHtml() );
+//        return \Html::rawElement( 'li', array(), $logo->getHtml() );
+		return $logo->getHtml();
 	}
 
 	/**
@@ -157,10 +219,10 @@ class NavbarHorizontal extends Component {
 		if ( $ret !== '' ) {
 			$ret =
 				$this->indent() . '<!-- page tools -->' .
-				$this->indent() . \Html::openElement( 'li', array( 'class' => 'dropdown' ) ) .
+				$this->indent() . '<ul class="nav navbar-nav">' . \Html::openElement( 'li', array( 'class' => 'dropdown' ) ) .
 				$this->indent( 1 ) . '<a data-toggle="dropdown" class="dropdown-toggle" href="#">Page Tools <b class="caret"></b></a>' .
 				$ret .
-				$this->indent( -1 ) . '</li>' . "\n";
+				$this->indent( -1 ) . '</li></ul>' . "\n";
 		}
 		return $ret;
 	}
@@ -176,7 +238,7 @@ class NavbarHorizontal extends Component {
 
 		$navMenu = new NavMenu( $this->getSkinTemplate(), $domElement, $this->getIndent() );
 
-		return $navMenu->getHtml() . "\n";
+		return '<ul class="nav navbar-nav">' . $navMenu->getHtml() . "</ul>\n";
 
 	}
 
@@ -191,7 +253,7 @@ class NavbarHorizontal extends Component {
 
 		$menu = new Menu( $this->getSkinTemplate(), $domElement, $this->getIndent() );
 
-		return $menu->getHtml() . "\n";
+		return '<ul class="nav navbar-nav">' . $menu->getHtml() . "</ul>\n";
 
 	}
 
@@ -207,19 +269,18 @@ class NavbarHorizontal extends Component {
 		$user = $this->getSkinTemplate()->getSkin()->getUser();
 
 		if ( $user->isLoggedIn() ) {
-			$toolsClass    = 'navbar-userloggedin';
+			$toolsClass = 'navbar-userloggedin';
 			$toolsLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-loggedin' )->params( $user->getName() )->text();
 		} else {
-			$toolsClass    = 'navbar-usernotloggedin';
+			$toolsClass = 'navbar-usernotloggedin';
 			$toolsLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-notloggedin' )->text();
 		}
 
 		// start personal tools element
 
 		$ret =
-			$this->indent() . '<li class="pull-right">' .
 			$this->indent() . '<!-- personal tools -->' .
-			$this->indent() . '<ul class="navbar-nav navbar-personaltools" >' .
+			$this->indent() . '<ul class="navbar-personaltools" >' .
 			$this->indent( 1 ) . '<li class="dropdown navbar-personaltools-tools">' .
 			$this->indent( 1 ) . '<a class="dropdown-toggle glyphicon glyphicon-user ' . $toolsClass . '" href="#" data-toggle="dropdown" title="' . $toolsLinkText . '" ></a>' .
 			$this->indent() . '<ul class="p-personal-tools dropdown-menu dropdown-menu-right" >';
@@ -231,25 +292,25 @@ class NavbarHorizontal extends Component {
 			$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
 		}
 
-		$ret .= $this->indent( -1 ) . '</ul>' .
-			$this->indent( -1 ) . '</li>';
+		$ret .=
+			$this->indent( -1 ) . '</ul>';
 
 		// if the user is logged in, add the newtalk notifier
 		if ( $user->isLoggedIn() ) {
 
 			$newMessagesAlert = '';
-			$newtalks         = $user->getNewMessageLinks();
-			$out              = $this->getSkinTemplate()->getSkin()->getOutput();
+			$newtalks = $user->getNewMessageLinks();
+			$out = $this->getSkinTemplate()->getSkin()->getOutput();
 
 			// Allow extensions to disable the new messages alert;
 			// since we do not display the link text, we ignore the actual value returned in $newMessagesAlert
 			if ( wfRunHooks( 'GetNewMessagesAlert', array( &$newMessagesAlert, $newtalks, $user, $out ) ) ) {
 
 				if ( count( $user->getNewMessageLinks() ) > 0 ) {
-					$newtalkClass    = 'navbar-newtalk-available';
+					$newtalkClass = 'navbar-newtalk-available';
 					$newtalkLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-newmessages' )->text();
 				} else {
-					$newtalkClass    = 'navbar-newtalk-unavailable';
+					$newtalkClass = 'navbar-newtalk-not-available';
 					$newtalkLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-nonewmessages' )->text();
 				}
 
@@ -262,7 +323,7 @@ class NavbarHorizontal extends Component {
 
 		}
 
-		$ret .= $this->indent( -1 ) . '</ul></li>' . "\n";
+		$ret .= $this->indent( -1 ) . '</ul>' . "\n";
 
 		return $ret;
 	}
@@ -272,7 +333,7 @@ class NavbarHorizontal extends Component {
 		$search = new SearchBar( $this->getSkinTemplate(), $domElement, $this->getIndent() );
 		$search->addClasses( 'navbar-form' );
 
-		return '<li class="pull-right">' . $search->getHtml() . '</li>';
+		return $search->getHtml();
 	}
 
 }

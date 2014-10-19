@@ -61,7 +61,7 @@ class PersonalTools extends Component {
 		}
 
 		$ret .= $this->indent( -1 ) . '</ul>' .
-				$this->indent() . '<div class="newtalk-notifier pull-right">' . $newtalkNotifier->getHtml() .
+				$this->indent() . '<div class="newtalk-notifier">' . $newtalkNotifier->getHtml() .
 				$this->indent() . '</div>' .
 				$this->indent( -1 ) . '</div>' . "\n";
 

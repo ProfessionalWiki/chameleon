@@ -107,7 +107,7 @@ class NavbarHorizontalTest extends ChameleonSkinComponentTestCase {
 		/** @var $instance Component */
 		$instance = new $this->classUnderTest ( $chameleonTemplate, $domElement );
 
-		$matcher = array( 'class' => 'navbar-newtalk-unavailable' );
+		$matcher = array( 'class' => 'navbar-newtalk-not-available' );
 		$this->assertTag( $matcher, $instance->getHtml() );
 	}
 

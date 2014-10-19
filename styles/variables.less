@@ -41,8 +41,12 @@
 
 @toctitle-font-size: @font-size-large;
 
-// logo will be scaled down to this height to fit into the navbar (should be <= navbar-height)
+// logo will be scaled down to this height to fit into the navbar
+// (this value should be less than the navbar-height)
 @navbar-logo-height: .9 * @navbar-height;
 
-@navbar-user-loggedin : @brand-primary;
+@navbar-user-loggedin: @brand-primary;
+@navbar-user-not-loggedin: lighten( @navbar-default-link-color, 30% );
+
 @navbar-newtalk-available: @brand-primary;
+@navbar-newtalk-not-available: lighten( @navbar-default-link-color, 30% );

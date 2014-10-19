@@ -28,7 +28,7 @@ Further required software packages will be installed automatically.
 ## Documentation
 
 For further documentation see the [Chameleon][mw-chameleon-skin] website and
-have a look at what is contained in the [docs] sub-directory.
+have a look at what is contained in the [docs](docs) sub-directory.
 
 ## License
 

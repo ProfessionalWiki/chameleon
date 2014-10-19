@@ -30,7 +30,6 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
          convertErrorsToExceptions="true"
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
-		 printerClass="Skins\Chameleon\Tests\Util\ColoringTextUIResultPrinter"
 		 stopOnError="false"
          stopOnFailure="false"
          stopOnIncomplete="false"

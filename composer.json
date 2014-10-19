@@ -35,7 +35,7 @@
 	"autoload"   : {
 		"files": [ "Chameleon.php", "src/SkinChameleon.php" ],
 		"psr-4": {
-			"Skins\\Chameleon\\Tests\\" : "tests",
+			"Skins\\Chameleon\\Tests\\" : "tests/phpunit",
 			"Skins\\Chameleon\\" : "src"
 		}
 	},

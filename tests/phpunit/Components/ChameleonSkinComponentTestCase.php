@@ -118,7 +118,7 @@ class ChameleonSkinComponentTestCase extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function domElementProviderFromSyntheticLayoutFiles() {
-		$file = __DIR__ . '/../../Util/Fixture/' . $this->getNameOfComponentUnderTest() . '.xml';
+		$file = __DIR__ . '/../Util/Fixture/' . $this->getNameOfComponentUnderTest() . '.xml';
 		$provider = array_chunk( $this->getDomElementsFromFile( $file ), 1 );
 		return $provider;
 	}

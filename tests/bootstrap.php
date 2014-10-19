@@ -51,8 +51,6 @@ function runTestAutoLoader( $autoLoader = null ) {
 		return false;
 	}
 
-	$autoLoader->addPsr4( 'Skins\\Chameleon\\Tests\\', __DIR__ . '/phpunit/' );
-
 	return true;
 }
 

@@ -1,12 +1,13 @@
 ## Legal stuff
 
 The Chameleon skin is currently licensed under the GNU General Public License,
-version 3 (or any later version). Any contribution must be made under this same
-license.
+version 3 (or any later version). Its documentation is currently licensed under
+GNU Free Documentation License, version 1.3 (or any later version). Any
+contributions must be made under these same licenses.
 
-However, it may in the future become necessary or desirable to change that
-license, e.g. to keep this skin legally compatible with a changed license of the
-MediaWiki software or to better position it in a changed legal context.
+However, it may in the future become necessary or desirable to change these
+licenses, e.g. to keep this skin legally compatible with a changed license of
+the MediaWiki software or to better position it in a changed legal context.
 
 For this reason every contributor needs to provide the following statement:
 ```

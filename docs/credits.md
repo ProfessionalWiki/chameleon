@@ -10,10 +10,15 @@ However, significant portions of code were contributed by:
 Translations have been provided by the members of the
 [Translatewiki.net project](https://translatewiki.net).
 
-The "Chameleon Skin Logo" was derived from an icon made by Freepik from
-http://www.flaticon.com, used under _CC BY_. The "Chameleon Skin Logo" itself is
-licensed under _CC BY SA_ by Stephan Gambke.
-
+The "Chameleon Skin Logo" was derived from the
+["Chameleon free icon"](http://www.flaticon.com/free-icon/chameleon_36320) made
+by [Freepik](http://www.freepik.com) from
+[www.flaticon.com](http://www.flaticon.com), which is licensed under
+[CC BY 3.0](http://creativecommons.org/licenses/by/3.0/). The
+["Chameleon Skin Logo"](https://github.com/wikimedia/mediawiki-skins-chameleon/blob/master/docs/Chameleon.svg)
+itself was made by [Stephan Gambke](https://www.mediawiki.org/wiki/User:F.trott)
+and is licensed under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/)
+as well.
 
 ### Included libraries
 

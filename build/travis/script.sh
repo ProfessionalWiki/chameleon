@@ -46,7 +46,7 @@ function installSkinViaComposerOnMediaWikiRoot {
 	# dev is only needed for as long no stable release is available
 	composer init --stability dev
 
-	composer require 'phpunit/phpunit=3.7.*' --prefer-source
+	composer require 'phpunit/phpunit=~4.0' --prefer-source
 	composer require 'mediawiki/chameleon-skin=@dev' --prefer-source
 
 	cd skins
@@ -56,11 +56,13 @@ function installSkinViaComposerOnMediaWikiRoot {
 	if [ "$TRAVIS_PULL_REQUEST" != "false" ]
 	then
 		git fetch origin +refs/pull/"$TRAVIS_PULL_REQUEST"/merge:
-		git checkout -qf FETCH_HEAD
+		git checkout -f FETCH_HEAD
 	else
 		git fetch origin "$TRAVIS_BRANCH"
-		git checkout -qf FETCH_HEAD
+		git checkout -f FETCH_HEAD
 	fi
+
+	git log HEAD^..HEAD
 
 	cd ../..
 

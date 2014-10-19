@@ -83,4 +83,13 @@ class SkinChameleon extends SkinTemplate {
 		$out->addModules( $this->getComponentFactory()->getRootComponent()->getResourceLoaderModules() );
 
 	}
+
+	/**
+	 * @param Title $title
+	 * @return string
+	 */
+	public function getPageClasses( $title ) {
+		$layoutName = Sanitizer::encodeAttribute( 'layout-' . basename( $GLOBALS['egChameleonLayoutFile'], '.xml' ) );
+		return implode( ' ', array( parent::getPageClasses( $title ), $layoutName ) );
+	}
 }

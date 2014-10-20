@@ -2,27 +2,12 @@
 
 Copyright 2013 - 2014, Stephan Gambke
 
-The files within this directory and its subdirectories in their entirety - with
-the exception of the file [Chameleon.svg](Chameleon.svg) containing "Chameleon
-Skin Logo" - make up the Chameleon Skin documentation.
+You can use the Chameleon skin under the [GNU General Public License, version 3](https://www.gnu.org/copyleft/gpl.html) (or any later version). See the relevant [license statement](../COPYING).
 
-Permission is granted to copy, distribute and/or modify this documentation under
-the terms of the GNU Free Documentation License, Version 1.3 or any later
-version published by the Free Software Foundation; with no Invariant Sections,
-no Front-Cover Texts and no Back-Cover Texts.  A copy of the license is included
-in the section entitled "GNU Free Documentation License".
+The files within the _docs_ directory and its subdirectories in their entirety - with the exception of the file [Chameleon.svg](Chameleon.svg) containing the "Chameleon Skin Logo" - make up the Chameleon Skin documentation, subsequently referred to as the _Document_.
+Permission is granted to copy, distribute and/or modify this Document under the terms of the GNU Free Documentation License, Version 1.3 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts.  A copy of the license is included in the section entitled "GNU Free Documentation License".
 
-The "Chameleon Skin Logo" was derived from the
-["Chameleon free icon"](http://www.flaticon.com/free-icon/chameleon_36320) made
-by [Freepik](http://www.freepik.com) from
-[www.flaticon.com](http://www.flaticon.com), which is licensed under
-[CC BY 3.0](http://creativecommons.org/licenses/by/3.0/). The
-["Chameleon Skin Logo"](https://github.com/wikimedia/mediawiki-skins-chameleon/blob/master/docs/Chameleon.svg)
-itself was made by [Stephan Gambke](https://www.mediawiki.org/wiki/User:F.trott)
-and is licensed under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/)
-as well.
-
-----
+The "Chameleon Skin Logo" was derived from the ["Chameleon free icon"](http://www.flaticon.com/free-icon/chameleon_36320) made by [Freepik](http://www.freepik.com) from [www.flaticon.com](http://www.flaticon.com), which is licensed under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/). The ["Chameleon Skin Logo"](Chameleon.svg) itself was created by [Stephan Gambke](https://www.mediawiki.org/wiki/User:F.trott) and is licensed under [CC BY 3.0](http://creativecommons.org/licenses/by/3.0/) as well.
 
 ## GNU Free Documentation License
 __Version 1.3, 3 November 2008__
@@ -215,22 +200,30 @@ A. Use in the Title Page (and on the covers, if any) a title distinct
    (which should, if there were any, be listed in the History section
    of the Document).  You may use the same title as a previous version
    if the original publisher of that version gives permission.
+   
 B. List on the Title Page, as authors, one or more persons or entities
    responsible for authorship of the modifications in the Modified
    Version, together with at least five of the principal authors of the
    Document (all of its principal authors, if it has fewer than five),
    unless they release you from this requirement.
+   
 C. State on the Title page the name of the publisher of the
    Modified Version, as the publisher.
+   
 D. Preserve all the copyright notices of the Document.
+
 E. Add an appropriate copyright notice for your modifications
    adjacent to the other copyright notices.
+   
 F. Include, immediately after the copyright notices, a license notice
    giving the public permission to use the Modified Version under the
    terms of this License, in the form shown in the Addendum below.
+   
 G. Preserve in that license notice the full lists of Invariant Sections
    and required Cover Texts given in the Document's license notice.
+   
 H. Include an unaltered copy of this License.
+
 I. Preserve the section Entitled "History", Preserve its Title, and add
    to it an item stating at least the title, year, new authors, and
    publisher of the Modified Version as given on the Title Page.  If
@@ -238,6 +231,7 @@ I. Preserve the section Entitled "History", Preserve its Title, and add
    stating the title, year, authors, and publisher of the Document as
    given on its Title Page, then add an item describing the Modified
    Version as stated in the previous sentence.
+   
 J. Preserve the network location, if any, given in the Document for
    public access to a Transparent copy of the Document, and likewise
    the network locations given in the Document for previous versions
@@ -245,17 +239,22 @@ J. Preserve the network location, if any, given in the Document for
    You may omit a network location for a work that was published at
    least four years before the Document itself, or if the original
    publisher of the version it refers to gives permission.
+   
 K. For any section Entitled "Acknowledgements" or "Dedications",
    Preserve the Title of the section, and preserve in the section all
    the substance and tone of each of the contributor acknowledgements
    and/or dedications given therein.
+   
 L. Preserve all the Invariant Sections of the Document,
    unaltered in their text and in their titles.  Section numbers
    or the equivalent are not considered part of the section titles.
+   
 M. Delete any section Entitled "Endorsements".  Such a section
    may not be included in the Modified Version.
+   
 N. Do not retitle any existing section to be Entitled "Endorsements"
    or to conflict in title with any Invariant Section.
+   
 O. Preserve any Warranty Disclaimers.
 
 If the Modified Version includes new front-matter sections or

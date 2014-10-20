@@ -1,7 +1,8 @@
 # The Chameleon Documentation
 
-![Chameleon Skin Logo](Chameleon.svg?raw=true) Chameleon is a highly
-customizable [MediaWiki][mw] skin that uses [Twitter Bootstrap 3][twbs].
+<img src='https://upload.wikimedia.org/wikipedia/mediawiki/thumb/3/31/Chameleon.svg/220px-Chameleon.svg.png' align='left' title='Chameleon Skin Logo'>
+Chameleon is a highly customizable [MediaWiki][mw] skin that uses [Twitter
+Bootstrap 3][twbs].
 
 It currently provides four different layouts to chose from. The standard layout
 features a horizontal navigation menu with dropdowns at the top and a horizontal

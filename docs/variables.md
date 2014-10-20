@@ -1,8 +1,15 @@
 ## Less Variables
 
-This is the list of all Less variables defined in the various style files used by the Chameleon skin. (although not all of the variables are actually used). 
+This is the list of all Less variables defined in the various style files used
+by the Chameleon skin. (although not all of the variables are actually used). 
 
-These variables may be modified to change the look of your wiki. However, you should __not__ modify the indicated files of the Bootstrap framework or the Chameleon skin directly. These files are given as a reference only, they may contain more information on the purpose of a specific variable. Moreover the values given here are the final calculated values, the exact definition text may again be found in the indicated files. The ... in the file names indicates the MediaWiki installation directory.
+These variables may be modified to change the look of your wiki. However, you
+should __not__ modify the indicated files of the Bootstrap framework or the
+Chameleon skin directly. These files are given as a reference only, they may
+contain more information on the purpose of a specific variable. Moreover the
+values given here are the final calculated values, the exact definition text may
+again be found in the indicated files. The ... in the file names indicates the
+MediaWiki installation directory.
 
  Name                                         | Type       | Value                                         | File                                                         | Remark  
 ----------------------------------------------|------------|-----------------------------------------------|--------------------------------------------------------------|------------------------------

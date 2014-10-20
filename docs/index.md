@@ -1,10 +1,17 @@
 # The Chameleon Documentation
 
-<img align="left" src="Chameleon.svg"> Chameleon is a highly customizable [MediaWiki][mw] skin that uses [Twitter Bootstrap 3][twbs].
+![Chameleon Skin Logo](Chameleon.svg?raw=true) Chameleon is a highly
+customizable [MediaWiki][mw] skin that uses [Twitter Bootstrap 3][twbs].
 
-It currently provides four different layouts to chose from. The standard layout features a horizontal navigation menu with dropdowns at the top and a horizontal menu with dropups for the language links at the bottom. Each layout is defined in an XML file and as such easily adaptable to your needs.
+It currently provides four different layouts to chose from. The standard layout
+features a horizontal navigation menu with dropdowns at the top and a horizontal
+menu with dropups for the language links at the bottom. Each layout is defined
+in an XML file and as such easily adaptable to your needs.
 
-This is the documentation for the Chameleon skin. It is maintained in the sourcecode repository, which allows to keep it in sync with the development of the code. Moreover it allows to go back in time and see the documentation for a particular version of the skin.
+This is the documentation for the Chameleon skin. It is maintained in the
+sourcecode repository, which allows to keep it in sync with the development of
+the code. Moreover it allows to go back in time and see the documentation for a
+particular version of the skin.
 
 ## Contents
 1. [Installation, Update, De-Installation](installation.md)
@@ -15,7 +22,7 @@ This is the documentation for the Chameleon skin. It is maintained in the source
 5. [How to contribute](contribute.md)
    1. [Legal stuff](legal.md)
 6. [Credits](credits.md)
-7. [Documentation License](copying.md)
+7. [Licenses](copying.md)
 8. [Contact](contact.md)
 
 [mw]: https://www.mediawiki.org/

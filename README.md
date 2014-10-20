@@ -4,7 +4,8 @@
 [![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/d/total.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 [![Dependency Status](https://www.versioneye.com/php/mediawiki:chameleon-skin/badge.png)](https://www.versioneye.com/php/mediawiki:chameleon-skin)
 
-The [Chameleon skin][mw-chameleon-skin] uses [Twitter's Bootstrap 3][twbs] to provide a customizable MediaWiki skin.
+The [Chameleon skin][mw-chameleon] uses [Twitter's Bootstrap 3][twbs] to provide
+a customizable MediaWiki skin.
 
 ## Requirements
 
@@ -23,12 +24,15 @@ Further required software packages will be installed automatically.
 
 ## Documentation
 
-For further documentation see the [Chameleon documentaion](docs/index.md).
-It may also be worthwhile to have a look at the [Chameleon site on MediaWiki][mw-chameleon] and the related [talk page][mw-chameleon-talk]   
+See the [Chameleon documentation](docs/index.md).
+
+It may also be worthwhile to have a look at the [Chameleon site on
+MediaWiki][mw-chameleon] and the related [talk page][mw-chameleon-talk]   
 
 ## License
 
-You can use the Chameleon skin under the [GNU General Public License, version 3][license] (or any later version).
+You can use the Chameleon skin under the [GNU General Public License, version
+3][license] (or any later version).
 
 
 [mw-chameleon]: https://www.mediawiki.org/wiki/Skin:Chameleon

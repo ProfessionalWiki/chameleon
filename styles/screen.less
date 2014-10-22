@@ -95,25 +95,30 @@
 		padding: 0;
 		text-align: left;
 		text-indent: 0;
-		display: table;
 
 		li {
-			display: table-row-group;
-
 			&:before{
 				content: none;
 			}
 
 			a {
-				display: table-row;
-
 				.tocnumber {
-					display: table-cell;
-					padding-right: 1ex;
+					display: inline-block;
+					text-align: right;
+					margin-right: .5ex;
+					min-width: 2ex; //up to two digits
+				}
+			}
+
+			ul li {
+				a .tocnumber {
+					min-width: 3.5ex; // two digits + dot + digit
 				}
 
-				.toctext {
-					display: table-cell;
+				ul li {
+					a .tocnumber {
+						min-width: 5ex; // two digits + dot + digit + dot + digit
+					}
 				}
 			}
 		}

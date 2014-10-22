@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 1.0.1
+
+* Fix TOC layout
+* Add basic testing for Menu component (and fix a small bug)
+* Update documentation
+
 ### Chameleon 1.0
 
 After nearly 1.5 years in development status, this is the first official version

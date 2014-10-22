@@ -45,6 +45,11 @@ class Menu extends Component {
 	public function getHtml() {
 
 		$element = $this->getDomElement();
+
+		if ( $element === null ){
+			return '';
+		}
+
 		$msgKey = $element->getAttribute( 'message' );
 
 		$menuFactory = new MenuFactory();

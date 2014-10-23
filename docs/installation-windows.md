@@ -10,7 +10,7 @@ Here is a step by step procedure for Windows:
 3.  For MediaWiki 1.22 and 1.23 you need to copy the file
     `composer.json.example` to `composer.json`. For this, select
     `composer.json.example`, press Ctrl+C, then Ctrl+V and then rename
-    the new file to `composer.json`.
+    the copy to `composer.json`.
 4.  Right-click on the new file and select *Use composer here*. A
     command line window will open.
 5.  On the command line run the command
@@ -18,7 +18,7 @@ Here is a step by step procedure for Windows:
 6.  If there were no errors, close the command line window.
 7.  Open `LocalSettings.php` in an editor capable to do UNIX style line
     endings (e.g. [Notepad++][] or [Kate][], but *not* the standard Notepad!)
-    Include `[[Manual:$wgDefaultSkin|$wgDefaultSkin]]='chameleon';` as
+    Include `$wgDefaultSkin='chameleon';` as
     the last line. Save the file and close the editor.
 8.  Open your wiki in a browser. Chameleon should be installed.
 9.  If not, force reload the page to

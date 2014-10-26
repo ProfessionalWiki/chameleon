@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sjoerddebruin"
+			"Sjoerddebruin",
+			"Siebrand"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "Het uiterlijk Chameleon",
 	"chameleon-loggedin": "U bent aangemeld als $1 .",
 	"chameleon-notloggedin": "U bent niet aangemeld",
 	"chameleon-newmessages": "U heeft nieuwe berichten.",

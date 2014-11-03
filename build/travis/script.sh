@@ -33,9 +33,15 @@ function installMediaWiki {
 
 	wget https://github.com/wikimedia/mediawiki/archive/$MW.tar.gz
 	tar -zxf $MW.tar.gz
-	mv mediawiki-$MW phase3
+	mv mediawiki-$MW mw
 
-	cd phase3
+	cd mw
+
+	## MW 1.25 requires Psr\Logger
+	if [ "$MW" == "master" ]
+	then
+		composer install
+	fi
 
 	mysql -e 'create database its_a_mw;'
 	php maintenance/install.php --dbtype $DBTYPE --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin
@@ -43,8 +49,7 @@ function installMediaWiki {
 
 function installSkinViaComposerOnMediaWikiRoot {
 
-	# dev is only needed for as long no stable release is available
-	composer init --stability dev
+	composer init
 
 	composer require 'phpunit/phpunit=~4.0' --prefer-source
 	composer require 'mediawiki/chameleon-skin=@dev' --prefer-source

@@ -26,6 +26,7 @@
 
 namespace Skins\Chameleon\Components;
 
+use SkinChameleon;
 use Skins\Chameleon\ChameleonTemplate;
 
 /**
@@ -56,7 +57,7 @@ abstract class Component {
 		$this->mDomElement   = $domElement;
 
 		if ( $domElement !== null ) {
-			$this->setClasses( $domElement->getAttribute( 'class' ) );
+			$this->addClasses( $domElement->getAttribute( 'class' ) );
 		}
 	}
 
@@ -116,6 +117,15 @@ abstract class Component {
 	public function getSkinTemplate() {
 
 		return $this->mSkinTemplate;
+	}
+
+	/**
+	 * @since 1.1
+	 * @return SkinChameleon
+	 */
+	public function getSkin() {
+
+		return $this->mSkinTemplate->getSkin();
 	}
 
 	/**

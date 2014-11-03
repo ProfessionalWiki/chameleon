@@ -46,7 +46,7 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 	protected function setUp() {
 		parent::setUp();
 
-		$this->dummyExternalModule = __DIR__ . '/../Util/Fixture/' . 'externalmodule.less';
+		$this->dummyExternalModule = __DIR__ . '/../Fixture/' . 'externalmodule.less';
 	}
 
 	/**

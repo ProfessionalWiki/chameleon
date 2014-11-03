@@ -39,7 +39,7 @@ use Skins\Chameleon\Components\MainContent;
  * @ingroup Skins
  * @ingroup Test
  */
-class MainContentTest extends ChameleonSkinComponentTestCase {
+class MainContentTest extends GenericComponentTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\MainContent';
 

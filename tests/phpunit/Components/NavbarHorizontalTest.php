@@ -41,7 +41,7 @@ use Skins\Chameleon\Tests\Util\MockupFactory;
  * @ingroup Skins
  * @ingroup Test
  */
-class NavbarHorizontalTest extends ChameleonSkinComponentTestCase {
+class NavbarHorizontalTest extends GenericComponentTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\NavbarHorizontal';
 

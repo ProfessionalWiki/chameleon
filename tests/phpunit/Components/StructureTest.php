@@ -37,7 +37,7 @@ namespace Skins\Chameleon\Tests\Components;
  * @ingroup Skins
  * @ingroup Test
  */
-class StructureTest extends ChameleonSkinComponentTestCase {
+class StructureTest extends GenericComponentTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\Structure';
 //	protected $componentUnderTest = 'Structure';

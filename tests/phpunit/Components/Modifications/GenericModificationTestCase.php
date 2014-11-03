@@ -22,10 +22,13 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon\Tests\Components;
+namespace Skins\Chameleon\Tests\Components\Modifications;
+use Skins\Chameleon\Components\Component;
+use Skins\Chameleon\Components\Silent;
+use Skins\Chameleon\Tests\Components\GenericComponentTestCase;
 
 /**
- * @coversDefaultClass \Skins\Chameleon\Components\Menu
+ * @coversDefaultClass \Skins\Chameleon\Components\Modifications\Modification
  * @covers ::<private>
  * @covers ::<protected>
  *
@@ -33,12 +36,22 @@ namespace Skins\Chameleon\Tests\Components;
  * @group   mediawiki-databaseless
  *
  * @author Stephan Gambke
- * @since 1.0
+ * @since 1.1
  * @ingroup Skins
  * @ingroup Test
  */
-class MenuTest extends GenericComponentTestCase {
+class GenericModificationTestCase extends GenericComponentTestCase {
 
-	protected $classUnderTest = '\Skins\Chameleon\Components\Menu';
+	public function getTestObject( \DOMElement $domElement = null ) {
+		$component = $this->getModifiedComponent();
+		return new $this->classUnderTest ( $component, $domElement );
+	}
 
+	/**
+	 * @return Component
+	 */
+	protected function getModifiedComponent() {
+		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
+		return new Silent( $chameleonTemplate );
+	}
 }

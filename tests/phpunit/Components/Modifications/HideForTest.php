@@ -22,10 +22,10 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon\Tests\Components;
+namespace Skins\Chameleon\Tests\Components\Modifications;
 
 /**
- * @coversDefaultClass \Skins\Chameleon\Components\Menu
+ * @coversDefaultClass \Skins\Chameleon\Components\Modifications\HideFor
  * @covers ::<private>
  * @covers ::<protected>
  *
@@ -33,12 +33,12 @@ namespace Skins\Chameleon\Tests\Components;
  * @group   mediawiki-databaseless
  *
  * @author Stephan Gambke
- * @since 1.0
+ * @since 1.1
  * @ingroup Skins
  * @ingroup Test
  */
-class MenuTest extends GenericComponentTestCase {
+class HideForTest extends GenericModificationTestCase {
 
-	protected $classUnderTest = '\Skins\Chameleon\Components\Menu';
+	protected $classUnderTest = '\Skins\Chameleon\Components\Modifications\HideFor';
 
 }

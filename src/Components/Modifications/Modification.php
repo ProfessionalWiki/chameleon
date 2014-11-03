@@ -43,24 +43,28 @@ use Skins\Chameleon\Components\Component;
 abstract class Modification extends Component {
 
 	private $component = null;
-	private $domElement = null;
 
 	/**
 	 * @param Component   $component
 	 * @param \DOMElement $domElement
 	 */
 	public function __construct( Component $component, \DOMElement $domElement = null ) {
+
 		$this->component = $component;
-		$this->domElement   = $domElement;
+		parent::__construct( $component->getSkinTemplate(), $domElement, $component->getIndent() );
 	}
 
+	/**
+	 * This method should apply any modifications to the decorated component
+	 * available from the getComponent() method.
+	 */
 	abstract protected function applyModification();
 
 	/**
 	 * @return \DOMElement|null
 	 */
 	public function getDomElementOfModification() {
-		return $this->domElement;
+		return parent::getDomElement();
 	}
 
 	/**
@@ -85,6 +89,14 @@ abstract class Modification extends Component {
 	 */
 	public function getComponent() {
 		return $this->component;
+	}
+
+	/**
+	 * @param Component $component
+	 * @since 1.1
+	 */
+	protected function setComponent( Component $component ) {
+		$this->component = $component;
 	}
 
 	/**

@@ -39,15 +39,17 @@ use Skins\Chameleon\Components\Html;
  * @ingroup Skins
  * @ingroup Test
  */
-class HtmlTest extends ChameleonSkinComponentTestCase {
+class HtmlTest extends GenericComponentTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\Html';
 
 	/**
 	 * @covers ::getHtml
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 *
+	 * @param \DOMElement $domElement
 	 */
-	public function testGetHtml_OnSyntheticLayoutXml( $domElement ) {
+	public function testGetHtml_OnSyntheticLayoutXml( \DOMElement $domElement ) {
 
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 

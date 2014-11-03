@@ -37,7 +37,7 @@ namespace Skins\Chameleon\Tests\Components;
  * @ingroup Skins
  * @ingroup Test
  */
-class NewtalkNotifierTest extends ChameleonSkinComponentTestCase {
+class NewtalkNotifierTest extends GenericComponentTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\NewtalkNotifier';
 

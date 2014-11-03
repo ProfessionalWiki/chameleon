@@ -1,5 +1,7 @@
 <?php
 /**
+ * File holding the Silent component class
+ *
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2014, Stephan Gambke
@@ -22,23 +24,28 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon\Tests\Components;
+namespace Skins\Chameleon\Components;
+
 
 /**
- * @coversDefaultClass \Skins\Chameleon\Components\Menu
- * @covers ::<private>
- * @covers ::<protected>
+ * The Silent class.
  *
- * @group   skins-chameleon
- * @group   mediawiki-databaseless
+ * This component may be used as a placeholder during development.
+ *
+ * It is also used internally.
  *
  * @author Stephan Gambke
- * @since 1.0
+ * @since 1.1
  * @ingroup Skins
- * @ingroup Test
  */
-class MenuTest extends GenericComponentTestCase {
+class Silent extends Component {
 
-	protected $classUnderTest = '\Skins\Chameleon\Components\Menu';
-
+	/**
+	 * Builds the HTML code for this component
+	 *
+	 * @return String the HTML code
+	 */
+	public function getHtml() {
+		return '';
+	}
 }

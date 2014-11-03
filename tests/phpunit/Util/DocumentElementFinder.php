@@ -87,7 +87,7 @@ class DocumentElementFinder {
 			$elements[] = $element;
 		}
 
-		$elementList = $this->getDocument()->getElementsByTagName( 'component' );
+		$elementList = $this->getDocument()->getElementsByTagName( '*' );
 		foreach ( $elementList as $element ) {
 			if ( $element instanceOf DOMElement && $element->hasAttribute( 'type' ) && $element->getAttribute( 'type' ) === $type ) {
 				$elements[] = $element;

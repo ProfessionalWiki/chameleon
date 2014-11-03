@@ -37,7 +37,7 @@ namespace Skins\Chameleon\Tests\Components;
  * @ingroup Skins
  * @ingroup Test
  */
-class ToolbarHorizontalTest extends ChameleonSkinComponentTestCase {
+class ToolbarHorizontalTest extends GenericComponentTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\ToolbarHorizontal';
 

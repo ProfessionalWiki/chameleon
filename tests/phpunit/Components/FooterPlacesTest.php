@@ -37,7 +37,7 @@ namespace Skins\Chameleon\Tests\Components;
  * @ingroup Skins
  * @ingroup Test
  */
-class FooterPlacesTest extends ChameleonSkinComponentTestCase {
+class FooterPlacesTest extends GenericComponentTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\FooterPlaces';
 

@@ -25,7 +25,7 @@
 namespace Skins\Chameleon\Tests\Components;
 
 /**
- * @coversDefaultClass \Skins\Chameleon\Components\Menu
+ * @coversDefaultClass \Skins\Chameleon\Components\Silent
  * @covers ::<private>
  * @covers ::<protected>
  *
@@ -33,12 +33,12 @@ namespace Skins\Chameleon\Tests\Components;
  * @group   mediawiki-databaseless
  *
  * @author Stephan Gambke
- * @since 1.0
+ * @since 1.1
  * @ingroup Skins
  * @ingroup Test
  */
-class MenuTest extends GenericComponentTestCase {
+class SilentTest extends GenericComponentTestCase {
 
-	protected $classUnderTest = '\Skins\Chameleon\Components\Menu';
+	protected $classUnderTest = '\Skins\Chameleon\Components\Silent';
 
 }

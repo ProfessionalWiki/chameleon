@@ -37,13 +37,15 @@ namespace Skins\Chameleon\Tests\Components;
  * @ingroup Skins
  * @ingroup Test
  */
-class CellTest extends ChameleonSkinComponentTestCase {
+class CellTest extends GenericComponentTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\Cell';
 
 	/**
 	 * @covers ::__construct
-	 * @dataProvider canConstructWithDomElementProvider
+	 * @dataProvider provideSpanAttributeValues
+	 * @param string $in
+	 * @param string $expected
 	 */
 	public function testSpanAttribute( $in, $expected ) {
 
@@ -83,7 +85,7 @@ class CellTest extends ChameleonSkinComponentTestCase {
 
 	}
 
-	public function canConstructWithDomElementProvider() {
+	public function provideSpanAttributeValues() {
 		return array(
 			array( '9', '9' ),
 			array( '-1', '12' ),

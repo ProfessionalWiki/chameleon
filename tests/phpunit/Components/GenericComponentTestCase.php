@@ -44,9 +44,10 @@ use Skins\Chameleon\Tests\Util\XmlFileProvider;
  * @ingroup Skins
  * @ingroup Test
  */
-class ChameleonSkinComponentTestCase extends \PHPUnit_Framework_TestCase {
+class GenericComponentTestCase extends \PHPUnit_Framework_TestCase {
 
 	private $successColor = '';
+	private $testObject;
 	protected $classUnderTest;
 	protected $componentUnderTest;
 
@@ -57,10 +58,8 @@ class ChameleonSkinComponentTestCase extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testCanConstruct() {
 
-		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
-
 		/** @var $instance Component */
-		$instance = new $this->classUnderTest ( $chameleonTemplate );
+		$instance = $this->getTestObject();
 
 		$this->assertInstanceOf(
 			$this->classUnderTest,
@@ -76,25 +75,21 @@ class ChameleonSkinComponentTestCase extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testGetHtml_withEmptyElement() {
 
-		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
-
 		/** @var $instance Component */
-		$instance = new $this->classUnderTest ( $chameleonTemplate );
-
+		$instance = $this->getTestObject();
 		$this->assertValidHTML( $instance->getHtml() );
 	}
 
 	/**
 	 * @covers ::getHtml
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 *
+	 * @param \DOMElement $domElement
 	 */
-	public function testGetHtml_OnSyntheticLayoutXml( $domElement ) {
-
-		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
+	public function testGetHtml_OnSyntheticLayoutXml( \DOMElement $domElement ) {
 
 		/** @var $instance Component */
-		$instance = new $this->classUnderTest ( $chameleonTemplate, $domElement );
-
+		$instance = $this->getTestObject( $domElement );
 		$this->assertValidHTML( $instance->getHtml() );
 	}
 
@@ -109,16 +104,22 @@ class ChameleonSkinComponentTestCase extends \PHPUnit_Framework_TestCase {
 			return;
 		}
 
-		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
-
 		/** @var $instance Component */
-		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$instance = $this->getTestObject( $domElement );
 
 		$this->assertValidHTML( $instance->getHtml() );
 	}
 
+	public function getTestObject( \DOMElement $domElement = null ) {
+		if ( $this->testObject === null ) {
+			$chameleonTemplate = $this->getChameleonSkinTemplateStub();
+			$this->testObject = new $this->classUnderTest ( $chameleonTemplate, $domElement );
+		}
+		return $this->testObject;
+	}
+
 	public function domElementProviderFromSyntheticLayoutFiles() {
-		$file = __DIR__ . '/../Util/Fixture/' . $this->getNameOfComponentUnderTest() . '.xml';
+		$file = __DIR__ . '/../Fixture/' . $this->getNameOfComponentUnderTest() . '.xml';
 		$provider = array_chunk( $this->getDomElementsFromFile( $file ), 1 );
 		return $provider;
 	}
@@ -144,7 +145,9 @@ class ChameleonSkinComponentTestCase extends \PHPUnit_Framework_TestCase {
 
 	protected function getDomElementsFromFile( $file ) {
 		$elementFinder = new DocumentElementFinder( $file );
-		return $elementFinder->getComponentsByTypeAttribute( $this->getNameOfComponentUnderTest() );
+		$componentName = $this->getNameOfComponentUnderTest();
+		$componentName = end( (array_values( explode( '\\', $componentName ) )) );
+		return $elementFinder->getComponentsByTypeAttribute( $componentName );
 	}
 
 	protected static function loadXML( $fragment, $isHtml = true ) {
@@ -336,13 +339,7 @@ class ChameleonSkinComponentTestCase extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function getNameOfComponentUnderTest() {
-
-		if ( !isset( $this->componentUnderTest ) ) {
-			$components = explode( '\\', $this->classUnderTest );
-			return array_pop( $components );
-		}
-
-		return $this->componentUnderTest;
+		return str_replace( 'Skins\\Chameleon\\Components\\', '', get_class( $this->getTestObject() ) );
 	}
 
 }

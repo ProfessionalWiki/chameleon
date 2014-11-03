@@ -39,6 +39,8 @@ class MockupFactory {
 	private $configuration = array(
 		'UserIsLoggedIn'      => false,
 		'UserNewMessageLinks' => array(),
+		'UserEffectiveGroups' => array( '*' ),
+		'UserRights' => array(),
 	);
 
 	public function __construct( \PHPUnit_Framework_TestCase $testCase ) {
@@ -266,8 +268,16 @@ class MockupFactory {
 			->will( $this->testCase->returnValue( $this->get( 'UserNewMessageLinks', 0 ) ) );
 
 		$user->expects( $this->testCase->any() )
+			->method( 'getEffectiveGroups' )
+			->will( $this->testCase->returnValue( $this->get( 'UserEffectiveGroups', 0 ) ) );
+
+		$user->expects( $this->testCase->any() )
 			->method( 'getTalkPage' )
 			->will( $this->testCase->returnValue( $this->getTitleStub() ) );
+
+		$user->expects( $this->testCase->any() )
+			->method( 'getRights' )
+			->will( $this->testCase->returnValue( $this->get( 'UserRights', array() ) ) );
 
 		return $user;
 

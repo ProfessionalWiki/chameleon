@@ -100,10 +100,10 @@ abstract class Menu {
 	}
 
 	/**
-	 * @param $rawItemsHtml
-	 * @param $depth
+	 * @param string $rawItemsHtml
+	 * @param int $depth
 	 *
-	 * @return mixed|string
+	 * @return string
 	 */
 	protected function getHtmlForMenuItemList( $rawItemsHtml, $depth ) {
 		return call_user_func( $this->getItemListFormatter(), $rawItemsHtml, $depth );

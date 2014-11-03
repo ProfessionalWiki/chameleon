@@ -138,7 +138,7 @@ class PageTools extends Component {
 	/**
 	 * Set the page tool menu to have submenus or not
 	 *
-	 * @param $flat
+	 * @param boolean $flat
 	 */
 	public function setFlat( $flat ) {
 		$this->mFlat = $flat;

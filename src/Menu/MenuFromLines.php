@@ -132,7 +132,7 @@ class MenuFromLines extends Menu {
 	 *   'href'     => $href   // parsed link target
 	 * );
 	 *
-	 * @param $line
+	 * @param string $line
 	 *
 	 * @return array
 	 */

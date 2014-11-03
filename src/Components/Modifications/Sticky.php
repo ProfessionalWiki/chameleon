@@ -40,7 +40,7 @@ class Sticky extends Modification {
 	}
 
 	/**
-	 * @return array the resource loader modules needed by this component
+	 * @return string[] the resource loader modules needed by this component
 	 */
 	public function getResourceLoaderModules() {
 		$modules = parent::getResourceLoaderModules();

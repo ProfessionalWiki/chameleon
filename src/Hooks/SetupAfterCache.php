@@ -167,6 +167,10 @@ class SetupAfterCache {
 		return isset( $this->configuration[ $id ] );
 	}
 
+	/**
+	 * @param string $id
+	 * @return bool
+	 */
 	private function hasConfigurationOfTypeArray( $id ) {
 		return $this->hasConfiguration( $id ) && is_array( $this->configuration[ $id ] );
 	}
@@ -180,6 +184,10 @@ class SetupAfterCache {
 		return array( $localFile, $remotePath );
 	}
 
+	/**
+	 * @param string $file
+	 * @return string
+	 */
 	private function isReadableFile( $file ) {
 
 		if ( is_readable( $file ) ) {

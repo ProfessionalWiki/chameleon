@@ -53,14 +53,19 @@ class IdRegistry {
 
 	private $mRegistry = array();
 
-	public function getId( $id = null, $component=null ) {
+	/**
+	 * @param null|string $id
+	 * @param null|mixed $component
+	 * @return string
+	 */
+	public function getId( $id = null, $component = null ) {
 
 		if ( empty( $id ) ) {
 
 			// no specific id requested, just return a unique string
 			return base_convert( uniqid(), 16, 36 );
 
-		} else if ( array_key_exists( $id, $this->mRegistry ) ) {
+		} elseif ( array_key_exists( $id, $this->mRegistry ) ) {
 
 			// specific id requested, but already in use
 			// return a string derived from the id and a unique string
@@ -84,7 +89,7 @@ class IdRegistry {
 	 * The advantage over Html::openElement is that any id attribute is ensured to be unique.
 	 *
 	 * @param string $tag
-	 * @param array  $attributes
+	 * @param array $attributes
 	 *
 	 * @return string
 	 */
@@ -103,7 +108,7 @@ class IdRegistry {
 	 * The advantage over Html::rawElement is that any id attribute is ensured to be unique.
 	 *
 	 * @param string $tag
-	 * @param array  $attributes
+	 * @param array $attributes
 	 * @param string $contents
 	 *
 	 * @return string

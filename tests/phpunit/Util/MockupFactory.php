@@ -225,7 +225,7 @@ class MockupFactory {
 
 		$title = \Title::newFromText( 'FOO' );
 
-		$skin = $this->testCase->getMockBuilder( '\Skin' )
+		$skin = $this->testCase->getMockBuilder( '\SkinChameleon' )
 			->disableOriginalConstructor()
 			->getMock();
 

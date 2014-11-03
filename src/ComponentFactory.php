@@ -154,7 +154,7 @@ class ComponentFactory {
 
 	/**
 	 * @param string $fileName
-	 * @return mixed
+	 * @return string
 	 */
 	public function sanitizeFileName( $fileName ) {
 		return str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, $fileName );
@@ -168,9 +168,9 @@ class ComponentFactory {
 	}
 
 	/**
-	 * @param mixed $skinTemplate
+	 * @param ChameleonTemplate $skinTemplate
 	 */
-	public function setSkinTemplate( $skinTemplate ) {
+	public function setSkinTemplate( ChameleonTemplate $skinTemplate ) {
 		$this->skinTemplate = $skinTemplate;
 	}
 

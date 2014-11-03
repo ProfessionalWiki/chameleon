@@ -42,11 +42,11 @@ class PermissionsHelper {
 	private $default;
 
 	/**
-	 * @param Skin $skin
+	 * @param \SkinChameleon $skin
 	 * @param DOMElement $domElement
 	 * @param bool $default
 	 */
-	public function __construct ( Skin $skin, DOMElement $domElement = null, $default = false ){
+	public function __construct ( \SkinChameleon $skin, DOMElement $domElement = null, $default = false ){
 		$this->skin = $skin;
 		$this->domElement = $domElement;
 		$this->default = $default;

@@ -76,7 +76,7 @@ class Structure extends Component {
 
 			$domElement = $this->getDomElement();
 
-			if ( is_a( $domElement, 'DomElement' ) ) {
+			if ( $domElement !== null && is_a( $domElement, 'DomElement' ) ) {
 
 				$children = $this->getDomElement()->childNodes;
 

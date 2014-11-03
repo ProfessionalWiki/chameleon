@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"chameleon-desc": "עיצוב זיקית",
+	"chameleon-loggedin": "נכנסת בשם $1.",
+	"chameleon-notloggedin": "לא נכנסת",
+	"chameleon-newmessages": "יש לך הודעות חדשות",
+	"chameleon-nonewmessages": "אין לך הודעות חדשות."
+}

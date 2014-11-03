@@ -62,7 +62,7 @@ abstract class Menu {
 	}
 
 	/**
-	 * @return object<Closure>
+	 * @return callable
 	 */
 	public function getMenuItemFormatter() {
 
@@ -81,7 +81,7 @@ abstract class Menu {
 	}
 
 	/**
-	 * @param object<Closure> $menuItemFormatter
+	 * @param callable $menuItemFormatter
 	 */
 	public function setMenuItemFormatter( $menuItemFormatter ) {
 		$this->menuItemFormatter = $menuItemFormatter;

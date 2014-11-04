@@ -83,8 +83,21 @@ function installSkinViaComposerOnMediaWikiRoot {
 	php maintenance/update.php --quick
 }
 
+function uploadCoverageReport {
+	wget https://scrutinizer-ci.com/ocular.phar
+	php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+}
+
 installMediaWiki
 installSkinViaComposerOnMediaWikiRoot
 
 cd tests/phpunit
-php phpunit.php --group skins-chameleon -c ../../skins/chameleon/phpunit.xml.dist
+
+if [ "$MW" == "master" ]
+then
+	php phpunit.php --group skins-chameleon -c ../../skins/chameleon/phpunit.xml.dist  --coverage-clover=coverage.clover
+else
+	php phpunit.php --group skins-chameleon -c ../../skins/chameleon/phpunit.xml.dist
+fi
+
+uploadCoverageReport

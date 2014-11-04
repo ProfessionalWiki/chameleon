@@ -33,7 +33,7 @@ matrix:
   include:
     - env: DBTYPE=mysql; MW=master
       php: 5.3
-    - env: DBTYPE=sqlite; MW=1.22.0
+    - env: DBTYPE=sqlite; MW=1.22.1
       php: 5.5
 
   exclude:

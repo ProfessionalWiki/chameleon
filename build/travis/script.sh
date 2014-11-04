@@ -91,13 +91,11 @@ function uploadCoverageReport {
 installMediaWiki
 installSkinViaComposerOnMediaWikiRoot
 
-cd tests/phpunit
-
 if [ "$MW" == "master" ]
 then
-	php phpunit.php --group skins-chameleon -c ../../skins/chameleon/phpunit.xml.dist  --coverage-clover=coverage.clover
+	php tests/phpunit/phpunit.php --group skins-chameleon -c skins/chameleon/phpunit.xml.dist --coverage-clover=coverage.clover
 else
-	php phpunit.php --group skins-chameleon -c ../../skins/chameleon/phpunit.xml.dist
+	php tests/phpunit/phpunit.php --group skins-chameleon -c skins/chameleon/phpunit.xml.dist
 fi
 
 uploadCoverageReport

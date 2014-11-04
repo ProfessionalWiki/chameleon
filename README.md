@@ -1,8 +1,10 @@
 # Chameleon skin
 [![Build Status](https://travis-ci.org/wikimedia/mediawiki-skins-chameleon.svg?branch=master)](https://travis-ci.org/wikimedia/mediawiki-skins-chameleon)
+[![Code Coverage](https://scrutinizer-ci.com/g/wikimedia/mediawiki-skins-chameleon/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/wikimedia/mediawiki-skins-chameleon/?branch=master)
+[![Code Quality](https://scrutinizer-ci.com/g/wikimedia/mediawiki-skins-chameleon/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/wikimedia/mediawiki-skins-chameleon/?branch=master)
+[![Dependency Status](https://www.versioneye.com/php/mediawiki:chameleon-skin/badge.png)](https://www.versioneye.com/php/mediawiki:chameleon-skin)
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/chameleon-skin/version.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 [![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/d/total.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
-[![Dependency Status](https://www.versioneye.com/php/mediawiki:chameleon-skin/badge.png)](https://www.versioneye.com/php/mediawiki:chameleon-skin)
 
 The [Chameleon skin][mw-chameleon] uses [Twitter's Bootstrap 3][twbs] to provide
 a customizable MediaWiki skin.

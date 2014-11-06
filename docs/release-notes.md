@@ -1,6 +1,35 @@
 ## Release Notes
 
+### Chameleon 1.1
+
+Released on 06-Nov-2014
+
+New layouts:
+* __clean__: This is a minimalist layout intended for wikis that are not open
+  for general editing. A use case might be a blogging platform. For users, that
+  do not have edit rights, the layout will show only the main content of a wiki
+  page (and the site notice, if set). For users that do have edit rights it will
+  additionally show a sticky full-width navbar above, and a toolbar and an info
+  footer below the main content.
+
+New components and modifications:
+* __Silent__: Does nothing. Mainly intended for internal purposes, but may also
+  be used in custom layouts, e.g. as a placeholder during layout development
+* __HideFor__: Modification that allows to hide the parent component if the
+  condition specified by the attributes is fulfilled.
+  See [its description](Components/Modifications/HideFor.md)
+* __ShowOnlyFor__: Modification that allows to show the parent
+  component only if the condition specified by the attributes is fulfilled.
+  See [its description](Components/Modifications/ShowOnlyFor.md)
+
+Other changes:
+* Update CI test setup
+* Update localisation
+* Update documentation
+
 ### Chameleon 1.0.1
+
+Released on 22-Oct-2014
 
 * Fix TOC layout
 * Add basic testing for Menu component (and fix a small bug)
@@ -8,11 +37,13 @@
 
 ### Chameleon 1.0
 
+Released on 19-Oct-2014
+
 After nearly 1.5 years in development status, this is the first official version
 of the Chameleon skin for MediaWiki.
 
 It contains the following layouts:
-* __standard__ feature a big logo, a horizontal nav bar containing the 
+* __standard__ features a big logo, a horizontal nav bar containing the
   sidebar navigation links to Main Page, Recent changes, etc. The personal tools
   (user page, preferences, etc.) and the page tools (discussion, edit, history)
   are kept as textual links above and below the nav bar. Same goes for the

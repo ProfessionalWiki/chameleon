@@ -35,8 +35,8 @@ MediaWiki has some more advice on [how to report a bug][how to report a bug].
 
 The Chameleon skin is hosted on the Wikimedia Git server. To provide patches you
 need to get a developer account. MediaWiki has a [tutorial][gerrit-tutorial] to
-get you started. Alternatively you may use the [Gerrit Patch Uploader][patch
-uploader].
+get you started. Alternatively you may use the
+[Gerrit Patch Uploader][patch uploader].
 
 A few points to ease the process
 * Please ensure that patches are based on the current master. If in doubt,

@@ -8,6 +8,6 @@
 	"skinname-chameleon": "カメレオン",
 	"chameleon-desc": "カメレオン・スキン",
 	"chameleon-loggedin": "$1 としてログインしています。",
-	"chameleon-notloggedin": "ログインしていません",
+	"chameleon-notloggedin": "ログインしていません。",
 	"chameleon-newmessages": "新着メッセージがあります。"
 }

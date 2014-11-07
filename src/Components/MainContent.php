@@ -70,7 +70,6 @@ class MainContent extends Component {
 		$ret .= $this->buildContentHeader();
 		$ret .= $this->buildContentBody();
 		$ret .= $this->buildCategoryLinks();
-		$ret .= $this->buildDataAfterContent();
 
 		$ret .= $this->indent( -1 ) . '</div>' . "\n";
 		// END content
@@ -126,7 +125,8 @@ class MainContent extends Component {
 	protected function buildContentBody() {
 		return IdRegistry::getRegistry()->element( 'div', array( 'id' => 'bodyContent' ),
 			$this->indent() . '<!-- body text -->' . "\n" .
-			$this->indent() . $this->getSkinTemplate()->get( 'bodytext' )
+			$this->indent() . $this->getSkinTemplate()->get( 'bodytext' ) .
+			$this->buildDataAfterContent()
 		);
 	}
 

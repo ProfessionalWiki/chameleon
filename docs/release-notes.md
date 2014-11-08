@@ -1,5 +1,16 @@
 ## Release Notes
 
+### Chameleon 1.1.1
+
+Released on 08-Nov-2014
+
+Changes:
+* Some refactoring of the MainContent component
+* Include dataAfterContent in bodyContent
+  (Fixes [72869](https://bugzilla.wikimedia.org/72869))
+* Fix styles for Special pages
+  (Fixes [72872](https://bugzilla.wikimedia.org/72872))
+
 ### Chameleon 1.1
 
 Released on 06-Nov-2014
@@ -17,15 +28,18 @@ New components and modifications:
   be used in custom layouts, e.g. as a placeholder during layout development
 * __HideFor__: Modification that allows to hide the parent component if the
   condition specified by the attributes is fulfilled.
-  See [its description](Components/Modifications/HideFor.md)
+  See its [description](Components/Modifications/HideFor.md)
 * __ShowOnlyFor__: Modification that allows to show the parent
   component only if the condition specified by the attributes is fulfilled.
-  See [its description](Components/Modifications/ShowOnlyFor.md)
+  See its [description](Components/Modifications/ShowOnlyFor.md)
 
 Other changes:
 * Update CI test setup
 * Update localisation
 * Update documentation
+
+Known issues:
+* This version will identify as 1.1-alpha on Special:Version
 
 ### Chameleon 1.0.1
 

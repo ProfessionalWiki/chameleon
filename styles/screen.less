@@ -293,22 +293,6 @@ a.new, #p-personal a.new {
 			}
 		}
 	}
-
-	.ns-special & { // reset styles for special pages
-		ul {
-			padding-left: inherit;
-			text-indent: inherit;
-			margin: 2ex 0;
-
-			li:before {
-				content: none;
-			}
-		}
-
-		li {
-			margin: .5ex 0;
-		}
-	}
 }
 
 .catlinks {
@@ -380,6 +364,11 @@ pre, .mw-code {
 /* Tables */
 table {
 	font-size: 100%;
+}
+
+.skin-chameleon .mw-specialpages-table {
+	margin-bottom: 0;
+	margin-top: 0;
 }
 
 /* Forms */

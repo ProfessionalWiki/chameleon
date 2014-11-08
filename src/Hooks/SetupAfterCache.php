@@ -121,12 +121,14 @@ class SetupAfterCache {
 
 		if ( file_exists( $this->configuration[ 'wgStyleDirectory' ] . '/common/shared.css' ) ) { // MW < 1.24
 			$this->bootstrapManager->addExternalModule(
-				$this->configuration[ 'wgStyleDirectory' ] . '/common/shared.css'
+				$this->configuration[ 'wgStyleDirectory' ] . '/common/shared.css',
+				$this->configuration[ 'wgStylePath' ] . '/common/'
 			);
 		} else {
 			if ( file_exists( $this->configuration[ 'IP' ] . '/resources/src/mediawiki.legacy/shared.css' ) ) { // MW >= 1.24
 				$this->bootstrapManager->addExternalModule(
-					$this->configuration[ 'IP' ] . '/resources/src/mediawiki.legacy/shared.css'
+					$this->configuration[ 'IP' ] . '/resources/src/mediawiki.legacy/shared.css',
+					$this->configuration[ 'wgScriptPath' ] . '/resources/src/mediawiki.legacy/'
 				);
 			}
 		}

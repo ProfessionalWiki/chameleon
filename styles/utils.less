@@ -74,3 +74,17 @@ div.tleft {
 	border-left: none;
 	border-right: none;
 }
+
+.list-style-none() {
+	.mw-body {
+		ul {
+			padding-left: inherit;
+			text-indent: inherit;
+			margin: 2ex 0;
+
+			li:before {
+				content: none;
+			}
+		}
+	}
+}

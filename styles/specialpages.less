@@ -30,6 +30,10 @@
 		display: inline;
 		font-weight: normal;
 	}
+
+	td.mw-label, td.mw-input {
+		padding: 0.5em;
+	}
 }
 
 .mw-special-ChangeEmail,
@@ -46,28 +50,17 @@
 .mw-special-Mostimages,
 .mw-special-Allpages,
 .mw-special-Preferences {
-	.mw-body {
-		ul {
-			padding-left: inherit;
-			text-indent: inherit;
-			margin: 2ex 0;
-
-			li:before {
-				content: none;
-			}
-		}
-	}
+	.list-style-none();
 }
 
 .mw-special-Preferences {
 
-	#preferences td {
-		padding-left: 0.5em;
-		padding-right: 0.5em;
-	}
-
 	.htmlform-tip {
 		font-size: x-small;
+	}
+
+	.prefsection td.mw-label {
+		width: 25%;
 	}
 
 	#preftoc {
@@ -78,19 +71,11 @@
 		padding-bottom: 1ex;
 	}
 
-	.prefsection td.mw-label {
-		width: 25%;
-	}
 }
 
 .mw-special-ResetTokens {
 	#mw-content-text table {
 		margin-top: 2ex;
-
-		td {
-			padding-left: 1ex;
-			padding-right: 1ex;
-		}
 
 		td.mw-label {
 			width: 15%;

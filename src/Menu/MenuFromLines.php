@@ -37,7 +37,7 @@ use Title;
 class MenuFromLines extends Menu {
 
 	private $lines = null;
-	private $forContent = false;
+	private $inContentLanguage = false;
 
 	private $linkData = null;
 
@@ -50,11 +50,11 @@ class MenuFromLines extends Menu {
 
 	/**
 	 * @param string[] $lines
-	 * @param bool     $forContent
+	 * @param bool     $inContentLanguage
 	 */
-	public function __construct( &$lines, $forContent = false ) {
+	public function __construct( &$lines, $inContentLanguage = false ) {
 		$this->lines = &$lines;
-		$this->forContent = $forContent;
+		$this->inContentLanguage = $inContentLanguage;
 	}
 
 	/**
@@ -117,7 +117,7 @@ class MenuFromLines extends Menu {
 			$itemList = $this->getHtmlForMenuItemList( $itemList, $this->linkData['depth'] );
 		}
 
-		if ( $this->linkData['original'] !== '' ) {
+		if ( $this->linkData['text'] !== '' ) {
 			return $this->getHtmlForMenuItem( $this->linkData['href'], $this->linkData['text'], $this->linkData['depth'], $itemList );
 		} else {
 			return $itemList;
@@ -127,65 +127,89 @@ class MenuFromLines extends Menu {
 	/**
 	 * Will return an array of the form
 	 * array(
-	 *   'original' => $orig,  // original link target
 	 *   'text'     => $text,  // link text
-	 *   'href'     => $href   // parsed link target
+	 *   'href'     => $href,  // parsed link target
+	 *   'depth'    => $depth
 	 * );
 	 *
-	 * @param string $line
+	 * @param string $rawLine
 	 *
 	 * @return array
 	 */
-	protected function parseOneLine( $line ) {
-		wfProfileIn( __METHOD__ );
+	protected function parseOneLine( $rawLine ) {
 
-		$depth = strrpos( ltrim( $line ), '*' );
-		$depth = $depth === false ? 0 : $depth + 1;
+		list( $depth, $line ) = $this->extractDepthAndLine( $rawLine );
 
-		// trim spaces and asterisks from line and then split it to maximum two chunks
-		$lineArr = array_map( 'trim', explode( '|', trim( $line, "* \t\n\r\0\x0B" ), 2 ) );
+		$lineArr = array_map( 'trim', explode( '|', $line, 2 ) );
 
-		// trim [ and ] from line to have just http://en.wikipedia.org instead
-		// of [http://en.wikipedia.org] for external links
-		$lineArr[ 0 ] = trim( $lineArr[ 0 ], '[]' );
+		$linkTarget = trim( trim( $lineArr[ 0 ], '[]' ) );
+		$linkTarget = $this->getTextFromMessageName( $linkTarget );
+		$href = $this->getHrefForTarget( $linkTarget );
 
-		if ( count( $lineArr ) === 2 && $lineArr[ 1 ] !== '' ) {
-			$msgObj = wfMessage( $lineArr[ 0 ] );
-			$link = ( $msgObj->isDisabled() ? $lineArr[ 0 ] : trim( $msgObj->inContentLanguage()->text() ) );
-			$desc = trim( $lineArr[ 1 ] );
-		} else {
-			$link = $desc = trim( $lineArr[ 0 ] );
-		}
-
-		$text = $this->forContent ? wfMessage( $desc )->inContentLanguage() : wfMessage( $desc );
-
-		if ( $text->isDisabled() ) {
-			$text = $desc;
-		}
-
-		if ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $link ) ) {
-			$href = $link;
-		} elseif ( empty( $link ) ) {
-			$href = '#';
-		} elseif ( $link[ 0 ] === '#' ) {
-			$href = '#';
-		} else {
-			$title = Title::newFromText( $link );
-			if ( $title instanceof Title ) {
-				$href = $title->fixSpecialName()->getLocalURL();
-			} else {
-				$href = '#';
-			}
-		}
-
-		wfProfileOut( __METHOD__ );
+		$linkDescription = count( $lineArr ) > 1 ? $lineArr[ 1 ] : '';
+		$text = $linkDescription === '' ? $linkTarget : $this->getTextFromMessageName( $linkDescription );
 
 		return array(
-			'original' => $lineArr[ 0 ],
 			'text'     => $text,
 			'href'     => $href,
 			'depth'    => $depth
 		);
+	}
+
+	/**
+	 * @param $rawLine
+	 * @return array
+	 */
+	protected function extractDepthAndLine( $rawLine ) {
+
+		$matches = array();
+		preg_match( '/(\**)(.*)/', ltrim( $rawLine ), $matches );
+
+		$depth = strlen( $matches[ 1 ] );
+		$line = $matches[ 2 ];
+
+		return array( $depth, $line );
+	}
+
+	/**
+	 * @param string $messageName
+	 * @return string
+	 */
+	protected function getTextFromMessageName( $messageName ) {
+		$msgObj = $this->inContentLanguage ? wfMessage( $messageName )->inContentLanguage() : wfMessage( $messageName );
+		$messageText = ( $msgObj->isDisabled() ? $messageName : trim( $msgObj->inContentLanguage()->text() ) );
+		return $messageText;
+	}
+
+	/**
+	 * @param $linkTarget
+	 * @return string
+	 * @throws \MWException
+	 */
+	protected function getHrefForTarget( $linkTarget ) {
+
+		if ( empty( $linkTarget ) ) {
+			return '#';
+		} elseif ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $linkTarget ) || $linkTarget[ 0 ] === '#') {
+			return $linkTarget;
+		} else {
+			return $this->getHrefFromTitle( $linkTarget );
+		}
+	}
+
+	/**
+	 * @param $linkTarget
+	 * @return string
+	 * @throws \MWException
+	 */
+	protected function getHrefFromTitle( $linkTarget ) {
+		$title = Title::newFromText( $linkTarget );
+
+		if ( $title instanceof Title ) {
+			return $title->fixSpecialName()->getLocalURL();
+		}
+
+		return '#';
 	}
 
 }

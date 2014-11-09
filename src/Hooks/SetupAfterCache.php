@@ -61,6 +61,8 @@ class SetupAfterCache {
 	 * @return self
 	 */
 	public function process() {
+
+		$this->setInstallPaths();
 		$this->addLateSettings();
 		$this->registerCommonBootstrapModules();
 		$this->registerExternalLessModules();
@@ -79,6 +81,19 @@ class SetupAfterCache {
 		foreach ( $this->configuration as $key => $value ) {
 			$configuration[ $key ] = $value;
 		}
+	}
+
+	/**
+	 * Set local and remote base path of the Chameleon skin
+	 */
+	protected function setInstallPaths() {
+
+		$dirParts = explode( DIRECTORY_SEPARATOR, __DIR__ );
+		array_pop( $dirParts );
+		array_pop( $dirParts );
+
+		$this->configuration[ 'chameleonLocalPath' ] = implode( '/', $dirParts );
+		$this->configuration[ 'chameleonRemotePath' ] = str_replace( $this->configuration[ 'IP' ], $this->configuration[ 'wgScriptPath' ], $this->configuration[ 'chameleonLocalPath' ] );
 	}
 
 	protected function addLateSettings() {
@@ -104,8 +119,8 @@ class SetupAfterCache {
 		}
 
 		$this->configuration[ 'wgResourceModules' ][ 'skin.chameleon.jquery-sticky' ] = array(
-			'localBasePath' => $this->configuration[ 'wgStyleDirectory' ] . implode( DIRECTORY_SEPARATOR, array( '', 'chameleon', 'resources' ) ),
-			'remoteBasePath' => $this->configuration[ 'wgScriptPath' ] . '/skins/chameleon/resources',
+			'localBasePath' => $this->configuration[ 'chameleonLocalPath' ] . '/resources',
+			'remoteBasePath' => $this->configuration[ 'chameleonRemotePath' ] . '/resources',
 			'group' => 'skin.chameleon',
 			'skinScripts' => array( 'chameleon' => array( 'jquery-sticky/jquery.sticky.js', 'Components/Modifications/sticky.js' ) )
 		);
@@ -134,8 +149,8 @@ class SetupAfterCache {
 		}
 
 		$this->bootstrapManager->addExternalModule(
-			$this->configuration[ 'wgStyleDirectory' ] . '/chameleon/styles/' . 'core.less',
-			$this->configuration[ 'wgStylePath' ] . '/chameleon/styles/'
+			$this->configuration[ 'chameleonLocalPath' ] . '/styles/core.less',
+			$this->configuration[ 'chameleonRemotePath' ] . '/styles/'
 		);
 	}
 
@@ -165,6 +180,10 @@ class SetupAfterCache {
 		}
 	}
 
+	/**
+	 * @param $id
+	 * @return bool
+	 */
 	private function hasConfiguration( $id ) {
 		return isset( $this->configuration[ $id ] );
 	}
@@ -177,6 +196,11 @@ class SetupAfterCache {
 		return $this->hasConfiguration( $id ) && is_array( $this->configuration[ $id ] );
 	}
 
+	/**
+	 * @param $localFile
+	 * @param $remotePath
+	 * @return array
+	 */
 	private function matchAssociativeElement( $localFile, $remotePath ) {
 
 		if ( is_integer( $localFile ) ) {

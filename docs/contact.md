@@ -1,7 +1,8 @@
 ## Contact
 
-For bug reports and feature requests please use the [bug tracker][bugs]. See
-also the [Contribute](contribute.md) section.
+For bug reports and feature requests please see, if it is already reported on
+the list of [][open bugs]. If not, [report it][report bugs]. Also see the
+[Contribute](contribute.md) section for instructions on bug reporting.
 
 For general questions, comments or suggestions you might use the [Chameleon skin
 talk page on MediaWiki.org][chameleon-talk]. For direct contact with the author
@@ -10,7 +11,8 @@ please use the [Email functionality on MediaWiki.org.][mw-mail]
 Finally there are the MediaWiki IRC channel (Server: [freenode.net][irc],
 Channel: #mediawiki) and the [MediaWiki mailing list][mw-ml]. 
 
-[bugs]: https://bugzilla.wikimedia.org/buglist.cgi?component=Chameleon&resolution=---&resolution=LATER
+[open bugs]: https://bugzilla.wikimedia.org/buglist.cgi?component=Chameleon&resolution=---&resolution=LATER
+[report bugs]: https://bugzilla.wikimedia.org/enter_bug.cgi?product=MediaWiki%20skins&component=Chameleon
 [chameleon-talk]: https://www.mediawiki.org/wiki/Skin_talk:Chameleon
 [mw-mail]: https://www.mediawiki.org/wiki/Special:EmailUser/F.trott
 [irc]: http://webchat.freenode.net/

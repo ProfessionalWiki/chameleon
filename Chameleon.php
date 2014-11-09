@@ -65,7 +65,7 @@ call_user_func( function () {
 
 	// register message file for i18n
 	$GLOBALS[ 'wgExtensionMessagesFiles' ][ 'Chameleon' ] = __DIR__ . '/Chameleon.i18n.php';
-    $GLOBALS[ 'wgMessagesDirs' ][ 'Chameleon' ] = __DIR__ . '/i18n';
+    $GLOBALS[ 'wgMessagesDirs' ][ 'Chameleon' ] = __DIR__ . '/resources/i18n';
 
 	/**
 	 * Using callbacks for hook registration

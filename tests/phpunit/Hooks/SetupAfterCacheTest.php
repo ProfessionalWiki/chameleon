@@ -241,8 +241,8 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 
 		$expected[ 'wgResourceModules' ] = array();
 		$expected[ 'wgResourceModules' ][ 'skin.chameleon.jquery-sticky' ] = array(
-			'localBasePath'  => $expected[ 'chameleonLocalPath' ] . '/resources',
-			'remoteBasePath' => $expected[ 'chameleonRemotePath' ] . '/resources',
+			'localBasePath'  => $expected[ 'chameleonLocalPath' ] . '/resources/js',
+			'remoteBasePath' => $expected[ 'chameleonRemotePath' ] . '/resources/js',
 			'group'          => 'skin.chameleon',
 			'skinScripts'    => array(
 				'chameleon' => array( 'jquery-sticky/jquery.sticky.js', 'Components/Modifications/sticky.js' )

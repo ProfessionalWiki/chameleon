@@ -4,9 +4,12 @@ There are different ways to make a contribution to [Chameleon][chameleon]. A few
 
 ### Report bugs, ask for features
 
-You may help by reporting bugs and feature requests via the [bug tracker][bugs].
+You may help by reporting bugs and feature requests. First check if an open bug
+already exists on the list of [][open bugs] and if you have new information,
+comment on it. If the bug is not yet reported,
+[open a new bug report][report bugs].
 
-If you report a bug, please include:
+When you report a bug, please include:
 * Exact steps to reproduce the bug
 * Expected result
 * Observed result
@@ -54,7 +57,8 @@ A few points to ease the process
 
 
 [chameleon]: https://www.mediawiki.org/wiki/Skin:Chameleon
-[bugs]: https://bugzilla.wikimedia.org/buglist.cgi?component=Chameleon&resolution=---&resolution=LATER
+[open bugs]: https://bugzilla.wikimedia.org/buglist.cgi?component=Chameleon&resolution=---&resolution=LATER
+[report bugs]: https://bugzilla.wikimedia.org/enter_bug.cgi?product=MediaWiki%20skins&component=Chameleon
 [how to report a bug]: https://www.mediawiki.org/wiki/How_to_report_a_bug
 [screenshots]: https://www.mediawiki.org/wiki/Skin:Chameleon#Screenshots
 [twn]: https://translatewiki.net/

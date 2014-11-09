@@ -177,14 +177,14 @@ MediaWiki installation directory.
  @line-height-computed                        | Dimension  | 20px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
  @line-height-large                           | Dimension  | 1.33                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
  @line-height-small                           | Dimension  | 1.5                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @link-color                                  | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/styles/variables.less                    | 
- @link-external-color                         | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/styles/variables.less                    | 
+ @link-color                                  | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/resources/styles/variables.less          | 
+ @link-external-color                         | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/resources/styles/variables.less          | 
  @link-hover-color                            | Color      | rgba( 42, 100, 150, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @link-interwiki-color                        | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/styles/variables.less                    | 
- @link-new-color                              | Color      | rgba( 181, 43, 39, 1  )                       | .../skins/chameleon/styles/variables.less                    | 
- @link-stub-color                             | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/styles/variables.less                    | 
- @list-bullet-color                           | Color      | rgba( 119, 119, 119, 1  )                     | .../skins/chameleon/styles/variables.less                    | 
- @list-bullet-size                            | Dimension  | 0.7ex                                         | .../skins/chameleon/styles/variables.less                    | 
+ @link-interwiki-color                        | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/resources/styles/variables.less          | 
+ @link-new-color                              | Color      | rgba( 181, 43, 39, 1  )                       | .../skins/chameleon/resources/styles/variables.less          | 
+ @link-stub-color                             | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/resources/styles/variables.less          | 
+ @list-bullet-color                           | Color      | rgba( 119, 119, 119, 1  )                     | .../skins/chameleon/resources/styles/variables.less          | 
+ @list-bullet-size                            | Dimension  | 0.7ex                                         | .../skins/chameleon/resources/styles/variables.less          | 
  @list-group-active-bg                        | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
  @list-group-active-border                    | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
  @list-group-active-color                     | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
@@ -199,7 +199,7 @@ MediaWiki installation directory.
  @list-group-link-color                       | Color      | rgba( 85, 85, 85, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
  @list-group-link-heading-color               | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
  @list-group-link-hover-color                 | Color      | rgba( 85, 85, 85, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-level-indent                           | Dimension  | 2.5ex                                         | .../skins/chameleon/styles/variables.less                    | 
+ @list-level-indent                           | Dimension  | 2.5ex                                         | .../skins/chameleon/resources/styles/variables.less          | 
  @modal-backdrop-bg                           | Color      | rgba( 0, 0, 0, 1  )                           | .../vendor/twitter/bootstrap/less/variables.less             | 
  @modal-backdrop-opacity                      | Dimension  | 0.5                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
  @modal-content-bg                            | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
@@ -248,14 +248,14 @@ MediaWiki installation directory.
  @navbar-inverse-toggle-border-color          | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
  @navbar-inverse-toggle-hover-bg              | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
  @navbar-inverse-toggle-icon-bar-bg           | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-logo-height                          | Dimension  | 45px                                          | .../skins/chameleon/styles/variables.less                    | 
+ @navbar-logo-height                          | Dimension  | 45px                                          | .../skins/chameleon/resources/styles/variables.less          | 
  @navbar-margin-bottom                        | Dimension  | 20                                            | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-newtalk-available                    | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/styles/variables.less                    | 
- @navbar-newtalk-not-available                | Color      | rgba( 196, 196, 196, 1  )                     | .../skins/chameleon/styles/variables.less                    | 
+ @navbar-newtalk-available                    | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/resources/styles/variables.less          | 
+ @navbar-newtalk-not-available                | Color      | rgba( 196, 196, 196, 1  )                     | .../skins/chameleon/resources/styles/variables.less          | 
  @navbar-padding-horizontal                   | Dimension  | 15px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
  @navbar-padding-vertical                     | Dimension  | 15px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-user-loggedin                        | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/styles/variables.less                    | 
- @navbar-user-not-loggedin                    | Color      | rgba( 196, 196, 196, 1  )                     | .../skins/chameleon/styles/variables.less                    | 
+ @navbar-user-loggedin                        | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/resources/styles/variables.less          | 
+ @navbar-user-not-loggedin                    | Color      | rgba( 196, 196, 196, 1  )                     | .../skins/chameleon/resources/styles/variables.less          | 
  @nav-disabled-link-color                     | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
  @nav-disabled-link-hover-color               | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
  @nav-link-hover-bg                           | Color      | rgba( 238, 238, 238, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
@@ -385,9 +385,9 @@ MediaWiki installation directory.
  @thumbnail-border                            | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
  @thumbnail-border-radius                     | Dimension  | 4                                             | .../vendor/twitter/bootstrap/less/variables.less             | 
  @thumbnail-caption-color                     | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @thumbnail-caption-padding                   | Dimension  | 3px                                           | .../skins/chameleon/styles/variables.less                    | 
+ @thumbnail-caption-padding                   | Dimension  | 3px                                           | .../skins/chameleon/resources/styles/variables.less          | 
  @thumbnail-padding                           | Dimension  | 4px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @toctitle-font-size                          | Dimension  | 18                                            | .../skins/chameleon/styles/variables.less                    | 
+ @toctitle-font-size                          | Dimension  | 18                                            | .../skins/chameleon/resources/styles/variables.less          | 
  @tooltip-arrow-color                         | Color      | rgba( 0, 0, 0, 1  )                           | .../vendor/twitter/bootstrap/less/variables.less             | 
  @tooltip-arrow-width                         | Dimension  | 5px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
  @tooltip-bg                                  | Color      | rgba( 0, 0, 0, 1  )                           | .../vendor/twitter/bootstrap/less/variables.less             | 

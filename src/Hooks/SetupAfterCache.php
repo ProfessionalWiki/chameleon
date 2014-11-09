@@ -119,8 +119,8 @@ class SetupAfterCache {
 		}
 
 		$this->configuration[ 'wgResourceModules' ][ 'skin.chameleon.jquery-sticky' ] = array(
-			'localBasePath' => $this->configuration[ 'chameleonLocalPath' ] . '/resources',
-			'remoteBasePath' => $this->configuration[ 'chameleonRemotePath' ] . '/resources',
+			'localBasePath' => $this->configuration[ 'chameleonLocalPath' ] . '/resources/js',
+			'remoteBasePath' => $this->configuration[ 'chameleonRemotePath' ] . '/resources/js',
 			'group' => 'skin.chameleon',
 			'skinScripts' => array( 'chameleon' => array( 'jquery-sticky/jquery.sticky.js', 'Components/Modifications/sticky.js' ) )
 		);
@@ -128,9 +128,6 @@ class SetupAfterCache {
 	}
 
 	protected function registerCommonBootstrapModules() {
-
-		// Should we check for
-		// $this->isReadableFile( $this->configuration['wgStyleDirectory'] . '/chameleon/styles/' . 'screen.less' )
 
 		$this->bootstrapManager->addAllBootstrapModules();
 
@@ -149,8 +146,8 @@ class SetupAfterCache {
 		}
 
 		$this->bootstrapManager->addExternalModule(
-			$this->configuration[ 'chameleonLocalPath' ] . '/styles/core.less',
-			$this->configuration[ 'chameleonRemotePath' ] . '/styles/'
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/core.less',
+			$this->configuration[ 'chameleonRemotePath' ] . '/resources/styles/'
 		);
 	}
 

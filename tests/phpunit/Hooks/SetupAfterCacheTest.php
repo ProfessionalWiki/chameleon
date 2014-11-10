@@ -227,7 +227,7 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
-		$IP = dirname( dirname( dirname( dirname( dirname( __DIR__ ) ) ) ) );
+		$IP = str_replace( DIRECTORY_SEPARATOR, '/', realpath( __DIR__ . '/../../../../../' ) );
 
 		$defaultConfiguration = array(
 			'IP'                => $IP,

@@ -71,9 +71,13 @@ class MenuFromLinesTest extends \PHPUnit_Framework_TestCase {
 			'* Test | Bar',
 		);
 
-		$sp = $GLOBALS[ 'wgScriptPath' ];
+		$ap = $GLOBALS[ 'wgArticlePath' ];
 
-		$expected = "<ul><li><a href=\"$sp/index.php/Foo\">Foo</a><ul><li><a href=\"$sp/index.php/FooBar\">FooBar</a><ul><li><a href=\"$sp/index.php/FooBarBaz\">FooBarBaz</a></li></ul></li></ul></li><li><a href=\"$sp/index.php/Test\">Bar</a></li></ul>";
+		$expected = '<ul><li><a href="' . str_replace( '$1', 'Foo', $ap ) .
+			'">Foo</a><ul><li><a href="' . str_replace( '$1', 'FooBar', $ap ) .
+			'">FooBar</a><ul><li><a href="' . str_replace( '$1', 'FooBarBaz', $ap ) .
+			'">FooBarBaz</a></li></ul></li></ul></li><li><a href="' . str_replace( '$1', 'Test', $ap ) .
+			'">Bar</a></li></ul>';
 
 		/** @var MenuFromLines $instance */
 		$instance = new MenuFromLines( $lines, true );

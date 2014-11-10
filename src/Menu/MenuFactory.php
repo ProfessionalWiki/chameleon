@@ -21,7 +21,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Skins
+ * @ingroup   Skins
  */
 
 namespace Skins\Chameleon\Menu;
@@ -29,8 +29,8 @@ namespace Skins\Chameleon\Menu;
 /**
  * Class MenuFactory
  *
- * @author Stephan Gambke
- * @since 1.0
+ * @author  Stephan Gambke
+ * @since   1.0
  * @ingroup Skins
  */
 class MenuFactory {
@@ -66,10 +66,10 @@ class MenuFactory {
 
 	/**
 	 * @param string $text
-	 *
-	 * @throws \MWException
+	 * @param bool   $forContent
 	 *
 	 * @return Menu
+	 * @throws \MWException
 	 */
 	public function getMenuFromMessageText( $text, $forContent = false ) {
 
@@ -78,8 +78,6 @@ class MenuFactory {
 		}
 
 		$lines = explode( "\n", trim( $text ) );
-
-		array_unshift( $lines, '' );
 
 		return new MenuFromLines( $lines, $forContent );
 	}

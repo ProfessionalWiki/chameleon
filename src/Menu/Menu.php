@@ -21,7 +21,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Skins
+ * @ingroup   Skins
  */
 
 namespace Skins\Chameleon\Menu;
@@ -29,36 +29,27 @@ namespace Skins\Chameleon\Menu;
 /**
  * Class Menu
  *
- * @author Stephan Gambke
- * @since 1.0
+ * @author  Stephan Gambke
+ * @since   1.0
  * @ingroup Skins
  */
 abstract class Menu {
 
-	abstract public function getHtml();
-
 	private $menuItemFormatter = null;
 	private $itemListFormatter = null;
 
+	abstract public function getHtml();
+
 	/**
+	 * @param string $href
+	 * @param string $text
+	 * @param int    $depth
+	 * @param string $subitems
+	 *
 	 * @return string
 	 */
-	public function getItemListFormatter() {
-
-		if ( $this->itemListFormatter === null ) {
-			$this->setItemListFormatter( function ( $rawItemsHtml, $depth ) {
-				return "<ul>$rawItemsHtml</ul>";
-			} );
-		}
-
-		return $this->itemListFormatter;
-	}
-
-	/**
-	 * @param string $itemListFormatter
-	 */
-	public function setItemListFormatter( $itemListFormatter ) {
-		$this->itemListFormatter = $itemListFormatter;
+	protected function getHtmlForMenuItem( $href, $text, $depth, $subitems ) {
+		return call_user_func( $this->getMenuItemFormatter(), $href, $text, $depth, $subitems );
 	}
 
 	/**
@@ -71,8 +62,13 @@ abstract class Menu {
 			$this->setMenuItemFormatter( function ( $href, $text, $depth, $subitems ) {
 				$href = \Sanitizer::cleanUrl( $href );
 				$text = htmlspecialchars( $text );
+				$indent = str_repeat( "\t", 2 * $depth );
 
-				return "<li><a href=\"$href\">$text</a>$subitems</li>";
+				if ( $subitems !== '' ) {
+					return "$indent<li>\n$indent\t<a href=\"$href\">$text</a>\n$subitems$indent</li>\n";
+				} else {
+					return "$indent<li><a href=\"$href\">$text</a></li>\n";
+				}
 			} );
 
 		}
@@ -88,25 +84,35 @@ abstract class Menu {
 	}
 
 	/**
-	 * @param $href
-	 * @param $text
-	 * @param $depth
-	 * @param $subitems
-	 *
-	 * @return mixed|string
-	 */
-	protected function getHtmlForMenuItem( $href, $text, $depth, $subitems ) {
-		return call_user_func( $this->getMenuItemFormatter(), $href, $text, $depth, $subitems );
-	}
-
-	/**
 	 * @param string $rawItemsHtml
-	 * @param int $depth
+	 * @param int    $depth
 	 *
 	 * @return string
 	 */
 	protected function getHtmlForMenuItemList( $rawItemsHtml, $depth ) {
 		return call_user_func( $this->getItemListFormatter(), $rawItemsHtml, $depth );
+	}
+
+	/**
+	 * @return callable
+	 */
+	public function getItemListFormatter() {
+
+		if ( $this->itemListFormatter === null ) {
+			$this->setItemListFormatter( function ( $rawItemsHtml, $depth ) {
+				$indent = str_repeat( "\t", 2 * $depth + 1 );
+				return "$indent<ul>\n$rawItemsHtml$indent</ul>\n";
+			} );
+		}
+
+		return $this->itemListFormatter;
+	}
+
+	/**
+	 * @param callable $itemListFormatter
+	 */
+	public function setItemListFormatter( $itemListFormatter ) {
+		$this->itemListFormatter = $itemListFormatter;
 	}
 
 }

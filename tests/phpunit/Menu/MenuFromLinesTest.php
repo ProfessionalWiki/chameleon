@@ -73,11 +73,11 @@ class MenuFromLinesTest extends \PHPUnit_Framework_TestCase {
 
 		$ap = $GLOBALS[ 'wgArticlePath' ];
 
-		$expected = '<ul><li><a href="' . str_replace( '$1', 'Foo', $ap ) .
-			'">Foo</a><ul><li><a href="' . str_replace( '$1', 'FooBar', $ap ) .
-			'">FooBar</a><ul><li><a href="' . str_replace( '$1', 'FooBarBaz', $ap ) .
-			'">FooBarBaz</a></li></ul></li></ul></li><li><a href="' . str_replace( '$1', 'Test', $ap ) .
-			'">Bar</a></li></ul>';
+		$expected = "\t<ul>\n\t\t<li>\n\t\t\t<a href=\"" . str_replace( '$1', 'Foo', $ap ) .
+			"\">Foo</a>\n\t\t\t<ul>\n\t\t\t\t<li>\n\t\t\t\t\t<a href=\"" . str_replace( '$1', 'FooBar', $ap ) .
+			"\">FooBar</a>\n\t\t\t\t\t<ul>\n\t\t\t\t\t\t<li><a href=\"" . str_replace( '$1', 'FooBarBaz', $ap ) .
+			"\">FooBarBaz</a></li>\n\t\t\t\t\t</ul>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><a href=\"" . str_replace( '$1', 'Test', $ap ) .
+			"\">Bar</a></li>\n\t</ul>\n";
 
 		/** @var MenuFromLines $instance */
 		$instance = new MenuFromLines( $lines, true );

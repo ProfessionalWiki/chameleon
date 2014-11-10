@@ -21,44 +21,55 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Skins
+ * @ingroup   Skins
  */
 
 namespace Skins\Chameleon\Menu;
+
 use Title;
 
 /**
  * Class MenuFromLines
  *
- * @author Stephan Gambke
- * @since 1.0
+ * @author  Stephan Gambke
+ * @since   1.0
  * @ingroup Skins
  */
 class MenuFromLines extends Menu {
 
 	private $lines = null;
 	private $inContentLanguage = false;
+	private $menuItemData = null;
 
-	private $linkData = null;
+	private $needsParse = true;
 
-	/**
-	 * @var Menu[]
-	 */
+	/** @var Menu[] */
 	private $children = array();
-
 	private $html = null;
 
 	/**
-	 * @param string[] $lines
-	 * @param bool     $inContentLanguage
+	 * @param string[]      $lines
+	 * @param bool          $inContentLanguage
+	 * @param null|string[] $itemData
 	 */
-	public function __construct( &$lines, $inContentLanguage = false ) {
+	public function __construct( &$lines, $inContentLanguage = false, $itemData = null ) {
+
 		$this->lines = &$lines;
 		$this->inContentLanguage = $inContentLanguage;
+
+		if ( $itemData !== null ) {
+			$this->menuItemData = $itemData;
+		} else {
+			$this->menuItemData = array(
+				'text'  => '',
+				'href'  => '#',
+				'depth' => 0
+			);
+		}
 	}
 
 	/**
-	 * @return mixed|null|string
+	 * @return string
 	 */
 	public function getHtml() {
 
@@ -73,55 +84,39 @@ class MenuFromLines extends Menu {
 		return $this->html;
 	}
 
+	/**
+	 * @return string[]|null
+	 */
 	public function parseLines() {
 
-		if ( empty( $this->lines ) ) {
-			return;
+		if ( !$this->needsParse ) {
+			return null;
 		}
 
-		$line = array_shift( $this->lines );
-		$this->linkData = $this->parseOneLine( $line );
+		$this->needsParse = false;
 
-		while ( count( $this->lines ) ) {
+		$line = $this->getNextLine();
+		$subItemData = $this->parseOneLine( $line );
 
-			$line = trim( reset( $this->lines ) );
+		while ( $subItemData !== null && $subItemData[ 'depth' ] > $this->menuItemData[ 'depth' ] ) {
 
-			if ( empty( $line ) ) { // skip empty lines
-				array_shift( $this->lines );
-				continue;
-			}
+			$subItemData = $this->createChildAndParseNextLine( $subItemData );
 
-			if ( strrpos( $line, '*' ) !== $this->linkData[ 'depth' ] ) {
-				return;
-			}
-
-			$child = new self( $this->lines );
-			$child->setMenuItemFormatter( $this->getMenuItemFormatter() );
-			$child->setItemListFormatter( $this->getItemListFormatter() );
-			$child->parseLines();
-			$this->children[] = $child;
 		}
+
+		return $subItemData;
 	}
 
 	/**
-	 * @return mixed|string
+	 * @return string
 	 */
-	private function buildHtml()  {
+	protected function getNextLine() {
+		$line = '';
 
-		$itemList = '';
-
-		if ( ! empty( $this->children ) ) {
-			foreach ( $this->children as $child ) {
-				$itemList .= $child->getHtml();
-			}
-			$itemList = $this->getHtmlForMenuItemList( $itemList, $this->linkData['depth'] );
-		}
-
-		if ( $this->linkData['text'] !== '' ) {
-			return $this->getHtmlForMenuItem( $this->linkData['href'], $this->linkData['text'], $this->linkData['depth'], $itemList );
-		} else {
-			return $itemList;
-		}
+		while ( count( $this->lines ) > 0 && empty( $line ) ) {
+			$line = trim( array_shift( $this->lines ) );
+		};
+		return $line;
 	}
 
 	/**
@@ -138,6 +133,10 @@ class MenuFromLines extends Menu {
 	 */
 	protected function parseOneLine( $rawLine ) {
 
+		if ( empty( $rawLine ) ) {
+			return null;
+		}
+
 		list( $depth, $line ) = $this->extractDepthAndLine( $rawLine );
 
 		$lineArr = array_map( 'trim', explode( '|', $line, 2 ) );
@@ -150,14 +149,15 @@ class MenuFromLines extends Menu {
 		$text = $linkDescription === '' ? $linkTarget : $this->getTextFromMessageName( $linkDescription );
 
 		return array(
-			'text'     => $text,
-			'href'     => $href,
-			'depth'    => $depth
+			'text'  => $text,
+			'href'  => $href,
+			'depth' => $depth
 		);
 	}
 
 	/**
-	 * @param $rawLine
+	 * @param string $rawLine
+	 *
 	 * @return array
 	 */
 	protected function extractDepthAndLine( $rawLine ) {
@@ -173,6 +173,7 @@ class MenuFromLines extends Menu {
 
 	/**
 	 * @param string $messageName
+	 *
 	 * @return string
 	 */
 	protected function getTextFromMessageName( $messageName ) {
@@ -182,7 +183,8 @@ class MenuFromLines extends Menu {
 	}
 
 	/**
-	 * @param $linkTarget
+	 * @param string $linkTarget
+	 *
 	 * @return string
 	 * @throws \MWException
 	 */
@@ -190,19 +192,20 @@ class MenuFromLines extends Menu {
 
 		if ( empty( $linkTarget ) ) {
 			return '#';
-		} elseif ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $linkTarget ) || $linkTarget[ 0 ] === '#') {
+		} elseif ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $linkTarget ) || $linkTarget[ 0 ] === '#' ) {
 			return $linkTarget;
 		} else {
-			return $this->getHrefFromTitle( $linkTarget );
+			return $this->getHrefForWikiPage( $linkTarget );
 		}
 	}
 
 	/**
-	 * @param $linkTarget
+	 * @param string $linkTarget
+	 *
 	 * @return string
 	 * @throws \MWException
 	 */
-	protected function getHrefFromTitle( $linkTarget ) {
+	protected function getHrefForWikiPage( $linkTarget ) {
 		$title = Title::newFromText( $linkTarget );
 
 		if ( $title instanceof Title ) {
@@ -210,6 +213,51 @@ class MenuFromLines extends Menu {
 		}
 
 		return '#';
+	}
+
+	/**
+	 * @param string[] $subItemData
+	 *
+	 * @return null|string[]
+	 */
+	protected function createChildAndParseNextLine( $subItemData ) {
+		$child = new self( $this->lines, $this->inContentLanguage, $subItemData );
+		$child->setMenuItemFormatter( $this->getMenuItemFormatter() );
+		$child->setItemListFormatter( $this->getItemListFormatter() );
+		$subItemData = $child->parseLines();
+		$this->children[ ] = $child;
+		return $subItemData;
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function buildHtml() {
+
+		$submenuHtml = $this->buildSubmenuHtml();
+
+		if ( $this->menuItemData[ 'text' ] !== '' ) {
+			return $this->getHtmlForMenuItem( $this->menuItemData[ 'href' ], $this->menuItemData[ 'text' ], $this->menuItemData[ 'depth' ], $submenuHtml );
+		} else {
+			return $submenuHtml;
+		}
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function buildSubmenuHtml() {
+
+		if ( empty( $this->children ) ) {
+			return '';
+		}
+
+		$itemList = '';
+		foreach ( $this->children as $child ) {
+			$itemList .= $child->getHtml();
+		}
+
+		return $this->getHtmlForMenuItemList( $itemList, $this->menuItemData[ 'depth' ] );
 	}
 
 }

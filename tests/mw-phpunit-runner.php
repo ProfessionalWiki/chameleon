@@ -47,21 +47,27 @@ function isReadablePath( $path ) {
 
 function addArguments( $args ) {
 
-	$arguments = array();
+	array_shift( $args );
+	return $args;
 
-	for ( $arg = reset( $args ); $arg !== false; $arg = next( $args ) ) {
-
-		if ( $arg === basename( __FILE__ ) ) {
-			continue;
-		}
-
-		$arguments[] = $arg;
-	}
-
-	return $arguments;
+//	$arguments = array();
+//
+//	for ( $arg = reset( $args ); $arg !== false; $arg = next( $args ) ) {
+//
+//		//// FIXME: This check will fail if started from a different directory
+//		if ( $arg === basename( __FILE__ ) ) {
+//			continue;
+//		}
+//
+//		$arguments[] = $arg;
+//	}
+//
+//	return $arguments;
 }
 
 $mw = isReadablePath( __DIR__ . "/../../../tests/phpunit/phpunit.php" );
 $config = isReadablePath( __DIR__ . "/../phpunit.xml.dist" );
+
+echo "php {$mw} -c {$config} " . implode( ' ', addArguments( $GLOBALS['argv'] ) );
 
 passthru( "php {$mw} -c {$config} " . implode( ' ', addArguments( $GLOBALS['argv'] ) ) );

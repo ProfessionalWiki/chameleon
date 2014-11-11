@@ -137,16 +137,8 @@ class MenuFromLines extends Menu {
 			return null;
 		}
 
-		list( $depth, $line ) = $this->extractDepthAndLine( $rawLine );
-
-		$lineArr = array_map( 'trim', explode( '|', $line, 2 ) );
-
-		$linkTarget = trim( trim( $lineArr[ 0 ], '[]' ) );
-		$linkTarget = $this->getTextFromMessageName( $linkTarget );
-		$href = $this->getHrefForTarget( $linkTarget );
-
-		$linkDescription = count( $lineArr ) > 1 ? $lineArr[ 1 ] : '';
-		$text = $linkDescription === '' ? $linkTarget : $this->getTextFromMessageName( $linkDescription );
+		list( $depth, $linkDescription ) = $this->extractDepthAndLine( $rawLine );
+		list( $href, $text ) = $this->extractHrefAndLinkText( $linkDescription );
 
 		return array(
 			'text'  => $text,
@@ -169,6 +161,25 @@ class MenuFromLines extends Menu {
 		$line = $matches[ 2 ];
 
 		return array( $depth, $line );
+	}
+
+	/**
+	 * @param $linkDescription
+	 *
+	 * @return array
+	 */
+	protected function extractHrefAndLinkText( $linkDescription ) {
+
+		$linkAttributes = array_map( 'trim', explode( '|', $linkDescription, 2 ) );
+
+		$linkTarget = trim( trim( $linkAttributes[ 0 ], '[]' ) );
+		$linkTarget = $this->getTextFromMessageName( $linkTarget );
+		$href = $this->getHrefForTarget( $linkTarget );
+
+		$linkDescription = count( $linkAttributes ) > 1 ? $linkAttributes[ 1 ] : '';
+		$text = $linkDescription === '' ? $linkTarget : $this->getTextFromMessageName( $linkDescription );
+
+		return array( $href, $text );
 	}
 
 	/**

@@ -136,46 +136,62 @@ class NavbarHorizontal extends Component {
 	 *
 	 */
 	protected function buildNavBarComponents() {
-		$headElements = array();
-		$leftElements = array();
-		$rightElements = array();
+
+		$elements = $this->buildNavBarElementsFromDomTree();
+
+		if ( !empty( $elements[ 'right' ] ) ) {
+
+			$elements[ 'left' ][ ] =
+				'<div class="navbar-right-aligned">' .
+				implode( $elements[ 'right' ] ) .
+				'</div>';
+		}
+
+		return
+			$this->buildHead( $elements[ 'head' ] ) .
+			$this->buildTail( $elements[ 'left' ] );
+	}
+
+	/**
+	 * @return string[][]
+	 */
+	protected function buildNavBarElementsFromDomTree() {
+
+		$elements = array(
+			'head'  => array(),
+			'left'  => array(),
+			'right' => array(),
+		);
 
 		/** @var \DOMElement[] $children */
 		$children = $this->getDomElement()->hasChildNodes() ? $this->getDomElement()->childNodes : array();
 
 		// add components
 		foreach ( $children as $node ) {
+			$this->buildAndCollectNavBarElementFromDomElement( $node, $elements );
+		}
+		return $elements;
+	}
 
-			if ( is_a( $node, 'DOMElement' ) && $node->tagName === 'component' && $node->hasAttribute( 'type' ) ) {
+	/**
+	 * @param \DOMElement $node
+	 * @param $elements
+	 */
+	protected function buildAndCollectNavBarElementFromDomElement( $node, &$elements ) {
 
-				$html = $this->buildNavBarElementFromDomElement( $node );
+		if ( is_a( $node, 'DOMElement' ) && $node->tagName === 'component' && $node->hasAttribute( 'type' ) ) {
 
-				$position = $node->getAttribute( 'position' );
+			$html = $this->buildNavBarElementFromDomElement( $node );
 
-				switch ( $position ) {
-					case 'head':
-						$headElements[ ] = $html;
-						break;
-					case 'right':
-						$rightElements[ ] = $html;
-						break;
-					case 'left':
-					default:
-						$leftElements[ ] = $html;
-				}
+			$position = $node->getAttribute( 'position' );
+
+			if ( !array_key_exists( $position, $elements ) ) {
+				$position = 'left';
 			}
-		}
 
-		if ( !empty( $rightElements ) ) {
-			$leftElements[ ] =
-				'<div class="navbar-right-aligned">' .
-				implode( $rightElements ) .
-				'</div>';
-		}
+			$elements[ $position ][ ] = $html;
 
-		return
-			$this->buildHead( $headElements ) .
-			$this->buildTail( $leftElements );
+		}
 	}
 
 	/**
@@ -198,14 +214,13 @@ class NavbarHorizontal extends Component {
 				$html = $this->getSearchBar( $node );
 				break;
 			case 'PersonalTools':
-				$html = $this->getPersonalTools( $node );
+				$html = $this->getPersonalTools();
 				break;
 			case 'Menu':
 				$html = $this->getMenu( $node );
 				break;
 			default:
 				$html = '';
-				return $html;
 		}
 		return $html;
 	}

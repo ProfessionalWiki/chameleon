@@ -5,5 +5,6 @@
 		]
 	},
 	"chameleon-loggedin": "தாங்கள் $1ஆக புகுபதிகை செய்திருக்கிறீர்கள்.",
+	"chameleon-notloggedin": "தாங்கள் புகு பதியவில்லை.",
 	"chameleon-nonewmessages": "தங்களுக்கு புதிய செய்திகள் ஏதுமில்லை."
 }

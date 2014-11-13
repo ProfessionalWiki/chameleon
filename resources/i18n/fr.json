@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Orlodrim"
 		]
 	},
 	"skinname-chameleon": "Caméléon",
 	"chameleon-desc": "L’habillage Caméléon.",
 	"chameleon-loggedin": "Vous êtes connecté en tant que $1.",
-	"chameleon-notloggedin": "Vous n’êtes pas connecté",
+	"chameleon-notloggedin": "Vous n’êtes pas connecté.",
 	"chameleon-newmessages": "Vous avez de nouveaux messages.",
 	"chameleon-nonewmessages": "Vous n’avez aucun nouveau message."
 }

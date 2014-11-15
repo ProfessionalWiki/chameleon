@@ -86,72 +86,110 @@ class NavMenu extends Component {
 		// open list item containing the dropdown
 		$ret = $this->indent() . '<!-- ' . $boxName . ' -->';
 
-		$menuitems = '';
+		if ( $flatten ) {
+
+			$ret .= $this->buildMenuItemsForDropdownMenu( $box );
+
+		} elseif ( !$this->hasSubmenuItems( $box ) ) {
+
+			$ret .= $this->buildDropdownMenuStub( $box, $ret );
+
+		} else {
+
+			$ret .= $this->buildDropdownOpeningTags( $box, $ret )
+				. $this->buildMenuItemsForDropdownMenu( $box, 2 )
+				. $this->buildDropdownClosingTags();
+
+
+		}
+
+		return $ret;
+	}
+
+	/**
+	 * @param $box
+	 * @return string
+	 */
+	protected function buildMenuItemsForDropdownMenu( $box, $indent = 0 ) {
 
 		// build the list of submenu items
-		if ( is_array( $box[ 'content' ] ) && count( $box[ 'content' ] ) > 0 ) {
+		if ( $this->hasSubmenuItems( $box ) ) {
 
-			$this->indent( $flatten ? 0 : 2 );
+			$menuitems = '';
+			$this->indent( $indent );
 
 			foreach ( $box[ 'content' ] as $key => $item ) {
 				$menuitems .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
 			}
 
-			$this->indent( $flatten ? 0 : -2 );
+			$this->indent( -$indent );
+			return $menuitems;
 
 		} else {
-			$menuitems .= $this->indent() . '<!-- empty -->';
+			return $this->indent() . '<!-- empty -->';
 		}
+	}
 
-		if ( $flatten ) {
-			// if the menu is to be flattened, just return the introducing comment and the list of menu items as is
+	/**
+	 * @param $box
+	 *
+	 * @return bool
+	 */
+	protected function hasSubmenuItems( $box ) {
+		return is_array( $box[ 'content' ] ) && count( $box[ 'content' ] ) > 0;
+	}
 
-			$ret .= $menuitems;
+	/**
+	 * @param $box
+	 *
+	 * @return string
+	 */
+	protected function buildDropdownOpeningTags( $box ) {
+		// open list item containing the dropdown
+		$ret = $this->indent() . \Html::openElement( 'li',
+				array(
+					'class' => 'dropdown',
+					'title' => Linker::titleAttrib( $box[ 'id' ] )
+				)
+			);
 
-		} elseif ( !is_array( $box[ 'content' ] ) || count( $box[ 'content' ] ) === 0 ) {
-			//if the menu is not to be flattened, but is empty, return an inert link
+		// add the dropdown toggle
+		$ret .= $this->indent( 1 ) . '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' .
+			htmlspecialchars( $box[ 'header' ] ) . ' <b class="caret"></b></a>';
 
-			$ret .= $this->indent() . \Html::rawElement( 'li',
-					array(
-						'class' => '',
-						'title' => Linker::titleAttrib( $box[ 'id' ] )
-					),
-					'<a href="#">' . htmlspecialchars( $box[ 'header' ] ) . '</a>'
-				);
-
-		} else {
-
-			// open list item containing the dropdown
-			$ret .= $this->indent() . \Html::openElement( 'li',
-					array(
-						'class' => 'dropdown',
-						'title' => Linker::titleAttrib( $box[ 'id' ] )
-					)
-				);
-
-			// add the dropdown toggle
-			$ret .= $this->indent( 1 ) . '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' .
-				htmlspecialchars( $box[ 'header' ] ) . ' <b class="caret"></b></a>';
-
-			// open list of dropdown menu items
-			$ret .= $this->indent() .
-				$this->indent() . \Html::openElement( 'ul',
-					array(
-						'class' => 'dropdown-menu ' . $box[ 'id' ],
-						'id'    => IdRegistry::getRegistry()->getId( $box[ 'id' ] ),
-					)
-				);
-
-			// add list of menu items
-			$ret .= $menuitems;
-
-			// close list of dropdown menu items and the list item containing the dropdown
-			$ret .=
-				$this->indent() . '</ul>' .
-				$this->indent( -1 ) . '</li>';
-		}
-
+		// open list of dropdown menu items
+		$ret .= $this->indent() .
+			$this->indent() . \Html::openElement( 'ul',
+				array(
+					'class' => 'dropdown-menu ' . $box[ 'id' ],
+					'id'    => IdRegistry::getRegistry()->getId( $box[ 'id' ] ),
+				)
+			);
 		return $ret;
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function buildDropdownClosingTags() {
+		return
+			$this->indent() . '</ul>' .
+			$this->indent( -1 ) . '</li>';
+	}
+
+	/**
+	 * @param $box
+	 * @return string
+	 */
+	protected function buildDropdownMenuStub( $box ) {
+		return
+			$this->indent() . \Html::rawElement( 'li',
+				array(
+					'class' => '',
+					'title' => Linker::titleAttrib( $box[ 'id' ] )
+				),
+				'<a href="#">' . htmlspecialchars( $box[ 'header' ] ) . '</a>'
+			);
 	}
 
 }

@@ -21,18 +21,18 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Skins
+ * @ingroup   Skins
  */
 
 namespace Skins\Chameleon;
+
 use DOMElement;
-use Skin;
 
 /**
  * PermissionsHelper class
  *
- * @author Stephan Gambke
- * @since 1.1
+ * @author  Stephan Gambke
+ * @since   1.1
  * @ingroup Skins
  */
 class PermissionsHelper {
@@ -43,87 +43,115 @@ class PermissionsHelper {
 
 	/**
 	 * @param \SkinChameleon $skin
-	 * @param DOMElement $domElement
-	 * @param bool $default
+	 * @param DOMElement     $domElement
+	 * @param bool           $default
 	 */
-	public function __construct ( \SkinChameleon $skin, DOMElement $domElement = null, $default = false ){
+	public function __construct( \SkinChameleon $skin, DOMElement $domElement = null, $default = false ) {
 		$this->skin = $skin;
 		$this->domElement = $domElement;
 		$this->default = $default;
 	}
 
 	/**
-	 * @param string $attribute
+	 * @since 1.1
+	 *
+	 * @param string $attributeNameInDomElement
+	 *
 	 * @return bool
 	 */
-	public function userHasGroup( $attribute ) {
+	public function userHasGroup( $attributeNameInDomElement ) {
 
-		if ( !$this->hasAttribute( $attribute ) ) {
-			return $this->default;
-		}
-
-		$expectedGroups = $this->getValueListFromAttribute( $attribute );
-		$userGroups = $this->skin->getUser()->getEffectiveGroups();
-		$effectiveUserGroups = array_intersect( $expectedGroups, $userGroups );
-
-		return !empty( $effectiveUserGroups );
+		return $this->userHas( 'group', $attributeNameInDomElement );
 	}
 
 	/**
-	 * @param string $attribute
+	 * @param string $attributeOfUser
+	 * @param string $attributeNameInDomElement
+	 *
+	 * @throws \MWException
 	 * @return bool
 	 */
-	public function userHasPermission( $attribute ) {
+	protected function userHas( $attributeOfUser, $attributeNameInDomElement ) {
 
-		if ( !$this->hasAttribute( $attribute ) ) {
+		$user = $this->skin->getUser();
+		$attributeAccessors = array(
+			'group'      => array( $user, 'getEffectiveGroups' ),
+			'permission' => array( $user, 'getRights' ),
+		);
+
+		if ( !array_key_exists( $attributeOfUser, $attributeAccessors ) ) {
+			throw new \MWException( sprintf( 'Unknown permission: %s', $attributeOfUser ) );
+		}
+
+		if ( !$this->hasAttribute( $attributeNameInDomElement ) ) {
 			return $this->default;
 		}
 
-		$expectedRights = $this->getValueListFromAttribute( $attribute );
-		$userRights = $this->skin->getUser()->getRights();
-		$effectiveUserRights = array_intersect( $expectedRights, $userRights );
+		$expectedValues = $this->getValueListFromAttribute( $attributeNameInDomElement );
+		$observedValues = call_user_func( $attributeAccessors[ $attributeOfUser ] );
+		$effectiveValues = array_intersect( $expectedValues, $observedValues );
 
-		return !empty( $effectiveUserRights );
+		return !empty( $effectiveValues );
 	}
 
 	/**
-	 * @param string $attribute
+	 * @since 1.1
+	 *
+	 * @param string $attributeNameInDomElement
+	 *
 	 * @return bool
 	 */
-	public function pageIsInNamespace( $attribute ) {
+	public function hasAttribute( $attributeNameInDomElement ) {
+		return $this->domElement !== null && $this->domElement->hasAttribute( $attributeNameInDomElement );
+	}
 
-		if ( !$this->hasAttribute( $attribute ) ) {
+	/**
+	 * @param string $attributeName
+	 *
+	 * @return string[]
+	 */
+	protected function getValueListFromAttribute( $attributeName ) {
+		return $this->domElement === null ? array() : array_map( 'trim', explode( ',', $this->domElement->getAttribute( $attributeName ) ) );
+
+	}
+
+	/**
+	 * @since 1.1
+	 *
+	 * @param string $attributeNameInDomElement
+	 *
+	 * @return bool
+	 */
+	public function userHasPermission( $attributeNameInDomElement ) {
+
+		return $this->userHas( 'permission', $attributeNameInDomElement );
+	}
+
+	/**
+	 * @since 1.1
+	 *
+	 * @param string $attributeNameInDomElement
+	 *
+	 * @return bool
+	 */
+	public function pageIsInNamespace( $attributeNameInDomElement ) {
+
+		if ( !$this->hasAttribute( $attributeNameInDomElement ) ) {
 			return $this->default;
 		}
 
-		$expectedNamespaces = array_map( array($this, 'getNamespaceNumberFromDefinedConstantName' ), $this->getValueListFromAttribute( $attribute ) );
+		$expectedNamespaces = array_map( array( $this, 'getNamespaceNumberFromDefinedConstantName' ), $this->getValueListFromAttribute( $attributeNameInDomElement ) );
 		$pageNamespace = $this->skin->getTitle()->getNamespace();
 
 		return in_array( $pageNamespace, $expectedNamespaces );
 	}
 
 	/**
-	 * @param string $attributeName
-	 * @return bool
-	 */
-	public function hasAttribute( $attributeName ) {
-		return $this->domElement !== null && $this->domElement->hasAttribute( $attributeName );
-	}
-
-	/**
-	 * @param string $attributeName
-	 * @return string[]
-	 */
-	private function getValueListFromAttribute( $attributeName ) {
-		return $this->domElement === null ? array () : array_map( 'trim', explode( ',', $this->domElement->getAttribute( $attributeName ) ) );
-
-	}
-
-	/**
-	 * @param $value
+	 * @param null|string $value
+	 *
 	 * @return int
 	 */
-	private function getNamespaceNumberFromDefinedConstantName( $value ) {
+	protected function getNamespaceNumberFromDefinedConstantName( $value ) {
 		$constants = get_defined_constants();
 		if ( !is_null( $value ) && array_key_exists( $value, $constants ) ) {
 			$value = $constants[ $value ];

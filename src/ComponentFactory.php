@@ -21,7 +21,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * @file
- * @ingroup Skins
+ * @ingroup   Skins
  */
 
 namespace Skins\Chameleon;
@@ -34,8 +34,8 @@ use Skins\Chameleon\Components\Container;
 /**
  * Class ComponentFactory
  *
- * @author Stephan Gambke
- * @since 1.0
+ * @author  Stephan Gambke
+ * @since   1.0
  * @ingroup Skins
  */
 class ComponentFactory {
@@ -84,6 +84,28 @@ class ComponentFactory {
 	}
 
 	/**
+	 * @return string
+	 */
+	protected function getLayoutFile() {
+
+		return $this->layoutFile;
+	}
+
+	/**
+	 * @param string $fileName
+	 */
+	public function setLayoutFile( $fileName ) {
+
+		$fileName = $this->sanitizeFileName( $fileName );
+
+		if ( !is_readable( $fileName ) ) {
+			throw new RuntimeException( "Expected an accessible {$fileName} layout file" );
+		}
+
+		$this->layoutFile = $fileName;
+	}
+
+	/**
 	 * @param \DOMElement $description
 	 * @param int         $indent
 	 * @param string      $htmlClassAttribute
@@ -105,6 +127,75 @@ class ComponentFactory {
 		}
 
 		return $component;
+	}
+
+	/**
+	 * @param \DOMElement $description
+	 *
+	 * @return string
+	 * @throws \MWException
+	 * @since 1.1
+	 */
+	protected function getComponentClassName( \DOMElement $description ) {
+
+		$className = $this->mapComponentDescriptionToClassName( $description );
+
+		if ( !class_exists( $className ) || !is_subclass_of( $className, 'Skins\\Chameleon\\Components\\Component' ) ) {
+			throw new \MWException( sprintf( '%s (line %d): Invalid component type: %s.', $this->getLayoutFile(), $description->getLineNo(), $description->getAttribute( 'type' ) ) );
+		}
+
+		return $className;
+	}
+
+	/**
+	 * @param \DOMElement $description
+	 *
+	 * @return string
+	 * @throws \MWException
+	 */
+	protected function mapComponentDescriptionToClassName( \DOMElement $description ) {
+
+		$mapOfComponentsToClassNames = array(
+			'structure'    => 'Structure',
+			'grid'         => 'Grid',
+			'row'          => 'Row',
+			'cell'         => 'Cell',
+			'modification' => 'Silent',
+		);
+
+		$nodeName = strtolower( $description->nodeName );
+
+		if ( array_key_exists( $nodeName, $mapOfComponentsToClassNames ) ) {
+
+			$className = $mapOfComponentsToClassNames[ $nodeName ];
+
+		} elseif ( $nodeName === 'component' ) {
+
+			if ( $description->hasAttribute( 'type' ) ) {
+				$className = $description->getAttribute( 'type' );
+			} else {
+				$className = 'Container';
+			}
+
+		} else {
+			throw new \MWException( sprintf( '%s (line %d): XML element not allowed here: %s.', $this->getLayoutFile(), $description->getLineNo(), $description->nodeName ) );
+		}
+
+		return 'Skins\\Chameleon\\Components\\' . $className;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getSkinTemplate() {
+		return $this->skinTemplate;
+	}
+
+	/**
+	 * @param ChameleonTemplate $skinTemplate
+	 */
+	public function setSkinTemplate( ChameleonTemplate $skinTemplate ) {
+		$this->skinTemplate = $skinTemplate;
 	}
 
 	/**
@@ -131,86 +222,12 @@ class ComponentFactory {
 	}
 
 	/**
-	 * @return string
-	 */
-	protected function getLayoutFile() {
-
-		return $this->layoutFile;
-	}
-
-	/**
 	 * @param string $fileName
-	 */
-	public function setLayoutFile( $fileName ) {
-
-		$fileName = $this->sanitizeFileName( $fileName );
-
-		if ( !is_readable( $fileName ) ) {
-			throw new RuntimeException( "Expected an accessible {$fileName} layout file" );
-		}
-
-		$this->layoutFile = $fileName;
-	}
-
-	/**
-	 * @param string $fileName
+	 *
 	 * @return string
 	 */
 	public function sanitizeFileName( $fileName ) {
 		return str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, $fileName );
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getSkinTemplate() {
-		return $this->skinTemplate;
-	}
-
-	/**
-	 * @param ChameleonTemplate $skinTemplate
-	 */
-	public function setSkinTemplate( ChameleonTemplate $skinTemplate ) {
-		$this->skinTemplate = $skinTemplate;
-	}
-
-	/**
-	 * @param \DOMElement $description
-	 * @return string
-	 * @throws \MWException
-	 * @since 1.1
-	 */
-	protected function getComponentClassName( \DOMElement $description ) {
-
-		$className = 'Skins\\Chameleon\\Components\\';
-		$nodeName = strtolower( $description->nodeName );
-
-		switch ( $nodeName ) {
-			case 'structure':
-			case 'grid':
-			case 'row':
-			case 'cell':
-				$className .= ucfirst( $nodeName );
-				break;
-			case 'component':
-				if ( $description->hasAttribute( 'type' ) ) {
-					$className .= $description->getAttribute( 'type' );
-				} else {
-					$className .= 'Container';
-				}
-				break;
-			case 'modification':
-				$className .= 'Silent';
-				break;
-			default:
-				throw new \MWException( sprintf( '%s (line %d): XML element not allowed here: %s.', $this->getLayoutFile(), $description->getLineNo(), $description->nodeName ) );
-		}
-
-		if ( ! class_exists( $className ) || !is_subclass_of( $className, 'Skins\\Chameleon\\Components\\Component' ) ) {
-			throw new \MWException( sprintf( '%s (line %d): Invalid component type: %s.', $this->getLayoutFile(), $description->getLineNo(), $description->getAttribute( 'type' ) ) );
-		}
-
-		return $className;
 	}
 
 

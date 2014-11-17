@@ -10,7 +10,7 @@
 		"Bootstrap"
 	],
 	"homepage"   : "https://www.mediawiki.org/wiki/Skin:Chameleon",
-	"license"    : "GPLv3+",
+	"license"    : "GPL-3.0+",
 	"authors"    : [
 		{
 			"name" : "Stephan Gambke",

@@ -1,15 +1,43 @@
 ## Release Notes
 
+### Chameleon 1.1.2
+
+Released on 19-Nov-2014
+
+Fixes:
+* Load shared.css with correct remote base path, so ref'd images are found
+* Display lists in File namespace without bullets
+* Set padding for td.mw-label and td.mw-input to have more space in between
+* Enable mw-phpunit-runner.php when started from outside dir
+* Use an
+  [spdx-compliant license identifier](https://getcomposer.org/doc/04-schema.md#license)
+  in composer.json
+* Set padding of mw-ui-input and -button on Special:Search so they have the
+  same height ([Bug: 73509](https://bugzilla.wikimedia.org/73509))
+* Remove table positioning from personal tools.
+  ([Bug: 73514](https://bugzilla.wikimedia.org/73514))
+
+Other changes:
+* Add [detailed installation instructions for Linux](installation-linux.md)
+* Introduce relative file paths throughout the skin to enable installation in
+  other directories then the standard .../skins. However it still expects some
+  layout assumptions to be true.
+* Reorganize directories
+* Refactor several components and helper classes
+* Refactor Menu package (+ add some testing)
+
 ### Chameleon 1.1.1
 
 Released on 08-Nov-2014
 
-Changes:
-* Some refactoring of the MainContent component
-* Include dataAfterContent in bodyContent
-  (Fixes [72869](https://bugzilla.wikimedia.org/72869))
+Fixes:
 * Fix styles for Special pages
-  (Fixes [72872](https://bugzilla.wikimedia.org/72872))
+  ([Bug: 72872](https://bugzilla.wikimedia.org/72872))
+* Include dataAfterContent in bodyContent
+  ([Bug: 72869](https://bugzilla.wikimedia.org/72869))
+
+Other changes:
+* Some refactoring of the MainContent component
 
 ### Chameleon 1.1
 
@@ -45,7 +73,10 @@ Known issues:
 
 Released on 22-Oct-2014
 
+Fixes:
 * Fix TOC layout
+
+Other changes:
 * Add basic testing for Menu component (and fix a small bug)
 * Update documentation
 
@@ -94,7 +125,7 @@ This version contains the following components:
 * Structure
 * ToolbarHorizontal
 
-Notable Issues:
+Known Issues:
 * The available documentation is insufficient. For now, if you have questions,
   just [ask](contact.md).
 * Many of the lesser used page elements are not properly styled yet.

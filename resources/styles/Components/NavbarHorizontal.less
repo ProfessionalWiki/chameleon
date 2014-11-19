@@ -30,6 +30,31 @@
 	.container > *:first-child & {
 		margin-top: (@grid-gutter-width / 2);
 	}
+
+	.dropdown-menu {
+
+		list-style: outside none none;
+
+		> li {
+			> a {
+
+				display: block;
+				padding: 3px 20px;
+				clear: both;
+				font-weight: normal;
+				line-height: @line-height-base;
+				color: @dropdown-link-color;
+				white-space: nowrap; // prevent links from randomly breaking onto new lines
+			}
+
+			&.active, &.selected {
+				> a {
+					background-color: @navbar-default-link-active-bg;
+					font-style: normal;
+				}
+			}
+		}
+	}
 }
 
 // override some navbar-brand styles to accommodate an image and include a
@@ -51,12 +76,6 @@
 	@media (max-width: @grid-float-breakpoint) {
 		float: none
 	}
-}
-
-// styles for personal tools in the navbar component
-.navbar-personaltools {
-	.nav();
-	.navbar-nav();
 }
 
 .navbar-collapse {
@@ -88,12 +107,13 @@
 	}
 }
 
+// styles for personal tools in the navbar component
 .navbar-personaltools {
+	.nav();
+	.navbar-nav();
 
-	> li {
+	> li, >li.open {
 		> a {
-			line-height: normal;
-			padding: 0 10px; // TODO: put this in a variable
 
 			&.navbar-newtalk-available {
 				.link(@navbar-newtalk-available);
@@ -112,66 +132,31 @@
 			}
 
 		}
-
-		&.open {
-			> a, > a:hover, > a:focus {
-
-				&.navbar-userloggedin {
-					.link(@navbar-user-loggedin);
-				}
-
-				&.navbar-usernotloggedin {
-					.link(@navbar-user-not-loggedin);
-				}
-
-			}
-
-		}
-
-		&:last-child > a, &.open:last-child > a {
-			border: none;
-		}
-
 	}
 
 	@media (min-width: @grid-float-breakpoint) {
 
 		height: @navbar-height;
-		display: table;
 
 		// separator for user's personal tools
 		border-left: 1px solid @navbar-default-border;
 
-		> li {
-			display: table-row;
+		> li, li.open {
 			float: none;
 
-			> a {
-				display: table-cell;
+			> a, > a:hover, > a:focus {
+
 				vertical-align: middle;
-				line-height: normal;
-				padding: 0 10px; // TODO: put this in a variable
+				line-height: 0;
+				top: 0;
+				padding: (@navbar-height - 1)/4 10px;
 				border-color: @navbar-default-border;
 				border-bottom: 1px solid @navbar-default-border;
 
 			}
 
-			&.open {
-				> a, > a:hover, > a:focus {
-
-					border-color: @navbar-default-border;
-					border-bottom: 1px solid @navbar-default-border;
-
-					&.navbar-userloggedin {
-						.link(@navbar-user-loggedin);
-					}
-
-					&.navbar-usernotloggedin {
-						.link(@navbar-user-not-loggedin);
-					}
-
-				}
-
+			&:first-child:last-child > a {
+				padding: (@navbar-height)/2 10px;
 			}
 
 			&:last-child > a, &.open:last-child > a {
@@ -181,25 +166,10 @@
 		}
 
 	}
-	@media (max-width: @grid-float-breakpoint) {
 
+	@media (max-width: @grid-float-breakpoint) {
 		> li {
 			float: left;
-		}
-
-	}
-}
-.dropdown-menu {
-	ul {
-		list-style: outside none none;
-		li > a {
-			display: block;
-			padding: 3px 20px;
-			clear: both;
-			font-weight: normal;
-			line-height: @line-height-base;
-			color: @dropdown-link-color;
-			white-space: nowrap; // prevent links from randomly breaking onto new lines
 		}
 	}
 }

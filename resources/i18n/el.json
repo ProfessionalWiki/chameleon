@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Nikosguard"
+			"Nikosguard",
+			"Glavkos"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "Θέμα εμφάνισης The Chameleon",
 	"chameleon-loggedin": "Έχετε συνδεθεί ως $1.",
 	"chameleon-notloggedin": "Δεν έχετε συνδεθεί",
 	"chameleon-newmessages": "Έχετε νέα μηνύματα.",

@@ -19,17 +19,22 @@ Further required software packages will be installed automatically.
 
 ## Installation
 
-1. Go to your MediaWiki installation directory
-2. If necessary (on MediaWiki up to 1.23) copy the file `composer.json.example` to `composer.json`  
-3. With Composer installed, run    `composer require "mediawiki/chameleon-skin:~1.0"`
-4. Navigate to _Special:Version_ on your wiki to verify that the skin is successfully installed.
+1. On a command line go to your MediaWiki installation directory
+2. If necessary (on MediaWiki up to 1.23) copy the file `composer.json.example`
+   to `composer.json`
+3. With Composer installed, run
+   `composer require "mediawiki/chameleon-skin:~1.0"`
+4. To set Chameleon as the default skin, open `LocalSettings.php` in an editor,
+   find `$wgDefaultSkin` and amend it: `$wgDefaultSkin='chameleon';`
+5. __Done:__ Navigate to _Special:Version_ on your wiki to verify that the skin
+   is successfully installed.
 
 ## Documentation
 
 See the [Chameleon documentation](docs/index.md).
 
 It may also be worthwhile to have a look at the [Chameleon site on
-MediaWiki][mw-chameleon] and the related [talk page][mw-chameleon-talk]   
+MediaWiki][mw-chameleon] and the related [talk page][mw-chameleon-talk]
 
 ## License
 

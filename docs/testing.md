@@ -1,6 +1,6 @@
 ## Testing
 
-This skin provides unit tests that can be run by a [continued integration
+This skin provides unit tests that can be run by a [continuous integration
 platform][travis] or manually by executing the `mw-phpunit-runner.php` script or
 [`phpunit`][mw-testing] together with the PHPUnit configuration file found in
 the root directory of the skin.

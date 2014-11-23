@@ -33,12 +33,6 @@ If you run into problems, try the
 From your MediaWiki installation directory run `composer update
 "mediawiki/chameleon-skin"`
 
-To trigger a cache update it is necessary that the `LocalSettings.php` file has
-a modification time later than the last cache update time. This can be achieved
-by using the `touch` utility on UNIX and friends or by using
-`copy /b LocalSettings.php +,,` from the MediaWiki installation directory on
-Windows. Alternatively, just open the file and re-save it.
-
 ### De-installation
 
 Before de-installation make sure you secure (move, backup) any custom files you

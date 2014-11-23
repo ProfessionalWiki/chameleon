@@ -30,7 +30,7 @@
 		"ext-dom"            : "*",
 		"ext-filter"         : "*",
 		"composer/installers": ">1.0.12",
-		"mediawiki/bootstrap": "~1.0"
+		"mediawiki/bootstrap": "~1.1"
 	},
 	"autoload"   : {
 		"files": [ "Chameleon.php", "src/SkinChameleon.php" ],

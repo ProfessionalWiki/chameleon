@@ -72,3 +72,17 @@ $egChameleonLayoutFile= __DIR__ . '/skins/chameleon/layouts/fixedhead.xml';
 You can of course also define and use your own layout. Have a look at the
 available [XML files](../layouts) to see what is possible. (Better documentation
 to follow.)
+
+
+### Triggering a cache update
+
+Compiling the style files is time-consuming. For this reason the styles are
+not compiled on every page request. Instead they are cached after being
+compiled. For changes to the styles to become effective it is necessary to
+trigger an update of the style cache. A cache update is triggered when the
+`LocalSettings.php` file has a modification time later than the last cache
+update time.
+
+This can be achieved by using the `touch` utility on UNIX and friends or by
+using `copy /b LocalSettings.php +,,` from the MediaWiki installation directory
+on Windows. Alternatively, just open the file and re-save it.

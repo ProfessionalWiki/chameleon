@@ -32,7 +32,6 @@
 	margin: 1em 0;
 }
 
-
 /* Display editsection links smaller and next to headings */
 .mw-editsection-like {
 	font-size: @font-size-small;
@@ -89,18 +88,13 @@
 	}
 
 	ul {
-		list-style-image: none;
-		list-style-type: none;
+		list-style: none;
 		margin-left: 0.5em;
 		padding: 0;
 		text-align: left;
 		text-indent: 0;
 
 		li {
-			&:before{
-				content: none;
-			}
-
 			a {
 				.tocnumber {
 					display: inline-block;
@@ -176,10 +170,6 @@
 	}
 }
 
-//.p-personal a.new {
-//	color: #aaaaaa;
-//}
-
 .p-personal-tools {
 	margin: 0 0 0 1ex;
 }
@@ -198,11 +188,6 @@
 	.nav-tabs;
 
 	margin-bottom: 2ex;
-
-	// TODO: not possible with current lessphp compiler (https://github.com/leafo/lessphp/issues/481). Enable when this issue is fixed.
-	//> li.selected {
-	//	.nav-tabs > li.active;
-	//}
 
 	> li.selected > a {
 		&,
@@ -248,56 +233,38 @@ a.new, #p-personal a.new {
 		.link(@link-external-color);
 	}
 }
-
 /**
 * Lists
 */
 .mw-body {
 	ol {
-		text-indent: 0ex;
+		list-style: outside none decimal;
 	}
 
 	ul {
-		list-style: none;
-		text-indent: -2ex;
-
-		> li:before {
-			background-color: @list-bullet-color;
-			content: "";
-			display: inline-block;
-
-			height: @list-bullet-size;
-			width: @list-bullet-size;
-			border-radius: 50%;
-
-			margin-right: @list-bullet-size;
-			margin-bottom: 1.1ex - @list-bullet-size;
-		}
+		.bullet();
 	}
 
 	ol, ul {
 		padding-left: @list-level-indent;
 		margin: 0;
 
-		ul > li:before {
-			font-size: 80%;
-			margin-right: @list-bullet-size * 0.8;
-			margin-bottom: (1.1ex - @list-bullet-size) / 0.8;
+		ul {
+			.bullet( @list-bullet-color, @list-bullet-size*.9);
 		}
 
-		ul, ol {
-			ul > li:before {
-				font-size: 50%;
-				margin-right: @list-bullet-size * 0.5;
-				margin-bottom: (1.1ex - @list-bullet-size) / 0.5;
+		ol, ul {
+			ul {
+				.bullet( @list-bullet-color, @list-bullet-size*.7);
 			}
 		}
 	}
 }
 
 // no bullets for File namespace
-.ns-6 {
-	.list-style-none();
+.ns-6 .mw-body ul {
+	list-style: none;
+	padding: 0;
 }
 
 .catlinks {
@@ -310,16 +277,6 @@ a.new, #p-personal a.new {
 		}
 	}
 }
-
-//p {
-//	margin: .4em 0 .5em 0;
-//	line-height: 1.5em;
-//}
-//
-//p img {
-//	margin: 0;
-//}
-
 
 dt {
 	font-weight: bold;

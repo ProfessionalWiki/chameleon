@@ -399,3 +399,14 @@ table.small {
 table.mw-recentchanges-table {
 	width: 100%;
 }
+
+.layout-fixedhead, .layout-stickyhead, .layout-clean {
+	h1, h2, h3, h4, h5, h6 {
+		>span.mw-headline:before {
+			content: "";
+			display: block;
+			height: @navbar-height;
+			margin-top: 0-@navbar-height;
+		}
+	}
+}

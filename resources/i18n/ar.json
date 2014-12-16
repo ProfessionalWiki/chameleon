@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Khaled"
+		]
+	},
+	"chameleon-desc": "تصميم الحرباء",
+	"chameleon-loggedin": "تم تسجيل دخولك كـ $1.",
+	"chameleon-notloggedin": "لم تسجل الدخول.",
+	"chameleon-newmessages": "لديك رسالة جديدة.",
+	"chameleon-nonewmessages": "ليست لديك رسائل جديدة."
+}

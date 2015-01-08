@@ -6,5 +6,7 @@
 	},
 	"skinname-chameleon": "Kameleon",
 	"chameleon-loggedin": "Prijavljeni ste kao $1.",
-	"chameleon-notloggedin": "Niste prijavljeni"
+	"chameleon-notloggedin": "Niste prijavljeni",
+	"chameleon-newmessages": "Imate novih poruka.",
+	"chameleon-nonewmessages": "Nemate novih poruka."
 }

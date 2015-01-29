@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"McSalama"
+		]
+	},
+	"chameleon-desc": "The Chameleon-teema",
+	"chameleon-loggedin": "Olet kirjautunut sisään $1:na/nä.",
+	"chameleon-notloggedin": "Et ole kirjautunut sisään.",
+	"chameleon-newmessages": "Sinulla on uusia viestejä.",
+	"chameleon-nonewmessages": "Sinulla ei ole uusia viestejä."
+}

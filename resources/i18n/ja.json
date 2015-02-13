@@ -2,12 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Shirayuki",
-			"SkyDaisy9"
+			"SkyDaisy9",
+			"2nd-player"
 		]
 	},
 	"skinname-chameleon": "カメレオン",
 	"chameleon-desc": "カメレオン・スキン",
 	"chameleon-loggedin": "$1 としてログインしています。",
 	"chameleon-notloggedin": "ログインしていません。",
-	"chameleon-newmessages": "新着メッセージがあります。"
+	"chameleon-newmessages": "新着メッセージがあります。",
+	"chameleon-nonewmessages": "新しいメッセージはありません。"
 }

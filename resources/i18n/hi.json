@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Siddhartha Ghai"
+		]
+	},
+	"chameleon-desc": "कैमिलियन (गिरगिट) त्वचा",
+	"chameleon-loggedin": "आप $1 खाते में लॉग्ड इन हैं।",
+	"chameleon-notloggedin": "आप लॉग्ड इन नहीं हैं।",
+	"chameleon-newmessages": "आपके लिए नए सन्देश हैं।",
+	"chameleon-nonewmessages": "आपके लिए कोई नए सन्देश नहीं हैं।"
+}

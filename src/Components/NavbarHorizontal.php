@@ -278,7 +278,7 @@ class NavbarHorizontal extends Component {
 			$ret =
 				$this->indent() . '<!-- page tools -->' .
 				$this->indent() . '<ul class="nav navbar-nav">' . \Html::openElement( 'li', array( 'class' => 'dropdown' ) ) .
-				$this->indent( 1 ) . '<a data-toggle="dropdown" class="dropdown-toggle" href="#">Page Tools <b class="caret"></b></a>' .
+				$this->indent( 1 ) . '<a data-toggle="dropdown" class="dropdown-toggle" href="#">' . $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() . '<b class="caret"></b></a>' .
 				$ret .
 				$this->indent( -1 ) . '</li></ul>' . "\n";
 		}

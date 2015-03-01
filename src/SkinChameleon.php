@@ -50,7 +50,12 @@ class SkinChameleon extends SkinTemplate {
 		$this->output = $out;
 
 		// load Bootstrap styles
-		$out->addModuleStyles( 'ext.bootstrap.styles' );
+		$out->addModuleStyles(
+			array(
+				'ext.bootstrap.styles',
+				'mediawiki.sectionAnchor'
+			)
+		);
 	}
 
 	/**

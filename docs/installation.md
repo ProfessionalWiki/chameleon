@@ -2,11 +2,13 @@
 
 ### Requirements
 
-- PHP 5.3.2 or later
+- PHP 5.3.2 or later (*)
 - MediaWiki 1.22 or later
 - [Composer][composer]
 
 Further required software packages will be installed automatically.
+
+(*) To use the 'Html' component in custom layouts you need at least PHP 5.3.6. 
 
 ### Installation
 

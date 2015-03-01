@@ -1,5 +1,25 @@
 ## Release Notes
 
+### Chameleon 1.1.3
+
+Released on 01-Mar-2015
+
+Bump minimum Bootstrap extension version to 1.1
+
+Fixes:
+* Set @navbar-default-link-active-bg to @navbar-default-bg color
+* Bullets for ULs respond to list-style:none again 
+* Align personal tools drop-down with lower edge of navbar
+* Let .tleft float left 
+* Let jumped-to section heads appear below fixed/sticky header 
+* Add mediawiki.sectionAnchor module (for compatibility with MW 1.25)
+* Fix i18n for page tools link 
+
+Other changes:
+* Minor doc fixes
+* Add integration test StylesCompileTest
+* Restructure test file layout 
+
 ### Chameleon 1.1.2
 
 Released on 19-Nov-2014

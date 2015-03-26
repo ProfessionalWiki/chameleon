@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ahmed-Najib-Biabani-Ibrahimkhel"
+		]
+	},
+	"chameleon-desc": "د کامېليون پوښۍ",
+	"chameleon-loggedin": "تاسې د $1 په توگه ننوتلئ.",
+	"chameleon-notloggedin": "تاسې نه ياست ورننوتلي.",
+	"chameleon-newmessages": "تاسې نوي پيغامونه لرئ.",
+	"chameleon-nonewmessages": "تاسې نوي پيغامونه نه لرئ."
+}

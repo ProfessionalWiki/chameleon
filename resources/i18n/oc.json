@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cedric31"
+		]
+	},
+	"chameleon-desc": "L’aparéncia Cameleon.",
+	"chameleon-loggedin": "Sètz connectat en tant que $1.",
+	"chameleon-notloggedin": "Sètz pas connectat.",
+	"chameleon-newmessages": "Avètz de messatges novèls",
+	"chameleon-nonewmessages": "Avètz pas cap de messatges novèls."
+}

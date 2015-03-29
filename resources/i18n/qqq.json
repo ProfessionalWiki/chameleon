@@ -3,11 +3,12 @@
 		"authors": [
 			"Stephan Gambke",
 			"Shirayuki",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Umherirrender"
 		]
 	},
 	"skinname-chameleon": "{{Optional}}\nThe name of this skin",
-	"chameleon-desc": "{{desc|name=Chameleon|url=http://www.mediawiki.org/wiki/Skin:Chameleon}}",
+	"chameleon-desc": "{{desc|name=Chameleon|url=https://www.mediawiki.org/wiki/Skin:Chameleon}}",
 	"chameleon-loggedin": "Text shown, when the user is logged in. Parameters:\n* $1 - username\nSee also:\n* {{msg-mw|Chameleon-notloggedin}}",
 	"chameleon-notloggedin": "Text shown, when the user is not logged in.\n\nSee also:\n* {{msg-mw|Chameleon-loggedin}}",
 	"chameleon-newmessages": "Text shown, when the user has new messages.\n\nSee also:\n* {{msg-mw|Chameleon-nonewmessages}}",

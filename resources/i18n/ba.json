@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Рустам Нурыев"
+		]
+	},
+	"chameleon-loggedin": "Һеҙ $1 булып танылғанһығыҙ.",
+	"chameleon-notloggedin": "Һеҙ танылмағанһығыҙ.",
+	"chameleon-newmessages": "Һеҙгә яңы хәбәрҙәр бар",
+	"chameleon-nonewmessages": "Һеҙгә яңы хәбәрҙәр юҡ."
+}

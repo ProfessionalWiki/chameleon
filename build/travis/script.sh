@@ -37,13 +37,16 @@ function installMediaWiki {
 	'1.22.1')
 	  HASH='11ceb42'
 	  ;;
+	'master')
+	  HASH='master'
+	  ;;
 	esac
 
 	cd ..
 
 	wget https://github.com/wikimedia/mediawiki/archive/$HASH.tar.gz -O $MW.tar.gz
 	tar -zxf $MW.tar.gz
-	mv mediawiki-* mw
+	mv mediawiki-$HASH* mw
 
 	cd mw
 

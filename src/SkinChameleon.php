@@ -52,8 +52,7 @@ class SkinChameleon extends SkinTemplate {
 		// load Bootstrap styles
 		$out->addModuleStyles(
 			array(
-				'ext.bootstrap.styles',
-				'mediawiki.sectionAnchor'
+				'ext.bootstrap.styles'
 			)
 		);
 	}

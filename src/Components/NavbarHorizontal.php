@@ -355,7 +355,7 @@ class NavbarHorizontal extends Component {
 
 				$ret .= $this->indent() . '<li class="navbar-newtalk-notifier">' .
 					$this->indent( 1 ) . '<a class="dropdown-toggle glyphicon glyphicon-envelope ' . $newtalkClass . '" title="' .
-					$newtalkLinkText . '" href="' . $user->getTalkPage()->getLinkURL() . '?redirect=no"></a>' .
+					$newtalkLinkText . '" href="' . $user->getTalkPage()->getLinkURL('redirect=no') . '"></a>' .
 					$this->indent( -1 ) . '</li>';
 
 			}

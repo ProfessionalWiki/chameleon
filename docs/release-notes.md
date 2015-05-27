@@ -1,5 +1,14 @@
 ## Release Notes
 
+### Chameleon 1.1.4
+
+Released on 27-May-2015
+
+Fixes:
+* Remove mw-headline-anchor
+* Fix Message icon linking to non-existent page
+  ([Bug: T100550](https://phabricator.wikimedia.org/T100550))
+
 ### Chameleon 1.1.3
 
 Released on 01-Mar-2015

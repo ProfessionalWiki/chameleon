@@ -190,12 +190,16 @@ abstract class Component {
 	 * Inserts a new line and a number of tabs according to the new indentation level.
 	 *
 	 * @param int $indent
-	 *
 	 * @return string
+	 * @throws \MWException
 	 */
 	protected function indent( $indent = 0 ) {
 
 		$this->mIndent += (int) $indent;
+
+		if ( $this->mIndent < 0 ) {
+			throw new \MWException('Attempted HTML indentation of ' .$this->mIndent );
+		}
 
 		return "\n" . str_repeat( "\t", $this->mIndent );
 	}

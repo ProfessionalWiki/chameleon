@@ -26,6 +26,7 @@
 
 namespace Skins\Chameleon\Components;
 
+use Action;
 use MWNamespace;
 use Skins\Chameleon\ChameleonTemplate;
 use Skins\Chameleon\IdRegistry;
@@ -103,7 +104,8 @@ class PageTools extends Component {
 	protected function hideSelectedNamespace() {
 		return
 			$this->getDomElement() !== null &&
-			filter_var( $this->getDomElement()->getAttribute( 'hideSelectedNameSpace' ), FILTER_VALIDATE_BOOLEAN );
+			filter_var( $this->getDomElement()->getAttribute( 'hideSelectedNameSpace' ), FILTER_VALIDATE_BOOLEAN ) &&
+			Action::getActionName( $this->getSkin() ) === 'view';
 	}
 
 	/**

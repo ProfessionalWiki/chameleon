@@ -142,9 +142,9 @@ class NavbarHorizontal extends Component {
 		if ( !empty( $elements[ 'right' ] ) ) {
 
 			$elements[ 'left' ][ ] =
-				'<div class="navbar-right-aligned">' .
+				$this->indent() . '<div class="navbar-right-aligned">' .
 				implode( $elements[ 'right' ] ) .
-				'</div>';
+				$this->indent() . '</div>';
 		}
 
 		return
@@ -270,7 +270,7 @@ class NavbarHorizontal extends Component {
 
 		$ret = '';
 
-		$pageTools = new PageTools( $this->getSkinTemplate(), $domElement, $this->getIndent() );
+		$pageTools = new PageTools( $this->getSkinTemplate(), $domElement, $this->getIndent() + 1 );
 
 		$pageTools->setFlat( true );
 		$pageTools->setRedundant( 'edit' );
@@ -282,7 +282,8 @@ class NavbarHorizontal extends Component {
 		$pageToolsStructure = $pageTools->getPageToolsStructure();
 		if ( array_key_exists( 'views', $pageToolsStructure ) && array_key_exists( 'edit', $pageToolsStructure['views'] ) ) {
 			$pageToolsStructure['views']['edit']['text'] = '';
-			$editLinkHtml = $this->getSkinTemplate()->makeListItem( 'edit', $pageToolsStructure['views']['edit'], array( 'link-class' => $pageToolsStructure['views']['edit']['class'] . ' glyphicon glyphicon-pencil' ) );
+			$pageToolsStructure['views']['edit']['class'] = array_key_exists( 'class', $pageToolsStructure['views']['edit'] )?$pageToolsStructure['views']['edit']['class']:'' . ' navbar-tools-tools';
+			$editLinkHtml = $this->getSkinTemplate()->makeListItem( 'edit', $pageToolsStructure['views']['edit'], array( 'link-class' =>  'glyphicon glyphicon-pencil' ) );
 		}
 
 		if ( $editLinkHtml || $pageToolsHtml) {
@@ -292,9 +293,9 @@ class NavbarHorizontal extends Component {
 
 			if ( $editLinkHtml ) {
 				$ret .=
-					$this->indent( 1 ) . '<li class="navbar-tools-tools">' .
-					$this->indent( 1 ) . $editLinkHtml .
-					$this->indent( -1 ) . '</li>';
+//					$this->indent( 1 ) . '<li class="navbar-tools-tools">' .
+					$this->indent( 1 ) . $editLinkHtml ;
+//					$this->indent( -1 ) . '</li>';
 			}
 
 			if ( $pageToolsHtml !== '' ) {
@@ -417,13 +418,13 @@ class NavbarHorizontal extends Component {
 	protected function buildHead( $headElements ) {
 
 		$head =
-			"<div class=\"navbar-header\">\n" .
-			"\t<button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#" . $this->getHtmlId() . "-collapse\">\n" .
-			"\t\t<span class=\"sr-only\">Toggle navigation</span>\n" .
-			str_repeat( "\t\t<span class=\"icon-bar\"></span>\n", 3 ) .
-			"\t</button>\n" .
+			$this->indent() . "<div class=\"navbar-header\">\n" .
+			$this->indent( 1 ) . "<button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#" . $this->getHtmlId() . "-collapse\">" .
+			$this->indent( 1 ) . "<span class=\"sr-only\">Toggle navigation</span>" .
+			$this->indent() . str_repeat( "<span class=\"icon-bar\"></span>", 3 ) .
+			$this->indent( -1 ) . "</button>\n" .
 			implode( '', $headElements ) . "\n" .
-			"</div>\n";
+			$this->indent( -1 ) . "</div>\n";
 
 		return $head;
 	}
@@ -435,8 +436,10 @@ class NavbarHorizontal extends Component {
 	 */
 	protected function buildTail( $tailElements ) {
 
-		return '<div class="collapse navbar-collapse" id="' . $this->getHtmlId() . '-collapse">' .
-		implode( '', $tailElements ) . '</div><!-- /.navbar-collapse -->';
+		return
+			$this->indent() . '<div class="collapse navbar-collapse" id="' . $this->getHtmlId() . '-collapse">' .
+			implode( '', $tailElements ) .
+			$this->indent() . '</div><!-- /.navbar-collapse -->';
 	}
 
 	/**

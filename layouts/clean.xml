@@ -29,7 +29,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<modification type="Sticky" ></modification>
 		<component type="Logo" position="head"></component>
 		<component type="NavMenu" flatten="navigation"></component>
-		<component type="PageTools" hideSelectedNameSpace="1"></component>
+		<component type="PageTools" position="right" hideSelectedNameSpace="1"></component>
 		<component type="SearchBar" position="right"></component>
 		<component type="PersonalTools" position="right"></component>
 	</component>

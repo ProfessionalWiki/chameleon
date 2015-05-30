@@ -224,6 +224,7 @@ class MockupFactory {
 	protected function getSkinStub() {
 
 		$title = \Title::newFromText( 'FOO' );
+		$request = new \FauxRequest();
 
 		$skin = $this->testCase->getMockBuilder( '\SkinChameleon' )
 			->disableOriginalConstructor()
@@ -236,6 +237,10 @@ class MockupFactory {
 		$skin->expects( $this->testCase->any() )
 			->method( 'getUser' )
 			->will( $this->testCase->returnValue( $this->getUserStub() ) );
+
+		$skin->expects( $this->testCase->any() )
+			->method( 'getRequest' )
+			->will( $this->testCase->returnValue( $request ) );
 
 		return $skin;
 	}

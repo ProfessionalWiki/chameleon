@@ -142,9 +142,11 @@ class NavbarHorizontal extends Component {
 		if ( !empty( $elements[ 'right' ] ) ) {
 
 			$elements[ 'left' ][ ] =
-				$this->indent() . '<div class="navbar-right-aligned">' .
+				$this->indent( 1 ) . '<div class="navbar-right-aligned">' .
 				implode( $elements[ 'right' ] ) .
-				$this->indent() . '</div>';
+				$this->indent() . '</div> <!-- navbar-right-aligned -->';
+
+			$this->indent( -1 );
 		}
 
 		return
@@ -181,13 +183,17 @@ class NavbarHorizontal extends Component {
 
 		if ( is_a( $node, 'DOMElement' ) && $node->tagName === 'component' && $node->hasAttribute( 'type' ) ) {
 
-			$html = $this->buildNavBarElementFromDomElement( $node );
-
 			$position = $node->getAttribute( 'position' );
 
 			if ( !array_key_exists( $position, $elements ) ) {
 				$position = 'left';
 			}
+
+			$indentation = ( $position === 'right' )? 2 : 1;
+
+			$this->indent( $indentation );
+			$html = $this->buildNavBarElementFromDomElement( $node );
+			$this->indent( -$indentation );
 
 			$elements[ $position ][ ] = $html;
 
@@ -277,9 +283,11 @@ class NavbarHorizontal extends Component {
 		$pageTools->removeClasses( 'text-center list-inline' );
 		$pageTools->addClasses( 'dropdown-menu' );
 
+		$pageToolsStructure = $pageTools->getPageToolsStructure();
+
 		$pageToolsHtml = $pageTools->getHtml();
 
-		$pageToolsStructure = $pageTools->getPageToolsStructure();
+		$editLinkHtml = '';
 		if ( array_key_exists( 'views', $pageToolsStructure ) && array_key_exists( 'edit', $pageToolsStructure['views'] ) ) {
 			$pageToolsStructure['views']['edit']['text'] = '';
 			$pageToolsStructure['views']['edit']['class'] = array_key_exists( 'class', $pageToolsStructure['views']['edit'] )?$pageToolsStructure['views']['edit']['class']:'' . ' navbar-tools-tools';
@@ -291,16 +299,13 @@ class NavbarHorizontal extends Component {
 				$this->indent() . '<!-- page tools -->' .
 				$this->indent() . '<ul class="navbar-tools navbar-nav" >';
 
-			if ( $editLinkHtml ) {
-				$ret .=
-//					$this->indent( 1 ) . '<li class="navbar-tools-tools">' .
-					$this->indent( 1 ) . $editLinkHtml ;
-//					$this->indent( -1 ) . '</li>';
+			if ( $editLinkHtml !== '' ) {
+				$ret .= $this->indent( 1 ) . $editLinkHtml ;
 			}
 
 			if ( $pageToolsHtml !== '' ) {
 				$ret .=
-					$this->indent() . '<li class="navbar-tools-tools dropdown">' .
+					$this->indent( 1 ) . '<li class="navbar-tools-tools dropdown">' .
 					$this->indent( 1 ) . '<a data-toggle="dropdown" class="dropdown-toggle" href="#">...</a>' .
 					$pageToolsHtml .
 					$this->indent( -1 ) . '</li>';
@@ -360,7 +365,8 @@ class NavbarHorizontal extends Component {
 		}
 
 		$ret .=
-			$this->indent( -1 ) . '</ul>' . $this->indent( -1 ) . '</li>';
+			$this->indent( -1 ) . '</ul>' .
+			$this->indent( -1 ) . '</li>';
 
 		// if the user is logged in, add the newtalk notifier
 		if ( $user->isLoggedIn() ) {

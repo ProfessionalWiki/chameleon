@@ -66,7 +66,8 @@ class SearchBar extends Component {
 			$this->indent() . '<div class="input-group">' .
 			$this->indent( 1 ) . $this->getSkinTemplate()->makeSearchInput( array( 'id' => IdRegistry::getRegistry()->getId( 'searchInput' ), 'type' => 'text', 'class' => 'form-control' ) ) .
 			$this->indent() . '<div class="input-group-btn">' .
-			$this->indent( 1 ) . $this->getSearchButton( 'go' ) . $this->getSearchButton( 'fulltext' ) .
+			$this->indent( 1 ) . $this->getSearchButton( 'go' ) .
+			$this->indent( 0 ) . $this->getSearchButton( 'fulltext' ) .
 			$this->indent( -1 ) . '</div>' .
 			$this->indent( -1 ) . '</div>' .
 			$this->indent( -1 ) . '</form>' .

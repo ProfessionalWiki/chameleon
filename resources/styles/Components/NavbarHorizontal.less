@@ -94,21 +94,28 @@
 			float: left;
 		}
 
-		.navbar-personaltools {
-			margin-right: 0 - ( @grid-gutter-width / 2 );
-			margin-left: 5px;
-		}
-
-		.navbar-form {
-			padding: 0;
-			margin-right: 5px;
-			margin-left: 5px;
+		.navbar-tools:last-child {
+			margin-right: 0 - ( @grid-gutter-width / 2 ) - 1;
 		}
 	}
 }
 
+.navbar-form {
+	// Undo 100% width for pull classes
+	@media (min-width: @grid-float-breakpoint) {
+		// separator for user's personal tools
+		border: 0;
+		border-left: 1px solid @navbar-default-border;
+		border-right: 1px solid @navbar-default-border;
+
+		width: auto;
+		padding: ((@navbar-height - @input-height-base) / 2) @navbar-padding-horizontal;
+		margin: 0 -1px 0 0;
+	}
+}
+
 // styles for personal tools in the navbar component
-.navbar-personaltools {
+.navbar-tools {
 	.nav();
 	.navbar-nav();
 
@@ -137,9 +144,11 @@
 	@media (min-width: @grid-float-breakpoint) {
 
 		height: @navbar-height;
+		margin: 0 -1px 0 0;
 
 		// separator for user's personal tools
 		border-left: 1px solid @navbar-default-border;
+		border-right: 1px solid @navbar-default-border;
 
 		> li, li.open {
 			float: none;
@@ -169,6 +178,11 @@
 
 		}
 
+		> li, li.open {
+			&:last-child > ul.dropdown-menu {
+				top: @navbar-height / 2 - 1;
+			}
+		}
 	}
 
 	@media (max-width: @grid-float-breakpoint) {

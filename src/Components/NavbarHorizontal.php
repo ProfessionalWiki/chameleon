@@ -191,6 +191,8 @@ class NavbarHorizontal extends Component {
 
 			$elements[ $position ][ ] = $html;
 
+		} else {
+			// TODO: Warning? Error?
 		}
 	}
 
@@ -266,22 +268,47 @@ class NavbarHorizontal extends Component {
 	 */
 	protected function getPageTools( \DOMElement $domElement = null ) {
 
+		$ret = '';
+
 		$pageTools = new PageTools( $this->getSkinTemplate(), $domElement, $this->getIndent() );
 
 		$pageTools->setFlat( true );
+		$pageTools->setRedundant( 'edit' );
 		$pageTools->removeClasses( 'text-center list-inline' );
 		$pageTools->addClasses( 'dropdown-menu' );
 
-		$ret = $pageTools->getHtml();
+		$pageToolsHtml = $pageTools->getHtml();
 
-		if ( $ret !== '' ) {
+		$pageToolsStructure = $pageTools->getPageToolsStructure();
+		if ( array_key_exists( 'views', $pageToolsStructure ) && array_key_exists( 'edit', $pageToolsStructure['views'] ) ) {
+			$pageToolsStructure['views']['edit']['text'] = '';
+			$editLinkHtml = $this->getSkinTemplate()->makeListItem( 'edit', $pageToolsStructure['views']['edit'], array( 'link-class' => $pageToolsStructure['views']['edit']['class'] . ' glyphicon glyphicon-pencil' ) );
+		}
+
+		if ( $editLinkHtml || $pageToolsHtml) {
 			$ret =
 				$this->indent() . '<!-- page tools -->' .
-				$this->indent() . '<ul class="nav navbar-nav">' . \Html::openElement( 'li', array( 'class' => 'dropdown' ) ) .
-				$this->indent( 1 ) . '<a data-toggle="dropdown" class="dropdown-toggle" href="#">' . $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() . '<b class="caret"></b></a>' .
-				$ret .
-				$this->indent( -1 ) . '</li></ul>' . "\n";
+				$this->indent() . '<ul class="navbar-tools navbar-nav" >';
+
+			if ( $editLinkHtml ) {
+				$ret .=
+					$this->indent( 1 ) . '<li class="navbar-tools-tools">' .
+					$this->indent( 1 ) . $editLinkHtml .
+					$this->indent( -1 ) . '</li>';
+			}
+
+			if ( $pageToolsHtml !== '' ) {
+				$ret .=
+					$this->indent() . '<li class="navbar-tools-tools dropdown">' .
+					$this->indent( 1 ) . '<a data-toggle="dropdown" class="dropdown-toggle" href="#">...</a>' .
+					$pageToolsHtml .
+					$this->indent( -1 ) . '</li>';
+			}
+
+			$ret .=
+				$this->indent( -1 ) . '</ul>' . "\n";
 		}
+
 		return $ret;
 	}
 
@@ -319,8 +346,8 @@ class NavbarHorizontal extends Component {
 
 		$ret =
 			$this->indent() . '<!-- personal tools -->' .
-			$this->indent() . '<ul class="navbar-personaltools navbar-nav" >' .
-			$this->indent( 1 ) . '<li class="dropdown navbar-personaltools-tools">' .
+			$this->indent() . '<ul class="navbar-tools navbar-nav" >' .
+			$this->indent( 1 ) . '<li class="dropdown navbar-tools-tools">' .
 			$this->indent( 1 ) . '<a class="dropdown-toggle glyphicon glyphicon-user ' . $toolsClass . '" href="#" data-toggle="dropdown" title="' . $toolsLinkText . '" ></a>' .
 			$this->indent() . '<ul class="p-personal-tools dropdown-menu dropdown-menu-right" >';
 

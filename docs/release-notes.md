@@ -1,5 +1,13 @@
 ## Release Notes
 
+### Chameleon 1.2
+
+Released on (tbd)
+
+Changes:
+* Restructured Page Tools on Navbars. The 'Edit' action and the Page Tools' menu
+  button got icons and were offset from the rest of the menus.
+
 ### Chameleon 1.1.4
 
 Released on 27-May-2015

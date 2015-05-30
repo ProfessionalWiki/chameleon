@@ -50,8 +50,8 @@ class PageTools extends Component {
 
 	/**
 	 * @param ChameleonTemplate $template
-	 * @param \DOMElement|null  $domElement
-	 * @param int               $indent
+	 * @param \DOMElement|null $domElement
+	 * @param int $indent
 	 */
 	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
 
@@ -96,6 +96,16 @@ class PageTools extends Component {
 		}
 
 		return $ret;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function &getPageToolsStructure() {
+		if ( $this->mPageToolsStructure === null ) {
+			$this->mPageToolsStructure = $this->getSkinTemplate()->data[ 'content_navigation' ];
+		}
+		return $this->mPageToolsStructure;
 	}
 
 	/**
@@ -147,7 +157,7 @@ class PageTools extends Component {
 	}
 
 	/**
-	 * @param string    $category
+	 * @param string $category
 	 * @param mixed[][] $tabsDescription
 	 *
 	 * @return string
@@ -193,7 +203,7 @@ class PageTools extends Component {
 
 	/**
 	 * @param mixed[] $tabDescription
-	 * @param string  $key
+	 * @param string $key
 	 *
 	 * @return string
 	 */
@@ -247,20 +257,10 @@ class PageTools extends Component {
 		foreach ( $tools as $tool ) {
 			foreach ( $pageToolsStructure as $group => $groupStructure ) {
 				if ( array_key_exists( $tool, $groupStructure ) ) {
-					$pageToolsStructure[$group][$tool]['redundant']=true;
+					$pageToolsStructure[ $group ][ $tool ][ 'redundant' ] = true;
 				}
 			}
 		}
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function &getPageToolsStructure() {
-		if ( $this->mPageToolsStructure === null ) {
-			$this->mPageToolsStructure = $this->getSkinTemplate()->data[ 'content_navigation' ];
-		}
-		return $this->mPageToolsStructure;
 	}
 
 

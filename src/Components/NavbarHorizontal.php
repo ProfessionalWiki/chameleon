@@ -189,7 +189,7 @@ class NavbarHorizontal extends Component {
 				$position = 'left';
 			}
 
-			$indentation = ( $position === 'right' )? 2 : 1;
+			$indentation = ( $position === 'right' ) ? 2 : 1;
 
 			$this->indent( $indentation );
 			$html = $this->buildNavBarElementFromDomElement( $node );
@@ -288,25 +288,26 @@ class NavbarHorizontal extends Component {
 		$pageToolsHtml = $pageTools->getHtml();
 
 		$editLinkHtml = '';
-		if ( array_key_exists( 'views', $pageToolsStructure ) && array_key_exists( 'edit', $pageToolsStructure['views'] ) ) {
-			$pageToolsStructure['views']['edit']['text'] = '';
-			$pageToolsStructure['views']['edit']['class'] = array_key_exists( 'class', $pageToolsStructure['views']['edit'] )?$pageToolsStructure['views']['edit']['class']:'' . ' navbar-tools-tools';
-			$editLinkHtml = $this->getSkinTemplate()->makeListItem( 'edit', $pageToolsStructure['views']['edit'], array( 'link-class' =>  'glyphicon glyphicon-pencil' ) );
+
+		if ( array_key_exists( 'views', $pageToolsStructure ) && array_key_exists( 'edit', $pageToolsStructure[ 'views' ] ) ) {
+			$pageToolsStructure[ 'views' ][ 'edit' ][ 'text' ] = '';
+			$pageToolsStructure[ 'views' ][ 'edit' ][ 'class' ] = array_key_exists( 'class', $pageToolsStructure[ 'views' ][ 'edit' ] ) ? $pageToolsStructure[ 'views' ][ 'edit' ][ 'class' ] : '' . ' navbar-tools-tools';
+			$editLinkHtml = $this->getSkinTemplate()->makeListItem( 'edit', $pageToolsStructure[ 'views' ][ 'edit' ], array( 'link-class' => 'glyphicon glyphicon-pencil' ) );
 		}
 
-		if ( $editLinkHtml || $pageToolsHtml) {
+		if ( $editLinkHtml || $pageToolsHtml ) {
 			$ret =
 				$this->indent() . '<!-- page tools -->' .
 				$this->indent() . '<ul class="navbar-tools navbar-nav" >';
 
 			if ( $editLinkHtml !== '' ) {
-				$ret .= $this->indent( 1 ) . $editLinkHtml ;
+				$ret .= $this->indent( 1 ) . $editLinkHtml;
 			}
 
 			if ( $pageToolsHtml !== '' ) {
 				$ret .=
 					$this->indent( 1 ) . '<li class="navbar-tools-tools dropdown">' .
-					$this->indent( 1 ) . '<a data-toggle="dropdown" class="dropdown-toggle" href="#">...</a>' .
+					$this->indent( 1 ) . '<a data-toggle="dropdown" class="dropdown-toggle" href="#" title="' . $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() . '" >...</a>' .
 					$pageToolsHtml .
 					$this->indent( -1 ) . '</li>';
 			}
@@ -389,7 +390,7 @@ class NavbarHorizontal extends Component {
 
 				$ret .= $this->indent() . '<li class="navbar-newtalk-notifier">' .
 					$this->indent( 1 ) . '<a class="dropdown-toggle glyphicon glyphicon-envelope ' . $newtalkClass . '" title="' .
-					$newtalkLinkText . '" href="' . $user->getTalkPage()->getLinkURL('redirect=no') . '"></a>' .
+					$newtalkLinkText . '" href="' . $user->getTalkPage()->getLinkURL( 'redirect=no' ) . '"></a>' .
 					$this->indent( -1 ) . '</li>';
 
 			}

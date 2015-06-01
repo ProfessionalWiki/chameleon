@@ -279,21 +279,27 @@ class NavbarHorizontal extends Component {
 		$pageTools = new PageTools( $this->getSkinTemplate(), $domElement, $this->getIndent() + 1 );
 
 		$pageTools->setFlat( true );
-		$pageTools->setRedundant( 'edit' );
 		$pageTools->removeClasses( 'text-center list-inline' );
 		$pageTools->addClasses( 'dropdown-menu' );
 
+		$editLinkHtml = '';
 		$pageToolsStructure = $pageTools->getPageToolsStructure();
 
-		$pageToolsHtml = $pageTools->getHtml();
+		if ( is_bool( $GLOBALS[ 'sfgRenameEditTabs'] ) &&
+			$GLOBALS[ 'sfgRenameEditTabs'] === true &&
+			array_key_exists( 'views', $pageToolsStructure ) &&
+			array_key_exists( 'form_edit', $pageToolsStructure[ 'views' ] ) ) {
 
-		$editLinkHtml = '';
+			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'form_edit' );
 
-		if ( array_key_exists( 'views', $pageToolsStructure ) && array_key_exists( 'edit', $pageToolsStructure[ 'views' ] ) ) {
-			$pageToolsStructure[ 'views' ][ 'edit' ][ 'text' ] = '';
-			$pageToolsStructure[ 'views' ][ 'edit' ][ 'class' ] = array_key_exists( 'class', $pageToolsStructure[ 'views' ][ 'edit' ] ) ? $pageToolsStructure[ 'views' ][ 'edit' ][ 'class' ] : '' . ' navbar-tools-tools';
-			$editLinkHtml = $this->getSkinTemplate()->makeListItem( 'edit', $pageToolsStructure[ 'views' ][ 'edit' ], array( 'link-class' => 'glyphicon glyphicon-pencil' ) );
+		} elseif ( array_key_exists( 'views', $pageToolsStructure ) &&
+			array_key_exists( 'edit', $pageToolsStructure[ 'views' ] ) ) {
+
+			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'edit' );
+
 		}
+
+		$pageToolsHtml = $pageTools->getHtml();
 
 		if ( $editLinkHtml || $pageToolsHtml ) {
 			$ret =
@@ -456,6 +462,36 @@ class NavbarHorizontal extends Component {
 		return
 			$this->indent( -1 ) . '</div>' .
 			$this->indent( -1 ) . '</nav>' . "\n";
+	}
+
+	/**
+	 * @param $pageTools
+	 * @param $editActionId
+	 *
+	 * @return string
+	 */
+	protected function getLinkAndRemoveFromPageToolStructure( $pageTools, $editActionId ) {
+
+		$pageToolsStructure  = $pageTools->getPageToolsStructure();
+		$editActionStructure = $pageToolsStructure[ 'views' ][ $editActionId ];
+
+		$editActionStructure[ 'text' ] = '';
+
+		if ( array_key_exists( 'class', $editActionStructure ) ) {
+			$editActionStructure[ 'class' ] .= ' navbar-tools-tools';
+		} else {
+			$editActionStructure[ 'class' ] = 'navbar-tools-tools';
+		}
+
+		$editLinkHtml = $this->getSkinTemplate()->makeListItem(
+			$editActionId,
+			$editActionStructure,
+			array ( 'link-class' => 'glyphicon glyphicon-pencil' )
+		);
+
+		$pageTools->setRedundant( $editActionId );
+
+		return $editLinkHtml;
 	}
 
 }

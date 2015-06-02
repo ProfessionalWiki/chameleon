@@ -1,5 +1,5 @@
 /**
- * Central Chameleon style file
+ * Style fixes for extensions
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
@@ -20,25 +20,12 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * @author Stephan Gambke
- * @since 1.0
+ * @since 1.2
  * @ingroup Skins
  */
 
-@import "variables";
-@import "mixins";
-@import "utils";
-@import "images";
-@import "forms";
-@import "screen";
-@import "specialpages";
-@import "print";
-@import "extensionfixes";
 
-/**
- * Component styles
- *
- * TODO: Include them programmatically only when necessary
- */
-
-@import "Components/NavbarHorizontal";
-@import "Components/Modifications/Sticky";
+/* Extension VisualEditor */
+.ve-ui-toolbar {
+	z-index: @zindex-modal
+}

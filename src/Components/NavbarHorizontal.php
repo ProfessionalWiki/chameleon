@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2015, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -285,15 +285,23 @@ class NavbarHorizontal extends Component {
 		$editLinkHtml = '';
 		$pageToolsStructure = $pageTools->getPageToolsStructure();
 
-		if ( is_bool( $GLOBALS[ 'sfgRenameEditTabs'] ) &&
-			$GLOBALS[ 'sfgRenameEditTabs'] === true &&
+		if ( is_bool( $GLOBALS[ 'sfgRenameEditTabs' ] ) &&
+			$GLOBALS[ 'sfgRenameEditTabs' ] === true &&
 			array_key_exists( 'views', $pageToolsStructure ) &&
-			array_key_exists( 'form_edit', $pageToolsStructure[ 'views' ] ) ) {
+			array_key_exists( 'form_edit', $pageToolsStructure[ 'views' ] )
+		) {
 
 			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'form_edit' );
 
 		} elseif ( array_key_exists( 'views', $pageToolsStructure ) &&
-			array_key_exists( 'edit', $pageToolsStructure[ 'views' ] ) ) {
+			array_key_exists( 've-edit', $pageToolsStructure[ 'views' ] )
+		) {
+
+			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 've-edit' );
+
+		} elseif ( array_key_exists( 'views', $pageToolsStructure ) &&
+			array_key_exists( 'edit', $pageToolsStructure[ 'views' ] )
+		) {
 
 			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'edit' );
 

@@ -8,6 +8,10 @@ Changes:
 * Restructured Page Tools on Navbars. The 'Edit' action and the Page Tools' menu
   button got icons and were offset from the rest of the menus.
 
+Fixes:
+* Use variable @hr-border for color of lower border of first heading
+* Fix style issues for VisualEditor
+
 ### Chameleon 1.1.4
 
 Released on 27-May-2015

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tacsipacsi"
+		]
+	},
+	"chameleon-desc": "A Kaméleon felület",
+	"chameleon-loggedin": "Be vagy jelentkezve $1 néven.",
+	"chameleon-notloggedin": "Nem vagy bejelentkezve.",
+	"chameleon-newmessages": "Új üzeneteid vannak.",
+	"chameleon-nonewmessages": "Nincsenek új üzeneteid."
+}

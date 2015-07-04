@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pippinu"
+		]
+	},
+	"chameleon-desc": "La peddi Chameleon",
+	"chameleon-loggedin": "Si’ trasutu comu $1.",
+	"chameleon-notloggedin": "Nun si’ trasutu.",
+	"chameleon-newmessages": "Hai missaggî novi.",
+	"chameleon-nonewmessages": "Nun hai nuddu missaggiu novu."
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vahe Gharakhanyan"
+		]
+	},
+	"chameleon-loggedin": "Դուք մտել եք որպես $1:",
+	"chameleon-notloggedin": "Դուք չեք մտել համակարգ:",
+	"chameleon-newmessages": "Դուք նոր ուղերձներ ունեք:",
+	"chameleon-nonewmessages": "Դուք նոր ուղերձներ չունեք:"
+}

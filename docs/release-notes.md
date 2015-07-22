@@ -5,19 +5,29 @@
 Released on (tbd)
 
 Changes:
-* Restructured Page Tools on Navbars. The 'Edit' action and the Page Tools' menu
-  button got icons and were offset from the rest of the menus.
+* Restructured the Page Tools on Navbars: The 'Edit' action and the Page Tools'
+  menu button got icons and were offset from the rest of the menus.
+* 'Edit' link links to the proper Visual Editor action if the
+  [VE extension](https://www.mediawiki.org/wiki/VisualEditor) is present
+* 'Edit' link links to the proper Semantic Forms action if the
+  [SF extension](https://www.mediawiki.org/wiki/Extension:Semantic_Forms) is
+  present and `$sfgRenameEditTabs` is set
+* New less style variables @toolbar-height, @toolbar-padding-vertical,
+  @toolbar-padding-horizontal
 
 Fixes:
 * Use variable @hr-border for color of lower border of first heading
-* Fix style issues for VisualEditor
+* Some style issues for VisualEditor
+* The 'Page' link was not shown in Edit mode
+* Some themes (e.g. spacelab, cerulian) overrode the toolbar padding when the
+  mouse hovered over links
 
 ### Chameleon 1.1.4
 
 Released on 27-May-2015
 
 Fixes:
-* Remove mw-headline-anchor
+* Do not show mw-headline-anchor
 * Fix Message icon linking to non-existent page
   ([Bug: T100550](https://phabricator.wikimedia.org/T100550))
 

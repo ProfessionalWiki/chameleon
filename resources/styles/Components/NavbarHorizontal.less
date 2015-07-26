@@ -3,7 +3,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2015, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -115,7 +115,7 @@
 }
 
 // styles for personal tools in the navbar component
-.navbar-tools {
+.skin-chameleon .navbar-tools {
 	.nav();
 	.navbar-nav();
 
@@ -156,32 +156,31 @@
 			> a, > a:hover, > a:focus {
 
 				vertical-align: middle;
-				line-height: 0;
 				top: 0;
-				padding: (@navbar-height - 1)/4 10px;
+				line-height: @line-height-computed/2;
+				padding: @navbar-padding-vertical/2 10px;
 				border-color: @navbar-default-border;
 				border-bottom: 1px solid @navbar-default-border;
 
 			}
 
 			&:first-child:last-child > a {
-				padding: (@navbar-height)/2 10px;
+				line-height: @line-height-computed;
+				padding: @navbar-padding-vertical 10px;
 			}
 
-			&:last-child > a, &.open:last-child > a {
+			&:last-child > a {
 				border: none;
 			}
 
-			> ul.dropdown-menu {
-				top: @navbar-height;
-			}
-
-		}
-
-		> li, li.open {
 			&:last-child > ul.dropdown-menu {
 				top: @navbar-height / 2 - 1;
 			}
+
+			&:first-child > ul.dropdown-menu {
+				top: @navbar-height;
+			}
+
 		}
 	}
 

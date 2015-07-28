@@ -363,13 +363,15 @@ class NavbarHorizontal extends Component {
 			$toolsLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-notloggedin' )->text();
 		}
 
-		// start personal tools element
+		$linkText = '<span class="glyphicon glyphicon-user"></span>';
+		\Hooks::run('ChameleonNavbarHorizontalPersonalToolsLinkText', array( &$linkText, $this->getSkin() ) );
 
+		// start personal tools element
 		$ret =
 			$this->indent() . '<!-- personal tools -->' .
 			$this->indent() . '<ul class="navbar-tools navbar-nav" >' .
 			$this->indent( 1 ) . '<li class="dropdown navbar-tools-tools">' .
-			$this->indent( 1 ) . '<a class="dropdown-toggle glyphicon glyphicon-user ' . $toolsClass . '" href="#" data-toggle="dropdown" title="' . $toolsLinkText . '" ></a>' .
+			$this->indent( 1 ) . '<a class="dropdown-toggle ' . $toolsClass . '" href="#" data-toggle="dropdown" title="' . $toolsLinkText . '" >' . $linkText . '</a>' .
 			$this->indent() . '<ul class="p-personal-tools dropdown-menu dropdown-menu-right" >';
 
 		$this->indent( 1 );

@@ -96,6 +96,15 @@
 
 		.navbar-tools:last-child {
 			margin-right: 0 - ( @grid-gutter-width / 2 ) - 1;
+			border-right: none;
+
+			li:first-child > a {
+				border-radius: 0 @navbar-border-radius 0 0;
+			}
+
+			li:last-child > a {
+				border-radius: 0 0 @navbar-border-radius 0;
+			}
 		}
 	}
 }
@@ -153,24 +162,51 @@
 		> li, li.open {
 			float: none;
 
+			height: @navbar-height/2;
+			text-align: center;
+
+			&:last-child {
+				border: none;
+			}
+
+			span, a {
+				line-height: @line-height-computed/2;
+			}
+
+
+
 			> a, > a:hover, > a:focus {
 
-				vertical-align: middle;
-				top: 0;
-				line-height: @line-height-computed/2;
-				padding: @navbar-padding-vertical/2 10px;
+				height: @navbar-height/2;
+				padding: @navbar-padding-vertical/2 @navbar-padding-vertical/2;
+
 				border-color: @navbar-default-border;
 				border-bottom: 1px solid @navbar-default-border;
 
+				overflow: hidden;
+
+				img {
+					top: 50%;
+					left: 50%;
+					position: absolute;
+					margin-right: -@navbar-padding-vertical;
+					.translate(-50%; -50%);
+
+					&:hover, &:focus {
+						opacity: .7;
+					}
+				}
 			}
 
-			&:first-child:last-child > a {
-				line-height: @line-height-computed;
-				padding: @navbar-padding-vertical 10px;
-			}
+			&:first-child:last-child {
+				span, a {
+					line-height: @line-height-computed;
+				}
 
-			&:last-child > a {
-				border: none;
+				> a, > a:hover, > a:focus {
+					height: @navbar-height;
+					padding: @navbar-padding-vertical @navbar-padding-vertical/2;
+				}
 			}
 
 			&:last-child > ul.dropdown-menu {

@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sanlinnaing"
+			"Sanlinnaing",
+			"Lionslayer"
 		]
 	},
-	"chameleon-notloggedin": "သင်ဟာ log in ၀င်မထားပါဘူး။"
+	"chameleon-notloggedin": "သင်ဟာ log in ဝင်မထားပါဘူး။"
 }

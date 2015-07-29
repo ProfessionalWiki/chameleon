@@ -4,6 +4,8 @@
 
 Released on (tbd)
 
+This release may break customized styles for the NavbarHorizontal component.
+
 Changes:
 * Restructured the Page Tools on Navbars: The 'Edit' action and the Page Tools'
   menu button got icons and were offset from the rest of the menus.
@@ -12,6 +14,10 @@ Changes:
 * 'Edit' link links to the proper Semantic Forms action if the
   [SF extension](https://www.mediawiki.org/wiki/Extension:Semantic_Forms) is
   present and `$sfgRenameEditTabs` is set
+* Improve styleability of tool buttons in NavbarHorizontal (wrap the button
+  label in a span) and rework rework styling of the buttons
+* Add ChameleonNavbarHorizontalPersonalToolsLinkText hook
+* Add ChameleonNavbarHorizontalNewTalkLinkText hook
 * New less style variables @toolbar-height, @toolbar-padding-vertical,
   @toolbar-padding-horizontal
 

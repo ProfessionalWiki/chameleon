@@ -321,7 +321,7 @@ class NavbarHorizontal extends Component {
 			if ( $pageToolsHtml !== '' ) {
 				$ret .=
 					$this->indent( 1 ) . '<li class="navbar-tools-tools dropdown">' .
-					$this->indent( 1 ) . '<a data-toggle="dropdown" class="dropdown-toggle" href="#" title="' . $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() . '" >...</a>' .
+					$this->indent( 1 ) . '<a data-toggle="dropdown" class="dropdown-toggle" href="#" title="' . $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() . '" ><span>...</span></a>' .
 					$pageToolsHtml .
 					$this->indent( -1 ) . '</li>';
 			}
@@ -404,9 +404,12 @@ class NavbarHorizontal extends Component {
 					$newtalkLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-nonewmessages' )->text();
 				}
 
+				$linkText = '<span class="glyphicon glyphicon-envelope"></span>';
+				\Hooks::run('ChameleonNavbarHorizontalNewTalkLinkText', array( &$linkText, $this->getSkin() ) );
+
 				$ret .= $this->indent() . '<li class="navbar-newtalk-notifier">' .
-					$this->indent( 1 ) . '<a class="dropdown-toggle glyphicon glyphicon-envelope ' . $newtalkClass . '" title="' .
-					$newtalkLinkText . '" href="' . $user->getTalkPage()->getLinkURL( 'redirect=no' ) . '"></a>' .
+					$this->indent( 1 ) . '<a class="dropdown-toggle ' . $newtalkClass . '" title="' .
+					$newtalkLinkText . '" href="' . $user->getTalkPage()->getLinkURL( 'redirect=no' ) . '">' . $linkText . '</a>' .
 					$this->indent( -1 ) . '</li>';
 
 			}
@@ -493,10 +496,17 @@ class NavbarHorizontal extends Component {
 			$editActionStructure[ 'class' ] = 'navbar-tools-tools';
 		}
 
+		$options = array (
+			'text-wrapper' => array(
+				'tag' => 'span',
+				'attributes' => array('class' => 'glyphicon glyphicon-pencil',)
+			),
+		);
+
 		$editLinkHtml = $this->getSkinTemplate()->makeListItem(
 			$editActionId,
 			$editActionStructure,
-			array ( 'link-class' => 'glyphicon glyphicon-pencil' )
+			$options
 		);
 
 		$pageTools->setRedundant( $editActionId );

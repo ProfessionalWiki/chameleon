@@ -64,7 +64,7 @@ class ToolbarHorizontal extends Component {
 		ob_start();
 		// We pass an extra 'true' at the end so extensions using BaseTemplateToolbox
 		// can abort and avoid outputting double toolbox links
-		wfRunHooks( 'SkinTemplateToolboxEnd', array( &$skinTemplate, true ) );
+		Hooks::run( 'SkinTemplateToolboxEnd', array( &$skinTemplate, true ) );
 		$ret .= $this->indent() . ob_get_contents();
 		ob_end_clean();
 

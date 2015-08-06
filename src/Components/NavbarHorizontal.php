@@ -394,7 +394,7 @@ class NavbarHorizontal extends Component {
 
 			// Allow extensions to disable the new messages alert;
 			// since we do not display the link text, we ignore the actual value returned in $newMessagesAlert
-			if ( wfRunHooks( 'GetNewMessagesAlert', array( &$newMessagesAlert, $newtalks, $user, $out ) ) ) {
+			if ( Hooks::run( 'GetNewMessagesAlert', array( &$newMessagesAlert, $newtalks, $user, $out ) ) ) {
 
 				if ( count( $user->getNewMessageLinks() ) > 0 ) {
 					$newtalkClass = 'navbar-newtalk-available';

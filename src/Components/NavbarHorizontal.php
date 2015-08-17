@@ -286,10 +286,11 @@ class NavbarHorizontal extends Component {
 		$editLinkHtml = '';
 		$pageToolsStructure = $pageTools->getPageToolsStructure();
 
-		if ( is_bool( $GLOBALS[ 'sfgRenameEditTabs' ] ) &&
-			$GLOBALS[ 'sfgRenameEditTabs' ] === true &&
-			array_key_exists( 'views', $pageToolsStructure ) &&
-			array_key_exists( 'form_edit', $pageToolsStructure[ 'views' ] )
+		if ( array_key_exists( 'views', $pageToolsStructure ) &&
+			array_key_exists( 'form_edit', $pageToolsStructure[ 'views' ] ) &&
+			array_key_exists( 'sfgRenameEditTabs', $GLOBALS ) &&
+			$GLOBALS[ 'sfgRenameEditTabs' ] === true
+
 		) {
 
 			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'form_edit' );

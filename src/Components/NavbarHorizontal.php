@@ -26,6 +26,7 @@
 
 namespace Skins\Chameleon\Components;
 
+use Hooks;
 use Skins\Chameleon\IdRegistry;
 
 /**

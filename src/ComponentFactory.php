@@ -49,7 +49,7 @@ class ComponentFactory {
 	/**
 	 * @param string $layoutFileName
 	 */
-	function __construct( $layoutFileName ) {
+	public function __construct( $layoutFileName ) {
 		$this->setLayoutFile( $layoutFileName );
 	}
 

@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2015, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -36,22 +36,39 @@ namespace Skins\Chameleon;
 class IdRegistry {
 
 	private static $sInstance;
+	private $mRegistry = array();
 
 	/**
 	 * @return IdRegistry
 	 */
 	public static function getRegistry() {
 
-		if ( IdRegistry::$sInstance === null ) {
-			IdRegistry::$sInstance = new IdRegistry();
+		if ( self::$sInstance === null ) {
+			self::$sInstance = new IdRegistry();
 		}
 
-		return IdRegistry::$sInstance;
+		return self::$sInstance;
 
 	}
 
+	/**
+	 * Returns the opening tag of an HTML element in a string.
+	 *
+	 * The advantage over Html::openElement is that any id attribute is ensured to be unique.
+	 *
+	 * @param string $tag
+	 * @param array $attributes
+	 *
+	 * @return string
+	 */
+	public function openElement( $tag, $attributes = array() ) {
 
-	private $mRegistry = array();
+		if ( is_array( $attributes ) && isset( $attributes[ 'id' ] ) ) {
+			$attributes[ 'id' ] = $this->getId( $attributes[ 'id' ] );
+		}
+
+		return \Html::openElement( $tag, $attributes );
+	}
 
 	/**
 	 * @param null|string $id
@@ -81,25 +98,6 @@ class IdRegistry {
 			return $id;
 
 		}
-	}
-
-	/**
-	 * Returns the opening tag of an HTML element in a string.
-	 *
-	 * The advantage over Html::openElement is that any id attribute is ensured to be unique.
-	 *
-	 * @param string $tag
-	 * @param array $attributes
-	 *
-	 * @return string
-	 */
-	public function openElement( $tag, $attributes = array() ) {
-
-		if ( is_array( $attributes ) && isset( $attributes[ 'id' ] ) ) {
-			$attributes[ 'id' ] = $this->getId( $attributes[ 'id' ] );
-		}
-
-		return \Html::openElement( $tag, $attributes );
 	}
 
 	/**

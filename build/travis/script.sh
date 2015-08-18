@@ -70,7 +70,7 @@ function installSkinViaComposerOnMediaWikiRoot {
 		composer init
 	fi
 
-	composer remove --dev 'phpunit/phpunit'
+	composer remove --dev --update-with-dependencies 'phpunit/phpunit'
 	composer require 'phpunit/phpunit=~4.0' 'mediawiki/chameleon-skin=@dev' --prefer-source
 
 	cd skins

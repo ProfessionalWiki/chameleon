@@ -3,7 +3,7 @@
 #####
 # This file is part of the MediaWiki skin Chameleon.
 #
-# @copyright 2013 - 2014, Stephan Gambke, mwjames
+# @copyright 2013 - 2015, Stephan Gambke, mwjames
 # @license   GNU General Public License, version 3 (or any later version)
 #
 # The Chameleon skin is free software: you can redistribute it and/or modify
@@ -24,7 +24,10 @@
 # @ingroup Skins
 #####
 
-set -x
+set -x  # display commands and their expanded arguments
+set -u  # treat unset variables as an error when performing parameter expansion
+set -o pipefail  # pipelines exit with last (rightmost) non-zero exit code
+set -e  # exit immediately if a command exits with an error
 
 originalDirectory=$(pwd)
 
@@ -50,8 +53,8 @@ function installMediaWiki {
 
 	cd mw
 
-	## MW 1.25 requires Psr\Logger
-	if [ "$MW" == "master" ]
+	## MW 1.25+ installs packages using composer
+	if [ -f composer.json ]
 	then
 		composer install
 	fi
@@ -62,7 +65,10 @@ function installMediaWiki {
 
 function installSkinViaComposerOnMediaWikiRoot {
 
-	composer init
+	if [ ! -f composer.json ]
+	then
+		composer init
+	fi
 
 	composer require 'phpunit/phpunit=~4.0' --prefer-source
 	composer require 'mediawiki/chameleon-skin=@dev' --prefer-source
@@ -100,6 +106,8 @@ function uploadCoverageReport {
 	wget https://scrutinizer-ci.com/ocular.phar
 	php ocular.phar code-coverage:upload --repository='g/wikimedia/mediawiki-skins-chameleon' --format=php-clover coverage.clover
 }
+
+composer self-update
 
 installMediaWiki
 installSkinViaComposerOnMediaWikiRoot

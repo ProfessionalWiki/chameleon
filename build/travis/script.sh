@@ -56,7 +56,7 @@ function installMediaWiki {
 	## MW 1.25+ installs packages using composer
 	if [ -f composer.json ]
 	then
-		composer install
+		composer install --prefer-source
 	fi
 
 	mysql -e 'create database its_a_mw;'
@@ -70,8 +70,8 @@ function installSkinViaComposerOnMediaWikiRoot {
 		composer init
 	fi
 
-	composer require 'phpunit/phpunit=~4.0' --prefer-source
-	composer require 'mediawiki/chameleon-skin=@dev' --prefer-source
+	composer remove --dev 'phpunit/phpunit'
+	composer require 'phpunit/phpunit=~4.0' 'mediawiki/chameleon-skin=@dev' --prefer-source
 
 	cd skins
 	cd chameleon

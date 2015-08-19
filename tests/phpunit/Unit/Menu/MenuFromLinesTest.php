@@ -2,7 +2,7 @@
 /**
  * File containing the MenuFromLinesTest class
  *
- * @copyright (C) 2013 - 2014, Stephan Gambke
+ * @copyright (C) 2013 - 2015, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -59,25 +59,61 @@ class MenuFromLinesTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * @covers ::__construct
 	 *
+	 * Just checking that giving an item data parameter does not immediately
+	 * break the constructor. No actual functionality beyond that is tested.
+	 */
+	public function testCanConstructWithItemData() {
+
+		$lines = array();
+
+		/** @var MenuFromLines $instance */
+		$instance = new MenuFromLines( $lines, true, array(
+			'text'  => 'foo',
+			'href'  => 'bar',
+			'depth' => 42
+		) );
+
+		$this->assertInstanceOf(
+			'Skins\Chameleon\Menu\MenuFromLines',
+			$instance
+		);
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @covers ::parseLines
 	 */
 	public function testBuildEmptyMenu() {
 
 		$lines = array(
 			'',
 			'* Foo',
-			'** FooBar',
-			'*** FooBarBaz',
+			'** | FooBar',
+			'*** http://foo.com | FooBarBaz',
+			'*** # | FooBarQuok',
 			'* Test | Bar',
 		);
 
 		$ap = $GLOBALS[ 'wgArticlePath' ];
 
-		$expected = "\t<ul>\n\t\t<li>\n\t\t\t<a href=\"" . str_replace( '$1', 'Foo', $ap ) .
-			"\">Foo</a>\n\t\t\t<ul>\n\t\t\t\t<li>\n\t\t\t\t\t<a href=\"" . str_replace( '$1', 'FooBar', $ap ) .
-			"\">FooBar</a>\n\t\t\t\t\t<ul>\n\t\t\t\t\t\t<li><a href=\"" . str_replace( '$1', 'FooBarBaz', $ap ) .
-			"\">FooBarBaz</a></li>\n\t\t\t\t\t</ul>\n\t\t\t\t</li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li><a href=\"" . str_replace( '$1', 'Test', $ap ) .
-			"\">Bar</a></li>\n\t</ul>\n";
+		$expected =
+			"\t<ul>\n" .
+			"\t\t<li>\n" .
+			"\t\t\t<a href=\"" . str_replace( '$1', 'Foo', $ap ) . "\">Foo</a>\n" .
+			"\t\t\t<ul>\n" .
+			"\t\t\t\t<li>\n" .
+			"\t\t\t\t\t<a href=\"#" . "\">FooBar</a>\n" .
+			"\t\t\t\t\t<ul>\n" .
+			"\t\t\t\t\t\t<li><a href=\"http://foo.com\">FooBarBaz</a></li>\n" .
+			"\t\t\t\t\t\t<li><a href=\"#\">FooBarQuok</a></li>\n" .
+			"\t\t\t\t\t</ul>\n" .
+			"\t\t\t\t</li>\n" .
+			"\t\t\t</ul>\n" .
+			"\t\t</li>\n" .
+			"\t\t<li><a href=\"" . str_replace( '$1', 'Test', $ap ) . "\">Bar</a></li>\n" .
+			"\t</ul>\n";
 
 		/** @var MenuFromLines $instance */
 		$instance = new MenuFromLines( $lines, true );

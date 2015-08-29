@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Alvaro Vidal-Abarca"
+			"Alvaro Vidal-Abarca",
+			"Toniher"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
 	"chameleon-desc": "L’aparença Chameleon.",
+	"chameleon-loggedin": "Esteu connectat com a $1.",
 	"chameleon-notloggedin": "No esteu connectat.",
 	"chameleon-newmessages": "Teniu missatges nous.",
 	"chameleon-nonewmessages": "No teniu missatges nous."

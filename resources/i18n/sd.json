@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aursani"
+		]
+	},
+	"chameleon-loggedin": "توهان $1 نالي سان لاگ اِن ٿيل آهيو.",
+	"chameleon-notloggedin": "توهان لاگ اِن ٿيل نہ آهيو.",
+	"chameleon-newmessages": "توهان لاءِ نوان نياپا آهن.",
+	"chameleon-nonewmessages": "توهان لاءِ ڪو بہ نئون نياپو نہ آهي."
+}

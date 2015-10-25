@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"HalanTul"
+		]
+	},
+	"chameleon-desc": "Chameleon.",
+	"chameleon-loggedin": "$1 аатынан киирбиккин.",
+	"chameleon-notloggedin": "Бэлиэ-аатынан киирэ иликкин.",
+	"chameleon-newmessages": "Эйиэхэ саҥа сурук кэлбит.",
+	"chameleon-nonewmessages": "Саҥа сурук кэлэ илик."
+}

@@ -7,7 +7,7 @@
 	"skinname-chameleon": "变色龙",
 	"chameleon-desc": "变色龙皮肤",
 	"chameleon-loggedin": "您已作为$1登录。",
-	"chameleon-notloggedin": "您未登录",
+	"chameleon-notloggedin": "您未登录。",
 	"chameleon-newmessages": "您有新消息。",
 	"chameleon-nonewmessages": "您没有新消息。"
 }

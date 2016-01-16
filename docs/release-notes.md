@@ -2,7 +2,7 @@
 
 ### Chameleon 1.2
 
-Released on (tbd)
+Released on 16-Jan-2016
 
 This release may break customized styles for the NavbarHorizontal component.
 
@@ -15,7 +15,7 @@ Changes:
   [SF extension](https://www.mediawiki.org/wiki/Extension:Semantic_Forms) is
   present and `$sfgRenameEditTabs` is set
 * Improve styleability of tool buttons in NavbarHorizontal (wrap the button
-  label in a span) and rework rework styling of the buttons
+  label in a span) and rework styling of the buttons
 * Add ChameleonNavbarHorizontalPersonalToolsLinkText hook
 * Add ChameleonNavbarHorizontalNewTalkLinkText hook
 * New less style variables @toolbar-height, @toolbar-padding-vertical,

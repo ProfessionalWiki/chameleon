@@ -3,7 +3,7 @@
 #####
 # This file is part of the MediaWiki skin Chameleon.
 #
-# @copyright 2013 - 2015, Stephan Gambke, mwjames
+# @copyright 2013 - 2016, Stephan Gambke, mwjames
 # @license   GNU General Public License, version 3 (or any later version)
 #
 # The Chameleon skin is free software: you can redistribute it and/or modify
@@ -32,24 +32,11 @@ set -e  # exit immediately if a command exits with an error
 originalDirectory=$(pwd)
 
 function installMediaWiki {
-
-	## WMF removed release tags from mediawiki github and there has been no
-	## indication (https://phabricator.wikimedia.org/T100409) whether this is going
-	## to be solved or a permanent state therefore we try to match tags ourselves
-	case "$MW" in
-	'1.22.1')
-	  HASH='11ceb42'
-	  ;;
-	'master')
-	  HASH='master'
-	  ;;
-	esac
-
 	cd ..
 
-	wget https://github.com/wikimedia/mediawiki/archive/$HASH.tar.gz -O $MW.tar.gz
+	wget https://github.com/wikimedia/mediawiki/archive/$MW.tar.gz
 	tar -zxf $MW.tar.gz
-	mv mediawiki-$HASH* mw
+	mv mediawiki-$MW mw
 
 	cd mw
 

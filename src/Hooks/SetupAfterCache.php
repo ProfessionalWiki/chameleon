@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke, mwjames
+ * @copyright 2013 - 2016, Stephan Gambke, mwjames
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -88,12 +88,8 @@ class SetupAfterCache {
 	 */
 	protected function setInstallPaths() {
 
-		$dirParts = explode( DIRECTORY_SEPARATOR, __DIR__ );
-		array_pop( $dirParts );
-		array_pop( $dirParts );
-
-		$this->configuration[ 'chameleonLocalPath' ] = implode( '/', $dirParts );
-		$this->configuration[ 'chameleonRemotePath' ] = str_replace( $this->configuration[ 'IP' ], $this->configuration[ 'wgScriptPath' ], $this->configuration[ 'chameleonLocalPath' ] );
+		$this->configuration[ 'chameleonLocalPath' ] = $this->configuration['wgStyleDirectory'] . DIRECTORY_SEPARATOR . 'chameleon';
+		$this->configuration[ 'chameleonRemotePath' ] = $this->configuration['wgStylePath'] . '/chameleon';
 	}
 
 	protected function addLateSettings() {

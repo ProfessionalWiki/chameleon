@@ -2,7 +2,7 @@
 /**
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke, mwjames
+ * @copyright 2013 - 2016, Stephan Gambke, mwjames
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -65,8 +65,26 @@ function addArguments( $args ) {
 //	return $arguments;
 }
 
-$mw = isReadablePath( __DIR__ . "/../../../tests/phpunit/phpunit.php" );
-$config = isReadablePath( __DIR__ . "/../phpunit.xml.dist" );
+/**
+ * @return string
+ */
+function getDirectory() {
+
+	$directory = $GLOBALS[ 'argv' ][ 0 ];
+
+	if ( $directory[ 0 ] !== DIRECTORY_SEPARATOR ) {
+		$directory = $_SERVER[ 'PWD' ] . DIRECTORY_SEPARATOR . $directory;
+	}
+
+	$directory = dirname( $directory );
+
+	return $directory;
+}
+
+$skinDirectory = dirname ( getDirectory() );
+
+$config = isReadablePath( "$skinDirectory/phpunit.xml.dist" );
+$mw = isReadablePath( dirname( dirname( $skinDirectory ) ) . "/tests/phpunit/phpunit.php" );
 
 echo "php {$mw} -c {$config} " . implode( ' ', addArguments( $GLOBALS['argv'] ) );
 

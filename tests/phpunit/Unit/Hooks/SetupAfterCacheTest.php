@@ -2,7 +2,7 @@
 /**
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke, mwjames
+ * @copyright 2013 - 2016, Stephan Gambke, mwjames
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -48,6 +48,22 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 		parent::setUp();
 
 		$this->dummyExternalModule = __DIR__ . '/../../Fixture/externalmodule.less';
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getWorkDirectory() {
+
+		$directory = $GLOBALS[ 'argv' ][ 0 ];
+
+		if ( $directory[ 0 ] !== DIRECTORY_SEPARATOR ) {
+			$directory = $_SERVER[ 'PWD' ] . DIRECTORY_SEPARATOR . $directory;
+		}
+
+		$directory = dirname( $directory );
+
+		return $directory;
 	}
 
 	/**
@@ -228,17 +244,19 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
-		$IP = str_replace( DIRECTORY_SEPARATOR, '/', realpath( __DIR__ . '/../../../../../../' ) );
+		$dir = $this->getWorkDirectory();
+		$IP = dirname(dirname($dir));
 
 		$defaultConfiguration = array(
 			'IP'                => $IP,
 			'wgScriptPath'      => 'notTestingwgScriptPath',
+			'wgStylePath'      => 'notTestingwgStylePath',
 			'wgStyleDirectory'  => 'notTestingwgStyleDirectory',
 			'wgResourceModules' => array(),
 		);
 
-		$expected[ 'chameleonLocalPath' ] = $IP . '/skins/chameleon';
-		$expected[ 'chameleonRemotePath' ] = $defaultConfiguration[ 'wgScriptPath' ] . '/skins/chameleon';
+		$expected[ 'chameleonLocalPath' ] = $defaultConfiguration[ 'wgStyleDirectory' ] . '/chameleon';
+		$expected[ 'chameleonRemotePath' ] = $defaultConfiguration[ 'wgStylePath' ] . '/chameleon';
 
 		$expected[ 'wgResourceModules' ] = array();
 		$expected[ 'wgResourceModules' ][ 'skin.chameleon.jquery-sticky' ] = array(

@@ -2,7 +2,7 @@
 /**
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke, mwjames
+ * @copyright 2013 - 2016, Stephan Gambke, mwjames
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -36,10 +36,28 @@ function registerAutoloaderPath( $identifier, $path ) {
 	return require $path;
 }
 
+/**
+ * @return string
+ */
+function getDirectory() {
+
+	$directory = $GLOBALS[ 'argv' ][ 0 ];
+
+	if ( $directory[ 0 ] !== DIRECTORY_SEPARATOR ) {
+		$directory = $_SERVER[ 'PWD' ] . DIRECTORY_SEPARATOR . $directory;
+	}
+
+	$directory = dirname( $directory );
+
+	return $directory;
+}
+
 function runTestAutoLoader( $autoLoader = null ) {
 
-	$mwVendorPath = __DIR__ . '/../../../vendor/autoload.php';
-	$localVendorPath = __DIR__ . '/../vendor/autoload.php';
+	$directory = getDirectory();
+
+	$mwVendorPath = $directory . '/../../vendor/autoload.php';
+	$localVendorPath = $directory . '/../vendor/autoload.php';
 
 	if ( is_readable( $localVendorPath ) ) {
 		$autoLoader = registerAutoloaderPath( 'local', $localVendorPath );

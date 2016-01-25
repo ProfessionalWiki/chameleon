@@ -1,5 +1,13 @@
 ## Release Notes
 
+### Chameleon 1.2.1
+
+Released on (tbd)
+
+Fixes:
+* Correctly follow symlinks
+  ([Bug: T124714](https://phabricator.wikimedia.org/T124714))
+
 ### Chameleon 1.2
 
 Released on 16-Jan-2016

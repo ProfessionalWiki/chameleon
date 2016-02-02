@@ -54,7 +54,7 @@ call_user_func( function () {
 		'path'           => __FILE__,
 		'name'           => 'Chameleon',
 		'descriptionmsg' => 'chameleon-desc',
-		'author'         => '[http://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]',
+		'author'         => '[https://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]',
 		'url'            => 'https://www.mediawiki.org/wiki/Skin:Chameleon',
 		'version'        => CHAMELEON_VERSION,
 		'license-name'   => 'GPLv3+',
@@ -65,7 +65,7 @@ call_user_func( function () {
 
 	// register message file for i18n
 	$GLOBALS[ 'wgExtensionMessagesFiles' ][ 'Chameleon' ] = __DIR__ . '/Chameleon.i18n.php';
-    $GLOBALS[ 'wgMessagesDirs' ][ 'Chameleon' ] = __DIR__ . '/resources/i18n';
+	$GLOBALS[ 'wgMessagesDirs' ][ 'Chameleon' ] = __DIR__ . '/resources/i18n';
 
 	/**
 	 * Using callbacks for hook registration

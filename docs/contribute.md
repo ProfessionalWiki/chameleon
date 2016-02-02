@@ -53,7 +53,7 @@ A few points to ease the process
   description on how to write and run PHPUnit test, please consult the
   [manual][mw-testing].
 * Finally, legal matters have to be taken care of. Please have a look at
-  [legal.md]
+  the [legal stuff][legal.md]
 
 
 [chameleon]: https://www.mediawiki.org/wiki/Skin:Chameleon
@@ -67,3 +67,4 @@ A few points to ease the process
 [gerrit-tutorial]: https://www.mediawiki.org/wiki/Gerrit/Tutorial
 [coding]: https://www.mediawiki.org/wiki/Manual:Coding_conventions
 [mw-testing]: https://www.mediawiki.org/wiki/Manual:PHP_unit_testing
+[legal.md]: legal.md

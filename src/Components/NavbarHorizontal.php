@@ -110,7 +110,7 @@ class NavbarHorizontal extends Component {
 	protected function buildNavBarOpeningTags() {
 		$openingTags =
 			$this->indent() . '<!-- navigation bar -->' .
-			$this->indent() . \HTML::openElement( 'nav', array(
+			$this->indent() . \Html::openElement( 'nav', array(
 					'class' => 'navbar navbar-default p-navbar ' . $this->getClassString(),
 					'role'  => 'navigation',
 					'id'    => $this->getHtmlId()

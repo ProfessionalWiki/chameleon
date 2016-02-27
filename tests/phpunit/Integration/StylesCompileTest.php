@@ -46,9 +46,14 @@ class StylesCompileTest extends \PHPUnit_Framework_TestCase {
 
 	public function testStylesCompile() {
 
+		$request = $this->getMockBuilder('\WebRequest')
+			->disableOriginalConstructor()
+			->getMock();
+
 		$setupAfterCache = new SetupAfterCache(
 			BootstrapManager::getInstance(),
-			$GLOBALS
+			$GLOBALS,
+			$request
 		);
 
 		$setupAfterCache->process();

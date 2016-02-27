@@ -77,9 +77,13 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 
 		$configuration = array();
 
+		$request = $this->getMockBuilder('\WebRequest')
+			->disableOriginalConstructor()
+			->getMock();
+
 		$this->assertInstanceOf(
 			'\Skins\Chameleon\Hooks\SetupAfterCache',
-			new SetupAfterCache( $bootstrapManager, $configuration )
+			new SetupAfterCache( $bootstrapManager, $configuration, $request )
 		);
 	}
 
@@ -125,9 +129,14 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 			'wgStylePath'                     => 'notTestingwgStylePath',
 		);
 
+		$request = $this->getMockBuilder('\WebRequest')
+			->disableOriginalConstructor()
+			->getMock();
+
 		$instance = new SetupAfterCache(
 			$bootstrapManager,
-			$configuration
+			$configuration,
+			$request
 		);
 
 		$instance->process();
@@ -159,9 +168,14 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 			'wgStylePath'                     => 'notTestingwgStylePath'
 		);
 
+		$request = $this->getMockBuilder('\WebRequest')
+			->disableOriginalConstructor()
+			->getMock();
+
 		$instance = new SetupAfterCache(
 			$bootstrapManager,
-			$configuration
+			$configuration,
+			$request
 		);
 
 		$this->setExpectedException( 'RuntimeException' );
@@ -201,12 +215,108 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 			'wgStylePath'                      => 'notTestingwgStylePath'
 		);
 
+		$request = $this->getMockBuilder('\WebRequest')
+			->disableOriginalConstructor()
+			->getMock();
+
 		$instance = new SetupAfterCache(
 			$bootstrapManager,
-			$configuration
+			$configuration,
+			$request
 		);
 
 		$instance->process();
+	}
+
+	/**
+	 * @covers ::process
+	 * @covers ::registerExternalLessVariables
+	 *
+	 * @dataProvider processWithRequestedLayoutFileProvider
+	 */
+	public function testProcessWithRequestedLayoutFile( $availableLayoutFiles, $defaultLayoutFile, $requestedLayout, $expectedLayoutfile ) {
+
+		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$configuration = array(
+			'egChameleonAvailableLayoutFiles'  => $availableLayoutFiles,
+			'egChameleonLayoutFile'            => $defaultLayoutFile,
+			'IP'                               => 'notTestingIP',
+			'wgScriptPath'                     => 'notTestingwgScriptPath',
+			'wgStyleDirectory'                 => 'notTestingwgStyleDirectory',
+			'wgStylePath'                      => 'notTestingwgStylePath'
+		);
+
+		$request = $this->getMockBuilder('\WebRequest')
+			->disableOriginalConstructor()
+			->getMock();
+
+		$request->expects( $this->once() )
+			->method( 'getVal' )
+			->will( $this->returnValue( $requestedLayout ) );
+
+		$instance = new SetupAfterCache(
+			$bootstrapManager,
+			$configuration,
+			$request
+		);
+
+		$instance->process();
+
+		$this->assertEquals(
+			$expectedLayoutfile,
+			$configuration['egChameleonLayoutFile']
+		);
+	}
+
+	public function processWithRequestedLayoutFileProvider() {
+
+		$provider = array();
+
+		// no layout files available => keep default layout file
+		$provider[] = array(
+			null,
+			'standard.xml',
+			'someOtherLayout',
+			'standard.xml'
+		);
+
+		// no specific layout requested => keep default layout file
+		$provider[] = array(
+			array(
+				'layout1' => 'layout1.xml',
+				'layout2' => 'layout2.xml',
+			),
+			'standard.xml',
+			null,
+			'standard.xml'
+		);
+
+		// requested layout not available => keep default layout file
+		$provider[] = array(
+			array(
+				'layout1' => 'layout1.xml',
+				'layout2' => 'layout2.xml',
+			),
+			'standard.xml',
+			'someOtherLayout',
+			'standard.xml'
+		);
+
+		// requested layout available => return requested layout file
+		$provider[] = array(
+			array(
+				'layout1' => 'layout1.xml',
+				'layout2' => 'layout2.xml',
+			),
+			'standard.xml',
+			'layout1',
+			'layout1.xml'
+		);
+
+		return $provider;
 	}
 
 	/**
@@ -220,9 +330,14 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
+		$request = $this->getMockBuilder('\WebRequest')
+			->disableOriginalConstructor()
+			->getMock();
+
 		$instance = new SetupAfterCache(
 			$bootstrapManager,
-			$changes
+			$changes,
+			$request
 		);
 
 		$instance->adjustConfiguration( $origConfig );
@@ -270,9 +385,14 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 
 		$configurationToBeAdjusted = $configuration + $defaultConfiguration;
 
+		$request = $this->getMockBuilder('\WebRequest')
+			->disableOriginalConstructor()
+			->getMock();
+
 		$instance = new SetupAfterCache(
 			$bootstrapManager,
-			$configurationToBeAdjusted
+			$configurationToBeAdjusted,
+			$request
 		);
 
 		$instance->process();
@@ -349,6 +469,9 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 		return $provider;
 	}
 
+	/**
+	 * Provides test data for the adjustConfiguration test
+	 */
 	public function adjustConfigurationProvider() {
 
 		$provider = array();

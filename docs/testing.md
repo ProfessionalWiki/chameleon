@@ -5,7 +5,7 @@ platform][travis] or manually by executing the `mw-phpunit-runner.php` script or
 [`phpunit`][mw-testing] together with the PHPUnit configuration file found in
 the root directory of the skin.
 ```sh
-php mw-phpunit-runner.php [options]
+php tests/mw-phpunit-runner.php [options]
 ```
 
 Useful optional parameters:

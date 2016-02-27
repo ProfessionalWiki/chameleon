@@ -93,7 +93,7 @@ class SkinChameleon extends SkinTemplate {
 	 * @return string
 	 */
 	public function getPageClasses( $title ) {
-		$layoutName = Sanitizer::encodeAttribute( 'layout-' . basename( $GLOBALS['egChameleonLayoutFile'], '.xml' ) );
+		$layoutName = Sanitizer::escapeClass( 'layout-' . basename( $GLOBALS['egChameleonLayoutFile'], '.xml' ) );
 		return implode( ' ', array( parent::getPageClasses( $title ), $layoutName ) );
 	}
 }

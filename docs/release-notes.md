@@ -1,8 +1,11 @@
 ## Release Notes
 
-### Chameleon 1.2.1
+### Chameleon 1.3
 
 Released on (tbd)
+
+Changes:
+* introduced URL parameter 'uselayout'
 
 Fixes:
 * Correctly follow symlinks

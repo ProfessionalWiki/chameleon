@@ -47,7 +47,7 @@ call_user_func( function () {
 	}
 
 	// define the skin's version
-	define( 'CHAMELEON_VERSION', '1.2.1-alpha' );
+	define( 'CHAMELEON_VERSION', '1.3-alpha' );
 
 	// set credits
 	$GLOBALS[ 'wgExtensionCredits' ][ 'skin' ][ ] = array(
@@ -79,13 +79,14 @@ call_user_func( function () {
 	 */
 
 	/**
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/SetupAfterCache
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/BeforeInitialize
 	 */
 	$GLOBALS[ 'wgHooks' ][ 'SetupAfterCache' ][ ] = function() {
 
 		$setupAfterCache = new \Skins\Chameleon\Hooks\SetupAfterCache(
 			\Bootstrap\BootstrapManager::getInstance(),
-			$GLOBALS
+			$GLOBALS,
+			$GLOBALS['wgRequest']
 		);
 
 		$setupAfterCache->process();

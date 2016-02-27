@@ -74,6 +74,24 @@ available [XML files](../layouts) to see what is possible. (Better documentation
 to follow.)
 
 
+### Selecting the layout from the browser address bar
+
+To select a specific layout different from the one defined in
+`$egChameleonLayoutFile` you can add the `uselayout` parameter to the URL.
+However for some wikis it might not be desirable to have this feature. So to
+make this work you have to define the available layouts in
+LocalSettings.php. E.g. to include all layouts delivered with Chameleon add
+```php
+$egChameleonAvailableLayoutFiles = array(
+	'standard'   => __DIR__ . '/skins/chameleon/layouts/standard.xml',
+	'navhead'    => __DIR__ . '/skins/chameleon/layouts/navhead.xml',
+	'fixedhead'  => __DIR__ . '/skins/chameleon/layouts/fixedhead.xml',
+	'stickyhead' => __DIR__ . '/skins/chameleon/layouts/stickyhead.xml',
+	'clean'      => __DIR__ . '/skins/chameleon/layouts/clean.xml',
+);
+```
+
+
 ### Triggering a cache update
 
 Compiling the style files is time-consuming. For this reason the styles are

@@ -60,6 +60,7 @@ class MainContent extends Component {
 			) .
 
 			$idRegistry->element( 'a', array( 'id' => 'top' ) ) .
+			$this->indent(1) . $idRegistry->element( 'div', array( 'id' => 'mw-indicators', 'class' => 'mw-indicators',  ), $this->buildMwIndicators() ) .
 
 			$this->indent() . '<div ' . \Html::expandAttributes( array(
 					'id'    => $idRegistry->getId( 'mw-js-message' ),
@@ -71,7 +72,7 @@ class MainContent extends Component {
 		$ret .= $this->buildContentBody();
 		$ret .= $this->buildCategoryLinks();
 
-		$ret .= $this->indent( -1 ) . '</div>' . "\n";
+		$ret .= $this->indent( -1 ) . '</div>';
 		// END content
 
 		return $ret;
@@ -85,7 +86,7 @@ class MainContent extends Component {
 		$skintemplate = $this->getSkinTemplate();
 		$idRegistry = IdRegistry::getRegistry();
 
-		$ret = $this->indent( 1 ) . '<div class ="contentHeader">' .
+		$ret = $this->indent() . '<div class ="contentHeader">' .
 
 			$this->indent( 1 ) . '<!-- title of the page -->' .
 			$this->indent() . $idRegistry->element( 'h1', array( 'id' => 'firstHeading', 'class' => 'firstHeading' ), $skintemplate->get( 'title' ) ) .
@@ -123,10 +124,12 @@ class MainContent extends Component {
 	 * @return string
 	 */
 	protected function buildContentBody() {
-		return IdRegistry::getRegistry()->element( 'div', array( 'id' => 'bodyContent' ),
-			$this->indent() . '<!-- body text -->' . "\n" .
+		return $this->indent() . IdRegistry::getRegistry()->element( 'div', array( 'id' => 'bodyContent' ),
+			$this->indent( 1 ) . '<!-- body text -->' . "\n" .
 			$this->indent() . $this->getSkinTemplate()->get( 'bodytext' ) .
-			$this->buildDataAfterContent()
+			$this->indent() . '<!-- end body text -->' .
+			$this->buildDataAfterContent() .
+			$this->indent( -1 )
 		);
 	}
 
@@ -158,4 +161,40 @@ class MainContent extends Component {
 
 		return '';
 	}
+
+	/**
+	 * @return string
+	 */
+	private function buildMwIndicators() {
+
+		$idRegistry = IdRegistry::getRegistry();
+		$indicators = $this->getSkinTemplate()->get( 'indicators' );
+
+		if ( !is_array( $indicators ) || count( $indicators ) === 0 ) {
+			return '';
+		}
+
+		$this->indent( 1 );
+
+		$ret = '';
+
+		foreach ( $indicators as $id => $content ) {
+			$id = \Sanitizer::escapeId( "mw-indicator-$id" );
+
+			$ret .=
+				$this->indent() .
+				$idRegistry->element( 'div',
+					array(
+						'id' => $id,
+						'class' => "mw-indicator $id",
+					),
+					$content
+				);
+		}
+
+		$ret .= $this->indent( -1 );
+
+		return $ret;
+	}
+
 }

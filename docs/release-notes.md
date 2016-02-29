@@ -8,6 +8,8 @@ Changes:
 * Add URL parameter 'uselayout'
 * Add attributes 'showTools' and 'showLanguages' for the NavMenu
 * Add attributes 'hideTools' and 'hideLanguages' for the ToolbarHorizontal
+* Add support for [Page status indicators]
+  (https://www.mediawiki.org/wiki/Help:Page_status_indicators)
 
 Fixes:
 * Correctly follow symlinks

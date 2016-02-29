@@ -5,7 +5,9 @@
 Released on (tbd)
 
 Changes:
-* introduced URL parameter 'uselayout'
+* Add URL parameter 'uselayout'
+* Add attributes 'showTools' and 'showLanguages' for the NavMenu
+* Add attributes 'hideTools' and 'hideLanguages' for the ToolbarHorizontal
 
 Fixes:
 * Correctly follow symlinks

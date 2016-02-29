@@ -2,7 +2,7 @@
 <!--
 This file is part of the MediaWiki skin Chameleon.
 
-@copyright 2013 - 2014, Stephan Gambke
+@copyright 2013 - 2016, Stephan Gambke
 @license   GNU General Public License, version 3 (or any later version)
 
 The Chameleon skin is free software: you can redistribute it and/or modify it
@@ -49,7 +49,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<row>
 			<cell span="12">
 				<component type="NavbarHorizontal">
-					<component type="NavMenu"></component>
+					<component type="NavMenu" showTools="no" showLanguages="no"></component>
 				</component>
 			</cell>
 		</row>
@@ -74,7 +74,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 		<row>
 			<cell span="12">
-				<component type="ToolbarHorizontal"></component>
+				<component type="ToolbarHorizontal" hideTools="no" hideLanguages="no"></component>
 			</cell>
 		</row>
 

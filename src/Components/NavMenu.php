@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2016, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ class NavMenu extends Component {
 		$ret = '';
 
 		$sidebar = $this->getSkinTemplate()->getSidebar( array(
-				'search' => false, 'toolbox' => false, 'languages' => false
+				'search' => false, 'toolbox' => $this->showTools(), 'languages' => $this->showLanguages()
 			)
 		);
 
@@ -68,6 +68,20 @@ class NavMenu extends Component {
 		}
 
 		return $ret;
+	}
+
+	/**
+	 * @return bool
+	 */
+	private function showLanguages() {
+		return $this->getDomElement() !== null && filter_var( $this->getDomElement()->getAttribute( 'showLanguages' ), FILTER_VALIDATE_BOOLEAN );
+	}
+
+	/**
+	 * @return bool
+	 */
+	private function showTools() {
+		return $this->getDomElement() !== null && filter_var( $this->getDomElement()->getAttribute( 'showTools' ), FILTER_VALIDATE_BOOLEAN );
 	}
 
 	/**

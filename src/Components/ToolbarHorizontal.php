@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2015, Stephan Gambke
+ * @copyright 2013 - 2016, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -55,9 +55,35 @@ class ToolbarHorizontal extends Component {
 			   $this->indent() . '<nav class="navbar navbar-default p-tb ' . $this->getClassString() . '" id="p-tb" ' . Linker::tooltip( 'p-tb' ) . ' >' .
 			   $this->indent( 1 ) . '<ul class="nav navbar-nav small">';
 
-		// insert toolbox items
-		// TODO: Do we need to care of dropdown menus here? E.g. RSS feeds? See SkinTemplateToolboxEnd.php:1485
 		$this->indent( 1 );
+
+		// insert toolbox items
+		if ( !$this->hideTools() ) {
+			$ret .= $this->addTools( $skinTemplate );
+		}
+
+		// insert language links
+		if ( !$this->hideLanguages() ) {
+			$ret .= $this->addLanguageLinks( $skinTemplate );
+		}
+
+		$ret .= $this->indent( -1 ) . '</ul>' .
+				$this->indent( -1 ) . '</nav>' . "\n";
+
+		return $ret;
+	}
+
+	/**
+	 * @param $skinTemplate
+	 * @return string
+	 * @throws \FatalError
+	 * @throws \MWException
+	 */
+	private function addTools( $skinTemplate ) {
+
+		$ret = '';
+
+		// TODO: Do we need to care of dropdown menus here? E.g. RSS feeds? See SkinTemplateToolboxEnd.php:1485
 		foreach ( $skinTemplate->getToolbox() as $key => $tbitem ) {
 			$ret .= $this->indent() . $skinTemplate->makeListItem( $key, $tbitem );
 		}
@@ -68,8 +94,18 @@ class ToolbarHorizontal extends Component {
 		Hooks::run( 'SkinTemplateToolboxEnd', array( &$skinTemplate, true ) );
 		$ret .= $this->indent() . ob_get_contents();
 		ob_end_clean();
+		return $ret;
+	}
 
-		// insert language links
+	/**
+	 * @param $skinTemplate
+	 * @return string
+	 * @throws \MWException
+	 */
+	private function addLanguageLinks( $skinTemplate ) {
+
+		$ret = '';
+
 		if ( array_key_exists( 'language_urls', $skinTemplate->data ) && $skinTemplate->data[ 'language_urls' ] ) {
 
 			$ret .= $this->indent() . '<li class="dropdown dropup p-lang" id="p-lang" ' . Linker::tooltip( 'p-lang' ) . ' >' .
@@ -86,9 +122,21 @@ class ToolbarHorizontal extends Component {
 					$this->indent( -1 ) . '</li>';
 		}
 
-		$ret .= $this->indent( -1 ) . '</ul>' .
-				$this->indent( -1 ) . '</nav>' . "\n";
-
 		return $ret;
 	}
+
+	/**
+	 * @return bool
+	 */
+	private function hideTools() {
+		return $this->getDomElement() !== null && filter_var( $this->getDomElement()->getAttribute( 'hideTools' ), FILTER_VALIDATE_BOOLEAN );
+	}
+
+	/**
+	 * @return bool
+	 */
+	private function hideLanguages() {
+		return $this->getDomElement() !== null && filter_var( $this->getDomElement()->getAttribute( 'hideLanguages' ), FILTER_VALIDATE_BOOLEAN );
+	}
+
 }

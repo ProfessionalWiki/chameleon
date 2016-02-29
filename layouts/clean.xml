@@ -2,7 +2,7 @@
 <!--
 This file is part of the MediaWiki skin Chameleon.
 
-@copyright 2013 - 2014, Stephan Gambke
+@copyright 2013 - 2016, Stephan Gambke
 @license   GNU General Public License, version 3 (or any later version)
 
 The Chameleon skin is free software: you can redistribute it and/or modify it
@@ -28,8 +28,8 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<modification type="ShowOnlyFor" permission="edit"></modification>
 		<modification type="Sticky" ></modification>
 		<component type="Logo" position="head"></component>
-		<component type="NavMenu" flatten="navigation"></component>
-		<component type="PageTools" position="right" hideSelectedNameSpace="1"></component>
+		<component type="NavMenu" flatten="navigation" showTools="no" showLanguages="no"></component>
+		<component type="PageTools" position="right" hideSelectedNameSpace="yes"></component>
 		<component type="SearchBar" position="right"></component>
 		<component type="PersonalTools" position="right"></component>
 	</component>
@@ -45,7 +45,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<row>
 			<modification type="ShowOnlyFor" permission="edit"></modification>
 			<cell span="12">
-				<component type="ToolbarHorizontal"></component>
+				<component type="ToolbarHorizontal" hideTools="no" hideLanguages="no"></component>
 			</cell>
 		</row>
 

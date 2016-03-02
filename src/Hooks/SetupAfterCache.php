@@ -91,7 +91,7 @@ class SetupAfterCache {
 	 */
 	protected function setInstallPaths() {
 
-		$this->configuration[ 'chameleonLocalPath' ] = $this->configuration['wgStyleDirectory'] . DIRECTORY_SEPARATOR . 'chameleon';
+		$this->configuration[ 'chameleonLocalPath' ] = $this->configuration['wgStyleDirectory'] . '/chameleon';
 		$this->configuration[ 'chameleonRemotePath' ] = $this->configuration['wgStylePath'] . '/chameleon';
 	}
 

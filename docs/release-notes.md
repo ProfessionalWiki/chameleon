@@ -14,6 +14,7 @@ Changes:
 Fixes:
 * Correctly follow symlinks
   ([Bug: T124714](https://phabricator.wikimedia.org/T124714))
+* Provide correct box-sizing model and z-index for VisualEditor components
 
 ### Chameleon 1.2
 

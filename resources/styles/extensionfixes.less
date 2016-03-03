@@ -24,9 +24,17 @@
  * @ingroup Skins
  */
 
+.skin-chameleon {
 
-/* Extension VisualEditor */
-.ve-ui-toolbar {
-	box-sizing: content-box;
-	z-index: @zindex-modal
+	/* Extension VisualEditor */
+	.ve-ui-toolbar, .ve-ui-debugBar, .oo-ui-processDialog-navigation {
+		&, &::before, &::after {
+			box-sizing: content-box;
+			z-index: @zindex-navbar-fixed + 1;
+		}
+	}
+
+	.ve-ui-overlay-global {
+		z-index: @zindex-navbar-fixed + 2;
+	}
 }

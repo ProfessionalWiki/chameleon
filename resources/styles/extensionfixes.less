@@ -3,7 +3,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2015, Stephan Gambke
+ * @copyright 2013 - 2016, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -30,11 +30,17 @@
 	.ve-ui-toolbar, .ve-ui-debugBar, .oo-ui-processDialog-navigation {
 		&, &::before, &::after {
 			box-sizing: content-box;
-			z-index: @zindex-navbar-fixed + 1;
 		}
 	}
 
 	.ve-ui-overlay-global {
-		z-index: @zindex-navbar-fixed + 2;
+		z-index: @zindex-navbar-fixed + 1;
+	}
+
+	// float the VE UI toolbar below a fixed or sticky navbar
+	.navbar.navbar-fixed-top, .navbar + .sticky-wrapper {
+		~ * .ve-ui-toolbar-floating>.oo-ui-toolbar-bar {
+			transform: translateY(@navbar-height);
+		}
 	}
 }

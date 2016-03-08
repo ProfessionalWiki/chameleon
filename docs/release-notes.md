@@ -2,7 +2,7 @@
 
 ### Chameleon 1.3
 
-Released on (tbd)
+Released on 08-Mar-2016
 
 Changes:
 * Add URL parameter 'uselayout'

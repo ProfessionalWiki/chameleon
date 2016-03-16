@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sveinn í Felli"
+		]
+	},
+	"skinname-chameleon": "Kamelljón",
+	"chameleon-desc": "Kamelljón-skinnið",
+	"chameleon-loggedin": "Þú ert skráð/ur inn sem $1",
+	"chameleon-notloggedin": "Þú ert ekki skráð/ur inn.",
+	"chameleon-newmessages": "Þú átt ný skilaboð.",
+	"chameleon-nonewmessages": "Þú átt engin ný skilaboð."
+}

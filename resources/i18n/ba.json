@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Рустам Нурыев"
+			"Рустам Нурыев",
+			"Sagan"
 		]
 	},
+	"chameleon-desc": "Chameleon биҙәү темаһы.",
 	"chameleon-loggedin": "Һеҙ $1 булып танылғанһығыҙ.",
 	"chameleon-notloggedin": "Һеҙ танылмағанһығыҙ.",
 	"chameleon-newmessages": "Һеҙгә яңы хәбәрҙәр бар",

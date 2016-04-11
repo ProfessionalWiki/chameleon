@@ -47,10 +47,13 @@ class Logo extends Component {
 	 */
 	public function getHtml() {
 
-		$attribs  = array_merge(
-			array( 'href' => $this->getSkinTemplate()->data[ 'nav_urls' ][ 'mainpage' ][ 'href' ] ),
-			Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
-		);
+		$attribs = NULL;
+		if( $this->addLink() ) {
+			$attribs  = array_merge(
+				array( 'href' => $this->getSkinTemplate()->data[ 'nav_urls' ][ 'mainpage' ][ 'href' ] ),
+				Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
+			);
+		}
 
 		$contents = \Html::element( 'img',
 			array(
@@ -72,4 +75,13 @@ class Logo extends Component {
 			$this->indent( -1 ) . '</div>' . "\n";
 	}
 
+	/**
+	 * Return true if addLink attribute is set to yes in Logo component and clicking on logo
+	 * should redirect to Main Page, and false if not
+	 *
+	 * @return bool
+	 */
+	private function addLink() {
+		return $this->getDomElement() !== null && filter_var( $this->getDomElement()->getAttribute( 'addLink' ), FILTER_VALIDATE_BOOLEAN );
+	}
 }

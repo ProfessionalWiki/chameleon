@@ -26,7 +26,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 	<grid>
 		<row>
 			<cell span="3">
-				<component type="Logo"></component>
+				<component type="Logo" addLink="yes"></component>
 			</cell>
 
 			<cell span="9">

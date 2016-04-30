@@ -1,8 +1,11 @@
 ## Release Notes
 
-### Chameleon 1.3.1
+### Chameleon 1.4
 
 Released on TBD
+
+Changes:
+* Logo: add addLink attribute to Logo component
 
 Fixes:
 * Restore "Edit with form" link for Semantic Forms 3.5 and later

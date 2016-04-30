@@ -283,31 +283,7 @@ class NavbarHorizontal extends Component {
 		$pageTools->removeClasses( 'text-center list-inline' );
 		$pageTools->addClasses( 'dropdown-menu' );
 
-		$editLinkHtml = '';
-		$pageToolsStructure = $pageTools->getPageToolsStructure();
-
-		if ( array_key_exists( 'views', $pageToolsStructure ) &&
-			array_key_exists( 'form_edit', $pageToolsStructure[ 'views' ] ) &&
-			array_key_exists( 'sfgRenameEditTabs', $GLOBALS ) &&
-			$GLOBALS[ 'sfgRenameEditTabs' ] === true
-
-		) {
-
-			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'form_edit' );
-
-		} elseif ( array_key_exists( 'views', $pageToolsStructure ) &&
-			array_key_exists( 've-edit', $pageToolsStructure[ 'views' ] )
-		) {
-
-			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 've-edit' );
-
-		} elseif ( array_key_exists( 'views', $pageToolsStructure ) &&
-			array_key_exists( 'edit', $pageToolsStructure[ 'views' ] )
-		) {
-
-			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'edit' );
-
-		}
+		$editLinkHtml = $this->getEditLinkHtml( $pageTools );
 
 		$pageToolsHtml = $pageTools->getHtml();
 
@@ -514,6 +490,52 @@ class NavbarHorizontal extends Component {
 		$pageTools->setRedundant( $editActionId );
 
 		return $editLinkHtml;
+	}
+
+	/**
+	 * @param $pageTools
+	 * @return string
+	 */
+	protected function getEditLinkHtml( $pageTools ) {
+
+		$pageToolsStructure = $pageTools->getPageToolsStructure();
+
+		if ( array_key_exists( 'views', $pageToolsStructure ) &&
+			array_key_exists( 'sfgRenameEditTabs', $GLOBALS ) &&
+			array_key_exists( 'formedit', $pageToolsStructure[ 'views' ] ) && // SemanticForms 3.5+
+			$GLOBALS[ 'sfgRenameEditTabs' ] === true
+
+		) {
+
+			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'formedit' );
+			return $editLinkHtml;
+
+		} elseif ( array_key_exists( 'views', $pageToolsStructure ) &&
+			array_key_exists( 'sfgRenameEditTabs', $GLOBALS ) &&
+			array_key_exists( 'form_edit', $pageToolsStructure[ 'views' ] ) && // SemanticForms <3.5
+			$GLOBALS[ 'sfgRenameEditTabs' ] === true
+
+		) {
+
+			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'form_edit' );
+			return $editLinkHtml;
+
+		} elseif ( array_key_exists( 'views', $pageToolsStructure ) &&
+			array_key_exists( 've-edit', $pageToolsStructure[ 'views' ] )
+		) {
+
+			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 've-edit' );
+			return $editLinkHtml;
+
+		} elseif ( array_key_exists( 'views', $pageToolsStructure ) &&
+			array_key_exists( 'edit', $pageToolsStructure[ 'views' ] )
+		) {
+
+			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'edit' );
+			return $editLinkHtml;
+
+		}
+		return '';
 	}
 
 }

@@ -1,5 +1,12 @@
 ## Release Notes
 
+### Chameleon 1.3.1
+
+Released on TBD
+
+Fixes:
+* Restore "Edit with form" link for Semantic Forms 3.5 and later
+
 ### Chameleon 1.3
 
 Released on 08-Mar-2016

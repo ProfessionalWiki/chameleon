@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"SolidBlock"
+		]
+	},
+	"chameleon-loggedin": "君登與$1。",
+	"chameleon-notloggedin": "未入簿。",
+	"chameleon-newmessages": "新訊",
+	"chameleon-nonewmessages": "無新訊"
+}

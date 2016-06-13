@@ -5,7 +5,7 @@
  * @see     https://www.mediawiki.org/wiki/Skin:Chameleon
  *
  * @author  Stephan Gambke
- * @version 1.0-alpha
+ * @version 1.4-alpha
  *
  */
 
@@ -28,7 +28,7 @@
  * details.
  *
  * You should have received a copy of the GNU General Public License along
- * with this program. If not, see <http://www.gnu.org/licenses/>.
+ * with this program. If not, see <https://www.gnu.org/licenses/>.
  *
  * @file
  * @ingroup Skins
@@ -57,7 +57,7 @@ call_user_func( function () {
 		'author'         => '[https://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]',
 		'url'            => 'https://www.mediawiki.org/wiki/Skin:Chameleon',
 		'version'        => CHAMELEON_VERSION,
-		'license-name'   => 'GPLv3+',
+		'license-name'   => 'GPL-3.0+',
 	);
 
 	// register skin

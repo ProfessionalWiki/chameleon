@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Metalhead64"
+			"Metalhead64",
+			"Kghbln"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Die Chameleon-Benutzeroberfläche.",
+	"chameleon-desc": "Stellt eine auf Twitter Bootstrap gestützte Benutzeroberfläche bereit",
 	"chameleon-loggedin": "Du bist als $1 angemeldet.",
 	"chameleon-notloggedin": "Du bist nicht angemeldet",
 	"chameleon-newmessages": "Du hast neue Nachrichten.",

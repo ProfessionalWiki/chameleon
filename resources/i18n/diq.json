@@ -2,8 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Gorizon",
-			"Mirzali"
+			"Mirzali",
+			"Kumkumuk"
 		]
 	},
-	"chameleon-desc": "Becna marmariceke"
+	"chameleon-desc": "Becna marmariceke",
+	"chameleon-loggedin": "$1 nameya şıma ronıştış akerd o.",
+	"chameleon-notloggedin": "Şıma ronıştış nêakerd o.",
+	"chameleon-newmessages": "Şımaré mesaco newe esto",
+	"chameleon-nonewmessages": "Şımaré mesaco newe çıni yo"
 }

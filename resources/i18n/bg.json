@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"DCLXVI"
+			"DCLXVI",
+			"StanProg"
 		]
 	},
+	"chameleon-loggedin": "Вие сте влезли като $1.",
+	"chameleon-notloggedin": "Вие не сте влезли в системата",
 	"chameleon-newmessages": "Имате нови съобщения.",
 	"chameleon-nonewmessages": "Нямате нови съобщения."
 }

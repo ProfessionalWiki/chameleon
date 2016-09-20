@@ -2,13 +2,14 @@
 
 ### Chameleon 1.4
 
-Released on TBD
+Released on 20-Sep-2016
 
 Changes:
 * Logo: add addLink attribute to Logo component
 
 Fixes:
 * Restore "Edit with form" link for Semantic Forms 3.5 and later
+* Show dropdown menus of NavBar in front of maps (Maps extension)
 
 ### Chameleon 1.3
 

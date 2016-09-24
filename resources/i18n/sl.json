@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dbc334"
+		]
+	},
+	"chameleon-desc": "Koža Chameleon",
+	"chameleon-loggedin": "Prijavljeni ste kot $1.",
+	"chameleon-notloggedin": "Niste prijavljeni.",
+	"chameleon-newmessages": "Imate nova sporočila.",
+	"chameleon-nonewmessages": "Nimate novih sporočil."
+}

@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aftab1995"
+			"Aftab1995",
+			"Aftabuzzaman",
+			"আজিজ"
 		]
 	},
+	"chameleon-desc": "বহুরূপী আবরণ",
 	"chameleon-loggedin": "আপনি $1 হিসাবে প্রবেশ করেছেন।",
 	"chameleon-notloggedin": "আপনি প্রবেশ করেন নি",
 	"chameleon-newmessages": "আপনার নতুন বার্তা এসেছে।",

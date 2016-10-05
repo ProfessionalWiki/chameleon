@@ -91,7 +91,7 @@ function installSkinViaComposerOnMediaWikiRoot {
 
 function uploadCoverageReport {
 	wget https://scrutinizer-ci.com/ocular.phar
-	php ocular.phar code-coverage:upload --repository='g/wikimedia/mediawiki-skins-chameleon' --format=php-clover coverage.clover
+	php ocular.phar code-coverage:upload --repository='g/cmln/chameleon' --format=php-clover coverage.clover
 }
 
 composer self-update

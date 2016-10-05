@@ -1,7 +1,7 @@
 # Chameleon skin
-[![Build Status](https://travis-ci.org/wikimedia/mediawiki-skins-chameleon.svg?branch=master)](https://travis-ci.org/wikimedia/mediawiki-skins-chameleon)
-[![Code Coverage](https://scrutinizer-ci.com/g/wikimedia/mediawiki-skins-chameleon/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/wikimedia/mediawiki-skins-chameleon/?branch=master)
-[![Code Quality](https://scrutinizer-ci.com/g/wikimedia/mediawiki-skins-chameleon/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/wikimedia/mediawiki-skins-chameleon/?branch=master)
+[![Build Status](https://travis-ci.org/cmln/chameleon.svg?branch=master)](https://travis-ci.org/cmln/chameleon)
+[![Code Coverage](https://scrutinizer-ci.com/g/cmln/chameleon/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cmln/chameleon/?branch=master)
+[![Code Quality](https://scrutinizer-ci.com/g/cmln/chameleon/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cmln/chameleon/?branch=master)
 [![Dependency Status](https://www.versioneye.com/php/mediawiki:chameleon-skin/badge.png)](https://www.versioneye.com/php/mediawiki:chameleon-skin)
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/chameleon-skin/version.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 [![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/d/total.png)](https://packagist.org/packages/mediawiki/chameleon-skin)

@@ -1,12 +1,13 @@
 ## How to contribute 
 
-There are different ways to make a contribution to [Chameleon][chameleon]. A few guidelines are provided here to keep the workflow and review process most efficient.
+There are different ways to make a contribution to Chameleon. A few guidelines
+are provided here to keep the workflow and review process most efficient.
 
 ### Report bugs, ask for features
 
 You may help by reporting bugs and feature requests. First check if an open bug
-already exists on the list of [][open bugs] and if you have new information,
-comment on it. If the bug is not yet reported,
+already exists on the list of [open bugs][open bugs] and if you have new
+information, comment on it. If the bug is not yet reported,
 [open a new bug report][report bugs].
 
 When you report a bug, please include:
@@ -21,30 +22,26 @@ If in doubt, don't worry. You will be asked for what is missing.
 
 MediaWiki has some more advice on [how to report a bug][how to report a bug].
 
-### Improve documentation
+### Improve the documentation
 
 * You would really help by creating, updating or amending the documentation of
-  the skin on [MediaWiki.org][chameleon]. Although the homepage and
-  documentation is the main source of information for anybody who would want to
-  use the skin it never gets the attention it deserves.
+  the skin in the `/docs` folder. Although the documentation is the main source
+  of information for anybody who would want to use the skin it never gets the
+  attention it deserves.
 * You may provide a [screenshot][screenshots] of the Chameleon skin used on
   your wiki. If you customized the skin, add some descriptions what you did. And
   if you want, link back to your wiki. 
-* Finally, you may help by providing translations via
-  [translatewiki.net][twn]. See their [progress-statistics][twn-stats] to find
-  out if there is still work to do for your language.
+* Finally, you may help by providing translations via [translatewiki.net][twn].
+  See their [progress statistics][twn-stats] to find out if there is still work
+  to do for your language.
 
 ### Provide patches
 
-The Chameleon skin is hosted on the Wikimedia Git server. To provide patches you
-need to get a developer account. MediaWiki has a [tutorial][gerrit-tutorial] to
-get you started. Alternatively you may use the
-[Gerrit Patch Uploader][patch uploader].
+The Chameleon skin is hosted on GitHub. To provide patches you need to get an
+account.
 
-A few points to ease the process
-* Please ensure that patches are based on the current master. If in doubt,
-  just upload your patch and if necessary push the "Rebase Change" button on
-  Gerrit. 
+A few points to ease the process:
+* Please ensure that patches are based on the current master.
 * Code should be easily readable and if necessary be put into separate
   components (or classes). Also, please follow the [MediaWiki coding
   conventions][coding].
@@ -53,12 +50,12 @@ A few points to ease the process
   description on how to write and run PHPUnit test, please consult the
   [manual][mw-testing].
 * Finally, legal matters have to be taken care of. Please have a look at
-  the [legal stuff][legal.md]
+  the [legal stuff][legal.md].
 
 
 [chameleon]: https://www.mediawiki.org/wiki/Skin:Chameleon
-[open bugs]: https://bugzilla.wikimedia.org/buglist.cgi?component=Chameleon&resolution=---&resolution=LATER
-[report bugs]: https://bugzilla.wikimedia.org/enter_bug.cgi?product=MediaWiki%20skins&component=Chameleon
+[open bugs]: https://github.com/cmln/chameleon/issues
+[report bugs]: https://github.com/cmln/chameleon/issues/new
 [how to report a bug]: https://www.mediawiki.org/wiki/How_to_report_a_bug
 [screenshots]: https://www.mediawiki.org/wiki/Skin:Chameleon#Screenshots
 [twn]: https://translatewiki.net/

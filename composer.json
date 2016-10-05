@@ -9,7 +9,7 @@
 		"Twitter",
 		"Bootstrap"
 	],
-	"homepage"   : "https://www.mediawiki.org/wiki/Skin:Chameleon",
+	"homepage"   : "https://github.com/cmln/chameleon",
 	"license"    : "GPL-3.0+",
 	"authors"    : [
 		{
@@ -19,10 +19,9 @@
 		}
 	],
 	"support"    : {
-		"wiki"  : "https://www.mediawiki.org/wiki/Skin:Chameleon",
-		"forum" : "https://www.mediawiki.org/wiki/Skin_talk:Chameleon",
-		"source": "https://git.wikimedia.org/tree/mediawiki%2Fskins%2Fchameleon.git",
-		"issues": "https://bugzilla.wikimedia.org/buglist.cgi?component=Chameleon&product=MediaWiki%20extensions",
+		"docs"  : "https://github.com/cmln/chameleon",
+		"source": "https://github.com/cmln/chameleon.git",
+		"issues": "https://github.com/cmln/chameleon/issues",
 		"irc"   : "irc://irc.freenode.org/mediawiki"
 	},
 	"require"    : {

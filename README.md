@@ -6,8 +6,8 @@
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/chameleon-skin/version.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 [![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/d/total.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 
-The [Chameleon skin][mw-chameleon] uses [Twitter's Bootstrap 3][twbs] to provide
-a customizable MediaWiki skin.
+The Chameleon skin uses [Twitter's Bootstrap 3][twbs] to provide
+a customizable [MediaWiki][mw] skin.
 
 ## Requirements
 
@@ -42,6 +42,7 @@ You can use the Chameleon skin under the [GNU General Public License, version
 3][license] (or any later version).
 
 
+[mw]: https://www.mediawiki.org
 [mw-chameleon]: https://www.mediawiki.org/wiki/Skin:Chameleon
 [mw-chameleon-talk]: https://www.mediawiki.org/wiki/Skin_talk:Chameleon
 [composer]: https://getcomposer.org/

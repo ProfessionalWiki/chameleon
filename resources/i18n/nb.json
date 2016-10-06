@@ -1,5 +1,9 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
 	"chameleon-desc": "Chameleon-drakten.",
 	"chameleon-loggedin": "Du er logget inn som $1.",
 	"chameleon-notloggedin": "Du er ikke logget inn.",

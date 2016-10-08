@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2016, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -66,6 +66,21 @@ class SkinChameleon extends SkinTemplate {
 
 		// Enable responsive behaviour on mobile browsers
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1.0' );
+	}
+
+	/**
+	 * @return QuickTemplate
+	 */
+	function setupTemplateForOutput() {
+
+		$tpl = parent::setupTemplateForOutput();
+
+		$this->getComponentFactory()->setSkinTemplate( $tpl );
+
+		$tpl->setRef( 'skin', $this );
+		$this->addSkinModulesToOutput();
+
+		return $tpl;
 	}
 
 	/**

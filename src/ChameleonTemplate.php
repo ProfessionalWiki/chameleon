@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2016, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -42,10 +42,6 @@ class ChameleonTemplate extends BaseTemplate {
 	 * Outputs the entire contents of the page
 	 */
 	public function execute() {
-
-		$this->getSkin()->getComponentFactory()->setSkinTemplate( $this );
-		$this->getSkin()->addSkinModulesToOutput();
-		$this->set( 'bottomscripts', $this->getSkin()->bottomScripts() );
 
 		// output the head element
 		// The headelement defines the <body> tag itself, it shouldn't be included in the html text

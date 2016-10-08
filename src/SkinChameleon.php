@@ -45,9 +45,7 @@ class SkinChameleon extends SkinTemplate {
 	/**
 	 * @param $out OutputPage object
 	 */
-	function setupSkinUserCss( OutputPage $out ) {
-
-		$this->output = $out;
+	public function setupSkinUserCss( OutputPage $out ) {
 
 		// load Bootstrap styles
 		$out->addModuleStyles(
@@ -60,7 +58,7 @@ class SkinChameleon extends SkinTemplate {
 	/**
 	 * @param \OutputPage $out
 	 */
-	function initPage( OutputPage $out ) {
+	public function initPage( OutputPage $out ) {
 
 		parent::initPage( $out );
 
@@ -71,7 +69,7 @@ class SkinChameleon extends SkinTemplate {
 	/**
 	 * @return QuickTemplate
 	 */
-	function setupTemplateForOutput() {
+	protected function setupTemplateForOutput() {
 
 		$tpl = parent::setupTemplateForOutput();
 
@@ -97,7 +95,7 @@ class SkinChameleon extends SkinTemplate {
 
 	public function addSkinModulesToOutput() {
 		// load Bootstrap scripts
-		$out = $this->output;
+		$out = $this->getOutput();
 		$out->addModules( array( 'ext.bootstrap.scripts' ) );
 		$out->addModules( $this->getComponentFactory()->getRootComponent()->getResourceLoaderModules() );
 

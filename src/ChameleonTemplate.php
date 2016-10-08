@@ -60,7 +60,7 @@ class ChameleonTemplate extends BaseTemplate {
 	 *
 	 * @return string|void
 	 */
-	function html( $key ) {
+	public function html( $key ) {
 		echo $this->get( $key );
 	}
 
@@ -100,7 +100,7 @@ class ChameleonTemplate extends BaseTemplate {
 	 *
 	 * @return string
 	 */
-	function makeListItem( $key, $item, $options = array() ) {
+	public function makeListItem( $key, $item, $options = array() ) {
 
 		foreach ( array( 'id', 'single-id' ) as $attrib ) {
 

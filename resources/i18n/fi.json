@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"McSalama"
+			"McSalama",
+			"01miki10",
+			"Nike"
 		]
 	},
+	"skinname-chameleon": "Chameleon",
 	"chameleon-desc": "The Chameleon-teema",
-	"chameleon-loggedin": "Olet kirjautunut sisään $1:na/nä.",
+	"chameleon-loggedin": "Olet kirjautunut sisään nimellä $1.",
 	"chameleon-notloggedin": "Et ole kirjautunut sisään.",
 	"chameleon-newmessages": "Sinulla on uusia viestejä.",
 	"chameleon-nonewmessages": "Sinulla ei ole uusia viestejä."

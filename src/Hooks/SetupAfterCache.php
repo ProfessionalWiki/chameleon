@@ -223,7 +223,7 @@ class SetupAfterCache {
 			'localBasePath'  => $this->configuration[ 'chameleonLocalPath' ] . '/resources/js',
 			'remoteBasePath' => $this->configuration[ 'chameleonRemotePath' ] . '/resources/js',
 			'group'          => 'skin.chameleon',
-			'skinScripts'    => array( 'chameleon' => array( 'jquery-sticky/jquery.sticky.js', 'Components/Modifications/sticky.js' ) )
+			'skinScripts'    => array( 'chameleon' => array( 'sticky-kit/jquery.sticky-kit.js', 'Components/Modifications/sticky.js' ) )
 		);
 	}
 

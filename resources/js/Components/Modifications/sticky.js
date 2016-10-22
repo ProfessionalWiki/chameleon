@@ -27,25 +27,12 @@
 
 /*global window, document, jQuery, mediaWiki */
 
-;
-( function (window, document, $, mw, undefined) {
+;( function (window, document, $, mw, undefined) {
 
     'use strict';
 
-    $(function ($) {
-
-        $('.sticky').each(function (index) {
-
-            var stickyElement = this;
-
-            mw.loader.using('skin.chameleon.jquery-sticky', function () {
-                $(stickyElement).sticky({
-                    topSpacing: 0,
-                    getWidthFrom: $(stickyElement).parent()
-                });
-            });
-
-        });
-
+    mw.loader.using('skin.chameleon.jquery-sticky', function () {
+        $('.sticky').stick_in_parent();
     });
+
 }(window, document, jQuery, mediaWiki) );

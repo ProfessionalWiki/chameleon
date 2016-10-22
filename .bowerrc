@@ -1,0 +1,6 @@
+{
+	"directory": "resources/js",
+	"ignoredDependencies": [
+		"jquery"
+	]
+}

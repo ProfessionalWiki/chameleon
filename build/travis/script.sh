@@ -86,7 +86,7 @@ function installSkinViaComposerOnMediaWikiRoot {
 	echo '$wgDevelopmentWarnings = true;' >> LocalSettings.php
 	echo "putenv( 'MW_INSTALL_PATH=$(pwd)' );" >> LocalSettings.php
 
-	php maintenance/update.php --quick
+	php maintenance/update.php --quick --skip-external-dependencies
 }
 
 function uploadCoverageReport {

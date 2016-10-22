@@ -379,7 +379,7 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 			'remoteBasePath' => $expected[ 'chameleonRemotePath' ] . '/resources/js',
 			'group'          => 'skin.chameleon',
 			'skinScripts'    => array(
-				'chameleon' => array( 'jquery-sticky/jquery.sticky.js', 'Components/Modifications/sticky.js' )
+				'chameleon' => array( 'sticky-kit/jquery.sticky-kit.js', 'Components/Modifications/sticky.js' )
 			)
 		);
 

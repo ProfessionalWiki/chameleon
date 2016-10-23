@@ -22,7 +22,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 @since 1.0
 @ingroup Skins
 -->
-<structure>
+<structure xmlns="https://github.com/cmln/chameleon/layout/1.0">
 
 	<component type="NavbarHorizontal" fixed="1">
 		<component type="Logo" position="head"></component>

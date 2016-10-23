@@ -40,7 +40,6 @@ class SkinChameleon extends SkinTemplate {
 	public $useHeadElement = true;
 
 	private $componentFactory;
-	private $output;
 
 	/**
 	 * @param $out OutputPage object

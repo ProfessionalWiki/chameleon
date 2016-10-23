@@ -1,9 +1,19 @@
-## Customization
+# Customization
 
-### Fonts and Colors
+The Chameleon skin can be highly customized. There are 2 main areas that you can change:
 
-You can customize the skin by loading additional LESS files and by setting [LESS
-variables](variables.md).
+1. Styles (defined by LESS files and/or LESS variables)
+2. Layout (defined by a XML file)
+
+# Changing styles: Fonts, Colors, Padding etc.
+
+You can customize the styles of the skin by 
+* importing additional LESS files (for example existing Bootstrap themes)
+* and/or by changing existing [LESS variables](variables.md).
+
+Regardless of the order of the calls, variables will always override imported files.
+
+## Importing additional LESS files
 
 To import additional LESS files, add them to the array
 `$egChameleonExternalStyleModules` in `LocalSettings.php`:
@@ -21,9 +31,28 @@ may omit the remote path. Just write:
 $egChameleonExternalStyleModules = array( $localPathToLESSFile1, $localPathToLESSFile2, ... );
 ```
 
+**Example:**
 
-To add or change LESS variables add them to the array
-`$egChameleonExternalLessVariables` in `LocalSettings.php`:
+To use the Amelia theme from [Bootswatch](http://bootswatch.com/) you could
+download the `variables.less` and the `bootswatch.less` file to your MediaWiki
+installation directory, rename them to `amelia-variables.less` and
+`amelia-bootswatch.less` and then add the following code to your
+`LocalSettings.php`:
+
+```php
+$egChameleonExternalStyleModules = array(
+    __DIR__ . '/amelia-variables.less' => $wgScriptPath,
+    __DIR__ . '/amelia-bootswatch.less' => $wgScriptPath,
+);
+```
+
+You can of course define your own LESS file too: Just place it in your MediaWiki installation directory and import it like shown above.
+
+## Changing existing LESS variables
+
+Chameleon comes with many LESS variables (see [this list](variables.md)). All of them have a default value. To change those values you should not edit the LESS files that come with Chameleon, because if you update Chameleon your changes will be overridden. Instead change the values of the LESS variables in your `LocalSettings.php` by adding them to the array
+`$egChameleonExternalLessVariables`:
+
 ```php
 $egChameleonExternalLessVariables = array(
     'key1' => 'value1',
@@ -32,22 +61,11 @@ $egChameleonExternalLessVariables = array(
 );
 ```
 
-Regardless of the order of the calls, variables will always override imported
-files.
+If you add variables to the array (to change them), make sure you omit the `@` before the variable name.
 
-#### Example
+Apart from the LESS variables defined in Chameleon itself, you can also change LESS variables of LESS files that you [imported yourself](#importing-additional-less-files).
 
-To use the Amelia theme from [Bootswatch](http://bootswatch.com/) you could
-download the `variables.less` and the `bootswatch.less` file to your MediaWiki
-installation directory, rename them to `amelia-variables.less` and
-`amelia-bootswatch.less` and then add the following code to your
-`LocalSettings.php`:
-```php
-$egChameleonExternalStyleModules = array(
-    __DIR__ . '/amelia-variables.less' => $wgScriptPath,
-    __DIR__ . '/amelia-bootswatch.less' => $wgScriptPath,
-);
-```
+**Example:**
 
 To make the navigation bar a bit narrower you could add
 ```php
@@ -56,7 +74,20 @@ $egChameleonExternalLessVariables = array(
 );
 ```
 
-### Layout of page elements
+### Triggering a cache update
+
+Compiling the style files is time-consuming. For this reason the styles are
+not compiled on every page request. Instead they are cached after being
+compiled. For changes to the styles to become effective it is necessary to
+trigger an update of the style cache. There are two possibilities to do so:
+
+1. A cache update is triggered when the `LocalSettings.php` file has a modification time later than the last cache update time. So you have to resave the `LocalSettings.php` to trigger a cache update. This can be achieved by using the `touch` utility on UNIX and friends or by using `copy /b LocalSettings.php +,,` from the MediaWiki installation directory on Windows. Alternatively, just open the file and re-save it.
+
+2. If the above becomes to cumbersome, you could add the following to your `LocalSettings.php`:  
+`\Bootstrap\BootstrapManager::getInstance()->addCacheTriggerFile( __DIR__ . '/your-less-file.less' );`.
+
+
+# Layout of page elements
 
 The layout of the page elements (nav bar, logo, search bar, etc.) is defined in
 an XML file. There are currently four pre-defined layouts available:
@@ -92,15 +123,4 @@ $egChameleonAvailableLayoutFiles = array(
 ```
 
 
-### Triggering a cache update
 
-Compiling the style files is time-consuming. For this reason the styles are
-not compiled on every page request. Instead they are cached after being
-compiled. For changes to the styles to become effective it is necessary to
-trigger an update of the style cache. A cache update is triggered when the
-`LocalSettings.php` file has a modification time later than the last cache
-update time.
-
-This can be achieved by using the `touch` utility on UNIX and friends or by
-using `copy /b LocalSettings.php +,,` from the MediaWiki installation directory
-on Windows. Alternatively, just open the file and re-save it.

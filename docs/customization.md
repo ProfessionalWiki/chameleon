@@ -1,9 +1,9 @@
 # Customization
 
-The Chameleon skin can be highly customized. There are 2 main components that you can change:
+The Chameleon skin can be highly customized. There are 2 main areas that you can change:
 
 1. Styles (defined by LESS files and/or LESS variables)
-2. Layout (defined by a xml file)
+2. Layout (defined by a XML file)
 
 # Changing styles: Fonts, Colors, Padding etc.
 

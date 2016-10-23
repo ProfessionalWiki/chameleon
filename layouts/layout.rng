@@ -120,6 +120,12 @@
 				<value>NavbarHorizontal</value>
 			</attribute>
 
+			<optional>
+				<attribute name="fixed">
+					<ref name="BoolValues"/>
+				</attribute>
+			</optional>
+
 			<zeroOrMore>
 				<ref name="NavbarHorizontal.Component"/>
 			</zeroOrMore>

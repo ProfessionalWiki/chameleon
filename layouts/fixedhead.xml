@@ -24,7 +24,8 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 -->
 <structure xmlns="https://github.com/cmln/chameleon/layout/1.0">
 
-	<component type="NavbarHorizontal" fixed="1">
+	<component type="NavbarHorizontal">
+		<modification type="Sticky"></modification>
 		<component type="Logo" position="head"></component>
 		<component type="NavMenu" flatten="navigation" showTools="no" showLanguages="no"></component>
 		<component type="PageTools" position="right" hideSelectedNameSpace="yes"></component>

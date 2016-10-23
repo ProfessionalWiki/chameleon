@@ -103,7 +103,7 @@ class PageTools extends Component {
 	 */
 	public function &getPageToolsStructure() {
 		if ( $this->mPageToolsStructure === null ) {
-			$this->mPageToolsStructure = $this->getSkinTemplate()->data[ 'content_navigation' ];
+			$this->mPageToolsStructure = $this->getSkinTemplate()->get( 'content_navigation' , null );
 		}
 		return $this->mPageToolsStructure;
 	}

@@ -194,7 +194,7 @@
 		</attribute>
 
 		<optional>
-			<attribute name="addLink" a:defaultValue="no">
+			<attribute name="addLink" a:defaultValue="yes">
 				<ref name="BoolValues"/>
 			</attribute>
 		</optional>

@@ -48,8 +48,8 @@ class Logo extends Component {
 	public function getHtml() {
 
 		$attribs = NULL;
-		if( $this->addLink() ) {
-			$attribs  = array_merge(
+		if ( $this->addLink() ) {
+			$attribs = array_merge(
 				array( 'href' => $this->getSkinTemplate()->data[ 'nav_urls' ][ 'mainpage' ][ 'href' ] ),
 				Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
 			);
@@ -82,6 +82,16 @@ class Logo extends Component {
 	 * @return bool
 	 */
 	private function addLink() {
-		return $this->getDomElement() !== null && filter_var( $this->getDomElement()->getAttribute( 'addLink' ), FILTER_VALIDATE_BOOLEAN );
+		if ( $this->getDomElement() === null ) {
+			return true;
+		}
+
+		$addLink = $this->getDomElement()->getAttribute( 'addLink' );
+
+		if ( $addLink === '' ) {
+			return true;
+		}
+
+		return filter_var( $addLink, FILTER_VALIDATE_BOOLEAN );
 	}
 }

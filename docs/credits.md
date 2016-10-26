@@ -22,8 +22,9 @@ well.
 ### Included libraries
 
 The following libraries are included:
-* sticky, a jQuery plugin to make an element on a page stay visible. Author:
-  Anthony Garand. See https://github.com/garand/sticky
+* [Sticky-kit](http://leafo.net/sticky-kit/), which provides an easy way to
+  attach elements to the page when the user scrolls such that the element is
+  always visible. Author: Leaf Corcoran
 
 
 ### Dependencies

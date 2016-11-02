@@ -26,20 +26,20 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 	<grid>
 		<row>
 			<cell span="3">
-				<component type="Logo" addLink="yes"></component>
+				<component type="Logo" addLink="yes"/>
 			</cell>
 
 			<cell span="9">
 
 				<row>
 					<cell span="12">
-						<component type="PersonalTools" class="pull-right"></component>
+						<component type="PersonalTools" class="pull-right"/>
 					</cell>
 				</row>
 
 				<row>
 					<cell span="12">
-						<component type="SearchBar" class="pull-right"></component>
+						<component type="SearchBar" class="pull-right"/>
 					</cell>
 				</row>
 
@@ -49,47 +49,47 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<row>
 			<cell span="12">
 				<component type="NavbarHorizontal">
-					<component type="NavMenu" showTools="no" showLanguages="no"></component>
+					<component type="NavMenu" showTools="no" showLanguages="no"/>
 				</component>
 			</cell>
 		</row>
 
 		<row>
 			<cell span="12">
-				<component type="PageTools"></component>
+				<component type="PageTools"/>
 			</cell>
 		</row>
 
 		<row>
 			<cell span="12">
-				<component type="SiteNotice"></component>
+				<component type="SiteNotice"/>
 			</cell>
 		</row>
 
 		<row>
 			<cell span="12">
-				<component type="MainContent"></component>
+				<component type="MainContent"/>
 			</cell>
 		</row>
 
 		<row>
 			<cell span="12">
-				<component type="ToolbarHorizontal" hideTools="no" hideLanguages="no"></component>
+				<component type="ToolbarHorizontal" hideTools="no" hideLanguages="no"/>
 			</cell>
 		</row>
 
 		<row>
 			<cell span="12">
-				<component type="FooterInfo"></component>
+				<component type="FooterInfo"/>
 			</cell>
 		</row>
 
 		<row>
 			<cell span="6">
-				<component type="FooterPlaces"></component>
+				<component type="FooterPlaces"/>
 			</cell>
 			<cell span="6">
-				<component type="FooterIcons"></component>
+				<component type="FooterIcons"/>
 			</cell>
 		</row>
 	</grid>

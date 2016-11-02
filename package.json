@@ -1,10 +1,13 @@
 {
   "scripts": {
+    "pretest": "npm install",
     "test": "grunt test",
+
     "lint": "grunt lint",
+
     "prebuild": "npm install",
-    "build":"npm run build:sticky",
-    "build:sticky": "mkdir -p resources/js/sticky-kit && browserify node_modules/sticky-kit/dist/sticky-kit.js -o resources/js/sticky-kit/jquery.sticky-kit.js"
+    "build:sticky": "mkdir -p resources/js/sticky-kit && browserify node_modules/sticky-kit/dist/sticky-kit.js -o resources/js/sticky-kit/jquery.sticky-kit.js",
+    "build":"npm run build:sticky"
   },
   "devDependencies": {
     "browserify": "^13.1.0",

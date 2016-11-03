@@ -2,8 +2,47 @@
 
 The Chameleon skin can be highly customized. There are 2 main areas that you can change:
 
-1. Styles (defined by LESS files and/or LESS variables)
-2. Layout (defined by a XML file)
+1. Layout (defined by a XML file)
+2. Styles (defined by LESS files and/or LESS variables)
+
+# Layout of page elements
+
+The layout of the page elements (nav bar, logo, search bar, etc.) is defined in
+an XML file. There are currently five pre-defined layouts available:
+* [standard](../layouts/standard.xml)
+* [navhead](../layouts/navhead.xml)
+* [fixedhead](../layouts/fixedhead.xml)
+* [stickyhead](../layouts/stickyhead.xml)
+* [clean](../layouts/clean.xml)
+
+They can be activated by setting the
+variable `$egChameleonLayoutFile` in LocalSettings.php. E.g. to activate the
+fixedhead layout you could add
+```php
+$egChameleonLayoutFile= __DIR__ . '/skins/chameleon/layouts/fixedhead.xml';
+```
+
+You can of course also define and use your own layout. Have a look at the
+available [XML files](../layouts) to see what is possible. (Better documentation
+to follow.)
+
+
+### Selecting the layout from the browser address bar
+
+To select a specific layout different from the one defined in
+`$egChameleonLayoutFile` you can add the `uselayout` parameter to the URL.
+However for some wikis it might not be desirable to have this feature. So to
+make this work you have to define the available layouts in
+LocalSettings.php. E.g. to include all layouts delivered with Chameleon add
+```php
+$egChameleonAvailableLayoutFiles = array(
+	'standard'   => __DIR__ . '/skins/chameleon/layouts/standard.xml',
+	'navhead'    => __DIR__ . '/skins/chameleon/layouts/navhead.xml',
+	'fixedhead'  => __DIR__ . '/skins/chameleon/layouts/fixedhead.xml',
+	'stickyhead' => __DIR__ . '/skins/chameleon/layouts/stickyhead.xml',
+	'clean'      => __DIR__ . '/skins/chameleon/layouts/clean.xml',
+);
+```
 
 # Changing styles: Fonts, Colors, Padding etc.
 
@@ -86,41 +125,6 @@ trigger an update of the style cache. There are two possibilities to do so:
 2. If the above becomes to cumbersome, you could add the following to your `LocalSettings.php`:  
 `\Bootstrap\BootstrapManager::getInstance()->addCacheTriggerFile( __DIR__ . '/your-less-file.less' );`.
 
-
-# Layout of page elements
-
-The layout of the page elements (nav bar, logo, search bar, etc.) is defined in
-an XML file. There are currently four pre-defined layouts available:
-[standard](../layouts/standard.xml), [navhead](../layouts/navhead.xml),
-[fixedhead](../layouts/fixedhead.xml) and
-[stickyhead](../layouts/stickyhead.xml). They can be activated by setting the
-variable `$egChameleonLayoutFile` in LocalSettings.php. E.g. to activate the
-fixedhead layout you could add
-```php
-$egChameleonLayoutFile= __DIR__ . '/skins/chameleon/layouts/fixedhead.xml';
-```
-
-You can of course also define and use your own layout. Have a look at the
-available [XML files](../layouts) to see what is possible. (Better documentation
-to follow.)
-
-
-### Selecting the layout from the browser address bar
-
-To select a specific layout different from the one defined in
-`$egChameleonLayoutFile` you can add the `uselayout` parameter to the URL.
-However for some wikis it might not be desirable to have this feature. So to
-make this work you have to define the available layouts in
-LocalSettings.php. E.g. to include all layouts delivered with Chameleon add
-```php
-$egChameleonAvailableLayoutFiles = array(
-	'standard'   => __DIR__ . '/skins/chameleon/layouts/standard.xml',
-	'navhead'    => __DIR__ . '/skins/chameleon/layouts/navhead.xml',
-	'fixedhead'  => __DIR__ . '/skins/chameleon/layouts/fixedhead.xml',
-	'stickyhead' => __DIR__ . '/skins/chameleon/layouts/stickyhead.xml',
-	'clean'      => __DIR__ . '/skins/chameleon/layouts/clean.xml',
-);
-```
 
 
 

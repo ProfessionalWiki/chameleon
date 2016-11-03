@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2015, Stephan Gambke
+ * @copyright 2013 - 2016, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -76,8 +76,9 @@ class Logo extends Component {
 	}
 
 	/**
-	 * Return true if addLink attribute is set to yes in Logo component and clicking on logo
-	 * should redirect to Main Page, and false if not
+	 * Return true if addLink attribute is unset or set to 'yes' in the Logo
+	 * component description. Clicking on the logo should redirect to Main Page
+	 * in that case. Else the logo should just display an inactive image.
 	 *
 	 * @return bool
 	 */

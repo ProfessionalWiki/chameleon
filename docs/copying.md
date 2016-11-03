@@ -1,6 +1,6 @@
 ## Licenses
 
-Copyright 2013 - 2014, Stephan Gambke
+Copyright 2013 - 2016, Stephan Gambke
 
 You can use the Chameleon skin under the [GNU General Public License, version
 3](https://www.gnu.org/copyleft/gpl.html) (or any later version). See the

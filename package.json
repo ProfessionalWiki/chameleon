@@ -2,16 +2,16 @@
   "scripts": {
     "pretest": "npm install",
     "test": "grunt test",
-
     "lint": "grunt lint",
-
     "prebuild": "npm install",
     "build:sticky": "mkdir -p resources/js/sticky-kit && browserify node_modules/sticky-kit/dist/sticky-kit.js -o resources/js/sticky-kit/jquery.sticky-kit.js",
-    "build":"npm run build:sticky"
+    "build:docs": "grep -rl 'docs/' -e '<!-- START doctoc'|xargs doctoc --title '**Contents**'",
+    "build": "npm run build:sticky && npm run build:docs"
   },
   "devDependencies": {
     "browserify": "^13.1.0",
     "browserify-shim": "^3.8.12",
+    "doctoc": "^1.2.0",
     "grunt": "^0.4.0",
     "grunt-banana-checker": "^0.4.0",
     "grunt-cli": "^0.1.13",
@@ -23,7 +23,10 @@
   },
   "browserify-shim": {
     "../../resources/lib/jquery/jquery.js": {
-      "exports": [ "jquery", "$" ]
+      "exports": [
+        "jquery",
+        "$"
+      ]
     }
   },
   "browserify": {

@@ -49,6 +49,6 @@
 			"npm test",
 			"@phpunit"
 		],
-		"build": "npm build"
+		"build": "npm run build"
 	}
 }

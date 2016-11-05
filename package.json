@@ -5,7 +5,7 @@
     "lint": "grunt lint",
     "prebuild": "npm install",
     "build:sticky": "mkdir -p resources/js/sticky-kit && browserify node_modules/sticky-kit/dist/sticky-kit.js -o resources/js/sticky-kit/jquery.sticky-kit.js",
-    "build:docs": "grep -rl 'docs/' -e '<!-- START doctoc'|xargs doctoc --title '**Contents**'",
+    "build:docs": "grep -rl 'docs/' -e '<!-- START doctoc'|xargs doctoc --title '**Contents**' --maxlevel 3 --notitle",
     "build": "npm run build:sticky && npm run build:docs"
   },
   "devDependencies": {

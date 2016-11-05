@@ -324,7 +324,10 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<value>Menu</value>
 		</attribute>
 
-		<attribute name="message"/>
+		<choice>
+			<text/>
+			<attribute name="message"/>
+		</choice>
 	</define>
 
 	<define name="Component" combine="choice">
@@ -363,6 +366,21 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 			<attribute name="type">
 				<value>MainContent</value>
+			</attribute>
+
+		</element>
+	</define>
+
+	<!-- NewtalkNotifier -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation>A message to a user about new messages on their
+				talkpage
+			</a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<attribute name="type">
+				<value>NewtalkNotifier</value>
 			</attribute>
 
 		</element>

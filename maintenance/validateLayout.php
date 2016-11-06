@@ -83,7 +83,7 @@ function validateFile( $filename ) {
 	$xml = new DOMDocument();
 	$xml->load( $filename );
 
-	if ( !$xml->relaxNGValidate( '../layouts/layout.rng' ) ) {
+	if ( !$xml->relaxNGValidate( __DIR__ . '/../layouts/layout.rng' ) ) {
 		libxml_display_errors();
 	} else {
 		print "Ok!\n";

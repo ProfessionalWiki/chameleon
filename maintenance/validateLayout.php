@@ -83,7 +83,7 @@ function validateFile( $filename ) {
 	$xml = new DOMDocument();
 	$xml->load( $filename );
 
-	if ( !$xml->relaxNGValidate( __DIR__ . '/../layouts/layout.rng' ) ) {
+	if ( !$xml->relaxNGValidate( 'https://cmln.github.io/chameleon/schema/1.0/layout.rng' ) ) {
 		libxml_display_errors();
 	} else {
 		print "Ok!\n";

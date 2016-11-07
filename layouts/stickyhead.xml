@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="https://cmln.github.io/chameleon/schema/1.0/layout.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <!--
 This file is part of the MediaWiki skin Chameleon.
 
@@ -22,7 +23,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 @since 1.0
 @ingroup Skins
 -->
-<structure xmlns="https://github.com/cmln/chameleon/layout/1.0">
+<structure xmlns="https://cmln.github.io/chameleon/schema/1.0/layout.rng">
 
 	<component type="NavbarHorizontal" class="full-width no-margin no-bottom-border">
 		<component type="Menu" message="secondary-menu"/>

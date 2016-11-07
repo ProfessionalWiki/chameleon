@@ -603,6 +603,22 @@ applicable.
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
+* `hideNewtalkNotifier`
+  * **Deprecated.**
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+  
+  If set the newtalk notifier will not be shown.
+
+  This attribute has no effect when used inside the
+  [NavbarHorizontal](#component-navbar-horizontal) component.
+  
+  This attribute was introduced to keep backwards compatibility. If the
+  PersonalTools component is used, it is recommended to always set this
+  attribute to *yes* and use an independent
+  [NewtalkNotifier](#component-newtalknotifier) component.
+
 #### Allowed Parent Elements:
 * [Structure](#structure)
 * [Cell](#cell)

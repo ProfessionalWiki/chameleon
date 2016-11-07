@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2016, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -29,12 +29,7 @@ namespace Skins\Chameleon\Components;
 use Skins\Chameleon\IdRegistry;
 
 /**
- * The NavbarHorizontal class.
- *
- * A horizontal navbar containing the sidebar items.
- * Does not include standard items (toolbox, search, language links). They need to be added to the page elsewhere
- *
- * The navbar is a list of lists wrapped in a nav element: <nav role="navigation" id="p-navbar" >
+ * The MainContent class.
  *
  * @author Stephan Gambke
  * @since 1.0
@@ -110,7 +105,9 @@ class MainContent extends Component {
 				$this->indent() . $idRegistry->element( 'div', array( 'id' => 'contentSub2', 'class' => 'small' ), $skintemplate->get( 'undelete' ) );
 		}
 
-		// TODO: Do we need this? Seems to be an accessibility thing. It's used in vector to jump to the nav wich is at the bottom of the document, but our nav is usually at the top
+		// TODO: Do we need this? Seems to be an accessibility thing. It's used
+		// in vector to jump to the nav which is at the bottom of the document,
+		// but our nav is usually at the top
 		$ret .= $idRegistry->element( 'div', array( 'id' => 'jump-to-nav', 'class' => 'mw-jump' ),
 			$skintemplate->getMsg( 'jumpto' )->escaped() . '<a href="#mw-navigation">' . $skintemplate->getMsg( 'jumptonavigation' )->escaped() . '</a>' .
 			$skintemplate->getMsg( 'comma-separator' )->escaped() . '<a href="#p-search">' . $skintemplate->getMsg( 'jumptosearch' )->escaped() . '</a>'
@@ -140,7 +137,7 @@ class MainContent extends Component {
 		// TODO: Category links should be a separate component, but
 		// * dataAfterContent should come after the the category links.
 		// * only one extension is known to use it dataAfterContent and it is geared specifically towards MonoBook
-		// => provide an attribut hideCatLinks for the XML and -if present- hide category links and assume somebody knows what they are doing
+		// => provide an attribute hideCatLinks for the XML and -if present- hide category links and assume somebody knows what they are doing
 		return
 			$this->indent() . '<!-- category links -->' .
 			$this->indent() . $this->getSkinTemplate()->get( 'catlinks' );

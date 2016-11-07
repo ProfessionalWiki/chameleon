@@ -245,6 +245,12 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<attribute name="type">
 			<value>PersonalTools</value>
 		</attribute>
+
+		<optional>
+			<attribute name="hideNewtalkNotifier" a:defaultValue="no">
+				<ref name="BoolValues"/>
+			</attribute>
+		</optional>
 	</define>
 
 	<define name="Component" combine="choice">

@@ -1,11 +1,34 @@
 ## Release Notes
 
+### Chameleon 1.5
+
+Released on tbd
+
+Changes:
+* Move from WMF server to GitHub: Updates of documentation, some scripts,
+  registration with [translatewiki](https://translatewiki.net)
+* Improve documentation
+* Replace [jquery-sticky](https://github.com/garand/sticky) by
+  [sticky-kit](http://leafo.net/sticky-kit/)
+* Use sticky for the navbar of the fixedhead layout
+* PersonalTools: Add attribute *hideNewtalkNotifier*
+* Standard layout: Use separate NewtalkNotifier and PersonalTools components
+* Add schema description for layout files: [layout.rng](../layouts/layout.rng)
+* Add validation script for layout files:<br>
+  Call `php maintenance/validateLayout.php <layout.xml>`
+* Add composer scripts: test, phpunit, build
+* Add JS linting for better code quality
+
+Fixes:
+* Javascript modules were not loading in MW 1.28+
+* Logo: Link to main page when *addLink* attribute is not present
+
 ### Chameleon 1.4
 
 Released on 20-Sep-2016
 
 Changes:
-* Logo: add addLink attribute to Logo component
+* Logo: add *addLink* attribute to Logo component
 
 Fixes:
 * Restore "Edit with form" link for Semantic Forms 3.5 and later

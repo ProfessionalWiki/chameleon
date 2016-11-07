@@ -47,10 +47,6 @@ class PersonalTools extends Component {
 		$ret = $this->indent() . '<!-- personal tools -->' .
 			   $this->indent() . '<div class="p-personal ' . $this->getClassString() . '" id="p-personal" >';
 
-		// include message to a user about new messages on their talkpage
-		// TODO: make including the NewTalkNotifier dependent on an option (PREPEND, APPEND, OFF)
-		$newtalkNotifier = new NewtalkNotifier( $this->getSkinTemplate(), null, $this->getIndent() + 2 );
-
 		$ret .= $this->indent( 1 ) . '<ul class="p-personal-tools list-inline pull-right" >';
 
 		$this->indent( 1 );
@@ -61,11 +57,27 @@ class PersonalTools extends Component {
 		}
 
 		$ret .= $this->indent( -1 ) . '</ul>' .
-				$this->indent() . '<div class="newtalk-notifier">' . $newtalkNotifier->getHtml() .
-				$this->indent() . '</div>' .
-				$this->indent( -1 ) . '</div>' . "\n";
+			$this->indent( -1 ) . '</div>' . "\n";
+
+		$ret .= $this->getNewtalkNotifier( $ret );
 
 		return $ret;
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getNewtalkNotifier() {
+
+		if ( $this->getDomElement() !== null && filter_var( $this->getDomElement()->getAttribute( 'hideNewtalkNotifier' ), FILTER_VALIDATE_BOOLEAN ) ) {
+			return '';
+		}
+
+		// include message to a user about new messages on their talkpage
+		$newtalkNotifier = new NewtalkNotifier( $this->getSkinTemplate(), null, $this->getIndent() + 2 );
+
+		return $this->indent() . '<div class="newtalk-notifier pull-right">' . $newtalkNotifier->getHtml() .
+			$this->indent() . '</div>';
 	}
 
 }

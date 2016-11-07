@@ -33,7 +33,8 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 				<row>
 					<cell span="12">
-						<component type="PersonalTools" class="pull-right"/>
+						<component type="PersonalTools" hideNewtalkNotifier="yes" class="pull-right"/>
+						<component type="NewtalkNotifier" class="pull-right"/>
 					</cell>
 				</row>
 

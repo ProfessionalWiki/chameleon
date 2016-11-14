@@ -43,4 +43,4 @@ matrix:
     - env: THENEEDFORTHIS=FAIL
 
 script:
-    - bash ./build/travis/script.sh
+    - bash ./build/travis/build.sh

@@ -209,6 +209,7 @@ class NavbarHorizontal extends Component {
 	 * @return string
 	 */
 	protected function buildNavBarElementFromDomElement( $node ) {
+
 		switch ( $node->getAttribute( 'type' ) ) {
 			case 'Logo':
 				$html = $this->getLogo( $node );
@@ -229,8 +230,19 @@ class NavbarHorizontal extends Component {
 				$html = $this->getMenu( $node );
 				break;
 			default:
-				$html = '';
+				$html = $this->buildNavBarElementFromComponentClass( $node );
 		}
+		return $html;
+	}
+
+	/**
+	 * @param $node
+	 *
+	 * @return string
+	 */
+	protected function buildNavBarElementFromComponentClass( $node ) {
+		$component = $this->getSkin()->getComponentFactory()->getComponent( $node, $this->getIndent() );
+		$html      = '<ul class="nav navbar-nav ' . $node->getAttribute( 'type' ) . '">' . $component->getHtml() . "</ul>\n";
 		return $html;
 	}
 
@@ -246,7 +258,6 @@ class NavbarHorizontal extends Component {
 		$logo = new Logo( $this->getSkinTemplate(), $domElement, $this->getIndent() );
 		$logo->addClasses( 'navbar-brand' );
 
-//        return \Html::rawElement( 'li', array(), $logo->getHtml() );
 		return $logo->getHtml();
 	}
 

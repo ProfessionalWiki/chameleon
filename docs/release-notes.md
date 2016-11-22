@@ -11,6 +11,7 @@ Changes:
 * Replace [jquery-sticky](https://github.com/garand/sticky) by
   [sticky-kit](http://leafo.net/sticky-kit/)
 * Use sticky for the navbar of the fixedhead layout
+* NavbarHorizontal: Allow custom types and classes for Navbar elements
 * PersonalTools: Add attribute *hideNewtalkNotifier*
 * Standard layout: Use separate NewtalkNotifier and PersonalTools components
 * Add schema description for layout files: [layout.rng](../layouts/layout.rng)

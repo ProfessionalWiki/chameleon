@@ -47,7 +47,7 @@ call_user_func( function () {
 	}
 
 	// define the skin's version
-	define( 'CHAMELEON_VERSION', '1.5-alpha' );
+	define( 'CHAMELEON_VERSION', '1.5' );
 
 	// set credits
 	$GLOBALS[ 'wgExtensionCredits' ][ 'skin' ][ ] = array(

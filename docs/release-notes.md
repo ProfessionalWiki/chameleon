@@ -2,7 +2,7 @@
 
 ### Chameleon 1.5
 
-Released on tbd
+Released on 23-Nov-2016
 
 Changes:
 * Move from WMF server to GitHub: Updates of documentation, some scripts,

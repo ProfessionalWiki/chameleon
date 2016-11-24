@@ -3,9 +3,11 @@
 		"authors": [
 			"Gorizon",
 			"Mirzali",
-			"Kumkumuk"
+			"Kumkumuk",
+			"1917 Ekim Devrimi"
 		]
 	},
+	"skinname-chameleon": "Chameleon",
 	"chameleon-desc": "Becna marmariceke",
 	"chameleon-loggedin": "$1 nameya şıma ronıştış akerd o.",
 	"chameleon-notloggedin": "Şıma ronıştış nêakerd o.",

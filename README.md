@@ -21,11 +21,9 @@ in an XML file and as such easily adaptable to your needs.
 ## Documentation
 1. [Installation, Update, De-Installation](docs/installation.md)
 2. [Customization](docs/customization.md)
-   1. [Less Variables](docs/variables.md)
 3. [Release Notes](docs/release-notes.md)
 4. [Testing](docs/testing.md)
 5. [How to contribute](docs/contribute.md)
-   1. [Legal stuff](docs/legal.md)
 6. [Credits](docs/credits.md)
 7. [Licenses](docs/licenses.md)
 8. [Contact](docs/contact.md)

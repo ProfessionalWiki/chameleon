@@ -6,7 +6,7 @@
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/chameleon-skin/version.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 [![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/d/total.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 
-<img src='https://upload.wikimedia.org/wikipedia/mediawiki/thumb/3/31/Chameleon.svg/220px-Chameleon.svg.png' style='float:left;' title='Chameleon Skin Logo'>
+<img src='https://upload.wikimedia.org/wikipedia/mediawiki/thumb/3/31/Chameleon.svg/220px-Chameleon.svg.png' style='float:left;' align="left" title='Chameleon Skin Logo'>
 Chameleon is a highly customizable [MediaWiki][mw] skin that uses [Twitter
 Bootstrap 3][twbs].
 
@@ -14,7 +14,9 @@ It currently provides four different layouts to chose from. The standard layout
 features a horizontal navigation menu with dropdowns at the top and a horizontal
 menu with dropups for the language links at the bottom. Each layout is defined
 in an XML file and as such easily adaptable to your needs.
-<div style="clear:both;"></div>
+<br/>
+<br/>
+<br/>
 
 ## Documentation
 1. [Installation, Update, De-Installation](docs/installation.md)

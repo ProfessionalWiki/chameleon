@@ -1,11 +1,3 @@
-## Licenses
-
-Copyright 2013 - 2016, Stephan Gambke
-
-You can use the Chameleon skin under the [GNU General Public License, version
-3](https://www.gnu.org/copyleft/gpl.html) (or any later version). See the
-relevant [license statement](../COPYING).
-
 The files within the _docs_ directory and its subdirectories in their entirety -
 with the exception of the file [Chameleon.svg](Chameleon.svg) containing the
 "Chameleon Skin Logo" - make up the Chameleon Skin documentation, subsequently
@@ -16,15 +8,6 @@ terms of the GNU Free Documentation License, Version 1.3 or any later version
 published by the Free Software Foundation; with no Invariant Sections, no
 Front-Cover Texts and no Back-Cover Texts.  A copy of the license is included in
 the section entitled "GNU Free Documentation License".
-
-The "Chameleon Skin Logo" was derived from the ["Chameleon free
-icon"](http://www.flaticon.com/free-icon/chameleon_36320) made by
-[Freepik](http://www.freepik.com) from
-[www.flaticon.com](http://www.flaticon.com), which is licensed under [CC BY
-3.0](http://creativecommons.org/licenses/by/3.0/). The ["Chameleon Skin
-Logo"](Chameleon.svg) itself was created by [Stephan
-Gambke](https://www.mediawiki.org/wiki/User:F.trott) and is licensed under [CC
-BY 3.0](http://creativecommons.org/licenses/by/3.0/) as well.
 
 
 ## GNU Free Documentation License

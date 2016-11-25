@@ -6,41 +6,26 @@
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/chameleon-skin/version.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 [![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/d/total.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 
-The Chameleon skin uses [Twitter's Bootstrap 3][twbs] to provide
-a customizable [MediaWiki][mw] skin.
+<img src='https://upload.wikimedia.org/wikipedia/mediawiki/thumb/3/31/Chameleon.svg/220px-Chameleon.svg.png' align='left' title='Chameleon Skin Logo'>
+Chameleon is a highly customizable [MediaWiki][mw] skin that uses [Twitter
+Bootstrap 3][twbs].
 
-## Requirements
-
-- PHP 5.3.2 or later
-- MediaWiki 1.22 or later
-- [Composer][composer]
-
-Further required software packages will be installed automatically.
-
-## Installation
-
-1. On a command line go to your MediaWiki installation directory
-2. If necessary (on MediaWiki up to 1.23) copy the file `composer.json.example`
-   to `composer.json`
-3. With Composer installed, run
-   `composer require "mediawiki/chameleon-skin:~1.0"`
-4. To set Chameleon as the default skin, open `LocalSettings.php` in an editor,
-   find `$wgDefaultSkin` and amend it: `$wgDefaultSkin='chameleon';`
-5. __Done:__ Navigate to _Special:Version_ on your wiki to verify that the skin
-   is successfully installed.
+It currently provides four different layouts to chose from. The standard layout
+features a horizontal navigation menu with dropdowns at the top and a horizontal
+menu with dropups for the language links at the bottom. Each layout is defined
+in an XML file and as such easily adaptable to your needs.
 
 ## Documentation
-
-See the [Chameleon documentation](docs/index.md).
-
-It may also be worthwhile to have a look at the [Chameleon site on
-MediaWiki][mw-chameleon] and the related [talk page][mw-chameleon-talk]
-
-## License
-
-You can use the Chameleon skin under the [GNU General Public License, version
-3][license] (or any later version).
-
+1. [Installation, Update, De-Installation](docs/installation.md)
+2. [Customization](docs/customization.md)
+   1. [Less Variables](docs/variables.md)
+3. [Release Notes](docs/release-notes.md)
+4. [Testing](docs/testing.md)
+5. [How to contribute](docs/contribute.md)
+   1. [Legal stuff](docs/legal.md)
+6. [Credits](docs/credits.md)
+7. [Licenses](docs/licenses.md)
+8. [Contact](docs/contact.md)
 
 [mw]: https://www.mediawiki.org
 [mw-chameleon]: https://www.mediawiki.org/wiki/Skin:Chameleon

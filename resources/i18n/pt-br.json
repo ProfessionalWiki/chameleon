@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Jaideraf"
+			"Jaideraf",
+			"!Silent"
 		]
 	},
+	"skinname-chameleon": "Chameleon",
 	"chameleon-desc": "O tema Chameleon.",
 	"chameleon-loggedin": "Você está logado como $1.",
 	"chameleon-notloggedin": "Você não está logado",

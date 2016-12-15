@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Aursani"
+			"Aursani",
+			"Mehtab ahmed"
 		]
 	},
-	"chameleon-loggedin": "توهان $1 نالي سان لاگ اِن ٿيل آهيو.",
-	"chameleon-notloggedin": "توهان لاگ اِن ٿيل نہ آهيو.",
+	"chameleon-loggedin": "توھان $1 نالي سان داخل ٿيل آھيو.",
+	"chameleon-notloggedin": "توھان داخل ٿيل نہ آھيو.",
 	"chameleon-newmessages": "توهان لاءِ نوان نياپا آهن.",
 	"chameleon-nonewmessages": "توهان لاءِ ڪو بہ نئون نياپو نہ آهي."
 }

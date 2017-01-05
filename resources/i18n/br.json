@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Y-M D"
+			"Y-M D",
+			"Fulup"
 		]
 	},
+	"skinname-chameleon": "Kameleon",
+	"chameleon-desc": "Gwisk Kameleon",
+	"chameleon-loggedin": "Kevreet oc'h evel $1.",
 	"chameleon-notloggedin": "N'hoc'h ket kevreet.",
 	"chameleon-newmessages": "Kemennadennoù nevez zo ganeoc'h.",
 	"chameleon-nonewmessages": "N'eus kemennadenn nevez ebet ganeoc'h."

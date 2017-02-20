@@ -1,8 +1,8 @@
 {
-	"name"       : "mediawiki/chameleon-skin",
-	"type"       : "mediawiki-skin",
+	"name": "mediawiki/chameleon-skin",
+	"type": "mediawiki-skin",
 	"description": "A highly flexible MediaWiki skin using Twitter Bootstrap 3",
-	"keywords"   : [
+	"keywords": [
 		"wiki",
 		"MediaWiki",
 		"skin",
@@ -13,34 +13,39 @@
 	"license"    : "GPL-3.0-or-later",
 	"authors"    : [
 		{
-			"name" : "Stephan Gambke",
+			"name": "Stephan Gambke",
 			"email": "s7eph4n@gmail.com",
-			"role" : "Developer"
+			"role": "Developer"
 		}
 	],
-	"support"    : {
-		"docs"  : "https://github.com/cmln/chameleon",
+	"support": {
+		"docs": "https://github.com/cmln/chameleon",
 		"source": "https://github.com/cmln/chameleon.git",
 		"issues": "https://github.com/cmln/chameleon/issues",
-		"irc"   : "irc://irc.freenode.org/mediawiki"
+		"irc": "irc://irc.freenode.org/mediawiki"
 	},
-	"require"    : {
-		"php"                : ">=5.3.2",
-		"ext-dom"            : "*",
-		"ext-filter"         : "*",
+	"require": {
+		"php": ">=5.3.2",
+		"ext-dom": "*",
+		"ext-filter": "*",
 		"composer/installers": ">1.0.12",
-		"mediawiki/bootstrap": "~1.1"
+		"mediawiki/bootstrap": "~2.0",
+		"fortawesome/font-awesome": "~4.7"
 	},
-	"autoload"   : {
-		"files": [ "Chameleon.php", "src/SkinChameleon.php" ],
+	"autoload": {
+		"files": [
+			"Chameleon.php",
+			"src/SkinChameleon.php"
+		],
 		"psr-4": {
-			"Skins\\Chameleon\\Tests\\" : "tests/phpunit",
-			"Skins\\Chameleon\\" : "src"
+			"Skins\\Chameleon\\Tests\\": "tests/phpunit",
+			"Skins\\Chameleon\\": "src"
 		}
 	},
-	"extra"      : {
+	"extra": {
 		"branch-alias": {
-			"dev-master": "1.x-dev"
+			"dev-master": "1.x-dev",
+			"dev-2.0-devel": "2.x-dev"
 		}
 	},
 	"scripts": {

@@ -1,5 +1,14 @@
 ## Release Notes
 
+### Chameleon 2.0
+
+Released on TBD
+
+Changes:
+* Use Bootstrap 4
+* Use Font-Awesome instead of Glyphicons
+* Remove button for fulltext search from Searchbar
+
 ### Chameleon 1.7.1
 
 Released on 10-May-2018

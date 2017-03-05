@@ -87,31 +87,36 @@ class ChameleonTemplate extends BaseTemplate {
 		return $this->getSkin()->getComponentFactory()->getComponent( $description, $indent, $htmlClassAttribute );
 	}
 
+
 	/**
-	 * Generates a list item for a navigation, portlet, portal, sidebar... list
+	 * Makes a link with a unique id, usually used by makeListItem to generate a
+	 * link for an item in a list used in navigation lists, portlets, portals,
+	 * sidebars, etc...
 	 *
-	 * Overrides the parent function to ensure ids are unique.
-	 *
-	 * @param $key     string, usually a key from the list you are generating this link from.
-	 * @param $item    array, of list item data containing some of a specific set of keys.
-	 *
-	 * The "id" and "class" keys will be used as attributes for the list item,
-	 * if "active" contains a value of true a "active" class will also be appended to class.
-	 *
-	 * @param $options array
+	 * @param string $key Usually a key from the list you are generating this
+	 * link from.
+	 * @param array $item Contains some of a specific set of keys.
+	 * @param array $options Can be used to affect the output of a link.
 	 *
 	 * @return string
 	 */
-	public function makeListItem( $key, $item, $options = array() ) {
+	function makeLink( $key, $item, $options = [] ) {
+
+		if ( !isset( $item['class'] ) ) {
+			$item['class'] = '';
+		}
 
 		foreach ( array( 'id', 'single-id' ) as $attrib ) {
 
 			if ( isset ( $item[ $attrib ] ) ) {
+				$item[ 'class' ] .= ' ' . $item[ $attrib ];
 				$item[ $attrib ] = IdRegistry::getRegistry()->getId( $item[ $attrib ], $this );
 			}
 
 		}
 
-		return parent::makeListItem( $key, $item, $options );
+		return parent::makeLink( $key, $item, $options );
 	}
+
+
 }

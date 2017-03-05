@@ -47,7 +47,7 @@ class PersonalTools extends Component {
 		$ret = $this->indent() . '<!-- personal tools -->' .
 			   $this->indent() . '<div class="p-personal ' . $this->getClassString() . '" id="p-personal" >';
 
-		$ret .= $this->indent( 1 ) . '<ul class="p-personal-tools list-inline pull-right" >';
+		$ret .= $this->indent( 1 ) . '<ul class="p-personal-tools" >';
 
 		$this->indent( 1 );
 

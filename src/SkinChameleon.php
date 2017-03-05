@@ -62,7 +62,7 @@ class SkinChameleon extends SkinTemplate {
 		parent::initPage( $out );
 
 		// Enable responsive behaviour on mobile browsers
-		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1.0' );
+		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no' );
 	}
 
 	/**

@@ -68,8 +68,8 @@ class SetupAfterCache {
 		$this->setInstallPaths();
 		$this->addLateSettings();
 		$this->registerCommonBootstrapModules();
-		$this->registerExternalLessModules();
-		$this->registerExternalLessVariables();
+		$this->registerExternalScssModules();
+		$this->registerExternalStyleVariables();
 
 		return $this;
 	}
@@ -121,12 +121,19 @@ class SetupAfterCache {
 		}
 
 		$this->bootstrapManager->addExternalModule(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/core.less',
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/_core.scss',
 			$this->configuration[ 'chameleonRemotePath' ] . '/resources/styles/'
 		);
+
+		$this->bootstrapManager->addExternalModule(
+			$this->configuration[ 'IP' ] . '/vendor/fortawesome/font-awesome/scss/font-awesome.scss',
+			$this->configuration[ 'wgScriptPath' ] . '/vendor/fortawesome/font-awesome/scss/'
+		);
+
+		$this->bootstrapManager->setScssVariable('fa-font-path', $this->configuration[ 'wgScriptPath' ] . '/vendor/fortawesome/font-awesome/fonts');
 	}
 
-	protected function registerExternalLessModules() {
+	protected function registerExternalScssModules() {
 
 		if ( $this->hasConfigurationOfTypeArray( 'egChameleonExternalStyleModules' ) ) {
 
@@ -142,12 +149,12 @@ class SetupAfterCache {
 		}
 	}
 
-	protected function registerExternalLessVariables() {
+	protected function registerExternalStyleVariables() {
 
-		if ( $this->hasConfigurationOfTypeArray( 'egChameleonExternalLessVariables' ) ) {
+		if ( $this->hasConfigurationOfTypeArray( 'egChameleonExternalStyleVariables' ) ) {
 
-			foreach ( $this->configuration[ 'egChameleonExternalLessVariables' ] as $key => $value ) {
-				$this->bootstrapManager->setLessVariable( $key, $value );
+			foreach ( $this->configuration[ 'egChameleonExternalStyleVariables' ] as $key => $value ) {
+				$this->bootstrapManager->setScssVariable( $key, $value );
 			}
 		}
 	}

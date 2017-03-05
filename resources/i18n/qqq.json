@@ -12,5 +12,6 @@
 	"chameleon-loggedin": "Text shown, when the user is logged in. Parameters:\n* $1 - username\nSee also:\n* {{msg-mw|Chameleon-notloggedin}}",
 	"chameleon-notloggedin": "Text shown, when the user is not logged in.\n\nSee also:\n* {{msg-mw|Chameleon-loggedin}}",
 	"chameleon-newmessages": "Text shown, when the user has new messages.\n\nSee also:\n* {{msg-mw|Chameleon-nonewmessages}}",
-	"chameleon-nonewmessages": "Text shown, when the user has no new messages.\n\nSee also:\n* {{msg-mw|Chameleon-newmessages}}"
+	"chameleon-nonewmessages": "Text shown, when the user has no new messages.\n\nSee also:\n* {{msg-mw|Chameleon-newmessages}}",
+	"chameleon-search-aria-label": "ARIA label for the search bar button."
 }

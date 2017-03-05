@@ -39,11 +39,11 @@ Composer tool during installation. These are:
   developing responsive, mobile first projects on the web. Maintained by the
   [TWBS core team](https://github.com/orgs/twbs/people). See
   http://getbootstrap.com/
-* Glyphicons Halflings, a library of precisely prepared monochromatic icons
-  and symbols contained in and delivered with the Twitter Bootstrap framework.
-  Author: Jan Kovařík. See http://glyphicons.com/.
-* Less.php, a PHP port of the official LESS processor. Author: Josh Schmidt.
-  See https://github.com/oyejorge/less.php
+* Font-Awesome, a full suite of pictographic icons for easy scalable vector
+  graphics on websites, created and maintained by Dave Gandy. See
+  http://fontawesome.io/
+* scssphp, a compiler for SCSS written in PHP. Author: Leaf Corcoran. See
+  http://leafo.github.io/scssphp/  
 * loads of other software that I either forgot, am not aware of or that should
   be obvious (e.g. PHP, MediaWiki, etc.)
 

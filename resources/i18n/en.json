@@ -9,5 +9,6 @@
 	"chameleon-loggedin": "You are logged in as $1.",
 	"chameleon-notloggedin": "You are not logged in.",
 	"chameleon-newmessages": "You have new messages.",
-	"chameleon-nonewmessages": "You have no new messages."
+	"chameleon-nonewmessages": "You have no new messages.",
+	"chameleon-search-aria-label": "Go to page"
 }

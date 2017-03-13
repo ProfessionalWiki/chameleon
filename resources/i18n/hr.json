@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bugoslav"
+		]
+	},
+	"chameleon-desc": "Tema dizajna Chameleon",
+	"chameleon-loggedin": "Prijavljeni ste pod suradničkim imenom $1.",
+	"chameleon-notloggedin": "Trenutačno niste prijavljeni.",
+	"chameleon-newmessages": "Imate nove poruke.",
+	"chameleon-nonewmessages": "Trenutačno nemate novih poruka."
+}

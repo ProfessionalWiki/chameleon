@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Jaideraf",
-			"!Silent"
+			"!Silent",
+			"Felipe L. Ewald"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "O tema Chameleon.",
+	"chameleon-desc": "O tema Chameleon",
 	"chameleon-loggedin": "Você está logado como $1.",
 	"chameleon-notloggedin": "Você não está logado",
 	"chameleon-newmessages": "Você tem novas mensagens.",

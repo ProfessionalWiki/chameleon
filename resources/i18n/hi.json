@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Siddhartha Ghai"
+			"Siddhartha Ghai",
+			"Sfic"
 		]
 	},
+	"skinname-chameleon": "केमेलोन",
 	"chameleon-desc": "कैमिलियन (गिरगिट) त्वचा",
 	"chameleon-loggedin": "आप $1 खाते में लॉग्ड इन हैं।",
 	"chameleon-notloggedin": "आप लॉग्ड इन नहीं हैं।",

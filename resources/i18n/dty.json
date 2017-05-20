@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nirajan pant"
+		]
+	},
+	"chameleon-loggedin": "तम $1का रूपमी लगइन होइरैछऽ।",
+	"chameleon-notloggedin": "तमले लगइन नाइँअरिराख्याऽ।",
+	"chameleon-newmessages": "तम खिलाइ नौला सन्देशअन छन।",
+	"chameleon-nonewmessages": "तम खिलाइ कोइ लै नौलो सन्देश नाइँथिन।"
+}

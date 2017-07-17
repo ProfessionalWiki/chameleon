@@ -257,6 +257,10 @@ a.new, #p-personal a.new {
 	ol, ul {
 		padding-left: @list-level-indent;
 		margin: 0;
+		
+		.list-inline {
+			.list-inline;
+		}
 
 		ul {
 			.bullet( @list-bullet-color, @list-bullet-size*.9);
@@ -413,7 +417,7 @@ table.mw-recentchanges-table {
 	h1, h2, h3, h4, h5, h6 {
 		>span.mw-headline:before {
 			content: "";
-			display: block;
+			display: inline-block;
 			height: @navbar-height;
 			margin-top: 0-@navbar-height;
 		}

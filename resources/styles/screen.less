@@ -127,6 +127,11 @@ html {
 	}
 }
 
+/* Fix to prevent mw-body ul from overriding padding */
+.list-inline, .mw-body ul.list-inline {
+	padding-left:0px;
+}
+
 /* have to insert id based rule here to over-rule MW core's shared.css */
 #toc ul {
 	margin-left: 0.5em;

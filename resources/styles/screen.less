@@ -127,11 +127,6 @@ html {
 	}
 }
 
-/* Fix to prevent mw-body ul from overriding padding */
-.list-inline, .mw-body ul.list-inline {
-	padding-left:0px;
-}
-
 /* have to insert id based rule here to over-rule MW core's shared.css */
 #toc ul {
 	margin-left: 0.5em;
@@ -418,34 +413,11 @@ table.mw-recentchanges-table {
 	h1, h2, h3, h4, h5, h6 {
 		>span.mw-headline:before {
 			content: "";
-			display: block;
+			display: inline-block;
 			height: @navbar-height;
 			margin-top: 0-@navbar-height;
 		}
 	}
-}
-
-/* Fix for interference from mw-headline : https://www.mediawiki.org/wiki/Topic:Tpnbsxhvqcwb890x */
-
-.layout-fixedhead h1 > span.mw-headline::before, 
-.layout-stickyhead h1 > span.mw-headline::before, 
-.layout-clean h1 > span.mw-headline::before,
-.layout-fixedhead h2 > span.mw-headline::before, 
-.layout-stickyhead h2 > span.mw-headline::before, 
-.layout-clean h2 > span.mw-headline::before,
-.layout-fixedhead h3 > span.mw-headline::before, 
-.layout-stickyhead h3 > span.mw-headline::before, 
-.layout-clean h3 > span.mw-headline::before,
-.layout-fixedhead h4 > span.mw-headline::before, 
-.layout-stickyhead h4 > span.mw-headline::before, 
-.layout-clean h4 > span.mw-headline::before,
-.layout-fixedhead h5 > span.mw-headline::before, 
-.layout-stickyhead h5 > span.mw-headline::before, 
-.layout-clean h5 > span.mw-headline::before,
-.layout-fixedhead h6 > span.mw-headline::before, 
-.layout-stickyhead h6 > span.mw-headline::before, 
-.layout-clean h6 > span.mw-headline::before {
-    display: inline-block;
 }
 
 .mw-headline-anchor {

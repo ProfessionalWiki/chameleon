@@ -75,40 +75,4 @@ class NavbarHorizontalTest extends GenericComponentTestCase {
 		$this->assertTag( $matcher, $instance->getHtml() );
 	}
 
-	/**
-	 * @covers ::getHtml
-	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
-	 */
-	public function testGetHtml_LoggedInUserHasNewMessages( $domElement ) {
-
-		$factory = MockupFactory::makeFactory( $this );
-		$factory->set( 'UserIsLoggedIn', true );
-		$factory->set( 'UserNewMessageLinks', array( 'foo' ) );
-		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
-
-		/** @var $instance Component */
-		$instance = new $this->classUnderTest ( $chameleonTemplate, $domElement );
-
-		$matcher = array( 'class' => 'navbar-newtalk-available' );
-		$this->assertTag( $matcher, $instance->getHtml() );
-	}
-
-	/**
-	 * @covers ::getHtml
-	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
-	 */
-	public function testGetHtml_LoggedInUserHasNoNewMessages( $domElement ) {
-
-		$factory = MockupFactory::makeFactory( $this );
-		$factory->set( 'UserIsLoggedIn', true );
-		$factory->set( 'UserNewMessageLinks', array() );
-		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
-
-		/** @var $instance Component */
-		$instance = new $this->classUnderTest ( $chameleonTemplate, $domElement );
-
-		$matcher = array( 'class' => 'navbar-newtalk-not-available' );
-		$this->assertTag( $matcher, $instance->getHtml() );
-	}
-
 }

@@ -46,6 +46,8 @@ class ComponentFactory {
 	private $layoutFile;
 	private $skinTemplate;
 
+	const NAMESPACE_HIERARCHY = 'Skins\\Chameleon\\Components';
+
 	/**
 	 * @param string $layoutFileName
 	 */
@@ -138,9 +140,9 @@ class ComponentFactory {
 	 */
 	protected function getComponentClassName( \DOMElement $description ) {
 
-		$className = $this->mapComponentDescriptionToClassName( $description );
+		$className = $this->mapDescriptionToClassName( $description );
 
-		if ( !class_exists( $className ) || !is_subclass_of( $className, 'Skins\\Chameleon\\Components\\Component' ) ) {
+		if ( !class_exists( $className ) || !is_subclass_of( $className, self::NAMESPACE_HIERARCHY . '\\Component' ) ) {
 			throw new \MWException( sprintf( '%s (line %d): Invalid component type: %s.', $this->getLayoutFile(), $description->getLineNo(), $description->getAttribute( 'type' ) ) );
 		}
 
@@ -153,35 +155,29 @@ class ComponentFactory {
 	 * @return string
 	 * @throws \MWException
 	 */
-	protected function mapComponentDescriptionToClassName( \DOMElement $description ) {
+	protected function mapDescriptionToClassName( \DOMElement $description ) {
 
-		$mapOfComponentsToClassNames = array(
-			'structure'    => 'Structure',
-			'grid'         => 'Grid',
-			'row'          => 'Row',
-			'cell'         => 'Cell',
-			'modification' => 'Silent',
-		);
 
 		$nodeName = strtolower( $description->nodeName );
 
+		$mapOfComponentsToClassNames = array(
+			'structure' => 'Structure',
+			'grid' => 'Grid',
+			'row' => 'Row',
+			'cell' => 'Cell',
+			'modification' => 'Silent',
+		);
+
 		if ( array_key_exists( $nodeName, $mapOfComponentsToClassNames ) ) {
-
-			$className = $mapOfComponentsToClassNames[ $nodeName ];
-
-		} elseif ( $nodeName === 'component' ) {
-
-			if ( $description->hasAttribute( 'type' ) ) {
-				$className = $description->getAttribute( 'type' );
-			} else {
-				$className = 'Container';
-			}
-
-		} else {
-			throw new \MWException( sprintf( '%s (line %d): XML element not allowed here: %s.', $this->getLayoutFile(), $description->getLineNo(), $description->nodeName ) );
+			return self::NAMESPACE_HIERARCHY . '\\' . $mapOfComponentsToClassNames[ $nodeName ];
 		}
 
-		return 'Skins\\Chameleon\\Components\\' . $className;
+		if ( $nodeName === 'component' ) {
+			return $this->mapComponentDescriptionToClassName( $description );
+		}
+
+		throw new \MWException( sprintf( '%s (line %d): XML element not allowed here: %s.', $this->getLayoutFile(), $description->getLineNo(), $description->nodeName ) );
+
 	}
 
 	/**
@@ -228,6 +224,37 @@ class ComponentFactory {
 	 */
 	public function sanitizeFileName( $fileName ) {
 		return str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, $fileName );
+	}
+
+	/**
+	 * @param \DOMElement $description
+	 * @return string
+	 */
+	protected function mapComponentDescriptionToClassName( \DOMElement $description ) {
+
+		if ( $description->hasAttribute( 'type' ) ) {
+
+			$className = $description->getAttribute( 'type' );
+
+			$parent = $description->parentNode;
+
+			if ( $parent->hasAttribute( 'type' ) ) {
+
+				$fullClassName = join( '\\', array( self::NAMESPACE_HIERARCHY, $parent->getAttribute( 'type' ), $className ) );
+
+				if ( class_exists( $fullClassName ) ) {
+
+					return $fullClassName;
+				}
+			}
+
+			return join( '\\', array( self::NAMESPACE_HIERARCHY, $className ) );
+
+		}
+
+		return self::NAMESPACE_HIERARCHY . 'Container';
+
+
 	}
 
 

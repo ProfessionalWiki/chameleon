@@ -243,6 +243,10 @@ class MockupFactory {
 			->method( 'getRequest' )
 			->will( $this->testCase->returnValue( $request ) );
 
+		$skin->expects( $this->testCase->any() )
+			->method( 'getComponentFactory' )
+			->will( $this->testCase->returnValue( $this->getComponentFactoryStub() ) );
+
 		return $skin;
 	}
 
@@ -310,6 +314,21 @@ class MockupFactory {
 			->will( $this->testCase->returnValue( 'SomeLinkUrl' ) );
 
 		return $title;
+
+	}
+
+	protected function getComponentFactoryStub() {
+
+		$factory = $this->testCase->getMockBuilder( 'Skins\Chameleon\ComponentFactory' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$factory->expects( $this->testCase->any() )
+			->method( 'getComponent' )
+			->will( $this->testCase->returnValue( $this->getComponentStub() ) );
+
+
+		return $factory;
 
 	}
 

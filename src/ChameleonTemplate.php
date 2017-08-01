@@ -78,6 +78,8 @@ class ChameleonTemplate extends BaseTemplate {
 	 * @param int         $indent
 	 * @param string      $htmlClassAttribute
 	 *
+	 * @deprecated since 1.6. Use getSkin()->getComponentFactory()->getComponent()
+	 *
 	 * @throws \MWException
 	 * @return \Skins\Chameleon\Components\Container
 	 */

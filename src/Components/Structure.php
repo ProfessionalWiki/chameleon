@@ -82,6 +82,7 @@ class Structure extends Component {
 
 				foreach ( $children as $child ) {
 					if ( is_a( $child, 'DOMElement' ) ) {
+						//FIXME: ChameleonTemplate::getComponent is deprecated.
 						$this->subcomponents[ ] = $this->getSkinTemplate()->getComponent( $child, $this->getIndent() + 1 );
 					}
 				}

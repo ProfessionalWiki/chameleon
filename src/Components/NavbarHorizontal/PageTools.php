@@ -82,54 +82,42 @@ class PageTools extends Component {
 	}
 
 	/**
-	 * @param $pageTools
+	 * @param GenPageTools $pageTools
 	 * @return string
 	 */
 	protected function getEditLinkHtml( $pageTools ) {
 
 		$pageToolsStructure = $pageTools->getPageToolsStructure();
 
-		if ( array_key_exists( 'views', $pageToolsStructure ) &&
-			array_key_exists( 'sfgRenameEditTabs', $GLOBALS ) &&
-			array_key_exists( 'formedit', $pageToolsStructure[ 'views' ] ) && // SemanticForms 3.5+
-			$GLOBALS[ 'sfgRenameEditTabs' ] === true
+        if ( ! array_key_exists( 'views', $pageToolsStructure ) ) {
+            return '';
+        }
 
-		) {
+		if ( array_key_exists( 'sfgRenameEditTabs', $GLOBALS ) && $GLOBALS[ 'sfgRenameEditTabs' ] === true ||
+            array_key_exists( 'wgPageFormsRenameEditTabs', $GLOBALS ) && $GLOBALS[ 'wgPageFormsRenameEditTabs' ] === true ) {
 
-			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'formedit' );
-			return $editLinkHtml;
+            if ( array_key_exists( 'formedit', $pageToolsStructure[ 'views' ] ) ) {// SemanticForms 3.5+, PageForms 4.0+
+                return $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'formedit' );
+    		} elseif ( array_key_exists( 'form_edit', $pageToolsStructure[ 'views' ] ) ) { // SemanticForms <3.5
+                return $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'form_edit' );
+            }
 
-		} elseif ( array_key_exists( 'views', $pageToolsStructure ) &&
-			array_key_exists( 'sfgRenameEditTabs', $GLOBALS ) &&
-			array_key_exists( 'form_edit', $pageToolsStructure[ 'views' ] ) && // SemanticForms <3.5
-			$GLOBALS[ 'sfgRenameEditTabs' ] === true
+        } elseif ( array_key_exists( 've-edit', $pageToolsStructure[ 'views' ] ) ) {
 
-		) {
+            return $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 've-edit' );
 
-			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'form_edit' );
-			return $editLinkHtml;
+		} elseif ( array_key_exists( 'edit', $pageToolsStructure[ 'views' ] ) ) {
 
-		} elseif ( array_key_exists( 'views', $pageToolsStructure ) &&
-			array_key_exists( 've-edit', $pageToolsStructure[ 'views' ] )
-		) {
-
-			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 've-edit' );
-			return $editLinkHtml;
-
-		} elseif ( array_key_exists( 'views', $pageToolsStructure ) &&
-			array_key_exists( 'edit', $pageToolsStructure[ 'views' ] )
-		) {
-
-			$editLinkHtml = $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'edit' );
-			return $editLinkHtml;
+            return $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'edit' );
 
 		}
+
 		return '';
 	}
 
 	/**
-	 * @param $pageTools
-	 * @param $editActionId
+	 * @param GenPageTools $pageTools
+	 * @param string $editActionId
 	 *
 	 * @return string
 	 */

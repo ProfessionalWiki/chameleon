@@ -89,27 +89,15 @@ class PageTools extends Component {
 
 		$pageToolsStructure = $pageTools->getPageToolsStructure();
 
-        if ( ! array_key_exists( 'views', $pageToolsStructure ) ) {
-            return '';
-        }
+		if ( ! array_key_exists( 'views', $pageToolsStructure ) ) {
+			return '';
+		}
 
-		if ( array_key_exists( 'sfgRenameEditTabs', $GLOBALS ) && $GLOBALS[ 'sfgRenameEditTabs' ] === true ||
-            array_key_exists( 'wgPageFormsRenameEditTabs', $GLOBALS ) && $GLOBALS[ 'wgPageFormsRenameEditTabs' ] === true ) {
+		foreach ( $this->getReplaceableEditActionIds() as $id ) {
 
-            if ( array_key_exists( 'formedit', $pageToolsStructure[ 'views' ] ) ) {// SemanticForms 3.5+, PageForms 4.0+
-                return $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'formedit' );
-    		} elseif ( array_key_exists( 'form_edit', $pageToolsStructure[ 'views' ] ) ) { // SemanticForms <3.5
-                return $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'form_edit' );
-            }
-
-        } elseif ( array_key_exists( 've-edit', $pageToolsStructure[ 'views' ] ) ) {
-
-            return $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 've-edit' );
-
-		} elseif ( array_key_exists( 'edit', $pageToolsStructure[ 'views' ] ) ) {
-
-            return $this->getLinkAndRemoveFromPageToolStructure( $pageTools, 'edit' );
-
+			if ( array_key_exists( $id, $pageToolsStructure[ 'views' ] ) ) {
+				return $this->getLinkAndRemoveFromPageToolStructure( $pageTools, $id );
+			}
 		}
 
 		return '';
@@ -150,6 +138,22 @@ class PageTools extends Component {
 		$pageTools->setRedundant( $editActionId );
 
 		return $editLinkHtml;
+	}
+
+	/**
+	 * @return string[]
+	 */
+	protected function getReplaceableEditActionIds() {
+
+		$editAcionIds = array( 've-edit', 'edit' );
+
+		if ( array_key_exists( 'sfgRenameEditTabs', $GLOBALS ) && $GLOBALS[ 'sfgRenameEditTabs' ] === true ||
+			array_key_exists( 'wgPageFormsRenameEditTabs', $GLOBALS ) && $GLOBALS[ 'wgPageFormsRenameEditTabs' ] === true ) {
+
+			$editAcionIds = array_merge( array( 'formedit', 'form_edit' ), $editAcionIds );
+		}
+
+		return $editAcionIds;
 	}
 
 

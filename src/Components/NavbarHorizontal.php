@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2015, Stephan Gambke
+ * @copyright 2013 - 2017, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 
 namespace Skins\Chameleon\Components;
 
-use Hooks;
+use DOMElement;
 use Skins\Chameleon\IdRegistry;
 
 /**
@@ -177,12 +177,12 @@ class NavbarHorizontal extends Component {
 	}
 
 	/**
-	 * @param \DOMElement $node
+	 * @param DOMElement $node
 	 * @param $elements
 	 */
 	protected function buildAndCollectNavBarElementFromDomElement( $node, &$elements ) {
 
-		if ( is_a( $node, 'DOMElement' ) && $node->tagName === 'component' && $node->hasAttribute( 'type' ) ) {
+		if ( $node instanceof DOMElement && $node->tagName === 'component' && $node->hasAttribute( 'type' ) ) {
 
 			$position = $node->getAttribute( 'position' );
 
@@ -198,7 +198,7 @@ class NavbarHorizontal extends Component {
 
 			$elements[ $position ][ ] = $html;
 
-		} else {
+		// } else {
 			// TODO: Warning? Error?
 		}
 	}

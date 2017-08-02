@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2015, Stephan Gambke
+ * @copyright 2013 - 2017, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -25,6 +25,7 @@
  */
 
 namespace Skins\Chameleon\Menu;
+use Message;
 
 /**
  * Class MenuFactory
@@ -36,7 +37,7 @@ namespace Skins\Chameleon\Menu;
 class MenuFactory {
 
 	/**
-	 * @param \Message|string|string[] $message
+	 * @param Message|string|string[] $message
 	 * @param bool                     $forContent
 	 *
 	 * @throws \MWException
@@ -46,10 +47,10 @@ class MenuFactory {
 	public function getMenuFromMessage( $message, $forContent = false ) {
 
 		if ( is_string( $message ) || is_array( $message ) ) {
-			$message = \Message::newFromKey( $message );
+			$message = Message::newFromKey( $message );
 		}
 
-		$this->assert( is_a( $message, '\\Message' ), 'String, array of strings or Message object expected.', $message );
+		$this->assert( $message instanceof Message, 'String, array of strings or Message object expected.', $message );
 
 		if ( $forContent ) {
 			$message = $message->inContentLanguage();

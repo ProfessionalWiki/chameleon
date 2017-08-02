@@ -64,6 +64,7 @@ function libxml_display_errors() {
 	libxml_clear_errors();
 }
 
+// FIXME: WTF? Move into validateFile()?
 libxml_use_internal_errors( true );
 
 function validateFile( $filename ) {

@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2017, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -25,6 +25,7 @@
  */
 
 namespace Skins\Chameleon\Components;
+use DOMElement;
 
 /**
  * The Structure class.
@@ -76,14 +77,13 @@ class Structure extends Component {
 
 			$domElement = $this->getDomElement();
 
-			if ( $domElement !== null && is_a( $domElement, 'DomElement' ) ) {
+			if ( $domElement !== null && $domElement instanceof DOMElement ) {
 
 				$children = $this->getDomElement()->childNodes;
 
 				foreach ( $children as $child ) {
-					if ( is_a( $child, 'DOMElement' ) ) {
-						//FIXME: ChameleonTemplate::getComponent is deprecated.
-						$this->subcomponents[ ] = $this->getSkinTemplate()->getComponent( $child, $this->getIndent() + 1 );
+					if ( $child instanceof DOMElement ) {
+						$this->subcomponents[] = $this->getSkin()->getComponentFactory()->getComponent( $child, $this->getIndent() + 1 );
 					}
 				}
 

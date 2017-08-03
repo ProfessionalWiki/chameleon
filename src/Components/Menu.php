@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2017, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -26,6 +26,7 @@
 
 namespace Skins\Chameleon\Components;
 
+use Sanitizer;
 use Skins\Chameleon\Menu\MenuFactory;
 
 /**
@@ -44,49 +45,52 @@ class Menu extends Component {
 	 */
 	public function getHtml() {
 
-		$element = $this->getDomElement();
-
-		if ( $element === null ){
+		if ( $this->getDomElement() === null ) {
 			return '';
 		}
 
-		$msgKey = $element->getAttribute( 'message' );
+		$menu = $this->getMenu();
+
+		$menu->setMenuItemFormatter( function ( $href, $text, $depth, $subitems ) {
+			$href = Sanitizer::cleanUrl( $href );
+			$text = htmlspecialchars( $text );
+			if ( $depth === 1 && !empty( $subitems ) ) {
+				return "<li class=\"dropdown\"><a class=\"dropdown-toggle\" href=\"#\"  data-toggle=\"dropdown\">$text<b class=\"caret\"></b></a>$subitems</li>";
+			} else {
+				return "<li><a href=\"$href\">$text</a>$subitems</li>";
+			}
+		} );
+
+		$menu->setItemListFormatter( function ( $rawItemsHtml, $depth ) {
+			if ( $depth === 0 ) {
+				return $rawItemsHtml;
+			} elseif ( $depth === 1 ) {
+				return "<ul class=\"dropdown-menu\">$rawItemsHtml</ul>";
+			} else {
+				return "<ul>$rawItemsHtml</ul>";
+			}
+
+		} );
+
+		return $menu->getHtml();
+	}
+
+	/**
+	 * @return \Skins\Chameleon\Menu\Menu
+	 */
+	public function getMenu() {
+
+		$domElement = $this->getDomElement();
+		$msgKey = $domElement->getAttribute( 'message' );
 
 		$menuFactory = new MenuFactory();
 
 		if ( empty( $msgKey ) ) {
-			$text = $element->textContent;
-			$menu = $menuFactory->getMenuFromMessageText( $text );
+			return $menuFactory->getMenuFromMessageText( $domElement->textContent );
 		} else {
-			$menu = $menuFactory->getMenuFromMessage( $msgKey );
+			return $menuFactory->getMenuFromMessage( $msgKey );
 
 		}
 
-		$menu->setMenuItemFormatter(
-			function ( $href, $text, $depth, $subitems ) {
-				$href = \Sanitizer::cleanUrl( $href );
-				$text = htmlspecialchars( $text );
-				if ( $depth === 1 && !empty( $subitems ) ) {
-					return "<li class=\"dropdown\"><a class=\"dropdown-toggle\" href=\"#\"  data-toggle=\"dropdown\">$text<b class=\"caret\"></b></a>$subitems</li>";
-				} else {
-					return "<li><a href=\"$href\">$text</a>$subitems</li>";
-				}
-			}
-		);
-
-		$menu->setItemListFormatter(
-			function ( $rawItemsHtml, $depth ) {
-				if ( $depth === 0 ) {
-					return $rawItemsHtml;
-				} elseif ( $depth === 1 ) {
-					return "<ul class=\"dropdown-menu\">$rawItemsHtml</ul>";
-				} else {
-					return "<ul>$rawItemsHtml</ul>";
-				}
-
-			}
-		);
-
-		return $menu->getHtml();
 	}
 }

@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2016, Stephan Gambke
+ * @copyright 2013 - 2017, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -52,15 +52,7 @@ class NavMenu extends Component {
 			)
 		);
 
-		$msg = \Message::newFromKey( 'skin-chameleon-navmenu-flatten' );
-
-		if ( $msg->exists() ) {
-			$flatten = array_map( 'trim', explode( ';', $msg->plain() ) );
-		} elseif ( $this->getDomElement() !== null ) {
-			$flatten = array_map( 'trim', explode( ';', $this->getDomElement()->getAttribute( 'flatten' ) ) );
-		} else {
-			$flatten = array();
-		}
+		$flatten = $this->getMenusToBeFlattened();
 
 		// create a dropdown for each sidebar box
 		foreach ( $sidebar as $menuName => $menuDescription ) {
@@ -74,22 +66,24 @@ class NavMenu extends Component {
 	 * @return bool
 	 */
 	private function showLanguages() {
-		return $this->getDomElement() !== null && filter_var( $this->getDomElement()->getAttribute( 'showLanguages' ), FILTER_VALIDATE_BOOLEAN );
+		return $this->getDomElement() !== null &&
+		       filter_var( $this->getDomElement()->getAttribute( 'showLanguages' ), FILTER_VALIDATE_BOOLEAN );
 	}
 
 	/**
 	 * @return bool
 	 */
 	private function showTools() {
-		return $this->getDomElement() !== null && filter_var( $this->getDomElement()->getAttribute( 'showTools' ), FILTER_VALIDATE_BOOLEAN );
+		return $this->getDomElement() !== null &&
+		       filter_var( $this->getDomElement()->getAttribute( 'showTools' ), FILTER_VALIDATE_BOOLEAN );
 	}
 
 	/**
 	 * Create a single dropdown
 	 *
-	 * @param string  $menuName
+	 * @param string $menuName
 	 * @param mixed[] $menuDescription
-	 * @param bool    $flatten
+	 * @param bool $flatten
 	 *
 	 * @return string
 	 */
@@ -108,9 +102,9 @@ class NavMenu extends Component {
 
 		} else {
 
-			$ret .= $this->buildDropdownOpeningTags( $menuDescription )
-				. $this->buildMenuItemsForDropdownMenu( $menuDescription, 2 )
-				. $this->buildDropdownClosingTags();
+			$ret .= $this->buildDropdownOpeningTags( $menuDescription ) .
+			        $this->buildMenuItemsForDropdownMenu( $menuDescription, 2 ) .
+			        $this->buildDropdownClosingTags();
 
 
 		}
@@ -120,7 +114,7 @@ class NavMenu extends Component {
 
 	/**
 	 * @param mixed[] $menuDescription
-	 * @param int     $indent
+	 * @param int $indent
 	 *
 	 * @return string
 	 */
@@ -132,11 +126,12 @@ class NavMenu extends Component {
 			$menuitems = '';
 			$this->indent( $indent );
 
-			foreach ( $menuDescription[ 'content' ] as $key => $item ) {
+			foreach ( $menuDescription['content'] as $key => $item ) {
 				$menuitems .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
 			}
 
-			$this->indent( -$indent );
+			$this->indent( - $indent );
+
 			return $menuitems;
 
 		} else {
@@ -150,7 +145,7 @@ class NavMenu extends Component {
 	 * @return bool
 	 */
 	protected function hasSubmenuItems( $menuDescription ) {
-		return is_array( $menuDescription[ 'content' ] ) && count( $menuDescription[ 'content' ] ) > 0;
+		return is_array( $menuDescription['content'] ) && count( $menuDescription['content'] ) > 0;
 	}
 
 	/**
@@ -179,13 +174,12 @@ class NavMenu extends Component {
 		$ret = $this->indent() . \Html::openElement( 'li',
 				array(
 					'class' => 'dropdown',
-					'title' => Linker::titleAttrib( $menuDescription[ 'id' ] )
-				)
-			);
+					'title' => Linker::titleAttrib( $menuDescription['id'] ),
+				) );
 
 		// add the dropdown toggle
 		$ret .= $this->indent( 1 ) . '<a href="#" class="dropdown-toggle" data-toggle="dropdown">' .
-			htmlspecialchars( $menuDescription[ 'header' ] ) . ' <b class="caret"></b></a>';
+		        htmlspecialchars( $menuDescription['header'] ) . ' <b class="caret"></b></a>';
 
 		// open list of dropdown menu items
 		$ret .= $this->indent() .
@@ -202,9 +196,26 @@ class NavMenu extends Component {
 	 * @return string
 	 */
 	protected function buildDropdownClosingTags() {
-		return
-			$this->indent() . '</ul>' .
-			$this->indent( -1 ) . '</li>';
+		return $this->indent() . '</ul>' . $this->indent( - 1 ) . '</li>';
+	}
+
+	/**
+	 * @return string[]
+	 */
+	public function getMenusToBeFlattened() {
+		$msg = \Message::newFromKey( 'skin-chameleon-navmenu-flatten' );
+
+		if ( $msg->exists() ) {
+			$flatten = array_map( 'trim', explode( ';', $msg->plain() ) );
+		} elseif ( $this->getDomElement() !== null ) {
+			$flatten =
+				array_map( 'trim',
+					explode( ';', $this->getDomElement()->getAttribute( 'flatten' ) ) );
+		} else {
+			$flatten = array();
+		}
+
+		return $flatten;
 	}
 
 }

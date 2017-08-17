@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Khaled"
+			"Khaled",
+			"ديفيد"
 		]
 	},
+	"skinname-chameleon": "حرباء",
 	"chameleon-desc": "تصميم الحرباء",
 	"chameleon-loggedin": "تم تسجيل دخولك كـ $1.",
 	"chameleon-notloggedin": "لم تسجل الدخول.",

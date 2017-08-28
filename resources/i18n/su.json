@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kandar"
+			"Kandar",
+			"Uchup19"
 		]
 	},
+	"skinname-chameleon": "Londok",
 	"chameleon-desc": "Kulit Londok.",
 	"chameleon-loggedin": "Anjeun asup log salaku $1.",
 	"chameleon-notloggedin": "Anjeun can asup log",

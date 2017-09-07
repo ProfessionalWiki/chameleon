@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joedalton"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "Temaet Chameleon",
+	"chameleon-loggedin": "Du er logget ind som $1.",
+	"chameleon-notloggedin": "Du er ikke logget ind.",
+	"chameleon-newmessages": "Du har nye beskeder.",
+	"chameleon-nonewmessages": "Du har ingen nye beskeder."
+}

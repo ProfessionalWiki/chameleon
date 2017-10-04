@@ -37,9 +37,23 @@ use Skins\Chameleon\ChameleonTemplate;
  */
 class Grid extends Container {
 
+	const ATTR_MODE = 'mode';
+	const MODE_FIXEDWIDTH = 'fixedwidth';
+	const MODE_FLUID = 'fluid';
+
 	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
 
 		parent::__construct( $template, $domElement, $indent );
-		$this->addClasses( 'container' );
+		$containerClass = 'container';
+		if( $this->isFluidMode() ) {
+			$containerClass = 'container-fluid';
+		}
+		$this->addClasses( $containerClass );
 	}
+
+	protected function isFluidMode() {
+		return $this->getAttribute( self::ATTR_MODE, self::MODE_FIXEDWIDTH )
+			=== self::MODE_FLUID;
+	}
+
 }

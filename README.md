@@ -7,6 +7,7 @@
 [![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/d/total.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 
 <img src='https://upload.wikimedia.org/wikipedia/mediawiki/thumb/3/31/Chameleon.svg/220px-Chameleon.svg.png' style='float:left;' align="left" title='Chameleon Skin Logo'>
+
 Chameleon is a highly customizable [MediaWiki][mw] skin that uses [Twitter
 Bootstrap 3][twbs].
 

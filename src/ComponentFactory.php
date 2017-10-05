@@ -237,10 +237,6 @@ class ComponentFactory {
 			$className = $description->getAttribute( 'type' );
 			$parent = $description->parentNode;
 
-			if ( class_exists( $className ) ) {
-				return $className;
-			}
-
 			if ( $parent instanceof DOMElement && $parent->hasAttribute( 'type' ) ) {
 				$fullClassName = join(
 					'\\',
@@ -256,7 +252,12 @@ class ComponentFactory {
 				}
 			}
 
-			return join( '\\', array( self::NAMESPACE_HIERARCHY, $className ) );
+			$chameleonClassName = join( '\\', array( self::NAMESPACE_HIERARCHY, $className ) );
+			if ( !class_exists( $chameleonClassName ) ) {
+				return $className;
+			}
+
+			return $chameleonClassName;
 		}
 
 		return self::NAMESPACE_HIERARCHY . 'Container';

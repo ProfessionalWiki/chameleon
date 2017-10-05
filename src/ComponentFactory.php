@@ -159,7 +159,6 @@ class ComponentFactory {
 	 */
 	protected function mapDescriptionToClassName( DOMElement $description ) {
 
-
 		$nodeName = strtolower( $description->nodeName );
 
 		$mapOfComponentsToClassNames = array(
@@ -235,29 +234,32 @@ class ComponentFactory {
 	protected function mapComponentDescriptionToClassName( DOMElement $description ) {
 
 		if ( $description->hasAttribute( 'type' ) ) {
-
 			$className = $description->getAttribute( 'type' );
-
 			$parent = $description->parentNode;
 
-			if (  $parent instanceof DOMElement && $parent->hasAttribute( 'type' ) ) {
-
-				$fullClassName = join( '\\', array( self::NAMESPACE_HIERARCHY, $parent->getAttribute( 'type' ), $className ) );
+			if ( $parent instanceof DOMElement && $parent->hasAttribute( 'type' ) ) {
+				$fullClassName = join(
+					'\\',
+					array(
+						self::NAMESPACE_HIERARCHY,
+						$parent->getAttribute( 'type' ),
+						$className
+					)
+				);
 
 				if ( class_exists( $fullClassName ) ) {
-
 					return $fullClassName;
 				}
 			}
 
-			return join( '\\', array( self::NAMESPACE_HIERARCHY, $className ) );
+			$chameleonClassName = join( '\\', array( self::NAMESPACE_HIERARCHY, $className ) );
+			if ( !class_exists( $chameleonClassName ) ) {
+				return $className;
+			}
 
+			return $chameleonClassName;
 		}
 
 		return self::NAMESPACE_HIERARCHY . 'Container';
-
-
 	}
-
-
 }

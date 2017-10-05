@@ -205,11 +205,10 @@ abstract class Component {
 	}
 
 	protected function getAttribute( $attributeName, $default = null ) {
-		$attributeValue = $this->getDomElement()->getAttribute( $attributeName );
-		if( empty( $attributeValue ) ) {
+		if ( !$this->getDomElement()->hasAttribute( $attributeName ) ) {
 			return $default;
 		}
 
-		return $attributeValue;
+		return $this->getDomElement()->getAttribute( $attributeName );
 	}
 }

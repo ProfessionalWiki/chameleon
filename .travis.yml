@@ -34,8 +34,12 @@ matrix:
   include:
     - env: DBTYPE=mysql; MW=master
       php: 5.6
+    - env: DBTYPE=mysql; MW=1.27.3
+      php: 5.6
     - env: DBTYPE=mysql; MW=1.25.6
       php: 5.3
+      dist: precise
+      sudo: required
     - env: DBTYPE=sqlite; MW=1.22.1
       php: 5.5
 

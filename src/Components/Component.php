@@ -203,4 +203,12 @@ abstract class Component {
 
 		return "\n" . str_repeat( "\t", $this->mIndent );
 	}
+
+	protected function getAttribute( $attributeName, $default = null ) {
+		if ( !$this->getDomElement()->hasAttribute( $attributeName ) ) {
+			return $default;
+		}
+
+		return $this->getDomElement()->getAttribute( $attributeName );
+	}
 }

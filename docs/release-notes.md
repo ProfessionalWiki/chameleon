@@ -1,5 +1,15 @@
 ## Release Notes
 
+### Chameleon 1.6
+
+Released on ???
+
+Changes:
+* Grid: Add `mode` attribute. This allows to switch the grid to fluid mode. ([Robert Vogel (HalloWelt)](https://github.com/osnard)
+
+Fixes:
+* ...
+
 ### Chameleon 1.5
 
 Released on 23-Nov-2016

@@ -81,7 +81,16 @@ recommended.
 ```
 
 #### Attributes:
-None.
+* `mode`:
+  * Allowed values: String (`fixedwidth`|`fluid`)
+  * Default: `fixedwidth`
+  * Optional.
+
+  The number of columns this cell shall span. All cells of a row should together
+  span 12 columns. If more than 12 columns are placed within a single row, each
+  group of extra columns will, as one unit, wrap onto a new line.
+
+
 
 #### Allowed Parent Elements:
 * [Structure](#structure)

@@ -204,11 +204,19 @@ abstract class Component {
 		return "\n" . str_repeat( "\t", $this->mIndent );
 	}
 
+	/**
+	 * @param string $attributeName
+	 * @param null | string $default
+	 * @return null | string
+	 */
 	protected function getAttribute( $attributeName, $default = null ) {
-		if ( !$this->getDomElement()->hasAttribute( $attributeName ) ) {
-			return $default;
+
+		$element = $this->getDomElement();
+
+		if ( $element !== null && $element->hasAttribute( $attributeName ) ) {
+			return $element->getAttribute( $attributeName );
 		}
 
-		return $this->getDomElement()->getAttribute( $attributeName );
+		return $default;
 	}
 }

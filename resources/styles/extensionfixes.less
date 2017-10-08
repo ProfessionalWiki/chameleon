@@ -3,7 +3,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2016, Stephan Gambke
+ * @copyright 2013 - 2017, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -41,6 +41,63 @@
 	.navbar.navbar-fixed-top, .navbar + .sticky-wrapper {
 		~ * .ve-ui-toolbar-floating>.oo-ui-toolbar-bar {
 			transform: translateY(@navbar-height);
+		}
+	}
+
+	/* Extension Echo */
+	#pt-notifications-alert, #pt-notifications-notice {
+
+		display: -ms-inline-grid;
+		display: inline-grid;
+
+		.mw-echo-notifications-badge {
+
+		@badge-offscreen-offset: 1000px;
+
+			// Hide the text, but keep accessible for screen-readers
+			// Later we put the icons back onscreen with an opposite offset
+			top: -@badge-offscreen-offset;
+
+			// Background icon
+			&:before {
+				// Bring it back onscreen
+				top: @badge-offscreen-offset;
+			}
+
+			// Counter
+			&:after {
+				// Bring it back onscreen
+				top: @badge-offscreen-offset + 9px;
+			}
+
+		}
+	}
+
+	.navbar-tools {
+		#pt-notifications-alert, #pt-notifications-notice {
+
+			display: inherit;
+
+			.mw-echo-notifications-badge {
+
+				width: auto;
+				height: auto;
+				top: auto;
+
+				&-dimmed {
+					opacity: 1;
+				}
+
+				// Reset Background icon & Counter
+				//
+				&:before, &:after {
+					content: inherit;
+				}
+
+				&.mw-echo-notifications-badge-all-read {
+					opacity: 1;
+				}
+			}
 		}
 	}
 }

@@ -65,9 +65,13 @@ class SearchBar extends Component {
 			$this->indent( 1 ) . '<input type="hidden" name="title" value="' . $this->getSkinTemplate()->data[ 'searchtitle' ] . '" />' .
 			$this->indent() . '<div class="input-group">' .
 			$this->indent( 1 ) . $this->getSkinTemplate()->makeSearchInput( array( 'id' => IdRegistry::getRegistry()->getId( 'searchInput' ), 'type' => 'text', 'class' => 'form-control' ) ) .
-			$this->indent() . '<div class="input-group-btn">' .
-			$this->indent( 1 ) . $this->getSearchButton( 'go' ) .
-			$this->indent( 0 ) . $this->getSearchButton( 'fulltext' ) .
+			$this->indent() . '<div class="input-group-btn">';
+
+		$this->indent( 1 );
+
+		$ret .=
+			$this->getGoButton() .
+			$this->getSearchButton() .
 			$this->indent( -1 ) . '</div>' .
 			$this->indent( -1 ) . '</div>' .
 			$this->indent( -1 ) . '</form>' .
@@ -77,46 +81,64 @@ class SearchBar extends Component {
 	}
 
 	/**
-	 * This method basically replicates SkinTemplate::makeSearchButton, but uses buttons instead of inputs to ensure
-	 * proper styling by Bootstrap
-	 *
-	 * @param string $mode 'go' or 'fulltext', optional, default='fulltext'
-	 *
 	 * @return string
 	 */
-	private function getSearchButton( $mode = 'fulltext' ) {
+	private function getGoButton() {
 
-		if ( $mode === 'go' ) {
+		$valueAttr = 'searcharticle';
+		$idAttr = 'searchGoButton';
+		$nameAttr = 'go';
+		$glyphicon = ( $this->getAttribute( 'buttons' ) === 'go' ? 'search' : 'share-alt' );
 
-			$buttonAttrs = array(
-				'value' => $this->getSkinTemplate()->translator->translate( 'searcharticle' ),
-				'id'    => IdRegistry::getRegistry()->getId( 'searchGoButton' ),
-				'name'  => 'go',
-			);
-
-			$glyphicon = 'share-alt';
-
-		} else {
-
-			$buttonAttrs = array(
-				'value' => $this->getSkinTemplate()->translator->translate( 'searchbutton' ),
-				'id'    => IdRegistry::getRegistry()->getId( 'mw-searchButton' ),
-				'name'  => 'fulltext',
-			);
-
-			$glyphicon = 'search';
-		}
-
-		$buttonAttrs = array_merge(
-			$buttonAttrs,
-			Linker::tooltipAndAccesskeyAttribs( "search-$mode" ),
-			array(
-				 'type'  => 'submit',
-				 'class' => $buttonAttrs[ 'id' ] . ' btn btn-default'
-			)
-		);
-
-		return \Html::rawElement( 'button', $buttonAttrs, '<span class="glyphicon glyphicon-' . $glyphicon . '"></span>' );
+		return $this->getButton( 'go', $valueAttr, $idAttr, $nameAttr, $glyphicon );
 	}
 
+	/**
+	 * @return string
+	 */
+	private function getSearchButton() {
+
+		$valueAttr = 'searchbutton';
+		$idAttr = 'mw-searchButton';
+		$nameAttr = 'fulltext';
+		$glyphicon = 'search';
+
+		return $this->getButton( 'search', $valueAttr, $idAttr, $nameAttr, $glyphicon );
+	}
+
+	/**
+	 * @param $valueAttr
+	 * @param $idAttr
+	 * @param $nameAttr
+	 * @param $glyphicon
+	 * @return string
+	 */
+	private function getButton( $button, $valueAttr, $idAttr, $nameAttr, $glyphicon ) {
+
+		if ( $this->shouldShowButton( $button ) ) {
+
+			$buttonAttrs = array(
+				'value' => $this->getSkinTemplate()->translator->translate( $valueAttr ),
+				'id' => IdRegistry::getRegistry()->getId( $idAttr ),
+				'name' => $nameAttr,
+				'type' => 'submit',
+				'class' => $idAttr . ' btn btn-default'
+			);
+
+			$buttonAttrs = array_merge(
+				$buttonAttrs,
+				Linker::tooltipAndAccesskeyAttribs( "search-$nameAttr" )
+			);
+
+			return $this->indent() . \Html::rawElement( 'button', $buttonAttrs, '<span class="glyphicon glyphicon-' . $glyphicon . '"></span>' );
+		}
+
+		return '';
+	}
+
+	private function shouldShowButton( $button ) {
+		$buttonsAttribute = $this->getAttribute( 'buttons' );
+		return $button === 'go' && $buttonsAttribute !== 'search' ||
+			$button === 'search' && $buttonsAttribute !== 'go';
+	}
 }

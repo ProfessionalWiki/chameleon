@@ -2,7 +2,7 @@
 <!--
 This file is part of the MediaWiki skin Chameleon.
 
-@copyright 2013 - 2016, Stephan Gambke
+@copyright 2013 - 2017, Stephan Gambke
 @license   GNU General Public License, version 3 (or any later version)
 
 The Chameleon skin is free software: you can redistribute it and/or modify it
@@ -31,7 +31,8 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 	<a:documentation>
 		Schema for Chameleon layout files
-		Copyright 2013 - 2016, Stephan Gambke
+		Version 1.1
+		Copyright 2013 - 2017, Stephan Gambke
 		GNU General Public License, version 3 (or any later version)
 	</a:documentation>
 
@@ -275,6 +276,16 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<attribute name="type">
 			<value>SearchBar</value>
 		</attribute>
+
+		<optional>
+			<attribute name="buttons" a:defaultValue="search go">
+				<choice>
+					<value>search</value>
+					<value>go</value>
+					<value>search go</value>
+				</choice>
+			</attribute>
+		</optional>
 	</define>
 
 	<define name="Component" combine="choice">

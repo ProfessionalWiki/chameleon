@@ -655,6 +655,13 @@ The search bar.
   
   The class (or classes) that should be assigned to the top-level html element
   of this component.
+  
+* `buttons`:
+  * Allowed values: String (`search`|`go`|`search go`)
+  * Default: `search go`
+  * Optional.
+  
+  The buttons that should be shown with the search bar.
 
 #### Allowed Parent Elements:
 * [Structure](#structure)

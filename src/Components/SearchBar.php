@@ -117,13 +117,13 @@ class SearchBar extends Component {
 
 		if ( $this->shouldShowButton( $button ) ) {
 
-			$buttonAttrs = [
+			$buttonAttrs = array(
 				'value' => $this->getSkinTemplate()->translator->translate( $valueAttr ),
 				'id' => IdRegistry::getRegistry()->getId( $idAttr ),
 				'name' => $nameAttr,
 				'type' => 'submit',
 				'class' => $idAttr . ' btn btn-default'
-			];
+			);
 
 			$buttonAttrs = array_merge(
 				$buttonAttrs,

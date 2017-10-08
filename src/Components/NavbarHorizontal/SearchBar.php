@@ -27,7 +27,7 @@
 namespace Skins\Chameleon\Components\NavbarHorizontal;
 
 use Skins\Chameleon\Components\Component;
-use Skins\Chameleon\Components\SearchBar as GenSearchBar;
+use Skins\Chameleon\Components\SearchBar as GenericSearchBar;
 
 /**
  * The NavbarHorizontal\PersonalTools class.
@@ -45,7 +45,7 @@ class SearchBar extends Component {
 	 */
 	public function getHtml() {
 
-		$search = new GenSearchBar( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );
+		$search = new GenericSearchBar( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );
 		$search->addClasses( 'navbar-form' );
 
 		return $search->getHtml();

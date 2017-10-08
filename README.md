@@ -11,7 +11,7 @@
 Chameleon is a highly customizable [MediaWiki][mw] skin that uses [Twitter
 Bootstrap 3][twbs].
 
-It currently provides four different layouts to chose from. The standard layout
+It currently provides five different layouts to chose from. The standard layout
 features a horizontal navigation menu with dropdowns at the top and a horizontal
 menu with dropups for the language links at the bottom. Each layout is defined
 in an XML file and as such easily adaptable to your needs.

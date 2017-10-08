@@ -2,13 +2,28 @@
 
 ### Chameleon 1.6
 
-Released on ???
+Released on 08-Oct-2017
 
 Changes:
-* Grid: Add `mode` attribute. This allows to switch the grid to fluid mode. ([Robert Vogel (HalloWelt)](https://github.com/osnard)
+* Grid: Add `mode` attribute. This allows to switch the grid to fluid mode.
+  ([Robert Vogel (HalloWelt)](https://github.com/osnard)
+* Allow full qualified class names as component type. This allows to use custom
+  components. ([Robert Vogel (HalloWelt)](https://github.com/osnard)
+* Searchbar: Add 'buttons' attribute. This allows to hide one of the Searchbar
+  buttons. Allowed values are `search`, `go` and `search go`.
+* Initial integration of the Echo extension. Mostly styles fixes to avoid
+  breaking the skin.
+* Improve documentation
 
 Fixes:
-* ...
+* (#2) Fix font size and z-index of Echo popup
+* (#31) The Pencil button triggers "Edit with form" when
+  `$wgPageFormsRenameEditTabs` of PageForms is set
+* (#32) Sticky elements now appear on top of MW Indicators
+* (#34) Some MediaWiki styles (mw-headline and mw-body) interfered with
+  Bootstrap styles ([Dennis Groenewegen](https://github.com/D-Groenewegen))
+* (#35) Subcomponents of NavbarHorizontal have dedicated classes now and use
+  the central component factory now. This allows to us Modifications on them.
 
 ### Chameleon 1.5
 

@@ -72,6 +72,16 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<a:documentation></a:documentation>
 			<ref name="Component.CommonContent"/>
 
+
+			<optional>
+				<attribute name="mode" a:defaultValue="fixedwidth">
+					<choice>
+						<value>fixedwidth</value>
+						<value>fluid</value>
+					</choice>
+				</attribute>
+			</optional>
+
 			<zeroOrMore>
 				<ref name="Row"/>
 			</zeroOrMore>

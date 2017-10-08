@@ -86,11 +86,8 @@ recommended.
   * Default: `fixedwidth`
   * Optional.
 
-  The number of columns this cell shall span. All cells of a row should together
-  span 12 columns. If more than 12 columns are placed within a single row, each
-  group of extra columns will, as one unit, wrap onto a new line.
-
-
+  Use `fixedwidth` for a responsive fixed width layout. Use `fluid` for a full
+  width layout, spanning the entire width of the viewport.
 
 #### Allowed Parent Elements:
 * [Structure](#structure)

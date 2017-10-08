@@ -1,7 +1,7 @@
 #####
 # This file is part of the MediaWiki skin Chameleon.
 #
-# @copyright 2013 - 2016, Stephan Gambke, mwjames
+# @copyright 2013 - 2017, Stephan Gambke, mwjames
 # @license   GNU General Public License, version 3 (or any later version)
 #
 # The Chameleon skin is free software: you can redistribute it and/or modify
@@ -27,13 +27,12 @@
 language: php
 sudo: false
 
-env:
-  - THENEEDFORTHIS=FAIL
-
 matrix:
   include:
     - env: DBTYPE=mysql; MW=master
       php: 5.6
+    - env: DBTYPE=mysql; MW=1.29.1
+      php: 7.1
     - env: DBTYPE=mysql; MW=1.27.3
       php: 5.6
     - env: DBTYPE=mysql; MW=1.25.6
@@ -42,9 +41,6 @@ matrix:
       sudo: required
     - env: DBTYPE=sqlite; MW=1.22.1
       php: 5.5
-
-  exclude:
-    - env: THENEEDFORTHIS=FAIL
 
 script:
     - bash ./build/travis/build.sh

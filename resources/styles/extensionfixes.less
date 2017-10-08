@@ -26,7 +26,7 @@
 
 .skin-chameleon {
 
-	/* Extension VisualEditor */
+	/* >> Extension VisualEditor */
 	.ve-ui-toolbar, .ve-ui-debugBar, .oo-ui-processDialog-navigation {
 		&, &::before, &::after {
 			box-sizing: content-box;
@@ -43,8 +43,9 @@
 			transform: translateY(@navbar-height);
 		}
 	}
+	/* << Extension VisualEditor
 
-	/* Extension Echo */
+	/* >> Extension Echo */
 	#pt-notifications-alert, #pt-notifications-notice {
 
 		display: -ms-inline-grid;
@@ -100,4 +101,15 @@
 			}
 		}
 	}
+
+	.mw-echo-ui-notificationBadgeButtonPopupWidget > .oo-ui-popupWidget {
+
+		font-size: 1em;
+
+		.oo-ui-popupWidget-popup, .oo-ui-popupWidget-anchor {
+			z-index: 3; // Raise the Echo popup over the Searchbox
+		}
+	}
+	/* << Extension Echo */
+
 }

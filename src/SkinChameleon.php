@@ -86,7 +86,9 @@ class SkinChameleon extends SkinTemplate {
 	public function getComponentFactory() {
 
 		if ( ! isset( $this->componentFactory ) ) {
-			$this->componentFactory = new \Skins\Chameleon\ComponentFactory( $GLOBALS['egChameleonLayoutFile'] );
+			$this->componentFactory = new \Skins\Chameleon\ComponentFactory(
+				$this->getLayoutFilePath()
+			);
 		}
 
 		return $this->componentFactory;
@@ -105,7 +107,16 @@ class SkinChameleon extends SkinTemplate {
 	 * @return string
 	 */
 	public function getPageClasses( $title ) {
-		$layoutName = Sanitizer::escapeClass( 'layout-' . basename( $GLOBALS['egChameleonLayoutFile'], '.xml' ) );
+		$layoutFilePath = $this->getLayoutFilePath();
+		$layoutName = Sanitizer::escapeClass( 'layout-' . basename( $layoutFilePath, '.xml' ) );
 		return implode( ' ', array( parent::getPageClasses( $title ), $layoutName ) );
+	}
+
+	/**
+	 * Template method that can be overridden by subclasses
+	 * @return string Path to layout file
+	 */
+	protected function getLayoutFilePath() {
+		return $GLOBALS['egChameleonLayoutFile'];
 	}
 }

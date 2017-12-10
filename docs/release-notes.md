@@ -1,5 +1,14 @@
 ## Release Notes
 
+### Chameleon 1.6.1
+
+Not yet released.
+
+Fixes:
+* Create a stacking context on the main content to avoid elements with `z-index`
+  messing up the nav elements (e.g. being shown in front of a sticky navbar
+  instead of going behind it) 
+
 ### Chameleon 1.6
 
 Released on 08-Oct-2017

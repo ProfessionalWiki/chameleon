@@ -68,14 +68,13 @@ class PageTools extends Component {
 
 			if ( $pageToolsHtml !== '' ) {
 				$ret .=
-					$this->indent( 1 ) . '<li class="navbar-tools-tools dropdown">' .
+					$this->indent( $editLinkHtml !== '' ? 0 : 1 ) . '<li class="navbar-tools-tools dropdown">' .
 					$this->indent( 1 ) . '<a data-toggle="dropdown" class="dropdown-toggle" href="#" title="' . $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() . '" ><span>...</span></a>' .
 					$pageToolsHtml .
 					$this->indent( -1 ) . '</li>';
 			}
-
 			$ret .=
-				$this->indent( -1 ) . '</ul>' . "\n";
+				$this->indent( $editLinkHtml !== '' ? 0 : -1 ) . '</ul>' . "\n";
 		}
 
 		return $ret;
@@ -145,15 +144,15 @@ class PageTools extends Component {
 	 */
 	protected function getReplaceableEditActionIds() {
 
-		$editAcionIds = array( 've-edit', 'edit' );
+		$editActionIds = array( 've-edit', 'edit' );
 
 		if ( array_key_exists( 'sfgRenameEditTabs', $GLOBALS ) && $GLOBALS[ 'sfgRenameEditTabs' ] === true ||
 			array_key_exists( 'wgPageFormsRenameEditTabs', $GLOBALS ) && $GLOBALS[ 'wgPageFormsRenameEditTabs' ] === true ) {
 
-			$editAcionIds = array_merge( array( 'formedit', 'form_edit' ), $editAcionIds );
+			$editActionIds = array_merge( array( 'formedit', 'form_edit' ), $editActionIds );
 		}
 
-		return $editAcionIds;
+		return $editActionIds;
 	}
 
 

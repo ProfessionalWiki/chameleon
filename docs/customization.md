@@ -73,20 +73,24 @@ $egChameleonExternalStyleModules = array( $localPathToLESSFile1, $localPathToLES
 
 **Example:**
 
-To use the Amelia theme from [Bootswatch](http://bootswatch.com/) you could
+To use the Cyborg theme from [Bootswatch](http://bootswatch.com/3/) you could
 download the `variables.less` and the `bootswatch.less` file to your MediaWiki
-installation directory, rename them to `amelia-variables.less` and
-`amelia-bootswatch.less` and then add the following code to your
+installation directory, rename them to `cyborg-variables.less` and
+`cyborg-bootswatch.less` and then add the following code to your
 `LocalSettings.php`:
 
 ```php
 $egChameleonExternalStyleModules = array(
-    __DIR__ . '/amelia-variables.less' => $wgScriptPath,
-    __DIR__ . '/amelia-bootswatch.less' => $wgScriptPath,
+    __DIR__ . '/cyborg-variables.less' => $wgScriptPath,
+    __DIR__ . '/cyborg-bootswatch.less' => $wgScriptPath,
 );
 ```
 
-You can of course define your own LESS file too: Just place it in your MediaWiki installation directory and import it like shown above.
+You can of course define your own LESS file too: Just place it in your MediaWiki installation
+directory and import it like shown above.
+
+Remark: When downloading a theme from [Bootswatch](http://bootswatch.com/3/), make sure to
+choose one that is compatible with Bootstrap 3. Themes for Bootstrap 2 or Bootstrap 4 will not work.
 
 ### Changing existing LESS variables
 

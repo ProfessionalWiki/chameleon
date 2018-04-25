@@ -74,7 +74,7 @@ class SkinChameleon extends SkinTemplate {
 
 		$this->getComponentFactory()->setSkinTemplate( $tpl );
 
-		$tpl->setRef( 'skin', $this );
+		$tpl->set( 'skin', $this );
 		$this->addSkinModulesToOutput();
 
 		return $tpl;

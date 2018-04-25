@@ -118,7 +118,7 @@ class SearchBar extends Component {
 		if ( $this->shouldShowButton( $button ) ) {
 
 			$buttonAttrs = array(
-				'value' => $this->getSkinTemplate()->translator->translate( $valueAttr ),
+				'value' => $this->getSkinTemplate()->getSkin()->msg( $valueAttr ),
 				'id' => IdRegistry::getRegistry()->getId( $idAttr ),
 				'name' => $nameAttr,
 				'type' => 'submit',

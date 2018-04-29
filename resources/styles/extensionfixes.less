@@ -46,6 +46,12 @@
 	/* << Extension VisualEditor
 
 	/* >> Extension Echo */
+	.mw-echo-ui-overlay {
+
+		z-index: 3;
+
+	}
+
 	#pt-notifications-alert, #pt-notifications-notice {
 
 		display: -ms-inline-grid;
@@ -53,7 +59,7 @@
 
 		.mw-echo-notifications-badge {
 
-		@badge-offscreen-offset: 1000px;
+			@badge-offscreen-offset: 1000px;
 
 			// Hide the text, but keep accessible for screen-readers
 			// Later we put the icons back onscreen with an opposite offset
@@ -106,9 +112,6 @@
 
 		font-size: 1em;
 
-		.oo-ui-popupWidget-popup, .oo-ui-popupWidget-anchor {
-			z-index: 3; // Raise the Echo popup over the Searchbox
-		}
 	}
 	/* << Extension Echo */
 

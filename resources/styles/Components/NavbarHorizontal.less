@@ -27,6 +27,9 @@
 // if the navbar is in the first row (i.e. at the top of the page), but inside a
 // container (i.e. not a fixed head), add some margin at the top
 .navbar {
+
+	z-index: 1;
+
 	.container > *:first-child & {
 		margin-top: (@grid-gutter-width / 2);
 	}

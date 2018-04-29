@@ -31,8 +31,8 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 	<a:documentation>
 		Schema for Chameleon layout files
-		Version 1.1
-		Copyright 2013 - 2017, Stephan Gambke
+		Version 1.2
+		Copyright 2013 - 2018, Stephan Gambke
 		GNU General Public License, version 3 (or any later version)
 	</a:documentation>
 
@@ -339,6 +339,25 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<element name="component">
 			<a:documentation></a:documentation>
 			<ref name="PageTools.Content"/>
+			<ref name="NavbarHorizontal.Component.CommonContent"/>
+		</element>
+	</define>
+
+	<!-- PageTools -->
+	<define name="PageToolsAdaptable.Content">
+		<ref name="PageTools.Content"/>
+
+		<optional>
+			<attribute name="show">
+				<data type="string"/>
+			</attribute>
+		</optional>
+	</define>
+
+	<define name="NavbarHorizontal.Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="PageToolsAdaptable.Content"/>
 			<ref name="NavbarHorizontal.Component.CommonContent"/>
 		</element>
 	</define>

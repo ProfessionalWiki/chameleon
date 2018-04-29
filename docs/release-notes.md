@@ -1,13 +1,22 @@
 ## Release Notes
 
-### Chameleon 1.6.1
+### Chameleon 1.7
 
-Not yet released.
+Released on 29-Apr-2018
+
+Changes:
+* (#49) Allows skins that build on top of Chameleon to set a specific layout
+  file without the need to manipulate the global config variables.
+  ([Robert Vogel (HalloWelt)](https://github.com/osnard)
+* (#60) Add PageToolsAdaptable, an adaptable NavbarHorizontal/PageTools
+  component ([Tobias Oetterer](https://github.com/oetterer))
 
 Fixes:
 * Create a stacking context on the main content to avoid elements with `z-index`
   messing up the nav elements (e.g. being shown in front of a sticky navbar
-  instead of going behind it) 
+  instead of going behind it)
+* (#65) Fix z-index for Echo notifications
+* Remove usage of functions deprecated in MediaWiki 1.31
 
 ### Chameleon 1.6
 

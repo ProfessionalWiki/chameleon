@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file is part of the MediaWiki skin Chameleon.
+
+@copyright 2013 - 2017, Stephan Gambke
+@license   GNU General Public License, version 3 (or any later version)
+
+The Chameleon skin is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version.
+
+The Chameleon skin is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+details.
+
+You should have received a copy of the GNU General Public License along
+with this program. If not, see <http://www.gnu.org/licenses/>.
+
+@author Stephan Gambke
+@since 1.5
+@ingroup Skins
+-->
+<grammar
+		xmlns="http://relaxng.org/ns/structure/1.0"
+		xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+		ns="https://cmln.github.io/chameleon/schema/1.0/layout.rng"
+		datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+>
+
+	<a:documentation>
+		Schema for Chameleon layout files
+		Version 1.2
+		Copyright 2013 - 2018, Stephan Gambke
+		GNU General Public License, version 3 (or any later version)
+	</a:documentation>
+
+	<start>
+		<ref name="Structure"/>
+	</start>
+
+	<!-- Common content available for all Components -->
+	<define name="Component.CommonContent">
+		<optional>
+			<attribute name="class"/>
+		</optional>
+		<zeroOrMore>
+			<ref name="Modification"/>
+		</zeroOrMore>
+	</define>
+
+	<!-- Special Components -->
+
+	<define name="Structure">
+		<element name="structure">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<zeroOrMore>
+				<choice>
+					<ref name="Grid"/>
+					<ref name="Component"/>
+				</choice>
+			</zeroOrMore>
+
+		</element>
+	</define>
+
+	<define name="Grid">
+		<element name="grid">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+
+			<optional>
+				<attribute name="mode" a:defaultValue="fixedwidth">
+					<choice>
+						<value>fixedwidth</value>
+						<value>fluid</value>
+					</choice>
+				</attribute>
+			</optional>
+
+			<zeroOrMore>
+				<ref name="Row"/>
+			</zeroOrMore>
+
+		</element>
+	</define>
+
+	<define name="Row">
+		<element name="row">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<zeroOrMore>
+				<ref name="Cell"/>
+			</zeroOrMore>
+
+		</element>
+	</define>
+
+	<define name="Cell">
+		<element name="cell">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<optional>
+				<attribute name="span" a:defaultValue="1">
+					<data type="positiveInteger">
+						<param name="minInclusive">1</param>
+						<param name="maxInclusive">12</param>
+					</data>
+				</attribute>
+			</optional>
+
+			<zeroOrMore>
+				<choice>
+					<ref name="Row"/>
+					<ref name="Component"/>
+				</choice>
+			</zeroOrMore>
+
+		</element>
+	</define>
+
+
+	<!-- Components -->
+
+	<!-- Basic Component -->
+	<define name="Component">
+		<element name="component">
+			<a:documentation>Basic Component. If the `type` attribute is not set
+				or set to an unknown value, a `Container` component will be
+				inserted.
+			</a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<optional>
+				<attribute name="type"/>
+			</optional>
+
+		</element>
+	</define>
+
+	<!-- NavbarHorizontal -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<attribute name="type">
+				<value>NavbarHorizontal</value>
+			</attribute>
+
+			<optional>
+				<attribute name="fixed">
+					<ref name="BoolValues"/>
+				</attribute>
+			</optional>
+
+			<zeroOrMore>
+				<ref name="NavbarHorizontal.Component"/>
+			</zeroOrMore>
+		</element>
+	</define>
+
+	<define name="NavbarHorizontal.Component.CommonContent">
+		<optional>
+			<attribute name="position" a:defaultValue="left">
+				<choice>
+					<value>head</value>
+					<value>left</value>
+					<value>right</value>
+				</choice>
+			</attribute>
+
+		</optional>
+	</define>
+
+	<!-- NavMenu -->
+	<define name="NavMenu.Content">
+		<ref name="Component.CommonContent"/>
+
+		<attribute name="type">
+			<value>NavMenu</value>
+		</attribute>
+
+		<optional>
+			<attribute name="flatten"/>
+		</optional>
+
+		<optional>
+			<attribute name="showTools" a:defaultValue="no">
+				<ref name="BoolValues"/>
+			</attribute>
+		</optional>
+
+		<optional>
+			<attribute name="showLanguages" a:defaultValue="no">
+				<ref name="BoolValues"/>
+			</attribute>
+		</optional>
+	</define>
+
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="NavMenu.Content"/>
+		</element>
+	</define>
+
+	<define name="NavbarHorizontal.Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="NavMenu.Content"/>
+			<ref name="NavbarHorizontal.Component.CommonContent"/>
+		</element>
+	</define>
+
+	<!-- Logo -->
+	<define name="Logo.Content">
+		<ref name="Component.CommonContent"/>
+
+		<attribute name="type">
+			<value>Logo</value>
+		</attribute>
+
+		<optional>
+			<attribute name="addLink" a:defaultValue="yes">
+				<ref name="BoolValues"/>
+			</attribute>
+		</optional>
+	</define>
+
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Logo.Content"/>
+		</element>
+	</define>
+
+	<define name="NavbarHorizontal.Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Logo.Content"/>
+			<ref name="NavbarHorizontal.Component.CommonContent"/>
+		</element>
+	</define>
+
+	<!-- PersonalTools -->
+	<define name="PersonalTools.Content">
+		<ref name="Component.CommonContent"/>
+
+		<attribute name="type">
+			<value>PersonalTools</value>
+		</attribute>
+
+		<optional>
+			<attribute name="hideNewtalkNotifier" a:defaultValue="no">
+				<ref name="BoolValues"/>
+			</attribute>
+		</optional>
+	</define>
+
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="PersonalTools.Content"/>
+		</element>
+	</define>
+
+	<define name="NavbarHorizontal.Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="PersonalTools.Content"/>
+			<ref name="NavbarHorizontal.Component.CommonContent"/>
+		</element>
+	</define>
+
+	<!-- SearchBar -->
+	<define name="SearchBar.Content">
+		<ref name="Component.CommonContent"/>
+
+		<attribute name="type">
+			<value>SearchBar</value>
+		</attribute>
+
+		<optional>
+			<attribute name="buttons" a:defaultValue="search go">
+				<choice>
+					<value>search</value>
+					<value>go</value>
+					<value>search go</value>
+				</choice>
+			</attribute>
+		</optional>
+	</define>
+
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="SearchBar.Content"/>
+		</element>
+	</define>
+
+	<define name="NavbarHorizontal.Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="SearchBar.Content"/>
+			<ref name="NavbarHorizontal.Component.CommonContent"/>
+		</element>
+	</define>
+
+	<!-- PageTools -->
+	<define name="PageTools.Content">
+		<ref name="Component.CommonContent"/>
+
+		<attribute name="type">
+			<value>PageTools</value>
+		</attribute>
+
+		<optional>
+			<attribute name="hideSelectedNameSpace" a:defaultValue="no">
+				<ref name="BoolValues"/>
+			</attribute>
+		</optional>
+	</define>
+
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="PageTools.Content"/>
+		</element>
+	</define>
+
+	<define name="NavbarHorizontal.Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="PageTools.Content"/>
+			<ref name="NavbarHorizontal.Component.CommonContent"/>
+		</element>
+	</define>
+
+	<!-- PageTools -->
+	<define name="PageToolsAdaptable.Content">
+		<ref name="PageTools.Content"/>
+
+		<optional>
+			<attribute name="show">
+				<data type="string"/>
+			</attribute>
+		</optional>
+	</define>
+
+	<define name="NavbarHorizontal.Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="PageToolsAdaptable.Content"/>
+			<ref name="NavbarHorizontal.Component.CommonContent"/>
+		</element>
+	</define>
+
+	<!-- Menu -->
+	<define name="Menu.Content">
+		<ref name="Component.CommonContent"/>
+
+		<attribute name="type">
+			<value>Menu</value>
+		</attribute>
+
+		<choice>
+			<text/>
+			<attribute name="message"/>
+		</choice>
+	</define>
+
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Menu.Content"/>
+		</element>
+	</define>
+
+	<define name="NavbarHorizontal.Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Menu.Content"/>
+			<ref name="NavbarHorizontal.Component.CommonContent"/>
+		</element>
+	</define>
+
+	<!-- SiteNotice -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<attribute name="type">
+				<value>SiteNotice</value>
+			</attribute>
+
+		</element>
+	</define>
+
+	<!-- MainContent -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<attribute name="type">
+				<value>MainContent</value>
+			</attribute>
+
+		</element>
+	</define>
+
+	<!-- NewtalkNotifier -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation>A message to a user about new messages on their
+				talkpage
+			</a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<attribute name="type">
+				<value>NewtalkNotifier</value>
+			</attribute>
+
+		</element>
+	</define>
+
+	<!-- ToolbarHorizontal -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<attribute name="type">
+				<value>ToolbarHorizontal</value>
+			</attribute>
+
+			<optional>
+				<attribute name="hideTools">
+					<ref name="BoolValues"/>
+				</attribute>
+			</optional>
+
+			<optional>
+				<attribute name="hideLanguages">
+					<ref name="BoolValues"/>
+				</attribute>
+			</optional>
+
+		</element>
+	</define>
+
+	<!-- FooterInfo -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<attribute name="type">
+				<value>FooterInfo</value>
+			</attribute>
+
+		</element>
+	</define>
+
+	<!-- FooterPlaces -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<attribute name="type">
+				<value>FooterPlaces</value>
+			</attribute>
+
+		</element>
+	</define>
+
+	<!-- FooterIcons -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<attribute name="type">
+				<value>FooterIcons</value>
+			</attribute>
+
+		</element>
+	</define>
+
+
+	<!-- Modifications -->
+	<define name="Modification">
+		<element name="modification">
+			<a:documentation></a:documentation>
+
+			<attribute name="type">
+				<data type="string"/>
+			</attribute>
+
+		</element>
+	</define>
+
+	<!-- Sticky -->
+	<define name="Modification" combine="choice">
+		<element name="modification">
+			<a:documentation></a:documentation>
+
+			<attribute name="type">
+				<value>Sticky</value>
+			</attribute>
+
+		</element>
+	</define>
+
+	<!-- ShowOnlyFor -->
+	<define name="Modification" combine="choice">
+		<element name="modification">
+			<a:documentation></a:documentation>
+
+			<attribute name="type">
+				<value>ShowOnlyFor</value>
+			</attribute>
+
+			<optional>
+				<attribute name="permission">
+					<data type="string"/>
+				</attribute>
+			</optional>
+
+			<optional>
+				<attribute name="group">
+					<data type="string"/>
+				</attribute>
+			</optional>
+
+			<optional>
+				<attribute name="namespace">
+					<data type="string"/>
+				</attribute>
+			</optional>
+
+		</element>
+	</define>
+
+	<!-- Helpers -->
+
+	<define name="BoolValues">
+		<choice>
+			<value>true</value>
+			<value>yes</value>
+			<value>on</value>
+			<value>1</value>
+
+			<value>false</value>
+			<value>no</value>
+			<value>off</value>
+			<value>0</value>
+		</choice>
+	</define>
+
+</grammar>

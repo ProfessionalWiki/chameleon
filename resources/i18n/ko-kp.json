@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Delim"
+		]
+	},
+	"chameleon-loggedin": "$1님으로 가입하고있습니다.",
+	"chameleon-notloggedin": "가입하고있지 않습니다.",
+	"chameleon-newmessages": "새 통보문이 있습니다.",
+	"chameleon-nonewmessages": "새 통보문이 없습니다."
+}

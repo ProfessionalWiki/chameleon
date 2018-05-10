@@ -5,7 +5,6 @@
  * @see     https://www.mediawiki.org/wiki/Skin:Chameleon
  *
  * @author  Stephan Gambke
- * @version 1.4-alpha
  *
  */
 
@@ -14,7 +13,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2017, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -47,7 +46,7 @@ call_user_func( function () {
 	}
 
 	// define the skin's version
-	define( 'CHAMELEON_VERSION', '1.6.1-alpha' );
+	define( 'CHAMELEON_VERSION', '1.7.1' );
 
 	// set credits
 	$GLOBALS[ 'wgExtensionCredits' ][ 'skin' ][ ] = array(

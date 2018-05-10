@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 1.7.1
+
+Released on 10-May-2018
+
+Fixes the reported version in Special:Version.
+
 ### Chameleon 1.7
 
 Released on 29-Apr-2018

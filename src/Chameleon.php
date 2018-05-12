@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2016, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -23,7 +23,13 @@
  * @file
  * @ingroup Skins
  */
-use Skins\Chameleon\ComponentFactory;
+
+namespace Skins\Chameleon;
+
+use MediaWiki\MediaWikiServices;
+use OutputPage;
+use Sanitizer;
+use SkinTemplate;
 
 /**
  * SkinTemplate class for the Chameleon skin
@@ -32,7 +38,7 @@ use Skins\Chameleon\ComponentFactory;
  * @since 1.0
  * @ingroup Skins
  */
-class SkinChameleon extends SkinTemplate {
+class Chameleon extends SkinTemplate {
 
 	public $skinname = 'chameleon';
 	public $stylename = 'chameleon';
@@ -40,6 +46,42 @@ class SkinChameleon extends SkinTemplate {
 	public $useHeadElement = true;
 
 	private $componentFactory;
+
+	public static function init() {
+
+		MediaWikiServices::getInstance()->getSkinFactory()->register( 'chameleon', 'Chameleon', function(){return new Chameleon;});
+
+		/**
+		 * Using callbacks for hook registration
+		 *
+		 * The hook registry should contain as less knowledge about a process as
+		 * necessary therefore a callback is used as Factory/Builder that instantiates
+		 * a business / domain object.
+		 *
+		 * GLOBAL state should be encapsulated by the callback and not leaked into
+		 * a instantiated class
+		 */
+
+		/**
+		 * @see https://www.mediawiki.org/wiki/Manual:Hooks/BeforeInitialize
+		 */
+		$GLOBALS[ 'wgHooks' ][ 'SetupAfterCache' ][ ] = function() {
+
+			$setupAfterCache = new \Skins\Chameleon\Hooks\SetupAfterCache(
+				\Bootstrap\BootstrapManager::getInstance(),
+				$GLOBALS,
+				$GLOBALS['wgRequest']
+			);
+
+			$setupAfterCache->process();
+		};
+
+		// set default skin layout
+		if ( $GLOBALS[ 'egChameleonLayoutFile' ][0] !== '/' ) {
+			$GLOBALS[ 'egChameleonLayoutFile' ] = dirname( __DIR__ ) . '/' . $GLOBALS[ 'egChameleonLayoutFile' ];
+		}
+
+	}
 
 	/**
 	 * @param $out OutputPage object
@@ -66,7 +108,7 @@ class SkinChameleon extends SkinTemplate {
 	}
 
 	/**
-	 * @return QuickTemplate
+	 * @return \QuickTemplate
 	 */
 	protected function setupTemplateForOutput() {
 
@@ -103,7 +145,7 @@ class SkinChameleon extends SkinTemplate {
 	}
 
 	/**
-	 * @param Title $title
+	 * @param \Title $title
 	 * @return string
 	 */
 	public function getPageClasses( $title ) {

@@ -1,0 +1,26 @@
+{
+	"name": "Chameleon",
+	"type": "skin",
+	"author": "[https://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]",
+	"version": "2.0-dev",
+	"url": "https://www.mediawiki.org/wiki/Skin:Chameleon",
+	"descriptionmsg": "chameleon-desc",
+	"license-name": "GPL-3.0-or-later",
+	"requires": {
+		"MediaWiki": ">= 1.27.0"
+	},
+	"MessagesDirs": {
+		"Chameleon": "resources/i18n"
+	},
+	"@Hooks": "Is it really a good idea to specify static hook handlers here? Can this be done in PHP code?",
+	"Hooks": {
+
+	},
+	"config": {
+		"_prefix": "eg",
+		"ChameleonLayoutFile": "layouts/standard.xml",
+		"ChameleonEnableVisualEditor": true
+	},
+	"callback": "Skins\\Chameleon\\Chameleon::init",
+	"load_composer_autoloader": true
+}

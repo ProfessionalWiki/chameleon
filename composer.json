@@ -33,10 +33,6 @@
 		"fortawesome/font-awesome": "~4.7"
 	},
 	"autoload": {
-		"files": [
-			"Chameleon.php",
-			"src/SkinChameleon.php"
-		],
 		"psr-4": {
 			"Skins\\Chameleon\\Tests\\": "tests/phpunit",
 			"Skins\\Chameleon\\": "src"

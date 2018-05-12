@@ -67,7 +67,7 @@ class ChameleonTemplate extends BaseTemplate {
 	/**
 	 * Get the Skin object related to this object
 	 *
-	 * @return SkinChameleon
+	 * @return Chameleon
 	 */
 	public function getSkin() {
 		return parent::getSkin();

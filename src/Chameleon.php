@@ -29,6 +29,7 @@ namespace Skins\Chameleon;
 use MediaWiki\MediaWikiServices;
 use OutputPage;
 use Sanitizer;
+use Skins\Chameleon\Hooks\SetupAfterCache;
 use SkinTemplate;
 
 /**
@@ -67,7 +68,7 @@ class Chameleon extends SkinTemplate {
 		 */
 		$GLOBALS[ 'wgHooks' ][ 'SetupAfterCache' ][ ] = function() {
 
-			$setupAfterCache = new \Skins\Chameleon\Hooks\SetupAfterCache(
+			$setupAfterCache = new SetupAfterCache(
 				\Bootstrap\BootstrapManager::getInstance(),
 				$GLOBALS,
 				$GLOBALS['wgRequest']
@@ -78,7 +79,7 @@ class Chameleon extends SkinTemplate {
 
 		// set default skin layout
 		if ( $GLOBALS[ 'egChameleonLayoutFile' ][0] !== '/' ) {
-			$GLOBALS[ 'egChameleonLayoutFile' ] = dirname( __DIR__ ) . '/' . $GLOBALS[ 'egChameleonLayoutFile' ];
+			$GLOBALS[ 'egChameleonLayoutFile' ] = $GLOBALS[ 'wgStyleDirectory' ] . '/chameleon/' . $GLOBALS[ 'egChameleonLayoutFile' ];
 		}
 
 	}
@@ -90,9 +91,11 @@ class Chameleon extends SkinTemplate {
 
 		// load Bootstrap styles
 		$out->addModuleStyles(
-			array(
-				'ext.bootstrap.styles'
-			)
+			[
+				'mediawiki.legacy.shared',
+				'ext.bootstrap.styles',
+				'skin.chameleon.fontawesome'
+			]
 		);
 	}
 
@@ -109,6 +112,7 @@ class Chameleon extends SkinTemplate {
 
 	/**
 	 * @return \QuickTemplate
+	 * @throws \MWException
 	 */
 	protected function setupTemplateForOutput() {
 
@@ -128,7 +132,7 @@ class Chameleon extends SkinTemplate {
 	public function getComponentFactory() {
 
 		if ( ! isset( $this->componentFactory ) ) {
-			$this->componentFactory = new \Skins\Chameleon\ComponentFactory(
+			$this->componentFactory = new ComponentFactory(
 				$this->getLayoutFilePath()
 			);
 		}
@@ -136,10 +140,13 @@ class Chameleon extends SkinTemplate {
 		return $this->componentFactory;
 	}
 
+	/**
+	 * @throws \MWException
+	 */
 	public function addSkinModulesToOutput() {
 		// load Bootstrap scripts
 		$out = $this->getOutput();
-		$out->addModules( array( 'ext.bootstrap.scripts' ) );
+		$out->addModules( [ 'ext.bootstrap.scripts' ] );
 		$out->addModules( $this->getComponentFactory()->getRootComponent()->getResourceLoaderModules() );
 
 	}

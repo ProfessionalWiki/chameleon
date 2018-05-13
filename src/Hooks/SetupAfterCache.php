@@ -42,7 +42,7 @@ use RuntimeException;
 class SetupAfterCache {
 
 	protected $bootstrapManager = null;
-	protected $configuration = array();
+	protected $configuration = [];
 	protected $request;
 
 	/**
@@ -106,31 +106,24 @@ class SetupAfterCache {
 
 		$this->bootstrapManager->addAllBootstrapModules();
 
-		if ( file_exists( $this->configuration[ 'wgStyleDirectory' ] . '/common/shared.css' ) ) { // MW < 1.24
-			$this->bootstrapManager->addExternalModule(
-				$this->configuration[ 'wgStyleDirectory' ] . '/common/shared.css',
-				$this->configuration[ 'wgStylePath' ] . '/common/'
-			);
-		} else {
-			if ( file_exists( $this->configuration[ 'IP' ] . '/resources/src/mediawiki.legacy/shared.css' ) ) { // MW >= 1.24
-				$this->bootstrapManager->addExternalModule(
-					$this->configuration[ 'IP' ] . '/resources/src/mediawiki.legacy/shared.css',
-					$this->configuration[ 'wgScriptPath' ] . '/resources/src/mediawiki.legacy/'
-				);
-			}
-		}
+		//$this->bootstrapManager->addExternalModule(
+		//	$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/_core.scss',
+		//	$this->configuration[ 'chameleonRemotePath' ] . '/resources/styles/'
+		//);
 
-		$this->bootstrapManager->addExternalModule(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/_core.scss',
-			$this->configuration[ 'chameleonRemotePath' ] . '/resources/styles/'
-		);
+		$GLOBALS[ 'wgResourceModules' ][ 'skin.chameleon.fontawesome' ] = [
+			'localBasePath' => $GLOBALS[ 'wgStyleDirectory' ] . "/chameleon/resources/fontawesome/scss/",
+			'class'         => 'SCSS\\ResourceLoaderSCSSModule',
+			'position'      => 'top',
+			'styles'        => [ "fontawesome", "fa-solid" ],
+			'variables'     => [ "fa-font-path" => $GLOBALS[ 'wgStylePath' ] . "/chameleon/resources/fontawesome/webfonts" ],
+			'dependencies'  => [],
+			'cachetriggers' => [
+				'LocalSettings.php' => null,
+				'composer.lock'     => null,
+			],
+		];
 
-		$this->bootstrapManager->addExternalModule(
-			$this->configuration[ 'IP' ] . '/vendor/fortawesome/font-awesome/scss/font-awesome.scss',
-			$this->configuration[ 'wgScriptPath' ] . '/vendor/fortawesome/font-awesome/scss/'
-		);
-
-		$this->bootstrapManager->setScssVariable('fa-font-path', $this->configuration[ 'wgScriptPath' ] . '/vendor/fortawesome/font-awesome/fonts');
 	}
 
 	protected function registerExternalScssModules() {
@@ -183,10 +176,10 @@ class SetupAfterCache {
 	private function matchAssociativeElement( $localFile, $remotePath ) {
 
 		if ( is_integer( $localFile ) ) {
-			return array( $remotePath, '' );
+			return [ $remotePath, '' ];
 		}
 
-		return array( $localFile, $remotePath );
+		return [ $localFile, $remotePath ];
 	}
 
 	/**
@@ -219,19 +212,19 @@ class SetupAfterCache {
 				// remove all entries of Chameleon from the list of VE-enabled skins
 				$this->configuration[ 'wgVisualEditorSupportedSkins' ] = array_diff(
 					$this->configuration[ 'wgVisualEditorSupportedSkins' ],
-					array( 'chameleon' )
+					[ 'chameleon' ]
 				);
 			}
 		}
 	}
 
 	protected function addResourceModules() {
-		$this->configuration[ 'wgResourceModules' ][ 'skin.chameleon.jquery-sticky' ] = array(
+		$this->configuration[ 'wgResourceModules' ][ 'skin.chameleon.jquery-sticky' ] = [
 			'localBasePath'  => $this->configuration[ 'chameleonLocalPath' ] . '/resources/js',
 			'remoteBasePath' => $this->configuration[ 'chameleonRemotePath' ] . '/resources/js',
 			'group'          => 'skin.chameleon',
-			'skinScripts'    => array( 'chameleon' => array( 'sticky-kit/jquery.sticky-kit.js', 'Components/Modifications/sticky.js' ) )
-		);
+			'skinScripts'    => [ 'chameleon' => [ 'sticky-kit/jquery.sticky-kit.js', 'Components/Modifications/sticky.js' ] ]
+		];
 	}
 
 	protected function setLayoutFile() {

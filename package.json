@@ -4,9 +4,10 @@
     "test": "grunt test",
     "lint": "grunt lint",
     "prebuild": "npm install",
+    "build:fontawesome": "mkdir -p resources/fontawesome && cp -R node_modules/@fortawesome/fontawesome-free-webfonts/scss resources/fontawesome && cp -R node_modules/@fortawesome/fontawesome-free-webfonts/webfonts resources/fontawesome",
     "build:sticky": "mkdir -p resources/js/sticky-kit && browserify node_modules/sticky-kit/dist/sticky-kit.js -o resources/js/sticky-kit/jquery.sticky-kit.js",
     "build:docs": "grep -rl 'docs/' -e '<!-- START doctoc'|xargs doctoc --title '**Contents**' --maxlevel 3 --notitle",
-    "build": "npm run build:sticky && npm run build:docs"
+    "build": "npm run build:fontawesome && npm run build:sticky && npm run build:docs"
   },
   "devDependencies": {
     "browserify": "^13.1.0",
@@ -16,7 +17,8 @@
     "grunt-banana-checker": "^0.4.0",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-jshint": "^1.0.0",
-    "grunt-jsonlint": "^1.0.7"
+    "grunt-jsonlint": "^1.0.7",
+    "@fortawesome/fontawesome-free-webfonts": "^1.0.9"
   },
   "dependencies": {
     "sticky-kit": "^1.1.3"

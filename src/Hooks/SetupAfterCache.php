@@ -112,8 +112,8 @@ class SetupAfterCache {
 		//);
 
 		$GLOBALS[ 'wgResourceModules' ][ 'skin.chameleon.fontawesome' ] = [
-			'localBasePath' => $GLOBALS[ 'wgStyleDirectory' ] . "/chameleon/resources/fontawesome/scss/",
 			'class'         => 'SCSS\\ResourceLoaderSCSSModule',
+			'localBasePath' => $GLOBALS[ 'wgStyleDirectory' ] . "/chameleon/resources/fontawesome/scss/",
 			'position'      => 'top',
 			'styles'        => [ "fontawesome", "fa-solid" ],
 			'variables'     => [ "fa-font-path" => $GLOBALS[ 'wgStylePath' ] . "/chameleon/resources/fontawesome/webfonts" ],

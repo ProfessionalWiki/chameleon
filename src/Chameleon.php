@@ -48,7 +48,12 @@ class Chameleon extends SkinTemplate {
 
 	private $componentFactory;
 
+	/**
+	 * @throws \Exception
+	 */
 	public static function init() {
+
+		\ExtensionRegistryHelper\ExtensionRegistryHelper::singleton()->loadExtensionRecursive( 'Bootstrap' );
 
 		MediaWikiServices::getInstance()->getSkinFactory()->register( 'chameleon', 'Chameleon', function(){return new Chameleon;});
 

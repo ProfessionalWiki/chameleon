@@ -256,7 +256,7 @@ class GenericComponentTestCase extends \PHPUnit_Framework_TestCase {
 	/**
 	 * Asserts that $actual is a valid HTML fragment
 	 *
-	 * @todo Put this whole stuff in a \PHPUnit_Framework_Constraint and just call assertThat
+	 * @todo Put this whole stuff in a PHPUnit_Framework_Constraint and just call assertThat
 	 *
 	 * @param        $actual
 	 * @param string $message

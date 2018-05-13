@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -42,11 +42,11 @@ class Cell extends Container {
 			$span = $domElement->getAttribute( 'span' );
 
 			if ( ( !is_int( $span ) && !ctype_digit( $span ) ) || ( $span < 1 ) || ( $span > 12 ) ) {
-				$span = '12';
+				$span = '12'; // FIXME: If the span attribute is not (properly) specified, just add class "col"
 			}
 
 		} else {
-			$span = '12';
+			$span = '12'; // FIXME: If no DOM element is given, just add class "col"
 		}
 
 		parent::__construct( $template, $domElement, $indent );

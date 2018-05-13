@@ -106,10 +106,10 @@ class SetupAfterCache {
 
 		$this->bootstrapManager->addAllBootstrapModules();
 
-		//$this->bootstrapManager->addExternalModule(
-		//	$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/_core.scss',
-		//	$this->configuration[ 'chameleonRemotePath' ] . '/resources/styles/'
-		//);
+		$this->bootstrapManager->addExternalModule(
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/core.scss',
+			$this->configuration[ 'chameleonRemotePath' ] . '/resources/styles/'
+		);
 
 		$GLOBALS[ 'wgResourceModules' ][ 'skin.chameleon.fontawesome' ] = [
 			'class'         => 'SCSS\\ResourceLoaderSCSSModule',

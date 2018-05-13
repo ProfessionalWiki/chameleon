@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2017, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -28,7 +28,9 @@ namespace Skins\Chameleon\Components;
 use DOMElement;
 
 /**
- * The Structure class.
+ * The Structure class represents top level element of the layout.
+ *
+ * It will simply take the HTML of its subcomponents and concatenate it.
  *
  * @author Stephan Gambke
  * @since 1.0
@@ -41,7 +43,8 @@ class Structure extends Component {
 	/**
 	 * Builds the HTML code for the component
 	 *
-	 * @return String the HTML code
+	 * @return string the HTML code
+	 * @throws \MWException
 	 */
 	public function getHtml(){
 		$ret = '';
@@ -55,9 +58,10 @@ class Structure extends Component {
 
 	/**
 	 * @return string[] the resource loader modules needed by this component
+	 * @throws \MWException
 	 */
 	public function getResourceLoaderModules() {
-		$modules = array();
+		$modules = [];
 
 		foreach ( $this->getSubcomponents() as $component ) {
 			$modules = array_merge( $modules, $component->getResourceLoaderModules() );
@@ -68,12 +72,13 @@ class Structure extends Component {
 
 	/**
 	 * @return Component[]
+	 * @throws \MWException
 	 */
 	protected function getSubcomponents() {
 
 		if ( !isset ( $this->subcomponents ) ) {
 
-			$this->subcomponents = array();
+			$this->subcomponents = [];
 
 			$domElement = $this->getDomElement();
 

@@ -1,0 +1,440 @@
+/**
+ * Styles dump for the Chameleon skin
+ *
+ * $todo This is a mess. Needs rework.
+ *
+ * This file is part of the MediaWiki skin Chameleon.
+ *
+ * $copyright 2013 - 2015, Stephan Gambke
+ * $license   GNU General Public License, version 3 (or any later version)
+ *
+ * The Chameleon skin is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or (at your option) any
+ * later version.
+ *
+ * The Chameleon skin is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * $author Stephan Gambke
+ * $since 1.0
+ * $ingroup Skins
+ */
+
+html {
+	//@include box-sizing(border-box);
+}
+
+*, *:before, *:after {
+	//@include box-sizing(inherit);
+}
+
+.mw-body {
+	padding: 0 2em;
+	margin: 1em 0;
+}
+
+/* Display editsection links smaller and next to headings */
+.mw-editsection-like {
+	font-size: $font-size-sm;
+	font-weight: normal;
+	margin-left: 1em;
+	vertical-align: baseline;
+	/* Reset line-height; headings tend to have it set to larger values */
+	line-height: 1em;
+	/* As .mw-editsection is a <span> (inline element), it is treated as part */
+	/* of the heading content when selecting text by multiple clicks and thus */
+	/* selected together with heading content, despite the user-select: none; */
+	/* rule set above. This enforces non-selection without changing the look. */
+	display: inline-block;
+}
+
+.mw-editsection {
+	@extend .mw-editsection-like;
+}
+
+/* Correct directionality when page directionality is different from site/user directionality */
+/* $noflip */
+.mw-content-ltr .mw-editsection,
+.mw-content-rtl .mw-content-ltr .mw-editsection {
+	margin-left: 1em;
+}
+
+/* $noflip */
+.mw-content-rtl .mw-editsection,
+.mw-content-ltr .mw-content-rtl .mw-editsection {
+	margin-right: 1em;
+}
+
+.mw-jump {
+	height: 0;
+	overflow: hidden;
+}
+
+/**
+* Table of contents
+*/
+.mw-body .toc {
+	#toctitle {
+		margin-bottom: 1ex;
+
+		h2 {
+			display: inline;
+			font-size: $toctitle-font-size;
+			border: none;
+		}
+
+		.toctoggle {
+			@extend .mw-editsection-like;
+		}
+	}
+
+	ul {
+		list-style: none;
+		margin-left: 0.5em;
+		padding: 0;
+		text-align: left;
+		text-indent: 0;
+
+		li {
+			a {
+				.tocnumber {
+					display: inline-block;
+					text-align: right;
+					margin-right: .5ex;
+					min-width: 2ex; //up to two digits
+				}
+			}
+
+			ul li {
+				a .tocnumber {
+					min-width: 3.5ex; // two digits + dot + digit
+				}
+
+				ul li {
+					a .tocnumber {
+						min-width: 5ex; // two digits + dot + digit + dot + digit
+					}
+				}
+			}
+		}
+
+	}
+}
+
+/* have to insert id based rule here to over-rule MW core's shared.css */
+#toc ul {
+	margin-left: 0.5em;
+}
+
+.catlinks {
+	margin: 2em 0 0;
+}
+
+.firstHeading {
+	border-bottom: $hr-border-width solid $hr-border-color; // FIXME: Should be something like $first-heading-border-width
+	padding-bottom: .2em;
+	margin-bottom: .2em;
+}
+
+.contentHeader {
+	margin: 1em 0 1.5em;
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
+.footer-info {
+	padding-left: 5px;
+}
+
+.p-tb {
+	&.navbar {
+		min-height: 0;
+	}
+
+	.navbar-nav > li > a {
+		&, &:hover {
+			padding: $toolbar-padding-vertical $toolbar-padding-horizontal;
+		}
+	}
+}
+
+.newtalk-notifier {
+	margin-bottom: 10px;
+}
+
+.p-contentnavigation {
+
+	a.selected {
+		font-style: italic;
+	}
+
+	a.new {
+		color: #aaaaaa;
+	}
+}
+
+.p-personal-tools {
+	margin: 0 0 0 1ex;
+}
+
+#siteSub {
+	display: none
+}
+
+#wpTextbox1 {
+	width: 100%;
+}
+
+// style horizontal toolbar
+// FIXME
+//#preftoc {
+//	@include nav;
+//	@include nav-tabs;
+//
+//	margin-bottom: 2ex;
+//
+//	> li.selected > a {
+//		&,
+//		&:hover,
+//		&:focus {
+//			color: $nav-tabs-active-link-hover-color;
+//			background-color: $nav-tabs-active-link-hover-bg;
+//			border: 1px solid $nav-tabs-active-link-hover-border-color;
+//			border-bottom-color: transparent;
+//			cursor: default;
+//		}
+//	}
+//}
+
+.navbar .p-contentnavigation li {
+	display: block;
+}
+
+
+/**
+ * Links
+ */
+a {
+	@include link($link-color);
+}
+
+a.new, #p-personal a.new {
+	@include link($link-new-color);
+}
+
+.mw-body {
+	a.stub {
+		@include link($link-stub-color);
+	}
+
+	/* Interwiki Styling */
+	a.extiw {
+		@include link($link-interwiki-color);
+	}
+
+	/* External links */
+	a.external {
+		@include link($link-external-color);
+	}
+}
+/**
+* Lists
+*/
+.mw-body {
+	ol {
+		list-style: outside none decimal;
+	}
+
+	ul {
+		@include bullet();
+	}
+
+	ol, ul {
+		padding-left: $list-level-indent;
+		margin: 0;
+
+		ul {
+			@include bullet( $list-bullet-color, $list-bullet-size*.9);
+		}
+
+		ol, ul {
+			ul {
+				@include bullet( $list-bullet-color, $list-bullet-size*.7);
+			}
+		}
+	}
+}
+
+// no bullets for File namespace
+.ns-6 .mw-body ul {
+	list-style: none;
+	padding: 0;
+}
+
+.catlinks {
+	ul {
+		text-indent: 0;
+		padding-left: 0;
+
+		> li:before {
+			content: none;
+		}
+	}
+}
+
+dt {
+	font-weight: bold;
+	margin-bottom: .1em;
+}
+
+dl {
+	margin-top: .2em;
+	margin-bottom: .5em;
+}
+
+dd {
+	line-height: 1.5em;
+	margin-left: 1.6em;
+	margin-bottom: .1em;
+}
+
+/* IE 6 and 7 lack support for quotes aroud the <q> element ('::before' and '::after'
+   pseudoelements, 'quotes' property). Let's italicize it instead (using the star hack). */
+q {
+	*font-style: italic;
+}
+
+pre, code, tt, kbd, samp, .mw-code {
+	/*
+	 * Some browsers will render the monospace text too small, namely Firefox, Chrome and Safari.
+	 * Specifying any valid, second value will trigger correct behavior without forcing a different font.
+	 */
+	font-family: monospace, Courier;
+}
+
+code {
+	color: black;
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	padding: 1px 4px;
+}
+
+pre, .mw-code {
+	color: black;
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	padding: 1em;
+}
+
+/* Tables */
+table {
+	font-size: 100%;
+}
+
+.skin-chameleon .mw-specialpages-table {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+/* Forms */
+fieldset {
+	border: 1px solid #2f6fab;
+	margin: 1em 0 1em 0;
+	padding: 0 1em 1em;
+	line-height: 1.5em;
+}
+
+fieldset.nested {
+	margin: 0 0 0.5em 0;
+	padding: 0 0.5em 0.5em;
+}
+
+legend {
+	padding: .5em;
+	font-size: 95%;
+}
+
+form {
+	border: none;
+	margin: 0;
+}
+
+textarea {
+	width: 100%;
+	padding: .1em;
+	display: block;
+}
+
+select {
+	vertical-align: top;
+}
+
+
+/* Small for tables and similar */
+.small {
+	font-size: 94%;
+}
+
+table.small {
+	font-size: 100%;
+}
+
+.mw-warning {
+	border: 1px solid #aaa;
+	background-color: #f9f9f9;
+	padding: 5px;
+	font-size: 95%;
+	margin-left: 50px;
+	margin-right: 50px;
+	text-align: center;
+}
+
+.mw-changeslist-legend {
+	dt {
+		clear: left;
+	}
+
+	dt, dd {
+		line-height: 1.3em;
+	}
+}
+
+table.mw-recentchanges-table {
+	width: 100%;
+}
+
+// FIXME
+//.layout-fixedhead, .layout-stickyhead, .layout-clean {
+//	h1, h2, h3, h4, h5, h6 {
+//		>span.mw-headline:before {
+//			content: "";
+//			display: block;
+//			height: $navbar-height;
+//			margin-top: 0-$navbar-height;
+//		}
+//	}
+//}
+
+.mw-headline-anchor {
+	display: none;
+}
+
+.mw-indicators {
+	float: right;
+	line-height: 1.6;
+	font-size: $font-size-sm;
+	position: relative;
+	z-index: 1;
+
+	.mw-indicator {
+		display: inline-block;
+	}
+}
+

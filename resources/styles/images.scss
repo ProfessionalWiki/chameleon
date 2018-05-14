@@ -1,0 +1,104 @@
+/**
+ * MediaWiki Images
+ *
+ * This file is part of the MediaWiki skin Chameleon.
+ *
+ * $copyright 2013 - 2018, Stephan Gambke
+ * $license   GNU General Public License, version 3 (or any later version)
+ *
+ * The Chameleon skin is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or (at your option) any
+ * later version.
+ *
+ * The Chameleon skin is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * $author Stephan Gambke
+ * $since 1.0
+ * $ingroup Skins
+ */
+
+
+/* Inline Elements */
+img {
+	border: none;
+	vertical-align: middle;
+
+	.thumbborder {
+		border: $thumbnail-border-width solid $thumbnail-border-color;
+	}
+}
+
+.thumbinner {
+	@extend .img-thumbnail;
+
+	overflow: hidden;
+}
+
+/* Default styles when there's no .mw-content-ltr or .mw-content-rtl, overridden below */
+.thumbcaption {
+	@include thumbnail > .caption;
+	text-align: left;
+}
+
+div.magnify {
+	float: right;
+	margin-left: 0.3em;
+	margin-right: 0;
+
+	a {
+		@include glyphicon;
+		@include glyphicon-zoom-in;
+
+		color: lighten( $thumbnail-caption-color, 15% );
+		top: 4px;
+
+		&:hover {
+			text-decoration: none;
+			color: $thumbnail-caption-color;
+		}
+
+		* {
+			display: none;
+		}
+
+		/* Don't annoy people who copy-paste everything too much */
+		@include user-select(none);
+	}
+}
+
+
+/* Directionality-specific styles for thumbnails - their positioning depends on content language */
+
+/* $noflip */
+.mw-content-ltr{
+	.thumbcaption {
+		text-align: left;
+	}
+
+	div.magnify {
+		float: right;
+		margin-left: 0.3em;
+		margin-right: 0;
+	}
+}
+
+/* $noflip */
+.mw-content-rtl{
+	.thumbcaption {
+		text-align: right;
+	}
+
+	div.magnify {
+		float: left;
+		margin-left: 0;
+		margin-right: 0.3em;
+		.scale(-1, 1); // flip magnifying glass
+	}
+}

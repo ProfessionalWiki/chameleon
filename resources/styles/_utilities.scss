@@ -1,0 +1,91 @@
+/**
+ * Utility classes
+ *
+ * This file is part of the MediaWiki skin Chameleon.
+ *
+ * $copyright 2013 - 2018, Stephan Gambke
+ * $license   GNU General Public License, version 3 (or any later version)
+ *
+ * The Chameleon skin is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or (at your option) any
+ * later version.
+ *
+ * The Chameleon skin is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * $author Stephan Gambke
+ * $since 2.0
+ * $ingroup Skins
+ * $ingroup Chameleon
+ */
+
+@import "utilities/flex";
+
+//.center {
+//	text-align: center;
+//	width: 100%;
+//
+//	* {
+//		margin-left: auto;
+//		margin-right: auto;
+//	}
+//}
+//
+//.floatright {
+//	clear: right;
+//	float: right;
+//	margin: 0 0 0.5em 0.5em;
+//}
+//
+//div.tright {
+//	@include float-right;
+//
+//	margin: 0.5em 0 1.3em 1.4em;
+//}
+//
+//.floatleft {
+//	clear: left;
+//	float: left;
+//	margin: 0 0.5em 0.5em 0;
+//}
+//
+//div.tleft {
+//	@include float-left;
+//
+//	margin: 0.5em 1.4em 1.3em 0;
+//}
+//
+//.no-margin {
+//	margin: 0;
+//}
+//
+//.no-bottom-border {
+//	border-bottom: none;
+//}
+//
+//.full-width {
+//	width: 100%;
+//	border-radius: 0;
+//	border-left: none;
+//	border-right: none;
+//}
+//
+//@mixin list-style-none() {
+//	.mw-body {
+//		ul {
+//			padding-left: inherit;
+//			text-indent: inherit;
+//			margin: 2ex 0;
+//
+//			li:before {
+//				content: none;
+//			}
+//		}
+//	}
+//}

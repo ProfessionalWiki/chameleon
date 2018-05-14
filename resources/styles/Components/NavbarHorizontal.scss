@@ -1,0 +1,242 @@
+/**
+ * Styles for the NavbarHorizontal component
+ *
+ * This file is part of the MediaWiki skin Chameleon.
+ *
+ * $copyright 2013 - 2015, Stephan Gambke
+ * $license   GNU General Public License, version 3 (or any later version)
+ *
+ * The Chameleon skin is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or (at your option) any
+ * later version.
+ *
+ * The Chameleon skin is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * $author Stephan Gambke
+ * $since 1.0
+ * $ingroup Skins
+ */
+
+// if the navbar is in the first row (i.e. at the top of the page), but inside a
+// container (i.e. not a fixed head), add some margin at the top
+.navbar {
+	.container > *:first-child & {
+		margin-top: ($grid-gutter-width / 2);
+	}
+
+	.dropdown-menu {
+
+		list-style: outside none none;
+		z-index: 1010;
+
+		> li {
+			> a {
+
+				display: block;
+				padding: 3px 20px;
+				clear: both;
+				font-weight: normal;
+				line-height: $line-height-base;
+				color: $dropdown-link-color;
+				white-space: nowrap; // prevent links from randomly breaking onto new lines
+			}
+
+			&.active, &.selected {
+				> a {
+//					background-color: $navbar-default-link-active-bg;
+					font-style: normal;
+				}
+			}
+		}
+	}
+}
+
+// override some navbar-brand styles to accommodate an image and include a
+// separator to the rest of the navbar
+.navbar-brand {
+
+	//padding: (( $navbar-height - $navbar-logo-height ) / 2 );
+	//line-height: normal;
+    //
+	//img {
+	//	max-height: $navbar-logo-height;
+	//}
+    //
+	//@media (min-width: $grid-float-breakpoint) {
+	//	// separator for logo
+	//	border-right: 1px solid $navbar-default-border;
+	//}
+    //
+	//@media (max-width: $grid-float-breakpoint) {
+	//	float: none
+	//}
+}
+
+// FIXME: Is this the correct width? Does it even still work this way?
+$grid-float-breakpoint: map-get($grid-breakpoints, "lg");
+
+.navbar-collapse {
+	@media (min-width: $grid-float-breakpoint) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+.navbar-right-aligned {
+	@media (min-width: $grid-float-breakpoint) {
+
+		@include float-right;
+
+		> * {
+			float: left;
+		}
+
+		.navbar-tools:last-child {
+			margin-right: 0 - ( $grid-gutter-width / 2 ) - 1;
+			border-right: none;
+
+			li:first-child > a {
+//				border-top-right-radius: $navbar-border-radius,
+			}
+
+			li:last-child > a {
+//				border-bottom-right-radius: $navbar-border-radius,
+			}
+
+		}
+	}
+}
+
+.navbar-form {
+	// Undo 100% width for pull classes
+	@media (min-width: $grid-float-breakpoint) {
+		// separator for user's personal tools
+		border: 0;
+//		border-left: 1px solid $navbar-default-border;
+//		border-right: 1px solid $navbar-default-border;
+
+		width: auto;
+//		padding: (($navbar-height - $input-height-base) / 2) $navbar-padding-horizontal;
+		margin: 0 -1px 0 0;
+	}
+}
+
+// styles for personal tools in the navbar component
+.skin-chameleon .navbar-tools {
+	//@include nav();
+	//@include navbar-nav();
+	@extend .navbar;
+
+
+	> li, >li.open {
+		> a {
+
+			&.navbar-newtalk-available {
+				@include link($navbar-newtalk-available);
+			}
+
+			&.navbar-newtalk-not-available {
+				@include link($navbar-newtalk-not-available);
+			}
+
+			&.navbar-userloggedin {
+				@include link($navbar-user-loggedin);
+			}
+
+			&.navbar-usernotloggedin {
+				@include link($navbar-user-not-loggedin);
+			}
+
+		}
+	}
+
+	@media (min-width: $grid-float-breakpoint) {
+
+		// FIXME
+
+		//height: $navbar-height;
+		//margin: 0 -1px 0 0;
+        //
+		//// separator for user's personal tools
+		//border-left: 1px solid $navbar-default-border;
+		//border-right: 1px solid $navbar-default-border;
+        //
+		//> li, li.open {
+		//	float: none;
+        //
+		//	height: $navbar-height/2;
+		//	min-width: 2 * $navbar-height/3;
+		//	text-align: center;
+        //
+		//	border-color: $navbar-default-border;
+		//	border-bottom: 1px solid $navbar-default-border;
+        //
+		//	&:last-child {
+		//		border: none;
+		//	}
+        //
+		//	> a, > a:hover, > a:focus {
+        //
+		//		height: 100%;
+		//		padding: 0;
+        //
+		//		overflow: hidden;
+        //
+		//		> * {
+		//			padding: $navbar-padding-vertical/2 $navbar-padding-vertical/2;
+		//			display: inline-block;
+		//			line-height: $line-height-computed/2;
+		//		}
+        //
+		//		> img {
+		//			top: 50%;
+		//			left: 50%;
+		//			position: absolute;
+		//			.translate(-50%; -50%);
+        //
+		//			padding: 0;
+		//			min-height: 101%;
+		//			min-width: 101%;
+        //
+		//			&:hover, &:focus {
+		//				opacity: .7;
+		//			}
+		//		}
+		//	}
+        //
+		//	&:first-child:last-child {
+        //
+		//		height: $navbar-height;
+        //
+		//		> a, > a:hover, > a:focus {
+		//			> * {
+		//				line-height: $line-height-computed;
+		//				padding: $navbar-padding-vertical $navbar-padding-vertical/2;
+		//			}
+		//		}
+		//	}
+        //
+		//	&:last-child > ul.dropdown-menu {
+		//		top: $navbar-height / 2 - 1;
+		//	}
+        //
+		//	&:first-child > ul.dropdown-menu {
+		//		top: $navbar-height;
+		//	}
+        //
+		//}
+	}
+
+	@media (max-width: $grid-float-breakpoint) {
+		> li {
+			float: left;
+		}
+	}
+}

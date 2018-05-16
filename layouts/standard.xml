@@ -26,21 +26,20 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 <structure xmlns="https://cmln.github.io/chameleon/schema/1.0/layout.rng">
 	<grid>
 		<row>
-			<cell span="3">
+			<cell class="flex-grow-0">
 				<component type="Logo" addLink="yes"/>
 			</cell>
 
-			<cell span="9">
+			<cell class="ml-auto col-12 col-md">
 
 				<row>
-					<cell span="12">
+					<cell>
 						<component type="PersonalTools" hideNewtalkNotifier="yes" class="pull-right"/>
-						<component type="NewtalkNotifier" class="pull-right"/>
 					</cell>
 				</row>
 
 				<row>
-					<cell span="12">
+					<cell>
 						<component type="SearchBar" class="pull-right"/>
 					</cell>
 				</row>
@@ -65,6 +64,13 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<row>
 			<cell span="12">
 				<component type="SiteNotice"/>
+			</cell>
+		</row>
+
+		<row>
+			<cell span="12">
+				<!--FIXME: Is this a good place to put it? Vector et al. put it inside the MainContent under siteSub and contentSub -->
+				<component type="NewtalkNotifier"/>
 			</cell>
 		</row>
 

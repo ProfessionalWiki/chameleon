@@ -1,0 +1,17 @@
+//
+// Fixes for Bootstrap bugs
+//
+// This file is part of the MediaWiki skin Chameleon.
+// $copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+//
+// $since 2.0
+
+
+// Add a max width for container when screen width is xs
+@if $enable-grid-classes {
+	@include media-breakpoint-down(xs) {
+		.container {
+			@include make-container-max-widths((xs: map_get($container-max-widths, sm)), $grid-breakpoints);
+		}
+	}
+}

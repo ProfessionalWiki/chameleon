@@ -44,28 +44,34 @@ class SearchBar extends Component {
 	 * Builds the HTML code for this component
 	 *
 	 * @return string
+	 * @throws \MWException
 	 */
 	public function getHtml() {
 
+		$attribsSearchFormWrapper = \Html::expandAttributes( [
+				'id'    => IdRegistry::getRegistry()->getId( 'p-search' ),
+				'class' => 'p-search ' . $this->getClassString(),
+				'role'  => 'search',
+			]
+		);
+
+		$tooltipSearchFormWrapper = Linker::tooltip( 'p-search' );
+
+		$attribsSearchForm = \Html::expandAttributes( [
+				'id'    => IdRegistry::getRegistry()->getId( 'searchform' ),
+				'class' => 'mw-search form-inline',
+				'action'=> $this->getSkinTemplate()->data[ 'wgScript' ],
+			]
+		);
+
 		$ret = $this->indent() . '<!-- search form -->' .
 
-			$this->indent() . '<div ' . \Html::expandAttributes( array(
-					'id'    => IdRegistry::getRegistry()->getId( 'p-search' ),
-					'class' => 'p-search ' . $this->getClassString(),
-					'role'  => 'search',
-				)
-			) . Linker::tooltip( 'p-search' ) . '>' .
-
-			$this->indent( 1 ) . '<form ' . \Html::expandAttributes( array(
-					'id'    => IdRegistry::getRegistry()->getId( 'searchform' ),
-					'class' => 'mw-search form-inline',
-				)
-			) . ' action="' . $this->getSkinTemplate()->data[ 'wgScript' ] . '">' .
-
-			$this->indent( 1 ) . '<input type="hidden" name="title" value="' . $this->getSkinTemplate()->data[ 'searchtitle' ] . '" />' .
+			$this->indent() . "<div $attribsSearchFormWrapper $tooltipSearchFormWrapper >" .
+			$this->indent( 1 ) . "<form $attribsSearchForm >" .
+			$this->indent( 1 ) . "<input type=\"hidden\" name=\"title\" value=\" {$this->getSkinTemplate()->data[ 'searchtitle' ]}\" />" .
 			$this->indent() . '<div class="input-group">' .
 			$this->indent( 1 ) . $this->getSkinTemplate()->makeSearchInput( array( 'id' => IdRegistry::getRegistry()->getId( 'searchInput' ), 'type' => 'text', 'class' => 'form-control' ) ) .
-			$this->indent() . '<div class="input-group-btn">';
+			$this->indent() . '<div class="input-group-append">';
 
 		$this->indent( 1 );
 
@@ -118,11 +124,12 @@ class SearchBar extends Component {
 		if ( $this->shouldShowButton( $button ) ) {
 
 			$buttonAttrs = array(
-				'value' => $this->getSkinTemplate()->getSkin()->msg( $valueAttr ),
+				'value' => $this->getSkinTemplate()->translator->translate( $valueAttr ),
 				'id' => IdRegistry::getRegistry()->getId( $idAttr ),
 				'name' => $nameAttr,
 				'type' => 'submit',
-				'class' => $idAttr . ' btn btn-default'
+				'class' => $idAttr . ' btn btn-secondary',
+				'aria-label' => $this->getSkinTemplate()->getMsg( 'chameleon-search-aria-label' )->text()
 			);
 
 			$buttonAttrs = array_merge(

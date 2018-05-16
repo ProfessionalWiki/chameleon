@@ -56,7 +56,7 @@ call_user_func( function () {
 		'author'         => '[https://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]',
 		'url'            => 'https://www.mediawiki.org/wiki/Skin:Chameleon',
 		'version'        => CHAMELEON_VERSION,
-		'license-name'   => 'GPL-3.0+',
+		'license-name'   => 'GPL-3.0-or-later',
 	);
 
 	// register skin

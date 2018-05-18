@@ -111,18 +111,22 @@ class SetupAfterCache {
 			$this->configuration[ 'chameleonRemotePath' ] . '/resources/styles/'
 		);
 
-		$GLOBALS[ 'wgResourceModules' ][ 'skin.chameleon.fontawesome' ] = [
-			'class'         => 'SCSS\\ResourceLoaderSCSSModule',
-			'localBasePath' => $GLOBALS[ 'wgStyleDirectory' ] . "/chameleon/resources/fontawesome/scss/",
-			'position'      => 'top',
-			'styles'        => [ "fontawesome", "fa-solid" ],
-			'variables'     => [ "fa-font-path" => $GLOBALS[ 'wgStylePath' ] . "/chameleon/resources/fontawesome/webfonts" ],
-			'dependencies'  => [],
-			'cachetriggers' => [
-				'LocalSettings.php' => null,
-				'composer.lock'     => null,
-			],
-		];
+		$this->bootstrapManager->addExternalModule(
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fontawesome.scss',
+			$this->configuration[ 'chameleonRemotePath' ] . '/resources/fontawesome/scss/'
+		);
+
+		$this->bootstrapManager->addExternalModule(
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-solid.scss',
+			$this->configuration[ 'chameleonRemotePath' ] . '/resources/fontawesome/scss/'
+		);
+
+		$this->bootstrapManager->addExternalModule(
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-regular.scss',
+			$this->configuration[ 'chameleonRemotePath' ] . '/resources/fontawesome/scss/'
+		);
+
+		$this->bootstrapManager->setScssVariable( 'fa-font-path', $GLOBALS[ 'wgStylePath' ] . "/chameleon/resources/fontawesome/webfonts" );
 
 	}
 

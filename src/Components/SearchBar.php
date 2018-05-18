@@ -59,7 +59,7 @@ class SearchBar extends Component {
 
 		$attribsSearchForm = \Html::expandAttributes( [
 				'id'    => IdRegistry::getRegistry()->getId( 'searchform' ),
-				'class' => 'mw-search form-inline',
+				'class' => 'mw-search',
 				'action'=> $this->getSkinTemplate()->data[ 'wgScript' ],
 			]
 		);
@@ -70,7 +70,7 @@ class SearchBar extends Component {
 			$this->indent( 1 ) . "<form $attribsSearchForm >" .
 			$this->indent( 1 ) . "<input type=\"hidden\" name=\"title\" value=\" {$this->getSkinTemplate()->data[ 'searchtitle' ]}\" />" .
 			$this->indent() . '<div class="input-group">' .
-			$this->indent( 1 ) . $this->getSkinTemplate()->makeSearchInput( array( 'id' => IdRegistry::getRegistry()->getId( 'searchInput' ), 'type' => 'text', 'class' => 'form-control' ) ) .
+			$this->indent( 1 ) . $this->getSkinTemplate()->makeSearchInput( [ 'id' => IdRegistry::getRegistry()->getId( 'searchInput' ), 'type' => 'text', 'class' => 'form-control' ] ) .
 			$this->indent() . '<div class="input-group-append">';
 
 		$this->indent( 1 );
@@ -88,19 +88,21 @@ class SearchBar extends Component {
 
 	/**
 	 * @return string
+	 * @throws \MWException
 	 */
 	private function getGoButton() {
 
 		$valueAttr = 'searcharticle';
 		$idAttr = 'searchGoButton';
 		$nameAttr = 'go';
-		$glyphicon = ( $this->getAttribute( 'buttons' ) === 'go' ? 'search' : 'share-alt' );
+		$glyphicon = ( $this->getAttribute( 'buttons' ) === 'go' ? 'search' : 'go' );
 
 		return $this->getButton( 'go', $valueAttr, $idAttr, $nameAttr, $glyphicon );
 	}
 
 	/**
 	 * @return string
+	 * @throws \MWException
 	 */
 	private function getSearchButton() {
 
@@ -117,27 +119,29 @@ class SearchBar extends Component {
 	 * @param $idAttr
 	 * @param $nameAttr
 	 * @param $glyphicon
+	 *
 	 * @return string
+	 * @throws \MWException
 	 */
 	private function getButton( $button, $valueAttr, $idAttr, $nameAttr, $glyphicon ) {
 
 		if ( $this->shouldShowButton( $button ) ) {
 
-			$buttonAttrs = array(
+			$buttonAttrs = [
 				'value' => $this->getSkinTemplate()->translator->translate( $valueAttr ),
 				'id' => IdRegistry::getRegistry()->getId( $idAttr ),
 				'name' => $nameAttr,
 				'type' => 'submit',
-				'class' => $idAttr . ' btn btn-secondary',
+				'class' => $idAttr,
 				'aria-label' => $this->getSkinTemplate()->getMsg( 'chameleon-search-aria-label' )->text()
-			);
+			];
 
 			$buttonAttrs = array_merge(
 				$buttonAttrs,
 				Linker::tooltipAndAccesskeyAttribs( "search-$nameAttr" )
 			);
 
-			return $this->indent() . \Html::rawElement( 'button', $buttonAttrs, '<span class="glyphicon glyphicon-' . $glyphicon . '"></span>' );
+			return $this->indent() . \Html::rawElement( 'button', $buttonAttrs, '<span class="' . $glyphicon . '-btn-label"></span>' );
 		}
 
 		return '';

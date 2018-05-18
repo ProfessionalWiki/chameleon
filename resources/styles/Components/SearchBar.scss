@@ -6,9 +6,25 @@
 //
 // $since 2.0
 
-
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(sm) {
 	.p-search {
 		width: 100%;
+	}
+}
+
+.p-search {
+	.searchGoButton, .mw-searchButton {
+		@extend .btn;
+		@extend .btn-secondary; // FIXME: Should this be ".btn-secondary"? Or some self-defined button style?
+	}
+
+	.go-btn-label {
+		@extend .fas;
+		@extend .#{$search-bar-go-btn-label};
+	}
+
+	.search-btn-label {
+		@extend .fas;
+		@extend .#{$search-bar-search-btn-label};
 	}
 }

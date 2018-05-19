@@ -7,9 +7,9 @@
 // $since 2.0
 
 
-@include media-breakpoint-up($personal-tools-breakpoint) {
+@include media-breakpoint-up($personal-tools-collapse-point) {
 
-	$infix: breakpoint-infix($personal-tools-breakpoint, $grid-breakpoints);
+	$infix: breakpoint-infix($personal-tools-collapse-point, $grid-breakpoints);
 
 	.pull-right .p-personal-tools {
 		@extend .justify-content#{$infix}-right;

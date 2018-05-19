@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2017, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -42,10 +42,11 @@ class NavMenu extends Component {
 
 	/**
 	 * @return String
+	 * @throws \MWException
 	 */
 	public function getHtml() {
 		$navMenu = new GenNavMenu( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );;
-		return '<ul class="nav navbar-nav">' . $navMenu->getHtml() . "</ul>\n";
+		return '<ul class="navbar-nav">' . $navMenu->getHtml() . "</ul>\n";
 	}
 
 }

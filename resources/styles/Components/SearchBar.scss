@@ -6,16 +6,27 @@
 //
 // $since 2.0
 
-@include media-breakpoint-down(sm) {
-	.p-search {
-		width: 100%;
-	}
-}
-
 .p-search {
+
+	width: 100%;
+
+	@include media-breakpoint-up($cmln-search-bar-collapse-point) {
+		width: auto;
+	}
+
 	.searchGoButton, .mw-searchButton {
+
 		@extend .btn;
-		@extend .btn-secondary; // FIXME: Should this be ".btn-secondary"? Or some self-defined button style?
+		@extend .btn-#{$cmln-search-bar-btn-color}; // FIXME: Should this be ".btn-secondary"? Or some self-defined button style?
+
+		border: {
+			top-color: $input-group-addon-border-color;
+			bottom-color: $input-group-addon-border-color;
+		}
+
+		&:last-child {
+			border-right-color: $input-group-addon-border-color;
+		}
 	}
 
 	.go-btn-label {

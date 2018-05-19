@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -26,7 +26,6 @@
 
 namespace Skins\Chameleon\Components;
 
-use SkinChameleon;
 use Skins\Chameleon\ChameleonTemplate;
 
 /**
@@ -42,13 +41,15 @@ abstract class Component {
 
 	private $mSkinTemplate;
 	private $mIndent = 0;
-	private $mClasses = array();
+	private $mClasses = [];
 	private $mDomElement = null;
 
 	/**
 	 * @param ChameleonTemplate $template
-	 * @param \DOMElement|null  $domElement
-	 * @param int               $indent
+	 * @param \DOMElement|null $domElement
+	 * @param int $indent
+	 *
+	 * @throws \MWException
 	 */
 	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
 
@@ -66,10 +67,11 @@ abstract class Component {
 	 *
 	 * @param string | array | null $classes
 	 *
+	 * @throws \MWException
 	 */
 	public function setClasses( $classes ) {
 
-		$this->mClasses = array();
+		$this->mClasses = [];
 		$this->addClasses( $classes );
 
 	}
@@ -79,7 +81,7 @@ abstract class Component {
 	 *
 	 * @param string | array | null $classes
 	 *
-	 * @return string | array
+	 * @throws \MWException
 	 */
 	public function addClasses( $classes ) {
 
@@ -100,13 +102,13 @@ abstract class Component {
 	protected function transformClassesToArray ( $classes ) {
 
 		if ( empty( $classes ) ) {
-			return array();
+			return [];
 		} elseif ( is_array( $classes )) {
 			return $classes;
 		} elseif ( is_string( $classes ) ) {
 			return explode( ' ', $classes );
 		} else {
-			throw new \MWException( __METHOD__ . ': Expected String or Array; ' . getType( $classes ) . ' given.' );
+			throw new \MWException( __METHOD__ . ': Expected String or Array; ' . gettype( $classes ) . ' given.' );
 		}
 
 	}
@@ -121,7 +123,7 @@ abstract class Component {
 
 	/**
 	 * @since 1.1
-	 * @return SkinChameleon
+	 * @return \Skins\Chameleon\Chameleon
 	 */
 	public function getSkin() {
 
@@ -153,7 +155,7 @@ abstract class Component {
 	 *
 	 * @param string | array | null $classes
 	 *
-	 * @return string
+	 * @throws \MWException
 	 */
 	public function removeClasses( $classes ) {
 
@@ -182,7 +184,7 @@ abstract class Component {
 	 * @return string[] the resource loader modules needed by this component
 	 */
 	public function getResourceLoaderModules() {
-		return array();
+		return [];
 	}
 
 	/**

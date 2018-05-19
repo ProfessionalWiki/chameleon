@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2017, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -52,6 +52,7 @@ class NavbarHorizontal extends Component {
 	 * Builds the HTML code for this component
 	 *
 	 * @return String the HTML code
+	 * @throws \MWException
 	 */
 	public function getHtml() {
 
@@ -63,7 +64,7 @@ class NavbarHorizontal extends Component {
 	}
 
 	/**
-	 *
+	 * @throws \MWException
 	 */
 	protected function buildHtml() {
 
@@ -73,14 +74,15 @@ class NavbarHorizontal extends Component {
 		}
 
 		$this->mHtml =
-			$this->buildFixedNavBarIfRequested() .
+			//$this->buildFixedNavBarIfRequested() . // FIXME: Put fixed navbar back in
 			$this->buildNavBarOpeningTags() .
 			$this->buildNavBarComponents() .
 			$this->buildNavBarClosingTags();
 	}
 
 	/**
-	 *
+	 * @return string
+	 * @throws \MWException
 	 */
 	protected function buildFixedNavBarIfRequested() {
 		// if a fixed navbar is requested
@@ -106,17 +108,17 @@ class NavbarHorizontal extends Component {
 
 	/**
 	 * @return string
+	 * @throws \MWException
 	 */
 	protected function buildNavBarOpeningTags() {
 		$openingTags =
 			$this->indent() . '<!-- navigation bar -->' .
-			$this->indent() . \Html::openElement( 'nav', array(
-					'class' => 'navbar navbar-default p-navbar ' . $this->getClassString(),
+			$this->indent() . \Html::openElement( 'nav', [
+					'class' => 'p-navbar' . $this->getClassString(),
 					'role'  => 'navigation',
-					'id'    => $this->getHtmlId()
-				)
-			) .
-			$this->indent( 1 ) . '<div class="container-fluid">';
+					'id'    => $this->getHtmlId() // FIXME: ID to be repeated in classes
+				]
+			);
 
 		$this->indent( 1 );
 
@@ -134,7 +136,8 @@ class NavbarHorizontal extends Component {
 	}
 
 	/**
-	 *
+	 * @return string
+	 * @throws \MWException
 	 */
 	protected function buildNavBarComponents() {
 
@@ -157,17 +160,18 @@ class NavbarHorizontal extends Component {
 
 	/**
 	 * @return string[][]
+	 * @throws \MWException
 	 */
 	protected function buildNavBarElementsFromDomTree() {
 
-		$elements = array(
-			'head'  => array(),
-			'left'  => array(),
-			'right' => array(),
-		);
+		$elements = [
+			'head'  => [],
+			'left'  => [],
+			'right' => [],
+		];
 
 		/** @var \DOMElement[] $children */
-		$children = $this->getDomElement()->hasChildNodes() ? $this->getDomElement()->childNodes : array();
+		$children = $this->getDomElement()->hasChildNodes() ? $this->getDomElement()->childNodes : [];
 
 		// add components
 		foreach ( $children as $node ) {
@@ -179,6 +183,8 @@ class NavbarHorizontal extends Component {
 	/**
 	 * @param DOMElement $node
 	 * @param $elements
+	 *
+	 * @throws \MWException
 	 */
 	protected function buildAndCollectNavBarElementFromDomElement( $node, &$elements ) {
 
@@ -207,6 +213,7 @@ class NavbarHorizontal extends Component {
 	 * @param \DomElement $node
 	 *
 	 * @return string
+	 * @throws \MWException
 	 */
 	protected function buildNavBarElementFromDomElement( $node ) {
 		return $this->getSkin()->getComponentFactory()->getComponent( $node, $this->getIndent() )->getHtml();
@@ -216,17 +223,15 @@ class NavbarHorizontal extends Component {
 	 * @param string[] $headElements
 	 *
 	 * @return string
+	 * @throws \MWException
 	 */
 	protected function buildHead( $headElements ) {
 
 		$head =
-			$this->indent() . "<div class=\"navbar-header\">\n" .
-			$this->indent( 1 ) . "<button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#" . $this->getHtmlId() . "-collapse\">" .
-			$this->indent( 1 ) . "<span class=\"sr-only\">Toggle navigation</span>" .
-			$this->indent() . str_repeat( "<span class=\"icon-bar\"></span>", 3 ) .
+			$this->indent() . "<button type=\"button\" class=\"toggler\" data-toggle=\"collapse\" data-target=\"#" . $this->getHtmlId() . "-collapse\">" .
+			$this->indent( 1 ) . "<span class=\"cmln-navbar-toggler-icon\"></span>" .
 			$this->indent( -1 ) . "</button>\n" .
-			implode( '', $headElements ) . "\n" .
-			$this->indent( -1 ) . "</div>\n";
+			implode( '', $headElements ) . "\n";
 
 		return $head;
 	}
@@ -235,21 +240,22 @@ class NavbarHorizontal extends Component {
 	 * @param string[] $tailElements
 	 *
 	 * @return string
+	 * @throws \MWException
 	 */
 	protected function buildTail( $tailElements ) {
 
 		return
-			$this->indent() . '<div class="collapse navbar-collapse" id="' . $this->getHtmlId() . '-collapse">' .
+			$this->indent() . '<div class="collapse navbar-collapse" id="' . $this->getHtmlId() . '-collapse">' . // FIXME: ID to be repeated in classes
 			implode( '', $tailElements ) .
 			$this->indent() . '</div><!-- /.navbar-collapse -->';
 	}
 
 	/**
 	 * @return string
+	 * @throws \MWException
 	 */
 	protected function buildNavBarClosingTags() {
 		return
-			$this->indent( -1 ) . '</div>' .
 			$this->indent( -1 ) . '</nav>' . "\n";
 	}
 

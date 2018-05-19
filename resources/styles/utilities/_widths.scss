@@ -1,0 +1,18 @@
+//
+// Functions to determine widths for @media queries
+//
+// This file is part of the MediaWiki skin Chameleon.
+// $copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+//
+// $since 2.0
+
+
+
+@function max-width( $breakpoint ) {
+	@return #{ "max-width: " + ( map_get( $grid-breakpoints, $breakpoint ) - 0.02px ) };
+}
+
+@function min-width( $breakpoint ) {
+	@return #{ "min-width: "+ map_get( $grid-breakpoints, $breakpoint ) };
+}
+

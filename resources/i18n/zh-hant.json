@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Cwlin0416",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Kly"
 		]
 	},
-	"skinname-chameleon": "Chameleon",
+	"skinname-chameleon": "變色龍",
 	"chameleon-desc": "變色龍外觀",
 	"chameleon-loggedin": "您已登入為 $1。",
 	"chameleon-notloggedin": "您尚未登入",

@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -52,6 +52,8 @@ class PageTools extends Component {
 	 * @param ChameleonTemplate $template
 	 * @param \DOMElement|null $domElement
 	 * @param int $indent
+	 *
+	 * @throws \MWException
 	 */
 	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
 
@@ -59,13 +61,14 @@ class PageTools extends Component {
 
 		// add classes for the normal case where the page tools are displayed as a first class element;
 		// these classes should be removed if the page tools are part of another element, e.g. nav bar
-		$this->addClasses( 'list-inline text-center' );
+		//$this->addClasses( 'list-inline text-center' );
 	}
 
 	/**
 	 * Builds the HTML code for this component
 	 *
 	 * @return string the HTML code
+	 * @throws \MWException
 	 */
 	public function getHtml() {
 
@@ -78,21 +81,24 @@ class PageTools extends Component {
 		$ret = '';
 
 		$this->indent( 2 );
+
 		foreach ( $contentNavigation as $category => $tabsDescription ) {
 			$ret .= $this->buildTabGroup( $category, $tabsDescription );
 		}
+
 		$this->indent( -2 );
 
 		if ( $ret !== '' ) {
 			$ret =
 				$this->indent( 1 ) . '<!-- Content navigation -->' .
-				$this->indent() . \Html::openElement( 'ul',
-					array(
+
+				$this->indent() . \Html::rawElement( 'ul',
+					[
 						'class' => 'p-contentnavigation ' . $this->getClassString(),
 						'id'    => IdRegistry::getRegistry()->getId( 'p-contentnavigation' ),
-					) ) .
-				$ret .
-				$this->indent() . '</ul>';
+					],
+					$ret . $this->indent()
+				);
 		}
 
 		return $ret;
@@ -161,6 +167,7 @@ class PageTools extends Component {
 	 * @param mixed[][] $tabsDescription
 	 *
 	 * @return string
+	 * @throws \MWException
 	 */
 	protected function buildTabGroup( $category, $tabsDescription ) {
 		// TODO: visually group all links of one category (e.g. some space between categories)
@@ -190,12 +197,13 @@ class PageTools extends Component {
 	 * @param string $category
 	 *
 	 * @return string
+	 * @throws \MWException
 	 */
 	protected function buildTabGroupOpeningTags( $category ) {
 		// output the name of the current category (e.g. 'namespaces', 'views', ...)
 		$ret = $this->indent() .
-			\Html::openElement( 'li', array( 'id' => IdRegistry::getRegistry()->getId( 'p-' . $category ) ) ) .
-			$this->indent( 1 ) . '<ul class="list-inline" >';
+			\Html::openElement( 'li', [ 'id' => IdRegistry::getRegistry()->getId( 'p-' . $category ) ] ) .
+			$this->indent( 1 ) . '<ul class="tab-group" >';
 
 		$this->indent( 1 );
 		return $ret;
@@ -206,6 +214,7 @@ class PageTools extends Component {
 	 * @param string $key
 	 *
 	 * @return string
+	 * @throws \MWException
 	 */
 	protected function buildTab( $tabDescription, $key ) {
 
@@ -216,7 +225,7 @@ class PageTools extends Component {
 		}
 
 		// apply a link class if specified, e.g. for the currently active namespace
-		$options = array();
+		$options = [];
 		if ( array_key_exists( 'class', $tabDescription ) ) {
 			$options[ 'link-class' ] = $tabDescription[ 'class' ];
 		}
@@ -227,6 +236,7 @@ class PageTools extends Component {
 
 	/**
 	 * @return string
+	 * @throws \MWException
 	 */
 	protected function buildTabGroupClosingTags() {
 		return $this->indent( -1 ) . '</ul>' .
@@ -249,7 +259,7 @@ class PageTools extends Component {
 	 */
 	public function setRedundant( $tools ) {
 		if ( is_string( $tools ) ) {
-			$tools = array( $tools );
+			$tools = [ $tools ];
 		}
 
 		$pageToolsStructure = &$this->getPageToolsStructure();

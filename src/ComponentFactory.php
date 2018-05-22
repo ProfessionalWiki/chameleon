@@ -253,11 +253,12 @@ class ComponentFactory {
 			}
 
 			$chameleonClassName = join( '\\', array( self::NAMESPACE_HIERARCHY, $className ) );
-			if ( !class_exists( $chameleonClassName ) ) {
-				return $className;
+			if ( class_exists( $chameleonClassName ) ) {
+				return $chameleonClassName;
 			}
 
-			return $chameleonClassName;
+			return $className;
+
 		}
 
 		return self::NAMESPACE_HIERARCHY . 'Container';

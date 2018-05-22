@@ -49,26 +49,26 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 		<row>
 			<cell span="12">
-				<component type="NavbarHorizontal">
+				<component type="NavbarHorizontal" class="mb-3 mt-2 mt-md-0">
 					<component type="NavMenu" showTools="no" showLanguages="no"/>
 				</component>
 			</cell>
 		</row>
 
 		<row>
-			<cell span="12">
-				<component type="PageTools"/>
+			<cell>
+				<component type="PageTools" class="mb-3"/>
 			</cell>
 		</row>
 
 		<row>
-			<cell span="12">
+			<cell class="col-auto mx-auto">
 				<component type="SiteNotice"/>
 			</cell>
 		</row>
 
 		<row>
-			<cell span="12">
+			<cell class="col-auto mx-auto">
 				<!--FIXME: Is this a good place to put it? Vector et al. put it inside the MainContent under siteSub and contentSub -->
 				<component type="NewtalkNotifier"/>
 			</cell>

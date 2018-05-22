@@ -5,7 +5,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * $copyright 2013 - 2015, Stephan Gambke
+ * @copyright 2013 - 2015, Stephan Gambke
  * $license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -22,41 +22,9 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  * $author Stephan Gambke
- * $since 1.0
+ * @since 1.0
  * $ingroup Skins
  */
-
-html {
-	//@include box-sizing(border-box);
-}
-
-*, *:before, *:after {
-	//@include box-sizing(inherit);
-}
-
-.mw-body {
-	padding: 0 2em;
-	margin: 1em 0;
-}
-
-/* Display editsection links smaller and next to headings */
-.mw-editsection-like {
-	font-size: $font-size-sm;
-	font-weight: normal;
-	margin-left: 1em;
-	vertical-align: baseline;
-	/* Reset line-height; headings tend to have it set to larger values */
-	line-height: 1em;
-	/* As .mw-editsection is a <span> (inline element), it is treated as part */
-	/* of the heading content when selecting text by multiple clicks and thus */
-	/* selected together with heading content, despite the user-select: none; */
-	/* rule set above. This enforces non-selection without changing the look. */
-	display: inline-block;
-}
-
-.mw-editsection {
-	@extend .mw-editsection-like;
-}
 
 /* Correct directionality when page directionality is different from site/user directionality */
 /* $noflip */
@@ -71,81 +39,8 @@ html {
 	margin-right: 1em;
 }
 
-.mw-jump {
-	height: 0;
-	overflow: hidden;
-}
-
-/**
-* Table of contents
-*/
-.mw-body .toc {
-	#toctitle {
-		margin-bottom: 1ex;
-
-		h2 {
-			display: inline;
-			font-size: $toctitle-font-size;
-			border: none;
-		}
-
-		.toctoggle {
-			@extend .mw-editsection-like;
-		}
-	}
-
-	ul {
-		list-style: none;
-		margin-left: 0.5em;
-		padding: 0;
-		text-align: left;
-		text-indent: 0;
-
-		li {
-			a {
-				.tocnumber {
-					display: inline-block;
-					text-align: right;
-					margin-right: .5ex;
-					min-width: 2ex; //up to two digits
-				}
-			}
-
-			ul li {
-				a .tocnumber {
-					min-width: 3.5ex; // two digits + dot + digit
-				}
-
-				ul li {
-					a .tocnumber {
-						min-width: 5ex; // two digits + dot + digit + dot + digit
-					}
-				}
-			}
-		}
-
-	}
-}
-
-/* have to insert id based rule here to over-rule MW core's shared.css */
-#toc ul {
-	margin-left: 0.5em;
-}
-
 .catlinks {
 	margin: 2em 0 0;
-}
-
-.firstHeading {
-	border-bottom: $hr-border-width solid $hr-border-color; // FIXME: Should be something like $first-heading-border-width
-	padding-bottom: .2em;
-	margin-bottom: .2em;
-}
-
-.contentHeader {
-	margin: 1em 0 1.5em;
-	border-bottom: 0;
-	padding-bottom: 0;
 }
 
 .footer-info {
@@ -181,14 +76,6 @@ html {
 
 .p-personal-tools {
 	margin: 0 0 0 1ex;
-}
-
-#siteSub {
-	display: none
-}
-
-#wpTextbox1 {
-	width: 100%;
 }
 
 // style horizontal toolbar

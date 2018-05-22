@@ -97,9 +97,8 @@ class Chameleon extends SkinTemplate {
 		// load Bootstrap styles
 		$out->addModuleStyles(
 			[
-				'mediawiki.legacy.shared',
+				//'mediawiki.legacy.shared',
 				'ext.bootstrap.styles',
-				'skin.chameleon.fontawesome'
 			]
 		);
 	}

@@ -36,7 +36,7 @@ namespace Skins\Chameleon;
 class IdRegistry {
 
 	private static $sInstance;
-	private $mRegistry = array();
+	private $mRegistry = [];
 
 	/**
 	 * @return IdRegistry
@@ -49,25 +49,6 @@ class IdRegistry {
 
 		return self::$sInstance;
 
-	}
-
-	/**
-	 * Returns the opening tag of an HTML element in a string.
-	 *
-	 * The advantage over Html::openElement is that any id attribute is ensured to be unique.
-	 *
-	 * @param string $tag
-	 * @param array $attributes
-	 *
-	 * @return string
-	 */
-	public function openElement( $tag, $attributes = array() ) {
-
-		if ( is_array( $attributes ) && isset( $attributes[ 'id' ] ) ) {
-			$attributes[ 'id' ] = $this->getId( $attributes[ 'id' ] );
-		}
-
-		return \Html::openElement( $tag, $attributes );
 	}
 
 	/**
@@ -101,6 +82,23 @@ class IdRegistry {
 	}
 
 	/**
+	 * Returns the opening tag of an HTML element in a string.
+	 *
+	 * The advantage over Html::openElement is that any id attribute is ensured to be unique.
+	 *
+	 * @param string $tag
+	 * @param array $attributes
+	 *
+	 * @return string
+	 */
+	public function openElement( $tag, $attributes = [] ) {
+
+		$attributes = $this->getAttributesWithUniqueId( $attributes );
+
+		return \Html::openElement( $tag, $attributes );
+	}
+
+	/**
 	 * Returns an HTML element in a string. The contents are NOT escaped.
 	 *
 	 * The advantage over Html::rawElement is that any id attribute is ensured to be unique.
@@ -111,12 +109,24 @@ class IdRegistry {
 	 *
 	 * @return string
 	 */
-	public function element( $tag, $attributes = array(), $contents = '' ) {
+	public function element( $tag, $attributes = [], $contents = '' ) {
 
-		if ( is_array( $attributes ) && isset( $attributes[ 'id' ] ) ) {
-			$attributes[ 'id' ] = $this->getId( $attributes[ 'id' ] );
-		}
+		$attributes = $this->getAttributesWithUniqueId( $attributes );
 
 		return \Html::rawElement( $tag, $attributes, $contents );
 	}
+
+	/**
+	 * @param $attributes
+	 *
+	 * @return array
+	 */
+	protected function getAttributesWithUniqueId( $attributes ) {
+
+		if ( is_array( $attributes ) && isset( $attributes[ 'id' ] ) ) {
+			$attributes[ 'class' ] = ( isset( $attributes[ 'class' ] ) ? ( $attributes[ 'class' ] . ' ' ) : '' ) . $attributes[ 'id' ];
+			$attributes[ 'id' ] = $this->getId( $attributes[ 'id' ] );
+		}
+		return $attributes;
+}
 }

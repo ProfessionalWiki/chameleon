@@ -2,14 +2,16 @@
 // Variables modified or introduced for the Chameleon skin
 //
 // This file is part of the MediaWiki skin Chameleon.
-// $copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
 //
-// $since 2.0
+// @since 2.0
 
 $cmln-collapse-point: md !default;
 
+//$enable-shadows: true;
+//$enable-gradients: true;
+
 // PersonalTools
-$personal-tools-collapse-point: xs !default; // FIXME: Is there any point in having a collapse point? Styling is always the same.
 $personal-tools-item-margin: 1rem !default;
 
 // SearchBar
@@ -25,6 +27,19 @@ $cmln-navbar-horizontal-bg-color: light !default; // @see $theme-colors
 $cmln-navbar-horizontal-toggler-color: light !default; // @see $theme-colors
 // FIXME: Add variable for toggler icon
 
+// MainContent
+$cmln-first-heading-underline-width: $hr-border-width !default;
+$cmln-first-heading-underline-color: $hr-border-color !default;
+$cmln-first-heading-underline-distance: $hr-margin-y !default;
+$cmln-toctitle-font-size: $font-size-lg !default;
+
+// list parameters
+$list-bullet-size: 0.5 * $font-size-base;
+$list-bullet-color: $gray-300;
+$list-level-indent: 3.5ex;
+
+
+
 
 // Global textual link colors.
 //$link-color: $brand-primary;
@@ -34,14 +49,8 @@ $link-stub-color: $link-color;
 $link-interwiki-color: $link-color;
 $link-external-color: $link-color;
 
-// list parameters
-$list-bullet-size: .5 * $font-size-base;
-$list-bullet-color: $gray-300;
-$list-level-indent: 3.5ex;
 
 $thumbnail-caption-padding: 3px;
-
-$toctitle-font-size: $font-size-lg;
 
 // logo will be scaled down to this height to fit into the navbar
 // (this value should be less than the navbar-height)

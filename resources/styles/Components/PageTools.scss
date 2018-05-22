@@ -1,0 +1,34 @@
+//
+// Styling for PageTools
+//
+// This file is part of the MediaWiki skin Chameleon.
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+//
+// @since 2.0
+
+.p-contentnavigation {
+
+	@extend .justify-content-center;
+
+	&, ul {
+
+		@extend .d-flex;
+		@extend .flex-row;
+		@extend .flex-wrap;
+
+		@include list-unstyled;
+
+		margin: {
+			left: (-$personal-tools-item-margin / 2);
+			right: (-$personal-tools-item-margin / 2);
+		}
+
+		> * {
+			margin: {
+				left: ($personal-tools-item-margin / 2);
+				right: ($personal-tools-item-margin / 2);
+			}
+		}
+
+	}
+}

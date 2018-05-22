@@ -114,7 +114,7 @@ class NavbarHorizontal extends Component {
 		$openingTags =
 			$this->indent() . '<!-- navigation bar -->' .
 			$this->indent() . \Html::openElement( 'nav', [
-					'class' => 'p-navbar' . $this->getClassString(),
+					'class' => 'p-navbar ' . $this->getClassString(),
 					'role'  => 'navigation',
 					'id'    => $this->getHtmlId() // FIXME: ID to be repeated in classes
 				]

@@ -2,9 +2,9 @@
 // Flex classes missing in Bootstrap
 //
 // This file is part of the MediaWiki skin Chameleon.
-// $copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
 //
-// $since 2.0
+// @since 2.0
 
 
 @each $breakpoint in map-keys($grid-breakpoints) {

@@ -1,0 +1,21 @@
+//
+// Alert classes used by MW
+//
+// This file is part of the MediaWiki skin Chameleon.
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+//
+// @since 2.0
+
+.alert p:last-child{
+	margin-bottom: 0;
+}
+
+.warningbox{
+	@extend .alert;
+	@extend .alert-warning;
+}
+
+.smw-editpage-help {
+	@extend .alert;
+	@extend .alert-info;
+}

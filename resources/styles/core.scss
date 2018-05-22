@@ -2,26 +2,32 @@
 // Central Chameleon style file
 //
 // This file is part of the MediaWiki skin Chameleon.
-// $copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
 //
-// $since 2.0
+// @since 2.0
 
-@import "variables";
-@import "mixins";
-@import "utilities";
-//@import "images";
-//@import "forms";
-//@import "screen";
-//@import "specialpages";
-//@import "print";
-//@import "extensionfixes";
+.skin-chameleon {
+	@import "functions";
+	@import "variables";
+	@import "mixins";
+	@import "utilities";
+	//@import "images";
+	//@import "forms";
+	//@import "screen";
+	//@import "specialpages";
+	//@import "print";
+	//@import "extensionfixes";
 
-/**
- * Component styles
- *
- * TODO: Include them programmatically only when necessary
- */
+	/**
+	 * Component styles
+	 *
+	 * TODO: Include them programmatically only when necessary
+	 */
 
-@import "Components/NavbarHorizontal";
-@import "Components/PersonalTools";
-@import "Components/SearchBar";
+	@import "Components/MainContent";
+	@import "Components/NavbarHorizontal";
+	@import "Components/NewtalkNotifier";
+	@import "Components/PageTools";
+	@import "Components/PersonalTools";
+	@import "Components/SearchBar";
+}

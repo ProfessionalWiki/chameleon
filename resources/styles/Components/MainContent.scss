@@ -1,0 +1,112 @@
+//
+// Styles for the MainContent component
+//
+// This file is part of the MediaWiki skin Chameleon.
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+//
+// @since 2.0
+
+.mw-body {
+
+	@include media-breakpoint-up($cmln-search-bar-collapse-point) {
+		padding: 0 2rem;
+		margin: 1rem 0;
+	}
+
+	#siteSub {
+		display: none
+	}
+
+	.firstHeading {
+		border-bottom: $cmln-first-heading-underline-width solid $cmln-first-heading-underline-color;
+		padding-bottom: $cmln-first-heading-underline-distance;
+		margin-bottom: $cmln-first-heading-underline-distance;
+	}
+
+	.jump-to-nav {
+		@extend .sr-only;
+	}
+
+	.mw-editsection {
+		@include mw-editsection-like;
+	}
+
+	// Table of contents
+	.toc {
+
+		#toctitle {
+
+			h2 {
+				display: inline;
+				font-size: $cmln-toctitle-font-size;
+			}
+
+			.toctoggle {
+				@include mw-editsection-like;
+			}
+		}
+
+		ul {
+			@extend .list-unstyled;
+
+			margin: {
+				top: map_get($spacers, 2);
+				bottom: map_get($spacers, 2);
+			}
+
+			li {
+				a {
+					.tocnumber {
+						display: inline-block;
+						text-align: right;
+						margin-right: map_get($spacers, 2);
+						min-width: 2ex; //up to two digits
+					}
+				}
+
+				ul li {
+					a .tocnumber {
+						min-width: 3.5ex; // two digits + dot + digit
+					}
+
+					ul li {
+						a .tocnumber {
+							min-width: 5ex; // two digits + dot + digit + dot + digit
+						}
+					}
+				}
+			}
+
+		}
+	}
+
+	// Lists
+	ol {
+		list-style: outside none decimal;
+	}
+
+	ul {
+		@include bullet();
+	}
+
+	ol, ul {
+		padding-left: $list-level-indent;
+		margin: 0;
+
+		ul {
+			@include bullet($list-bullet-color, $list-bullet-size*.9);
+		}
+
+		ol, ul {
+			ul {
+				@include bullet($list-bullet-color, $list-bullet-size*.7);
+			}
+		}
+	}
+
+	// action=edit
+	#wpTextbox1 {
+		width: 100%;
+	}
+
+}

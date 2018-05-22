@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -41,14 +41,15 @@ class NewtalkNotifier extends Component {
 	 * Builds the HTML code for this component
 	 *
 	 * @return String the HTML code
+	 * @throws \MWException
 	 */
 	public function getHtml() {
 
 		$data = $this->getSkinTemplate()->data;
 
 		if ( array_key_exists( 'newtalk', $data ) && $data[ 'newtalk' ] ) {
-			return $this->indent() . '<!-- message to a user about new messages on their talkpage -->' .
-				   $this->indent() . '<span class="usermessage ' . $this->getClassString() . '">' . $this->getSkinTemplate()->data[ 'newtalk' ] . '</span>';
+			return $this->indent() . '<!-- new talk notifier message to a user about new messages on their talkpage -->' .
+				   $this->indent() . \Html::rawElement( 'div', ['class' => 'usermessage ' . $this->getClassString() ], $data[ 'newtalk' ] );
 		} else {
 			return '';
 		}

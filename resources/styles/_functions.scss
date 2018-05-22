@@ -1,0 +1,35 @@
+//
+// Functions
+//
+// This file is part of the MediaWiki skin Chameleon.
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+//
+// @since 2.0
+
+// Convert rem to px if necessary, then remove unit
+// Assumes 1rem = 16px
+//
+// @param $value a value in rem or px
+// @return unitless px value
+@function abs( $value ) {
+	@if (type-of($value) == "number") and ($value != 0) {
+
+		$unit: unit($value);
+		$px2rem: 16;
+
+		@if ($unit == 'rem') {
+			$value: $value/1rem;
+			@return $px2rem*$value;
+		}
+
+		@if($unit == 'px'){
+			@return $value/1px;
+		}
+
+		@error 'There is no unit conversion for "#{$unit}"';
+
+	}@else {
+		@return $value;
+	}
+}
+

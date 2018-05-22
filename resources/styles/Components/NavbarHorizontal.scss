@@ -2,16 +2,19 @@
 // Styles for the NavbarHorizontal component
 //
 // This file is part of the MediaWiki skin Chameleon.
-// $copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
 //
-// $since 2.0
+// @since 2.0
 
 
 .p-navbar {
 
-	@media ( max-width( $cmln-navbar-horizontal-collapse-point ) ) {
+	@extend .navbar;
+	@extend .navbar-expand-#{$cmln-navbar-horizontal-collapse-point};
+	@extend .navbar-#{$cmln-navbar-horizontal-theme};
+	@extend .bg-#{$cmln-navbar-horizontal-bg-color};
 
-		margin: 1rem 0;
+	@media ( max-width( $cmln-navbar-horizontal-collapse-point ) ) {
 
 		// Make sure that the dropping navbar does not shift the content
 		// i.e. set position: absolute + high z-index
@@ -26,19 +29,16 @@
 		}
 	}
 
-	@extend .navbar;
-	@extend .navbar-expand-#{$cmln-navbar-horizontal-collapse-point};
-	@extend .navbar-#{$cmln-navbar-horizontal-theme};
-	@extend .bg-#{$cmln-navbar-horizontal-bg-color};
-
 	.navbar-collapse {
 		@extend .bg-#{$cmln-navbar-horizontal-bg-color};
 	}
 
+	// use cmln-specific
 	.toggler{
 
 		@extend .btn-sm;
 		@extend .btn-#{$cmln-navbar-horizontal-toggler-color};
+		@extend .ml-auto;
 
 		border: none;
 		outline: none;

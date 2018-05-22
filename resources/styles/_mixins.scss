@@ -1,0 +1,69 @@
+//
+// Mixins
+//
+// This file is part of the MediaWiki skin Chameleon.
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+//
+// @since 2.0
+
+// Display editsection links smaller and next to headings
+@mixin mw-editsection-like() {
+	font-size: $font-size-sm;
+	margin-left: 1rem;
+
+	//font-weight: normal;
+	//vertical-align: baseline;
+	//line-height: 1em; // Reset line-height; headings tend to have it set to larger values
+
+	// As .mw-editsection is a <span> (inline element), it is treated as part
+	// of the heading content when selecting text by multiple clicks and thus
+	// selected together with heading content, despite having user-select: none;
+	// This display: inline-block; enforces non-selection without changing the look.
+	//display: inline-block;
+}
+
+
+
+/**
+ * Colors for links
+ *
+ * :hover MUST come after :link and :visited
+ * :active MUST come after :hover
+ */
+@mixin link( $color ) {
+	&:link {
+		color: $color;
+	}
+	&:visited {
+		color: darken($color, 20%);
+	}
+	&:focus {
+		color: darken($color, 15%);
+	}
+	&:hover {
+		color: darken($color, 15%);
+	}
+	&:active {
+		color: difference($color, #ffffff);
+	}
+	&:visited:focus {
+		color: darken($color, 30%);
+	}
+	&:visited:hover {
+		color: darken($color, 30%);
+	}
+}
+
+// Produces an SVG bullet with the diameter equal to the minimum from $width
+// and $height; the bullet is centered horizontally and placed at 65% from the
+// top vertically (or as far down as possible given the diameter)
+@mixin bullet( $color: $list-bullet-color, $width: $list-bullet-size, $height: $font-size-base ) {
+	//$image: '<svg width="#{$width}" height="#{$height}" version="1.1" xmlns="http://www.w3.org/2000/svg"><circle cx="#{$width/2}" cy="#{min($height - min($width, $height)/2, 0.65*$height)}" r="#{min($width, $height)/2}" fill="#{$color}"/></svg>';
+	//$image: '';
+		//unit-less($width), unit-less($height), unit-less($width/2), unit(min($height - min($width, $height)/2, 0.65*$height)), unit( min($width, $height) )/2 );
+	$width: abs($width);
+	$height: abs($height);
+	list-style: outside disc url("data:image/svg+xml;charset=UTF-8,<svg width='#{$width}' height='#{$height}' version='1.1' xmlns='http://www.w3.org/2000/svg'><circle cx='#{$width/2}' cy='#{min($height - min($width, $height)/2, 0.65*$height)}' r='#{min($width, $height)/2}' fill='#{$color}'/></svg>");
+	// IE hack: IE < 9 does not properly work with SVGs. Serve them some fallback PNG.
+	list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAJCAYAAAARml2dAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABUSURBVAiZdY4xDsAgFELB2J0DdnbwQI5OHvDfgC62SY0yvhAetI1dWEq5JN0kKwDYbhEx8oT9a5JdEtLb/M2QNW0FAJLttkLbLUfEkIRVztPdo+MBm8UkW9Zxc20AAAAASUVORK5CYII=")#{"\9"};
+}

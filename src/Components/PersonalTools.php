@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -41,6 +41,7 @@ class PersonalTools extends Component {
 	 * Builds the HTML code for this component
 	 *
 	 * @return String the HTML code
+	 * @throws \MWException
 	 */
 	public function getHtml() {
 
@@ -65,6 +66,7 @@ class PersonalTools extends Component {
 
 	/**
 	 * @return string
+	 * @throws \MWException
 	 */
 	private function getNewtalkNotifier() {
 

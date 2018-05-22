@@ -2,34 +2,33 @@
 // Styling for PersonalTools
 //
 // This file is part of the MediaWiki skin Chameleon.
-// $copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
 //
-// $since 2.0
+// @since 2.0
 
+.pull-right .p-personal-tools {
+	@extend .justify-content-right;
+}
 
-@include media-breakpoint-up($personal-tools-collapse-point) {
+.pull-left .p-personal-tools {
+	@extend .justify-content-left;
+}
 
-	$infix: breakpoint-infix($personal-tools-collapse-point, $grid-breakpoints);
+.p-personal-tools {
 
-	.pull-right .p-personal-tools {
-		@extend .justify-content#{$infix}-right;
-	}
+	@extend .d-flex;
+	@extend .flex-row;
+	@extend .flex-wrap-reverse;
+	@extend .justify-content-center;
 
-	.pull-left .p-personal-tools {
-		@extend .justify-content#{$infix}-left;
-	}
+	@include list-unstyled;
 
-	.p-personal-tools {
-		@extend .d#{$infix}-flex;
-		@extend .flex#{$infix}-row;
-		@extend .flex#{$infix}-wrap-reverse;
+	margin: 0 (-$personal-tools-item-margin / 2);
 
-		@include list-unstyled;
-
-		margin: 0 (-$personal-tools-item-margin / 2);
-
-		> * {
-			margin: 0 $personal-tools-item-margin / 2;
+	> * {
+		margin: {
+			left: ($personal-tools-item-margin / 2);
+			right: ($personal-tools-item-margin / 2);
 		}
 	}
 }

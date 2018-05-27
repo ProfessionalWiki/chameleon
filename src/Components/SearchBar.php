@@ -141,7 +141,7 @@ class SearchBar extends Component {
 				Linker::tooltipAndAccesskeyAttribs( "search-$nameAttr" )
 			);
 
-			return $this->indent() . \Html::rawElement( 'button', $buttonAttrs, '<span class="' . $glyphicon . '-btn-label"></span>' );
+			return $this->indent() . \Html::rawElement( 'button', $buttonAttrs, '<i class="' . $glyphicon . '-btn-label"></i>' );
 		}
 
 		return '';

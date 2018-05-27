@@ -107,11 +107,6 @@ class SetupAfterCache {
 		$this->bootstrapManager->addAllBootstrapModules();
 
 		$this->bootstrapManager->addExternalModule(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/core.scss',
-			$this->configuration[ 'chameleonRemotePath' ] . '/resources/styles/'
-		);
-
-		$this->bootstrapManager->addExternalModule(
 			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fontawesome.scss',
 			$this->configuration[ 'chameleonRemotePath' ] . '/resources/fontawesome/scss/'
 		);
@@ -124,6 +119,11 @@ class SetupAfterCache {
 		$this->bootstrapManager->addExternalModule(
 			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-regular.scss',
 			$this->configuration[ 'chameleonRemotePath' ] . '/resources/fontawesome/scss/'
+		);
+
+		$this->bootstrapManager->addExternalModule(
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/core.scss',
+			$this->configuration[ 'chameleonRemotePath' ] . '/resources/styles/'
 		);
 
 		$this->bootstrapManager->setScssVariable( 'fa-font-path', $GLOBALS[ 'wgStylePath' ] . "/chameleon/resources/fontawesome/webfonts" );

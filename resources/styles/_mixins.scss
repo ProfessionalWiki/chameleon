@@ -6,6 +6,7 @@
 //
 // @since 2.0
 
+
 // Display editsection links smaller and next to headings
 @mixin mw-editsection-like() {
 	font-size: $font-size-sm;
@@ -23,6 +24,13 @@
 }
 
 
+@mixin fas-icon( $classes: () ){
+	@each $class in $classes {
+		@extend .#{$class};
+	}
+}
+
+//// Old mixins:
 
 /**
  * Colors for links

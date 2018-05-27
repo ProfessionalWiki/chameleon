@@ -92,12 +92,9 @@ class PageTools extends Component {
 			$ret =
 				$this->indent( 1 ) . '<!-- Content navigation -->' .
 
-				$this->indent() . \Html::rawElement( 'ul',
-					[
-						'class' => 'p-contentnavigation ' . $this->getClassString(),
-						'id'    => IdRegistry::getRegistry()->getId( 'p-contentnavigation' ),
-					],
-					$ret . $this->indent()
+				IdRegistry::getRegistry()->element( 'ul',
+					[ 'class' => $this->getClassString(), 'id' => 'p-contentnavigation' ],
+					$ret, $this->indent()
 				);
 		}
 
@@ -109,7 +106,7 @@ class PageTools extends Component {
 	 */
 	public function &getPageToolsStructure() {
 		if ( $this->mPageToolsStructure === null ) {
-			$this->mPageToolsStructure = $this->getSkinTemplate()->get( 'content_navigation' , null );
+			$this->mPageToolsStructure = $this->getSkinTemplate()->get( 'content_navigation', null );
 		}
 		return $this->mPageToolsStructure;
 	}
@@ -170,7 +167,7 @@ class PageTools extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildTabGroup( $category, $tabsDescription ) {
-		// TODO: visually group all links of one category (e.g. some space between categories)
+		// TODO: visually group all links of one category (e.g. some space between categories)?
 
 		if ( empty( $tabsDescription ) ) {
 			return '';
@@ -240,7 +237,7 @@ class PageTools extends Component {
 	 */
 	protected function buildTabGroupClosingTags() {
 		return $this->indent( -1 ) . '</ul>' .
-		$this->indent( -1 ) . '</li>';
+			$this->indent( -1 ) . '</li>';
 	}
 
 	/**

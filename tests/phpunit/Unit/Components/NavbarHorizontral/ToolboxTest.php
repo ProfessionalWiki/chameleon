@@ -2,7 +2,7 @@
 /**
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -22,10 +22,11 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon\Tests\Unit\Components;
+namespace Skins\Chameleon\Tests\Unit\Components\NavbarHorizontal;
+use Skins\Chameleon\Tests\Unit\Components\GenericComponentTestCase;
 
 /**
- * @coversDefaultClass \Skins\Chameleon\Components\ToolbarHorizontal
+ * @coversDefaultClass \Skins\Chameleon\Components\NavbarHorizontal\Toolbox
  * @covers ::<private>
  * @covers ::<protected>
  *
@@ -33,12 +34,12 @@ namespace Skins\Chameleon\Tests\Unit\Components;
  * @group   mediawiki-databaseless
  *
  * @author Stephan Gambke
- * @since 1.0
+ * @since 2.0
  * @ingroup Skins
  * @ingroup Test
  */
-class ToolbarHorizontalTest extends GenericComponentTestCase {
+class ToolboxTest extends GenericComponentTestCase {
 
-	protected $classUnderTest = '\Skins\Chameleon\Components\ToolbarHorizontal';
+	protected $classUnderTest = '\Skins\Chameleon\Components\NavbarHorizontal\Toolbox';
 
 }

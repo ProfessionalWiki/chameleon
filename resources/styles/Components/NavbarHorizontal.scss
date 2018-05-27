@@ -46,12 +46,7 @@
 	}
 
 	.cmln-navbar-toggler-icon {
-		@extend .fas;
-		@extend .fa-bars;
-	}
-
-	.dropdown-menu > li {
-		@extend .dropdown-item;
+		@include fas-icon($cmln-navbar-horizontal-toggler-icon);
 	}
 
 	a {
@@ -64,13 +59,36 @@
 			padding: {
 				top: 0;
 				bottom: 0;
-			};
+			}
 		}
 
 		.dropdown-menu {
-			.nav-link {
+			.dropdown-item {
 				font-size: $small-font-size;
 				font-weight: $font-weight-normal;
+			}
+		}
+	}
+
+	// Override nav-link styling in case the menu item is in a dropdown
+	.dropdown-menu a.nav-link {
+		@extend .dropdown-item;
+	}
+
+	@each $dropdownclass, $iconclass in (
+		p-lang-dropdown: $cmln-navbar-horizontal-langlinks-icon,
+		p-tb-dropdown: $cmln-navbar-horizontal-toolbox-icon
+	) {
+		.#{$dropdownclass} {
+
+			.dropdown-toggle i {
+
+				@include fas-icon($iconclass);
+
+				content: '';
+				font-size: 130%;
+				margin: 0 0.5rem;
+				vertical-align: baseline; //text-bottom;
 			}
 		}
 	}

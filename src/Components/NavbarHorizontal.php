@@ -130,7 +130,7 @@ class NavbarHorizontal extends Component {
 	 */
 	private function getHtmlId() {
 		if ( $this->htmlId === null ) {
-			$this->htmlId = IdRegistry::getRegistry()->getId( 'mw-navigation' );
+			$this->htmlId = IdRegistry::getRegistry()->getId( 'mw-navigation' ); // FIXME: NavbarHorizontal should not have an ID. Better put it on the NavMenu.
 		}
 		return $this->htmlId;
 	}

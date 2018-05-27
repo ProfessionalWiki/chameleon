@@ -8,24 +8,27 @@
 
 $cmln-collapse-point: md !default;
 
-//$enable-shadows: true;
-//$enable-gradients: true;
-
 // PersonalTools
 $personal-tools-item-margin: 1rem !default;
 
 // SearchBar
 $cmln-search-bar-collapse-point: $cmln-collapse-point !default;
 $cmln-search-bar-btn-color: light !default; // @see $theme-colors
-$search-bar-go-btn-label: fa-share !default; // FIXME: include "fas"?
-$search-bar-search-btn-label: fa-search !default;
+
+$search-bar-go-btn-icon: fas fa-share !default;
+$search-bar-search-btn-icon: fas fa-search !default;
 
 // NavBarHorizontal
 $cmln-navbar-horizontal-collapse-point: $cmln-collapse-point !default;
 $cmln-navbar-horizontal-theme: light !default; // light | dark
 $cmln-navbar-horizontal-bg-color: light !default; // @see $theme-colors
 $cmln-navbar-horizontal-toggler-color: light !default; // @see $theme-colors
-// FIXME: Add variable for toggler icon
+
+// NavbarHorizontal dropdowns
+$cmln-navbar-horizontal-toggler-icon: fas fa-bars !default;
+$cmln-navbar-horizontal-langlinks-icon: fas fa-language !default;
+$cmln-navbar-horizontal-toolbox-icon: fas fa-toolbox !default;
+
 
 // MainContent
 $cmln-first-heading-underline-width: $hr-border-width !default;
@@ -37,7 +40,6 @@ $cmln-toctitle-font-size: $font-size-lg !default;
 $list-bullet-size: 0.5 * $font-size-base;
 $list-bullet-color: $gray-300;
 $list-level-indent: 3.5ex;
-
 
 
 

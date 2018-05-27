@@ -31,12 +31,10 @@
 	}
 
 	.go-btn-label {
-		@extend .fas;
-		@extend .#{$search-bar-go-btn-label};
+		@include fas-icon($search-bar-go-btn-icon);
 	}
 
 	.search-btn-label {
-		@extend .fas;
-		@extend .#{$search-bar-search-btn-label};
+		@include fas-icon($search-bar-search-btn-icon);
 	}
 }

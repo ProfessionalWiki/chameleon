@@ -13,12 +13,13 @@
     "browserify": "^13.1.0",
     "browserify-shim": "^3.8.12",
     "doctoc": "^1.2.0",
-    "grunt": "^0.4.0",
-    "grunt-banana-checker": "^0.4.0",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-jshint": "^1.0.0",
-    "grunt-jsonlint": "^1.0.7",
-    "@fortawesome/fontawesome-free-webfonts": "^1.0.9"
+    "grunt": "^1.0.2",
+    "grunt-banana-checker": "^0.6.0",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-jsonlint": "^1.1.0",
+    "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
+    "wdio-mediawiki": "~0.1.7"
   },
   "dependencies": {
     "sticky-kit": "^1.1.3"

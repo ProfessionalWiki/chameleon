@@ -54,9 +54,11 @@ class Toolbox extends Component {
 		$introComment = $this->indent() . '<!-- toolbox -->';
 
 		if ( filter_var( $this->getAttribute( 'flatten' ),FILTER_VALIDATE_BOOLEAN ) ) {
-			$linkList = $this->getLinkList( 'navbar-nav ' . $this->getClassString() );
+			$this->addClasses( 'navbar-nav' );
+			$linkList = $this->getLinkList();
 		} else {
-			$linkList = $this->wrapDropdownMenu( 'toolbox', $this->getLinkList( 'dropdown-menu', 2 ) );
+			$this->addClasses( 'dropdown-menu' );
+			$linkList = $this->wrapDropdownMenu( 'toolbox', $this->getLinkList( 2 ) );
 		}
 
 		return $introComment . $linkList;
@@ -69,10 +71,10 @@ class Toolbox extends Component {
 	 * @return string
 	 * @throws \MWException
 	 */
-	private function getLinkList( $class = '', $indent = 0 ) {
+	private function getLinkList( $indent = 0 ) {
 
 		$this->indent( $indent );
-		$linkList = IdRegistry::getRegistry()->element( 'ul', [ 'class' => $class, 'id' => 'p-tb' ], implode( $this->getLinkListItems() ), $this->indent() );
+		$linkList = IdRegistry::getRegistry()->element( 'ul', [ 'class' => $this->getClassString(), 'id' => 'p-tb' ], implode( $this->getLinkListItems() ), $this->indent() );
 		$this->indent( -$indent );
 
 		return $linkList;
@@ -116,10 +118,11 @@ class Toolbox extends Component {
 	 */
 	private function wrapDropdownMenu( $labelMsg, $list ) {
 
-		$trigger = $this->indent( 2 ) . IdRegistry::getRegistry()->element( 'a', [ 'href' => '#', 'class' => 'nav-link dropdown-toggle', 'data-toggle' => 'dropdown' ], $this->getSkinTemplate()->getMsg( $labelMsg )->escaped() );
+		$icon = '<i></i>';
+		$trigger = $this->indent( 2 ) . IdRegistry::getRegistry()->element( 'a', [ 'href' => '#', 'class' => 'nav-link dropdown-toggle', 'data-toggle' => 'dropdown' ], $icon . $this->getSkinTemplate()->getMsg( $labelMsg )->escaped() );
 
-		$liElement = IdRegistry::getRegistry()->element( 'li', [ 'class' => '' ], $trigger . $list, $this->indent( -1 ) );
-		$ulElement = IdRegistry::getRegistry()->element( 'ul', [ 'class' => 'navbar-nav ' . $this->getClassString() ], $liElement, $this->indent( -1 ) );
+		$liElement = IdRegistry::getRegistry()->element( 'li', [], $trigger . $list, $this->indent( -1 ) );
+		$ulElement = IdRegistry::getRegistry()->element( 'ul', [ 'class' => 'navbar-nav p-tb-dropdown' ], $liElement, $this->indent( -1 ) );
 
 		return $ulElement;
 	}

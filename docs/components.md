@@ -20,6 +20,7 @@ The following components and modifications are available:
 - [Component `FooterInfo`](#component-footerinfo)
 - [Component `FooterPlaces`](#component-footerplaces)
 - [Component `Html`](#component-html)
+- [Component `LangLinks`](#component-langlinks)
 - [Component `Logo`](#component-logo)
 - [Component `MainContent`](#component-maincontent)
 - [Component `Menu`](#component-menu)
@@ -32,7 +33,7 @@ The following components and modifications are available:
 - [Component `SearchBar`](#component-searchbar)
 - [Component `Silent`](#component-silent)
 - [Component `SiteNotice`](#component-sitenotice)
-- [Component `ToolbarHorizontal`](#component-toolbarhorizontal)
+- [Component `Toolbox`](#component-toolbox)
 - [Modification `HideFor`](#modification-hidefor)
 - [Modification `ShowOnlyFor`](#modification-showonlyfor)
 - [Modification `Sticky`](#modification-sticky)
@@ -291,6 +292,47 @@ None.
 * Any modification
 
 -------------------------------------------------------------------------------
+### Component `LangLinks`
+
+[Language links](https://www.mediawiki.org/wiki/Interlanguage_links) are links
+which connect an article with related articles in other languages within the
+same Wiki family.
+
+See also: [Manual:Interwiki](https://www.mediawiki.org/wiki/Manual:Interwiki#Interwiki_links_to_other_languages)
+
+#### Example usage
+
+``` xml
+<component type="LangLinks" />
+```
+
+#### Attributes:
+* `class`:
+  * Allowed values: String
+  * Default: -
+  * Optional.
+  
+  The class (or classes) that should be assigned to the top-level html element
+  of this component.
+  
+* `flatten`
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+    
+  Whether the list of languages should be flattened, i.e. its items should
+  appear not in a submenu, but as elements of the top structure.
+    
+
+#### Allowed Parent Elements:
+<!-- * [Structure](#structure) -->
+<!-- * [Cell](#cell) -->
+* [NavbarHorizontal](#component-navbarhorizontal)
+
+#### Allowed Child Elements:
+* Any modification
+
+-------------------------------------------------------------------------------
 ### Component `Logo`
 
 The Logo component displays the logo of the wiki as defined in `$wgLogo`.
@@ -484,38 +526,13 @@ Using the message _MediaWiki:Secondary-menu_:
   * Default: -
   * Optional.
   
-  A semicolon separated list of section names that are to be flattened, i.e.
+  A semicolon-separated list of section names that are to be flattened, i.e.
   whose menu items should appear not in a submenu, but as elements of the top
   structure.
   
   This list may also be given in the message
   _MediaWiki:skin-chameleon-navmenu-flatten_ instead. If both the message and
-  the attribute are used, the message takes precedence.
-
-* `showTools`
-  * Allowed values: Boolean (`yes`|`no`)
-  * Default: `no`
-  * Optional.
-  
-  If set to `yes` the toolbox will be included in the NavMenu. It is usually not
-  included here, but shown in a dedicated
-  [ToolbarHorizontal](#component-toolbarhorizontal) instead.
-  
-  The MediaWiki toolbox contains various links. Some are general links like a
-  link to a list of Special Pages so a user always has a way to access them.
-  Others are page-sensitive links like permalinks, printable links, block links,
-  feed links, and a link to a list of pages linking to the current page.
-
-* `showLanguages`
-  * Allowed values: Boolean (`yes`|`no`)
-  * Default: `no`
-  * Optional.
-  
-  A MediaWiki page may have links to the same page in other languages on the
-  wiki when inter-language links are added to the page. If the attribute is set
-  to `yes` the language links will be included in the NavMenu. They are usually
-  not included here, but shown in a dedicated
-  [ToolbarHorizontal](#component-toolbarhorizontal) instead.
+  this attribute are found, the message takes precedence.
 
 #### Allowed Parent Elements:
 * [Structure](#structure)
@@ -785,23 +802,17 @@ The wiki's [site notice](https://www.mediawiki.org/wiki/Manual:Interface/Sitenot
 * Any modification
 
 -------------------------------------------------------------------------------
-### Component `ToolbarHorizontal`
+### Component `Toolbox`
 
-A horizontal toolbar containing standard sidebar items (toolbox, language links).
- 
 The MediaWiki toolbox contains various links. Some are general links like a link
 to a list of Special Pages so a user always has a way to access them. Others are
 page-sensitive links like permalinks, printable links, block links, feed links,
 and a link to a list of pages linking to the current page.
 
-[Language links](https://www.mediawiki.org/wiki/Interlanguage_links) are links
-to the same page in other languages on the wiki that are available when
-inter-language links are added to the page.
-
 #### Example usage
 
 ``` xml
-<component type="ToolbarHorizontal" hideTools="no" hideLanguages="no"/>
+<component type="Toolbox" />
 ```
 
 #### Attributes:
@@ -813,23 +824,18 @@ inter-language links are added to the page.
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
-* `hideTools`
+* `flatten`
   * Allowed values: Boolean (`yes`|`no`)
   * Default: `no`
   * Optional.
-  
-  If set to `yes` the toolbox links will be hidden.
-  
-* `hideLanguages`
-  * Allowed values: Boolean (`yes`|`no`)
-  * Default: `no`
-  * Optional.
-  
-  If the attribute is set to `yes` the language links will be hidden.
+
+  Whether the list of tools should be flattened, i.e. its items should
+  appear not in a submenu, but as elements of the top structure.
 
 #### Allowed Parent Elements:
-* [Structure](#structure)
-* [Cell](#cell)
+<!-- * [Structure](#structure) -->
+<!-- * [Cell](#cell) -->
+* [NavbarHorizontal](#component-navbarhorizontal)
 
 #### Allowed Child Elements:
 * Any modification

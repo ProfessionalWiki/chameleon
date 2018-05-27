@@ -23,7 +23,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 @since 1.0
 @ingroup Skins
 -->
-<structure xmlns="https://cmln.github.io/chameleon/schema/1.0/layout.rng">
+<structure xmlns="https://cmln.github.io/chameleon/schema/2.0/layout.rng">
 	<grid>
 		<row>
 			<cell class="flex-grow-0">
@@ -48,9 +48,10 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</row>
 
 		<row>
-			<cell span="12">
+			<cell>
 				<component type="NavbarHorizontal" class="mb-3 mt-2 mt-md-0">
-					<component type="NavMenu" showTools="no" showLanguages="no"/>
+					<component type="NavMenu"/>
+					<component type="LangLinks" />
 				</component>
 			</cell>
 		</row>
@@ -75,28 +76,31 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</row>
 
 		<row>
-			<cell span="12">
+			<cell>
 				<component type="MainContent"/>
 			</cell>
 		</row>
 
 		<row>
-			<cell span="12">
-				<component type="ToolbarHorizontal" hideTools="no" hideLanguages="no"/>
+			<cell>
+				<component type="NavbarHorizontal" class="small" >
+					<component type="Toolbox" flatten="yes" />
+					<component type="LangLinks" flatten="no" />
+				</component>
 			</cell>
 		</row>
 
 		<row>
-			<cell span="12">
+			<cell>
 				<component type="FooterInfo"/>
 			</cell>
 		</row>
 
 		<row>
-			<cell span="6">
+			<cell>
 				<component type="FooterPlaces"/>
 			</cell>
-			<cell span="6">
+			<cell>
 				<component type="FooterIcons"/>
 			</cell>
 		</row>

@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2015, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -54,6 +54,7 @@ class IdRegistry {
 	/**
 	 * @param null|string $id
 	 * @param null|mixed $component
+	 *
 	 * @return string
 	 */
 	public function getId( $id = null, $component = null ) {
@@ -106,14 +107,15 @@ class IdRegistry {
 	 * @param string $tag
 	 * @param array $attributes
 	 * @param string $contents
+	 * @param string $indent
 	 *
 	 * @return string
 	 */
-	public function element( $tag, $attributes = [], $contents = '' ) {
+	public function element( $tag, $attributes = [], $contents = '', $indent = '' ) {
 
 		$attributes = $this->getAttributesWithUniqueId( $attributes );
 
-		return \Html::rawElement( $tag, $attributes, $contents );
+		return $indent . \Html::rawElement( $tag, $attributes, $contents . $indent );
 	}
 
 	/**
@@ -128,5 +130,5 @@ class IdRegistry {
 			$attributes[ 'id' ] = $this->getId( $attributes[ 'id' ] );
 		}
 		return $attributes;
-}
+	}
 }

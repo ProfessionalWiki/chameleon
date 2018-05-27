@@ -230,8 +230,8 @@ class NavbarHorizontal extends Component {
 		$head =
 			$this->indent() . "<button type=\"button\" class=\"toggler\" data-toggle=\"collapse\" data-target=\"#" . $this->getHtmlId() . "-collapse\">" .
 			$this->indent( 1 ) . "<span class=\"cmln-navbar-toggler-icon\"></span>" .
-			$this->indent( -1 ) . "</button>\n" .
-			implode( '', $headElements ) . "\n";
+			$this->indent( -1 ) . "</button>" .
+			implode( '', $headElements );
 
 		return $head;
 	}
@@ -256,7 +256,7 @@ class NavbarHorizontal extends Component {
 	 */
 	protected function buildNavBarClosingTags() {
 		return
-			$this->indent( -1 ) . '</nav>' . "\n";
+			$this->indent( -1 ) . '</nav>';
 	}
 
 }

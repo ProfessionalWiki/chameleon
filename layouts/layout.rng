@@ -2,7 +2,7 @@
 <!--
 This file is part of the MediaWiki skin Chameleon.
 
-@copyright 2013 - 2017, Stephan Gambke
+@copyright 2013 - 2018, Stephan Gambke
 @license   GNU General Public License, version 3 (or any later version)
 
 The Chameleon skin is free software: you can redistribute it and/or modify it
@@ -25,13 +25,13 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 <grammar
 		xmlns="http://relaxng.org/ns/structure/1.0"
 		xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-		ns="https://cmln.github.io/chameleon/schema/1.0/layout.rng"
+		ns="https://cmln.github.io/chameleon/schema/2.0/layout.rng"
 		datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
 >
 
 	<a:documentation>
 		Schema for Chameleon layout files
-		Version 1.2
+		Version 2.0
 		Copyright 2013 - 2018, Stephan Gambke
 		GNU General Public License, version 3 (or any later version)
 	</a:documentation>
@@ -191,17 +191,6 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<attribute name="flatten"/>
 		</optional>
 
-		<optional>
-			<attribute name="showTools" a:defaultValue="no">
-				<ref name="BoolValues"/>
-			</attribute>
-		</optional>
-
-		<optional>
-			<attribute name="showLanguages" a:defaultValue="no">
-				<ref name="BoolValues"/>
-			</attribute>
-		</optional>
 	</define>
 
 	<define name="Component" combine="choice">
@@ -343,7 +332,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</element>
 	</define>
 
-	<!-- PageTools -->
+	<!-- PageToolsAdaptable -->
 	<define name="PageToolsAdaptable.Content">
 		<ref name="PageTools.Content"/>
 
@@ -391,6 +380,68 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</element>
 	</define>
 
+	<!-- LangLinks -->
+	<define name="LangLinks.Content">
+		<ref name="Component.CommonContent"/>
+
+		<attribute name="type">
+			<value>LangLinks</value>
+		</attribute>
+
+		<optional>
+			<attribute name="flatten" a:defaultValue="no">
+				<ref name="BoolValues"/>
+			</attribute>
+		</optional>
+	</define>
+
+	<!-- FIXME: There should be a general LangLinks component -->
+	<!--<define name="Component" combine="choice">-->
+		<!--<element name="component">-->
+			<!--<a:documentation></a:documentation>-->
+			<!--<ref name="LangLinks.Content"/>-->
+		<!--</element>-->
+	<!--</define>-->
+
+	<define name="NavbarHorizontal.Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="LangLinks.Content"/>
+			<ref name="NavbarHorizontal.Component.CommonContent"/>
+		</element>
+	</define>
+
+	<!-- Toolbox -->
+	<define name="Toolbox.Content">
+		<ref name="Component.CommonContent"/>
+
+		<attribute name="type">
+			<value>Toolbox</value>
+		</attribute>
+
+		<optional>
+			<attribute name="flatten" a:defaultValue="no">
+				<ref name="BoolValues"/>
+			</attribute>
+		</optional>
+	</define>
+
+	<!-- FIXME: There should be a general Toolbox component -->
+	<!--<define name="Component" combine="choice">-->
+		<!--<element name="component">-->
+			<!--<a:documentation></a:documentation>-->
+			<!--<ref name="Toolbox.Content"/>-->
+		<!--</element>-->
+	<!--</define>-->
+
+	<define name="NavbarHorizontal.Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Toolbox.Content"/>
+			<ref name="NavbarHorizontal.Component.CommonContent"/>
+		</element>
+	</define>
+
 	<!-- SiteNotice -->
 	<define name="Component" combine="choice">
 		<element name="component">
@@ -428,31 +479,6 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<attribute name="type">
 				<value>NewtalkNotifier</value>
 			</attribute>
-
-		</element>
-	</define>
-
-	<!-- ToolbarHorizontal -->
-	<define name="Component" combine="choice">
-		<element name="component">
-			<a:documentation></a:documentation>
-			<ref name="Component.CommonContent"/>
-
-			<attribute name="type">
-				<value>ToolbarHorizontal</value>
-			</attribute>
-
-			<optional>
-				<attribute name="hideTools">
-					<ref name="BoolValues"/>
-				</attribute>
-			</optional>
-
-			<optional>
-				<attribute name="hideLanguages">
-					<ref name="BoolValues"/>
-				</attribute>
-			</optional>
 
 		</element>
 	</define>

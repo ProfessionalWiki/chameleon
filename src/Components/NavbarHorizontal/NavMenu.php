@@ -45,8 +45,8 @@ class NavMenu extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-		$navMenu = new GenNavMenu( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );;
-		return '<ul class="navbar-nav">' . $navMenu->getHtml() . "</ul>\n";
+		$navMenu = new GenNavMenu( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() + 1 );
+		return $this->indent() . '<ul class="navbar-nav">' . $navMenu->getHtml() . $this->indent() . "</ul>";
 	}
 
 }

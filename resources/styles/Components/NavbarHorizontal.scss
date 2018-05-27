@@ -6,7 +6,6 @@
 //
 // @since 2.0
 
-
 .p-navbar {
 
 	@extend .navbar;
@@ -14,11 +13,13 @@
 	@extend .navbar-#{$cmln-navbar-horizontal-theme};
 	@extend .bg-#{$cmln-navbar-horizontal-bg-color};
 
-	@media ( max-width( $cmln-navbar-horizontal-collapse-point ) ) {
+	.navbar-collapse {
+		@extend .bg-#{$cmln-navbar-horizontal-bg-color};
 
-		// Make sure that the dropping navbar does not shift the content
-		// i.e. set position: absolute + high z-index
-		.navbar-collapse {
+		@media (max-width($cmln-navbar-horizontal-collapse-point)) {
+
+			// Make sure that the dropping navbar does not shift the content
+			// i.e. set position: absolute + high z-index
 			position: absolute;
 			left: 0;
 			width: 100%;
@@ -29,12 +30,8 @@
 		}
 	}
 
-	.navbar-collapse {
-		@extend .bg-#{$cmln-navbar-horizontal-bg-color};
-	}
-
-	// use cmln-specific
-	.toggler{
+	// use cmln-specific toggler class
+	.toggler {
 
 		@extend .btn-sm;
 		@extend .btn-#{$cmln-navbar-horizontal-toggler-color};
@@ -43,7 +40,7 @@
 		border: none;
 		outline: none;
 
-		@media ( min-width( $cmln-navbar-horizontal-collapse-point ) ) {
+		@media (min-width($cmln-navbar-horizontal-collapse-point)) {
 			display: none;
 		}
 	}
@@ -58,11 +55,26 @@
 	}
 
 	a {
-		outline: none;  // No outline around menu items.
+		outline: none; // No outline around menu items.
+	}
+
+	&.small, .small {
+
+		.nav-link {
+			padding: {
+				top: 0;
+				bottom: 0;
+			};
+		}
+
+		.dropdown-menu {
+			.nav-link {
+				font-size: $small-font-size;
+				font-weight: $font-weight-normal;
+			}
+		}
 	}
 }
-
-
 
 // if the navbar is in the first row (i.e. at the top of the page), but inside a
 // container (i.e. not a fixed head), add some margin at the top

@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2016, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -27,7 +27,6 @@
 namespace Skins\Chameleon;
 
 use BaseTemplate;
-use SkinChameleon;
 
 /**
  * BaseTemplate class for the Chameleon skin
@@ -40,6 +39,8 @@ class ChameleonTemplate extends BaseTemplate {
 
 	/**
 	 * Outputs the entire contents of the page
+	 *
+	 * @throws \MWException
 	 */
 	public function execute() {
 
@@ -67,7 +68,7 @@ class ChameleonTemplate extends BaseTemplate {
 	/**
 	 * Get the Skin object related to this object
 	 *
-	 * @return Chameleon
+	 * @return \Skins\Chameleon\Chameleon
 	 */
 	public function getSkin() {
 		return parent::getSkin();
@@ -102,17 +103,20 @@ class ChameleonTemplate extends BaseTemplate {
 	 */
 	function makeLink( $key, $item, $options = [] ) {
 
-		if ( !isset( $item['class'] ) ) {
-			$item['class'] = '';
-		}
+		$item[ 'class' ] = isset( $item[ 'class' ] ) ? (array) $item[ 'class' ] : [];
 
-		foreach ( array( 'id', 'single-id' ) as $attrib ) {
+		foreach ( [ 'id', 'single-id' ] as $attrib ) {
 
 			if ( isset ( $item[ $attrib ] ) ) {
-				$item[ 'class' ] .= ' ' . $item[ $attrib ];
+				$item[ 'class' ][] = $item[ $attrib ];
 				$item[ $attrib ] = IdRegistry::getRegistry()->getId( $item[ $attrib ], $this );
 			}
 
+		}
+
+		if ( isset( $options['link-class'] ) ) {
+			$item['class'][] = $options['link-class'];
+			unset( $options['link-class'] );
 		}
 
 		return parent::makeLink( $key, $item, $options );

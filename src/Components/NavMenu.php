@@ -105,7 +105,7 @@ class NavMenu extends Component {
 		} else {
 
 			$ret .= $this->buildDropdownOpeningTags( $menuDescription ) .
-			        $this->buildMenuItemsForDropdownMenu( $menuDescription, 2 ) .
+			        $this->buildMenuItemsForDropdownMenu( $menuDescription, 1 ) .
 			        $this->buildDropdownClosingTags();
 
 
@@ -187,7 +187,7 @@ class NavMenu extends Component {
 		        htmlspecialchars( $menuDescription['header'] ) . '</a>';
 
 		// open list of dropdown menu items
-		$ret .= $this->indent() .
+		$ret .=
 			$this->indent() . \Html::openElement( 'ul',
 				[
 					'class' => 'dropdown-menu ' . $menuDescription[ 'id' ],

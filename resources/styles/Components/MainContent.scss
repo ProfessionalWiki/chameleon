@@ -31,6 +31,24 @@
 		@include mw-editsection-like;
 	}
 
+	.printfooter {
+		display: none;
+	}
+
+	.catlinks {
+
+		margin: 2rem 0 0;
+
+		ul {
+			@extend .list-inline;
+			display: inline-block;
+			margin-left: $list-inline-padding;
+
+			> li {
+				@extend .list-inline-item
+			}
+		}
+	}
 	// Table of contents
 	.toc {
 

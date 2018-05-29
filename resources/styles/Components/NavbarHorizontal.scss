@@ -31,7 +31,7 @@
 	}
 
 	.navbar-nav {
-		@extend .align-items-center;
+		@extend .align-items-#{$cmln-navbar-horizontal-collapse-point}-center;
 	}
 
 	// use cmln-specific toggler class

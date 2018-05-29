@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -25,11 +25,12 @@
  */
 
 namespace Skins\Chameleon\Components;
+use Skins\Chameleon\IdRegistry;
 
 /**
- * The FooterInfo class.
+ * The FooterPlaces class.
  *
- * A inline list containing links to places (about, privacy policy, and disclaimer links): <ul id="footer-places">
+ * A list containing links to places (about, privacy policy, and disclaimer links)
  *
  * @author Stephan Gambke
  * @since 1.0
@@ -41,24 +42,42 @@ class FooterPlaces extends Component {
 	 * Builds the HTML code for this component
 	 *
 	 * @return String the HTML code
+	 * @throws \MWException
 	 */
 	public function getHtml() {
 
-		$ret         = null;
+		return
+			$this->indent() . '<!-- places -->' .
+			IdRegistry::getRegistry()->element(
+				'ul',
+				[ 'id' => 'footer-places', 'class' => $this->getClassString() ],
+				implode( $this->getFooterLinks() ),
+				$this->indent()
+			);
+	}
+
+	/**
+	 * @param $footerlinks
+	 *
+	 * @return array
+	 * @throws \MWException
+	 */
+	private function getFooterLinks() {
+
 		$footerlinks = $this->getSkinTemplate()->getFooterLinks();
 
-		if ( array_key_exists( 'places', $footerlinks ) ) {
-
-			$ret = $this->indent() . '<!-- places -->' .
-				   $this->indent() . '<ul class="list-inline footer-places ' . $this->getClassString() . '" id="footer-places">';
-
-			$this->indent( 1 );
-			foreach ( $footerlinks[ 'places' ] as $key ) {
-				$ret .= $this->indent() . '<li><small>' . $this->getSkinTemplate()->get( $key ) . '</small></li>';
-			}
-			$ret .= $this->indent( -1 ) . '</ul>' . "\n";
+		if ( !array_key_exists( 'places', $footerlinks ) ) {
+			return [];
 		}
 
-		return $ret;
+		$this->indent( 1 );
+
+		$links = [];
+		foreach ( $footerlinks[ 'places' ] as $key ) {
+			$links[] = $this->indent() . '<li>' . $this->getSkinTemplate()->get( $key ) . '</li>';
+		}
+
+		$this->indent( -1 );
+		return $links;
 	}
 }

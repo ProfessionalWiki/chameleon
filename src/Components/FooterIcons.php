@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -25,11 +25,12 @@
  */
 
 namespace Skins\Chameleon\Components;
+use Skins\Chameleon\IdRegistry;
 
 /**
  * The FooterIcons class.
  *
- * A inline list containing icons: <ul id="footer-icons" >
+ * A inline list containing the footer icons.
  *
  * @author Stephan Gambke
  * @since 1.0
@@ -41,33 +42,40 @@ class FooterIcons extends Component {
 	 * Builds the HTML code for this component
 	 *
 	 * @return String the HTML code
+	 * @throws \MWException
 	 */
 	public function getHtml() {
 
-		$ret   = '';
-		$icons = $this->getSkinTemplate()->getFooterIcons( 'icononly' );
+		return
+			$this->indent() . '<!-- footer icons -->' .
+			IdRegistry::getRegistry()->element(
+				'ul',
+				[ 'id' => 'footer-icons', 'class' => $this->getClassString() ],
+				implode( $this->getIcons() ),
+				$this->indent()
+			);
+	}
 
-		if ( $icons !== null && count( $icons ) > 0 ) {
+	/**
+	 * @return string[]
+	 * @throws \MWException
+	 */
+	private function getIcons() {
 
-			$ret = $this->indent() . '<!-- footer icons -->' .
-				   $this->indent() . '<ul class="list-inline pull-right footer-icons ' . $this->getClassString() . '" id="footer-icons" >';
+		$this->indent( 1 );
 
-			$this->indent( 1 );
-			foreach ( $icons as $blockName => $footerIcons ) {
+		$lines = [];
+		foreach ( $this->getSkinTemplate()->getFooterIcons( 'icononly' ) as $blockName => $footerIcons ) {
 
-				$ret .= $this->indent() . '<!-- ' . htmlspecialchars( $blockName ) . ' -->';
+			$lines[] = $this->indent() . '<!-- ' . htmlspecialchars( $blockName ) . ' -->';
 
-				foreach ( $footerIcons as $icon ) {
-					$ret .= $this->indent() . '<li>' .
-							$this->getSkinTemplate()->getSkin()->makeFooterIcon( $icon ) . '</li>';
-				}
-
+			foreach ( $footerIcons as $icon ) {
+				$lines[] = $this->indent() . '<li>' . $this->getSkinTemplate()->getSkin()->makeFooterIcon( $icon ) . '</li>';
 			}
 
-			$ret .= $this->indent( -1 ) . '</ul>' . "\n";
 		}
 
-		return $ret;
-
+		$this->indent( -1 );
+		return $lines;
 	}
 }

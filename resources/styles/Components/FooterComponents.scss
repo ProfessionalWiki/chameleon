@@ -1,0 +1,61 @@
+//
+// Styling for FooterPlaces, FooterInfo & FooterIcons
+//
+// This file is part of the MediaWiki skin Chameleon.
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+//
+// @since 2.0
+
+.footer-info, .footer-places, .footer-icons {
+
+	@extend .list-inline;
+	@extend .d-flex;
+	@extend .flex-wrap;
+
+	> li {
+		@extend .small;
+
+		display: inline-block;
+
+		margin: {
+			left: map-get( $spacers, 0);
+			right: map-get( $spacers, 1);
+			top: map-get( $spacers, 1);
+			bottom: map-get( $spacers, 1);
+		};
+
+		&:last-child {
+			margin-right: map-get( $spacers, 0);
+		}
+	}
+}
+
+.pull-right {
+	&.footer-places, &.footer-icons {
+		@extend .justify-content-right;
+
+		> li {
+
+			display: inline-block;
+
+			margin: {
+				left: map-get( $spacers, 1);
+				right: map-get( $spacers, 0);
+			};
+
+			&:first-child {
+				margin-left: map-get( $spacers, 0);
+			}
+		}
+	}
+}
+
+.pull-left .p-personal-tools {
+	&.footer-places, &.footer-icons {
+		@extend .justify-content-left;
+	}
+}
+
+.footer-info {
+	margin-bottom: 0;
+}

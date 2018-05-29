@@ -49,22 +49,6 @@ class PageTools extends Component {
 	private $mPageToolsStructure = null;
 
 	/**
-	 * @param ChameleonTemplate $template
-	 * @param \DOMElement|null $domElement
-	 * @param int $indent
-	 *
-	 * @throws \MWException
-	 */
-	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
-
-		parent::__construct( $template, $domElement, $indent );
-
-		// add classes for the normal case where the page tools are displayed as a first class element;
-		// these classes should be removed if the page tools are part of another element, e.g. nav bar
-		//$this->addClasses( 'list-inline text-center' );
-	}
-
-	/**
 	 * Builds the HTML code for this component
 	 *
 	 * @return string the HTML code
@@ -90,7 +74,7 @@ class PageTools extends Component {
 
 		if ( $ret !== '' ) {
 			$ret =
-				$this->indent( 1 ) . '<!-- Content navigation -->' .
+				$this->indent( 1 ) . '<!-- Content navigation -->' . // FIXME: It should not be necessary to indent further here. That should be done in the caller.
 
 				IdRegistry::getRegistry()->element( 'ul',
 					[ 'class' => $this->getClassString(), 'id' => 'p-contentnavigation' ],

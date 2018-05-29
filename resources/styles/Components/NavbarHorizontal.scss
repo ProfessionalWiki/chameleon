@@ -30,6 +30,10 @@
 		}
 	}
 
+	.navbar-nav {
+		@extend .align-items-center;
+	}
+
 	// use cmln-specific toggler class
 	.toggler {
 

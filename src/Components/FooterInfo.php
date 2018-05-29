@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -25,15 +25,15 @@
  */
 
 namespace Skins\Chameleon\Components;
-
-use Skins\Chameleon\ChameleonTemplate;
 use Skins\Chameleon\IdRegistry;
 
 /**
  * The FooterInfo class.
  *
  * An list of footer items (last modified time, view count, number of watching users, credits, copyright)
- * Does not include so called places (about, privacy policy, and disclaimer links). They need to be added to the page elsewhere.
+ *
+ * Does not include so called places (about, privacy policy, and disclaimer links). They need to be added to the page
+ * elsewhere.
  *
  * This is an unstyled unordered list: <ul id="footer-info" >
  *
@@ -43,42 +43,49 @@ use Skins\Chameleon\IdRegistry;
  */
 class FooterInfo extends Component {
 
-	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
-		parent::__construct( $template, $domElement , $indent );
-		$this->addClasses( 'list-unstyled small' );
-	}
-
 	/**
 	 * Builds the HTML code for this component
 	 *
 	 * @return String the HTML code
+	 * @throws \MWException
 	 */
 	public function getHtml() {
 
-		$ret = $this->indent() . '<!-- footer links -->' .
-			$this->indent() .
-			\Html::openElement( 'ul', array(
-					'class' =>  'footer-info ' . $this->getClassString(),
-					'id' => IdRegistry::getRegistry()->getId( 'footer-info' ),
-				)
+		return
+			$this->indent() . '<!-- footer links -->' .
+			IdRegistry::getRegistry()->element(
+				'ul',
+				[ 'id' => 'footer-info', 'class' => $this->getClassString() ],
+				implode( $this->getFooterLines() ),
+				$this->indent()
 			);
+	}
+
+	/**
+	 * @param $footerlinks
+	 *
+	 * @return string[]
+	 * @throws \MWException
+	 */
+	private function getFooterLines() {
 
 		$footerlinks = $this->getSkinTemplate()->getFooterLinks();
+
 		$this->indent( 1 );
-		foreach ( $footerlinks as $category => $links ) {
+
+		$lines = [];
+		foreach ( $footerlinks as $category => $msgKeys ) {
 
 			if ( $category !== 'places' ) {
 
-				$ret .= $this->indent() . '<!-- ' . htmlspecialchars( $category ) . ' -->';
-				foreach ( $links as $key ) {
-					$ret .= $this->indent() . '<li>' . $this->getSkinTemplate()->get( $key ) . '</li>';
+				$lines[] = $this->indent() . '<!-- ' . htmlspecialchars( $category ) . ' -->';
+				foreach ( $msgKeys as $key ) {
+					$lines[] = $this->indent() . '<li>' . $this->getSkinTemplate()->get( $key ) . '</li>';
 				}
-
 			}
 		}
 
-		$ret .= $this->indent( -1 ) . '</ul>' . "\n";
-
-		return $ret;
+		$this->indent( -1 );
+		return $lines;
 	}
 }

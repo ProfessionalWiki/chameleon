@@ -228,9 +228,7 @@ class NavbarHorizontal extends Component {
 	protected function buildHead( $headElements ) {
 
 		$head =
-			$this->indent() . "<button type=\"button\" class=\"toggler\" data-toggle=\"collapse\" data-target=\"#" . $this->getHtmlId() . "-collapse\">" .
-			$this->indent( 1 ) . "<span class=\"cmln-navbar-toggler-icon\"></span>" .
-			$this->indent( -1 ) . "</button>" .
+			$this->indent() . "<button type=\"button\" class=\"nav-toggle\" data-toggle=\"collapse\" data-target=\"#" . $this->getHtmlId() . "-collapse\"></button>" .
 			implode( '', $headElements );
 
 		return $head;

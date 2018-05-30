@@ -9,14 +9,11 @@
 $cmln-collapse-point: md !default;
 
 // PersonalTools
-$personal-tools-item-margin: 1rem !default;
+$personal-tools-item-margin: map_get( $spacers, 4 ) !default;
 
 // SearchBar
 $cmln-search-bar-collapse-point: $cmln-collapse-point !default;
 $cmln-search-bar-btn-color: light !default; // @see $theme-colors
-
-$search-bar-go-btn-icon: fas fa-share !default;
-$search-bar-search-btn-icon: fas fa-search !default;
 
 // NavBarHorizontal
 $cmln-navbar-horizontal-collapse-point: $cmln-collapse-point !default;
@@ -25,9 +22,33 @@ $cmln-navbar-horizontal-bg-color: light !default; // @see $theme-colors
 $cmln-navbar-horizontal-toggler-color: light !default; // @see $theme-colors
 
 // NavbarHorizontal dropdowns
-$cmln-navbar-horizontal-toggler-icon: fas fa-bars !default;
-$cmln-navbar-horizontal-langlinks-icon: fas fa-language !default;
-$cmln-navbar-horizontal-toolbox-icon: fas fa-toolbox !default;
+
+
+// Icon defaults
+$cmln-icon-margin: map_get( $spacers, 2 ) !default;
+$cmln-icons: () !default;
+$cmln-icons: map-merge((
+	go-btn: fas fa-share,
+	search-btn: fas fa-search,
+	nav-toggle: fas fa-bars,
+	n-mainpage-description: fas fa-home,
+	n-recentchanges: fas fa-backward,
+	n-randompage: fas fa-random,
+	n-help: fas fa-question,
+	p-lang-toggle: fas fa-language,
+	p-tb-toggle: fas fa-toolbox,
+	ca-nstab-main: far fa-file,
+	ca-talk: far fa-comments,
+	ca-edit: far fa-edit,
+	ca-history: fas fa-history,
+	ca-delete: fas fa-trash-alt,
+	ca-move: fas fa-location-arrow,
+	ca-protect: fas fa-lock,
+	ca-unprotect: fas fa-lock,
+	ca-watch: far fa-eye,
+	ca-unwatch: far fa-eye-slash,
+	ca-purge: fas fa-redo,
+), $cmln-icons);
 
 
 // MainContent

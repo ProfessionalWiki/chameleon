@@ -35,7 +35,7 @@
 	}
 
 	// use cmln-specific toggler class
-	.toggler {
+	.nav-toggle {
 
 		@extend .btn-sm;
 		@extend .btn-#{$cmln-navbar-horizontal-toggler-color};
@@ -47,10 +47,6 @@
 		@media (min-width($cmln-navbar-horizontal-collapse-point)) {
 			display: none;
 		}
-	}
-
-	.cmln-navbar-toggler-icon {
-		@include fas-icon($cmln-navbar-horizontal-toggler-icon);
 	}
 
 	a {
@@ -79,23 +75,10 @@
 		@extend .dropdown-item;
 	}
 
-	@each $dropdownclass, $iconclass in (
-		p-lang-dropdown: $cmln-navbar-horizontal-langlinks-icon,
-		p-tb-dropdown: $cmln-navbar-horizontal-toolbox-icon
-	) {
-		.#{$dropdownclass} {
-
-			.dropdown-toggle i {
-
-				@include fas-icon($iconclass);
-
-				content: '';
-				font-size: 130%;
-				margin: 0 0.5rem;
-				vertical-align: baseline; //text-bottom;
-			}
+		.dropdown-toggle:before {
+			font-size: 130%;
+			vertical-align: middle;
 		}
-	}
 }
 
 // if the navbar is in the first row (i.e. at the top of the page), but inside a

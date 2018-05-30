@@ -29,12 +29,4 @@
 			border-right-color: $input-group-addon-border-color;
 		}
 	}
-
-	.go-btn-label {
-		@include fas-icon($search-bar-go-btn-icon);
-	}
-
-	.search-btn-label {
-		@include fas-icon($search-bar-search-btn-icon);
-	}
 }

@@ -132,7 +132,7 @@ class SearchBar extends Component {
 				'id' => IdRegistry::getRegistry()->getId( $idAttr ),
 				'name' => $nameAttr,
 				'type' => 'submit',
-				'class' => $idAttr,
+				'class' => $glyphicon . '-btn ' . $idAttr,
 				'aria-label' => $this->getSkinTemplate()->getMsg( 'chameleon-search-aria-label' )->text()
 			];
 
@@ -141,7 +141,7 @@ class SearchBar extends Component {
 				Linker::tooltipAndAccesskeyAttribs( "search-$nameAttr" )
 			);
 
-			return $this->indent() . \Html::rawElement( 'button', $buttonAttrs, '<i class="' . $glyphicon . '-btn-label"></i>' );
+			return $this->indent() . \Html::rawElement( 'button', $buttonAttrs );
 		}
 
 		return '';

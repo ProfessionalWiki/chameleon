@@ -8,13 +8,12 @@
 
 .p-contentnavigation {
 
-	@extend .justify-content-center;
-
 	&, ul {
 
 		@extend .d-flex;
 		@extend .flex-row;
 		@extend .flex-wrap;
+		@extend .justify-content-center;
 
 		@include list-unstyled;
 

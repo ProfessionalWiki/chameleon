@@ -53,7 +53,7 @@ class Toolbox extends Component {
 
 		$introComment = $this->indent() . '<!-- toolbox -->';
 
-		if ( filter_var( $this->getAttribute( 'flatten' ),FILTER_VALIDATE_BOOLEAN ) ) {
+		if ( filter_var( $this->getAttribute( 'flatten' ), FILTER_VALIDATE_BOOLEAN ) ) {
 			$this->addClasses( 'navbar-nav' );
 			$linkList = $this->getLinkList();
 		} else {
@@ -118,8 +118,11 @@ class Toolbox extends Component {
 	 */
 	private function wrapDropdownMenu( $labelMsg, $list ) {
 
-		$icon = '<i></i>';
-		$trigger = $this->indent( 2 ) . IdRegistry::getRegistry()->element( 'a', [ 'href' => '#', 'class' => 'nav-link dropdown-toggle', 'data-toggle' => 'dropdown' ], $icon . $this->getSkinTemplate()->getMsg( $labelMsg )->escaped() );
+		$trigger = $this->indent( 2 ) . IdRegistry::getRegistry()->element(
+				'a',
+				[ 'href' => '#', 'class' => 'nav-link dropdown-toggle p-tb-toggle', 'data-toggle' => 'dropdown' ],
+				$this->getSkinTemplate()->getMsg( $labelMsg )->escaped()
+			);
 
 		$liElement = IdRegistry::getRegistry()->element( 'li', [], $trigger . $list, $this->indent( -1 ) );
 		$ulElement = IdRegistry::getRegistry()->element( 'ul', [ 'class' => 'navbar-nav p-tb-dropdown' ], $liElement, $this->indent( -1 ) );

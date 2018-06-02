@@ -55,45 +55,34 @@ class Toolbox extends Component {
 
 		if ( filter_var( $this->getAttribute( 'flatten' ), FILTER_VALIDATE_BOOLEAN ) ) {
 			$this->addClasses( 'navbar-nav' );
-			$linkList = $this->getLinkList();
+			$linkList = implode( $this->getLinkListItems() );
 		} else {
 			$this->addClasses( 'dropdown-menu' );
-			$linkList = $this->wrapDropdownMenu( 'toolbox', $this->getLinkList( 2 ) );
+			$linkList = $this->wrapDropdownMenu( 'toolbox', implode( $this->getLinkListItems( 2 ) ) );
 		}
 
 		return $introComment . $linkList;
 	}
 
 	/**
-	 * @param string $class
-	 * @param int $indent
-	 *
-	 * @return string
-	 * @throws \MWException
-	 */
-	private function getLinkList( $indent = 0 ) {
-
-		$this->indent( $indent );
-		$linkList = IdRegistry::getRegistry()->element( 'ul', [ 'class' => $this->getClassString(), 'id' => 'p-tb' ], implode( $this->getLinkListItems() ), $this->indent() );
-		$this->indent( -$indent );
-
-		return $linkList;
-	}
-
-	/**
 	 * @return string[]
 	 * @throws \MWException
 	 */
-	private function getLinkListItems() {
+	private function getLinkListItems( $indent = 0 ) {
 
-		$this->indent( 1 );
+		$this->indent( $indent );
 
 		$skinTemplate = $this->getSkinTemplate();
 
 		$listItems = [];
 		// FIXME: Do we need to care of dropdown menus here? E.g. RSS feeds?
 		foreach ( $skinTemplate->getToolbox() as $key => $linkItem ) {
-			$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem, [ 'link-class' => 'nav-link' ] );
+			if ( isset( $linkItem[ 'class' ] ) ) {
+				$linkItem[ 'class' ] .= ' nav-item';
+			} else {
+				$linkItem[ 'class' ] = 'nav-item';
+			}
+			$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem, [ 'link-class' => 'nav-link', 'tag' => 'div' ] );
 		}
 
 		ob_start();
@@ -108,7 +97,8 @@ class Toolbox extends Component {
 			$listItems[] = $this->indent() . $contents;
 		}
 
-		$this->indent( -1 );
+		$this->indent( -$indent );
+
 		return $listItems;
 	}
 
@@ -118,14 +108,14 @@ class Toolbox extends Component {
 	 */
 	private function wrapDropdownMenu( $labelMsg, $list ) {
 
-		$trigger = $this->indent( 2 ) . IdRegistry::getRegistry()->element(
+		$trigger = $this->indent( 1 ) . IdRegistry::getRegistry()->element(
 				'a',
 				[ 'href' => '#', 'class' => 'nav-link dropdown-toggle p-tb-toggle', 'data-toggle' => 'dropdown' ],
 				$this->getSkinTemplate()->getMsg( $labelMsg )->escaped()
 			);
 
-		$liElement = IdRegistry::getRegistry()->element( 'li', [], $trigger . $list, $this->indent( -1 ) );
-		$ulElement = IdRegistry::getRegistry()->element( 'ul', [ 'class' => 'navbar-nav p-tb-dropdown' ], $liElement, $this->indent( -1 ) );
+		$liElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'dropdown-menu' ], $list, $this->indent() );
+		$ulElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'nav-item p-tb-dropdown' ], $trigger . $liElement, $this->indent( -1 ) );
 
 		return $ulElement;
 	}

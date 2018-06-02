@@ -46,7 +46,7 @@ class NavMenu extends Component {
 	 */
 	public function getHtml() {
 		$navMenu = new GenNavMenu( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() + 1 );
-		return $this->indent() . '<ul class="navbar-nav">' . $navMenu->getHtml() . $this->indent() . "</ul>";
+		return $navMenu->getHtml();
 	}
 
 }

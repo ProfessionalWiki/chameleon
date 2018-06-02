@@ -16,9 +16,11 @@
 }
 
 // Put the font setting on the :before pseudo element, not on the element itself
+// Do not set the line-height on the element
 .fa, .far, .fas, .fab {
 	font-family: inherit;
 	font-weight: inherit;
+	line-height: inherit;
 }
 
 .fa, .fas {
@@ -35,4 +37,10 @@
 
 .fab:before {
 	font-family: 'Font Awesome 5 Brands';
+}
+
+// When there is a "small" in the hierarchy, we mean it
+.small .dropdown-menu > * {
+	@extend .small;
+	font-size: $small-font-size;
 }

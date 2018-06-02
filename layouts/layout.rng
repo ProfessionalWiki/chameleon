@@ -155,6 +155,9 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			</attribute>
 
 			<optional>
+				<attribute name="collapsible">
+					<ref name="BoolValues"/>
+				</attribute>
 				<attribute name="fixed">
 					<ref name="BoolValues"/>
 				</attribute>

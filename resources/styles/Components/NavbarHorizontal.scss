@@ -9,12 +9,27 @@
 .p-navbar {
 
 	@extend .navbar;
-	@extend .navbar-expand-#{$cmln-navbar-horizontal-collapse-point};
-	@extend .navbar-#{$cmln-navbar-horizontal-theme};
-	@extend .bg-#{$cmln-navbar-horizontal-bg-color};
+	@extend .navbar-#{$cmln-navbar-theme};
+	@extend .bg-#{$cmln-navbar-bg-color};
+
+	&.collapsible{
+		@extend .navbar-expand-#{$cmln-navbar-horizontal-collapse-point};
+	}
+
+	&.not-collapsible{
+		@extend .navbar-expand;
+	}
+
+	&.small {
+		padding: {
+			top: 0;
+			bottom: 0;
+		};
+	}
 
 	.navbar-collapse {
-		@extend .bg-#{$cmln-navbar-horizontal-bg-color};
+
+		@extend .bg-#{$cmln-navbar-bg-color};
 
 		@media (max-width($cmln-navbar-horizontal-collapse-point)) {
 
@@ -31,14 +46,26 @@
 	}
 
 	.navbar-nav {
-		@extend .align-items-#{$cmln-navbar-horizontal-collapse-point}-center;
+
+		@extend .flex-wrap;
+
+		// Override nav-link styling in case the menu item is in a dropdown
+		.dropdown-menu a.nav-link {
+
+			@extend .dropdown-item;
+
+			&:before {
+				margin-right: 2 * $cmln-icon-margin;
+			}
+		}
+
 	}
 
 	// use cmln-specific toggler class
 	.nav-toggle {
 
 		@extend .btn-sm;
-		@extend .btn-#{$cmln-navbar-horizontal-toggler-color};
+		@extend .btn-#{$cmln-navbar-toggler-color};
 		@extend .ml-auto;
 
 		border: none;
@@ -53,32 +80,6 @@
 		outline: none; // No outline around menu items.
 	}
 
-	&.small, .small {
-
-		.nav-link {
-			padding: {
-				top: 0;
-				bottom: 0;
-			}
-		}
-
-		.dropdown-menu {
-			.dropdown-item {
-				font-size: $small-font-size;
-				font-weight: $font-weight-normal;
-			}
-		}
-	}
-
-	// Override nav-link styling in case the menu item is in a dropdown
-	.dropdown-menu a.nav-link {
-		@extend .dropdown-item;
-	}
-
-		.dropdown-toggle:before {
-			font-size: 130%;
-			vertical-align: middle;
-		}
 }
 
 // if the navbar is in the first row (i.e. at the top of the page), but inside a

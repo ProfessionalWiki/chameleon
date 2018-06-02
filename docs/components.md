@@ -481,6 +481,12 @@ From [navhead.xml](../layouts/navhead.xml):
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
+* `collapsible`:
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `yes`
+
+  If the navbar shall collapse on small screens.
+
 * `fixed`:
   * **Deprecated.** Use the [Sticky](#modification-sticky) modification instead.
   * Allowed values: Boolean (`yes`|`no`)

@@ -18,14 +18,14 @@
 		@include list-unstyled;
 
 		margin: {
-			left: (-$personal-tools-item-margin / 2);
-			right: (-$personal-tools-item-margin / 2);
+			left: (-$cmln-personal-tools-item-margin / 2); // FIXME: PERSONAL tools??
+			right: (-$cmln-personal-tools-item-margin / 2);
 		}
 
 		> * {
 			margin: {
-				left: ($personal-tools-item-margin / 2);
-				right: ($personal-tools-item-margin / 2);
+				left: ($cmln-personal-tools-item-margin / 2);
+				right: ($cmln-personal-tools-item-margin / 2);
 			}
 		}
 

@@ -10,14 +10,15 @@
 @each $icon-class, $fa-class in $cmln-icons {
 
 	.#{$icon-class} {
-		@include fa-icon($fa-class);
+		@include icon($fa-class);
 	}
 
-	a.#{$icon-class}:before {
-		margin-right: $cmln-icon-margin;
-		display: inline-block;
-		text-decoration: none;
-		width: 1.2rem;
-		text-align: center;
+	a.#{$icon-class} {
+
+		&:before {
+			margin-right: $cmln-icon-margin;
+			display: inline-block;
+			text-decoration: none;
+		}
 	}
 }

@@ -82,8 +82,8 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 		<row>
 			<cell>
-				<component type="NavbarHorizontal" class="small mb-2" >
-					<component type="Toolbox" flatten="yes" />
+				<component type="NavbarHorizontal" collapsible="no" class="small mb-2" >
+					<component type="Toolbox" flatten="no" />
 					<component type="LangLinks" flatten="no" />
 				</component>
 			</cell>

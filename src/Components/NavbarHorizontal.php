@@ -111,10 +111,18 @@ class NavbarHorizontal extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildNavBarOpeningTags() {
+		if ( $this->isCollapsible() ) {
+			$class = 'collapsible ';
+		} else {
+			$class = 'not-collapsible ';
+		}
+
+		$class = ' p-navbar ' . $class . $this->getClassString();
+
 		$openingTags =
 			$this->indent() . '<!-- navigation bar -->' .
 			$this->indent() . \Html::openElement( 'nav', [
-					'class' => 'p-navbar ' . $this->getClassString(),
+					'class' => $class,
 					'role'  => 'navigation',
 					'id'    => $this->getHtmlId() // FIXME: ID to be repeated in classes
 				]
@@ -130,7 +138,7 @@ class NavbarHorizontal extends Component {
 	 */
 	private function getHtmlId() {
 		if ( $this->htmlId === null ) {
-			$this->htmlId = IdRegistry::getRegistry()->getId( 'mw-navigation' ); // FIXME: NavbarHorizontal should not have an ID. Better put it on the NavMenu.
+			$this->htmlId = IdRegistry::getRegistry()->getId( 'mw-navigation' );
 		}
 		return $this->htmlId;
 	}
@@ -153,9 +161,15 @@ class NavbarHorizontal extends Component {
 			$this->indent( -1 );
 		}
 
-		return
-			$this->buildHead( $elements[ 'head' ] ) .
-			$this->buildTail( $elements[ 'left' ] );
+		$head = $this->buildHead( $elements[ 'head' ] );
+
+		if ( $this->isCollapsible() ) {
+			$tail = $this->wrapDropdownMenu( $this->buildTail( $elements[ 'left' ], 1 ) );
+		} else {
+			$tail = $this->buildTail( $elements[ 'left' ] );
+		}
+
+		return $head . $tail;
 	}
 
 	/**
@@ -227,25 +241,25 @@ class NavbarHorizontal extends Component {
 	 */
 	protected function buildHead( $headElements ) {
 
-		$head =
-			$this->indent() . "<button type=\"button\" class=\"nav-toggle\" data-toggle=\"collapse\" data-target=\"#" . $this->getHtmlId() . "-collapse\"></button>" .
-			implode( '', $headElements );
-
-		return $head;
+		return implode( '', $headElements );
 	}
 
 	/**
 	 * @param string[] $tailElements
 	 *
+	 * @param int $indent
+	 *
 	 * @return string
 	 * @throws \MWException
 	 */
-	protected function buildTail( $tailElements ) {
+	protected function buildTail( $tailElements, $indent = 0 ) {
 
-		return
-			$this->indent() . '<div class="collapse navbar-collapse" id="' . $this->getHtmlId() . '-collapse">' . // FIXME: ID to be repeated in classes
-			implode( '', $tailElements ) .
-			$this->indent() . '</div><!-- /.navbar-collapse -->';
+		$this->indent( $indent );
+		$tail = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav' ], implode( '', $tailElements ), $this->indent() );
+		$this->indent( -$indent );
+
+		return $tail;
+
 	}
 
 	/**
@@ -255,6 +269,28 @@ class NavbarHorizontal extends Component {
 	protected function buildNavBarClosingTags() {
 		return
 			$this->indent( -1 ) . '</nav>';
+	}
+
+	/**
+	 * @param $tail
+	 *
+	 * @return string
+	 * @throws \MWException
+	 */
+	private function wrapDropdownMenu( $tail ) {
+
+		$id = IdRegistry::getRegistry()->getId();
+
+		return
+			$this->indent() . '<button type="button" class="nav-toggle" data-toggle="collapse" data-target="#' . $id . '"></button>' .
+			IdRegistry::getRegistry()->element( 'div', ['class'=>'collapse navbar-collapse', 'id'=> $id ], $tail, $this->indent() );
+	}
+
+	/**
+	 * @return mixed
+	 */
+	protected function isCollapsible() {
+		return filter_var( $this->getAttribute( 'collapsible', true ), FILTER_VALIDATE_BOOLEAN );
 	}
 
 }

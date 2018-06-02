@@ -9,20 +9,19 @@
 $cmln-collapse-point: md !default;
 
 // PersonalTools
-$personal-tools-item-margin: map_get( $spacers, 4 ) !default;
+$cmln-personal-tools-item-margin: map_get( $spacers, 4 ) !default;
 
 // SearchBar
 $cmln-search-bar-collapse-point: $cmln-collapse-point !default;
 $cmln-search-bar-btn-color: light !default; // @see $theme-colors
 
-// NavBarHorizontal
+// Navbar
+$cmln-navbar-theme: light !default; // light | dark
+$cmln-navbar-bg-color: light !default; // @see $theme-colors
+$cmln-navbar-toggler-color: light !default; // @see $theme-colors
+
+// NavbarHorizontal
 $cmln-navbar-horizontal-collapse-point: $cmln-collapse-point !default;
-$cmln-navbar-horizontal-theme: light !default; // light | dark
-$cmln-navbar-horizontal-bg-color: light !default; // @see $theme-colors
-$cmln-navbar-horizontal-toggler-color: light !default; // @see $theme-colors
-
-// NavbarHorizontal dropdowns
-
 
 // Icon defaults
 $cmln-icon-margin: map_get( $spacers, 2 ) !default;
@@ -40,6 +39,7 @@ $cmln-icons: map-merge((
 	ca-nstab-main: far fa-file,
 	ca-talk: far fa-comments,
 	ca-edit: far fa-edit,
+	ca-viewsource: fas fa-code,
 	ca-history: fas fa-history,
 	ca-delete: fas fa-trash-alt,
 	ca-move: fas fa-location-arrow,
@@ -48,6 +48,17 @@ $cmln-icons: map-merge((
 	ca-watch: far fa-eye,
 	ca-unwatch: far fa-eye-slash,
 	ca-purge: fas fa-redo,
+	feedlink: fas fa-rss,
+	t-contributions: fas fa-user-edit,
+	t-log: fas fa-clipboard-list,
+	t-whatlinkshere: fas fa-sitemap,
+	t-recentchangeslinked: fas fa-backward,
+	t-upload: fas fa-upload,
+	t-specialpages: fas fa-cogs,
+	t-print: fas fa-print,
+	t-permalink: fas fa-link,
+	t-info: fas fa-info,
+	t-smwbrowselink: fas fa-compass,
 ), $cmln-icons);
 
 

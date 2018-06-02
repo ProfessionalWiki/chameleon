@@ -55,11 +55,9 @@ class LangLinks extends Component {
 		$introComment = $this->indent() . '<!-- languages -->';
 
 		if ( filter_var( $this->getAttribute( 'flatten' ), FILTER_VALIDATE_BOOLEAN ) ) {
-			$this->addClasses( 'navbar-nav' );
-			$languageLinks = $this->getLinkList();
+			$languageLinks = implode( $this->getLinkListItems() );
 		} else {
-			$this->addClasses( 'dropdown-menu' );
-			$languageLinks = $this->wrapDropdownMenu( 'otherlanguages', $this->getLinkList( 2 ) );
+			$languageLinks = $this->wrapDropdownMenu( 'otherlanguages', implode( $this->getLinkListItems() ) );
 		}
 
 		return $introComment . $languageLinks;
@@ -73,35 +71,26 @@ class LangLinks extends Component {
 	}
 
 	/**
-	 *
-	 * @return string
-	 * @throws \MWException
-	 */
-	private function getLinkList( $indent = 0 ) {
-
-		$this->indent( $indent );
-		$linkList = IdRegistry::getRegistry()->element( 'ul', [ 'class' => $this->getClassString(), 'id' => 'p-lang' ], implode( $this->getLinkListItems() ), $this->indent() );
-		$this->indent( -$indent );
-
-		return $linkList;
-	}
-
-	/**
 	 * @return string[]
 	 * @throws \MWException
 	 */
 	private function getLinkListItems() {
 
-		$this->indent( 1 );
+		$this->indent( 2 );
 
 		$skinTemplate = $this->getSkinTemplate();
 
 		$listItems = [];
 		foreach ( $skinTemplate->data[ 'language_urls' ] as $key => $linkItem ) {
-			$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem, [ 'link-class' => 'nav-link' ] );
+			if ( isset( $linkItem['class'] ) ) {
+				$linkItem['class'] .= ' nav-item';
+			} else {
+				$linkItem['class'] = 'nav-item';
+			}
+			$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem, [ 'link-class' => 'nav-link', 'tag' => 'div' ] );
 		}
 
-		$this->indent( -1 );
+		$this->indent( -2 );
 
 		return $listItems;
 	}
@@ -112,14 +101,14 @@ class LangLinks extends Component {
 	 */
 	private function wrapDropdownMenu( $labelMsg, $list ) {
 
-		$trigger = $this->indent( 2 ) . IdRegistry::getRegistry()->element(
+		$trigger = $this->indent( 1 ) . IdRegistry::getRegistry()->element(
 				'a',
 				[ 'href' => '#', 'class' => 'nav-link dropdown-toggle p-lang-toggle', 'data-toggle' => 'dropdown' ],
 				$this->getSkinTemplate()->getMsg( $labelMsg )->escaped()
 			);
 
-		$liElement = IdRegistry::getRegistry()->element( 'li', [], $trigger . $list, $this->indent( -1 ) );
-		$ulElement = IdRegistry::getRegistry()->element( 'ul', [ 'class' => 'navbar-nav p-lang-dropdown' ], $liElement, $this->indent( -1 ) );
+		$liElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'dropdown-menu' ], $list, $this->indent() );
+		$ulElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'nav-item p-lang-dropdown' ], $trigger . $liElement, $this->indent( -1 ) );
 
 		return $ulElement;
 	}

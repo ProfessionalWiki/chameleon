@@ -24,9 +24,12 @@
 }
 
 
-@mixin fa-icon( $classes: () ){
+@mixin icon( $classes: () ){
 	@each $class in $classes {
 		@extend .#{$class};
+	}
+	&:before {
+		@extend .fa-fw;
 	}
 }
 

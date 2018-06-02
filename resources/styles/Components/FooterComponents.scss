@@ -18,14 +18,14 @@
 		display: inline-block;
 
 		margin: {
-			left: map-get( $spacers, 0);
-			right: map-get( $spacers, 1);
+			left: 0;
+			right: map-get( $spacers, 3);
 			top: map-get( $spacers, 1);
 			bottom: map-get( $spacers, 1);
 		};
 
 		&:last-child {
-			margin-right: map-get( $spacers, 0);
+			margin-right: 0;
 		}
 	}
 }

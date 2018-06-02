@@ -106,27 +106,28 @@ class SetupAfterCache {
 
 		$this->bootstrapManager->addAllBootstrapModules();
 
-		$this->bootstrapManager->addExternalModule(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fontawesome.scss',
-			$this->configuration[ 'chameleonRemotePath' ] . '/resources/fontawesome/scss/'
+		$this->bootstrapManager->addStyleFile(
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fontawesome.scss'
 		);
 
-		$this->bootstrapManager->addExternalModule(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-solid.scss',
-			$this->configuration[ 'chameleonRemotePath' ] . '/resources/fontawesome/scss/'
+		$this->bootstrapManager->addStyleFile(
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-solid.scss'
 		);
 
-		$this->bootstrapManager->addExternalModule(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-regular.scss',
-			$this->configuration[ 'chameleonRemotePath' ] . '/resources/fontawesome/scss/'
+		$this->bootstrapManager->addStyleFile(
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-regular.scss'
 		);
 
-		$this->bootstrapManager->addExternalModule(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/core.scss',
-			$this->configuration[ 'chameleonRemotePath' ] . '/resources/styles/'
+		$this->bootstrapManager->addStyleFile(
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/_bootstrapSettings.scss', 'beforeVariables'
+		);
+
+		$this->bootstrapManager->addStyleFile(
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/core.scss'
 		);
 
 		$this->bootstrapManager->setScssVariable( 'fa-font-path', $GLOBALS[ 'wgStylePath' ] . "/chameleon/resources/fontawesome/webfonts" );
+		$this->bootstrapManager->setScssVariable( 'enable-caret', true );
 
 	}
 
@@ -138,7 +139,7 @@ class SetupAfterCache {
 
 				list( $localFile, $remotePath ) = $this->matchAssociativeElement( $localFile, $remotePath );
 
-				$this->bootstrapManager->addExternalModule(
+				$this->bootstrapManager->addStyleFile(
 					$this->isReadableFile( $localFile ),
 					$remotePath
 				);

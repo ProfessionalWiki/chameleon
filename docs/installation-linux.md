@@ -17,7 +17,7 @@ operating systems as well:
    ``` json
    "require": {
        "mediawiki/chameleon-skin": "~1.0"
-   }
+   },
    ```
    * Remark 1: If you do not have a `composer.local.json` file, but a `composer.local.json-sample`, rename the `-sample` file and add the `"require"` section. It should then look like this:
    ``` json
@@ -35,7 +35,7 @@ operating systems as well:
    }
    ```
    
-   * Remark 2: If you do not have a `composer.local.json` file (MediaWiki <1.25),
+   * Remark 2: If you do have neither `composer.local.json` nor `composer.local.json` file (MediaWiki <1.25),
      use `composer.json` instead.
    
    * Remark 3: If you do not have a `composer.json` file (MediaWiki <1.23.5),

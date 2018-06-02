@@ -14,15 +14,31 @@ operating systems as well:
 4. Open the `composer.local.json` file in an editor and add the Chameleon skin
    to the `require` section:
    `require` section:
-   ```
+   ``` json
    "require": {
        "mediawiki/chameleon-skin": "~1.0"
    }
    ```
-   * Remark 1: If you do not have a `composer.local.json` file (MediaWiki <1.25),
+   * Remark 1: If you do not have a `composer.local.json` file, but a `composer.local.json-sample`, rename the `-sample` file and add the `"require"` section. It should then look like this:
+   ``` json
+   {
+       "require": {
+           "mediawiki/chameleon-skin": "~1.0"
+       },
+       "extra": {
+           "merge-plugin": {
+               "include": [
+                   "extensions/example/composer.json"
+               ]
+           }
+       }
+   }
+   ```
+   
+   * Remark 2: If you do not have a `composer.local.json` file (MediaWiki <1.25),
      use `composer.json` instead.
    
-   * Remark 2: If you do not have a `composer.json` file (MediaWiki <1.23.5),
+   * Remark 3: If you do not have a `composer.json` file (MediaWiki <1.23.5),
      copy `composer.json.example` to `composer.json` first.
 5. To actually install Chameleon run the command
    `composer update "mediawiki/chameleon-skin"`

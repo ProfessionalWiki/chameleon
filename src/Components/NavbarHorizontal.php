@@ -282,7 +282,7 @@ class NavbarHorizontal extends Component {
 		$id = IdRegistry::getRegistry()->getId();
 
 		return
-			$this->indent() . '<button type="button" class="nav-toggle" data-toggle="collapse" data-target="#' . $id . '"></button>' .
+			$this->indent() . '<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#' . $id . '"></button>' .
 			IdRegistry::getRegistry()->element( 'div', ['class'=>'collapse navbar-collapse', 'id'=> $id ], $tail, $this->indent() );
 	}
 

@@ -6,6 +6,11 @@
 //
 // @since 2.0
 
+
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+
 $cmln-collapse-point: md !default;
 
 // PersonalTools
@@ -16,7 +21,6 @@ $cmln-search-bar-collapse-point: $cmln-collapse-point !default;
 $cmln-search-bar-btn-color: light !default; // @see $theme-colors
 
 // Navbar
-$cmln-navbar-theme: light !default; // light | dark
 $cmln-navbar-bg-color: light !default; // @see $theme-colors
 $cmln-navbar-toggler-color: light !default; // @see $theme-colors
 
@@ -25,11 +29,12 @@ $cmln-navbar-horizontal-collapse-point: $cmln-collapse-point !default;
 
 // Icon defaults
 $cmln-icon-margin: map_get( $spacers, 2 ) !default;
+
 $cmln-icons: () !default;
 $cmln-icons: map-merge((
 	go-btn: fas fa-share,
 	search-btn: fas fa-search,
-	nav-toggle: fas fa-bars,
+	navbar-toggler: fas fa-bars,
 	n-mainpage-description: fas fa-home,
 	n-recentchanges: fas fa-backward,
 	n-randompage: fas fa-random,
@@ -58,16 +63,26 @@ $cmln-icons: map-merge((
 	t-specialpages: fas fa-cogs,
 	t-print: fas fa-print,
 	t-permalink: fas fa-link,
-	t-info: fas fa-info,
-	t-smwbrowselink: fas fa-compass,
+	t-info: fas fa-info,  // Toolbox link: Page information
+	t-cite: fas fa-question,  // Toolbox link: Cite this page
+	t-smwbrowselink: fas fa-compass,  // Toolbox link: Browser properties
 ), $cmln-icons);
 
 
 // MainContent
 $cmln-first-heading-underline-width: $hr-border-width !default;
 $cmln-first-heading-underline-color: $hr-border-color !default;
-$cmln-first-heading-underline-distance: $hr-margin-y !default;
+$cmln-first-heading-margin-bottom: $hr-margin-y !default;
 $cmln-toctitle-font-size: $font-size-lg !default;
+
+// Global textual link colors.
+//$link-color: $brand-primary;
+$link-new-color: $red !default;
+
+
+
+
+/// ==> From Chameleon 2
 
 // list parameters
 $list-bullet-size: 0.5 * $font-size-base;
@@ -76,9 +91,6 @@ $list-level-indent: 3.5ex;
 
 
 
-// Global textual link colors.
-//$link-color: $brand-primary;
-$link-new-color: #b52b27;
 
 $link-stub-color: $link-color;
 $link-interwiki-color: $link-color;

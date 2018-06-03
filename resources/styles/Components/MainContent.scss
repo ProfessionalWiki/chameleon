@@ -10,7 +10,7 @@
 
 	@include media-breakpoint-up($cmln-search-bar-collapse-point) {
 		padding: 0 2rem;
-		margin: 1rem 0;
+		margin-bottom: 1rem;
 	}
 
 	#siteSub {
@@ -19,12 +19,25 @@
 
 	.firstHeading {
 		border-bottom: $cmln-first-heading-underline-width solid $cmln-first-heading-underline-color;
-		padding-bottom: $cmln-first-heading-underline-distance;
-		margin-bottom: $cmln-first-heading-underline-distance;
+		margin-bottom: $cmln-first-heading-margin-bottom;
 	}
 
 	.jump-to-nav {
 		@extend .sr-only;
+	}
+
+	.mw-indicators {
+		float: right;
+		line-height: 1.6;
+		font-size: 0.875em;
+		position: relative;
+		z-index: 1;
+	}
+
+	.mw-indicator {
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
 	}
 
 	.mw-editsection {

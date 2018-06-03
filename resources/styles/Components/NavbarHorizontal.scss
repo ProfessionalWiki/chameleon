@@ -9,7 +9,7 @@
 .p-navbar {
 
 	@extend .navbar;
-	@extend .navbar-#{$cmln-navbar-theme};
+	@extend .navbar-light;
 	@extend .bg-#{$cmln-navbar-bg-color};
 
 	&.collapsible{
@@ -25,24 +25,6 @@
 			top: 0;
 			bottom: 0;
 		};
-	}
-
-	.navbar-collapse {
-
-		@extend .bg-#{$cmln-navbar-bg-color};
-
-		@media (max-width($cmln-navbar-horizontal-collapse-point)) {
-
-			// Make sure that the dropping navbar does not shift the content
-			// i.e. set position: absolute + high z-index
-			position: absolute;
-			left: 0;
-			width: 100%;
-			padding: .5rem 1rem;
-			top: 100%;
-			z-index: $zindex-dropdown;
-
-		}
 	}
 
 	.navbar-nav {
@@ -61,19 +43,8 @@
 
 	}
 
-	// use cmln-specific toggler class
-	.nav-toggle {
-
-		@extend .btn-sm;
-		@extend .btn-#{$cmln-navbar-toggler-color};
+	.navbar-toggler {
 		@extend .ml-auto;
-
-		border: none;
-		outline: none;
-
-		@media (min-width($cmln-navbar-horizontal-collapse-point)) {
-			display: none;
-		}
 	}
 
 	a {

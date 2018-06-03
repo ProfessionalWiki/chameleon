@@ -57,7 +57,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 		<row>
 			<cell>
-				<component type="PageTools" class="mb-3"/>
+				<component type="PageTools" class="mb-2"/>
 			</cell>
 		</row>
 
@@ -70,7 +70,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<row>
 			<cell class="col-auto mx-auto">
 				<!--FIXME: Is this a good place to put the notifier? Vector et al. put it inside the MainContent under siteSub and contentSub -->
-				<component type="NewtalkNotifier"/>
+				<component type="NewtalkNotifier" class="mb-3"/>
 			</cell>
 		</row>
 

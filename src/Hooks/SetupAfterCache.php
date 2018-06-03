@@ -118,8 +118,9 @@ class SetupAfterCache {
 			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-regular.scss'
 		);
 
+		//FIXME: Make configurable, e.g. in LocalSettings.php
 		$this->bootstrapManager->addStyleFile(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/_bootstrapSettings.scss', 'beforeVariables'
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/themes/_theme.scss', 'beforeVariables'
 		);
 
 		$this->bootstrapManager->addStyleFile(

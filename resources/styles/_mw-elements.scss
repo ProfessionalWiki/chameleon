@@ -1,0 +1,20 @@
+//
+// Styles for MediaWiki elements
+//
+// This file is part of the MediaWiki skin Chameleon.
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+//
+// @since 2.0
+
+
+#ca-unwatch > a {
+	@include icon( map_get( $cmln-icons, ca-unwatch ) );
+}
+
+#ca-watch > a {
+	@include icon( map_get( $cmln-icons, ca-watch ) );
+}
+
+a.new {
+	color: $link-new-color;
+}

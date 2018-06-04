@@ -57,8 +57,7 @@ Some cases I can think of:
   the skin and all its dependencies I would have to more carefully check license
   compatibility.
 * Chameleon itself might become part of a tarball, e.g. some pre-build,
-  pre-configured wiki for I don't know what purpose. Right now MW is GPL2
-  licensed which makes it incompatible for bundling with Chameleon at GPL3+.
+  pre-configured wiki for I don't know what purpose.
 * Parts of the skin might actually be included in MW core. E.g. there is a
   menu-building class proposed for MediaWiki, that would have a functionality
   similar to what's contained in Chameleon. See

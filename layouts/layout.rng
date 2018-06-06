@@ -155,10 +155,13 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			</attribute>
 
 			<optional>
-				<attribute name="collapsible">
+				<attribute name="collapsible" a:defaultValue="yes">
 					<ref name="BoolValues"/>
 				</attribute>
-				<attribute name="fixed">
+			</optional>
+
+			<optional>
+				<attribute name="fixed" a:defaultValue="no">
 					<ref name="BoolValues"/>
 				</attribute>
 			</optional>

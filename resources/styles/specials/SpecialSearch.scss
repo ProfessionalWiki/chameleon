@@ -1,0 +1,23 @@
+//
+// Styling for Special:Search
+//
+// This file is part of the MediaWiki skin Chameleon.
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+//
+// @since 2.0
+
+
+&.mw-special-Search {
+
+	// FIXME: Do all the form elements (search button, checkboxes, ...)
+
+	#mw-search-toggleall, #mw-search-togglenone, #smw-togglensview {
+		@extend .btn;
+		@extend .btn-sm;
+		@extend .btn-secondary;
+	}
+
+	#search label {
+		margin-bottom: 0;
+	}
+}

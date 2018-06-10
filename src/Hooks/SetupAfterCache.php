@@ -120,11 +120,11 @@ class SetupAfterCache {
 
 		//FIXME: Make configurable, e.g. in LocalSettings.php
 		$this->bootstrapManager->addStyleFile(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/themes/_theme.scss', 'beforeVariables'
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/themes/_light.scss', 'beforeVariables'
 		);
 
 		$this->bootstrapManager->addStyleFile(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/core.scss'
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/chameleon.scss'
 		);
 
 		$this->bootstrapManager->setScssVariable( 'fa-font-path', $GLOBALS[ 'wgStylePath' ] . "/chameleon/resources/fontawesome/webfonts" );

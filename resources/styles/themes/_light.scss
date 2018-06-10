@@ -76,7 +76,7 @@ $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
-$light:         $gray-200 !default;  // better contrast
+$light:         $gray-200 !default;  // better contrast than $gray-100
 $dark:          $gray-800 !default;
 
 $theme-colors: () !default;
@@ -99,6 +99,25 @@ $theme-colors: map-merge((
 $enable-shadows:            true !default;
 $enable-gradients:          true !default;
 
+// Wiki pages tend to be text-heavy, so make headings not quite as large as might be appropriate for more
+// visually-oriented websites
+
+$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+
+$h1-font-size:                $font-size-base * 2.2 !default;
+$h2-font-size:                $font-size-base * 1.8 !default;
+$h3-font-size:                $font-size-base * 1.6 !default;
+$h4-font-size:                $font-size-base * 1.4 !default;
+$h5-font-size:                $font-size-base * 1.2 !default;
+$h6-font-size:                $font-size-base !default;
+
+// Links
+$link-color: $cobalt;
+$cmln-link-formats: (
+	new: ('color': $burgundy, 'hover-color': darken($burgundy, 15%)),
+);
+
+// Navbar
 $navbar-light-color:                $chambray !default; // cmln: improved contrast
 $navbar-light-hover-color:          darken($navbar-light-color, 15%) !default;
 $navbar-light-active-color:         darken($navbar-light-color, 30%) !default;
@@ -112,27 +131,8 @@ $navbar-toggler-font-size:          1rem !default;
 
 
 // Body
-//
-// Settings for the `<body>` element.
-
 $body-bg:                   $white !default;
 $body-color:                $gray-900 !default;
 
-// Links
-//
-// Style anchor elements.
-
-$link-color:                $cobalt !default;
-$link-new-color:            $burgundy !default;
-$link-decoration:           none !default;
-$link-hover-color:          darken($link-color, 15%) !default;
-$link-hover-decoration:     underline !default;
-
-$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
-
-$h1-font-size:                $font-size-base * 2.2 !default;
-$h2-font-size:                $font-size-base * 1.8 !default;
-$h3-font-size:                $font-size-base * 1.6 !default;
-$h4-font-size:                $font-size-base * 1.4 !default;
-$h5-font-size:                $font-size-base * 1.2 !default;
-$h6-font-size:                $font-size-base !default;
+// PageTools
+$cmln-page-tools-link-new: ('color': $gray-600, 'hover-color': darken($gray-600, 15%)) !default;

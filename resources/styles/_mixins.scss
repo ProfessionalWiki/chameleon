@@ -33,35 +33,18 @@
 	}
 }
 
-//// Old mixins:
+// Colors for links
 
-/**
- * Colors for links
- *
- * :hover MUST come after :link and :visited
- * :active MUST come after :hover
- */
-@mixin link( $color ) {
-	&:link {
-		color: $color;
-	}
-	&:visited {
-		color: darken($color, 20%);
-	}
-	&:focus {
-		color: darken($color, 15%);
-	}
-	&:hover {
-		color: darken($color, 15%);
-	}
-	&:active {
-		color: difference($color, #ffffff);
-	}
-	&:visited:focus {
-		color: darken($color, 30%);
-	}
-	&:visited:hover {
-		color: darken($color, 30%);
+@mixin link( $color: $link-color, $decoration: $link-decoration, $hover-color: $link-hover-color, $hover-decoration: $link-hover-decoration ) {
+
+	color: $color;
+	text-decoration: $decoration;
+	background-color: transparent; // Remove the gray background on active links in IE 10.
+	-webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
+
+	@include hover {
+		color: $hover-color;
+		text-decoration: $hover-decoration;
 	}
 }
 
@@ -69,9 +52,7 @@
 // and $height; the bullet is centered horizontally and placed at 65% from the
 // top vertically (or as far down as possible given the diameter)
 @mixin bullet( $color: $list-bullet-color, $width: $list-bullet-size, $height: $font-size-base ) {
-	//$image: '<svg width="#{$width}" height="#{$height}" version="1.1" xmlns="http://www.w3.org/2000/svg"><circle cx="#{$width/2}" cy="#{min($height - min($width, $height)/2, 0.65*$height)}" r="#{min($width, $height)/2}" fill="#{$color}"/></svg>';
-	//$image: '';
-		//unit-less($width), unit-less($height), unit-less($width/2), unit(min($height - min($width, $height)/2, 0.65*$height)), unit( min($width, $height) )/2 );
+
 	$width: abs($width);
 	$height: abs($height);
 	list-style: outside disc url("data:image/svg+xml;charset=UTF-8,<svg width='#{$width}' height='#{$height}' version='1.1' xmlns='http://www.w3.org/2000/svg'><circle cx='#{$width/2}' cy='#{min($height - min($width, $height)/2, 0.65*$height)}' r='#{min($width, $height)/2}' fill='#{$color}'/></svg>");

@@ -13,8 +13,26 @@
 
 $cmln-collapse-point: md !default;
 
+// Global textual link colors.
+$cmln-link-format: $link-color none darken($link-color, 15%) underline !default;
+
+$cmln-link-formats: () !default;
+$cmln-link-formats: map_merge((
+	new: theme-color("danger") none darken(theme-color("danger"), 15%) underline,
+	stub: $cmln-link-format,
+	extiw: $cmln-link-format,
+	external: $cmln-link-format,
+), $cmln-link-formats);
+
 // PersonalTools
 $cmln-personal-tools-item-margin: map_get( $spacers, 4 ) !default;
+
+// PageTools
+$cmln-page-tools-font-size: $font-size-sm !default;
+$cmln-page-tools-item-margin: map_get( $spacers, 4 ) !default;
+
+$cmln-page-tools-link: $cmln-link-format !default;
+$cmln-page-tools-link-new: map_get( $cmln-link-formats, "new" ) !default;
 
 // SearchBar
 $cmln-search-bar-collapse-point: $cmln-collapse-point !default;
@@ -42,8 +60,9 @@ $cmln-icons: map-merge((
 	p-lang-toggle: fas fa-language,
 	p-tb-toggle: fas fa-toolbox,
 	ca-nstab-main: far fa-file,
-	ca-nstab-mediawiki: far fa-file,
+	ca-nstab-mediawiki: far fa-cogs,
 	ca-nstab-special: fas fa-cogs,
+	ca-nstab-image: far fa-file-image,
 	ca-talk: far fa-comments,
 	ca-edit: far fa-edit,
 	ca-viewsource: fas fa-code,
@@ -77,13 +96,14 @@ $cmln-first-heading-margin-bottom: $hr-margin-y !default;
 $cmln-toctitle-font-size: $font-size-lg !default;
 
 // Global textual link colors.
-//$link-color: $brand-primary;
-$link-new-color: $red !default;
+$cmln-link-colors: () !default;
+$cmln-link-colors: map_merge((
+	new: theme-color("danger") none darken(theme-color("danger"), 15%) underline,
+	stub: $link-color none darken($link-color, 15%) underline,
+	extiw: $link-color none darken($link-color, 15%) underline,
+	external: $link-color none darken($link-color, 15%) underline
+), $cmln-link-colors);
 
-
-
-
-/// ==> From Chameleon 2
 
 // list parameters
 $list-bullet-size: 0.5 * $font-size-base;
@@ -92,10 +112,8 @@ $list-level-indent: 3.5ex;
 
 
 
+/// ==> From Chameleon 1
 
-$link-stub-color: $link-color;
-$link-interwiki-color: $link-color;
-$link-external-color: $link-color;
 
 
 $thumbnail-caption-padding: 3px;
@@ -110,6 +128,3 @@ $navbar-user-not-loggedin: $navbar-light-disabled-color; // FIXME: Fix color
 $navbar-newtalk-available: theme-color("primary"); // $brand-primary;
 $navbar-newtalk-not-available: $navbar-light-disabled-color; // FIXME: Fix color
 
-$toolbar-height: 30px;
-$toolbar-padding-vertical: (($toolbar-height - $line-height-base) / 2);
-$toolbar-padding-horizontal: $navbar-padding-x;

@@ -26,54 +26,6 @@
  * $ingroup Skins
  */
 
-/* Correct directionality when page directionality is different from site/user directionality */
-/* $noflip */
-.mw-content-ltr .mw-editsection,
-.mw-content-rtl .mw-content-ltr .mw-editsection {
-	margin-left: 1em;
-}
-
-/* $noflip */
-.mw-content-rtl .mw-editsection,
-.mw-content-ltr .mw-content-rtl .mw-editsection {
-	margin-right: 1em;
-}
-
-.footer-info {
-	padding-left: 5px;
-}
-
-.p-tb {
-	&.navbar {
-		min-height: 0;
-	}
-
-	.navbar-nav > li > a {
-		&, &:hover {
-			padding: $toolbar-padding-vertical $toolbar-padding-horizontal;
-		}
-	}
-}
-
-.newtalk-notifier {
-	margin-bottom: 10px;
-}
-
-.p-contentnavigation {
-
-	a.selected {
-		font-style: italic;
-	}
-
-	a.new {
-		color: #aaaaaa;
-	}
-}
-
-.p-personal-tools {
-	margin: 0 0 0 1ex;
-}
-
 // style horizontal toolbar
 // FIXME
 //#preftoc {
@@ -94,65 +46,6 @@
 //		}
 //	}
 //}
-
-.navbar .p-contentnavigation li {
-	display: block;
-}
-
-
-/**
- * Links
- */
-a {
-	@include link($link-color);
-}
-
-a.new, #p-personal a.new {
-	@include link($link-new-color);
-}
-
-.mw-body {
-	a.stub {
-		@include link($link-stub-color);
-	}
-
-	/* Interwiki Styling */
-	a.extiw {
-		@include link($link-interwiki-color);
-	}
-
-	/* External links */
-	a.external {
-		@include link($link-external-color);
-	}
-}
-/**
-* Lists
-*/
-.mw-body {
-	ol {
-		list-style: outside none decimal;
-	}
-
-	ul {
-		@include bullet();
-	}
-
-	ol, ul {
-		padding-left: $list-level-indent;
-		margin: 0;
-
-		ul {
-			@include bullet( $list-bullet-color, $list-bullet-size*.9);
-		}
-
-		ol, ul {
-			ul {
-				@include bullet( $list-bullet-color, $list-bullet-size*.7);
-			}
-		}
-	}
-}
 
 // no bullets for File namespace
 .ns-6 .mw-body ul {
@@ -175,12 +68,6 @@ dd {
 	line-height: 1.5em;
 	margin-left: 1.6em;
 	margin-bottom: .1em;
-}
-
-/* IE 6 and 7 lack support for quotes aroud the <q> element ('::before' and '::after'
-   pseudoelements, 'quotes' property). Let's italicize it instead (using the star hack). */
-q {
-	*font-style: italic;
 }
 
 pre, code, tt, kbd, samp, .mw-code {
@@ -298,16 +185,3 @@ table.mw-recentchanges-table {
 .mw-headline-anchor {
 	display: none;
 }
-
-.mw-indicators {
-	float: right;
-	line-height: 1.6;
-	font-size: $font-size-sm;
-	position: relative;
-	z-index: 1;
-
-	.mw-indicator {
-		display: inline-block;
-	}
-}
-

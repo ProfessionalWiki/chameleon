@@ -108,7 +108,7 @@ class LangLinks extends Component {
 			);
 
 		$liElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'dropdown-menu' ], $list, $this->indent() );
-		$ulElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'nav-item p-lang-dropdown' ], $trigger . $liElement, $this->indent( -1 ) );
+		$ulElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'nav-item p-lang-dropdown ' . $this->getClassString() ], $trigger . $liElement, $this->indent( -1 ) );
 
 		return $ulElement;
 	}

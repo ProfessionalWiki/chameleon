@@ -31,15 +31,20 @@
 @media not print {
 
 	.printfooter {
-		@include invisible( hidden ); // FIXME: should this be display: none?
+		display: none !important;
 	}
 }
 
 @media print {
 	.noprint,
 	.navbar,
-	.mw-editsection, .mw-editsection-like, .toctoggle, .magnify, .footer-places {
-		@include invisible( hidden ); // FIXME: should this be display: none?
+	.p-personal,
+	.p-search,
+	.p-contentnavigation,
+	.mw-editsection-like,
+	.footer-places,
+	.footer-icons {
+		display: none !important;
 	}
 
 }

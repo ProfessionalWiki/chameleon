@@ -1,0 +1,31 @@
+//
+// Basic styles
+//
+// This file is part of the MediaWiki skin Chameleon.
+// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+//
+// @since 2.0
+
+// Lists
+ol {
+	list-style: outside none decimal;
+}
+
+ul {
+	@include bullet();
+}
+
+ol, ul {
+	padding-left: $list-level-indent;
+	margin: 0;
+
+	ul {
+		@include bullet($list-bullet-color, $list-bullet-size*.9);
+	}
+
+	ol, ul {
+		ul {
+			@include bullet($list-bullet-color, $list-bullet-size*.7);
+		}
+	}
+}

@@ -31,13 +31,20 @@
 
 		@extend .flex-wrap;
 
-		// Override nav-link styling in case the menu item is in a dropdown
-		.dropdown-menu a.nav-link {
+		.dropdown-menu {
 
-			@extend .dropdown-item;
+			// no list bullets in a dropdown
+			list-style: none;
+			padding-left: 0;
 
-			&:before {
-				margin-right: 2 * $cmln-icon-margin;
+			// Override nav-link styling in case the menu item is in a dropdown
+			a.nav-link {
+
+				@extend .dropdown-item;
+
+				&:before {
+					margin-right: 2 * $cmln-icon-margin;
+				}
 			}
 		}
 

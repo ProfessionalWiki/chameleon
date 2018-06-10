@@ -24,7 +24,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 @ingroup Skins
 -->
 <structure xmlns="https://cmln.github.io/chameleon/schema/2.0/layout.rng">
-	<grid>
+	<grid class="mb-2">
 		<row>
 			<cell class="flex-grow-0">
 				<component type="Logo" addLink="yes"/>
@@ -83,8 +83,8 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<row>
 			<cell>
 				<component type="NavbarHorizontal" collapsible="no" class="small mb-2" >
-					<component type="Toolbox" flatten="no" />
-					<component type="LangLinks" flatten="no" />
+					<component type="Toolbox" flatten="no" class="dropup"/>
+					<component type="LangLinks" flatten="no" class="dropup"/>
 				</component>
 			</cell>
 		</row>

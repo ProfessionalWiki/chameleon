@@ -46,7 +46,6 @@ class Toolbox extends Component {
 	 * Builds the HTML code for this component
 	 *
 	 * @return String the HTML code
-	 * @throws \FatalError
 	 * @throws \MWException
 	 */
 	public function getHtml() {
@@ -57,7 +56,7 @@ class Toolbox extends Component {
 			$this->addClasses( 'navbar-nav' );
 			$linkList = implode( $this->getLinkListItems() );
 		} else {
-			$this->addClasses( 'dropdown-menu' );
+			//$this->addClasses( 'dropdown-menu' );
 			$linkList = $this->wrapDropdownMenu( 'toolbox', implode( $this->getLinkListItems( 2 ) ) );
 		}
 
@@ -65,7 +64,10 @@ class Toolbox extends Component {
 	}
 
 	/**
+	 * @param int $indent
+	 *
 	 * @return string[]
+	 * @throws \FatalError
 	 * @throws \MWException
 	 */
 	private function getLinkListItems( $indent = 0 ) {
@@ -103,6 +105,9 @@ class Toolbox extends Component {
 	}
 
 	/**
+	 * @param $labelMsg
+	 * @param $list
+	 *
 	 * @return string
 	 * @throws \MWException
 	 */
@@ -115,7 +120,7 @@ class Toolbox extends Component {
 			);
 
 		$liElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'dropdown-menu' ], $list, $this->indent() );
-		$ulElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'nav-item p-tb-dropdown' ], $trigger . $liElement, $this->indent( -1 ) );
+		$ulElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'nav-item p-tb-dropdown ' . $this->getClassString() ], $trigger . $liElement, $this->indent( -1 ) );
 
 		return $ulElement;
 	}

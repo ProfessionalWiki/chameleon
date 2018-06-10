@@ -44,3 +44,9 @@
 	@extend .small;
 	font-size: $small-font-size;
 }
+
+// fix dropdown width for RTL languages
+&.rtl .dropdown-menu {
+	/* @noflip */
+	left: inherit !important;
+}

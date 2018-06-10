@@ -15,6 +15,12 @@
 	@include icon( map_get( $cmln-icons, ca-watch ) );
 }
 
-a.new {
-	color: $link-new-color;
+//
+// Links
+//
+
+@each $class, $description in $cmln-link-formats {
+	a[href].#{$class} {
+		@include link($description...);
+	}
 }

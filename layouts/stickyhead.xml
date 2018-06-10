@@ -23,13 +23,13 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 @since 1.0
 @ingroup Skins
 -->
-<structure xmlns="https://cmln.github.io/chameleon/schema/1.0/layout.rng">
+<structure xmlns="https://cmln.github.io/chameleon/schema/2.0/layout.rng">
 
-	<component type="NavbarHorizontal" class="full-width no-margin no-bottom-border">
+	<component type="NavbarHorizontal" class="w-100 m-0 border-bottom-0">
 		<component type="Menu" message="secondary-menu"/>
 	</component>
 
-	<component type="NavbarHorizontal" class="full-width">
+	<component type="NavbarHorizontal" class="w-100">
 		<modification type="Sticky"/>
 		<component type="Logo" position="head"/>
 		<component type="NavMenu" flatten="navigation" showTools="no" showLanguages="no"/>

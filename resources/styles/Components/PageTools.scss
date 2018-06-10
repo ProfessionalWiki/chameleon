@@ -17,17 +17,32 @@
 
 		@include list-unstyled;
 
+		font-size: $cmln-page-tools-font-size;
+
 		margin: {
-			left: (-$cmln-personal-tools-item-margin / 2); // FIXME: PERSONAL tools??
-			right: (-$cmln-personal-tools-item-margin / 2);
+			left: (-$cmln-page-tools-item-margin / 2);
+			right: (-$cmln-page-tools-item-margin / 2);
 		}
 
 		> * {
 			margin: {
-				left: ($cmln-personal-tools-item-margin / 2);
-				right: ($cmln-personal-tools-item-margin / 2);
+				left: ($cmln-page-tools-item-margin / 2);
+				right: ($cmln-page-tools-item-margin / 2);
 			}
 		}
 
+		li > a {
+
+			@include link($cmln-page-tools-link...);
+
+			&.new {
+				@include link($cmln-page-tools-link-new...);
+			}
+
+			&.selected {
+				font-weight: bold;
+				@include link($cmln-page-tools-link...);
+			}
+		}
 	}
 }

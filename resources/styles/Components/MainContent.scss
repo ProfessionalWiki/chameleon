@@ -22,6 +22,10 @@
 		margin-bottom: $cmln-first-heading-margin-bottom;
 	}
 
+	h1, h2 {
+		margin-top: 1rem;
+	}
+
 	.jump-to-nav {
 		@extend .sr-only;
 	}
@@ -29,7 +33,7 @@
 	.mw-indicators {
 		float: right;
 		line-height: 1.6;
-		font-size: 0.875em;
+		font-size: $font-size-sm;
 		position: relative;
 		z-index: 1;
 	}
@@ -62,6 +66,7 @@
 			}
 		}
 	}
+
 	// Table of contents
 	.toc {
 
@@ -111,29 +116,6 @@
 		}
 	}
 
-	// Lists
-	ol {
-		list-style: outside none decimal;
-	}
-
-	ul {
-		@include bullet();
-	}
-
-	ol, ul {
-		padding-left: $list-level-indent;
-		margin: 0;
-
-		ul {
-			@include bullet($list-bullet-color, $list-bullet-size*.9);
-		}
-
-		ol, ul {
-			ul {
-				@include bullet($list-bullet-color, $list-bullet-size*.7);
-			}
-		}
-	}
 
 	// action=edit
 	#wpTextbox1 {

@@ -21,6 +21,10 @@
 		"ChameleonLayoutFile": "layouts/standard.xml",
 		"ChameleonEnableVisualEditor": true
 	},
+	"AutoloadNamespaces": {
+		"Skins\\Chameleon\\Tests\\": "tests/phpunit",
+		"Skins\\Chameleon\\": "src"
+	},
 	"callback": "Skins\\Chameleon\\Chameleon::init",
 	"load_composer_autoloader": true
 }

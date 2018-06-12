@@ -210,13 +210,21 @@ class NavbarHorizontal extends Component {
 				$position = 'left';
 			}
 
-			$indentation = ( $position === 'right' ) ? 2 : 1;
+			$indentation = 0;
+
+			if ( $position !== 'head' && $this->isCollapsible() ) {
+				$indentation++;
+			}
+
+			if ( $position === 'right' ) {
+				$indentation++;
+			};
 
 			$this->indent( $indentation );
 			$html = $this->buildNavBarElementFromDomElement( $node );
 			$this->indent( -$indentation );
 
-			$elements[ $position ][ ] = $html;
+			$elements[ $position ][] = $html;
 
 		// } else {
 			// TODO: Warning? Error?

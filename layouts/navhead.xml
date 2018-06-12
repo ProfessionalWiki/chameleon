@@ -23,50 +23,60 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 @since 1.0
 @ingroup Skins
 -->
-<structure xmlns="https://cmln.github.io/chameleon/schema/1.0/layout.rng">
+<structure xmlns="https://cmln.github.io/chameleon/schema/2.0/layout.rng">
 	<grid>
 		<row>
-			<cell span="12">
+			<cell>
 				<component type="NavbarHorizontal">
 					<component type="Logo" position="head"/>
-					<component type="NavMenu" flatten="navigation" showTools="no" showLanguages="no"/>
-					<component type="PageTools" position="right" hideSelectedNameSpace="yes"/>
-					<component type="SearchBar" position="right"/>
-					<component type="PersonalTools" position="right"/>
+					<component type="NavMenu" flatten="navigation" />
+					<!--<component type="PageTools" position="right" hideSelectedNameSpace="yes"/>-->
+					<!--<component type="SearchBar" position="right"/>-->
+					<!--<component type="PersonalTools" position="right"/>-->
 				</component>
 			</cell>
 		</row>
 
 		<row>
-			<cell span="12">
+			<cell>
 				<component type="SiteNotice"/>
 			</cell>
 		</row>
 
+		<!-- FIXME: Remove this once PersonalTools are integrated into navbar-->
 		<row>
-			<cell span="12">
+			<cell>
+				<component type="PersonalTools" hideNewtalkNotifier="yes" class="pull-right"/>
+			</cell>
+		</row>
+
+		<row>
+			<cell>
 				<component type="MainContent"/>
 			</cell>
 		</row>
 
 		<row>
-			<cell span="12">
-				<component type="ToolbarHorizontal" hideTools="no" hideLanguages="no"/>
+			<cell>
+				<component type="NavbarHorizontal" collapsible="no" class="small mb-2" >
+					<component type="Toolbox" flatten="no" class="dropup"/>
+					<component type="LangLinks" flatten="no" class="dropup"/>
+				</component>
 			</cell>
 		</row>
 
 		<row>
-			<cell span="12">
+			<cell>
 				<component type="FooterInfo"/>
 			</cell>
 		</row>
 
 		<row>
-			<cell span="6">
+			<cell>
 				<component type="FooterPlaces"/>
 			</cell>
-			<cell span="6">
-				<component type="FooterIcons"/>
+			<cell>
+				<component type="FooterIcons" class="pull-right"/>
 			</cell>
 		</row>
 	</grid>

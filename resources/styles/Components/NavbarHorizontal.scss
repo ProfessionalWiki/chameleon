@@ -27,9 +27,17 @@
 		};
 	}
 
+	a {
+		outline: none; // No outline around menu items.
+	}
+
 	.navbar-nav {
 
 		@extend .flex-wrap;
+
+		@media ( max-width( $cmln-collapse-point ) ) {
+			margin-top: 1rem;
+		}
 
 		.dropdown-menu {
 
@@ -43,7 +51,10 @@
 				@extend .dropdown-item;
 
 				&:before {
-					margin-right: 2 * $cmln-icon-margin;
+					margin: {
+						left: 2 * $cmln-icon-margin;
+						right: 2 * $cmln-icon-margin;
+					}
 				}
 			}
 		}
@@ -54,77 +65,27 @@
 		@extend .ml-auto;
 	}
 
-	a {
-		outline: none; // No outline around menu items.
-	}
+	.navbar-brand {
+		&.p-logo {
 
+			height: 2 * $nav-link-padding-y + $font-size-base;
+
+			padding: {
+				top: 0;
+				bottom: 0;
+			};
+		}
+
+		img {
+			height:   $cmln-navbar-logo-height;
+			position: relative;
+			top:      (2 * $nav-link-padding-y + $font-size-base - $cmln-navbar-logo-height) / 2;
+		}
+	}
 }
 
-// if the navbar is in the first row (i.e. at the top of the page), but inside a
-// container (i.e. not a fixed head), add some margin at the top
-//.navbar {
-//	.container > *:first-child & {
-//		margin-top: ($grid-gutter-width / 2);
-//	}
-//
-//	.dropdown-menu {
-//
-//		list-style: outside none none;
-//		z-index: 1010;
-//
-//		> li {
-//			> a {
-//
-//				display: block;
-//				padding: 3px 20px;
-//				clear: both;
-//				font-weight: normal;
-//				line-height: $line-height-base;
-//				color: $dropdown-link-color;
-//				white-space: nowrap; // prevent links from randomly breaking onto new lines
-//			}
-//
-//			&.active, &.selected {
-//				> a {
-////					background-color: $navbar-default-link-active-bg;
-//					font-style: normal;
-//				}
-//			}
-//		}
-//	}
-//}
+// FIXME: if the navbar is in the first row (i.e. at the top of the page), but inside a container (i.e. not a fixed head), add some margin at the top?
 
-//// override some navbar-brand styles to accommodate an image and include a
-//// separator to the rest of the navbar
-//.navbar-brand {
-//
-//	padding: (( $navbar-height - $navbar-logo-height ) / 2 );
-//	line-height: normal;
-//
-//	img {
-//		max-height: $navbar-logo-height;
-//	}
-//
-//	@media (min-width: $grid-float-breakpoint) {
-//		// separator for logo
-//		border-right: 1px solid $navbar-default-border;
-//	}
-//
-//	@media (max-width: $grid-float-breakpoint) {
-//		float: none
-//	}
-//}
-
-//// FIXME: Is this the correct width? Does it even still work this way?
-//$grid-float-breakpoint: map-get($grid-breakpoints, "lg");
-//
-//.navbar-collapse {
-//	@media (min-width: $grid-float-breakpoint) {
-//		padding-left: 0;
-//		padding-right: 0;
-//	}
-//}
-//
 //.navbar-right-aligned {
 //	@media (min-width: $grid-float-breakpoint) {
 //

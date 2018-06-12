@@ -48,8 +48,11 @@ class NavMenu extends Component {
 
 		$ret = '';
 
-		$sidebar = $this->getSkinTemplate()->getSidebar( [
-				'search' => false, 'toolbox' => $this->showTools(), 'languages' => $this->showLanguages()
+		$sidebar = $this->getSkinTemplate()->getSidebar(
+			[
+				'search' => false,
+				'toolbox' => false,
+				'languages' => false,
 			]
 		);
 
@@ -61,22 +64,6 @@ class NavMenu extends Component {
 		}
 
 		return $ret;
-	}
-
-	/**
-	 * @return bool
-	 */
-	private function showLanguages() {
-		return $this->getDomElement() !== null &&
-		       filter_var( $this->getDomElement()->getAttribute( 'showLanguages' ), FILTER_VALIDATE_BOOLEAN );
-	}
-
-	/**
-	 * @return bool
-	 */
-	private function showTools() {
-		return $this->getDomElement() !== null &&
-		       filter_var( $this->getDomElement()->getAttribute( 'showTools' ), FILTER_VALIDATE_BOOLEAN );
 	}
 
 	/**

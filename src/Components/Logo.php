@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2016, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -44,35 +44,55 @@ class Logo extends Component {
 	 * Builds the HTML code for this component
 	 *
 	 * @return String the HTML code
+	 * @throws \MWException
 	 */
 	public function getHtml() {
 
-		$attribs = NULL;
-		if ( $this->addLink() ) {
-			$attribs = array_merge(
-				array( 'href' => $this->getSkinTemplate()->data[ 'nav_urls' ][ 'mainpage' ][ 'href' ] ),
-				Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
-			);
-		}
-
-		$contents = \Html::element( 'img',
-			array(
-				'src' => $this->getSkinTemplate()->data[ 'logopath' ],
-				'alt' => $this->getSkinTemplate()->data[ 'sitename' ],
-			)
-		);
+		$logo = $this->indent( 1 ) . $this->getLogo();
 
 		return
-			$this->indent() . '<!-- logo and main page link -->' .
-			$this->indent() . \Html::openElement( 'div',
-				array(
-					'id'    => IdRegistry::getRegistry()->getId( 'p-logo' ),
-					'class' => 'p-logo ' . $this->getClassString(),
-					'role'  => 'banner'
-				)
-			) .
-			$this->indent( 1 ) . \Html::rawElement( 'a', $attribs, $contents ) .
-			$this->indent( -1 ) . '</div>' . "\n";
+			$this->indent( -1 ) . '<!-- logo and main page link -->' .
+
+			IdRegistry::getRegistry()->element( 'div',
+				[ 'id' => 'p-logo', 'class' => $this->getClassString(), 'role' => 'banner', ],
+				$logo,
+				$this->indent()
+			);
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function getLogo() {
+
+		$logo = IdRegistry::getRegistry()->element( 'img',
+			[
+				'src' => $this->getSkinTemplate()->get( 'logopath', '' ),
+				'alt' => $this->getSkinTemplate()->get( 'sitename', '' ),
+			]
+		);
+
+		return $this->getLinkedLogo( $logo );
+	}
+
+	/**
+	 * @param $logo
+	 *
+	 * @return string
+	 */
+	protected function getLinkedLogo( $logo ) {
+
+		if ( $this->shallLink() ) {
+
+			$linkAttributes = array_merge(
+				[ 'href' => $this->getSkinTemplate()->get( 'nav_urls', [ 'mainpage' => [ 'href' => '#' ] ] )[ 'mainpage' ][ 'href' ] ],
+				Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
+			);
+
+			return IdRegistry::getRegistry()->element( 'a', $linkAttributes, $logo );
+		}
+
+		return $logo;
 	}
 
 	/**
@@ -82,17 +102,16 @@ class Logo extends Component {
 	 *
 	 * @return bool
 	 */
-	private function addLink() {
-		if ( $this->getDomElement() === null ) {
+	private function shallLink() {
+
+		$domElement = $this->getDomElement();
+
+		if ( $domElement === null ) {
 			return true;
 		}
 
-		$addLink = $this->getDomElement()->getAttribute( 'addLink' );
+		$attribute = $domElement->getAttribute( 'addLink' );
 
-		if ( $addLink === '' ) {
-			return true;
-		}
-
-		return filter_var( $addLink, FILTER_VALIDATE_BOOLEAN );
+		return $attribute === '' || filter_var( $attribute, FILTER_VALIDATE_BOOLEAN );
 	}
 }

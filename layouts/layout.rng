@@ -194,7 +194,9 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 
 		<optional>
-			<attribute name="flatten"/>
+			<attribute name="flatten">
+				<data type="string"/>
+			</attribute>
 		</optional>
 
 	</define>

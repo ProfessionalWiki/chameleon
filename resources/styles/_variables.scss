@@ -42,6 +42,8 @@ $cmln-search-bar-btn-color: light !default; // @see $theme-colors
 $cmln-navbar-bg-color: light !default; // @see $theme-colors
 $cmln-navbar-toggler-color: light !default; // @see $theme-colors
 
+$cmln-navbar-logo-height: 2 * $nav-link-padding-y + $font-size-base + $navbar-padding-y;
+
 // NavbarHorizontal
 $cmln-navbar-horizontal-collapse-point: $cmln-collapse-point !default;
 

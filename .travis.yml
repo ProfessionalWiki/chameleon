@@ -30,6 +30,8 @@ sudo: false
 matrix:
   include:
     - env: DBTYPE=mysql; MW=master
+      php: 7.0
+    - env: DBTYPE=mysql; MW=1.30.0
       php: 5.6
     - env: DBTYPE=mysql; MW=1.29.1
       php: 7.1

@@ -135,7 +135,7 @@ class MainContent extends Component {
 	 */
 	protected function buildCategoryLinks() {
 		// TODO: Category links should be a separate component, but
-		// * dataAfterContent should come after the the category links.
+		// * dataAfterContent should come after the category links.
 		// * only one extension is known to use it dataAfterContent and it is geared specifically towards MonoBook
 		// => provide an attribute hideCatLinks for the XML and -if present- hide category links and assume somebody knows what they are doing
 		return

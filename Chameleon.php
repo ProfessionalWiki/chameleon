@@ -66,6 +66,11 @@ call_user_func( function () {
 	$GLOBALS[ 'wgExtensionMessagesFiles' ][ 'Chameleon' ] = __DIR__ . '/Chameleon.i18n.php';
 	$GLOBALS[ 'wgMessagesDirs' ][ 'Chameleon' ] = __DIR__ . '/resources/i18n';
 
+        $GLOBALS[ 'wgMessagesDirs' ][ 'Chameleon' ] = __DIR__ . '/resources/i18n';
+	$GLOBALS[ 'wgAutoloadClasses' ] = array(
+		'Skins\\Chameleon\\' => __dir__ . '/src',
+	);
+
 	/**
 	 * Using callbacks for hook registration
 	 *

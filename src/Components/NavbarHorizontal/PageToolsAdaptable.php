@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2017, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -38,8 +38,7 @@ use Skins\Chameleon\Components\PageTools as GenPageTools;
  * @since 1.6
  * @ingroup Skins
  */
-class PageToolsAdaptable extends PageTools
-{
+class PageToolsAdaptable extends PageTools {
 
 	const GLYPH_ICON_UNKNOWN_ACTION = 'asterisk';
 
@@ -56,7 +55,7 @@ class PageToolsAdaptable extends PageTools
 	/**
 	 * @var array
 	 */
-	private static $sGlyphIconForAction = array(
+	private static $sGlyphIconForAction = [
 		'delete'    => 'trash',
 		'edit'      => 'edit',
 		'formedit'  => 'list-alt',
@@ -70,7 +69,7 @@ class PageToolsAdaptable extends PageTools
 		've-edit'   => 'pencil',
 		'view'      => 'eye-open',
 		'watch'     => 'star-empty',
-	);
+	];
 
 	/**
 	 * @param string $action
@@ -81,7 +80,7 @@ class PageToolsAdaptable extends PageTools
 		if ( isset( self::$sGlyphIconForAction[$action] ) ) {
 			return self::$sGlyphIconForAction[$action];
 		}
-		return $fallback !== null ? $fallback : self::GLYPH_ICON_UNKNOWN_ACTION;
+		return $fallback ?: self::GLYPH_ICON_UNKNOWN_ACTION;
 	}
 
 	/**
@@ -102,11 +101,12 @@ class PageToolsAdaptable extends PageTools
 	protected function getEditLinkHtml( $pageTools ) {
 
 		$pageToolsStructure = $pageTools->getPageToolsStructure();
+
 		if ( !array_key_exists( 'views', $pageToolsStructure ) ) {
 			return '';
 		}
 
-		$items = array();
+		$items = [];
 
 		$showActions = $this->getShowActions( $pageTools );
 
@@ -150,12 +150,12 @@ class PageToolsAdaptable extends PageTools
 			$editActionStructure['class'] = 'navbar-tools-tools';
 		}
 
-		$options = array(
-			'text-wrapper' => array(
+		$options = [
+			'text-wrapper' => [
 				'tag'        => 'span',
-				'attributes' => array( 'class' => $this->getGlyphIconClassFor( $editActionId ), ),
-			),
-		);
+				'attributes' => [ 'class' => $this->getGlyphIconClassFor( $editActionId ), ],
+			],
+		];
 
 		$editLinkHtml = $this->getSkinTemplate()->makeListItem(
 			$editActionId,
@@ -169,24 +169,30 @@ class PageToolsAdaptable extends PageTools
 	}
 
 	/**
-	 * @param @param GenPageTools $pageTools
+	 * @param GenPageTools $pageTools
 	 * @return string[]|null
 	 */
 	protected function getShowActions( $pageTools ) {
+
 		if ( $this->mShowActions !== null ) {
 			return $this->mShowActions;
 		}
-		$showActions = array();
 
-		$showAttributesString = $this->getDomElement() !== null ? $this->getDomElement()->getAttribute( 'show' ) : '';
+		$showActions = [];
+
+		$showAttributesString = $this->getAttribute( 'show', '' );
 
 		if ( $showAttributesString != '' ) {
+
+			$validActionsToShow = $this->getValidActionsToShow( $pageTools );
+
 			foreach ( explode( ',', $showAttributesString ) as $requestedShowAction ) {
-				if ( in_array( $requestedShowAction, $this->getValidActionsToShow( $pageTools ) ) ) {
+				if ( in_array( $requestedShowAction, $validActionsToShow ) ) {
 					$showActions[] = $requestedShowAction;
 				}
 			}
 		}
+
 		return $this->mShowActions = $showActions;
 	}
 
@@ -195,15 +201,20 @@ class PageToolsAdaptable extends PageTools
 	 * @return string[]
 	 */
 	protected function getValidActionsToShow( $pageTools ) {
-		if ( $this->mValidActionsToShow !== null ) {
-			return $this->mValidActionsToShow;
-		}
-		$pageToolsStructure = $pageTools->getPageToolsStructure();
-		$validActionsToShow = array();
 
-		foreach ( $pageToolsStructure as $group => $groupStructure ) {
-			$validActionsToShow = array_merge( $validActionsToShow, array_keys( $groupStructure ) );
+		if ( $this->mValidActionsToShow === null ) {
+
+
+			$pageToolsStructure = $pageTools->getPageToolsStructure();
+			$validActionsToShow = [];
+
+			foreach ( $pageToolsStructure as $group => $groupStructure ) {
+				$validActionsToShow = array_merge( $validActionsToShow, array_keys( $groupStructure ) );
+			}
+
+			$this->mValidActionsToShow = $validActionsToShow;
 		}
-		return $this->mValidActionsToShow = $validActionsToShow;
+
+		return $this->mValidActionsToShow;
 	}
 }

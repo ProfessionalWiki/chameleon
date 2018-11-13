@@ -3,7 +3,7 @@
 <?xml-model href="https://cmln.github.io/chameleon/schema/1.0/layout.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 This file is part of the MediaWiki skin Chameleon.
 
-@copyright 2013 - 2016, Stephan Gambke
+@copyright 2013 - 2018, Stephan Gambke
 @license   GNU General Public License, version 3 (or any later version)
 
 The Chameleon skin is free software: you can redistribute it and/or modify it
@@ -24,16 +24,23 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 @ingroup Skins
 -->
 <structure xmlns="https://cmln.github.io/chameleon/schema/2.0/layout.rng">
+	<component type="NavbarHorizontal">
+		<component type="Logo" position="head"/>
+		<component type="NavMenu" flatten="navigation" />
+		<component type="PageTools" position="right" hideSelectedNameSpace="yes"/>
+		<component type="SearchBar" position="right"/>
+		<!--<component type="PersonalTools" position="right"/>-->
+	</component>
 	<grid>
 		<row>
 			<cell>
-				<component type="NavbarHorizontal">
-					<component type="Logo" position="head"/>
-					<component type="NavMenu" flatten="navigation" />
+				<!--<component type="NavbarHorizontal">-->
+					<!--<component type="Logo" position="head"/>-->
+					<!--<component type="NavMenu" flatten="navigation" />-->
 					<!--<component type="PageTools" position="right" hideSelectedNameSpace="yes"/>-->
-					<!--<component type="SearchBar" position="right"/>-->
-					<!--<component type="PersonalTools" position="right"/>-->
-				</component>
+					<!--&lt;!&ndash;<component type="SearchBar" position="right"/>&ndash;&gt;-->
+					<!--&lt;!&ndash;<component type="PersonalTools" position="right"/>&ndash;&gt;-->
+				<!--</component>-->
 			</cell>
 		</row>
 

@@ -27,6 +27,7 @@
 namespace Skins\Chameleon\Components;
 
 use Action;
+use MediaWiki\MediaWikiServices;
 use MWNamespace;
 use Skins\Chameleon\ChameleonTemplate;
 use Skins\Chameleon\IdRegistry;
@@ -34,7 +35,7 @@ use Skins\Chameleon\IdRegistry;
 /**
  * The PageTools class.
  *
- * A unordered list containing content navigation links (Page, Discussion,
+ * An unordered list containing content navigation links (Page, Discussion,
  * Edit, History, Move, ...)
  *
  * The tab list is a list of lists: '<ul id="p-contentnavigation">
@@ -46,15 +47,52 @@ use Skins\Chameleon\IdRegistry;
 class PageTools extends Component {
 
 	private $mFlat = false;
-	private $mPageToolsStructure = null;
+
+	/**
+	 * PageTools constructor.
+	 *
+	 * @param ChameleonTemplate $template
+	 * @param \DOMElement|null $domElement
+	 * @param int $indent
+	 *
+	 * @throws \MWException
+	 */
+	public function __construct(  ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
+		parent::__construct( $template, $domElement, $indent );
+		$this->addClasses( 'pagetools' );
+	}
 
 	/**
 	 * Builds the HTML code for this component
 	 *
 	 * @return string the HTML code
+	 * @throws \ConfigException
 	 * @throws \MWException
 	 */
 	public function getHtml() {
+
+		$toolGroups = $this->getToolGroups();
+
+		if ( $toolGroups === [] ) {
+			return '';
+		}
+
+		return
+			$this->indent() . '<!-- Content navigation -->' .
+			IdRegistry::getRegistry()->element( $this->mFlat ? 'ul' : 'div',
+				[ 'class' => $this->getClassString(), 'id' => 'p-contentnavigation' ],
+				join( $toolGroups ),
+				$this->indent()
+			);
+
+	}
+
+	/**
+	 * @return string[]
+	 * @throws \ConfigException
+	 * @throws \MWException
+	 */
+	protected function getToolGroups() {
 
 		$contentNavigation = $this->getPageToolsStructure();
 
@@ -62,37 +100,24 @@ class PageTools extends Component {
 			unset( $contentNavigation[ 'namespaces' ][ $this->getNamespaceKey() ] );
 		}
 
-		$ret = '';
+		$toolGroups = [];
 
-		$this->indent( 2 );
+		$this->indent( 1 );
 
 		foreach ( $contentNavigation as $category => $tabsDescription ) {
-			$ret .= $this->buildTabGroup( $category, $tabsDescription );
+			$toolGroups[] = $this->getToolGroup( $category, $tabsDescription );
 		}
 
-		$this->indent( -2 );
+		$this->indent( -1 );
 
-		if ( $ret !== '' ) {
-			$ret =
-				$this->indent( 1 ) . '<!-- Content navigation -->' . // FIXME: It should not be necessary to indent further here. That should be done in the caller.
-
-				IdRegistry::getRegistry()->element( 'ul',
-					[ 'class' => $this->getClassString(), 'id' => 'p-contentnavigation' ],
-					$ret, $this->indent()
-				);
-		}
-
-		return $ret;
+		return $toolGroups;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function &getPageToolsStructure() {
-		if ( $this->mPageToolsStructure === null ) {
-			$this->mPageToolsStructure = $this->getSkinTemplate()->get( 'content_navigation', null );
-		}
-		return $this->mPageToolsStructure;
+	public function getPageToolsStructure() {
+		return $this->getSkinTemplate()->get( 'content_navigation', null );
 	}
 
 	/**
@@ -108,38 +133,36 @@ class PageTools extends Component {
 	/**
 	 * Generate strings used for xml 'id' names in tabs
 	 *
-	 * Stolen from MW's Title::getNamespaceKey()
+	 * Based on MW's Title::getNamespaceKey()
 	 *
 	 * Difference: This function here reports the actual namespace while the
 	 * one in Title reports the subject namespace, i.e. no talk namespaces
 	 *
 	 * @return string
+	 * @throws \ConfigException
 	 */
 	public function getNamespaceKey() {
-		global $wgContLang;
 
 		// Gets the subject namespace if this title
-		$namespace = $this->getSkinTemplate()->getSkin()->getTitle()->getNamespace();
+		$title = $this->getSkinTemplate()->getSkin()->getTitle();
 
-		// Checks if canonical namespace name exists for namespace
-		if ( MWNamespace::exists( $this->getSkinTemplate()->getSkin()->getTitle()->getNamespace() ) ) {
-			// Uses canonical namespace name
-			$namespaceKey = MWNamespace::getCanonicalName( $namespace );
-		} else {
-			// Uses text of namespace
-			$namespaceKey = $this->getSkinTemplate()->getSkin()->getTitle()->getNsText();
+		$namespaceKey = MWNamespace::getCanonicalName( $title->getNamespace() );
+
+		if ( $namespaceKey === false ) {
+			$namespaceKey = $title->getNsText();
 		}
 
 		// Makes namespace key lowercase
-		$namespaceKey = $wgContLang->lc( $namespaceKey );
-		// Uses main
-		if ( $namespaceKey == '' ) {
-			$namespaceKey = 'main';
+		$namespaceKey = MediaWikiServices::getInstance()->getMainConfig()->get( 'ContLang' )->lc( $namespaceKey );
+
+		if ( $namespaceKey === '' ) {
+			return 'main';
 		}
-		// Changes file to image for backwards compatibility
-		if ( $namespaceKey == 'file' ) {
-			$namespaceKey = 'image';
+
+		if ( $namespaceKey === 'file' ) {
+			return 'image';
 		}
+
 		return $namespaceKey;
 	}
 
@@ -150,44 +173,55 @@ class PageTools extends Component {
 	 * @return string
 	 * @throws \MWException
 	 */
-	protected function buildTabGroup( $category, $tabsDescription ) {
-		// TODO: visually group all links of one category (e.g. some space between categories)?
+	protected function getToolGroup( $category, $tabsDescription ) {
 
 		if ( empty( $tabsDescription ) ) {
 			return '';
 		}
 
-		$ret = $this->indent() . '<!-- ' . $category . ' -->';
+		$comment = $this->indent() . "<!-- $category -->";
 
-		if ( !$this->mFlat ) {
-			$ret .= $this->buildTabGroupOpeningTags( $category );
-
+		if ( $this->mFlat ) {
+			return $comment . join( $this->getToolsForGroup( $tabsDescription ) );
 		}
 
-		foreach ( $tabsDescription as $key => $tabDescription ) {
-			$ret .= $this->buildTab( $tabDescription, $key );
-		}
+		return $comment .
 
-		if ( !$this->mFlat ) {
-			$ret .= $this->buildTabGroupClosingTags();
-		}
-		return $ret;
+			IdRegistry::getRegistry()->element( 'div',
+				[ 'id' => 'p-' . $category ],
+
+				IdRegistry::getRegistry()->element( 'ul',
+					[ 'class' => 'tab-group' ],
+
+					join( $this->getToolsForGroup( $tabsDescription, 2 ) ),
+
+					$this->indent( 1 )
+				),
+				$this->indent( -1 )
+			);
+
 	}
 
 	/**
-	 * @param string $category
+	 * @param $tabsDescription
 	 *
-	 * @return string
+	 * @param int $indent
+	 *
+	 * @return array
 	 * @throws \MWException
 	 */
-	protected function buildTabGroupOpeningTags( $category ) {
-		// output the name of the current category (e.g. 'namespaces', 'views', ...)
-		$ret = $this->indent() .
-			\Html::openElement( 'li', [ 'id' => IdRegistry::getRegistry()->getId( 'p-' . $category ) ] ) .
-			$this->indent( 1 ) . '<ul class="tab-group" >';
+	protected function getToolsForGroup( $tabsDescription, $indent = 0 ) {
 
-		$this->indent( 1 );
-		return $ret;
+		$tabs = [];
+		$this->indent( $indent );
+
+		foreach ( $tabsDescription as $key => $tabDescription ) {
+			$tabs[] = $this->getTool( $tabDescription, $key );
+		}
+
+		$this->indent( -$indent );
+
+		return $tabs;
 	}
 
 	/**
@@ -197,7 +231,7 @@ class PageTools extends Component {
 	 * @return string
 	 * @throws \MWException
 	 */
-	protected function buildTab( $tabDescription, $key ) {
+	protected function getTool( $tabDescription, $key ) {
 
 		// skip redundant links (i.e. the 'view' link)
 		// TODO: make this dependent on an option
@@ -216,15 +250,6 @@ class PageTools extends Component {
 	}
 
 	/**
-	 * @return string
-	 * @throws \MWException
-	 */
-	protected function buildTabGroupClosingTags() {
-		return $this->indent( -1 ) . '</ul>' .
-			$this->indent( -1 ) . '</li>';
-	}
-
-	/**
 	 * Set the page tool menu to have submenus or not
 	 *
 	 * @param boolean $flat
@@ -234,16 +259,15 @@ class PageTools extends Component {
 	}
 
 	/**
-	 * Set the page tool menu to have submenus or not
+	 * Set redundant tools
 	 *
 	 * @param string|string[] $tools
 	 */
 	public function setRedundant( $tools ) {
-		if ( is_string( $tools ) ) {
-			$tools = [ $tools ];
-		}
 
-		$pageToolsStructure = &$this->getPageToolsStructure();
+		$tools = (array) $tools;
+
+		$pageToolsStructure = $this->getPageToolsStructure();
 
 		foreach ( $tools as $tool ) {
 			foreach ( $pageToolsStructure as $group => $groupStructure ) {

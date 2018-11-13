@@ -151,22 +151,12 @@ class NavbarHorizontal extends Component {
 
 		$elements = $this->buildNavBarElementsFromDomTree();
 
-		if ( !empty( $elements[ 'right' ] ) ) {
-
-			$elements[ 'left' ][ ] =
-				$this->indent( 1 ) . '<div class="navbar-right-aligned">' .
-				implode( $elements[ 'right' ] ) .
-				$this->indent() . '</div> <!-- navbar-right-aligned -->';
-
-			$this->indent( -1 );
-		}
-
 		$head = $this->buildHead( $elements[ 'head' ] );
 
 		if ( $this->isCollapsible() ) {
-			$tail = $this->wrapDropdownMenu( $this->buildTail( $elements[ 'left' ], 1 ) );
+			$tail = $this->wrapDropdownMenu( $this->buildTail( $elements[ 'left' ], $elements[ 'right' ], 1 ) );
 		} else {
-			$tail = $this->buildTail( $elements[ 'left' ] );
+			$tail = $this->buildTail( $elements[ 'left' ], $elements[ 'right' ] );
 		}
 
 		return $head . $tail;
@@ -253,17 +243,28 @@ class NavbarHorizontal extends Component {
 	}
 
 	/**
-	 * @param string[] $tailElements
-	 *
+	 * @param string[] $leftElements
+	 * @param string[] $rightElements
 	 * @param int $indent
 	 *
 	 * @return string
 	 * @throws \MWException
 	 */
-	protected function buildTail( $tailElements, $indent = 0 ) {
+	protected function buildTail( $leftElements = [], $rightElements = [], $indent = 0 ) {
 
 		$this->indent( $indent );
-		$tail = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav' ], implode( '', $tailElements ), $this->indent() );
+
+		$tail = '';
+
+		if ( $leftElements ) {
+			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav' ], implode( '', $leftElements ), $this->indent() );
+		}
+
+		if ( $rightElements ) {
+			// FIXME: Use a dedicated class instead of ml-auto. Then style in NavbarHorizontal.scss.
+			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav ml-auto' ], implode( '', $rightElements ), $this->indent() );
+		}
+
 		$this->indent( -$indent );
 
 		return $tail;

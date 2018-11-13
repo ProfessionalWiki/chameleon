@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2017, Stephan Gambke
+ * @copyright 2013 - 2018, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -26,8 +26,9 @@
 
 namespace Skins\Chameleon\Components\NavbarHorizontal;
 
+use Skins\Chameleon\ChameleonTemplate;
 use Skins\Chameleon\Components\Component;
-use Skins\Chameleon\Components\PageTools as GenPageTools;
+use Skins\Chameleon\Components\PageTools as GenericPageTools;
 
 /**
  * The NavbarHorizontal\PageTools class.
@@ -41,17 +42,21 @@ use Skins\Chameleon\Components\PageTools as GenPageTools;
 class PageTools extends Component {
 
 	/**
-	 * @return String
+	 * @return string
+	 * @throws \ConfigException
+	 * @throws \MWException
 	 */
 	public function getHtml() {
 
 		$ret = '';
 
-		$pageTools = new GenPageTools( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() + 1 );
+		$pageTools = new GenericPageTools( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() + 2 );
 
 		$pageTools->setFlat( true );
-		$pageTools->removeClasses( 'text-center list-inline' );
-		$pageTools->addClasses( 'dropdown-menu' );
+
+		// FIXME: This removing/adding of classes is super-ugly. Create and use a PageToolsBuilder class instead.
+		$pageTools->removeClasses( 'pagetools' );
+		$pageTools->addClasses( [ 'navbar-pagetools', 'dropdown-menu' ] );
 
 		$editLinkHtml = $this->getEditLinkHtml( $pageTools );
 
@@ -60,37 +65,37 @@ class PageTools extends Component {
 		if ( $editLinkHtml || $pageToolsHtml ) {
 			$ret =
 				$this->indent() . '<!-- page tools -->' .
-				$this->indent() . '<ul class="navbar-tools navbar-nav" >';
+				$this->indent() . '<div class="navbar-tools navbar-nav" >';
+
+			$this->indent( 1 );
 
 			if ( $editLinkHtml !== '' ) {
-				$ret .= $this->indent( 1 ) . $editLinkHtml;
+				$ret .= $this->indent() . $editLinkHtml;
 			}
 
 			if ( $pageToolsHtml !== '' ) {
 				$ret .=
-					$this->indent( $editLinkHtml !== '' ? 0 : 1 ) . '<li class="navbar-tools-tools dropdown">' .
-					$this->indent( 1 ) . '<a data-toggle="dropdown" class="dropdown-toggle" href="#" title="' . $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() . '" ><span>...</span></a>' .
+					$this->indent() . '<div class="navbar-tool dropdown">' .
+					$this->indent( 1 ) . '<a data-toggle="dropdown" class="navbar-more-tools" href="#" title="' . $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() . '" ></a>' .
 					$pageToolsHtml .
-					$this->indent( -1 ) . '</li>';
+					$this->indent( -1 ) . '</div>';
 			}
+
 			$ret .=
-				$this->indent( $editLinkHtml !== '' ? 0 : -1 ) . '</ul>' . "\n";
+				$this->indent( -1 ) . '</div>';
 		}
 
 		return $ret;
 	}
 
 	/**
-	 * @param GenPageTools $pageTools
+	 * @param GenericPageTools $pageTools
+	 *
 	 * @return string
 	 */
 	protected function getEditLinkHtml( $pageTools ) {
 
 		$pageToolsStructure = $pageTools->getPageToolsStructure();
-
-		if ( ! array_key_exists( 'views', $pageToolsStructure ) ) {
-			return '';
-		}
 
 		foreach ( $this->getReplaceableEditActionIds() as $id ) {
 
@@ -103,7 +108,7 @@ class PageTools extends Component {
 	}
 
 	/**
-	 * @param GenPageTools $pageTools
+	 * @param GenericPageTools $pageTools
 	 * @param string $editActionId
 	 *
 	 * @return string
@@ -116,17 +121,14 @@ class PageTools extends Component {
 		$editActionStructure[ 'text' ] = '';
 
 		if ( array_key_exists( 'class', $editActionStructure ) ) {
-			$editActionStructure[ 'class' ] .= ' navbar-tools-tools';
+			$editActionStructure[ 'class' ] .= ' navbar-tool';
 		} else {
-			$editActionStructure[ 'class' ] = 'navbar-tools-tools';
+			$editActionStructure[ 'class' ] = 'navbar-tool';
 		}
 
-		$options = array (
-			'text-wrapper' => array(
-				'tag' => 'span',
-				'attributes' => array('class' => 'glyphicon glyphicon-pencil',)
-			),
-		);
+		$options = [
+			'tag' => 'div',
+		];
 
 		$editLinkHtml = $this->getSkinTemplate()->makeListItem(
 			$editActionId,
@@ -144,12 +146,14 @@ class PageTools extends Component {
 	 */
 	protected function getReplaceableEditActionIds() {
 
-		$editActionIds = array( 've-edit', 'edit' );
+		$actionsToShow = array_map( 'trim',	explode( ',', $this->getDomElement()->getAttribute( 'show' ) ) );
+
+		$editActionIds = [ 've-edit', 'edit' ];
 
 		if ( array_key_exists( 'sfgRenameEditTabs', $GLOBALS ) && $GLOBALS[ 'sfgRenameEditTabs' ] === true ||
 			array_key_exists( 'wgPageFormsRenameEditTabs', $GLOBALS ) && $GLOBALS[ 'wgPageFormsRenameEditTabs' ] === true ) {
 
-			$editActionIds = array_merge( array( 'formedit', 'form_edit' ), $editActionIds );
+			$editActionIds = array_merge( [ 'formedit', 'form_edit' ], $editActionIds );
 		}
 
 		return $editActionIds;

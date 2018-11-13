@@ -12,11 +12,11 @@
 	@extend .navbar-light;
 	@extend .bg-#{$cmln-navbar-bg-color};
 
-	&.collapsible{
+	&.collapsible {
 		@extend .navbar-expand-#{$cmln-navbar-horizontal-collapse-point};
 	}
 
-	&.not-collapsible{
+	&.not-collapsible {
 		@extend .navbar-expand;
 	}
 
@@ -46,19 +46,32 @@
 			padding-left: 0;
 
 			// Override nav-link styling in case the menu item is in a dropdown
-			a.nav-link {
+			li > a {
 
 				@extend .dropdown-item;
 
 				&:before {
-					margin: {
-						left: 2 * $cmln-icon-margin;
-						right: 2 * $cmln-icon-margin;
-					}
+					margin-right: 2 * $cmln-icon-margin;
 				}
 			}
 		}
 
+		.navbar-tools {
+
+			// TODO: use dedicated variable instead of $nav-link-padding-x
+			padding-left: $nav-link-padding-x;
+			padding-right: $nav-link-padding-x;
+
+		}
+
+	}
+
+	.navbar-tool > a {
+
+		@extend .nav-link;
+
+		padding-left: 0;
+		padding-right: 0;
 	}
 
 	.navbar-toggler {
@@ -80,6 +93,21 @@
 			height:   $cmln-navbar-logo-height;
 			position: relative;
 			top:      (2 * $nav-link-padding-y + $font-size-base - $cmln-navbar-logo-height) / 2;
+		}
+	}
+
+	.navbar-form {
+
+		padding-left: $nav-link-padding-x;
+		padding-right: $nav-link-padding-x;
+
+		button {
+			//@extend .btn-#{$cmln-search-bar-btn-color}; // FIXME: Should this be ".btn-secondary"? Or some self-defined button style?
+			color: $navbar-light-color;
+
+			@include hover-focus {
+				color: $navbar-light-hover-color;
+			}
 		}
 	}
 }

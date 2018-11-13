@@ -211,11 +211,11 @@ abstract class Component {
 	 * @param null | string $default
 	 * @return null | string
 	 */
-	protected function getAttribute( $attributeName, $default = null ) {
+	protected function getAttribute( $attributeName, $default = '' ) {
 
 		$element = $this->getDomElement();
 
-		if ( $element !== null && $element->hasAttribute( $attributeName ) ) {
+		if ( is_a($element, 'DOMElement' ) ) {
 			return $element->getAttribute( $attributeName );
 		}
 

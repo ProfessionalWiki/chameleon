@@ -83,7 +83,7 @@ class NavMenu extends Component {
 
 		if ( $flatten ) {
 
-			$ret .= $this->buildMenuItemsForDropdownMenu( $menuDescription );
+			$ret .= $this->buildMenuItemsForDropdownMenu( $menuDescription, $flatten );
 
 		} elseif ( !$this->hasSubmenuItems( $menuDescription ) ) {
 
@@ -92,7 +92,7 @@ class NavMenu extends Component {
 		} else {
 
 			$ret .= $this->buildDropdownOpeningTags( $menuDescription ) .
-			        $this->buildMenuItemsForDropdownMenu( $menuDescription, 1 ) .
+			        $this->buildMenuItemsForDropdownMenu( $menuDescription, $flatten, 1 ) .
 			        $this->buildDropdownClosingTags();
 
 
@@ -108,7 +108,7 @@ class NavMenu extends Component {
 	 * @return string
 	 * @throws \MWException
 	 */
-	protected function buildMenuItemsForDropdownMenu( $menuDescription, $indent = 0 ) {
+	protected function buildMenuItemsForDropdownMenu( $menuDescription, $flatten = false, $indent = 0 ) {
 
 		// build the list of submenu items
 		if ( $this->hasSubmenuItems( $menuDescription ) ) {
@@ -117,7 +117,7 @@ class NavMenu extends Component {
 			$this->indent( $indent );
 
 			foreach ( $menuDescription['content'] as $key => $item ) {
-				$menuitems .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item, [ 'class'=>'nav-item', 'link-class' => 'nav-link' ] );
+				$menuitems .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item, [ 'tag'=> $flatten ? 'div' : 'li', 'class'=>'nav-item', 'link-class' => 'nav-link' ] );
 			}
 
 			$this->indent( - $indent );
@@ -163,7 +163,7 @@ class NavMenu extends Component {
 	 */
 	protected function buildDropdownOpeningTags( $menuDescription ) {
 		// open list item containing the dropdown
-		$ret = $this->indent() . \Html::openElement( 'li',
+		$ret = $this->indent() . \Html::openElement( 'div',
 				[
 					'class' => 'nav-item dropdown',
 					'title' => Linker::titleAttrib( $menuDescription['id'] ),
@@ -190,7 +190,7 @@ class NavMenu extends Component {
 	 */
 	protected function buildDropdownClosingTags() {
 		return $this->indent() . '</ul>' .
-			$this->indent( - 1 ) . '</li>';
+			$this->indent( - 1 ) . '</div>';
 	}
 
 	/**
@@ -200,7 +200,7 @@ class NavMenu extends Component {
 		$msg = \Message::newFromKey( 'skin-chameleon-navmenu-flatten' );
 
 		if ( $msg->exists() ) {
-			$flatten = array_map( 'trim', explode( ';', $msg->plain() ) );
+			$flatten = array_map( 'trim', explode( ',', $msg->plain() ) );
 		} elseif ( $this->getDomElement() !== null ) {
 			$flatten =
 				array_map( 'trim',

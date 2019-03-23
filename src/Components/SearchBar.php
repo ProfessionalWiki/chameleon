@@ -81,7 +81,7 @@ class SearchBar extends Component {
 			$this->indent( -1 ) . '</div>' .
 			$this->indent( -1 ) . '</div>' .
 			$this->indent( -1 ) . '</form>' .
-			$this->indent( -1 ) . '</div>' . "\n";
+			$this->indent( -1 ) . '</div>';
 
 		return $ret;
 	}
@@ -128,7 +128,7 @@ class SearchBar extends Component {
 		if ( $this->shouldShowButton( $button ) ) {
 
 			$buttonAttrs = [
-				'value' => $this->getSkinTemplate()->translator->translate( $valueAttr ),
+				'value' => wfMessage( $valueAttr )->text(),
 				'id' => IdRegistry::getRegistry()->getId( $idAttr ),
 				'name' => $nameAttr,
 				'type' => 'submit',

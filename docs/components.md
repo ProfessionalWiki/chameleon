@@ -585,7 +585,7 @@ History, Move, ...)
 #### Example usage
 
 ``` xml
-<component type="PageTools"/>
+<component type="PageTools" buttons="ve-edit,history"/>
 ```
 
 #### Attributes:
@@ -604,39 +604,18 @@ History, Move, ...)
   
   If set the link to the current page will not be shown among the page tools.
 
-#### Allowed Parent Elements:
-* [Structure](#structure)
-* [Cell](#cell)
-* [NavbarHorizontal](#component-navbarhorizontal)
-
-#### Allowed Child Elements:
-* Any modification
-
--------------------------------------------------------------------------------
-### Component `PageToolsAdaptable`
-
-- [Component `PageToolsAdaptable`](#component-pagetoolsadaptable)
-
-
-Renders the same component as [Component `PageTools`](#component-pagetools), except
-you can define in your structure file which actions are shown directly in the navbar
-before the ... pop-down.
- 
-#### Example usage
-
-``` xml
-<component type="PageToolsAdaptable" show="edit,ve-edit,history"/>
-```
-
-#### Attributes:
-Same as [Component `PageTools`](#component-pagetools). Additionally:
-* `show`
+* `buttons`
   * Allowed values: String
-  * Default: -
+  * Default: `edit`
   * Optional.
   
-  The actions that will be shown in the navbar directly and also removed from the PageTools drop-down.
-  Among other, possible actions are:
+  The actions that will be shown as a button on the navbar directly. They will
+  also be removed from the PageTools drop-down.
+  
+  This attribute will be ignored if the PageTools are not a child element of a
+  NavbarHorizontal.
+  
+  Among others, possible actions are:
   
     * delete
     * edit
@@ -652,11 +631,13 @@ Same as [Component `PageTools`](#component-pagetools). Additionally:
     * view
     * watch
     
-  Note that button for actions, that are not valid for a given page will be omitted automatically.
-  So in the above example, the visual-editor edit action button will only be shown for pages in a valid
-  visual-editor namespace.
-  Note also, that the valid buttons will be shown in the order you provided in the show attribute of
-  your structure.xml. In the example above, history would be last action right before the ellipsis.
+  Note that button for actions, that are not valid for a given page will be
+  omitted automatically. So in the above example, the visual-editor edit action
+  button will only be shown for pages in a valid visual-editor namespace.
+  
+  Note also, that the buttons will be shown in the order provided in
+  the `buttons` attribute. In the example above, history would
+  be the last action right before the ellipsis.
 
 #### Allowed Parent Elements:
 * [Structure](#structure)
@@ -666,6 +647,7 @@ Same as [Component `PageTools`](#component-pagetools). Additionally:
 #### Allowed Child Elements:
 * Any modification
 
+-------------------------------------------------------------------------------
 #### Integration with VisualEditor
 Visual Editor has a late-executed javascript function, that replaces the content of certain page tool
 action links. Unfortunately, that also concerns corresponding buttons, you indicated to show.

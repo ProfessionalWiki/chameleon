@@ -105,7 +105,12 @@ class PageTools extends Component {
 		$this->indent( 1 );
 
 		foreach ( $contentNavigation as $category => $tabsDescription ) {
-			$toolGroups[] = $this->getToolGroup( $category, $tabsDescription );
+
+			$toolGroup = $this->getToolGroup( $category, $tabsDescription );
+
+			if ($toolGroup !== null) {
+				$toolGroups[] = $toolGroup;
+			}
 		}
 
 		$this->indent( -1 );
@@ -118,6 +123,15 @@ class PageTools extends Component {
 	 */
 	public function getPageToolsStructure() {
 		return $this->getSkinTemplate()->get( 'content_navigation', null );
+	}
+
+	/**
+	 * @param $pageToolsStructure
+	 *
+	 * @return void
+	 */
+	public function setPageToolsStructure( $pageToolsStructure ) {
+		$this->getSkinTemplate()->set( 'content_navigation', $pageToolsStructure );
 	}
 
 	/**
@@ -143,7 +157,7 @@ class PageTools extends Component {
 	 */
 	public function getNamespaceKey() {
 
-		// Gets the subject namespace if this title
+		// Gets the subject namespace of this title
 		$title = $this->getSkinTemplate()->getSkin()->getTitle();
 
 		$namespaceKey = MWNamespace::getCanonicalName( $title->getNamespace() );
@@ -157,9 +171,7 @@ class PageTools extends Component {
 
 		if ( $namespaceKey === '' ) {
 			return 'main';
-		}
-
-		if ( $namespaceKey === 'file' ) {
+		} elseif ( $namespaceKey === 'file' ) {
 			return 'image';
 		}
 
@@ -170,13 +182,13 @@ class PageTools extends Component {
 	 * @param string $category
 	 * @param mixed[][] $tabsDescription
 	 *
-	 * @return string
+	 * @return string|null
 	 * @throws \MWException
 	 */
 	protected function getToolGroup( $category, $tabsDescription ) {
 
 		if ( empty( $tabsDescription ) ) {
-			return '';
+			return null;
 		}
 
 		$comment = $this->indent() . "<!-- $category -->";
@@ -276,6 +288,8 @@ class PageTools extends Component {
 				}
 			}
 		}
+
+		$this->setPageToolsStructure( $pageToolsStructure );
 	}
 
 

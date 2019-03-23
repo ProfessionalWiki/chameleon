@@ -2,15 +2,12 @@
 
 ### Requirements
 
-- PHP 5.3.2 or later (*)
-- MediaWiki 1.22 or later
+- PHP 7.0 or later
+- MediaWiki 1.31 or later
 - [Composer][composer]
 
 Further required software packages will be installed automatically. It is *not*
 necessary to install any dependencies anymore. Composer will take care of that.
-
-(*) To use the *[Html](components.md#component-html)* component in [custom
-layouts](customization.md#creating-a-custom-layout) you need at least PHP 5.3.6.
 
 ### Installation
 
@@ -20,7 +17,7 @@ If unsure try the detailed installation instructions for
 Here is the short version:
 
 1. On a command line go to your MediaWiki installation directory
-4. Open the `composer.local.json` file in an editor and add the Chameleon skin
+2. Open the `composer.local.json` file in an editor and add the Chameleon skin
    to the `require` section:
    ```
    "require": {

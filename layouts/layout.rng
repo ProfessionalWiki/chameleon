@@ -25,13 +25,13 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 <grammar
 		xmlns="http://relaxng.org/ns/structure/1.0"
 		xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-		ns="https://cmln.github.io/chameleon/schema/2.0/layout.rng"
+		ns="https://cmln.github.io/chameleon/schema/3.0/layout.rng"
 		datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
 >
 
 	<a:documentation>
 		Schema for Chameleon layout files
-		Version 2.0
+		Version 3.0
 		Copyright 2013 - 2018, Stephan Gambke
 		GNU General Public License, version 3 (or any later version)
 	</a:documentation>
@@ -322,6 +322,9 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<attribute name="hideSelectedNameSpace" a:defaultValue="no">
 				<ref name="BoolValues"/>
 			</attribute>
+			<attribute name="buttons" a:defaultValue="edit">
+				<data type="string"/>
+			</attribute>
 		</optional>
 	</define>
 
@@ -336,25 +339,6 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<element name="component">
 			<a:documentation></a:documentation>
 			<ref name="PageTools.Content"/>
-			<ref name="NavbarHorizontal.Component.CommonContent"/>
-		</element>
-	</define>
-
-	<!-- PageToolsAdaptable -->
-	<define name="PageToolsAdaptable.Content">
-		<ref name="PageTools.Content"/>
-
-		<optional>
-			<attribute name="show">
-				<data type="string"/>
-			</attribute>
-		</optional>
-	</define>
-
-	<define name="NavbarHorizontal.Component" combine="choice">
-		<element name="component">
-			<a:documentation></a:documentation>
-			<ref name="PageToolsAdaptable.Content"/>
 			<ref name="NavbarHorizontal.Component.CommonContent"/>
 		</element>
 	</define>

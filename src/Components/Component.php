@@ -215,7 +215,7 @@ abstract class Component {
 
 		$element = $this->getDomElement();
 
-		if ( is_a($element, 'DOMElement' ) ) {
+		if ( is_a($element, 'DOMElement' ) && $element->hasAttribute( $attributeName ) ) {
 			return $element->getAttribute( $attributeName );
 		}
 

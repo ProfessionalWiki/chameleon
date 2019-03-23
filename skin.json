@@ -7,7 +7,7 @@
 	"descriptionmsg": "chameleon-desc",
 	"license-name": "GPL-3.0-or-later",
 	"requires": {
-		"MediaWiki": ">= 1.27.0"
+		"MediaWiki": ">= 1.31.0"
 	},
 	"MessagesDirs": {
 		"Chameleon": "resources/i18n"
@@ -16,15 +16,16 @@
 	"Hooks": {
 
 	},
+	"config_prefix": "eg",
 	"config": {
-		"_prefix": "eg",
-		"ChameleonLayoutFile": "layouts/standard.xml",
-		"ChameleonEnableVisualEditor": true
-	},
-	"AutoloadNamespaces": {
-		"Skins\\Chameleon\\Tests\\": "tests/phpunit",
-		"Skins\\Chameleon\\": "src"
+		"ChameleonLayoutFile": {
+			"value": "layouts/standard.xml"
+		},
+		"ChameleonEnableVisualEditor": {
+			"value": true
+		}
 	},
 	"callback": "Skins\\Chameleon\\Chameleon::init",
-	"load_composer_autoloader": true
+	"load_composer_autoloader": true,
+	"manifest_version": 2
 }

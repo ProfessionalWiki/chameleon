@@ -23,13 +23,13 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 @since 1.0
 @ingroup Skins
 -->
-<structure xmlns="https://cmln.github.io/chameleon/schema/2.0/layout.rng">
+<structure xmlns="https://cmln.github.io/chameleon/schema/3.0/layout.rng">
 	<component type="NavbarHorizontal">
 		<component type="Logo" position="head"/>
 		<component type="NavMenu" flatten="navigation" />
 		<component type="PageTools" position="right" hideSelectedNameSpace="yes"/>
-		<component type="SearchBar" position="right"/>
-		<!--<component type="PersonalTools" position="right"/>-->
+		<component type="SearchBar" position="right" buttons="go"/>
+		<component type="PersonalTools" position="right"/>
 	</component>
 	<grid>
 		<row>
@@ -47,13 +47,6 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<row>
 			<cell>
 				<component type="SiteNotice"/>
-			</cell>
-		</row>
-
-		<!-- FIXME: Remove this once PersonalTools are integrated into navbar-->
-		<row>
-			<cell>
-				<component type="PersonalTools" hideNewtalkNotifier="yes" class="pull-right"/>
 			</cell>
 		</row>
 

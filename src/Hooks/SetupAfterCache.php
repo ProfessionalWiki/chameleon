@@ -27,7 +27,9 @@
 namespace Skins\Chameleon\Hooks;
 
 use Bootstrap\BootstrapManager;
+use MediaWiki\MediaWikiServices;
 use RuntimeException;
+use Skins\Chameleon\Chameleon;
 
 /**
  * @see https://www.mediawiki.org/wiki/Manual:Hooks/SetupAfterCache
@@ -97,6 +99,7 @@ class SetupAfterCache {
 
 	protected function addLateSettings() {
 
+		$this->registerSkinWithMW();
 		$this->addChameleonToVisualEditorSupportedSkins();
 		$this->addResourceModules();
 		$this->setLayoutFile();
@@ -243,6 +246,12 @@ class SetupAfterCache {
 
 			$this->configuration[ 'egChameleonLayoutFile' ] = $this->configuration[ 'egChameleonAvailableLayoutFiles' ][ $layout ];
 		}
+	}
+
+	protected function registerSkinWithMW() {
+		MediaWikiServices::getInstance()->getSkinFactory()->register( 'chameleon', 'Chameleon', function () {
+			return new Chameleon();
+		} );
 	}
 
 }

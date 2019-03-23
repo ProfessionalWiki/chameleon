@@ -26,7 +26,6 @@
 
 namespace Skins\Chameleon\Components\NavbarHorizontal;
 
-use Skins\Chameleon\ChameleonTemplate;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\Components\PageTools as GenericPageTools;
 
@@ -48,7 +47,33 @@ class PageTools extends Component {
 	 */
 	public function getHtml() {
 
-		$ret = '';
+		$pageTools = $this->createGenericPageTools();
+
+		$this->indent( 1 );
+		$actionButtonHtmlFragments = $this->getActionButtonsHtml( $pageTools );
+		$pageTools->setRedundant( array_keys( $actionButtonHtmlFragments ) );
+		$pageToolsHtml = $this->getPageToolsHtml( $pageTools );
+		$this->indent( -1 );
+
+		if ( $actionButtonHtmlFragments !== [] || $pageToolsHtml !== '' ) {
+
+			return
+				$this->indent() . '<!-- page tools -->' .
+				$this->indent() . \Html::rawElement( 'div', [ 'class' => 'navbar-tools navbar-nav' ],
+					join( $actionButtonHtmlFragments ) .
+					$pageToolsHtml .
+					$this->indent()
+				);
+		}
+
+		return '';
+	}
+
+	/**
+	 * @return GenericPageTools
+	 * @throws \MWException
+	 */
+	protected function createGenericPageTools() {
 
 		$pageTools = new GenericPageTools( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() + 2 );
 
@@ -58,53 +83,57 @@ class PageTools extends Component {
 		$pageTools->removeClasses( 'pagetools' );
 		$pageTools->addClasses( [ 'navbar-pagetools', 'dropdown-menu' ] );
 
-		$editLinkHtml = $this->getEditLinkHtml( $pageTools );
-
-		$pageToolsHtml = $pageTools->getHtml();
-
-		if ( $editLinkHtml || $pageToolsHtml ) {
-			$ret =
-				$this->indent() . '<!-- page tools -->' .
-				$this->indent() . '<div class="navbar-tools navbar-nav" >';
-
-			$this->indent( 1 );
-
-			if ( $editLinkHtml !== '' ) {
-				$ret .= $this->indent() . $editLinkHtml;
-			}
-
-			if ( $pageToolsHtml !== '' ) {
-				$ret .=
-					$this->indent() . '<div class="navbar-tool dropdown">' .
-					$this->indent( 1 ) . '<a data-toggle="dropdown" class="navbar-more-tools" href="#" title="' . $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() . '" ></a>' .
-					$pageToolsHtml .
-					$this->indent( -1 ) . '</div>';
-			}
-
-			$ret .=
-				$this->indent( -1 ) . '</div>';
-		}
-
-		return $ret;
+		return $pageTools;
 	}
 
 	/**
 	 * @param GenericPageTools $pageTools
 	 *
-	 * @return string
+	 * @return string[]
+	 * @throws \MWException
 	 */
-	protected function getEditLinkHtml( $pageTools ) {
+	protected function getActionButtonsHtml( $pageTools ) {
 
-		$pageToolsStructure = $pageTools->getPageToolsStructure();
+		$htmlFragments = [];
 
-		foreach ( $this->getReplaceableEditActionIds() as $id ) {
+		foreach ( $this->getReplaceableActions() as $actionGroup ) {
 
-			if ( array_key_exists( $id, $pageToolsStructure[ 'views' ] ) ) {
-				return $this->getLinkAndRemoveFromPageToolStructure( $pageTools, $id );
+			foreach ( $actionGroup as $actionId ) {
+
+				$actionLink = $this->getActionLink( $pageTools, $actionId );
+
+				if ( $actionLink !== '' ) {
+
+					$htmlFragments[ $actionId ] = $this->indent() . $actionLink;
+					break;
+				}
 			}
 		}
 
-		return '';
+		return $htmlFragments;
+	}
+
+	/**
+	 * @return string[][]
+	 */
+	protected function getReplaceableActions() {
+
+		$actionList = $this->getAttribute( 'buttons', 'edit' );
+
+		$actions = [];
+
+		foreach ( explode( ',', $actionList ) as $action ) {
+
+			$action = trim( $action );
+
+			if ( $action === 'edit' ) {
+				$actions[] = [ 'formedit', 'form_edit', 've-edit', 'edit' ];
+			} else {
+				$actions[] = [ $action ];
+			}
+		}
+
+		return $actions;
 	}
 
 	/**
@@ -113,10 +142,13 @@ class PageTools extends Component {
 	 *
 	 * @return string
 	 */
-	protected function getLinkAndRemoveFromPageToolStructure( $pageTools, $editActionId ) {
+	protected function getActionLink( $pageTools, $editActionId ) {
 
-		$pageToolsStructure  = $pageTools->getPageToolsStructure();
-		$editActionStructure = $pageToolsStructure[ 'views' ][ $editActionId ];
+		$editActionStructure = $this->getActionDescriptor( $pageTools, $editActionId );
+
+		if ( $editActionStructure === null ) {
+			return '';
+		}
 
 		$editActionStructure[ 'text' ] = '';
 
@@ -130,33 +162,53 @@ class PageTools extends Component {
 			'tag' => 'div',
 		];
 
-		$editLinkHtml = $this->getSkinTemplate()->makeListItem(
+		return $this->getSkinTemplate()->makeListItem(
 			$editActionId,
 			$editActionStructure,
 			$options
 		);
-
-		$pageTools->setRedundant( $editActionId );
-
-		return $editLinkHtml;
 	}
 
 	/**
-	 * @return string[]
+	 * @param GenericPageTools $pageTools
+	 * @param string $action
+	 *
+	 * @return mixed
 	 */
-	protected function getReplaceableEditActionIds() {
+	protected function getActionDescriptor( $pageTools, $action ) {
 
-		$actionsToShow = array_map( 'trim',	explode( ',', $this->getDomElement()->getAttribute( 'show' ) ) );
+		$pageToolsStructure = $pageTools->getPageToolsStructure();
 
-		$editActionIds = [ 've-edit', 'edit' ];
-
-		if ( array_key_exists( 'sfgRenameEditTabs', $GLOBALS ) && $GLOBALS[ 'sfgRenameEditTabs' ] === true ||
-			array_key_exists( 'wgPageFormsRenameEditTabs', $GLOBALS ) && $GLOBALS[ 'wgPageFormsRenameEditTabs' ] === true ) {
-
-			$editActionIds = array_merge( [ 'formedit', 'form_edit' ], $editActionIds );
+		foreach ( $pageToolsStructure as $group => $groupStructure ) {
+			if ( array_key_exists( $action, $groupStructure ) ) {
+				return $pageToolsStructure[ $group ][ $action ];
+			}
 		}
 
-		return $editActionIds;
+		return null;
+	}
+
+	/**
+	 * @param GenericPageTools $pageTools
+	 *
+	 * @return string
+	 * @throws \ConfigException
+	 * @throws \MWException
+	 */
+	protected function getPageToolsHtml( GenericPageTools $pageTools ) {
+
+		$pageToolsHtml = $pageTools->getHtml();
+
+		if ( $pageToolsHtml === '' ) {
+			return '';
+		}
+
+		return
+			$this->indent() . \Html::rawElement( 'div', [ 'class' => 'navbar-tool dropdown' ],
+				$this->indent( 1 ) . \Html::rawElement( 'a', [ 'data-toggle' => 'dropdown', 'class' => 'navbar-more-tools', 'href' => '#', 'title' => $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() ] ) .
+				$pageToolsHtml .
+				$this->indent( -1 )
+			);
 	}
 
 

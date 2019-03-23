@@ -55,8 +55,6 @@ class Chameleon extends SkinTemplate {
 
 		\ExtensionRegistryHelper\ExtensionRegistryHelper::singleton()->loadExtensionRecursive( 'Bootstrap' );
 
-		MediaWikiServices::getInstance()->getSkinFactory()->register( 'chameleon', 'Chameleon', function(){return new Chameleon;});
-
 		/**
 		 * Using callbacks for hook registration
 		 *

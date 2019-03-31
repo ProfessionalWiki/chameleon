@@ -2,14 +2,14 @@
 
 ### Requirements
 
-- PHP 5.3.2 or later (*)
-- MediaWiki 1.22 or later
+- PHP 5.3.2 or later (1)
+- MediaWiki 1.27 or later
 - [Composer][composer]
 
 Further required software packages will be installed automatically. It is *not*
 necessary to install any dependencies anymore. Composer will take care of that.
 
-(*) To use the *[Html](components.md#component-html)* component in [custom
+(1) To use the *[Html](components.md#component-html)* component in [custom
 layouts](customization.md#creating-a-custom-layout) you need at least PHP 5.3.6.
 
 ### Installation

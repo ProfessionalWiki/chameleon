@@ -28,6 +28,7 @@ namespace Skins\Chameleon\Components\NavbarHorizontal;
 
 use Hooks;
 use Skins\Chameleon\Components\Component;
+use Skins\Chameleon\IdRegistry;
 
 /**
  * The NavbarHorizontal\PersonalTools class.
@@ -47,29 +48,16 @@ class PersonalTools extends Component {
 	 */
 	public function getHtml() {
 
-		$user = $this->getSkinTemplate()->getSkin()->getUser();
-
-		if ( $user->isLoggedIn() ) {
-			$toolsClass = 'navbar-userloggedin';
-			$toolsLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-loggedin' )->params( $user->getName() )->text();
-		} else {
-			$toolsClass = 'navbar-usernotloggedin';
-			$toolsLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-notloggedin' )->text();
-		}
-
-		\Hooks::run('ChameleonNavbarHorizontalPersonalToolsLinkText', [ &$toolsLinkText, $this->getSkin() ] );
-
 		// start personal tools element
 		return
 			$this->indent() . '<!-- personal tools -->' .
 			$this->indent() . '<div class="navbar-tools navbar-nav" >' .
 			$this->indent( 1 ) . \Html::rawElement( 'div', [ 'class' => 'navbar-tool dropdown' ],
 
-				$this->indent( 1 ) . \Html::rawElement( 'a', [ 'class' => $toolsClass, 'href' => '#', 'data-toggle' => 'dropdown', 'title' => $toolsLinkText ] ) .
-				$this->indent() . \Html::rawElement( 'ul', [ 'class' => 'p-personal-tools dropdown-menu dropdown-menu-right' ], $this->getTools() . $this->indent() ) .
+				$this->getDropdownToggle() .
+				$this->indent( 1 ) . \Html::rawElement( 'ul', [ 'class' => 'p-personal-tools dropdown-menu dropdown-menu-right' ], $this->getTools() . $this->indent() ) .
 				$this->indent( -1 )
 			) .
-			$this->getNewtalkNotifier( $user ) .
 			$this->indent( -1 ) . '</div>';
 	}
 
@@ -80,49 +68,32 @@ class PersonalTools extends Component {
 	 * @throws \FatalError
 	 * @throws \MWException
 	 */
-	protected function getNewtalkNotifier( \User $user ) {
+	protected function getNewtalkNotifier() {
 
-		// if the user is logged in, add the newtalk notifier
-		if ( $user->isLoggedIn() ) {
+		$user = $this->getSkinTemplate()->getSkin()->getUser();
 
-			$newMessagesAlert = '';
-			$newtalks = $user->getNewMessageLinks();
-			$out = $this->getSkinTemplate()->getSkin()->getOutput();
+		$newMessagesAlert = $this->getSkinTemplate()->getMsg( 'chameleon-newmessages' )->text();
+		$newtalks = $user->getNewMessageLinks();
+		$out = $this->getSkinTemplate()->getSkin()->getOutput();
 
-			// Allow extensions to disable the new messages alert;
-			// since we do not display the link text, we ignore the actual value returned in $newMessagesAlert
-			if ( Hooks::run( 'GetNewMessagesAlert', [ &$newMessagesAlert, $newtalks, $user, $out ] ) ) {
-
-				if ( count( $user->getNewMessageLinks() ) > 0 ) {
-					$newtalkClass = 'navbar-newtalk-available';
-					$newtalkLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-newmessages' )->text();
-				} else {
-					$newtalkClass = 'navbar-newtalk-not-available';
-					$newtalkLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-nonewmessages' )->text();
-				}
-
-				// FIXME: Glyphicon???
-				$linkText = '<span class="glyphicon glyphicon-envelope"></span>';
-				\Hooks::run( 'ChameleonNavbarHorizontalNewTalkLinkText', [ &$linkText, $this->getSkin() ] );
-
-				return $this->indent() . '<li class="navbar-newtalk-notifier">' .
-					$this->indent( 1 ) . '<a class="dropdown-toggle ' . $newtalkClass . '" title="' .
-					$newtalkLinkText . '" href="' . $user->getTalkPage()->getLinkURL( 'redirect=no' ) . '">' . $linkText . '</a>' .
-					$this->indent( -1 ) . '</li>';
-
-			}
-
+		// Allow extensions to disable the new messages alert
+		if ( !Hooks::run( 'GetNewMessagesAlert', [ &$newMessagesAlert, $newtalks, $user, $out ] ) || count( $user->getNewMessageLinks() ) === 0 ) {
+			return '';
 		}
-		return '';
+
+		$talkClass = $user->isLoggedIn() ? 'pt-mytalk' : 'pt-anontalk';
+
+		$newtalkNotifier = $this->indent( 1 ) . '<span class="badge badge-pill badge-info ' . $talkClass . '" title="' . $newMessagesAlert . '" href="#"></span>';
+		$this->indent( -1 );
+
+		return $newtalkNotifier;
 	}
 
 	/**
-	 * @param $ret
-	 *
 	 * @return string
 	 * @throws \MWException
 	 */
-	protected function getTools( ) {
+	protected function getTools() {
 
 		$this->indent( 1 );
 		$ret = '';
@@ -134,6 +105,38 @@ class PersonalTools extends Component {
 
 		$this->indent( -1 );
 		return $ret;
+	}
+
+	/**
+	 * @return string
+	 * @throws \FatalError
+	 * @throws \MWException
+	 */
+	protected function getDropdownToggle(): string {
+
+		$user = $this->getSkinTemplate()->getSkin()->getUser();
+
+		if ( $user->isLoggedIn() ) {
+
+			$toolsClass = 'navbar-userloggedin';
+			$toolsLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-loggedin' )->params( $user->getName() )->text();
+
+		} else {
+
+			$toolsClass = 'navbar-usernotloggedin';
+			$toolsLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-notloggedin' )->text();
+
+		}
+
+		\Hooks::run( 'ChameleonNavbarHorizontalPersonalToolsLinkText', [ &$toolsLinkText, $this->getSkin() ] );
+
+		$this->indent( 1 );
+
+		$dropdownToggle = IdRegistry::getRegistry()->element( 'a', [ 'class' => $toolsClass, 'href' => '#', 'data-toggle' => 'dropdown', 'title' => $toolsLinkText ], $this->getNewtalkNotifier(), $this->indent() );
+
+		$this->indent( -1 );
+
+		return $dropdownToggle;
 	}
 
 

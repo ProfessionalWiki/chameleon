@@ -24,3 +24,86 @@ connect to the external service.
 
 [travis]: https://travis-ci.org/cmln/chameleon
 [mw-testing]: https://www.mediawiki.org/wiki/Manual:PHP_unit_testing
+
+### By hand
+
+Yes, really.
+
+Some features are hard to test automatically and (at least for the moment) have
+to be tested manually. This mostly concerns styling, where it is hard to specify
+test results in a way that CI testing would pick up on failures (and more
+importantly let deviations irrelevant for the test objective pass). 
+
+Testing of the Chameleon styling will is done in a two-dimensional test
+space, the dimensions being
+
+1. components and features:
+	* see [Components](components.md)
+	* features like Special pages, MediaWiki-specific form elements, but also
+	  HTML elements etc.
+2. viewport types: large screen, small screen, print, etc.
+
+However, not all combinations need to be tested specifically, as many of them
+will overlap. If the Logo looks good on a medium screen, it will probably be
+fine on a large screen. The standard collapse-point at which Chameleon switches
+between collapsed and uncollapsed display of elements is at 768 px. The proposed
+screen widths are therefore:
+
+* Large: 1200px - typical screen of a laptop or small desktop
+* Medium: 768px - just above the collapse-point
+* Small: 720ps - just below the collapse-point
+* XSmall: 360px - phone size
+
+| Component | lg screen (1200px) | md screen (768px)| sm screen (720px) | xs screen (360px) | print (A4) |
+|-----------------------------|--------|--------|--------|--------|--------|
+| Component Container         |--------|--------|--------|--------|--------|
+| Component FooterIcons       |--------|--------|--------|--------|--------|
+| Component FooterInfo        |--------|--------|--------|--------|--------|
+| Component FooterPlaces      |--------|--------|--------|--------|--------|
+| Component Html              |--------|--------|--------|--------|--------|
+| Component LangLinks         |--------|--------|--------|--------|--------|
+| Component Logo              |--------|--------|--------|--------|--------|
+| Component MainContent       |--------|--------|--------|--------|--------|
+| Component Menu              |--------|--------|--------|--------|--------|
+| Component NavbarHorizontal  |--------|--------|--------|--------|--------|
+| SubComponent Logo           |--------|--------|--------|--------|--------|
+| SubComponent Menu           |--------|--------|--------|--------|--------|
+| SubComponent NavMenu        |--------|--------|--------|--------|--------|
+| SubComponent PageTools      |--------|--------|--------|--------|--------|
+| SubComponent PersonalTools  |--------|--------|--------|--------|--------|
+| SubComponent PageToolsAdaptable |----|--------|--------|--------|--------|
+| SubComponent SearchBar      |--------|--------|--------|--------|--------|
+| Component NavMenu           |--------|--------|--------|--------|--------|
+| Component NewtalkNotifier   |--------|--------|--------|--------|--------|
+| Component PageTools         |--------|--------|--------|--------|--------|
+| Component PageToolsAdaptable|--------|--------|--------|--------|--------|
+| Component PersonalTools     |--------|--------|--------|--------|--------|
+| Component SearchBar         |--------|--------|--------|--------|--------|
+| Component Silent            |--------|--------|--------|--------|--------|
+| Component SiteNotice        |--------|--------|--------|--------|--------|
+| Component Toolbox           |--------|--------|--------|--------|--------|
+| Modification HideFor        |--------|--------|--------|--------|--------|
+| Modification ShowOnlyFor    |--------|--------|--------|--------|--------|
+| Modification Sticky         |--------|--------|--------|--------|--------|
+
+| Special page | lg screen (1200px) | md screen (768px)| sm screen (720px) | xs screen (360 px) | print (A4) |
+|-----------------------------|--------|--------|--------|--------|--------|
+| TODO: List relevant Special pages |--------|--------|--------|--------|--------|
+
+| MW/HTML Features | lg screen (1200px) | md screen (768px)| sm screen (720px) | xs screen (360 px) | print (A4) |
+|-----------------------------|--------|--------|--------|--------|--------|
+| Image (small, < 360px)      |--------|--------|--------|--------|--------|
+| Image (large, > 1200px)     |--------|--------|--------|--------|--------|
+| Table (general)             |--------|--------|--------|--------|--------|
+| Table (infobox)             |--------|--------|--------|--------|--------|
+| Heading H1                  |--------|--------|--------|--------|--------|
+| Heading H2                  |--------|--------|--------|--------|--------|
+| Heading H3                  |--------|--------|--------|--------|--------|
+| List UL                     |--------|--------|--------|--------|--------|
+| List OL                     |--------|--------|--------|--------|--------|
+| Definition list             |--------|--------|--------|--------|--------|
+| Indenting                   |--------|--------|--------|--------|--------|
+| TODO: ... (see e.g. https://meta.wikimedia.org/wiki/Help:Advanced_editing)
+
+
+

@@ -34,7 +34,7 @@ to be tested manually. This mostly concerns styling, where it is hard to specify
 test results in a way that CI testing would pick up on failures (and more
 importantly let deviations irrelevant for the test objective pass). 
 
-Testing of the Chameleon styling will is done in a two-dimensional test
+Testing of the Chameleon styling is done in a two-dimensional test
 space, the dimensions being
 
 1. components and features:

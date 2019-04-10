@@ -34,7 +34,7 @@ to be tested manually. This mostly concerns styling, where it is hard to specify
 test results in a way that CI testing would pick up on failures (and more
 importantly let deviations irrelevant for the test objective pass). 
 
-Testing of the Chameleon styling will is done in a two-dimensional test
+Testing of the Chameleon styling is done in a two-dimensional test
 space, the dimensions being
 
 1. components and features:
@@ -85,6 +85,12 @@ screen widths are therefore:
 | Modification HideFor        |--------|--------|--------|--------|--------|
 | Modification ShowOnlyFor    |--------|--------|--------|--------|--------|
 | Modification Sticky         |--------|--------|--------|--------|--------|
+| Layout standard             |--------|--------|--------|--------|--------|
+| Layout navhead              |--------|--------|--------|--------|--------|
+| Layout fixedhead            |--------|--------|--------|--------|--------|
+| Layout sticky               |--------|--------|--------|--------|--------|
+| Layout clean                |--------|--------|--------|--------|--------|
+
 
 | Special page | lg screen (1200px) | md screen (768px)| sm screen (720px) | xs screen (360 px) | print (A4) |
 |-----------------------------|--------|--------|--------|--------|--------|

@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -25,6 +25,7 @@
  */
 
 namespace Skins\Chameleon\Components\Modifications;
+
 use Skins\Chameleon\Components\Silent;
 use Skins\Chameleon\PermissionsHelper;
 
@@ -42,9 +43,11 @@ class ShowOnlyFor extends Modification {
 	/**
 	 * This method checks if the restriction is applicable and if necessary
 	 * replaces the decorated component by a Silent component
+	 *
+	 * @throws \MWException
 	 */
 	protected function applyModification() {
-		if ( ! $this->isShown() ) {
+		if ( !$this->isShown() ) {
 			$c = $this->getComponent();
 			$this->setComponent( new Silent( $c->getSkinTemplate(), $c->getDomElement(), $c->getIndent() ) );
 		}
@@ -52,6 +55,7 @@ class ShowOnlyFor extends Modification {
 
 	/**
 	 * @return bool
+	 * @throws \MWException
 	 */
 	private function isShown() {
 		$p = $this->getPermissionsHelper();

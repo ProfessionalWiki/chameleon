@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -45,8 +45,10 @@ abstract class Modification extends Component {
 	private $component = null;
 
 	/**
-	 * @param Component   $component
+	 * @param Component $component
 	 * @param \DOMElement $domElement
+	 *
+	 * @throws \MWException
 	 */
 	public function __construct( Component $component, \DOMElement $domElement = null ) {
 
@@ -77,8 +79,9 @@ abstract class Modification extends Component {
 	/**
 	 * Sets the class string that should be assigned to the top-level html element of this component
 	 *
-	 * @param string | array | null $classes
+	 * @param string | string[] | null $classes
 	 *
+	 * @throws \MWException
 	 */
 	public function setClasses( $classes ) {
 		$this->getComponent()->setClasses( $classes );
@@ -102,9 +105,9 @@ abstract class Modification extends Component {
 	/**
 	 * Adds the given class to the class string that should be assigned to the top-level html element of this component
 	 *
-	 * @param string | array | null $classes
+	 * @param string | string[] | null $classes
 	 *
-	 * @return string | array
+	 * @throws \MWException
 	 */
 	public function addClasses( $classes ) {
 		$this->getComponent()->addClasses( $classes );
@@ -136,11 +139,13 @@ abstract class Modification extends Component {
 	}
 
 	/**
-	 * Removes the given class from the class string that should be assigned to the top-level html element of this component
+	 * Removes the given class from the class string that should be assigned to the top-level html element of this
+	 * component
 	 *
-	 * @param string | array | null $classes
+	 * @param string | string[] | null $classes
 	 *
 	 * @return string
+	 * @throws \MWException
 	 */
 	public function removeClasses( $classes ) {
 		$this->getComponent()->removeClasses( $classes );
@@ -166,7 +171,7 @@ abstract class Modification extends Component {
 	}
 
 	/**
-	 * @return array the resource loader modules needed by this component
+	 * @return string[] the resource loader modules needed by this component
 	 */
 	public function getResourceLoaderModules() {
 		return $this->getComponent()->getResourceLoaderModules();

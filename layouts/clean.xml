@@ -3,7 +3,7 @@
 <?xml-model href="https://cmln.github.io/chameleon/schema/1.0/layout.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 This file is part of the MediaWiki skin Chameleon.
 
-@copyright 2013 - 2016, Stephan Gambke
+@copyright 2013 - 2019, Stephan Gambke
 @license   GNU General Public License, version 3 (or any later version)
 
 The Chameleon skin is free software: you can redistribute it and/or modify it
@@ -23,39 +23,35 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 @since 1.1
 @ingroup Skins
 -->
-<structure xmlns="https://cmln.github.io/chameleon/schema/1.0/layout.rng">
+<structure xmlns="https://cmln.github.io/chameleon/schema/3.0/layout.rng">
 
 	<component type="NavbarHorizontal" >
-		<modification type="ShowOnlyFor" permission="edit"></modification>
-		<modification type="Sticky" ></modification>
-		<component type="Logo" position="head"></component>
-		<component type="NavMenu" flatten="navigation" showTools="no" showLanguages="no"></component>
-		<component type="PageTools" position="right" hideSelectedNameSpace="yes"></component>
-		<component type="SearchBar" position="right"></component>
-		<component type="PersonalTools" position="right"></component>
+		<modification type="ShowOnlyFor" permission="edit"/>
+		<modification type="Sticky"/>
+		<component type="Logo" position="head"/>
+		<component type="NavMenu" flatten="navigation"/>
+		<component type="PageTools" position="right" hideSelectedNameSpace="yes"/>
+		<component type="SearchBar" position="right"/>
+		<component type="PersonalTools" position="right"/>
 	</component>
 
 	<grid>
 		<row>
-			<cell span="12">
-				<component type="SiteNotice"></component>
-				<component type="MainContent"></component>
+			<cell>
+				<component type="SiteNotice"/>
+				<component type="MainContent"/>
 			</cell>
 		</row>
-
-		<row>
-			<modification type="ShowOnlyFor" permission="edit"></modification>
-			<cell span="12">
-				<component type="ToolbarHorizontal" hideTools="no" hideLanguages="no"></component>
-			</cell>
-		</row>
-
-		<row>
-			<modification type="ShowOnlyFor" permission="edit"></modification>
-			<cell span="12">
-				<component type="FooterInfo" class="list-inline"></component>
-			</cell>
-		</row>
-
 	</grid>
+
+	<component type="NavbarHorizontal" collapsible="no" class="small mb-2" >
+		<modification type="ShowOnlyFor" permission="edit"/>
+		<component type="Toolbox" flatten="no" class="dropup"/>
+		<component type="LangLinks" flatten="no" class="dropup"/>
+	</component>
+
+	<component type="FooterInfo">
+		<modification type="ShowOnlyFor" permission="edit"/>
+	</component>
+
 </structure>

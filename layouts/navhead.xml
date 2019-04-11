@@ -32,17 +32,6 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<component type="PersonalTools" position="right"/>
 	</component>
 	<grid>
-		<row>
-			<cell>
-				<!--<component type="NavbarHorizontal">-->
-					<!--<component type="Logo" position="head"/>-->
-					<!--<component type="NavMenu" flatten="navigation" />-->
-					<!--<component type="PageTools" position="right" hideSelectedNameSpace="yes"/>-->
-					<!--&lt;!&ndash;<component type="SearchBar" position="right"/>&ndash;&gt;-->
-					<!--&lt;!&ndash;<component type="PersonalTools" position="right"/>&ndash;&gt;-->
-				<!--</component>-->
-			</cell>
-		</row>
 
 		<row>
 			<cell>

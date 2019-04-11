@@ -2,7 +2,7 @@
 <!--
 This file is part of the MediaWiki skin Chameleon.
 
-@copyright 2013 - 2018, Stephan Gambke
+@copyright 2013 - 2019, Stephan Gambke
 @license   GNU General Public License, version 3 (or any later version)
 
 The Chameleon skin is free software: you can redistribute it and/or modify it
@@ -138,7 +138,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<ref name="Component.CommonContent"/>
 
 			<optional>
-				<attribute name="type"/>
+				<attribute name="type"  a:defaultValue="Container"/>
 			</optional>
 
 		</element>
@@ -322,6 +322,9 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<attribute name="hideSelectedNameSpace" a:defaultValue="no">
 				<ref name="BoolValues"/>
 			</attribute>
+		</optional>
+
+		<optional>
 			<attribute name="buttons" a:defaultValue="edit">
 				<data type="string"/>
 			</attribute>

@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2016, Stephan Gambke, mwjames
+ * @copyright 2013 - 2019, Stephan Gambke, mwjames
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -228,11 +228,11 @@ class SetupAfterCache {
 	}
 
 	protected function addResourceModules() {
-		$this->configuration[ 'wgResourceModules' ][ 'skin.chameleon.jquery-sticky' ] = [
+		$this->configuration[ 'wgResourceModules' ][ 'skin.chameleon.sticky' ] = [
 			'localBasePath'  => $this->configuration[ 'chameleonLocalPath' ] . '/resources/js',
 			'remoteBasePath' => $this->configuration[ 'chameleonRemotePath' ] . '/resources/js',
 			'group'          => 'skin.chameleon',
-			'skinScripts'    => [ 'chameleon' => [ 'sticky-kit/jquery.sticky-kit.js', 'Components/Modifications/sticky.js' ] ]
+			'skinScripts'    => [ 'chameleon' => [ 'hc-sticky/hc-sticky.js', 'Components/Modifications/sticky.js' ] ]
 		];
 	}
 

@@ -1,6 +1,6 @@
 ## Licenses
 
-Copyright 2013 - 2016, Stephan Gambke
+Copyright 2013 - 2019, Stephan Gambke
 
 You can use the Chameleon skin under the [GNU General Public License, version
 3](https://www.gnu.org/copyleft/gpl.html) (or any later version). See the
@@ -20,4 +20,4 @@ Gambke](https://www.mediawiki.org/wiki/User:F.trott) and is licensed under [CC
 BY 3.0](http://creativecommons.org/licenses/by/3.0/) as well.
 
 Further licenses:
-* Sticky-kit v1.1.3, Copyright 2015, Leaf Corcoran (http://leafo.net), WTFPL
+* [HC-Sticky](https://github.com/somewebmedia/hc-sticky) v2.2.3, Copyright 2018, Some Web Media, MIT License

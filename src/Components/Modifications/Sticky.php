@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -35,6 +35,9 @@ namespace Skins\Chameleon\Components\Modifications;
  */
 class Sticky extends Modification {
 
+	/**
+	 * @throws \MWException
+	 */
 	protected function applyModification() {
 		$this->getComponent()->addClasses( 'sticky' );
 	}
@@ -44,7 +47,7 @@ class Sticky extends Modification {
 	 */
 	public function getResourceLoaderModules() {
 		$modules = parent::getResourceLoaderModules();
-		$modules[] = 'skin.chameleon.jquery-sticky';
+		$modules[] = 'skin.chameleon.sticky';
 		return $modules;
 	}
 

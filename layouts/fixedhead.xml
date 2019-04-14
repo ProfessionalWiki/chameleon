@@ -3,7 +3,7 @@
 <?xml-model href="https://cmln.github.io/chameleon/schema/1.0/layout.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 This file is part of the MediaWiki skin Chameleon.
 
-@copyright 2013 - 2016, Stephan Gambke
+@copyright 2013 - 2019, Stephan Gambke
 @license   GNU General Public License, version 3 (or any later version)
 
 The Chameleon skin is free software: you can redistribute it and/or modify it
@@ -23,12 +23,12 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 @since 1.0
 @ingroup Skins
 -->
-<structure xmlns="https://cmln.github.io/chameleon/schema/1.0/layout.rng">
+<structure xmlns="https://cmln.github.io/chameleon/schema/3.0/layout.rng">
 
 	<component type="NavbarHorizontal">
 		<modification type="Sticky"/>
 		<component type="Logo" position="head"/>
-		<component type="NavMenu" flatten="navigation" showTools="no" showLanguages="no"/>
+		<component type="NavMenu" flatten="navigation"/>
 		<component type="PageTools" position="right" hideSelectedNameSpace="yes"/>
 		<component type="SearchBar" position="right"/>
 		<component type="PersonalTools" position="right"/>
@@ -48,23 +48,26 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</row>
 
 		<row>
-			<cell span="12">
-				<component type="ToolbarHorizontal" hideTools="no" hideLanguages="no"/>
+			<cell>
+				<component type="NavbarHorizontal" collapsible="no" class="small mb-2" >
+					<component type="Toolbox" flatten="no" class="dropup"/>
+					<component type="LangLinks" flatten="no" class="dropup"/>
+				</component>
 			</cell>
 		</row>
 
 		<row>
-			<cell span="12">
+			<cell>
 				<component type="FooterInfo"/>
 			</cell>
 		</row>
 
 		<row>
-			<cell span="6">
+			<cell>
 				<component type="FooterPlaces"/>
 			</cell>
-			<cell span="6">
-				<component type="FooterIcons"/>
+			<cell>
+				<component type="FooterIcons" class="pull-right"/>
 			</cell>
 		</row>
 	</grid>

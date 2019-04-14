@@ -1,9 +1,9 @@
 /**
- * This file integrates the jQuery Sticky plugin with the Chameleon skin
+ * This file integrates the hc-sticky plugin with the Chameleon skin
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -31,8 +31,8 @@
 
     'use strict';
 
-    mw.loader.using('skin.chameleon.jquery-sticky', function () {
-        $('.sticky').stick_in_parent();
+    mw.loader.using('skin.chameleon.sticky', function () {
+		$('.sticky').hcSticky( {} );
     });
 
 }(window, document, jQuery, mediaWiki) );

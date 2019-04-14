@@ -1,0 +1,11 @@
+//
+// Facilitate sticky. To be used together with the hc-sticky JS module.
+//
+// This file is part of the MediaWiki skin Chameleon.
+// @copyright 2013 - 2019, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+//
+// @since 2.0
+
+.sticky {
+	z-index: $zindex-sticky;
+}

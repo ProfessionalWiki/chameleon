@@ -36,7 +36,9 @@
 		@extend .flex-wrap;
 
 		@media ( max-width( $cmln-collapse-point ) ) {
-			margin-top: 1rem;
+			&:not(:first-child) {
+				margin-top: 1rem;
+			}
 		}
 
 		.dropdown-menu {
@@ -76,9 +78,8 @@
 		.badge {
 			display: inline-block;
 			position: absolute;
-			right: -.8 * $cmln-icon-margin;
+			left: $cmln-icon-margin;
 			bottom: .2rem;
-			margin-right: $cmln-icon-margin;
 			font-size: 50%;
 		}
 	}

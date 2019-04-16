@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2015, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -44,7 +44,7 @@ class MenuFromLines extends Menu {
 	private $needsParse = true;
 
 	/** @var Menu[] */
-	private $children = array();
+	private $children = [];
 	private $html = null;
 
 	/**
@@ -56,20 +56,13 @@ class MenuFromLines extends Menu {
 
 		$this->lines = &$lines;
 		$this->inContentLanguage = $inContentLanguage;
+		$this->menuItemData = $itemData ?? [ 'text' => '', 'href' => '#', 'depth' => 0 ];
 
-		if ( $itemData !== null ) {
-			$this->menuItemData = $itemData;
-		} else {
-			$this->menuItemData = array(
-				'text'  => '',
-				'href'  => '#',
-				'depth' => 0
-			);
-		}
 	}
 
 	/**
 	 * @return string
+	 * @throws \MWException
 	 */
 	public function getHtml() {
 
@@ -85,6 +78,7 @@ class MenuFromLines extends Menu {
 
 	/**
 	 * @return string[]|null
+	 * @throws \MWException
 	 */
 	public function parseLines() {
 
@@ -120,11 +114,11 @@ class MenuFromLines extends Menu {
 
 	/**
 	 * Will return an array of the form
-	 * array(
+	 * [
 	 *   'text'     => $text,  // link text
 	 *   'href'     => $href,  // parsed link target
 	 *   'depth'    => $depth
-	 * );
+	 * ];
 	 *
 	 * @param string $rawLine
 	 *
@@ -139,11 +133,11 @@ class MenuFromLines extends Menu {
 		list( $depth, $linkDescription ) = $this->extractDepthAndLine( $rawLine );
 		list( $href, $text ) = $this->extractHrefAndLinkText( $linkDescription );
 
-		return array(
+		return [
 			'text'  => $text,
 			'href'  => $href,
 			'depth' => $depth
-		);
+		];
 	}
 
 	/**
@@ -153,13 +147,13 @@ class MenuFromLines extends Menu {
 	 */
 	protected function extractDepthAndLine( $rawLine ) {
 
-		$matches = array();
+		$matches = [];
 		preg_match( '/(\**)(.*)/', ltrim( $rawLine ), $matches );
 
 		$depth = strlen( $matches[ 1 ] );
 		$line = $matches[ 2 ];
 
-		return array( $depth, $line );
+		return [ $depth, $line ];
 	}
 
 	/**
@@ -178,7 +172,7 @@ class MenuFromLines extends Menu {
 		$linkDescription = count( $linkAttributes ) > 1 ? $linkAttributes[ 1 ] : '';
 		$text = $linkDescription === '' ? $linkTarget : $this->getTextFromMessageName( $linkDescription );
 
-		return array( $href, $text );
+		return [ $href, $text ];
 	}
 
 	/**
@@ -196,7 +190,6 @@ class MenuFromLines extends Menu {
 	 * @param string $linkTarget
 	 *
 	 * @return string
-	 * @throws \MWException
 	 */
 	protected function getHrefForTarget( $linkTarget ) {
 
@@ -213,7 +206,6 @@ class MenuFromLines extends Menu {
 	 * @param string $linkTarget
 	 *
 	 * @return string
-	 * @throws \MWException
 	 */
 	protected function getHrefForWikiPage( $linkTarget ) {
 		$title = Title::newFromText( $linkTarget );
@@ -229,13 +221,18 @@ class MenuFromLines extends Menu {
 	 * @param string[] $subItemData
 	 *
 	 * @return null|string[]
+	 * @throws \MWException
 	 */
 	protected function createChildAndParseNextLine( $subItemData ) {
+
 		$child = new self( $this->lines, $this->inContentLanguage, $subItemData );
 		$child->setMenuItemFormatter( $this->getMenuItemFormatter() );
 		$child->setItemListFormatter( $this->getItemListFormatter() );
+
 		$subItemData = $child->parseLines();
-		$this->children[ ] = $child;
+
+		$this->children[] = $child;
+
 		return $subItemData;
 	}
 

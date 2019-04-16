@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -25,6 +25,8 @@
  */
 
 namespace Skins\Chameleon\Menu;
+
+use Sanitizer;
 
 /**
  * Class Menu
@@ -60,7 +62,8 @@ abstract class Menu {
 		if ( $this->menuItemFormatter === null ) {
 
 			$this->setMenuItemFormatter( function ( $href, $text, $depth, $subitems ) {
-				$href = \Sanitizer::cleanUrl( $href );
+
+				$href = Sanitizer::cleanUrl( $href );
 				$text = htmlspecialchars( $text );
 				$indent = str_repeat( "\t", 2 * $depth );
 
@@ -99,9 +102,12 @@ abstract class Menu {
 	public function getItemListFormatter() {
 
 		if ( $this->itemListFormatter === null ) {
+
 			$this->setItemListFormatter( function ( $rawItemsHtml, $depth ) {
+
 				$indent = str_repeat( "\t", 2 * $depth + 1 );
 				return "$indent<ul>\n$rawItemsHtml$indent</ul>\n";
+
 			} );
 		}
 

@@ -69,7 +69,7 @@ class HideFor extends Modification {
 	 * @return PermissionsHelper
 	 */
 	private function getPermissionsHelper() {
-		
+
 		if ( $this->permissionsHelper === null ) {
 			$this->permissionsHelper = new PermissionsHelper( $this->getSkinTemplate()->getSkin(), $this->getDomElementOfModification(), true );
 		}

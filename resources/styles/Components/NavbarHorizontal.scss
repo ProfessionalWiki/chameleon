@@ -29,6 +29,11 @@
 
 	a {
 		outline: none; // No outline around menu items.
+
+		&:visited {
+			color: $link-color;
+		}
+
 	}
 
 	.navbar-nav {

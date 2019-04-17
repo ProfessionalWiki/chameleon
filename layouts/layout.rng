@@ -572,6 +572,36 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</element>
 	</define>
 
+	<!-- HideFor -->
+	<define name="Modification" combine="choice">
+		<element name="modification">
+			<a:documentation></a:documentation>
+
+			<attribute name="type">
+				<value>HideFor</value>
+			</attribute>
+
+			<optional>
+				<attribute name="permission">
+					<data type="string"/>
+				</attribute>
+			</optional>
+
+			<optional>
+				<attribute name="group">
+					<data type="string"/>
+				</attribute>
+			</optional>
+
+			<optional>
+				<attribute name="namespace">
+					<data type="string"/>
+				</attribute>
+			</optional>
+
+		</element>
+	</define>
+
 	<!-- Helpers -->
 
 	<define name="BoolValues">

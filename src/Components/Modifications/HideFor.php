@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -42,26 +42,34 @@ class HideFor extends Modification {
 	/**
 	 * This method checks if the restriction is applicable and if necessary
 	 * replaces the decorated component by a Silent component
+	 *
+	 * @throws \MWException
 	 */
 	protected function applyModification() {
+
 		if ( $this->isHidden() ) {
-			$c = $this->getComponent();
-			$this->setComponent( new Silent( $c->getSkinTemplate(), $c->getDomElement(), $c->getIndent() ) );
+
+			$component = $this->getComponent();
+			$this->setComponent( new Silent( $component->getSkinTemplate(), $component->getDomElement(), $component->getIndent() ) );
+
 		}
+
 	}
 
 	/**
 	 * @return bool
+	 * @throws \MWException
 	 */
 	private function isHidden() {
-		$p = $this->getPermissionsHelper();
-		return $p->userHasGroup( 'group' ) && $p->userHasPermission( 'permission' ) && $p->pageIsInNamespace( 'namespace' );
+		$permissionsHelper = $this->getPermissionsHelper();
+		return $permissionsHelper->userHasGroup( 'group' ) && $permissionsHelper->userHasPermission( 'permission' ) && $permissionsHelper->pageIsInNamespace( 'namespace' );
 	}
 
 	/**
 	 * @return PermissionsHelper
 	 */
 	private function getPermissionsHelper() {
+		
 		if ( $this->permissionsHelper === null ) {
 			$this->permissionsHelper = new PermissionsHelper( $this->getSkinTemplate()->getSkin(), $this->getDomElementOfModification(), true );
 		}

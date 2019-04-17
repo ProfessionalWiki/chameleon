@@ -80,6 +80,13 @@ class Chameleon extends SkinTemplate {
 			$setupAfterCache->process();
 		};
 
+		// FIXME: Put this in a proper class, so it can be tested
+		$GLOBALS[ 'wgHooks' ][ 'ResourceLoaderRegisterModules' ][ ] = function( \ResourceLoader $rl ) {
+
+			$rl->register( '0.mediawiki.skinning.content', $rl->getModule( 'mediawiki.skinning.content' ) );
+
+		};
+
 		// set default skin layout
 		if ( $GLOBALS[ 'egChameleonLayoutFile' ][0] !== '/' ) {
 			$GLOBALS[ 'egChameleonLayoutFile' ] = $GLOBALS[ 'wgStyleDirectory' ] . '/chameleon/' . $GLOBALS[ 'egChameleonLayoutFile' ];
@@ -95,7 +102,7 @@ class Chameleon extends SkinTemplate {
 		// load Bootstrap styles
 		$out->addModuleStyles(
 			[
-				'mediawiki.skinning.content',
+				'0.mediawiki.skinning.content',
 				'mediawiki.legacy.commonPrint',
 				'ext.bootstrap.styles',
 			]

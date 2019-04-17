@@ -130,6 +130,16 @@ class SetupAfterCache {
 			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/chameleon.scss'
 		);
 
+		//// $this->configuration[ 'wgResourceModules' ][ 'mediawiki.skinning.content' ]['styles']
+		//$styles = [
+		//	'resources/src/mediawiki.skinning/elements.css' => [ 'media' => 'screen' ],
+		//	'resources/src/mediawiki.skinning/content.css' => [ 'media' => 'screen' ],
+		//];
+		//
+		//foreach ( $styles as $path => $whatever ) {
+		//	$this->bootstrapManager->addStyleFile( $this->configuration[ 'IP' ] . '/' . $path, 'beforeMain');
+		//}
+		//
 		$this->bootstrapManager->setScssVariable( 'fa-font-path', $GLOBALS[ 'wgStylePath' ] . "/chameleon/resources/fontawesome/webfonts" );
 		$this->bootstrapManager->setScssVariable( 'enable-caret', true );
 

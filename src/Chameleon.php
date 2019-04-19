@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2018, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -26,8 +26,11 @@
 
 namespace Skins\Chameleon;
 
-use MediaWiki\MediaWikiServices;
+use Bootstrap\BootstrapManager;
+use ExtensionRegistryHelper\ExtensionRegistryHelper;
 use OutputPage;
+use QuickTemplate;
+use ResourceLoader;
 use Sanitizer;
 use Skins\Chameleon\Hooks\SetupAfterCache;
 use SkinTemplate;
@@ -53,7 +56,7 @@ class Chameleon extends SkinTemplate {
 	 */
 	public static function init() {
 
-		\ExtensionRegistryHelper\ExtensionRegistryHelper::singleton()->loadExtensionRecursive( 'Bootstrap' );
+		ExtensionRegistryHelper::singleton()->loadExtensionRecursive( 'Bootstrap' );
 
 		/**
 		 * Using callbacks for hook registration
@@ -72,7 +75,7 @@ class Chameleon extends SkinTemplate {
 		$GLOBALS[ 'wgHooks' ][ 'SetupAfterCache' ][ ] = function() {
 
 			$setupAfterCache = new SetupAfterCache(
-				\Bootstrap\BootstrapManager::getInstance(),
+				BootstrapManager::getInstance(),
 				$GLOBALS,
 				$GLOBALS['wgRequest']
 			);
@@ -81,7 +84,7 @@ class Chameleon extends SkinTemplate {
 		};
 
 		// FIXME: Put this in a proper class, so it can be tested
-		$GLOBALS[ 'wgHooks' ][ 'ResourceLoaderRegisterModules' ][ ] = function( \ResourceLoader $rl ) {
+		$GLOBALS[ 'wgHooks' ][ 'ResourceLoaderRegisterModules' ][ ] = function( ResourceLoader $rl ) {
 
 			$rl->register( '0.mediawiki.skinning.content', $rl->getModule( 'mediawiki.skinning.content' ) );
 
@@ -95,22 +98,26 @@ class Chameleon extends SkinTemplate {
 	}
 
 	/**
-	 * @param $out OutputPage object
+	 * @return array Array of modules
 	 */
-	public function setupSkinUserCss( OutputPage $out ) {
+	public function getDefaultModules() {
+		$modules = parent::getDefaultModules();
 
-		// load Bootstrap styles
-		$out->addModuleStyles(
-			[
-				'0.mediawiki.skinning.content',
-				'mediawiki.legacy.commonPrint',
-				'ext.bootstrap.styles',
-			]
-		);
+		$modules[ 'styles' ][ 'core' ] = [
+			//'mediawiki.legacy.shared',
+			'mediawiki.legacy.commonPrint',
+		];
+
+		$modules[ 'styles' ][ 'content' ] = [
+			'0.mediawiki.skinning.content',
+			'ext.bootstrap.styles',
+		];
+
+		return $modules;
 	}
 
 	/**
-	 * @param \OutputPage $out
+	 * @param OutputPage $out
 	 */
 	public function initPage( OutputPage $out ) {
 
@@ -121,19 +128,19 @@ class Chameleon extends SkinTemplate {
 	}
 
 	/**
-	 * @return \QuickTemplate
+	 * @return QuickTemplate
 	 * @throws \MWException
 	 */
 	protected function setupTemplateForOutput() {
 
-		$tpl = parent::setupTemplateForOutput();
+		$template = parent::setupTemplateForOutput();
 
-		$this->getComponentFactory()->setSkinTemplate( $tpl );
+		$this->getComponentFactory()->setSkinTemplate( $template );
 
-		$tpl->set( 'skin', $this );
+		$template->set( 'skin', $this );
 		$this->addSkinModulesToOutput();
 
-		return $tpl;
+		return $template;
 	}
 
 	/**
@@ -155,9 +162,9 @@ class Chameleon extends SkinTemplate {
 	 */
 	public function addSkinModulesToOutput() {
 		// load Bootstrap scripts
-		$out = $this->getOutput();
-		$out->addModules( [ 'ext.bootstrap.scripts' ] );
-		$out->addModules( $this->getComponentFactory()->getRootComponent()->getResourceLoaderModules() );
+		$output = $this->getOutput();
+		$output->addModules( [ 'ext.bootstrap.scripts' ] );
+		$output->addModules( $this->getComponentFactory()->getRootComponent()->getResourceLoaderModules() );
 
 	}
 
@@ -168,7 +175,7 @@ class Chameleon extends SkinTemplate {
 	public function getPageClasses( $title ) {
 		$layoutFilePath = $this->getLayoutFilePath();
 		$layoutName = Sanitizer::escapeClass( 'layout-' . basename( $layoutFilePath, '.xml' ) );
-		return implode( ' ', array( parent::getPageClasses( $title ), $layoutName ) );
+		return implode( ' ', [ parent::getPageClasses( $title ), $layoutName ] );
 	}
 
 	/**
@@ -176,6 +183,6 @@ class Chameleon extends SkinTemplate {
 	 * @return string Path to layout file
 	 */
 	protected function getLayoutFilePath() {
-		return $GLOBALS['egChameleonLayoutFile'];
+		return $GLOBALS[ 'egChameleonLayoutFile' ];
 	}
 }

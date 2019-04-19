@@ -46,6 +46,9 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 				<component type="MainContent"/>
 			</cell>
 		</row>
+	</grid>
+
+	<grid mode="fluid">
 
 		<row>
 			<cell>
@@ -62,7 +65,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			</cell>
 		</row>
 
-		<row>
+		<row class="mb-2">
 			<cell>
 				<component type="FooterPlaces"/>
 			</cell>

@@ -56,6 +56,11 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<cell>
 				<component type="FooterInfo"/>
 			</cell>
+		</row>
+		<row class="mb-2">
+			<cell>
+				<component type="FooterPlaces"/>
+			</cell>
 			<cell>
 				<component type="FooterIcons" class="pull-right"/>
 			</cell>

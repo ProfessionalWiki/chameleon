@@ -10,7 +10,8 @@
 
 	@extend .navbar;
 	@extend .navbar-light;
-	@extend .bg-#{$cmln-navbar-bg-color};
+
+	background-color: map-get( $theme-colors, $cmln-navbar-bg-color );
 
 	&.collapsible {
 		@extend .navbar-expand-#{$cmln-navbar-horizontal-collapse-point};

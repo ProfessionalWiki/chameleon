@@ -78,6 +78,7 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $error:         $danger !default;
 $light:         $gray-200 !default;  // better contrast than $gray-100
+$darker:		$gray-400 !default;
 $dark:          $gray-800 !default;
 
 $theme-colors: () !default;
@@ -90,6 +91,7 @@ $theme-colors: map-merge((
 	"danger":     $danger,
 	"error":      $error,
 	"light":      $light,
+	"darker":     $darker,
 	"dark":       $dark
 ), $theme-colors);
 // stylelint-enable

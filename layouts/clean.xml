@@ -50,8 +50,15 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<component type="LangLinks" flatten="no" class="dropup"/>
 	</component>
 
-	<component type="FooterInfo">
+	<grid mode="fluid">
 		<modification type="ShowOnlyFor" permission="edit"/>
-	</component>
-
+		<row>
+			<cell>
+				<component type="FooterInfo"/>
+			</cell>
+			<cell>
+				<component type="FooterIcons" class="pull-right"/>
+			</cell>
+		</row>
+	</grid>
 </structure>

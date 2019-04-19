@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2017, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -65,13 +65,12 @@ class ComponentFactory {
 
 		if ( $this->mRootComponent === null ) {
 
-			$doc = new DOMDocument();
+			$document = new DOMDocument();
 
-			$doc->load( $this->getLayoutFile() );
+			$document->load( $this->getLayoutFile() );
+			$document->normalizeDocument();
 
-			$doc->normalizeDocument();
-
-			$roots = $doc->getElementsByTagName( 'structure' );
+			$roots = $document->getElementsByTagName( 'structure' );
 
 			if ( $roots->length > 0 ) {
 
@@ -115,7 +114,7 @@ class ComponentFactory {
 	 * @param string      $htmlClassAttribute
 	 *
 	 * @throws MWException
-	 * @return \Skins\Chameleon\Components\Container
+	 * @return Container
 	 */
 	public function getComponent( DOMElement $description, $indent = 0, $htmlClassAttribute = '' ) {
 
@@ -161,13 +160,13 @@ class ComponentFactory {
 
 		$nodeName = strtolower( $description->nodeName );
 
-		$mapOfComponentsToClassNames = array(
+		$mapOfComponentsToClassNames = [
 			'structure' => 'Structure',
 			'grid' => 'Grid',
 			'row' => 'Row',
 			'cell' => 'Cell',
 			'modification' => 'Silent',
-		);
+		];
 
 		if ( array_key_exists( $nodeName, $mapOfComponentsToClassNames ) ) {
 			return self::NAMESPACE_HIERARCHY . '\\' . $mapOfComponentsToClassNames[ $nodeName ];
@@ -224,7 +223,7 @@ class ComponentFactory {
 	 * @return string
 	 */
 	public function sanitizeFileName( $fileName ) {
-		return str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, $fileName );
+		return str_replace( [ '\\', '/' ], DIRECTORY_SEPARATOR, $fileName );
 	}
 
 	/**
@@ -240,11 +239,11 @@ class ComponentFactory {
 			if ( $parent instanceof DOMElement && $parent->hasAttribute( 'type' ) ) {
 				$fullClassName = join(
 					'\\',
-					array(
+					[
 						self::NAMESPACE_HIERARCHY,
 						$parent->getAttribute( 'type' ),
 						$className
-					)
+					]
 				);
 
 				if ( class_exists( $fullClassName ) ) {
@@ -252,7 +251,7 @@ class ComponentFactory {
 				}
 			}
 
-			$chameleonClassName = join( '\\', array( self::NAMESPACE_HIERARCHY, $className ) );
+			$chameleonClassName = join( '\\', [ self::NAMESPACE_HIERARCHY, $className ] );
 			if ( class_exists( $chameleonClassName ) ) {
 				return $chameleonClassName;
 			}
@@ -261,6 +260,6 @@ class ComponentFactory {
 
 		}
 
-		return self::NAMESPACE_HIERARCHY . 'Container';
+		return self::NAMESPACE_HIERARCHY . '\\Container';
 	}
 }

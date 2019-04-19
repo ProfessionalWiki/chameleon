@@ -2,27 +2,31 @@
 // Style fixes for extensions
 //
 // This file is part of the MediaWiki skin Chameleon.
-// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+// @copyright 2013 - 2019, Stephan Gambke, GNU General Public License, version 3 (or any later version)
 //
 // @since 2.0
 
-.skin-chameleon {
-
-	/* Extension VisualEditor */
-	.ve-ui-toolbar, .ve-ui-debugBar, .oo-ui-processDialog-navigation {
-		&, &::before, &::after {
-			box-sizing: content-box;
-		}
+/* Extension VisualEditor */
+.ve-ui-toolbar, .ve-ui-debugBar, .oo-ui-processDialog-navigation {
+	&, &::before, &::after {
+		box-sizing: content-box;
 	}
+}
 
-	.ve-ui-overlay-global {
-		z-index: 1; // FIXME: Was $zindex-navbar-fixed + 1. What was $zindex-navbar-fixed?
+.ve-ui-overlay-global {
+	z-index: 1; // FIXME: Was $zindex-navbar-fixed + 1. What was $zindex-navbar-fixed?
+}
+
+// float the VE UI toolbar below a fixed or sticky navbar
+.navbar.navbar-fixed-top, .navbar + .sticky-wrapper {
+	~ * .ve-ui-toolbar-floating > .oo-ui-toolbar-bar {
+		//			transform: translateY($navbar-height);
 	}
+}
 
-	// float the VE UI toolbar below a fixed or sticky navbar
-	.navbar.navbar-fixed-top, .navbar + .sticky-wrapper {
-		~ * .ve-ui-toolbar-floating>.oo-ui-toolbar-bar {
-//			transform: translateY($navbar-height);
-		}
+/* Extension SemanticMediaWiki */
+@at-root {
+	.smw-editpage-help {
+		@extend .infobox;
 	}
 }

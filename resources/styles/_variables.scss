@@ -2,13 +2,14 @@
 // Variables used by the Chameleon skin
 //
 // This file is part of the MediaWiki skin Chameleon.
-// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+// @copyright 2013 - 2019, Stephan Gambke, GNU General Public License, version 3 (or any later version)
 //
 // @since 2.0
 
 
-// Variables should follow the `$component-state-property-size` formula for
-// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+// Variables should follow the `$component-state-property-size` formula
+// (leaving out inapplicable parts) for consistent naming.
+// Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
 
 $cmln-collapse-point: md !default;
@@ -128,8 +129,6 @@ $list-level-indent: 3.5ex;
 
 
 /// ==> From Chameleon 1
-
-
 
 $thumbnail-caption-padding: 3px;
 

@@ -50,3 +50,7 @@
 	/* @noflip */
 	left: inherit !important;
 }
+
+.alert p:last-child {
+	margin-bottom: 0;
+}

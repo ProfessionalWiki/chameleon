@@ -10,17 +10,18 @@
 	@import "functions";
 	@import "variables";
 	@import "mixins";
+	@import "mediawiki.legacy.shared";
 	@import "utilities";
 	@import "fixes";
 	@import "basics";
 	@import "mw-elements";
 	@import "print";
 	@import "images";
+	@import "extensionfixes";
 
 	//@import "forms";
 	//@import "screen";
 	//@import "specialpages";
-	//@import "extensionfixes";
 
 	/**
 	 * Component styles

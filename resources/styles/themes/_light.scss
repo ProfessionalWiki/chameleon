@@ -4,7 +4,7 @@
 // Based on Bootstrap's _variables.scss
 //
 // This file is part of the MediaWiki skin Chameleon.
-// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+// @copyright 2013 - 2019, Stephan Gambke, GNU General Public License, version 3 (or any later version)
 //
 // @since 2.0
 
@@ -76,6 +76,7 @@ $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
+$error:         $danger !default;
 $light:         $gray-200 !default;  // better contrast than $gray-100
 $dark:          $gray-800 !default;
 
@@ -87,6 +88,7 @@ $theme-colors: map-merge((
 	"info":       $info,
 	"warning":    $warning,
 	"danger":     $danger,
+	"error":      $error,
 	"light":      $light,
 	"dark":       $dark
 ), $theme-colors);

@@ -104,7 +104,7 @@ class Chameleon extends SkinTemplate {
 		$modules = parent::getDefaultModules();
 
 		$modules[ 'styles' ][ 'core' ] = [
-			//'mediawiki.legacy.shared',
+			//'mediawiki.legacy.shared',  // we have our own version
 			'mediawiki.legacy.commonPrint',
 		];
 

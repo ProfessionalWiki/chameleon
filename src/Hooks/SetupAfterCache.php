@@ -130,17 +130,7 @@ class SetupAfterCache {
 			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/chameleon.scss'
 		);
 
-		//// $this->configuration[ 'wgResourceModules' ][ 'mediawiki.skinning.content' ]['styles']
-		//$styles = [
-		//	'resources/src/mediawiki.skinning/elements.css' => [ 'media' => 'screen' ],
-		//	'resources/src/mediawiki.skinning/content.css' => [ 'media' => 'screen' ],
-		//];
-		//
-		//foreach ( $styles as $path => $whatever ) {
-		//	$this->bootstrapManager->addStyleFile( $this->configuration[ 'IP' ] . '/' . $path, 'beforeMain');
-		//}
-		//
-		$this->bootstrapManager->setScssVariable( 'fa-font-path', $GLOBALS[ 'wgStylePath' ] . "/chameleon/resources/fontawesome/webfonts" );
+		$this->bootstrapManager->setScssVariable( 'fa-font-path', $GLOBALS[ 'wgStylePath' ] . '/chameleon/resources/fontawesome/webfonts' );
 		$this->bootstrapManager->setScssVariable( 'enable-caret', true );
 
 	}
@@ -149,14 +139,12 @@ class SetupAfterCache {
 
 		if ( $this->hasConfigurationOfTypeArray( 'egChameleonExternalStyleModules' ) ) {
 
-			foreach ( $this->configuration[ 'egChameleonExternalStyleModules' ] as $localFile => $remotePath ) {
+			foreach ( $this->configuration[ 'egChameleonExternalStyleModules' ] as $localFile => $position ) {
 
-				list( $localFile, $remotePath ) = $this->matchAssociativeElement( $localFile, $remotePath );
+				$config = $this->matchAssociativeElement( $localFile, $position );
+				$config[ 0 ] = $this->isReadableFile( $config[ 0 ] );
 
-				$this->bootstrapManager->addStyleFile(
-					$this->isReadableFile( $localFile ),
-					$remotePath
-				);
+				$this->bootstrapManager->addStyleFile( ...$config );
 			}
 		}
 	}
@@ -189,16 +177,17 @@ class SetupAfterCache {
 
 	/**
 	 * @param $localFile
-	 * @param $remotePath
+	 * @param $position
+	 *
 	 * @return array
 	 */
-	private function matchAssociativeElement( $localFile, $remotePath ) {
+	private function matchAssociativeElement( $localFile, $position ) {
 
 		if ( is_integer( $localFile ) ) {
-			return [ $remotePath, '' ];
+			return [ $position ];
 		}
 
-		return [ $localFile, $remotePath ];
+		return [ $localFile, $position ];
 	}
 
 	/**

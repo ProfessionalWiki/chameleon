@@ -74,36 +74,9 @@ class NavbarHorizontal extends Component {
 		}
 
 		$this->mHtml =
-			//$this->buildFixedNavBarIfRequested() . // FIXME: Put fixed navbar back in
 			$this->buildNavBarOpeningTags() .
 			$this->buildNavBarComponents() .
 			$this->buildNavBarClosingTags();
-	}
-
-	/**
-	 * @return string
-	 * @throws \MWException
-	 */
-	protected function buildFixedNavBarIfRequested() {
-		// if a fixed navbar is requested
-		if ( filter_var( $this->getDomElement()->getAttribute( 'fixed' ), FILTER_VALIDATE_BOOLEAN ) === true ||
-			$this->getDomElement()->getAttribute( 'position' ) === 'fixed'
-		) {
-
-			// first build the actual navbar and set a class so it will be fixed
-			$this->getDomElement()->setAttribute( 'fixed', '0' );
-			$this->getDomElement()->setAttribute( 'position', '' );
-
-			$realNav = new self( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );
-			$realNav->setClasses( $this->getClassString() . ' navbar-fixed-top' );
-
-			// then add an invisible copy of the nav bar that will act as a spacer
-			$this->addClasses( 'navbar-static-top invisible' );
-
-			return $realNav->getHtml();
-		} else {
-			return '';
-		}
 	}
 
 	/**
@@ -256,13 +229,19 @@ class NavbarHorizontal extends Component {
 
 		$tail = '';
 
+		if ( $this->isCollapsible() ) {
+			$collapsibleClass = ' navbar-collapse';
+		} else {
+			$collapsibleClass = '';
+		}
+
 		if ( $leftElements ) {
-			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav' ], implode( '', $leftElements ), $this->indent() );
+			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav' . $collapsibleClass ], implode( '', $leftElements ), $this->indent() );
 		}
 
 		if ( $rightElements ) {
 			// FIXME: Use a dedicated class instead of ml-auto. Then style in NavbarHorizontal.scss.
-			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav ml-auto' ], implode( '', $rightElements ), $this->indent() );
+			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav ml-auto' . $collapsibleClass ], implode( '', $rightElements ), $this->indent() );
 		}
 
 		$this->indent( -$indent );

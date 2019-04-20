@@ -52,8 +52,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</row>
 	</grid>
 
-	<grid mode="fluid">
-
+	<grid class="mb-2 mt-4" mode="fluid">
 		<row>
 			<cell>
 				<component type="NavbarHorizontal" collapsible="no" class="small mb-2" >
@@ -69,7 +68,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			</cell>
 		</row>
 
-		<row class="mb-2">
+		<row>
 			<cell>
 				<component type="FooterPlaces"/>
 			</cell>

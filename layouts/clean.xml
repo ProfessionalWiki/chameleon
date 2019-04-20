@@ -44,20 +44,24 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</row>
 	</grid>
 
-	<component type="NavbarHorizontal" collapsible="no" class="small mb-2" >
+	<grid class="mb-2 mt-4" mode="fluid">
 		<modification type="ShowOnlyFor" permission="edit"/>
-		<component type="Toolbox" flatten="no" class="dropup"/>
-		<component type="LangLinks" flatten="no" class="dropup"/>
-	</component>
+		<row>
+			<cell>
+				<component type="NavbarHorizontal" collapsible="no" class="small mb-2" >
+					<component type="Toolbox" flatten="no" class="dropup"/>
+					<component type="LangLinks" flatten="no" class="dropup"/>
+				</component>
+			</cell>
+		</row>
 
-	<grid mode="fluid">
-		<modification type="ShowOnlyFor" permission="edit"/>
 		<row>
 			<cell>
 				<component type="FooterInfo"/>
 			</cell>
 		</row>
-		<row class="mb-2">
+
+		<row>
 			<cell>
 				<component type="FooterPlaces"/>
 			</cell>

@@ -81,7 +81,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</row>
 	</grid>
 
-	<grid class="mb-2">
+	<grid class="mb-2 mt-4">
 		<row>
 			<cell>
 				<component type="NavbarHorizontal" collapsible="no" class="small mb-2" >

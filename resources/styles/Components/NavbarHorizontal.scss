@@ -24,6 +24,10 @@
 			&.show, &.collapsing {
 
 				display: flex;
+
+				.navbar-nav:not(.flex-row) {
+					display: block;
+				}
 			}
 
 		}

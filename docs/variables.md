@@ -1,405 +1,1712 @@
-## Less Variables
+## SCSS Variables
 
-This is the list of all Less variables defined in the various style files used
+This is the list of all SCSS variables defined in the various style files used
 by the Chameleon skin. (although not all of the variables are actually used). 
 
 These variables may be modified to change the look of your wiki. However, you
-should __not__ modify the indicated files of the Bootstrap framework or the
-Chameleon skin directly. These files are given as a reference only, they may
-contain more information on the purpose of a specific variable. Moreover the
-values given here are the final calculated values, the exact definition text may
-again be found in the indicated files. The ... in the file names indicates the
-MediaWiki installation directory.
+should __not__ modify the style files of the Bootstrap framework or the
+Chameleon skin directly. Instead use the methods described in
+[Customization](customization.md).
 
- Name                                         | Type       | Value                                         | File                                                         | Remark  
-----------------------------------------------|------------|-----------------------------------------------|--------------------------------------------------------------|------------------------------
- @abbr-border-color                           | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-border-radius                         | Dimension  | 4                                             | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-danger-bg                             | Color      | rgba( 242, 222, 222, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-danger-border                         | Color      | rgba( 235, 204, 209, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-danger-text                           | Color      | rgba( 169, 68, 66, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-info-bg                               | Color      | rgba( 217, 237, 247, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-info-border                           | Color      | rgba( 188, 232, 241, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-info-text                             | Color      | rgba( 49, 112, 143, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-link-font-weight                      | Keyword    | bold                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-padding                               | Dimension  | 15px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-success-bg                            | Color      | rgba( 223, 240, 216, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-success-border                        | Color      | rgba( 214, 233, 198, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-success-text                          | Color      | rgba( 60, 118, 61, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-warning-bg                            | Color      | rgba( 252, 248, 227, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-warning-border                        | Color      | rgba( 250, 235, 204, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @alert-warning-text                          | Color      | rgba( 138, 109, 59, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @badge-active-bg                             | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @badge-active-color                          | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @badge-bg                                    | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @badge-border-radius                         | Dimension  | 10px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @badge-color                                 | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @badge-font-weight                           | Keyword    | bold                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @badge-line-height                           | Dimension  | 1                                             | .../vendor/twitter/bootstrap/less/variables.less             | 
- @badge-link-hover-color                      | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @blockquote-border-color                     | Color      | rgba( 238, 238, 238, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @blockquote-font-size                        | Dimension  | 17.5px                                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @blockquote-small-color                      | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @body-bg                                     | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @border-radius-base                          | Dimension  | 4px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @border-radius-large                         | Dimension  | 6px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @border-radius-small                         | Dimension  | 3px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @brand-danger                                | Color      | rgba( 217, 83, 79, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @brand-info                                  | Color      | rgba( 91, 192, 222, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @brand-primary                               | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @brand-success                               | Color      | rgba( 92, 184, 92, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @brand-warning                               | Color      | rgba( 240, 173, 78, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @breadcrumb-active-color                     | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @breadcrumb-bg                               | Color      | rgba( 245, 245, 245, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @breadcrumb-color                            | Color      | rgba( 204, 204, 204, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @breadcrumb-padding-horizontal               | Dimension  | 15px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @breadcrumb-padding-vertical                 | Dimension  | 8px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @breadcrumb-separator                        | Quoted     | "/"                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-danger-bg                               | Color      | rgba( 217, 83, 79, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-danger-border                           | Color      | rgba( 212, 63, 58, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-danger-color                            | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-default-bg                              | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-default-border                          | Color      | rgba( 204, 204, 204, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-default-color                           | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-font-weight                             | Keyword    | normal                                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-info-bg                                 | Color      | rgba( 91, 192, 222, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-info-border                             | Color      | rgba( 70, 184, 218, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-info-color                              | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-link-disabled-color                     | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-primary-bg                              | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-primary-border                          | Color      | rgba( 53, 126, 189, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-primary-color                           | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-success-bg                              | Color      | rgba( 92, 184, 92, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-success-border                          | Color      | rgba( 76, 174, 76, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-success-color                           | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-warning-bg                              | Color      | rgba( 240, 173, 78, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-warning-border                          | Color      | rgba( 238, 162, 54, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @btn-warning-color                           | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @caret-width-base                            | Dimension  | 4px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @caret-width-large                           | Dimension  | 5px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @carousel-caption-color                      | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @carousel-control-color                      | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @carousel-control-font-size                  | Dimension  | 20px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @carousel-control-opacity                    | Dimension  | 0.5                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @carousel-control-width                      | Dimension  | 15%                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @carousel-indicator-active-bg                | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @carousel-indicator-border-color             | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @carousel-text-shadow                        | Expression | 0 1px 2px rgba( 0, 0, 0, 0.6  )               | .../vendor/twitter/bootstrap/less/variables.less             | 
- @close-color                                 | Color      | rgba( 0, 0, 0, 1  )                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @close-font-weight                           | Keyword    | bold                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @close-text-shadow                           | Expression | 0 1px 0 rgba( 255, 255, 255, 1  )             | .../vendor/twitter/bootstrap/less/variables.less             | 
- @code-bg                                     | Color      | rgba( 249, 242, 244, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @code-color                                  | Color      | rgba( 199, 37, 78, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @component-active-bg                         | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @component-active-color                      | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @component-offset-horizontal                 | Dimension  | 180px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @container-desktop                           | Dimension  | 970px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @container-large-desktop                     | Dimension  | 1170px                                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @container-lg                                | Dimension  | 1170                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @container-md                                | Dimension  | 970                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @container-sm                                | Dimension  | 750                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @container-tablet                            | Dimension  | 750px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @dl-horizontal-offset                        | Dimension  | 180                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @dropdown-bg                                 | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @dropdown-border                             | Color      | rgba( 0, 0, 0, 0.15  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @dropdown-caret-color                        | Color      | rgba( 0, 0, 0, 1  )                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @dropdown-divider-bg                         | Color      | rgba( 229, 229, 229, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @dropdown-fallback-border                    | Color      | rgba( 204, 204, 204, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @dropdown-header-color                       | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @dropdown-link-active-bg                     | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @dropdown-link-active-color                  | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @dropdown-link-color                         | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @dropdown-link-disabled-color                | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @dropdown-link-hover-bg                      | Color      | rgba( 245, 245, 245, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @dropdown-link-hover-color                   | Color      | rgba( 38, 38, 38, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @font-family-base                            | Value      | "Helvetica Neue" Helvetica Arial sans-serif   | .../vendor/twitter/bootstrap/less/variables.less             | 
- @font-family-monospace                       | Value      | Menlo Monaco Consolas "Courier New" monospace | .../vendor/twitter/bootstrap/less/variables.less             | 
- @font-family-sans-serif                      | Value      | "Helvetica Neue" Helvetica Arial sans-serif   | .../vendor/twitter/bootstrap/less/variables.less             | 
- @font-family-serif                           | Value      | Georgia "Times New Roman" Times serif         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @font-size-base                              | Dimension  | 14px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @font-size-h1                                | Dimension  | 36px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @font-size-h2                                | Dimension  | 30px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @font-size-h3                                | Dimension  | 24px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @font-size-h4                                | Dimension  | 18px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @font-size-h5                                | Dimension  | 14                                            | .../vendor/twitter/bootstrap/less/variables.less             | 
- @font-size-h6                                | Dimension  | 12px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @font-size-large                             | Dimension  | 18px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @font-size-small                             | Dimension  | 12px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @gray                                        | Color      | rgba( 85, 85, 85, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @gray-dark                                   | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @gray-darker                                 | Color      | rgba( 34, 34, 34, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @gray-light                                  | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @gray-lighter                                | Color      | rgba( 238, 238, 238, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @grid-columns                                | Dimension  | 12                                            | .../vendor/twitter/bootstrap/less/variables.less             | 
- @grid-float-breakpoint                       | Dimension  | 768                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @grid-float-breakpoint-max                   | Dimension  | 767px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @grid-gutter-width                           | Dimension  | 30px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @headings-color                              | Keyword    | inherit                                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @headings-font-family                        | Keyword    | inherit                                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @headings-font-weight                        | Dimension  | 500                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @headings-line-height                        | Dimension  | 1.1                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @headings-small-color                        | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @hr-border                                   | Color      | rgba( 238, 238, 238, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @icon-font-name                              | Quoted     | "glyphicons-halflings-regular"                | .../vendor/twitter/bootstrap/less/variables.less             | 
- @icon-font-path                              | Quoted     | ".../vendor/twitter/bootstrap/fonts/"         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @icon-font-svg-id                            | Quoted     | "glyphicons_halflingsregular"                 | .../vendor/twitter/bootstrap/less/variables.less             | 
- @input-bg                                    | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @input-bg-disabled                           | Color      | rgba( 238, 238, 238, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @input-border                                | Color      | rgba( 204, 204, 204, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @input-border-focus                          | Color      | rgba( 102, 175, 233, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @input-border-radius                         | Dimension  | 4                                             | .../vendor/twitter/bootstrap/less/variables.less             | 
- @input-color                                 | Color      | rgba( 85, 85, 85, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @input-color-placeholder                     | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @input-group-addon-bg                        | Color      | rgba( 238, 238, 238, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @input-group-addon-border-color              | Color      | rgba( 204, 204, 204, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @input-height-base                           | Dimension  | 34px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @input-height-large                          | Dimension  | 46px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @input-height-small                          | Dimension  | 30px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @item                                        | Quoted     | ".col-xs-1, .col-sm-1, .col-md-1, .col-lg-1"  | .../vendor/twitter/bootstrap/less/mixins/grid-framework.less | 
- @jumbotron-bg                                | Color      | rgba( 238, 238, 238, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @jumbotron-color                             | Keyword    | inherit                                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @jumbotron-font-size                         | Dimension  | 21px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @jumbotron-heading-color                     | Keyword    | inherit                                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @jumbotron-padding                           | Dimension  | 30px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @kbd-bg                                      | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @kbd-color                                   | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @label-color                                 | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @label-danger-bg                             | Color      | rgba( 217, 83, 79, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @label-default-bg                            | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @label-info-bg                               | Color      | rgba( 91, 192, 222, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @label-link-hover-color                      | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @label-primary-bg                            | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @label-success-bg                            | Color      | rgba( 92, 184, 92, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @label-warning-bg                            | Color      | rgba( 240, 173, 78, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @legend-border-color                         | Color      | rgba( 229, 229, 229, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @legend-color                                | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @line-height-base                            | Dimension  | 1.428571429                                   | .../vendor/twitter/bootstrap/less/variables.less             | 
- @line-height-computed                        | Dimension  | 20px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @line-height-large                           | Dimension  | 1.33                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @line-height-small                           | Dimension  | 1.5                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @link-color                                  | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/resources/styles/variables.less          | 
- @link-external-color                         | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/resources/styles/variables.less          | 
- @link-hover-color                            | Color      | rgba( 42, 100, 150, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @link-interwiki-color                        | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/resources/styles/variables.less          | 
- @link-new-color                              | Color      | rgba( 181, 43, 39, 1  )                       | .../skins/chameleon/resources/styles/variables.less          | 
- @link-stub-color                             | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/resources/styles/variables.less          | 
- @list-bullet-color                           | Color      | rgba( 119, 119, 119, 1  )                     | .../skins/chameleon/resources/styles/variables.less          | 
- @list-bullet-size                            | Dimension  | 0.7ex                                         | .../skins/chameleon/resources/styles/variables.less          | 
- @list-group-active-bg                        | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-group-active-border                    | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-group-active-color                     | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-group-active-text-color                | Color      | rgba( 225, 237, 247, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-group-bg                               | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-group-border                           | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-group-border-radius                    | Dimension  | 4                                             | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-group-disabled-bg                      | Color      | rgba( 238, 238, 238, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-group-disabled-color                   | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-group-disabled-text-color              | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-group-hover-bg                         | Color      | rgba( 245, 245, 245, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-group-link-color                       | Color      | rgba( 85, 85, 85, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-group-link-heading-color               | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-group-link-hover-color                 | Color      | rgba( 85, 85, 85, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @list-level-indent                           | Dimension  | 2.5ex                                         | .../skins/chameleon/resources/styles/variables.less          | 
- @modal-backdrop-bg                           | Color      | rgba( 0, 0, 0, 1  )                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @modal-backdrop-opacity                      | Dimension  | 0.5                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @modal-content-bg                            | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @modal-content-border-color                  | Color      | rgba( 0, 0, 0, 0.2  )                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @modal-content-fallback-border-color         | Color      | rgba( 153, 153, 153, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @modal-footer-border-color                   | Color      | rgba( 229, 229, 229, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @modal-header-border-color                   | Color      | rgba( 229, 229, 229, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @modal-inner-padding                         | Dimension  | 15px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @modal-lg                                    | Dimension  | 900px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @modal-md                                    | Dimension  | 600px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @modal-sm                                    | Dimension  | 300px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @modal-title-line-height                     | Dimension  | 1.428571429                                   | .../vendor/twitter/bootstrap/less/variables.less             | 
- @modal-title-padding                         | Dimension  | 15px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-border-radius                        | Dimension  | 4                                             | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-collapse-max-height                  | Dimension  | 340px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-bg                           | Color      | rgba( 248, 248, 248, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-border                       | Color      | rgba( 231, 231, 231, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-brand-color                  | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-brand-hover-bg               | Color      | transparent                                   | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-brand-hover-color            | Color      | rgba( 94, 94, 94, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-color                        | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-link-active-bg               | Color      | rgba( 231, 231, 231, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-link-active-color            | Color      | rgba( 85, 85, 85, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-link-color                   | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-link-disabled-bg             | Color      | transparent                                   | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-link-disabled-color          | Color      | rgba( 204, 204, 204, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-link-hover-bg                | Color      | transparent                                   | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-link-hover-color             | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-toggle-border-color          | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-toggle-hover-bg              | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-default-toggle-icon-bar-bg           | Color      | rgba( 136, 136, 136, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-height                               | Dimension  | 50px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-bg                           | Color      | rgba( 34, 34, 34, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-border                       | Color      | rgba( 9, 9, 9, 1  )                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-brand-color                  | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-brand-hover-bg               | Color      | transparent                                   | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-brand-hover-color            | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-color                        | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-link-active-bg               | Color      | rgba( 9, 9, 9, 1  )                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-link-active-color            | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-link-color                   | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-link-disabled-bg             | Color      | transparent                                   | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-link-disabled-color          | Color      | rgba( 68, 68, 68, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-link-hover-bg                | Color      | transparent                                   | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-link-hover-color             | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-toggle-border-color          | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-toggle-hover-bg              | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-inverse-toggle-icon-bar-bg           | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-logo-height                          | Dimension  | 45px                                          | .../skins/chameleon/resources/styles/variables.less          | 
- @navbar-margin-bottom                        | Dimension  | 20                                            | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-newtalk-available                    | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/resources/styles/variables.less          | 
- @navbar-newtalk-not-available                | Color      | rgba( 196, 196, 196, 1  )                     | .../skins/chameleon/resources/styles/variables.less          | 
- @navbar-padding-horizontal                   | Dimension  | 15px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-padding-vertical                     | Dimension  | 15px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @navbar-user-loggedin                        | Color      | rgba( 66, 139, 202, 1  )                      | .../skins/chameleon/resources/styles/variables.less          | 
- @navbar-user-not-loggedin                    | Color      | rgba( 196, 196, 196, 1  )                     | .../skins/chameleon/resources/styles/variables.less          | 
- @nav-disabled-link-color                     | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-disabled-link-hover-color               | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-link-hover-bg                           | Color      | rgba( 238, 238, 238, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-link-padding                            | Expression | 10px 15px                                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-open-link-hover-color                   | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-pills-active-link-hover-bg              | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-pills-active-link-hover-color           | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-pills-border-radius                     | Dimension  | 4                                             | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-tabs-active-link-hover-bg               | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-tabs-active-link-hover-border-color     | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-tabs-active-link-hover-color            | Color      | rgba( 85, 85, 85, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-tabs-border-color                       | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-tabs-justified-active-link-border-color | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-tabs-justified-link-border-color        | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @nav-tabs-link-hover-border-color            | Color      | rgba( 238, 238, 238, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @padding-base-horizontal                     | Dimension  | 12px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @padding-base-vertical                       | Dimension  | 6px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @padding-large-horizontal                    | Dimension  | 16px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @padding-large-vertical                      | Dimension  | 10px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @padding-small-horizontal                    | Dimension  | 10px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @padding-small-vertical                      | Dimension  | 5px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @padding-xs-horizontal                       | Dimension  | 5px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @padding-xs-vertical                         | Dimension  | 1px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @page-header-border-color                    | Color      | rgba( 238, 238, 238, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pager-active-bg                             | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pager-active-color                          | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pager-bg                                    | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pager-border                                | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pager-border-radius                         | Dimension  | 15px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pager-disabled-color                        | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pager-hover-bg                              | Color      | rgba( 238, 238, 238, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pagination-active-bg                        | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pagination-active-border                    | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pagination-active-color                     | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pagination-bg                               | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pagination-border                           | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pagination-color                            | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pagination-disabled-bg                      | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pagination-disabled-border                  | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pagination-disabled-color                   | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pagination-hover-bg                         | Color      | rgba( 238, 238, 238, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pagination-hover-border                     | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pagination-hover-color                      | Color      | rgba( 42, 100, 150, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-bg                                    | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-body-padding                          | Dimension  | 15px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-border-radius                         | Dimension  | 4                                             | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-danger-border                         | Color      | rgba( 235, 204, 209, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-danger-heading-bg                     | Color      | rgba( 242, 222, 222, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-danger-text                           | Color      | rgba( 169, 68, 66, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-default-border                        | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-default-heading-bg                    | Color      | rgba( 245, 245, 245, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-default-text                          | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-footer-bg                             | Color      | rgba( 245, 245, 245, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-footer-padding                        | Expression | 10 15                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-heading-padding                       | Expression | 10px 15px                                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-info-border                           | Color      | rgba( 188, 232, 241, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-info-heading-bg                       | Color      | rgba( 217, 237, 247, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-info-text                             | Color      | rgba( 49, 112, 143, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-inner-border                          | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-primary-border                        | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-primary-heading-bg                    | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-primary-text                          | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-success-border                        | Color      | rgba( 214, 233, 198, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-success-heading-bg                    | Color      | rgba( 223, 240, 216, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-success-text                          | Color      | rgba( 60, 118, 61, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-warning-border                        | Color      | rgba( 250, 235, 204, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-warning-heading-bg                    | Color      | rgba( 252, 248, 227, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @panel-warning-text                          | Color      | rgba( 138, 109, 59, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @popover-arrow-color                         | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @popover-arrow-outer-color                   | Color      | rgba( 0, 0, 0, 0.25  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @popover-arrow-outer-fallback-color          | Color      | rgba( 153, 153, 153, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @popover-arrow-outer-width                   | Dimension  | 11px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @popover-arrow-width                         | Dimension  | 10px                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @popover-bg                                  | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @popover-border-color                        | Color      | rgba( 0, 0, 0, 0.2  )                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @popover-fallback-border-color               | Color      | rgba( 204, 204, 204, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @popover-max-width                           | Dimension  | 276px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @popover-title-bg                            | Color      | rgba( 247, 247, 247, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pre-bg                                      | Color      | rgba( 245, 245, 245, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pre-border-color                            | Color      | rgba( 204, 204, 204, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pre-color                                   | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @pre-scrollable-max-height                   | Dimension  | 340px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @progress-bar-bg                             | Color      | rgba( 66, 139, 202, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @progress-bar-color                          | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @progress-bar-danger-bg                      | Color      | rgba( 217, 83, 79, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @progress-bar-info-bg                        | Color      | rgba( 91, 192, 222, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @progress-bar-success-bg                     | Color      | rgba( 92, 184, 92, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @progress-bar-warning-bg                     | Color      | rgba( 240, 173, 78, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @progress-bg                                 | Color      | rgba( 245, 245, 245, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-desktop                              | Dimension  | 992                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-lg-desktop                           | Dimension  | 1200                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-lg                                   | Dimension  | 1200px                                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-lg-min                               | Dimension  | 1200                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-md                                   | Dimension  | 992px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-md-max                               | Dimension  | 1199px                                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-md-min                               | Dimension  | 992                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-phone                                | Dimension  | 480                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-sm                                   | Dimension  | 768px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-sm-max                               | Dimension  | 991px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-sm-min                               | Dimension  | 768                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-tablet                               | Dimension  | 768                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-xs                                   | Dimension  | 480px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-xs-max                               | Dimension  | 767px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @screen-xs-min                               | Dimension  | 480                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @state-danger-bg                             | Color      | rgba( 242, 222, 222, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @state-danger-border                         | Color      | rgba( 235, 204, 209, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @state-danger-text                           | Color      | rgba( 169, 68, 66, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @state-info-bg                               | Color      | rgba( 217, 237, 247, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @state-info-border                           | Color      | rgba( 188, 232, 241, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @state-info-text                             | Color      | rgba( 49, 112, 143, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @state-success-bg                            | Color      | rgba( 223, 240, 216, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @state-success-border                        | Color      | rgba( 214, 233, 198, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @state-success-text                          | Color      | rgba( 60, 118, 61, 1  )                       | .../vendor/twitter/bootstrap/less/variables.less             | 
- @state-warning-bg                            | Color      | rgba( 252, 248, 227, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @state-warning-border                        | Color      | rgba( 250, 235, 204, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @state-warning-text                          | Color      | rgba( 138, 109, 59, 1  )                      | .../vendor/twitter/bootstrap/less/variables.less             | 
- @table-bg-accent                             | Color      | rgba( 249, 249, 249, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @table-bg-active                             | Color      | rgba( 245, 245, 245, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @table-bg                                    | Color      | transparent                                   | .../vendor/twitter/bootstrap/less/variables.less             | 
- @table-bg-hover                              | Color      | rgba( 245, 245, 245, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @table-border-color                          | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @table-cell-padding                          | Dimension  | 8px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @table-condensed-cell-padding                | Dimension  | 5px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @text-color                                  | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @text-muted                                  | Color      | rgba( 119, 119, 119, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @thumbnail-bg                                | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @thumbnail-border                            | Color      | rgba( 221, 221, 221, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @thumbnail-border-radius                     | Dimension  | 4                                             | .../vendor/twitter/bootstrap/less/variables.less             | 
- @thumbnail-caption-color                     | Color      | rgba( 51, 51, 51, 1  )                        | .../vendor/twitter/bootstrap/less/variables.less             | 
- @thumbnail-caption-padding                   | Dimension  | 3px                                           | .../skins/chameleon/resources/styles/variables.less          | 
- @thumbnail-padding                           | Dimension  | 4px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @toctitle-font-size                          | Dimension  | 18                                            | .../skins/chameleon/resources/styles/variables.less          | 
- @tooltip-arrow-color                         | Color      | rgba( 0, 0, 0, 1  )                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @tooltip-arrow-width                         | Dimension  | 5px                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @tooltip-bg                                  | Color      | rgba( 0, 0, 0, 1  )                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @tooltip-color                               | Color      | rgba( 255, 255, 255, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @tooltip-max-width                           | Dimension  | 200px                                         | .../vendor/twitter/bootstrap/less/variables.less             | 
- @tooltip-opacity                             | Dimension  | 0.9                                           | .../vendor/twitter/bootstrap/less/variables.less             | 
- @well-bg                                     | Color      | rgba( 245, 245, 245, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @well-border                                 | Color      | rgba( 227, 227, 227, 1  )                     | .../vendor/twitter/bootstrap/less/variables.less             | 
- @zindex-dropdown                             | Dimension  | 1000                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @zindex-modal-background                     | Dimension  | 1040                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @zindex-modal                                | Dimension  | 1050                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @zindex-navbar                               | Dimension  | 1000                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @zindex-navbar-fixed                         | Dimension  | 1030                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @zindex-popover                              | Dimension  | 1060                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
- @zindex-tooltip                              | Dimension  | 1070                                          | .../vendor/twitter/bootstrap/less/variables.less             | 
+The values given here are the final calculated values, the exact text of the
+definition may be found in the style files.
+Be aware that some variables may be defined several times over more than one
+style file. In general, SCSS considers the first occurence of a `!default` value
+as _the_ default value for a variable, discarding all subsequent `!default`
+values it encounters. It then overwrites the value of the variable with
+non-default values in the order of occurence in the SCSS code. 
+
+
+ Name                                                  | Value                                          
+-------------------------------------------------------|----------------------
+ $alert_bg_level                                       | -10
+ $alert_border_level                                   | -9
+ $alert_border_radius                                  | 0.25rem
+ $alert_border_width                                   | 1px
+ $alert_color_level                                    | 6
+ $alert_link_font_weight                               | 700
+ $alert_margin_bottom                                  | 1rem
+ $alert_padding_x                                      | 1.25rem
+ $alert_padding_y                                      | 0.75rem
+ $badge_border_radius                                  | 0.25rem
+ $badge_focus_width                                    | 0.2rem
+ $badge_font_size                                      | 0.75
+ $badge_font_weight                                    | 700
+ $badge_padding_x                                      | 0.4em
+ $badge_padding_y                                      | 0.25em
+ $badge_pill_border_radius                             | 10rem
+ $badge_pill_padding_x                                 | 0.6em
+ $badge_transition                                     | color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+ $black                                                | #000
+ $blockquote_font_size                                 | 1.25rem
+ $blockquote_small_color                               | #6c757d
+ $blockquote_small_font_size                           | 0.8
+ $blue                                                 | #007bff
+ $body_bg                                              | #fff
+ $body_color                                           | #212529
+ $border_color                                         | #dee2e6
+ $border_radius                                        | 0.25rem
+ $border_radius_lg                                     | 0.3rem
+ $border_radius_sm                                     | 0.2rem
+ $border_width                                         | 1px
+ $box_shadow                                           | 0 0.5rem 1rem rgba(0, 0, 0, 0.15)
+ $box_shadow_lg                                        | 0 1rem 3rem rgba(0, 0, 0, 0.175)
+ $box_shadow_sm                                        | 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075)
+ $breadcrumb_active_color                              | #6c757d
+ $breadcrumb_bg                                        | #e9ecef
+ $breadcrumb_border_radius                             | 0.25rem
+ $breadcrumb_divider                                   | /
+ $breadcrumb_divider_color                             | #6c757d
+ $breadcrumb_item_padding                              | 0.5rem
+ $breadcrumb_margin_bottom                             | 1rem
+ $breadcrumb_padding_x                                 | 1rem
+ $breadcrumb_padding_y                                 | 0.75rem
+ $btn_active_box_shadow                                | inset 0 3px 5px rgba(0, 0, 0, 0.125)
+ $btn_block_spacing_y                                  | 0.5rem
+ $btn_border_radius                                    | 0.25rem
+ $btn_border_radius_lg                                 | 0.3rem
+ $btn_border_radius_sm                                 | 0.2rem
+ $btn_border_width                                     | 1px
+ $btn_box_shadow                                       | inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075)
+ $btn_disabled_opacity                                 | 0.65
+ $btn_focus_box_shadow                                 | 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+ $btn_focus_width                                      | 0.2rem
+ $btn_font_family                                      | null
+ $btn_font_size                                        | 1rem
+ $btn_font_size_lg                                     | 1.25rem
+ $btn_font_size_sm                                     | 0.875rem
+ $btn_font_weight                                      | 400
+ $btn_line_height                                      | 1.5
+ $btn_line_height_lg                                   | 1.5
+ $btn_line_height_sm                                   | 1.5
+ $btn_link_disabled_color                              | #6c757d
+ $btn_padding_x                                        | 0.75rem
+ $btn_padding_x_lg                                     | 1rem
+ $btn_padding_x_sm                                     | 0.5rem
+ $btn_padding_y                                        | 0.375rem
+ $btn_padding_y_lg                                     | 0.5rem
+ $btn_padding_y_sm                                     | 0.25rem
+ $btn_transition                                       | color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+ $burgundy                                             | #9b1b2f
+ $card_bg                                              | #fff
+ $card_border_color                                    | rgba(0, 0, 0, 0.125)
+ $card_border_radius                                   | 0.25rem
+ $card_border_width                                    | 1px
+ $card_cap_bg                                          | rgba(0, 0, 0, 0.03)
+ $card_cap_color                                       | null
+ $card_color                                           | null
+ $card_columns_count                                   | 3
+ $card_columns_gap                                     | 1.25rem
+ $card_columns_margin                                  | 0.75rem
+ $card_deck_margin                                     | 15px
+ $card_group_margin                                    | 15px
+ $card_img_overlay_padding                             | 1.25rem
+ $card_inner_border_radius                             | calc(0.25rem - 1px)
+ $card_spacer_x                                        | 1.25rem
+ $card_spacer_y                                        | 0.75rem
+ $caret_spacing                                        | 0.255em
+ $caret_vertical_align                                 | 0.255em
+ $caret_width                                          | 0.3em
+ $carousel_caption_color                               | #fff
+ $carousel_caption_width                               | 0.7
+ $carousel_control_color                               | #fff
+ $carousel_control_hover_opacity                       | 0.9
+ $carousel_control_icon_width                          | 20px
+ $carousel_control_next_icon_bg                        | url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3e%3c/svg%3e")
+ $carousel_control_opacity                             | 0.5
+ $carousel_control_prev_icon_bg                        | url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3e%3c/svg%3e")
+ $carousel_control_transition                          | opacity 0.15s ease
+ $carousel_control_width                               | 0.15
+ $carousel_indicator_active_bg                         | #fff
+ $carousel_indicator_height                            | 3px
+ $carousel_indicator_hit_area_height                   | 10px
+ $carousel_indicator_spacer                            | 3px
+ $carousel_indicator_transition                        | opacity 0.6s ease
+ $carousel_indicator_width                             | 30px
+ $carousel_transition                                  | transform 0.6s ease-in-out
+ $carousel_transition_duration                         | 0.6s
+ $chambray                                             | #355b84
+ $close_color                                          | #000
+ $close_font_size                                      | 1.5rem
+ $close_font_weight                                    | 700
+ $close_text_shadow                                    | 0 1px 0 #fff
+ $cmln_collapse_point                                  | md
+ $cmln_first_heading_margin_bottom                     | 1rem
+ $cmln_first_heading_underline_color                   | rgba(0, 0, 0, 0.1)
+ $cmln_first_heading_underline_width                   | 1px
+ $cmln_icon_margin                                     | 0.5rem
+ $cmln_icons                                           | (go-btn: fas fa-share, search-btn: fas fa-search, navbar-toggler: fas fa-bars, navbar-more-tools: fas fa-ellipsis-h, navbar-usernotloggedin: fas fa-user, navbar-userloggedin: fas fa-user, n-mainpage-description: fas fa-home, n-recentchanges: fas fa-backward, n-randompage: fas fa-random, n-help: fas fa-question, p-lang-toggle: fas fa-language, p-tb-toggle: fas fa-toolbox, pt-anontalk: fas fa-comments, pt-anoncontribs: fas fa-question, pt-createaccount: fas fa-user-plus, pt-login: fas fa-sign-in-alt, pt-userpage: fas fa-home, pt-mytalk: fas fa-comments, pt-preferences: fas fa-sliders-h, pt-watchlist: far fa-eye, pt-mycontris: fas fa-question, pt-logout: fas fa-sign-out-alt, ca-nstab-main: far fa-file, ca-nstab-mediawiki: far fa-cogs, ca-nstab-special: fas fa-cogs, ca-nstab-image: far fa-file-image, ca-talk: far fa-comments, ca-edit: far fa-edit, ca-viewsource: fas fa-code, ca-history: fas fa-history, ca-delete: fas fa-trash-alt, ca-move: fas fa-location-arrow, ca-protect: fas fa-lock, ca-unprotect: fas fa-lock, ca-watch: far fa-eye, ca-unwatch: far fa-eye-slash, ca-purge: fas fa-redo, feedlink: fas fa-rss, t-contributions: fas fa-user-edit, t-log: fas fa-clipboard-list, t-whatlinkshere: fas fa-sitemap, t-recentchangeslinked: fas fa-backward, t-upload: fas fa-upload, t-specialpages: fas fa-cogs, t-print: fas fa-print, t-permalink: fas fa-link, t-info: fas fa-info, t-cite: fas fa-question, t-smwbrowselink: fas fa-compass)
+ $cmln_link_colors                                     | (new: #dc3545 none #a71d2a underline, stub: #1b599b none #10345a underline, extiw: #1b599b none #10345a underline, external: #1b599b none #10345a underline)
+ $cmln_link_format                                     | #1b599b none #10345a underline
+ $cmln_link_formats                                    | (new: ('color': #9b1b2f, 'hover-color': #5a101b), stub: #1b599b none #10345a underline, extiw: #1b599b none #10345a underline, external: #1b599b none #10345a underline)
+ $cmln_navbar_bg_color                                 | light
+ $cmln_navbar_horizontal_collapse_point                | md
+ $cmln_navbar_logo_height                              | 2.5rem
+ $cmln_navbar_toggler_color                            | light
+ $cmln_page_tools_font_size                            | 0.875rem
+ $cmln_page_tools_item_margin                          | 1.5rem
+ $cmln_page_tools_link                                 | #1b599b none #10345a underline
+ $cmln_page_tools_link_new                             | ('color': #6c757d, 'hover-color': #494f54)
+ $cmln_personal_tools_item_margin                      | 1.5rem
+ $cmln_search_bar_btn_color                            | light
+ $cmln_search_bar_collapse_point                       | md
+ $cmln_toctitle_font_size                              | 1.25rem
+ $cobalt                                               | #1b599b
+ $code_color                                           | #e83e8c
+ $code_font_size                                       | 0.875
+ $colors                                               | ("blue": #007bff, "indigo": #6610f2, "purple": #6f42c1, "pink": #e83e8c, "red": #dc3545, "orange": #fd7e14, "yellow": #ffc107, "green": #28a745, "teal": #20c997, "cyan": #17a2b8, "white": #fff, "gray": #6c757d, "gray-dark": #343a40)
+ $component_active_bg                                  | #007bff
+ $component_active_color                               | #fff
+ $container_max_widths                                 | (sm: 540px, md: 720px, lg: 960px, xl: 1140px)
+ $custom_checkbox_indicator_border_radius              | 0.25rem
+ $custom_checkbox_indicator_icon_checked               | url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e")
+ $custom_checkbox_indicator_icon_indeterminate         | url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e")
+ $custom_checkbox_indicator_indeterminate_bg           | #007bff
+ $custom_checkbox_indicator_indeterminate_border_color | #007bff
+ $custom_checkbox_indicator_indeterminate_box_shadow   | none
+ $custom_checkbox_indicator_indeterminate_color        | #fff
+ $custom_control_gutter                                | 0.5rem
+ $custom_control_indicator_active_bg                   | #b3d7ff
+ $custom_control_indicator_active_border_color         | #b3d7ff
+ $custom_control_indicator_active_box_shadow           | none
+ $custom_control_indicator_active_color                | #fff
+ $custom_control_indicator_bg                          | #fff
+ $custom_control_indicator_bg_size                     | 50% 50%
+ $custom_control_indicator_border_color                | #adb5bd
+ $custom_control_indicator_border_width                | 1px
+ $custom_control_indicator_box_shadow                  | inset 0 1px 1px rgba(0, 0, 0, 0.075)
+ $custom_control_indicator_checked_bg                  | #007bff
+ $custom_control_indicator_checked_border_color        | #007bff
+ $custom_control_indicator_checked_box_shadow          | none
+ $custom_control_indicator_checked_color               | #fff
+ $custom_control_indicator_checked_disabled_bg         | rgba(0, 123, 255, 0.5)
+ $custom_control_indicator_disabled_bg                 | #e9ecef
+ $custom_control_indicator_focus_border_color          | #80bdff
+ $custom_control_indicator_focus_box_shadow            | 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+ $custom_control_indicator_size                        | 1rem
+ $custom_control_label_disabled_color                  | #6c757d
+ $custom_control_spacer_x                              | 1rem
+ $custom_file_bg                                       | #fff
+ $custom_file_border_color                             | #ced4da
+ $custom_file_border_radius                            | 0.25rem
+ $custom_file_border_width                             | 1px
+ $custom_file_box_shadow                               | inset 0 1px 1px rgba(0, 0, 0, 0.075)
+ $custom_file_button_bg                                | #e9ecef
+ $custom_file_button_color                             | #495057
+ $custom_file_color                                    | #495057
+ $custom_file_disabled_bg                              | #e9ecef
+ $custom_file_focus_border_color                       | #80bdff
+ $custom_file_focus_box_shadow                         | 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+ $custom_file_font_family                              | null
+ $custom_file_font_weight                              | 400
+ $custom_file_height                                   | calc(1.5em + 0.75rem + 2px)
+ $custom_file_height_inner                             | calc(1.5em + 0.75rem)
+ $custom_file_line_height                              | 1.5
+ $custom_file_padding_x                                | 0.75rem
+ $custom_file_padding_y                                | 0.375rem
+ $custom_file_text                                     | (en: "Browse")
+ $custom_forms_transition                              | background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+ $custom_radio_indicator_border_radius                 | 0.5
+ $custom_radio_indicator_icon_checked                  | url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e")
+ $custom_range_thumb_active_bg                         | #b3d7ff
+ $custom_range_thumb_bg                                | #007bff
+ $custom_range_thumb_border                            | 0
+ $custom_range_thumb_border_radius                     | 1rem
+ $custom_range_thumb_box_shadow                        | 0 0.1rem 0.25rem rgba(0, 0, 0, 0.1)
+ $custom_range_thumb_disabled_bg                       | #adb5bd
+ $custom_range_thumb_focus_box_shadow                  | 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+ $custom_range_thumb_focus_box_shadow_width            | 0.2rem
+ $custom_range_thumb_height                            | 1rem
+ $custom_range_thumb_width                             | 1rem
+ $custom_range_track_bg                                | #dee2e6
+ $custom_range_track_border_radius                     | 1rem
+ $custom_range_track_box_shadow                        | inset 0 0.25rem 0.25rem rgba(0, 0, 0, 0.1)
+ $custom_range_track_cursor                            | pointer
+ $custom_range_track_height                            | 0.5rem
+ $custom_range_track_width                             | 1
+ $custom_select_background                             | url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center / 8px 10px
+ $custom_select_bg                                     | #fff
+ $custom_select_bg_size                                | 8px 10px
+ $custom_select_border_color                           | #ced4da
+ $custom_select_border_radius                          | 0.25rem
+ $custom_select_border_width                           | 1px
+ $custom_select_box_shadow                             | inset 0 1px 2px rgba(0, 0, 0, 0.075)
+ $custom_select_color                                  | #495057
+ $custom_select_disabled_bg                            | #e9ecef
+ $custom_select_disabled_color                         | #6c757d
+ $custom_select_feedback_icon_padding_right            | calc((1em + 0.75rem) * 3 / 4 + 1.75rem)
+ $custom_select_feedback_icon_position                 | center right 1.75rem
+ $custom_select_feedback_icon_size                     | calc(0.75em + 0.375rem) calc(0.75em + 0.375rem)
+ $custom_select_focus_border_color                     | #80bdff
+ $custom_select_focus_box_shadow                       | 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+ $custom_select_focus_width                            | 0.2rem
+ $custom_select_font_family                            | null
+ $custom_select_font_size                              | 1rem
+ $custom_select_font_size_lg                           | 1.25rem
+ $custom_select_font_size_sm                           | 0.875rem
+ $custom_select_font_weight                            | 400
+ $custom_select_height                                 | calc(1.5em + 0.75rem + 2px)
+ $custom_select_height_lg                              | calc(1.5em + 1rem + 2px)
+ $custom_select_height_sm                              | calc(1.5em + 0.5rem + 2px)
+ $custom_select_indicator                              | url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e")
+ $custom_select_indicator_color                        | #343a40
+ $custom_select_indicator_padding                      | 1rem
+ $custom_select_line_height                            | 1.5
+ $custom_select_padding_x                              | 0.75rem
+ $custom_select_padding_x_lg                           | 1rem
+ $custom_select_padding_x_sm                           | 0.5rem
+ $custom_select_padding_y                              | 0.375rem
+ $custom_select_padding_y_lg                           | 0.5rem
+ $custom_select_padding_y_sm                           | 0.25rem
+ $custom_switch_indicator_border_radius                | 0.5rem
+ $custom_switch_indicator_size                         | calc(1rem - 4px)
+ $custom_switch_width                                  | 1.75rem
+ $cyan                                                 | #17a2b8
+ $danger                                               | #dc3545
+ $dark                                                 | #343a40
+ $darker                                               | #ced4da
+ $display_line_height                                  | 1.2
+ $display1_size                                        | 6rem
+ $display1_weight                                      | 300
+ $display2_size                                        | 5.5rem
+ $display2_weight                                      | 300
+ $display3_size                                        | 4.5rem
+ $display3_weight                                      | 300
+ $display4_size                                        | 3.5rem
+ $display4_weight                                      | 300
+ $displays                                             | none, inline, inline-block, block, table, table-row, table-cell, flex, inline-flex
+ $dropdown_bg                                          | #fff
+ $dropdown_border_color                                | rgba(0, 0, 0, 0.15)
+ $dropdown_border_radius                               | 0.25rem
+ $dropdown_border_width                                | 1px
+ $dropdown_box_shadow                                  | 0 0.5rem 1rem rgba(0, 0, 0, 0.175)
+ $dropdown_color                                       | #212529
+ $dropdown_divider_bg                                  | #e9ecef
+ $dropdown_divider_margin_y                            | 0.5rem
+ $dropdown_font_size                                   | 1rem
+ $dropdown_header_color                                | #6c757d
+ $dropdown_inner_border_radius                         | calc(0.25rem - 1px)
+ $dropdown_item_padding_x                              | 1.5rem
+ $dropdown_item_padding_y                              | 0.25rem
+ $dropdown_link_active_bg                              | #007bff
+ $dropdown_link_active_color                           | #fff
+ $dropdown_link_color                                  | #212529
+ $dropdown_link_disabled_color                         | #6c757d
+ $dropdown_link_hover_bg                               | #f8f9fa
+ $dropdown_link_hover_color                            | #16181b
+ $dropdown_min_width                                   | 10rem
+ $dropdown_padding_y                                   | 0.5rem
+ $dropdown_spacer                                      | 0.125rem
+ $dt_font_weight                                       | 700
+ $embed_responsive_aspect_ratios                       | 21 9, 16 9, 4 3, 1 1
+ $emphasized_link_hover_darken_percentage              | 0.15
+ $enable_deprecation_messages                          | 1
+ $enable_gradients                                     | 1
+ $enable_grid_classes                                  | 1
+ $enable_hover_media_query                             | 0
+ $enable_pointer_cursor_for_buttons                    | 1
+ $enable_prefers_reduced_motion_media_query            | 1
+ $enable_print_styles                                  | 1
+ $enable_responsive_font_sizes                         | 0
+ $enable_rounded                                       | 1
+ $enable_shadows                                       | 1
+ $enable_transitions                                   | 1
+ $enable_validation_icons                              | 1
+ $error                                                | #dc3545
+ $fa_border_color                                      | #eee
+ $fa_css_prefix                                        | fa
+ $fa_font_size_base                                    | 16px
+ $fa_inverse                                           | #fff
+ $fa_li_width                                          | 2em
+ $fa_var_500px                                         | \f26e
+ $fa_var_accessible_icon                               | \f368
+ $fa_var_accusoft                                      | \f369
+ $fa_var_address_book                                  | \f2b9
+ $fa_var_address_card                                  | \f2bb
+ $fa_var_adjust                                        | \f042
+ $fa_var_adn                                           | \f170
+ $fa_var_adversal                                      | \f36a
+ $fa_var_affiliatetheme                                | \f36b
+ $fa_var_algolia                                       | \f36c
+ $fa_var_align_center                                  | \f037
+ $fa_var_align_justify                                 | \f039
+ $fa_var_align_left                                    | \f036
+ $fa_var_align_right                                   | \f038
+ $fa_var_allergies                                     | \f461
+ $fa_var_amazon                                        | \f270
+ $fa_var_amazon_pay                                    | \f42c
+ $fa_var_ambulance                                     | \f0f9
+ $fa_var_american_sign_language_interpreting           | \f2a3
+ $fa_var_amilia                                        | \f36d
+ $fa_var_anchor                                        | \f13d
+ $fa_var_android                                       | \f17b
+ $fa_var_angellist                                     | \f209
+ $fa_var_angle_double_down                             | \f103
+ $fa_var_angle_double_left                             | \f100
+ $fa_var_angle_double_right                            | \f101
+ $fa_var_angle_double_up                               | \f102
+ $fa_var_angle_down                                    | \f107
+ $fa_var_angle_left                                    | \f104
+ $fa_var_angle_right                                   | \f105
+ $fa_var_angle_up                                      | \f106
+ $fa_var_angrycreative                                 | \f36e
+ $fa_var_angular                                       | \f420
+ $fa_var_app_store                                     | \f36f
+ $fa_var_app_store_ios                                 | \f370
+ $fa_var_apper                                         | \f371
+ $fa_var_apple                                         | \f179
+ $fa_var_apple_pay                                     | \f415
+ $fa_var_archive                                       | \f187
+ $fa_var_arrow_alt_circle_down                         | \f358
+ $fa_var_arrow_alt_circle_left                         | \f359
+ $fa_var_arrow_alt_circle_right                        | \f35a
+ $fa_var_arrow_alt_circle_up                           | \f35b
+ $fa_var_arrow_circle_down                             | \f0ab
+ $fa_var_arrow_circle_left                             | \f0a8
+ $fa_var_arrow_circle_right                            | \f0a9
+ $fa_var_arrow_circle_up                               | \f0aa
+ $fa_var_arrow_down                                    | \f063
+ $fa_var_arrow_left                                    | \f060
+ $fa_var_arrow_right                                   | \f061
+ $fa_var_arrow_up                                      | \f062
+ $fa_var_arrows_alt                                    | \f0b2
+ $fa_var_arrows_alt_h                                  | \f337
+ $fa_var_arrows_alt_v                                  | \f338
+ $fa_var_assistive_listening_systems                   | \f2a2
+ $fa_var_asterisk                                      | \f069
+ $fa_var_asymmetrik                                    | \f372
+ $fa_var_at                                            | \f1fa
+ $fa_var_audible                                       | \f373
+ $fa_var_audio_description                             | \f29e
+ $fa_var_autoprefixer                                  | \f41c
+ $fa_var_avianex                                       | \f374
+ $fa_var_aviato                                        | \f421
+ $fa_var_aws                                           | \f375
+ $fa_var_backward                                      | \f04a
+ $fa_var_balance_scale                                 | \f24e
+ $fa_var_ban                                           | \f05e
+ $fa_var_band_aid                                      | \f462
+ $fa_var_bandcamp                                      | \f2d5
+ $fa_var_barcode                                       | \f02a
+ $fa_var_bars                                          | \f0c9
+ $fa_var_baseball_ball                                 | \f433
+ $fa_var_basketball_ball                               | \f434
+ $fa_var_bath                                          | \f2cd
+ $fa_var_battery_empty                                 | \f244
+ $fa_var_battery_full                                  | \f240
+ $fa_var_battery_half                                  | \f242
+ $fa_var_battery_quarter                               | \f243
+ $fa_var_battery_three_quarters                        | \f241
+ $fa_var_bed                                           | \f236
+ $fa_var_beer                                          | \f0fc
+ $fa_var_behance                                       | \f1b4
+ $fa_var_behance_square                                | \f1b5
+ $fa_var_bell                                          | \f0f3
+ $fa_var_bell_slash                                    | \f1f6
+ $fa_var_bicycle                                       | \f206
+ $fa_var_bimobject                                     | \f378
+ $fa_var_binoculars                                    | \f1e5
+ $fa_var_birthday_cake                                 | \f1fd
+ $fa_var_bitbucket                                     | \f171
+ $fa_var_bitcoin                                       | \f379
+ $fa_var_bity                                          | \f37a
+ $fa_var_black_tie                                     | \f27e
+ $fa_var_blackberry                                    | \f37b
+ $fa_var_blender                                       | \f517
+ $fa_var_blind                                         | \f29d
+ $fa_var_blogger                                       | \f37c
+ $fa_var_blogger_b                                     | \f37d
+ $fa_var_bluetooth                                     | \f293
+ $fa_var_bluetooth_b                                   | \f294
+ $fa_var_bold                                          | \f032
+ $fa_var_bolt                                          | \f0e7
+ $fa_var_bomb                                          | \f1e2
+ $fa_var_book                                          | \f02d
+ $fa_var_book_open                                     | \f518
+ $fa_var_bookmark                                      | \f02e
+ $fa_var_bowling_ball                                  | \f436
+ $fa_var_box                                           | \f466
+ $fa_var_box_open                                      | \f49e
+ $fa_var_boxes                                         | \f468
+ $fa_var_braille                                       | \f2a1
+ $fa_var_briefcase                                     | \f0b1
+ $fa_var_briefcase_medical                             | \f469
+ $fa_var_broadcast_tower                               | \f519
+ $fa_var_broom                                         | \f51a
+ $fa_var_btc                                           | \f15a
+ $fa_var_bug                                           | \f188
+ $fa_var_building                                      | \f1ad
+ $fa_var_bullhorn                                      | \f0a1
+ $fa_var_bullseye                                      | \f140
+ $fa_var_burn                                          | \f46a
+ $fa_var_buromobelexperte                              | \f37f
+ $fa_var_bus                                           | \f207
+ $fa_var_buysellads                                    | \f20d
+ $fa_var_calculator                                    | \f1ec
+ $fa_var_calendar                                      | \f133
+ $fa_var_calendar_alt                                  | \f073
+ $fa_var_calendar_check                                | \f274
+ $fa_var_calendar_minus                                | \f272
+ $fa_var_calendar_plus                                 | \f271
+ $fa_var_calendar_times                                | \f273
+ $fa_var_camera                                        | \f030
+ $fa_var_camera_retro                                  | \f083
+ $fa_var_capsules                                      | \f46b
+ $fa_var_car                                           | \f1b9
+ $fa_var_caret_down                                    | \f0d7
+ $fa_var_caret_left                                    | \f0d9
+ $fa_var_caret_right                                   | \f0da
+ $fa_var_caret_square_down                             | \f150
+ $fa_var_caret_square_left                             | \f191
+ $fa_var_caret_square_right                            | \f152
+ $fa_var_caret_square_up                               | \f151
+ $fa_var_caret_up                                      | \f0d8
+ $fa_var_cart_arrow_down                               | \f218
+ $fa_var_cart_plus                                     | \f217
+ $fa_var_cc_amazon_pay                                 | \f42d
+ $fa_var_cc_amex                                       | \f1f3
+ $fa_var_cc_apple_pay                                  | \f416
+ $fa_var_cc_diners_club                                | \f24c
+ $fa_var_cc_discover                                   | \f1f2
+ $fa_var_cc_jcb                                        | \f24b
+ $fa_var_cc_mastercard                                 | \f1f1
+ $fa_var_cc_paypal                                     | \f1f4
+ $fa_var_cc_stripe                                     | \f1f5
+ $fa_var_cc_visa                                       | \f1f0
+ $fa_var_centercode                                    | \f380
+ $fa_var_certificate                                   | \f0a3
+ $fa_var_chalkboard                                    | \f51b
+ $fa_var_chalkboard_teacher                            | \f51c
+ $fa_var_chart_area                                    | \f1fe
+ $fa_var_chart_bar                                     | \f080
+ $fa_var_chart_line                                    | \f201
+ $fa_var_chart_pie                                     | \f200
+ $fa_var_check                                         | \f00c
+ $fa_var_check_circle                                  | \f058
+ $fa_var_check_square                                  | \f14a
+ $fa_var_chess                                         | \f439
+ $fa_var_chess_bishop                                  | \f43a
+ $fa_var_chess_board                                   | \f43c
+ $fa_var_chess_king                                    | \f43f
+ $fa_var_chess_knight                                  | \f441
+ $fa_var_chess_pawn                                    | \f443
+ $fa_var_chess_queen                                   | \f445
+ $fa_var_chess_rook                                    | \f447
+ $fa_var_chevron_circle_down                           | \f13a
+ $fa_var_chevron_circle_left                           | \f137
+ $fa_var_chevron_circle_right                          | \f138
+ $fa_var_chevron_circle_up                             | \f139
+ $fa_var_chevron_down                                  | \f078
+ $fa_var_chevron_left                                  | \f053
+ $fa_var_chevron_right                                 | \f054
+ $fa_var_chevron_up                                    | \f077
+ $fa_var_child                                         | \f1ae
+ $fa_var_chrome                                        | \f268
+ $fa_var_church                                        | \f51d
+ $fa_var_circle                                        | \f111
+ $fa_var_circle_notch                                  | \f1ce
+ $fa_var_clipboard                                     | \f328
+ $fa_var_clipboard_check                               | \f46c
+ $fa_var_clipboard_list                                | \f46d
+ $fa_var_clock                                         | \f017
+ $fa_var_clone                                         | \f24d
+ $fa_var_closed_captioning                             | \f20a
+ $fa_var_cloud                                         | \f0c2
+ $fa_var_cloud_download_alt                            | \f381
+ $fa_var_cloud_upload_alt                              | \f382
+ $fa_var_cloudscale                                    | \f383
+ $fa_var_cloudsmith                                    | \f384
+ $fa_var_cloudversify                                  | \f385
+ $fa_var_code                                          | \f121
+ $fa_var_code_branch                                   | \f126
+ $fa_var_codepen                                       | \f1cb
+ $fa_var_codiepie                                      | \f284
+ $fa_var_coffee                                        | \f0f4
+ $fa_var_cog                                           | \f013
+ $fa_var_cogs                                          | \f085
+ $fa_var_coins                                         | \f51e
+ $fa_var_columns                                       | \f0db
+ $fa_var_comment                                       | \f075
+ $fa_var_comment_alt                                   | \f27a
+ $fa_var_comment_dots                                  | \f4ad
+ $fa_var_comment_slash                                 | \f4b3
+ $fa_var_comments                                      | \f086
+ $fa_var_compact_disc                                  | \f51f
+ $fa_var_compass                                       | \f14e
+ $fa_var_compress                                      | \f066
+ $fa_var_connectdevelop                                | \f20e
+ $fa_var_contao                                        | \f26d
+ $fa_var_copy                                          | \f0c5
+ $fa_var_copyright                                     | \f1f9
+ $fa_var_couch                                         | \f4b8
+ $fa_var_cpanel                                        | \f388
+ $fa_var_creative_commons                              | \f25e
+ $fa_var_creative_commons_by                           | \f4e7
+ $fa_var_creative_commons_nc                           | \f4e8
+ $fa_var_creative_commons_nc_eu                        | \f4e9
+ $fa_var_creative_commons_nc_jp                        | \f4ea
+ $fa_var_creative_commons_nd                           | \f4eb
+ $fa_var_creative_commons_pd                           | \f4ec
+ $fa_var_creative_commons_pd_alt                       | \f4ed
+ $fa_var_creative_commons_remix                        | \f4ee
+ $fa_var_creative_commons_sa                           | \f4ef
+ $fa_var_creative_commons_sampling                     | \f4f0
+ $fa_var_creative_commons_sampling_plus                | \f4f1
+ $fa_var_creative_commons_share                        | \f4f2
+ $fa_var_credit_card                                   | \f09d
+ $fa_var_crop                                          | \f125
+ $fa_var_crosshairs                                    | \f05b
+ $fa_var_crow                                          | \f520
+ $fa_var_crown                                         | \f521
+ $fa_var_css3                                          | \f13c
+ $fa_var_css3_alt                                      | \f38b
+ $fa_var_cube                                          | \f1b2
+ $fa_var_cubes                                         | \f1b3
+ $fa_var_cut                                           | \f0c4
+ $fa_var_cuttlefish                                    | \f38c
+ $fa_var_d_and_d                                       | \f38d
+ $fa_var_dashcube                                      | \f210
+ $fa_var_database                                      | \f1c0
+ $fa_var_deaf                                          | \f2a4
+ $fa_var_delicious                                     | \f1a5
+ $fa_var_deploydog                                     | \f38e
+ $fa_var_deskpro                                       | \f38f
+ $fa_var_desktop                                       | \f108
+ $fa_var_deviantart                                    | \f1bd
+ $fa_var_diagnoses                                     | \f470
+ $fa_var_dice                                          | \f522
+ $fa_var_dice_five                                     | \f523
+ $fa_var_dice_four                                     | \f524
+ $fa_var_dice_one                                      | \f525
+ $fa_var_dice_six                                      | \f526
+ $fa_var_dice_three                                    | \f527
+ $fa_var_dice_two                                      | \f528
+ $fa_var_digg                                          | \f1a6
+ $fa_var_digital_ocean                                 | \f391
+ $fa_var_discord                                       | \f392
+ $fa_var_discourse                                     | \f393
+ $fa_var_divide                                        | \f529
+ $fa_var_dna                                           | \f471
+ $fa_var_dochub                                        | \f394
+ $fa_var_docker                                        | \f395
+ $fa_var_dollar_sign                                   | \f155
+ $fa_var_dolly                                         | \f472
+ $fa_var_dolly_flatbed                                 | \f474
+ $fa_var_donate                                        | \f4b9
+ $fa_var_door_closed                                   | \f52a
+ $fa_var_door_open                                     | \f52b
+ $fa_var_dot_circle                                    | \f192
+ $fa_var_dove                                          | \f4ba
+ $fa_var_download                                      | \f019
+ $fa_var_draft2digital                                 | \f396
+ $fa_var_dribbble                                      | \f17d
+ $fa_var_dribbble_square                               | \f397
+ $fa_var_dropbox                                       | \f16b
+ $fa_var_drupal                                        | \f1a9
+ $fa_var_dumbbell                                      | \f44b
+ $fa_var_dyalog                                        | \f399
+ $fa_var_earlybirds                                    | \f39a
+ $fa_var_ebay                                          | \f4f4
+ $fa_var_edge                                          | \f282
+ $fa_var_edit                                          | \f044
+ $fa_var_eject                                         | \f052
+ $fa_var_elementor                                     | \f430
+ $fa_var_ellipsis_h                                    | \f141
+ $fa_var_ellipsis_v                                    | \f142
+ $fa_var_ember                                         | \f423
+ $fa_var_empire                                        | \f1d1
+ $fa_var_envelope                                      | \f0e0
+ $fa_var_envelope_open                                 | \f2b6
+ $fa_var_envelope_square                               | \f199
+ $fa_var_envira                                        | \f299
+ $fa_var_equals                                        | \f52c
+ $fa_var_eraser                                        | \f12d
+ $fa_var_erlang                                        | \f39d
+ $fa_var_ethereum                                      | \f42e
+ $fa_var_etsy                                          | \f2d7
+ $fa_var_euro_sign                                     | \f153
+ $fa_var_exchange_alt                                  | \f362
+ $fa_var_exclamation                                   | \f12a
+ $fa_var_exclamation_circle                            | \f06a
+ $fa_var_exclamation_triangle                          | \f071
+ $fa_var_expand                                        | \f065
+ $fa_var_expand_arrows_alt                             | \f31e
+ $fa_var_expeditedssl                                  | \f23e
+ $fa_var_external_link_alt                             | \f35d
+ $fa_var_external_link_square_alt                      | \f360
+ $fa_var_eye                                           | \f06e
+ $fa_var_eye_dropper                                   | \f1fb
+ $fa_var_eye_slash                                     | \f070
+ $fa_var_facebook                                      | \f09a
+ $fa_var_facebook_f                                    | \f39e
+ $fa_var_facebook_messenger                            | \f39f
+ $fa_var_facebook_square                               | \f082
+ $fa_var_fast_backward                                 | \f049
+ $fa_var_fast_forward                                  | \f050
+ $fa_var_fax                                           | \f1ac
+ $fa_var_feather                                       | \f52d
+ $fa_var_female                                        | \f182
+ $fa_var_fighter_jet                                   | \f0fb
+ $fa_var_file                                          | \f15b
+ $fa_var_file_alt                                      | \f15c
+ $fa_var_file_archive                                  | \f1c6
+ $fa_var_file_audio                                    | \f1c7
+ $fa_var_file_code                                     | \f1c9
+ $fa_var_file_excel                                    | \f1c3
+ $fa_var_file_image                                    | \f1c5
+ $fa_var_file_medical                                  | \f477
+ $fa_var_file_medical_alt                              | \f478
+ $fa_var_file_pdf                                      | \f1c1
+ $fa_var_file_powerpoint                               | \f1c4
+ $fa_var_file_video                                    | \f1c8
+ $fa_var_file_word                                     | \f1c2
+ $fa_var_film                                          | \f008
+ $fa_var_filter                                        | \f0b0
+ $fa_var_fire                                          | \f06d
+ $fa_var_fire_extinguisher                             | \f134
+ $fa_var_firefox                                       | \f269
+ $fa_var_first_aid                                     | \f479
+ $fa_var_first_order                                   | \f2b0
+ $fa_var_first_order_alt                               | \f50a
+ $fa_var_firstdraft                                    | \f3a1
+ $fa_var_flag                                          | \f024
+ $fa_var_flag_checkered                                | \f11e
+ $fa_var_flask                                         | \f0c3
+ $fa_var_flickr                                        | \f16e
+ $fa_var_flipboard                                     | \f44d
+ $fa_var_fly                                           | \f417
+ $fa_var_folder                                        | \f07b
+ $fa_var_folder_open                                   | \f07c
+ $fa_var_font                                          | \f031
+ $fa_var_font_awesome                                  | \f2b4
+ $fa_var_font_awesome_alt                              | \f35c
+ $fa_var_font_awesome_flag                             | \f425
+ $fa_var_font_awesome_logo_full                        | \f4e6
+ $fa_var_fonticons                                     | \f280
+ $fa_var_fonticons_fi                                  | \f3a2
+ $fa_var_football_ball                                 | \f44e
+ $fa_var_fort_awesome                                  | \f286
+ $fa_var_fort_awesome_alt                              | \f3a3
+ $fa_var_forumbee                                      | \f211
+ $fa_var_forward                                       | \f04e
+ $fa_var_foursquare                                    | \f180
+ $fa_var_free_code_camp                                | \f2c5
+ $fa_var_freebsd                                       | \f3a4
+ $fa_var_frog                                          | \f52e
+ $fa_var_frown                                         | \f119
+ $fa_var_fulcrum                                       | \f50b
+ $fa_var_futbol                                        | \f1e3
+ $fa_var_galactic_republic                             | \f50c
+ $fa_var_galactic_senate                               | \f50d
+ $fa_var_gamepad                                       | \f11b
+ $fa_var_gas_pump                                      | \f52f
+ $fa_var_gavel                                         | \f0e3
+ $fa_var_gem                                           | \f3a5
+ $fa_var_genderless                                    | \f22d
+ $fa_var_get_pocket                                    | \f265
+ $fa_var_gg                                            | \f260
+ $fa_var_gg_circle                                     | \f261
+ $fa_var_gift                                          | \f06b
+ $fa_var_git                                           | \f1d3
+ $fa_var_git_square                                    | \f1d2
+ $fa_var_github                                        | \f09b
+ $fa_var_github_alt                                    | \f113
+ $fa_var_github_square                                 | \f092
+ $fa_var_gitkraken                                     | \f3a6
+ $fa_var_gitlab                                        | \f296
+ $fa_var_gitter                                        | \f426
+ $fa_var_glass_martini                                 | \f000
+ $fa_var_glasses                                       | \f530
+ $fa_var_glide                                         | \f2a5
+ $fa_var_glide_g                                       | \f2a6
+ $fa_var_globe                                         | \f0ac
+ $fa_var_gofore                                        | \f3a7
+ $fa_var_golf_ball                                     | \f450
+ $fa_var_goodreads                                     | \f3a8
+ $fa_var_goodreads_g                                   | \f3a9
+ $fa_var_google                                        | \f1a0
+ $fa_var_google_drive                                  | \f3aa
+ $fa_var_google_play                                   | \f3ab
+ $fa_var_google_plus                                   | \f2b3
+ $fa_var_google_plus_g                                 | \f0d5
+ $fa_var_google_plus_square                            | \f0d4
+ $fa_var_google_wallet                                 | \f1ee
+ $fa_var_graduation_cap                                | \f19d
+ $fa_var_gratipay                                      | \f184
+ $fa_var_grav                                          | \f2d6
+ $fa_var_greater_than                                  | \f531
+ $fa_var_greater_than_equal                            | \f532
+ $fa_var_gripfire                                      | \f3ac
+ $fa_var_grunt                                         | \f3ad
+ $fa_var_gulp                                          | \f3ae
+ $fa_var_h_square                                      | \f0fd
+ $fa_var_hacker_news                                   | \f1d4
+ $fa_var_hacker_news_square                            | \f3af
+ $fa_var_hand_holding                                  | \f4bd
+ $fa_var_hand_holding_heart                            | \f4be
+ $fa_var_hand_holding_usd                              | \f4c0
+ $fa_var_hand_lizard                                   | \f258
+ $fa_var_hand_paper                                    | \f256
+ $fa_var_hand_peace                                    | \f25b
+ $fa_var_hand_point_down                               | \f0a7
+ $fa_var_hand_point_left                               | \f0a5
+ $fa_var_hand_point_right                              | \f0a4
+ $fa_var_hand_point_up                                 | \f0a6
+ $fa_var_hand_pointer                                  | \f25a
+ $fa_var_hand_rock                                     | \f255
+ $fa_var_hand_scissors                                 | \f257
+ $fa_var_hand_spock                                    | \f259
+ $fa_var_hands                                         | \f4c2
+ $fa_var_hands_helping                                 | \f4c4
+ $fa_var_handshake                                     | \f2b5
+ $fa_var_hashtag                                       | \f292
+ $fa_var_hdd                                           | \f0a0
+ $fa_var_heading                                       | \f1dc
+ $fa_var_headphones                                    | \f025
+ $fa_var_heart                                         | \f004
+ $fa_var_heartbeat                                     | \f21e
+ $fa_var_helicopter                                    | \f533
+ $fa_var_hips                                          | \f452
+ $fa_var_hire_a_helper                                 | \f3b0
+ $fa_var_history                                       | \f1da
+ $fa_var_hockey_puck                                   | \f453
+ $fa_var_home                                          | \f015
+ $fa_var_hooli                                         | \f427
+ $fa_var_hospital                                      | \f0f8
+ $fa_var_hospital_alt                                  | \f47d
+ $fa_var_hospital_symbol                               | \f47e
+ $fa_var_hotjar                                        | \f3b1
+ $fa_var_hourglass                                     | \f254
+ $fa_var_hourglass_end                                 | \f253
+ $fa_var_hourglass_half                                | \f252
+ $fa_var_hourglass_start                               | \f251
+ $fa_var_houzz                                         | \f27c
+ $fa_var_html5                                         | \f13b
+ $fa_var_hubspot                                       | \f3b2
+ $fa_var_i_cursor                                      | \f246
+ $fa_var_id_badge                                      | \f2c1
+ $fa_var_id_card                                       | \f2c2
+ $fa_var_id_card_alt                                   | \f47f
+ $fa_var_image                                         | \f03e
+ $fa_var_images                                        | \f302
+ $fa_var_imdb                                          | \f2d8
+ $fa_var_inbox                                         | \f01c
+ $fa_var_indent                                        | \f03c
+ $fa_var_industry                                      | \f275
+ $fa_var_infinity                                      | \f534
+ $fa_var_info                                          | \f129
+ $fa_var_info_circle                                   | \f05a
+ $fa_var_instagram                                     | \f16d
+ $fa_var_internet_explorer                             | \f26b
+ $fa_var_ioxhost                                       | \f208
+ $fa_var_italic                                        | \f033
+ $fa_var_itunes                                        | \f3b4
+ $fa_var_itunes_note                                   | \f3b5
+ $fa_var_java                                          | \f4e4
+ $fa_var_jedi_order                                    | \f50e
+ $fa_var_jenkins                                       | \f3b6
+ $fa_var_joget                                         | \f3b7
+ $fa_var_joomla                                        | \f1aa
+ $fa_var_js                                            | \f3b8
+ $fa_var_js_square                                     | \f3b9
+ $fa_var_jsfiddle                                      | \f1cc
+ $fa_var_key                                           | \f084
+ $fa_var_keybase                                       | \f4f5
+ $fa_var_keyboard                                      | \f11c
+ $fa_var_keycdn                                        | \f3ba
+ $fa_var_kickstarter                                   | \f3bb
+ $fa_var_kickstarter_k                                 | \f3bc
+ $fa_var_kiwi_bird                                     | \f535
+ $fa_var_korvue                                        | \f42f
+ $fa_var_language                                      | \f1ab
+ $fa_var_laptop                                        | \f109
+ $fa_var_laravel                                       | \f3bd
+ $fa_var_lastfm                                        | \f202
+ $fa_var_lastfm_square                                 | \f203
+ $fa_var_leaf                                          | \f06c
+ $fa_var_leanpub                                       | \f212
+ $fa_var_lemon                                         | \f094
+ $fa_var_less                                          | \f41d
+ $fa_var_less_than                                     | \f536
+ $fa_var_less_than_equal                               | \f537
+ $fa_var_level_down_alt                                | \f3be
+ $fa_var_level_up_alt                                  | \f3bf
+ $fa_var_life_ring                                     | \f1cd
+ $fa_var_lightbulb                                     | \f0eb
+ $fa_var_line                                          | \f3c0
+ $fa_var_link                                          | \f0c1
+ $fa_var_linkedin                                      | \f08c
+ $fa_var_linkedin_in                                   | \f0e1
+ $fa_var_linode                                        | \f2b8
+ $fa_var_linux                                         | \f17c
+ $fa_var_lira_sign                                     | \f195
+ $fa_var_list                                          | \f03a
+ $fa_var_list_alt                                      | \f022
+ $fa_var_list_ol                                       | \f0cb
+ $fa_var_list_ul                                       | \f0ca
+ $fa_var_location_arrow                                | \f124
+ $fa_var_lock                                          | \f023
+ $fa_var_lock_open                                     | \f3c1
+ $fa_var_long_arrow_alt_down                           | \f309
+ $fa_var_long_arrow_alt_left                           | \f30a
+ $fa_var_long_arrow_alt_right                          | \f30b
+ $fa_var_long_arrow_alt_up                             | \f30c
+ $fa_var_low_vision                                    | \f2a8
+ $fa_var_lyft                                          | \f3c3
+ $fa_var_magento                                       | \f3c4
+ $fa_var_magic                                         | \f0d0
+ $fa_var_magnet                                        | \f076
+ $fa_var_male                                          | \f183
+ $fa_var_mandalorian                                   | \f50f
+ $fa_var_map                                           | \f279
+ $fa_var_map_marker                                    | \f041
+ $fa_var_map_marker_alt                                | \f3c5
+ $fa_var_map_pin                                       | \f276
+ $fa_var_map_signs                                     | \f277
+ $fa_var_mars                                          | \f222
+ $fa_var_mars_double                                   | \f227
+ $fa_var_mars_stroke                                   | \f229
+ $fa_var_mars_stroke_h                                 | \f22b
+ $fa_var_mars_stroke_v                                 | \f22a
+ $fa_var_mastodon                                      | \f4f6
+ $fa_var_maxcdn                                        | \f136
+ $fa_var_medapps                                       | \f3c6
+ $fa_var_medium                                        | \f23a
+ $fa_var_medium_m                                      | \f3c7
+ $fa_var_medkit                                        | \f0fa
+ $fa_var_medrt                                         | \f3c8
+ $fa_var_meetup                                        | \f2e0
+ $fa_var_meh                                           | \f11a
+ $fa_var_memory                                        | \f538
+ $fa_var_mercury                                       | \f223
+ $fa_var_microchip                                     | \f2db
+ $fa_var_microphone                                    | \f130
+ $fa_var_microphone_alt                                | \f3c9
+ $fa_var_microphone_alt_slash                          | \f539
+ $fa_var_microphone_slash                              | \f131
+ $fa_var_microsoft                                     | \f3ca
+ $fa_var_minus                                         | \f068
+ $fa_var_minus_circle                                  | \f056
+ $fa_var_minus_square                                  | \f146
+ $fa_var_mix                                           | \f3cb
+ $fa_var_mixcloud                                      | \f289
+ $fa_var_mizuni                                        | \f3cc
+ $fa_var_mobile                                        | \f10b
+ $fa_var_mobile_alt                                    | \f3cd
+ $fa_var_modx                                          | \f285
+ $fa_var_monero                                        | \f3d0
+ $fa_var_money_bill                                    | \f0d6
+ $fa_var_money_bill_alt                                | \f3d1
+ $fa_var_money_bill_wave                               | \f53a
+ $fa_var_money_bill_wave_alt                           | \f53b
+ $fa_var_money_check                                   | \f53c
+ $fa_var_money_check_alt                               | \f53d
+ $fa_var_moon                                          | \f186
+ $fa_var_motorcycle                                    | \f21c
+ $fa_var_mouse_pointer                                 | \f245
+ $fa_var_music                                         | \f001
+ $fa_var_napster                                       | \f3d2
+ $fa_var_neuter                                        | \f22c
+ $fa_var_newspaper                                     | \f1ea
+ $fa_var_nintendo_switch                               | \f418
+ $fa_var_node                                          | \f419
+ $fa_var_node_js                                       | \f3d3
+ $fa_var_not_equal                                     | \f53e
+ $fa_var_notes_medical                                 | \f481
+ $fa_var_npm                                           | \f3d4
+ $fa_var_ns8                                           | \f3d5
+ $fa_var_nutritionix                                   | \f3d6
+ $fa_var_object_group                                  | \f247
+ $fa_var_object_ungroup                                | \f248
+ $fa_var_odnoklassniki                                 | \f263
+ $fa_var_odnoklassniki_square                          | \f264
+ $fa_var_old_republic                                  | \f510
+ $fa_var_opencart                                      | \f23d
+ $fa_var_openid                                        | \f19b
+ $fa_var_opera                                         | \f26a
+ $fa_var_optin_monster                                 | \f23c
+ $fa_var_osi                                           | \f41a
+ $fa_var_outdent                                       | \f03b
+ $fa_var_page4                                         | \f3d7
+ $fa_var_pagelines                                     | \f18c
+ $fa_var_paint_brush                                   | \f1fc
+ $fa_var_palette                                       | \f53f
+ $fa_var_palfed                                        | \f3d8
+ $fa_var_pallet                                        | \f482
+ $fa_var_paper_plane                                   | \f1d8
+ $fa_var_paperclip                                     | \f0c6
+ $fa_var_parachute_box                                 | \f4cd
+ $fa_var_paragraph                                     | \f1dd
+ $fa_var_parking                                       | \f540
+ $fa_var_paste                                         | \f0ea
+ $fa_var_patreon                                       | \f3d9
+ $fa_var_pause                                         | \f04c
+ $fa_var_pause_circle                                  | \f28b
+ $fa_var_paw                                           | \f1b0
+ $fa_var_paypal                                        | \f1ed
+ $fa_var_pen_square                                    | \f14b
+ $fa_var_pencil_alt                                    | \f303
+ $fa_var_people_carry                                  | \f4ce
+ $fa_var_percent                                       | \f295
+ $fa_var_percentage                                    | \f541
+ $fa_var_periscope                                     | \f3da
+ $fa_var_phabricator                                   | \f3db
+ $fa_var_phoenix_framework                             | \f3dc
+ $fa_var_phoenix_squadron                              | \f511
+ $fa_var_phone                                         | \f095
+ $fa_var_phone_slash                                   | \f3dd
+ $fa_var_phone_square                                  | \f098
+ $fa_var_phone_volume                                  | \f2a0
+ $fa_var_php                                           | \f457
+ $fa_var_pied_piper                                    | \f2ae
+ $fa_var_pied_piper_alt                                | \f1a8
+ $fa_var_pied_piper_hat                                | \f4e5
+ $fa_var_pied_piper_pp                                 | \f1a7
+ $fa_var_piggy_bank                                    | \f4d3
+ $fa_var_pills                                         | \f484
+ $fa_var_pinterest                                     | \f0d2
+ $fa_var_pinterest_p                                   | \f231
+ $fa_var_pinterest_square                              | \f0d3
+ $fa_var_plane                                         | \f072
+ $fa_var_play                                          | \f04b
+ $fa_var_play_circle                                   | \f144
+ $fa_var_playstation                                   | \f3df
+ $fa_var_plug                                          | \f1e6
+ $fa_var_plus                                          | \f067
+ $fa_var_plus_circle                                   | \f055
+ $fa_var_plus_square                                   | \f0fe
+ $fa_var_podcast                                       | \f2ce
+ $fa_var_poo                                           | \f2fe
+ $fa_var_portrait                                      | \f3e0
+ $fa_var_pound_sign                                    | \f154
+ $fa_var_power_off                                     | \f011
+ $fa_var_prescription_bottle                           | \f485
+ $fa_var_prescription_bottle_alt                       | \f486
+ $fa_var_print                                         | \f02f
+ $fa_var_procedures                                    | \f487
+ $fa_var_product_hunt                                  | \f288
+ $fa_var_project_diagram                               | \f542
+ $fa_var_pushed                                        | \f3e1
+ $fa_var_puzzle_piece                                  | \f12e
+ $fa_var_python                                        | \f3e2
+ $fa_var_qq                                            | \f1d6
+ $fa_var_qrcode                                        | \f029
+ $fa_var_question                                      | \f128
+ $fa_var_question_circle                               | \f059
+ $fa_var_quidditch                                     | \f458
+ $fa_var_quinscape                                     | \f459
+ $fa_var_quora                                         | \f2c4
+ $fa_var_quote_left                                    | \f10d
+ $fa_var_quote_right                                   | \f10e
+ $fa_var_r_project                                     | \f4f7
+ $fa_var_random                                        | \f074
+ $fa_var_ravelry                                       | \f2d9
+ $fa_var_react                                         | \f41b
+ $fa_var_readme                                        | \f4d5
+ $fa_var_rebel                                         | \f1d0
+ $fa_var_receipt                                       | \f543
+ $fa_var_recycle                                       | \f1b8
+ $fa_var_red_river                                     | \f3e3
+ $fa_var_reddit                                        | \f1a1
+ $fa_var_reddit_alien                                  | \f281
+ $fa_var_reddit_square                                 | \f1a2
+ $fa_var_redo                                          | \f01e
+ $fa_var_redo_alt                                      | \f2f9
+ $fa_var_registered                                    | \f25d
+ $fa_var_rendact                                       | \f3e4
+ $fa_var_renren                                        | \f18b
+ $fa_var_reply                                         | \f3e5
+ $fa_var_reply_all                                     | \f122
+ $fa_var_replyd                                        | \f3e6
+ $fa_var_researchgate                                  | \f4f8
+ $fa_var_resolving                                     | \f3e7
+ $fa_var_retweet                                       | \f079
+ $fa_var_ribbon                                        | \f4d6
+ $fa_var_road                                          | \f018
+ $fa_var_robot                                         | \f544
+ $fa_var_rocket                                        | \f135
+ $fa_var_rocketchat                                    | \f3e8
+ $fa_var_rockrms                                       | \f3e9
+ $fa_var_rss                                           | \f09e
+ $fa_var_rss_square                                    | \f143
+ $fa_var_ruble_sign                                    | \f158
+ $fa_var_ruler                                         | \f545
+ $fa_var_ruler_combined                                | \f546
+ $fa_var_ruler_horizontal                              | \f547
+ $fa_var_ruler_vertical                                | \f548
+ $fa_var_rupee_sign                                    | \f156
+ $fa_var_safari                                        | \f267
+ $fa_var_sass                                          | \f41e
+ $fa_var_save                                          | \f0c7
+ $fa_var_schlix                                        | \f3ea
+ $fa_var_school                                        | \f549
+ $fa_var_screwdriver                                   | \f54a
+ $fa_var_scribd                                        | \f28a
+ $fa_var_search                                        | \f002
+ $fa_var_search_minus                                  | \f010
+ $fa_var_search_plus                                   | \f00e
+ $fa_var_searchengin                                   | \f3eb
+ $fa_var_seedling                                      | \f4d8
+ $fa_var_sellcast                                      | \f2da
+ $fa_var_sellsy                                        | \f213
+ $fa_var_server                                        | \f233
+ $fa_var_servicestack                                  | \f3ec
+ $fa_var_share                                         | \f064
+ $fa_var_share_alt                                     | \f1e0
+ $fa_var_share_alt_square                              | \f1e1
+ $fa_var_share_square                                  | \f14d
+ $fa_var_shekel_sign                                   | \f20b
+ $fa_var_shield_alt                                    | \f3ed
+ $fa_var_ship                                          | \f21a
+ $fa_var_shipping_fast                                 | \f48b
+ $fa_var_shirtsinbulk                                  | \f214
+ $fa_var_shoe_prints                                   | \f54b
+ $fa_var_shopping_bag                                  | \f290
+ $fa_var_shopping_basket                               | \f291
+ $fa_var_shopping_cart                                 | \f07a
+ $fa_var_shower                                        | \f2cc
+ $fa_var_sign                                          | \f4d9
+ $fa_var_sign_in_alt                                   | \f2f6
+ $fa_var_sign_language                                 | \f2a7
+ $fa_var_sign_out_alt                                  | \f2f5
+ $fa_var_signal                                        | \f012
+ $fa_var_simplybuilt                                   | \f215
+ $fa_var_sistrix                                       | \f3ee
+ $fa_var_sitemap                                       | \f0e8
+ $fa_var_sith                                          | \f512
+ $fa_var_skull                                         | \f54c
+ $fa_var_skyatlas                                      | \f216
+ $fa_var_skype                                         | \f17e
+ $fa_var_slack                                         | \f198
+ $fa_var_slack_hash                                    | \f3ef
+ $fa_var_sliders_h                                     | \f1de
+ $fa_var_slideshare                                    | \f1e7
+ $fa_var_smile                                         | \f118
+ $fa_var_smoking                                       | \f48d
+ $fa_var_smoking_ban                                   | \f54d
+ $fa_var_snapchat                                      | \f2ab
+ $fa_var_snapchat_ghost                                | \f2ac
+ $fa_var_snapchat_square                               | \f2ad
+ $fa_var_snowflake                                     | \f2dc
+ $fa_var_sort                                          | \f0dc
+ $fa_var_sort_alpha_down                               | \f15d
+ $fa_var_sort_alpha_up                                 | \f15e
+ $fa_var_sort_amount_down                              | \f160
+ $fa_var_sort_amount_up                                | \f161
+ $fa_var_sort_down                                     | \f0dd
+ $fa_var_sort_numeric_down                             | \f162
+ $fa_var_sort_numeric_up                               | \f163
+ $fa_var_sort_up                                       | \f0de
+ $fa_var_soundcloud                                    | \f1be
+ $fa_var_space_shuttle                                 | \f197
+ $fa_var_speakap                                       | \f3f3
+ $fa_var_spinner                                       | \f110
+ $fa_var_spotify                                       | \f1bc
+ $fa_var_square                                        | \f0c8
+ $fa_var_square_full                                   | \f45c
+ $fa_var_stack_exchange                                | \f18d
+ $fa_var_stack_overflow                                | \f16c
+ $fa_var_star                                          | \f005
+ $fa_var_star_half                                     | \f089
+ $fa_var_staylinked                                    | \f3f5
+ $fa_var_steam                                         | \f1b6
+ $fa_var_steam_square                                  | \f1b7
+ $fa_var_steam_symbol                                  | \f3f6
+ $fa_var_step_backward                                 | \f048
+ $fa_var_step_forward                                  | \f051
+ $fa_var_stethoscope                                   | \f0f1
+ $fa_var_sticker_mule                                  | \f3f7
+ $fa_var_sticky_note                                   | \f249
+ $fa_var_stop                                          | \f04d
+ $fa_var_stop_circle                                   | \f28d
+ $fa_var_stopwatch                                     | \f2f2
+ $fa_var_store                                         | \f54e
+ $fa_var_store_alt                                     | \f54f
+ $fa_var_strava                                        | \f428
+ $fa_var_stream                                        | \f550
+ $fa_var_street_view                                   | \f21d
+ $fa_var_strikethrough                                 | \f0cc
+ $fa_var_stripe                                        | \f429
+ $fa_var_stripe_s                                      | \f42a
+ $fa_var_stroopwafel                                   | \f551
+ $fa_var_studiovinari                                  | \f3f8
+ $fa_var_stumbleupon                                   | \f1a4
+ $fa_var_stumbleupon_circle                            | \f1a3
+ $fa_var_subscript                                     | \f12c
+ $fa_var_subway                                        | \f239
+ $fa_var_suitcase                                      | \f0f2
+ $fa_var_sun                                           | \f185
+ $fa_var_superpowers                                   | \f2dd
+ $fa_var_superscript                                   | \f12b
+ $fa_var_supple                                        | \f3f9
+ $fa_var_sync                                          | \f021
+ $fa_var_sync_alt                                      | \f2f1
+ $fa_var_syringe                                       | \f48e
+ $fa_var_table                                         | \f0ce
+ $fa_var_table_tennis                                  | \f45d
+ $fa_var_tablet                                        | \f10a
+ $fa_var_tablet_alt                                    | \f3fa
+ $fa_var_tablets                                       | \f490
+ $fa_var_tachometer_alt                                | \f3fd
+ $fa_var_tag                                           | \f02b
+ $fa_var_tags                                          | \f02c
+ $fa_var_tape                                          | \f4db
+ $fa_var_tasks                                         | \f0ae
+ $fa_var_taxi                                          | \f1ba
+ $fa_var_teamspeak                                     | \f4f9
+ $fa_var_telegram                                      | \f2c6
+ $fa_var_telegram_plane                                | \f3fe
+ $fa_var_tencent_weibo                                 | \f1d5
+ $fa_var_terminal                                      | \f120
+ $fa_var_text_height                                   | \f034
+ $fa_var_text_width                                    | \f035
+ $fa_var_th                                            | \f00a
+ $fa_var_th_large                                      | \f009
+ $fa_var_th_list                                       | \f00b
+ $fa_var_themeisle                                     | \f2b2
+ $fa_var_thermometer                                   | \f491
+ $fa_var_thermometer_empty                             | \f2cb
+ $fa_var_thermometer_full                              | \f2c7
+ $fa_var_thermometer_half                              | \f2c9
+ $fa_var_thermometer_quarter                           | \f2ca
+ $fa_var_thermometer_three_quarters                    | \f2c8
+ $fa_var_thumbs_down                                   | \f165
+ $fa_var_thumbs_up                                     | \f164
+ $fa_var_thumbtack                                     | \f08d
+ $fa_var_ticket_alt                                    | \f3ff
+ $fa_var_times                                         | \f00d
+ $fa_var_times_circle                                  | \f057
+ $fa_var_tint                                          | \f043
+ $fa_var_toggle_off                                    | \f204
+ $fa_var_toggle_on                                     | \f205
+ $fa_var_toolbox                                       | \f552
+ $fa_var_trade_federation                              | \f513
+ $fa_var_trademark                                     | \f25c
+ $fa_var_train                                         | \f238
+ $fa_var_transgender                                   | \f224
+ $fa_var_transgender_alt                               | \f225
+ $fa_var_trash                                         | \f1f8
+ $fa_var_trash_alt                                     | \f2ed
+ $fa_var_tree                                          | \f1bb
+ $fa_var_trello                                        | \f181
+ $fa_var_tripadvisor                                   | \f262
+ $fa_var_trophy                                        | \f091
+ $fa_var_truck                                         | \f0d1
+ $fa_var_truck_loading                                 | \f4de
+ $fa_var_truck_moving                                  | \f4df
+ $fa_var_tshirt                                        | \f553
+ $fa_var_tty                                           | \f1e4
+ $fa_var_tumblr                                        | \f173
+ $fa_var_tumblr_square                                 | \f174
+ $fa_var_tv                                            | \f26c
+ $fa_var_twitch                                        | \f1e8
+ $fa_var_twitter                                       | \f099
+ $fa_var_twitter_square                                | \f081
+ $fa_var_typo3                                         | \f42b
+ $fa_var_uber                                          | \f402
+ $fa_var_uikit                                         | \f403
+ $fa_var_umbrella                                      | \f0e9
+ $fa_var_underline                                     | \f0cd
+ $fa_var_undo                                          | \f0e2
+ $fa_var_undo_alt                                      | \f2ea
+ $fa_var_uniregistry                                   | \f404
+ $fa_var_universal_access                              | \f29a
+ $fa_var_university                                    | \f19c
+ $fa_var_unlink                                        | \f127
+ $fa_var_unlock                                        | \f09c
+ $fa_var_unlock_alt                                    | \f13e
+ $fa_var_untappd                                       | \f405
+ $fa_var_upload                                        | \f093
+ $fa_var_usb                                           | \f287
+ $fa_var_user                                          | \f007
+ $fa_var_user_alt                                      | \f406
+ $fa_var_user_alt_slash                                | \f4fa
+ $fa_var_user_astronaut                                | \f4fb
+ $fa_var_user_check                                    | \f4fc
+ $fa_var_user_circle                                   | \f2bd
+ $fa_var_user_clock                                    | \f4fd
+ $fa_var_user_cog                                      | \f4fe
+ $fa_var_user_edit                                     | \f4ff
+ $fa_var_user_friends                                  | \f500
+ $fa_var_user_graduate                                 | \f501
+ $fa_var_user_lock                                     | \f502
+ $fa_var_user_md                                       | \f0f0
+ $fa_var_user_minus                                    | \f503
+ $fa_var_user_ninja                                    | \f504
+ $fa_var_user_plus                                     | \f234
+ $fa_var_user_secret                                   | \f21b
+ $fa_var_user_shield                                   | \f505
+ $fa_var_user_slash                                    | \f506
+ $fa_var_user_tag                                      | \f507
+ $fa_var_user_tie                                      | \f508
+ $fa_var_user_times                                    | \f235
+ $fa_var_users                                         | \f0c0
+ $fa_var_users_cog                                     | \f509
+ $fa_var_ussunnah                                      | \f407
+ $fa_var_utensil_spoon                                 | \f2e5
+ $fa_var_utensils                                      | \f2e7
+ $fa_var_vaadin                                        | \f408
+ $fa_var_venus                                         | \f221
+ $fa_var_venus_double                                  | \f226
+ $fa_var_venus_mars                                    | \f228
+ $fa_var_viacoin                                       | \f237
+ $fa_var_viadeo                                        | \f2a9
+ $fa_var_viadeo_square                                 | \f2aa
+ $fa_var_vial                                          | \f492
+ $fa_var_vials                                         | \f493
+ $fa_var_viber                                         | \f409
+ $fa_var_video                                         | \f03d
+ $fa_var_video_slash                                   | \f4e2
+ $fa_var_vimeo                                         | \f40a
+ $fa_var_vimeo_square                                  | \f194
+ $fa_var_vimeo_v                                       | \f27d
+ $fa_var_vine                                          | \f1ca
+ $fa_var_vk                                            | \f189
+ $fa_var_vnv                                           | \f40b
+ $fa_var_volleyball_ball                               | \f45f
+ $fa_var_volume_down                                   | \f027
+ $fa_var_volume_off                                    | \f026
+ $fa_var_volume_up                                     | \f028
+ $fa_var_vuejs                                         | \f41f
+ $fa_var_walking                                       | \f554
+ $fa_var_wallet                                        | \f555
+ $fa_var_warehouse                                     | \f494
+ $fa_var_weibo                                         | \f18a
+ $fa_var_weight                                        | \f496
+ $fa_var_weixin                                        | \f1d7
+ $fa_var_whatsapp                                      | \f232
+ $fa_var_whatsapp_square                               | \f40c
+ $fa_var_wheelchair                                    | \f193
+ $fa_var_whmcs                                         | \f40d
+ $fa_var_wifi                                          | \f1eb
+ $fa_var_wikipedia_w                                   | \f266
+ $fa_var_window_close                                  | \f410
+ $fa_var_window_maximize                               | \f2d0
+ $fa_var_window_minimize                               | \f2d1
+ $fa_var_window_restore                                | \f2d2
+ $fa_var_windows                                       | \f17a
+ $fa_var_wine_glass                                    | \f4e3
+ $fa_var_wolf_pack_battalion                           | \f514
+ $fa_var_won_sign                                      | \f159
+ $fa_var_wordpress                                     | \f19a
+ $fa_var_wordpress_simple                              | \f411
+ $fa_var_wpbeginner                                    | \f297
+ $fa_var_wpexplorer                                    | \f2de
+ $fa_var_wpforms                                       | \f298
+ $fa_var_wrench                                        | \f0ad
+ $fa_var_x_ray                                         | \f497
+ $fa_var_xbox                                          | \f412
+ $fa_var_xing                                          | \f168
+ $fa_var_xing_square                                   | \f169
+ $fa_var_y_combinator                                  | \f23b
+ $fa_var_yahoo                                         | \f19e
+ $fa_var_yandex                                        | \f413
+ $fa_var_yandex_international                          | \f414
+ $fa_var_yelp                                          | \f1e9
+ $fa_var_yen_sign                                      | \f157
+ $fa_var_yoast                                         | \f2b1
+ $fa_var_youtube                                       | \f167
+ $fa_var_youtube_square                                | \f431
+ $fa_version                                           | 5.0.13
+ $figure_caption_color                                 | #6c757d
+ $figure_caption_font_size                             | 0.9
+ $font_family_base                                     | -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+ $font_family_monospace                                | SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace
+ $font_family_sans_serif                               | -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+ $font_size_base                                       | 1rem
+ $font_size_lg                                         | 1.25rem
+ $font_size_sm                                         | 0.875rem
+ $font_weight_base                                     | 400
+ $font_weight_bold                                     | 700
+ $font_weight_bolder                                   | bolder
+ $font_weight_light                                    | 300
+ $font_weight_lighter                                  | lighter
+ $font_weight_normal                                   | 400
+ $form_check_inline_input_margin_x                     | 0.3125rem
+ $form_check_inline_margin_x                           | 0.75rem
+ $form_check_input_gutter                              | 1.25rem
+ $form_check_input_margin_x                            | 0.25rem
+ $form_check_input_margin_y                            | 0.3rem
+ $form_feedback_font_size                              | 0.8
+ $form_feedback_icon_invalid                           | url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E")
+ $form_feedback_icon_invalid_color                     | #dc3545
+ $form_feedback_icon_valid                             | url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e")
+ $form_feedback_icon_valid_color                       | #28a745
+ $form_feedback_invalid_color                          | #dc3545
+ $form_feedback_margin_top                             | 0.25rem
+ $form_feedback_tooltip_border_radius                  | 0.25rem
+ $form_feedback_tooltip_font_size                      | 0.875rem
+ $form_feedback_tooltip_line_height                    | 1.5
+ $form_feedback_tooltip_opacity                        | 0.9
+ $form_feedback_tooltip_padding_x                      | 0.5rem
+ $form_feedback_tooltip_padding_y                      | 0.25rem
+ $form_feedback_valid_color                            | #28a745
+ $form_grid_gutter_width                               | 10px
+ $form_group_margin_bottom                             | 1rem
+ $form_text_margin_top                                 | 0.25rem
+ $form_validation_states                               | ("valid": ("color": #28a745, "icon": url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e")), "invalid": ("color": #dc3545, "icon": url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23dc3545' viewBox='-2 -2 7 7'%3e%3cpath stroke='%23dc3545' d='M0 0l3 3m0-3L0 3'/%3e%3ccircle r='.5'/%3e%3ccircle cx='3' r='.5'/%3e%3ccircle cy='3' r='.5'/%3e%3ccircle cx='3' cy='3' r='.5'/%3e%3c/svg%3E")))
+ $gray_100                                             | #f8f9fa
+ $gray_200                                             | #e9ecef
+ $gray_300                                             | #dee2e6
+ $gray_400                                             | #ced4da
+ $gray_500                                             | #adb5bd
+ $gray_600                                             | #6c757d
+ $gray_700                                             | #495057
+ $gray_800                                             | #343a40
+ $gray_900                                             | #212529
+ $grays                                                | ("100": #f8f9fa, "200": #e9ecef, "300": #dee2e6, "400": #ced4da, "500": #adb5bd, "600": #6c757d, "700": #495057, "800": #343a40, "900": #212529)
+ $green                                                | #28a745
+ $grid_breakpoints                                     | (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
+ $grid_columns                                         | 12
+ $grid_gutter_width                                    | 30px
+ $h1_font_size                                         | 2.2rem
+ $h2_font_size                                         | 1.8rem
+ $h3_font_size                                         | 1.6rem
+ $h4_font_size                                         | 1.4rem
+ $h5_font_size                                         | 1.2rem
+ $h6_font_size                                         | 1rem
+ $headings_color                                       | null
+ $headings_font_family                                 | null
+ $headings_font_weight                                 | 500
+ $headings_line_height                                 | 1.2
+ $headings_margin_bottom                               | 0.5rem
+ $hr_border_color                                      | rgba(0, 0, 0, 0.1)
+ $hr_border_width                                      | 1px
+ $hr_margin_y                                          | 1rem
+ $i                                                    | 10
+ $indigo                                               | #6610f2
+ $info                                                 | #17a2b8
+ $input_bg                                             | #fff
+ $input_border_color                                   | #ced4da
+ $input_border_radius                                  | 0.25rem
+ $input_border_radius_lg                               | 0.3rem
+ $input_border_radius_sm                               | 0.2rem
+ $input_border_width                                   | 1px
+ $input_box_shadow                                     | inset 0 1px 1px rgba(0, 0, 0, 0.075)
+ $input_btn_border_width                               | 1px
+ $input_btn_focus_box_shadow                           | 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+ $input_btn_focus_color                                | rgba(0, 123, 255, 0.25)
+ $input_btn_focus_width                                | 0.2rem
+ $input_btn_font_family                                | null
+ $input_btn_font_size                                  | 1rem
+ $input_btn_font_size_lg                               | 1.25rem
+ $input_btn_font_size_sm                               | 0.875rem
+ $input_btn_line_height                                | 1.5
+ $input_btn_line_height_lg                             | 1.5
+ $input_btn_line_height_sm                             | 1.5
+ $input_btn_padding_x                                  | 0.75rem
+ $input_btn_padding_x_lg                               | 1rem
+ $input_btn_padding_x_sm                               | 0.5rem
+ $input_btn_padding_y                                  | 0.375rem
+ $input_btn_padding_y_lg                               | 0.5rem
+ $input_btn_padding_y_sm                               | 0.25rem
+ $input_color                                          | #495057
+ $input_disabled_bg                                    | #e9ecef
+ $input_focus_bg                                       | #fff
+ $input_focus_border_color                             | #80bdff
+ $input_focus_box_shadow                               | 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+ $input_focus_color                                    | #495057
+ $input_focus_width                                    | 0.2rem
+ $input_font_family                                    | null
+ $input_font_size                                      | 1rem
+ $input_font_size_lg                                   | 1.25rem
+ $input_font_size_sm                                   | 0.875rem
+ $input_font_weight                                    | 400
+ $input_group_addon_bg                                 | #e9ecef
+ $input_group_addon_border_color                       | #ced4da
+ $input_group_addon_color                              | #495057
+ $input_height                                         | calc(1.5em + 0.75rem + 2px)
+ $input_height_border                                  | 2px
+ $input_height_inner                                   | calc(1.5em + 0.75rem)
+ $input_height_inner_half                              | calc(0.75em + 0.375rem)
+ $input_height_inner_quarter                           | calc(0.375em + 0.1875rem)
+ $input_height_lg                                      | calc(1.5em + 1rem + 2px)
+ $input_height_sm                                      | calc(1.5em + 0.5rem + 2px)
+ $input_line_height                                    | 1.5
+ $input_line_height_lg                                 | 1.5
+ $input_line_height_sm                                 | 1.5
+ $input_padding_x                                      | 0.75rem
+ $input_padding_x_lg                                   | 1rem
+ $input_padding_x_sm                                   | 0.5rem
+ $input_padding_y                                      | 0.375rem
+ $input_padding_y_lg                                   | 0.5rem
+ $input_padding_y_sm                                   | 0.25rem
+ $input_placeholder_color                              | #6c757d
+ $input_plaintext_color                                | #212529
+ $input_transition                                     | border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+ $jumbotron_bg                                         | #e9ecef
+ $jumbotron_color                                      | null
+ $jumbotron_padding                                    | 2rem
+ $kbd_bg                                               | #212529
+ $kbd_box_shadow                                       | inset 0 -0.1rem 0 rgba(0, 0, 0, 0.25)
+ $kbd_color                                            | #fff
+ $kbd_font_size                                        | 0.875
+ $kbd_padding_x                                        | 0.4rem
+ $kbd_padding_y                                        | 0.2rem
+ $label_margin_bottom                                  | 0.5rem
+ $lead_font_size                                       | 1.25rem
+ $lead_font_weight                                     | 300
+ $light                                                | #e9ecef
+ $line_height_base                                     | 1.5
+ $line_height_lg                                       | 1.5
+ $line_height_sm                                       | 1.5
+ $link_color                                           | #1b599b
+ $link_decoration                                      | none
+ $link_hover_color                                     | #10345a
+ $link_hover_decoration                                | underline
+ $list_bullet_color                                    | #dee2e6
+ $list_bullet_size                                     | 0.5rem
+ $list_group_action_active_bg                          | #e9ecef
+ $list_group_action_active_color                       | #212529
+ $list_group_action_color                              | #495057
+ $list_group_action_hover_color                        | #495057
+ $list_group_active_bg                                 | #007bff
+ $list_group_active_border_color                       | #007bff
+ $list_group_active_color                              | #fff
+ $list_group_bg                                        | #fff
+ $list_group_border_color                              | rgba(0, 0, 0, 0.125)
+ $list_group_border_radius                             | 0.25rem
+ $list_group_border_width                              | 1px
+ $list_group_color                                     | null
+ $list_group_disabled_bg                               | #fff
+ $list_group_disabled_color                            | #6c757d
+ $list_group_hover_bg                                  | #f8f9fa
+ $list_group_item_padding_x                            | 1.25rem
+ $list_group_item_padding_y                            | 0.75rem
+ $list_inline_padding                                  | 0.5rem
+ $list_level_indent                                    | 3.5ex
+ $mark_bg                                              | #fcf8e3
+ $mark_padding                                         | 0.2em
+ $modal_backdrop_bg                                    | #000
+ $modal_backdrop_opacity                               | 0.5
+ $modal_content_bg                                     | #fff
+ $modal_content_border_color                           | rgba(0, 0, 0, 0.2)
+ $modal_content_border_radius                          | 0.3rem
+ $modal_content_border_width                           | 1px
+ $modal_content_box_shadow_sm_up                       | 0 0.5rem 1rem rgba(0, 0, 0, 0.5)
+ $modal_content_box_shadow_xs                          | 0 0.25rem 0.5rem rgba(0, 0, 0, 0.5)
+ $modal_content_color                                  | null
+ $modal_dialog_margin                                  | 0.5rem
+ $modal_dialog_margin_y_sm_up                          | 1.75rem
+ $modal_fade_transform                                 | translate(0, -50px)
+ $modal_footer_border_color                            | #dee2e6
+ $modal_footer_border_width                            | 1px
+ $modal_header_border_color                            | #dee2e6
+ $modal_header_border_width                            | 1px
+ $modal_header_padding                                 | 1rem 1rem
+ $modal_header_padding_x                               | 1rem
+ $modal_header_padding_y                               | 1rem
+ $modal_inner_padding                                  | 1rem
+ $modal_lg                                             | 800px
+ $modal_md                                             | 500px
+ $modal_show_transform                                 | none
+ $modal_sm                                             | 300px
+ $modal_title_line_height                              | 1.5
+ $modal_transition                                     | transform 0.3s ease-out
+ $modal_xl                                             | 1140px
+ $nav_divider_color                                    | #e9ecef
+ $nav_divider_margin_y                                 | 0.5rem
+ $nav_link_disabled_color                              | #6c757d
+ $nav_link_height                                      | 2.5rem
+ $nav_link_padding_x                                   | 1rem
+ $nav_link_padding_y                                   | 0.5rem
+ $nav_pills_border_radius                              | 0.25rem
+ $nav_pills_link_active_bg                             | #007bff
+ $nav_pills_link_active_color                          | #fff
+ $nav_tabs_border_color                                | #dee2e6
+ $nav_tabs_border_radius                               | 0.25rem
+ $nav_tabs_border_width                                | 1px
+ $nav_tabs_link_active_bg                              | #fff
+ $nav_tabs_link_active_border_color                    | #dee2e6 #dee2e6 #fff
+ $nav_tabs_link_active_color                           | #495057
+ $nav_tabs_link_hover_border_color                     | #e9ecef #e9ecef #dee2e6
+ $navbar_brand_font_size                               | 1.25rem
+ $navbar_brand_height                                  | 1.875rem
+ $navbar_brand_padding_y                               | 0.3125rem
+ $navbar_dark_active_color                             | #fff
+ $navbar_dark_brand_color                              | #fff
+ $navbar_dark_brand_hover_color                        | #fff
+ $navbar_dark_color                                    | rgba(255, 255, 255, 0.5)
+ $navbar_dark_disabled_color                           | rgba(255, 255, 255, 0.25)
+ $navbar_dark_hover_color                              | rgba(255, 255, 255, 0.75)
+ $navbar_dark_toggler_border_color                     | rgba(255, 255, 255, 0.1)
+ $navbar_dark_toggler_icon_bg                          | url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+ $navbar_light_active_color                            | #091017
+ $navbar_light_brand_color                             | #091017
+ $navbar_light_brand_hover_color                       | #091017
+ $navbar_light_color                                   | #355b84
+ $navbar_light_disabled_color                          | rgba(53, 91, 132, 0.7)
+ $navbar_light_hover_color                             | #1f354d
+ $navbar_light_toggler_border_color                    | rgba(53, 91, 132, 0.5)
+ $navbar_light_toggler_icon_bg                         | url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='%23355b84' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+ $navbar_nav_link_padding_x                            | 1rem
+ $navbar_newtalk_available                             | #007bff
+ $navbar_newtalk_not_available                         | rgba(53, 91, 132, 0.7)
+ $navbar_padding_x                                     | 1rem
+ $navbar_padding_y                                     | 0.5rem
+ $navbar_toggler_border_radius                         | 0.25rem
+ $navbar_toggler_font_size                             | 1rem
+ $navbar_toggler_padding_x                             | 0.5rem
+ $navbar_toggler_padding_y                             | 0.1rem
+ $navbar_user_loggedin                                 | #007bff
+ $navbar_user_not_loggedin                             | rgba(53, 91, 132, 0.7)
+ $nested_kbd_font_weight                               | 700
+ $orange                                               | #fd7e14
+ $overflows                                            | auto, hidden
+ $pagination_active_bg                                 | #007bff
+ $pagination_active_border_color                       | #007bff
+ $pagination_active_color                              | #fff
+ $pagination_bg                                        | #fff
+ $pagination_border_color                              | #dee2e6
+ $pagination_border_width                              | 1px
+ $pagination_color                                     | #1b599b
+ $pagination_disabled_bg                               | #fff
+ $pagination_disabled_border_color                     | #dee2e6
+ $pagination_disabled_color                            | #6c757d
+ $pagination_focus_box_shadow                          | 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+ $pagination_focus_outline                             | 0
+ $pagination_hover_bg                                  | #e9ecef
+ $pagination_hover_border_color                        | #dee2e6
+ $pagination_hover_color                               | #10345a
+ $pagination_line_height                               | 1.25
+ $pagination_padding_x                                 | 0.75rem
+ $pagination_padding_x_lg                              | 1.5rem
+ $pagination_padding_x_sm                              | 0.5rem
+ $pagination_padding_y                                 | 0.5rem
+ $pagination_padding_y_lg                              | 0.75rem
+ $pagination_padding_y_sm                              | 0.25rem
+ $paragraph_margin_bottom                              | 1rem
+ $pink                                                 | #e83e8c
+ $popover_arrow_color                                  | #fff
+ $popover_arrow_height                                 | 0.5rem
+ $popover_arrow_outer_color                            | rgba(0, 0, 0, 0.25)
+ $popover_arrow_width                                  | 1rem
+ $popover_bg                                           | #fff
+ $popover_body_color                                   | #212529
+ $popover_body_padding_x                               | 0.75rem
+ $popover_body_padding_y                               | 0.5rem
+ $popover_border_color                                 | rgba(0, 0, 0, 0.2)
+ $popover_border_radius                                | 0.3rem
+ $popover_border_width                                 | 1px
+ $popover_box_shadow                                   | 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2)
+ $popover_font_size                                    | 0.875rem
+ $popover_header_bg                                    | #f7f7f7
+ $popover_header_color                                 | null
+ $popover_header_padding_x                             | 0.75rem
+ $popover_header_padding_y                             | 0.5rem
+ $popover_max_width                                    | 276px
+ $positions                                            | static, relative, absolute, fixed, sticky
+ $pre_color                                            | #212529
+ $pre_scrollable_max_height                            | 340px
+ $primary                                              | #007bff
+ $print_body_min_width                                 | 992px
+ $print_page_size                                      | a3
+ $progress_bar_animation_timing                        | 1s linear infinite
+ $progress_bar_bg                                      | #007bff
+ $progress_bar_color                                   | #fff
+ $progress_bar_transition                              | width 0.6s ease
+ $progress_bg                                          | #e9ecef
+ $progress_border_radius                               | 0.25rem
+ $progress_box_shadow                                  | inset 0 0.1rem 0.1rem rgba(0, 0, 0, 0.1)
+ $progress_font_size                                   | 0.75rem
+ $progress_height                                      | 1rem
+ $purple                                               | #6f42c1
+ $red                                                  | #dc3545
+ $rfs_base_font_size                                   | 20
+ $rfs_base_font_size_unit                              | rem
+ $rfs_breakpoint                                       | 1200
+ $rfs_breakpoint_unit                                  | px
+ $rfs_breakpoint_unit_cache                            | px
+ $rfs_class                                            | 0
+ $rfs_factor                                           | 10
+ $rfs_font_size_unit                                   | rem
+ $rfs_rem_value                                        | 16
+ $rfs_safari_iframe_resize_bug_fix                     | 0
+ $rfs_two_dimensional                                  | 0
+ $rounded_pill                                         | 50rem
+ $secondary                                            | #6c757d
+ $sizes                                                | (25: 25%, 50: 50%, 75: 75%, 100: 100%, auto: auto)
+ $small_font_size                                      | 0.8
+ $spacer                                               | 1rem
+ $spacers                                              | (0: 0, 1: 0.25rem, 2: 0.5rem, 3: 1rem, 4: 1.5rem, 5: 3rem)
+ $spinner_border_width                                 | 0.25em
+ $spinner_border_width_sm                              | 0.2em
+ $spinner_height                                       | 2rem
+ $spinner_height_sm                                    | 1rem
+ $spinner_width                                        | 2rem
+ $spinner_width_sm                                     | 1rem
+ $success                                              | #28a745
+ $table_accent_bg                                      | rgba(0, 0, 0, 0.05)
+ $table_active_bg                                      | rgba(0, 0, 0, 0.075)
+ $table_bg                                             | null
+ $table_bg_level                                       | -9
+ $table_border_color                                   | #dee2e6
+ $table_border_level                                   | -6
+ $table_border_width                                   | 1px
+ $table_caption_color                                  | #6c757d
+ $table_cell_padding                                   | 0.75rem
+ $table_cell_padding_sm                                | 0.3rem
+ $table_color                                          | #212529
+ $table_dark_accent_bg                                 | rgba(255, 255, 255, 0.05)
+ $table_dark_bg                                        | #343a40
+ $table_dark_border_color                              | #454d55
+ $table_dark_color                                     | #fff
+ $table_dark_hover_bg                                  | rgba(255, 255, 255, 0.075)
+ $table_dark_hover_color                               | #fff
+ $table_head_bg                                        | #e9ecef
+ $table_head_color                                     | #495057
+ $table_hover_bg                                       | rgba(0, 0, 0, 0.075)
+ $table_hover_color                                    | #212529
+ $table_striped_order                                  | odd
+ $teal                                                 | #20c997
+ $text_muted                                           | #6c757d
+ $theme_color_interval                                 | 0.08
+ $theme_colors                                         | ("primary": #007bff, "secondary": #6c757d, "success": #28a745, "info": #17a2b8, "warning": #ffc107, "danger": #dc3545, "light": #e9ecef, "dark": #343a40, "error": #dc3545, "darker": #ced4da)
+ $thumbnail_bg                                         | #fff
+ $thumbnail_border_color                               | #dee2e6
+ $thumbnail_border_radius                              | 0.25rem
+ $thumbnail_border_width                               | 1px
+ $thumbnail_box_shadow                                 | 0 1px 2px rgba(0, 0, 0, 0.075)
+ $thumbnail_caption_padding                            | 3px
+ $thumbnail_padding                                    | 0.25rem
+ $toast_background_color                               | rgba(255, 255, 255, 0.85)
+ $toast_border_color                                   | rgba(0, 0, 0, 0.1)
+ $toast_border_radius                                  | 0.25rem
+ $toast_border_width                                   | 1px
+ $toast_box_shadow                                     | 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1)
+ $toast_color                                          | null
+ $toast_font_size                                      | 0.875rem
+ $toast_header_background_color                        | rgba(255, 255, 255, 0.85)
+ $toast_header_border_color                            | rgba(0, 0, 0, 0.05)
+ $toast_header_color                                   | #6c757d
+ $toast_max_width                                      | 350px
+ $toast_padding_x                                      | 0.75rem
+ $toast_padding_y                                      | 0.25rem
+ $tooltip_arrow_color                                  | #000
+ $tooltip_arrow_height                                 | 0.4rem
+ $tooltip_arrow_width                                  | 0.8rem
+ $tooltip_bg                                           | #000
+ $tooltip_border_radius                                | 0.25rem
+ $tooltip_color                                        | #fff
+ $tooltip_font_size                                    | 0.875rem
+ $tooltip_margin                                       | 0
+ $tooltip_max_width                                    | 200px
+ $tooltip_opacity                                      | 0.9
+ $tooltip_padding_x                                    | 0.5rem
+ $tooltip_padding_y                                    | 0.25rem
+ $transition_base                                      | all 0.2s ease-in-out
+ $transition_collapse                                  | height 0.35s ease
+ $transition_fade                                      | opacity 0.15s linear
+ $warning                                              | #ffc107
+ $white                                                | #fff
+ $yellow                                               | #ffc107
+ $yiq_contrasted_threshold                             | 150
+ $yiq_text_dark                                        | #212529
+ $yiq_text_light                                       | #fff
+ $zindex_dropdown                                      | 1000
+ $zindex_fixed                                         | 1030
+ $zindex_modal                                         | 1050
+ $zindex_modal_backdrop                                | 1040
+ $zindex_popover                                       | 1060
+ $zindex_sticky                                        | 1020
+ $zindex_tooltip                                       | 1070

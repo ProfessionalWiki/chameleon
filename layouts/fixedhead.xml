@@ -29,8 +29,8 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<modification type="Sticky"/>
 		<component type="Logo" position="head"/>
 		<component type="NavMenu" flatten="navigation"/>
-		<component type="PageTools" position="right" hideSelectedNameSpace="yes"/>
-		<component type="SearchBar" position="right"/>
+		<component type="PageTools" class="flex-row" position="right" hideSelectedNameSpace="yes"/>
+		<component type="SearchBar" class="order-first order-md-0" position="right" buttons="go"/>
 		<component type="PersonalTools" position="right"/>
 	</component>
 

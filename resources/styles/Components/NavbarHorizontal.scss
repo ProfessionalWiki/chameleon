@@ -15,6 +15,18 @@
 
 	&.collapsible {
 		@extend .navbar-expand-#{$cmln-navbar-horizontal-collapse-point};
+
+		.navbar-collapse {
+
+			@extend .flex-column;
+			@extend .flex-md-row;
+
+			&.show, &.collapsing {
+
+				display: flex;
+			}
+
+		}
 	}
 
 	&.not-collapsible {
@@ -39,13 +51,13 @@
 
 	.navbar-nav {
 
-		@extend .flex-wrap;
+		//@extend .flex-wrap;
 
-		@media ( max-width( $cmln-collapse-point ) ) {
-			&:not(:first-child) {
-				margin-top: 1rem;
-			}
-		}
+		//@media ( max-width( $cmln-collapse-point ) ) {
+		//	&:not(:first-child) {
+		//		margin-top: 1rem;
+		//	}
+		//}
 
 		.dropdown-menu {
 

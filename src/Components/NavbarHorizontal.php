@@ -229,19 +229,13 @@ class NavbarHorizontal extends Component {
 
 		$tail = '';
 
-		if ( $this->isCollapsible() ) {
-			$collapsibleClass = ' navbar-collapse';
-		} else {
-			$collapsibleClass = '';
-		}
-
 		if ( $leftElements ) {
-			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav' . $collapsibleClass ], implode( '', $leftElements ), $this->indent() );
+			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav' ], implode( '', $leftElements ), $this->indent() );
 		}
 
 		if ( $rightElements ) {
 			// FIXME: Use a dedicated class instead of ml-auto. Then style in NavbarHorizontal.scss.
-			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav ml-auto' . $collapsibleClass ], implode( '', $rightElements ), $this->indent() );
+			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav ml-md-auto mt-md-0 mt-4 flex-row justify-content-center' ], implode( '', $rightElements ), $this->indent() );
 		}
 
 		$this->indent( -$indent );

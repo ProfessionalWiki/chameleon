@@ -27,8 +27,8 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 	<component type="NavbarHorizontal">
 		<component type="Logo" position="head"/>
 		<component type="NavMenu" flatten="navigation" />
-		<component type="PageTools" position="right" hideSelectedNameSpace="yes"/>
-		<component type="SearchBar" position="right" buttons="go"/>
+		<component type="PageTools" class="flex-row" position="right" hideSelectedNameSpace="yes"/>
+		<component type="SearchBar" class="order-first order-md-0" position="right" buttons="go"/>
 		<component type="PersonalTools" position="right"/>
 	</component>
 

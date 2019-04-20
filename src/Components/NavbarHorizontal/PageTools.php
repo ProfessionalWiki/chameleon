@@ -59,7 +59,7 @@ class PageTools extends Component {
 
 			return
 				$this->indent() . '<!-- page tools -->' .
-				$this->indent() . \Html::rawElement( 'div', [ 'class' => 'navbar-tools navbar-nav' ],
+				$this->indent() . \Html::rawElement( 'div', [ 'class' => 'navbar-tools navbar-nav ' . $this->getClassString() ],
 					join( $actionButtonHtmlFragments ) .
 					$pageToolsHtml .
 					$this->indent()

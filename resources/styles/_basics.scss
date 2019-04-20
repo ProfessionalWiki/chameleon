@@ -6,6 +6,13 @@
 //
 // @since 2.0
 
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	min-height: 100vh;
+}
+
 // Lists
 ol {
 	list-style: outside none decimal;

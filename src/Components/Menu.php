@@ -60,7 +60,7 @@ class Menu extends Component {
 			if ( $depth === 1 && !empty( $subitems ) ) {
 				return "<div class=\"nav-item dropdown\"><a class=\"nav-link dropdown-toggle\" href=\"#\"  data-toggle=\"dropdown\">$text</a>$subitems</div>";
 			} else {
-				return "<li><a class=\"nav-link\"  href=\"$href\">$text</a>$subitems</li>";
+				return "<div><a class=\"nav-link\"  href=\"$href\">$text</a>$subitems</div>";
 			}
 		} );
 
@@ -69,9 +69,9 @@ class Menu extends Component {
 			if ( $depth === 0 ) {
 				return $rawItemsHtml;
 			} elseif ( $depth === 1 ) {
-				return "<ul class=\"dropdown-menu\">$rawItemsHtml</ul>";
+				return "<div class=\"dropdown-menu\">$rawItemsHtml</div>";
 			} else {
-				return "<ul>$rawItemsHtml</ul>";
+				return "<div>$rawItemsHtml</div>";
 			}
 
 		} );

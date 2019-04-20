@@ -55,7 +55,7 @@ class PersonalTools extends Component {
 			$this->indent( 1 ) . \Html::rawElement( 'div', [ 'class' => 'navbar-tool dropdown' ],
 
 				$this->getDropdownToggle() .
-				$this->indent( 1 ) . \Html::rawElement( 'ul', [ 'class' => 'p-personal-tools dropdown-menu dropdown-menu-right' ], $this->getTools() . $this->indent() ) .
+				$this->indent( 1 ) . \Html::rawElement( 'div', [ 'class' => 'p-personal-tools dropdown-menu dropdown-menu-right' ], $this->getTools() . $this->indent() ) .
 				$this->indent( -1 )
 			) .
 			$this->indent( -1 ) . '</div>';
@@ -100,7 +100,7 @@ class PersonalTools extends Component {
 
 		// add personal tools (links to user page, user talk, prefs, ...)
 		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
-			$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
+			$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item, [ 'tag' => 'div' ] );
 		}
 
 		$this->indent( -1 );

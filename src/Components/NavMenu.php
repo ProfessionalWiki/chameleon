@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2018, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -117,7 +117,7 @@ class NavMenu extends Component {
 			$this->indent( $indent );
 
 			foreach ( $menuDescription['content'] as $key => $item ) {
-				$menuitems .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item, [ 'tag'=> $flatten ? 'div' : 'li', 'class'=>'nav-item', 'link-class' => 'nav-link' ] );
+				$menuitems .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item, [ 'tag' => 'div', 'class'=>'nav-item', 'link-class' => 'nav-link' ] );
 			}
 
 			$this->indent( - $indent );
@@ -146,7 +146,7 @@ class NavMenu extends Component {
 	 */
 	protected function buildDropdownMenuStub( $menuDescription ) {
 		return
-			$this->indent() . \Html::rawElement( 'li',
+			$this->indent() . \Html::rawElement( 'div',
 				[
 					'class' => 'nav-item',
 					'title' => Linker::titleAttrib( $menuDescription[ 'id' ] )
@@ -175,7 +175,7 @@ class NavMenu extends Component {
 
 		// open list of dropdown menu items
 		$ret .=
-			$this->indent() . \Html::openElement( 'ul',
+			$this->indent() . \Html::openElement( 'div',
 				[
 					'class' => 'dropdown-menu ' . $menuDescription[ 'id' ],
 					'id'    => IdRegistry::getRegistry()->getId( $menuDescription[ 'id' ] ),
@@ -189,7 +189,7 @@ class NavMenu extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildDropdownClosingTags() {
-		return $this->indent() . '</ul>' .
+		return $this->indent() . '</div>' .
 			$this->indent( - 1 ) . '</div>';
 	}
 

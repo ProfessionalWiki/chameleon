@@ -8,7 +8,7 @@
 
 .pagetools {
 
-	&, ul {
+	&, .tab-group {
 
 		@extend .d-flex;
 		@extend .flex-row;
@@ -31,7 +31,7 @@
 			}
 		}
 
-		li > a {
+		a {
 
 			@include link($cmln-page-tools-link...);
 

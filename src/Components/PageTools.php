@@ -79,7 +79,7 @@ class PageTools extends Component {
 
 		return
 			$this->indent() . '<!-- Content navigation -->' .
-			IdRegistry::getRegistry()->element( $this->mFlat ? 'ul' : 'div',
+			IdRegistry::getRegistry()->element( $this->mFlat ? 'div' : 'div',
 				[ 'class' => $this->getClassString(), 'id' => 'p-contentnavigation' ],
 				join( $toolGroups ),
 				$this->indent()
@@ -202,7 +202,7 @@ class PageTools extends Component {
 			IdRegistry::getRegistry()->element( 'div',
 				[ 'id' => 'p-' . $category ],
 
-				IdRegistry::getRegistry()->element( 'ul',
+				IdRegistry::getRegistry()->element( 'div',
 					[ 'class' => 'tab-group' ],
 
 					join( $this->getToolsForGroup( $tabsDescription, 2 ) ),
@@ -252,7 +252,9 @@ class PageTools extends Component {
 		}
 
 		// apply a link class if specified, e.g. for the currently active namespace
-		$options = [];
+		$options = [
+			'tag' => 'div'
+		];
 		if ( array_key_exists( 'class', $tabDescription ) ) {
 			$options[ 'link-class' ] = $tabDescription[ 'class' ];
 		}

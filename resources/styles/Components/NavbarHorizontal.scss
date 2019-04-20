@@ -54,7 +54,7 @@
 			padding-left: 0;
 
 			// Override nav-link styling in case the menu item is in a dropdown
-			li > a {
+			a.nav-link {
 
 				@extend .dropdown-item;
 

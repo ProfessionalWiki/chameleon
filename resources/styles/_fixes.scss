@@ -21,6 +21,10 @@
 	font-family: inherit;
 	font-weight: inherit;
 	line-height: inherit;
+
+	&:before {
+		line-height: 1;
+	}
 }
 
 .fa, .fas {

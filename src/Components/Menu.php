@@ -58,7 +58,7 @@ class Menu extends Component {
 			$text = htmlspecialchars( $text );
 
 			if ( $depth === 1 && !empty( $subitems ) ) {
-				return "<div class=\"nav-item dropdown\"><a class=\"nav-link dropdown-toggle\" href=\"#\"  data-toggle=\"dropdown\">$text</a>$subitems</div>";
+				return "<div class=\"nav-item dropdown\"><a class=\"nav-link dropdown-toggle\" href=\"#\"  data-toggle=\"dropdown\"  data-boundary=\"viewport\">$text</a>$subitems</div>";
 			} else {
 				return "<div><a class=\"nav-link\"  href=\"$href\">$text</a>$subitems</div>";
 			}

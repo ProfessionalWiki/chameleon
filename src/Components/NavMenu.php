@@ -170,7 +170,7 @@ class NavMenu extends Component {
 				] );
 
 		// add the dropdown toggle
-		$ret .= $this->indent( 1 ) . '<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">' .
+		$ret .= $this->indent( 1 ) . '<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-boundary="viewport">' .
 		        htmlspecialchars( $menuDescription['header'] ) . '</a>';
 
 		// open list of dropdown menu items

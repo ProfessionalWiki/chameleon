@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2018, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -103,7 +103,7 @@ class LangLinks extends Component {
 
 		$trigger = $this->indent( 1 ) . IdRegistry::getRegistry()->element(
 				'a',
-				[ 'href' => '#', 'class' => 'nav-link dropdown-toggle p-lang-toggle', 'data-toggle' => 'dropdown' ],
+				[ 'href' => '#', 'class' => 'nav-link dropdown-toggle p-lang-toggle', 'data-toggle' => 'dropdown', 'data-boundary' => 'viewport' ],
 				$this->getSkinTemplate()->getMsg( $labelMsg )->escaped()
 			);
 

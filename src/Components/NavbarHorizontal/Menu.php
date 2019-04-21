@@ -45,7 +45,7 @@ class Menu extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-		$menu = new GenMenu( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );;
+		$menu = new GenMenu( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );
 		return '<div class="navbar-nav">' . $menu->getHtml() . "</div>\n";
 	}
 

@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2017, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -55,7 +55,7 @@ class PersonalTools extends Component {
 			$this->indent( 1 ) . \Html::rawElement( 'div', [ 'class' => 'navbar-tool dropdown' ],
 
 				$this->getDropdownToggle() .
-				$this->indent( 1 ) . \Html::rawElement( 'div', [ 'class' => 'p-personal-tools dropdown-menu dropdown-menu-right' ], $this->getTools() . $this->indent() ) .
+				$this->indent( 1 ) . \Html::rawElement( 'div', [ 'class' => 'p-personal-tools dropdown-menu' ], $this->getTools() . $this->indent() ) .
 				$this->indent( -1 )
 			) .
 			$this->indent( -1 ) . '</div>';
@@ -132,7 +132,7 @@ class PersonalTools extends Component {
 
 		$this->indent( 1 );
 
-		$dropdownToggle = IdRegistry::getRegistry()->element( 'a', [ 'class' => $toolsClass, 'href' => '#', 'data-toggle' => 'dropdown', 'title' => $toolsLinkText ], $this->getNewtalkNotifier(), $this->indent() );
+		$dropdownToggle = IdRegistry::getRegistry()->element( 'a', [ 'class' => $toolsClass, 'href' => '#', 'data-toggle' => 'dropdown', 'data-boundary' => 'viewport', 'title' => $toolsLinkText ], $this->getNewtalkNotifier(), $this->indent() );
 
 		$this->indent( -1 );
 

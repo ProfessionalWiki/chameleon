@@ -205,7 +205,7 @@ class PageTools extends Component {
 
 		return
 			$this->indent() . \Html::rawElement( 'div', [ 'class' => 'navbar-tool dropdown' ],
-				$this->indent( 1 ) . \Html::rawElement( 'a', [ 'data-toggle' => 'dropdown', 'class' => 'navbar-more-tools', 'href' => '#', 'title' => $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() ] ) .
+				$this->indent( 1 ) . \Html::rawElement( 'a', [ 'data-toggle' => 'dropdown', 'data-boundary' => 'viewport', 'class' => 'navbar-more-tools', 'href' => '#', 'title' => $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() ] ) .
 				$pageToolsHtml .
 				$this->indent( -1 )
 			);

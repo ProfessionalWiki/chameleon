@@ -6,36 +6,31 @@
 //
 // @since 2.0
 
-//.skin-chameleon {
-	@import "functions";
-	@import "variables";
-	@import "mixins";
-	@import "mediawiki.legacy.shared";
-	@import "utilities";
-	@import "fixes";
-	@import "basics";
-	@import "mw-elements";
-	@import "print";
-	@import "images";
-	@import "extensionfixes";
+@import "functions";
+// @import "variables"; // imported at the correct position in SetupAfterCache.php
+@import "mixins";
+@import "mediawiki.legacy.shared";
+@import "utilities";
+@import "fixes";
+@import "basics";
+@import "mw-elements";
+@import "print";
+@import "images";
+@import "specialpages";
+@import "extensionfixes";
 
-	//@import "forms";
-	//@import "screen";
-	//@import "specialpages";
 
-	/**
-	 * Component styles
-	 *
-	 * TODO: Include them programmatically only when necessary
-	 */
+/**
+ * Component styles
+ *
+ * TODO: Include them programmatically only when necessary
+ */
 
-	@import "Components/FooterComponents";
-	@import "Components/MainContent";
-	@import "Components/NavbarHorizontal";
-	@import "Components/NewtalkNotifier";
-	@import "Components/PageTools";
-	@import "Components/PersonalTools";
-	@import "Components/SearchBar";
-
-	@import "specials/SpecialSearch";
-//}
+@import "Components/FooterComponents";
+@import "Components/MainContent";
+@import "Components/NavbarHorizontal";
+@import "Components/NewtalkNotifier";
+@import "Components/PageTools";
+@import "Components/PersonalTools";
+@import "Components/SearchBar";
+@import "specials/SpecialSearch";

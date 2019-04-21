@@ -25,8 +25,8 @@
 }
 
 /* Extension SemanticMediaWiki */
-@at-root {
-	.smw-editpage-help {
+.skin-chameleon {
+	.smw-editpage-help, .smw-search-results-prepend {
 		@extend .infobox;
 	}
 }

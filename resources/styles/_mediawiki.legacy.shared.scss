@@ -361,7 +361,7 @@ th.mw-revdel-checkbox {
 // errorbox, warningbox, successbox
 // also: infobox, lightbox, darkbox, ...
 @each $color, $value in $theme-colors {
-	.#{$color}box {
+	.#{$color}box, div.#{$color} {
 		@extend .alert;
 		@extend .alert-#{$color};
 
@@ -659,10 +659,10 @@ table.floatleft {
 	unicode-bidi: embed;
 }
 
-/* Print footer should be hidden by default in screen. */
-.printfooter {
-	display: none;
-}
+///* Print footer should be hidden by default in screen. */
+//.printfooter {
+//	display: none;
+//}
 
 /* For developers */
 .xdebug-error {

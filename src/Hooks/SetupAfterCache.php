@@ -109,6 +109,15 @@ class SetupAfterCache {
 
 		$this->bootstrapManager->addAllBootstrapModules();
 
+		//FIXME: Make configurable, e.g. in LocalSettings.php
+		$this->bootstrapManager->addStyleFile(
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/themes/_light.scss', 'beforeVariables'
+		);
+
+		$this->bootstrapManager->addStyleFile(
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/_variables.scss', 'variables'
+		);
+
 		$this->bootstrapManager->addStyleFile(
 			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fontawesome.scss'
 		);
@@ -121,17 +130,11 @@ class SetupAfterCache {
 			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-regular.scss'
 		);
 
-		//FIXME: Make configurable, e.g. in LocalSettings.php
-		$this->bootstrapManager->addStyleFile(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/themes/_light.scss', 'beforeVariables'
-		);
-
 		$this->bootstrapManager->addStyleFile(
 			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/chameleon.scss'
 		);
 
 		$this->bootstrapManager->setScssVariable( 'fa-font-path', $GLOBALS[ 'wgStylePath' ] . '/chameleon/resources/fontawesome/webfonts' );
-		$this->bootstrapManager->setScssVariable( 'enable-caret', true );
 
 	}
 

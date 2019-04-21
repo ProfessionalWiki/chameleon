@@ -20,6 +20,7 @@
 	.firstHeading {
 		border-bottom: $cmln-first-heading-underline-width solid $cmln-first-heading-underline-color;
 		margin-bottom: $cmln-first-heading-margin-bottom;
+		overflow: visible;
 	}
 
 	h1, h2 {
@@ -33,7 +34,7 @@
 	.mw-indicators {
 		float: right;
 		line-height: 1.6;
-		font-size: $font-size-sm;
+		@include font-size( $font-size-sm );
 		position: relative;
 		z-index: 1;
 	}
@@ -46,10 +47,6 @@
 
 	.mw-editsection {
 		@include mw-editsection-like;
-	}
-
-	.printfooter {
-		display: none;
 	}
 
 	.catlinks {
@@ -70,14 +67,14 @@
 	// Table of contents
 	.toc {
 
-		#toctitle {
+		.toctitle {
 
 			h2 {
 				display: inline;
-				font-size: $cmln-toctitle-font-size;
+				@include font-size( $cmln-toc-title-font-size );
 			}
 
-			.toctoggle {
+			.toctogglespan {
 				@include mw-editsection-like;
 			}
 		}
@@ -86,33 +83,36 @@
 			@extend .list-unstyled;
 
 			margin: {
-				top: map_get($spacers, 2);
-				bottom: map_get($spacers, 2);
+				top: $cmln-toc-group-margin-y;
+				bottom: $cmln-toc-group-margin-y;
 			}
 
 			li {
-				a {
-					.tocnumber {
+				a .tocnumber {
 						display: inline-block;
 						text-align: right;
-						margin-right: map_get($spacers, 2);
-						min-width: 2ex; //up to two digits
-					}
+						padding-right: $cmln-toc-entry-number-padding-right;
 				}
 
-				ul li {
-					a .tocnumber {
-						min-width: 3.5ex; // two digits + dot + digit
-					}
-
-					ul li {
-						a .tocnumber {
-							min-width: 5ex; // two digits + dot + digit + dot + digit
-						}
-					}
+				ul {
+					margin-left: $cmln-toc-subgroup-margin-left;
 				}
 			}
 
+		}
+
+		// - 1 digit = .5 rem, 1 dot = .25 rem
+		// - width of an element includes the padding
+		// => level 1: 1 rem + padding (2 digits)
+		// => level 2: 1.75 rem + padding (2 digits, 1 dot, 1 digit)
+		// => ...
+		//
+		// there is wiggle room to allow for one level with a 2-digit toc number
+		// before the min-width is exceeded, e.g. 12.3.4.5 or 1.23.4.5
+		$selector: "";
+		@for $i from 1 through 6 {
+			$selector: "#{$selector} ul li";
+			#{$selector} a .tocnumber { min-width: $cmln-toc-entry-number-padding-right + 0.25rem + 0.75rem * $i; }
 		}
 	}
 

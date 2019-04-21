@@ -103,15 +103,13 @@ class Chameleon extends SkinTemplate {
 	public function getDefaultModules() {
 		$modules = parent::getDefaultModules();
 
-		$modules[ 'styles' ][ 'core' ] = [
-			//'mediawiki.legacy.shared',  // we have our own version
-			'mediawiki.legacy.commonPrint',
-		];
+		$modulePos = array_search( 'mediawiki.legacy.shared', $modules[ 'styles' ][ 'core' ] );
+		if ( $modulePos !== false ) {
+			unset( $modules[ 'styles' ][ 'core' ][ $modulePos ] ); // we have our own version
+		}
 
-		$modules[ 'styles' ][ 'content' ] = [
-			'0.mediawiki.skinning.content',
-			'ext.bootstrap.styles',
-		];
+		$modules[ 'styles' ][ 'content' ][] = '0.mediawiki.skinning.content';
+		$modules[ 'styles' ][ 'content' ][] = 'ext.bootstrap.styles';
 
 		return $modules;
 	}

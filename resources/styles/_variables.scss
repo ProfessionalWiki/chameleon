@@ -7,7 +7,7 @@
 // @since 2.0
 
 
-// Variables should follow the `$component-state-property-size` formula
+// Variable names should follow the `$component-state-property-size` formula
 // (leaving out inapplicable parts) for consistent naming.
 // Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
@@ -109,7 +109,11 @@ $cmln-icons: map-merge((
 $cmln-first-heading-underline-width: $hr-border-width !default;
 $cmln-first-heading-underline-color: $hr-border-color !default;
 $cmln-first-heading-margin-bottom: $hr-margin-y !default;
-$cmln-toctitle-font-size: $font-size-lg !default;
+
+$cmln-toc-title-font-size: $font-size-lg !default;
+$cmln-toc-group-margin-y: map_get($spacers, 1) !default;
+$cmln-toc-subgroup-margin-left: map_get($spacers, 2) !default;
+$cmln-toc-entry-number-padding-right: map_get($spacers, 2) !default;
 
 // Global textual link colors.
 $cmln-link-colors: () !default;
@@ -125,8 +129,6 @@ $cmln-link-colors: map_merge((
 $list-bullet-size: 0.5 * $font-size-base;
 $list-bullet-color: $gray-300;
 $list-level-indent: 3.5ex;
-
-
 
 /// ==> From Chameleon 1
 

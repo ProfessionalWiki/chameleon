@@ -109,11 +109,11 @@ $enable-gradients:          true !default;
 $font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
 
 $h1-font-size:                $font-size-base * 2.2 !default;
-$h2-font-size:                $font-size-base * 1.8 !default;
-$h3-font-size:                $font-size-base * 1.6 !default;
-$h4-font-size:                $font-size-base * 1.4 !default;
-$h5-font-size:                $font-size-base * 1.2 !default;
-$h6-font-size:                $font-size-base !default;
+$h2-font-size:                $font-size-base * 1.7 !default;
+$h3-font-size:                $font-size-base * 1.4 !default;
+$h4-font-size:                $font-size-base * 1.2 !default;
+$h5-font-size:                $font-size-base * 1.1 !default;
+$h6-font-size:                $font-size-base * 1.0 !default;
 
 // Links
 $link-color: $cobalt;
@@ -140,3 +140,17 @@ $body-color:                $gray-900 !default;
 
 // PageTools
 $cmln-page-tools-link-new: ('color': $gray-600, 'hover-color': darken($gray-600, 15%)) !default;
+
+//$enable-caret:                                true !default;
+//$enable-rounded:                              true !default;
+//$enable-shadows:                              false !default;
+//$enable-gradients:                            false !default;
+//$enable-transitions:                          true !default;
+//$enable-prefers-reduced-motion-media-query:   true !default;
+//$enable-hover-media-query:                    false !default; // Deprecated, no longer affects any compiled CSS
+//$enable-grid-classes:                         true !default;
+//$enable-pointer-cursor-for-buttons:           true !default;
+//$enable-print-styles:                         true !default;
+$enable-responsive-font-sizes:                true !default;
+//$enable-validation-icons:                     true !default;
+//$enable-deprecation-messages:                 true !default;

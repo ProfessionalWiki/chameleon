@@ -2,7 +2,7 @@
 // Styles for MediaWiki elements
 //
 // This file is part of the MediaWiki skin Chameleon.
-// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+// @copyright 2013 - 2019, Stephan Gambke, GNU General Public License, version 3 (or any later version)
 //
 // @since 2.0
 
@@ -13,6 +13,10 @@
 
 #ca-watch > a {
 	@include icon( map_get( $cmln-icons, ca-watch ) );
+}
+
+.ns-6 #mw-content-text > ul , ul.mw-imagepage-duplicates {
+	list-style: none;
 }
 
 //

@@ -2,7 +2,7 @@
 // Fixes for Bootstrap and Fontawesome bugs
 //
 // This file is part of the MediaWiki skin Chameleon.
-// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+// @copyright 2013 - 2019, Stephan Gambke, GNU General Public License, version 3 (or any later version)
 //
 // @since 2.0
 
@@ -46,7 +46,7 @@
 // When there is a "small" in the hierarchy, we mean it
 .small .dropdown-menu > * {
 	@extend .small;
-	font-size: $small-font-size;
+	@include font-size( $small-font-size );
 }
 
 // fix dropdown width for RTL languages

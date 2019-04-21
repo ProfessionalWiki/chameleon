@@ -3,8 +3,8 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @copyright 2013 - 2019, Stephan Gambke
+ * $license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -19,56 +19,26 @@
  * You should have received a copy of the GNU General Public License along
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @author Stephan Gambke
+ * $author Stephan Gambke
  * @since 1.1.1
- * @ingroup Skins
+ * $ingroup Skins
  */
 
 // Styles for all Special Pages
-.ns-special .mw-body {
-	label {
-		display: inline;
-		font-weight: normal;
-	}
-
-	td.mw-label, td.mw-input {
-		padding: 0.5em;
-	}
-}
 
 .mw-special-ChangeEmail,
 .mw-special-PasswordReset {
-	.mw-body label {
+	.oo-ui-fieldLayout-header {
 		font-weight: bold;
 	}
 }
 
-.mw-special-Preferences {
+// Uncomment to center the login form
 
-	.htmlform-tip {
-		font-size: x-small;
-	}
-
-	.prefsection td.mw-label {
-		width: 25%;
-	}
-
-	#preftoc {
-		margin-bottom: 0;
-	}
-
-	#mw-htmlform-i18n td {
-		padding-bottom: 1ex;
-	}
-
-}
-
-.mw-special-ResetTokens {
-	#mw-content-text table {
-		margin-top: 2ex;
-
-		td.mw-label {
-			width: 15%;
-		}
-	}
-}
+//.mw-special-Userlogin {
+//	#userloginForm {
+//		display: flex;
+//		flex-direction: row;
+//		justify-content: center;
+//	}
+//}

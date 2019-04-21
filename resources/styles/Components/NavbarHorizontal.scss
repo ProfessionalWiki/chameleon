@@ -19,7 +19,7 @@
 		.navbar-collapse {
 
 			@extend .flex-column;
-			@extend .flex-md-row;
+			@extend .flex-cmln-row;
 
 			&.show, &.collapsing {
 
@@ -27,7 +27,7 @@
 
 			}
 
-			&.collapsing .navbar-nav:not(.flex-row) {
+			&.collapsing .navbar-nav:not(.right):not(.flex-row) {
 				display: block;
 			}
 		}
@@ -55,13 +55,13 @@
 
 	.navbar-nav {
 
-		//@extend .flex-wrap;
-
-		//@media ( max-width( $cmln-collapse-point ) ) {
-		//	&:not(:first-child) {
-		//		margin-top: 1rem;
-		//	}
-		//}
+		&.right {
+			@extend .ml-cmln-auto;
+			@extend .mt-cmln-0;
+			@extend .mt-4;
+			@extend .flex-row;
+			@extend .justify-content-center;
+		}
 
 		.dropdown-menu {
 

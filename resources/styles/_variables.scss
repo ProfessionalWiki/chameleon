@@ -12,7 +12,22 @@
 // Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
 
 
-$cmln-collapse-point: md !default;
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$cmln-collapse-point: 1105px !default;
+
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	cmln: $cmln-collapse-point,
+	xl: 1200px
+);
+
 
 // Global textual link colors.
 $cmln-link-format: $link-color none darken($link-color, 15%) underline !default;
@@ -28,6 +43,12 @@ $cmln-link-formats: map_merge((
 // PersonalTools
 $cmln-personal-tools-item-margin: map_get( $spacers, 4 ) !default;
 
+$cmln-personal-tools-font-size: $font-size-sm !default;
+$cmln-personal-tools-item-margin: map_get( $spacers, 4 ) !default;
+
+$cmln-personal-tools-link: $cmln-link-format !default;
+$cmln-personal-tools-link-new: map_get( $cmln-link-formats, "new" ) !default;
+
 // PageTools
 $cmln-page-tools-font-size: $font-size-sm !default;
 $cmln-page-tools-item-margin: map_get( $spacers, 4 ) !default;
@@ -36,7 +57,7 @@ $cmln-page-tools-link: $cmln-link-format !default;
 $cmln-page-tools-link-new: map_get( $cmln-link-formats, "new" ) !default;
 
 // SearchBar
-$cmln-search-bar-collapse-point: $cmln-collapse-point !default;
+$cmln-search-bar-collapse-point: cmln !default;
 $cmln-search-bar-btn-color: light !default; // @see $theme-colors
 
 // Navbar
@@ -46,7 +67,7 @@ $cmln-navbar-toggler-color: light !default; // @see $theme-colors
 $cmln-navbar-logo-height: 2 * $nav-link-padding-y + $font-size-base + $navbar-padding-y;
 
 // NavbarHorizontal
-$cmln-navbar-horizontal-collapse-point: $cmln-collapse-point !default;
+$cmln-navbar-horizontal-collapse-point: cmln !default;
 
 // Icon defaults
 $cmln-icon-margin: map_get( $spacers, 2 ) !default;

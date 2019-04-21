@@ -234,8 +234,7 @@ class NavbarHorizontal extends Component {
 		}
 
 		if ( $rightElements ) {
-			// FIXME: Use a dedicated class instead of ml-auto. Then style in NavbarHorizontal.scss.
-			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav ml-md-auto mt-md-0 mt-4 flex-row justify-content-center' ], implode( '', $rightElements ), $this->indent() );
+			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav right' ], implode( '', $rightElements ), $this->indent() );
 		}
 
 		$this->indent( -$indent );

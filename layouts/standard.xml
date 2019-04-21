@@ -30,7 +30,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 				<component type="Logo" addLink="yes"/>
 			</cell>
 
-			<cell class="ml-auto col-12 col-md">
+			<cell class="ml-auto col-12 col-cmln">
 
 				<row>
 					<cell>
@@ -49,7 +49,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 		<row>
 			<cell>
-				<component type="NavbarHorizontal" class="mb-3 mt-2 mt-md-0">
+				<component type="NavbarHorizontal" class="mb-3 mt-2 mt-cmln-0">
 					<component type="NavMenu"/>
 				</component>
 			</cell>
@@ -97,7 +97,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 				<component type="FooterPlaces"/>
 			</cell>
 			<cell>
-				<component type="FooterIcons" class="pull-right"/>
+				<component type="FooterIcons" class="justify-content-end"/>
 			</cell>
 		</row>
 	</grid>

@@ -31,7 +31,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<component type="Logo" position="head"/>
 		<component type="NavMenu" flatten="navigation"/>
 		<component type="PageTools" class="flex-row" position="right" hideSelectedNameSpace="yes"/>
-		<component type="SearchBar" class="order-first order-md-0" position="right" buttons="go"/>
+		<component type="SearchBar" class="order-first order-cmln-0" position="right" buttons="go"/>
 		<component type="PersonalTools" position="right"/>
 	</component>
 
@@ -61,7 +61,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 				<component type="FooterPlaces"/>
 			</cell>
 			<cell>
-				<component type="FooterIcons" class="pull-right"/>
+				<component type="FooterIcons" class="justify-content-end"/>
 			</cell>
 		</row>
 	</grid>

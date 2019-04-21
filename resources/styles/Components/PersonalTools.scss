@@ -2,17 +2,17 @@
 // Styling for PersonalTools
 //
 // This file is part of the MediaWiki skin Chameleon.
-// @copyright 2013 - 2018, Stephan Gambke, GNU General Public License, version 3 (or any later version)
+// @copyright 2013 - 2019, Stephan Gambke, GNU General Public License, version 3 (or any later version)
 //
 // @since 2.0
 
-.p-personal {
-	.pull-right .p-personal-tools {
-		@extend .justify-content-right;
+#p-personal, .p-personal {
+	&.pull-right .p-personal-tools {
+		justify-content: flex-end;
 	}
 
-	.pull-left .p-personal-tools {
-		@extend .justify-content-left;
+	&.pull-left .p-personal-tools {
+		justify-content: flex-start;
 	}
 
 	.p-personal-tools {
@@ -20,9 +20,9 @@
 		@extend .d-flex;
 		@extend .flex-row;
 		@extend .flex-wrap-reverse;
-		@extend .justify-content-center;
 
 		@include list-unstyled;
+		@include font-size( $cmln-personal-tools-font-size );
 
 		margin: 0 (-$cmln-personal-tools-item-margin / 2);
 
@@ -30,6 +30,20 @@
 			margin: {
 				left: ($cmln-personal-tools-item-margin / 2);
 				right: ($cmln-personal-tools-item-margin / 2);
+			}
+		}
+
+		a {
+
+			@include link($cmln-page-tools-link...);
+
+			&.new {
+				@include link($cmln-page-tools-link-new...);
+			}
+
+			&.selected {
+				font-weight: bold;
+				@include link($cmln-page-tools-link...);
 			}
 		}
 	}

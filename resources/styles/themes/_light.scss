@@ -138,6 +138,9 @@ $navbar-nav-link-padding-x:         1rem !default;
 $body-bg:                   $white !default;
 $body-color:                $gray-900 !default;
 
+// PersonalTools
+$cmln-personal-tools-link-new: ('color': $gray-600, 'hover-color': darken($gray-600, 15%)) !default;
+
 // PageTools
 $cmln-page-tools-link-new: ('color': $gray-600, 'hover-color': darken($gray-600, 15%)) !default;
 

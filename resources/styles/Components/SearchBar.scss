@@ -10,7 +10,7 @@
 
 	width: 100%;
 
-	@include media-breakpoint-up($cmln-search-bar-collapse-point) {
+	@include media-breakpoint-up( md ) {
 		width: auto;
 	}
 

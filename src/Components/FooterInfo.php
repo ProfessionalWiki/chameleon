@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2018, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -30,12 +30,10 @@ use Skins\Chameleon\IdRegistry;
 /**
  * The FooterInfo class.
  *
- * An list of footer items (last modified time, view count, number of watching users, credits, copyright)
+ * A list of footer items (last modified time, view count, number of watching users, credits, copyright)
  *
  * Does not include so called places (about, privacy policy, and disclaimer links). They need to be added to the page
  * elsewhere.
- *
- * This is an unstyled unordered list: <ul id="footer-info" >
  *
  * @author Stephan Gambke
  * @since 1.0
@@ -54,7 +52,7 @@ class FooterInfo extends Component {
 		return
 			$this->indent() . '<!-- footer links -->' .
 			IdRegistry::getRegistry()->element(
-				'ul',
+				'div',
 				[ 'id' => 'footer-info', 'class' => $this->getClassString() ],
 				implode( $this->getFooterLines() ),
 				$this->indent()
@@ -62,8 +60,6 @@ class FooterInfo extends Component {
 	}
 
 	/**
-	 * @param $footerlinks
-	 *
 	 * @return string[]
 	 * @throws \MWException
 	 */
@@ -80,7 +76,7 @@ class FooterInfo extends Component {
 
 				$lines[] = $this->indent() . '<!-- ' . htmlspecialchars( $category ) . ' -->';
 				foreach ( $msgKeys as $key ) {
-					$lines[] = $this->indent() . '<li>' . $this->getSkinTemplate()->get( $key ) . '</li>';
+					$lines[] = $this->indent() . '<div>' . $this->getSkinTemplate()->get( $key ) . '</div>';
 				}
 			}
 		}

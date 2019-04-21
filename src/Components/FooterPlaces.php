@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2018, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -49,7 +49,7 @@ class FooterPlaces extends Component {
 		return
 			$this->indent() . '<!-- places -->' .
 			IdRegistry::getRegistry()->element(
-				'ul',
+				'div',
 				[ 'id' => 'footer-places', 'class' => $this->getClassString() ],
 				implode( $this->getFooterLinks() ),
 				$this->indent()
@@ -57,8 +57,6 @@ class FooterPlaces extends Component {
 	}
 
 	/**
-	 * @param $footerlinks
-	 *
 	 * @return array
 	 * @throws \MWException
 	 */
@@ -74,7 +72,7 @@ class FooterPlaces extends Component {
 
 		$links = [];
 		foreach ( $footerlinks[ 'places' ] as $key ) {
-			$links[] = $this->indent() . '<li>' . $this->getSkinTemplate()->get( $key ) . '</li>';
+			$links[] = $this->indent() . '<div>' . $this->getSkinTemplate()->get( $key ) . '</div>';
 		}
 
 		$this->indent( -1 );

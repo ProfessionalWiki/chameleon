@@ -4,7 +4,7 @@
  *
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2018, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -49,7 +49,7 @@ class FooterIcons extends Component {
 		return
 			$this->indent() . '<!-- footer icons -->' .
 			IdRegistry::getRegistry()->element(
-				'ul',
+				'div',
 				[ 'id' => 'footer-icons', 'class' => $this->getClassString() ],
 				implode( $this->getIcons() ),
 				$this->indent()
@@ -70,7 +70,7 @@ class FooterIcons extends Component {
 			$lines[] = $this->indent() . '<!-- ' . htmlspecialchars( $blockName ) . ' -->';
 
 			foreach ( $footerIcons as $icon ) {
-				$lines[] = $this->indent() . '<li>' . $this->getSkinTemplate()->getSkin()->makeFooterIcon( $icon ) . '</li>';
+				$lines[] = $this->indent() . '<div>' . $this->getSkinTemplate()->getSkin()->makeFooterIcon( $icon ) . '</div>';
 			}
 
 		}

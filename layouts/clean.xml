@@ -58,11 +58,6 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<row>
 			<cell>
 				<component type="FooterInfo"/>
-			</cell>
-		</row>
-
-		<row>
-			<cell>
 				<component type="FooterPlaces"/>
 			</cell>
 			<cell>

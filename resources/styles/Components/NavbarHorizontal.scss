@@ -25,11 +25,11 @@
 
 				display: flex;
 
-				.navbar-nav:not(.flex-row) {
-					display: block;
-				}
 			}
 
+			&.collapsing .navbar-nav:not(.flex-row) {
+				display: block;
+			}
 		}
 	}
 
@@ -93,6 +93,8 @@
 	.navbar-tool > a {
 
 		@extend .nav-link;
+
+		position: relative;
 
 		padding-left: 0;
 		padding-right: 0;

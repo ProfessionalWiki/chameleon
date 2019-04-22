@@ -28,11 +28,11 @@ language: php
 sudo: false
 
 matrix:
-	include:
-		- env: DBTYPE=mysql; MW=master
-		  php: '7.4'
-		- env: DBTYPE=mysql; MW=1.31.0
-	  	  php: '7.0'
+  include:
+    - env: DBTYPE=mysql; MW=master
+      php: '7.4'
+    - env: DBTYPE=mysql; MW=1.31.0
+      php: '7.0'
 
 script:
-	- bash ./build/travis/build.sh
+  - bash ./build/travis/build.sh

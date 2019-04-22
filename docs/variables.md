@@ -130,7 +130,7 @@ non-default values in the order of occurence in the SCSS code.
  $close-font-size                                      | 1.5rem
  $close-font-weight                                    | 700
  $close-text-shadow                                    | 0 1px 0 #fff
- $cmln-collapse-point                                  | md
+ $cmln-collapse-point                                  | 1105px
  $cmln-first-heading-margin-bottom                     | 1rem
  $cmln-first-heading-underline-color                   | rgba(0, 0, 0, 0.1)
  $cmln-first-heading-underline-width                   | 1px
@@ -140,17 +140,23 @@ non-default values in the order of occurence in the SCSS code.
  $cmln-link-format                                     | #1b599b none #10345a underline
  $cmln-link-formats                                    | (new: ('color': #9b1b2f, 'hover-color': #5a101b), stub: #1b599b none #10345a underline, extiw: #1b599b none #10345a underline, external: #1b599b none #10345a underline)
  $cmln-navbar-bg-color                                 | light
- $cmln-navbar-horizontal-collapse-point                | md
+ $cmln-navbar-horizontal-collapse-point                | cmln
  $cmln-navbar-logo-height                              | 2.5rem
  $cmln-navbar-toggler-color                            | light
  $cmln-page-tools-font-size                            | 0.875rem
  $cmln-page-tools-item-margin                          | 1.5rem
  $cmln-page-tools-link                                 | #1b599b none #10345a underline
  $cmln-page-tools-link-new                             | ('color': #6c757d, 'hover-color': #494f54)
+ $cmln-personal-tools-font-size                        | 0.875rem
  $cmln-personal-tools-item-margin                      | 1.5rem
+ $cmln-personal-tools-link                             | #1b599b none #10345a underline
+ $cmln-personal-tools-link-new                         | ('color': #6c757d, 'hover-color': #494f54)
  $cmln-search-bar-btn-color                            | light
- $cmln-search-bar-collapse-point                       | md
- $cmln-toctitle-font-size                              | 1.25rem
+ $cmln-search-bar-collapse-point                       | cmln
+ $cmln-toc-entry-number-padding-right                  | 0.5rem
+ $cmln-toc-group-margin-y                              | 0.25rem
+ $cmln-toc-subgroup-margin-left                        | 0.5rem
+ $cmln-toc-title-font-size                             | 1.25rem
  $cobalt                                               | #1b599b
  $code-color                                           | #e83e8c
  $code-font-size                                       | 0.875
@@ -300,6 +306,7 @@ non-default values in the order of occurence in the SCSS code.
  $dt-font-weight                                       | 700
  $embed-responsive-aspect-ratios                       | 21 9, 16 9, 4 3, 1 1
  $emphasized-link-hover-darken-percentage              | 0.15
+ $enable-caret                                         | 1
  $enable-deprecation-messages                          | 1
  $enable-gradients                                     | 1
  $enable-grid-classes                                  | 1
@@ -307,7 +314,7 @@ non-default values in the order of occurence in the SCSS code.
  $enable-pointer-cursor-for-buttons                    | 1
  $enable-prefers-reduced-motion-media-query            | 1
  $enable-print-styles                                  | 1
- $enable-responsive-font-sizes                         | 0
+ $enable-responsive-font-sizes                         | 1
  $enable-rounded                                       | 1
  $enable-shadows                                       | 1
  $enable-transitions                                   | 1
@@ -1356,14 +1363,14 @@ non-default values in the order of occurence in the SCSS code.
  $gray-900                                             | #212529
  $grays                                                | ("100": #f8f9fa, "200": #e9ecef, "300": #dee2e6, "400": #ced4da, "500": #adb5bd, "600": #6c757d, "700": #495057, "800": #343a40, "900": #212529)
  $green                                                | #28a745
- $grid-breakpoints                                     | (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
+ $grid-breakpoints                                     | (xs: 0, sm: 576px, md: 768px, lg: 992px, cmln: 1105px, xl: 1200px)
  $grid-columns                                         | 12
  $grid-gutter-width                                    | 30px
  $h1-font-size                                         | 2.2rem
- $h2-font-size                                         | 1.8rem
- $h3-font-size                                         | 1.6rem
- $h4-font-size                                         | 1.4rem
- $h5-font-size                                         | 1.2rem
+ $h2-font-size                                         | 1.7rem
+ $h3-font-size                                         | 1.4rem
+ $h4-font-size                                         | 1.2rem
+ $h5-font-size                                         | 1.1rem
  $h6-font-size                                         | 1rem
  $headings-color                                       | null
  $headings-font-family                                 | null
@@ -1373,7 +1380,6 @@ non-default values in the order of occurence in the SCSS code.
  $hr-border-color                                      | rgba(0, 0, 0, 0.1)
  $hr-border-width                                      | 1px
  $hr-margin-y                                          | 1rem
- $i                                                    | 10
  $indigo                                               | #6610f2
  $info                                                 | #17a2b8
  $input-bg                                             | #fff

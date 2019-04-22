@@ -40,7 +40,7 @@ use Skins\Chameleon\Menu\MenuFromLines;
  * @ingroup Skins
  * @ingroup Test
  */
-class MenuFromLinesTest extends \PHPUnit_Framework_TestCase {
+class MenuFromLinesTest extends \PHPUnit\Framework\TestCase {
 
 	/**
 	 * @covers ::__construct

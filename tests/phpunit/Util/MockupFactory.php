@@ -2,7 +2,7 @@
 /**
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2015, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -24,6 +24,17 @@
 
 namespace Skins\Chameleon\Tests\Util;
 
+use FauxRequest;
+use Message;
+use PHPUnit\Framework\TestCase;
+use Skins\Chameleon\Chameleon;
+use Skins\Chameleon\ChameleonTemplate;
+use Skins\Chameleon\ComponentFactory;
+use Skins\Chameleon\Components\Component;
+use stdClass;
+use Title;
+use User;
+
 /**
  * @group skins-chameleon
  * @group mediawiki-databaseless
@@ -36,35 +47,48 @@ namespace Skins\Chameleon\Tests\Util;
 class MockupFactory {
 
 	private $testCase;
-	private $configuration = array(
+	private $configuration = [
 		'UserIsLoggedIn'      => false,
-		'UserNewMessageLinks' => array(),
-		'UserEffectiveGroups' => array( '*' ),
-		'UserRights' => array(),
-	);
+		'UserNewMessageLinks' => [],
+		'UserEffectiveGroups' => [ '*' ],
+		'UserRights' => [],
+	];
 
-	public function __construct( \PHPUnit_Framework_TestCase $testCase ) {
+	/**
+	 * MockupFactory constructor.
+	 *
+	 * @param TestCase $testCase
+	 */
+	public function __construct( TestCase $testCase ) {
 		$this->testCase = $testCase;
 	}
 
 	/**
 	 * Returns a new factory. Convenience method to avoid having to use the constructor.
 	 *
-	 * @param \PHPUnit_Framework_TestCase $testCase
+	 * @param TestCase $testCase
 	 *
 	 * @return MockupFactory
 	 */
-	public static function makeFactory( \PHPUnit_Framework_TestCase $testCase ) {
+	public static function makeFactory( TestCase $testCase ) {
 		return new self( $testCase );
 	}
 
+	/**
+	 * @param $key
+	 * @param $value
+	 */
 	public function set( $key, $value ) {
 		$this->configuration[ $key ] = $value;
 	}
 
+	/**
+	 * @return \PHPUnit\Framework\MockObject\MockObject|ChameleonTemplate
+	 * @throws \MWException
+	 */
 	public function getChameleonSkinTemplateStub() {
 
-		$chameleonTemplate = $this->testCase->getMockBuilder( '\Skins\Chameleon\ChameleonTemplate' )
+		$chameleonTemplate = $this->testCase->getMockBuilder( ChameleonTemplate::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -73,7 +97,7 @@ class MockupFactory {
 
 		$dataMap = array_map(
 			function ( $key, $value ) {
-				return array( $key, null, $value );
+				return [ $key, null, $value ];
 			},
 			array_keys( $chameleonTemplate->data ),
 			array_values( $chameleonTemplate->data )
@@ -97,24 +121,24 @@ class MockupFactory {
 
 		$chameleonTemplate->expects( $this->testCase->any() )
 			->method( 'getSidebar' )
-			->will( $this->testCase->returnValue( array() ) );
+			->will( $this->testCase->returnValue( [] ) );
 
 		$chameleonTemplate->expects( $this->testCase->any() )
 			->method( 'getToolbox' )
-			->will( $this->testCase->returnValue( array() ) );
+			->will( $this->testCase->returnValue( [] ) );
 
 		$chameleonTemplate->expects( $this->testCase->any() )
 			->method( 'getPersonalTools' )
-			->will( $this->testCase->returnValue( array( 'foo' => array(), 'bar' => array() ) ) );
+			->will( $this->testCase->returnValue( [ 'foo' => [], 'bar' => [] ] ) );
 
 		$chameleonTemplate->expects( $this->testCase->any( 0 ) )
 			->method( 'getFooterLinks' )
 			->will( $this->testCase->returnValue(
-					array(
-						'category1' => array( 'key1', 'key2' ),
-						'category2' => array( 'key3', 'key4' ),
-						'places'    => array( 'privacy', 'about', 'disclaimer' ),
-					)
+					[
+						'category1' => [ 'key1', 'key2' ],
+						'category2' => [ 'key3', 'key4' ],
+						'places'    => [ 'privacy', 'about', 'disclaimer' ],
+					]
 				)
 			);
 
@@ -129,60 +153,60 @@ class MockupFactory {
 	 * component
 	 */
 	protected function getSkinTemplateDummyDataSetForMainNamespace() {
-		return array(
+		return [
 
 			// Required by Logo
 			'logopath'           => 'foo',
 			'sitename'           => 'bar',
 
 			// Required by NavMenu
-			'nav_urls'           => array(
-				'mainpage' => array( 'href' => 'bat' )
-			),
+			'nav_urls'           => [
+				'mainpage' => [ 'href' => 'bat' ]
+			],
 
 			// Required by PageTools
-			'content_navigation' => array(
+			'content_navigation' => [
 				'namespaces' =>
-					array(
+					[
 						'talk' =>
-							array(
+							[
 								'class'   => '',
 								'text'    => 'Discussion',
 								'href'    => '/mw/index.php?title=Talk:Main_Page',
 								'primary' => true,
 								'context' => 'talk',
 								'id'      => 'ca-talk',
-							),
-					),
+							],
+					],
 				'views'      =>
-					array(
+					[
 						'view'    =>
-							array(
+							[
 								'class'     => 'selected',
 								'text'      => 'View',
 								'href'      => '/mw/index.php/Main_Page',
 								'primary'   => true,
 								'redundant' => true,
 								'id'        => 'ca-view',
-							),
+							],
 						'edit'    =>
-							array(
+							[
 								'class'   => '',
 								'text'    => 'Edit',
 								'href'    => '/mw/index.php?title=Main_Page&action=edit',
 								'primary' => true,
 								'id'      => 'ca-edit',
-							),
+							],
 						'history' =>
-							array(
+							[
 								'class' => false,
 								'text'  => 'History',
 								'href'  => '/mw/index.php?title=Main_Page&action=history',
 								'rel'   => 'archives',
 								'id'    => 'ca-history',
-							),
-					),
-			),
+							],
+					],
+			],
 
 			// Required by SearchBar
 			'wgScript'           => 'bam',
@@ -192,13 +216,16 @@ class MockupFactory {
 			'subtitle'           => 'SomeSubtitle',
 			'undelete'           => 'SomeUndeleteMessage',
 			'dataAfterContent'   => 'SomeDataAfterContent',
-		);
+		];
 	}
 
+	/**
+	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 */
 	protected function getTranslatorStub() {
 
-		$translator = $this->testCase->getMockBuilder( '\stdClass' )
-			->setMethods( array( 'translate' ) )
+		$translator = $this->testCase->getMockBuilder( stdClass::class )
+			->setMethods( [ 'translate' ] )
 			->getMock();
 
 		$translator->expects( $this->testCase->any() )
@@ -208,9 +235,12 @@ class MockupFactory {
 		return $translator;
 	}
 
+	/**
+	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 */
 	protected function getMessageStub() {
 
-		$message = $this->testCase->getMockBuilder( '\Message' )
+		$message = $this->testCase->getMockBuilder( Message::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -222,12 +252,16 @@ class MockupFactory {
 
 	}
 
+	/**
+	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 * @throws \MWException
+	 */
 	protected function getSkinStub() {
 
-		$title = \Title::newFromText( 'FOO' );
-		$request = new \FauxRequest();
+		$title = Title::newFromText( 'FOO' );
+		$request = new FauxRequest();
 
-		$skin = $this->testCase->getMockBuilder( '\SkinChameleon' )
+		$skin = $this->testCase->getMockBuilder( Chameleon::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -250,9 +284,12 @@ class MockupFactory {
 		return $skin;
 	}
 
+	/**
+	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 */
 	protected function getComponentStub() {
 
-		$component = $this->testCase->getMockBuilder( 'Skins\Chameleon\Components\Component' )
+		$component = $this->testCase->getMockBuilder( Component::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -263,9 +300,12 @@ class MockupFactory {
 		return $component;
 	}
 
+	/**
+	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 */
 	protected function getUserStub() {
 
-		$user = $this->testCase->getMockBuilder( '\User' )
+		$user = $this->testCase->getMockBuilder( User::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -287,12 +327,18 @@ class MockupFactory {
 
 		$user->expects( $this->testCase->any() )
 			->method( 'getRights' )
-			->will( $this->testCase->returnValue( $this->get( 'UserRights', array() ) ) );
+			->will( $this->testCase->returnValue( $this->get( 'UserRights', [] ) ) );
 
 		return $user;
 
 	}
 
+	/**
+	 * @param $key
+	 * @param null $default
+	 *
+	 * @return mixed|null
+	 */
 	public function get( $key, $default = null ) {
 
 		if ( isset( $this->configuration[ $key ] ) ) {
@@ -303,9 +349,12 @@ class MockupFactory {
 
 	}
 
+	/**
+	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 */
 	protected function getTitleStub() {
 
-		$title = $this->testCase->getMockBuilder( '\Title' )
+		$title = $this->testCase->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -317,9 +366,12 @@ class MockupFactory {
 
 	}
 
+	/**
+	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 */
 	protected function getComponentFactoryStub() {
 
-		$factory = $this->testCase->getMockBuilder( 'Skins\Chameleon\ComponentFactory' )
+		$factory = $this->testCase->getMockBuilder( ComponentFactory::class )
 			->disableOriginalConstructor()
 			->getMock();
 

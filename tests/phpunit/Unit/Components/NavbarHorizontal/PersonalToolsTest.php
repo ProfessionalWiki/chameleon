@@ -2,7 +2,7 @@
 /**
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2017, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -24,6 +24,7 @@
 
 namespace Skins\Chameleon\Tests\Unit\Components\NavbarHorizontal;
 
+use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\Tests\Unit\Components\GenericComponentTestCase;
 use Skins\Chameleon\Tests\Util\MockupFactory;
 
@@ -52,13 +53,13 @@ class PersonalToolsTest extends GenericComponentTestCase {
 
 		$factory = MockupFactory::makeFactory( $this );
 		$factory->set( 'UserIsLoggedIn', true );
-		$factory->set( 'UserNewMessageLinks', array( 'foo' ) );
+		$factory->set( 'UserNewMessageLinks', [ 'foo' ] );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 
-		/** @var \Skins\Chameleon\Components\Component $instance */
+		/** @var Component $instance */
 		$instance = new $this->classUnderTest ( $chameleonTemplate, $domElement );
 
-		$matcher = array( 'class' => 'navbar-newtalk-available' );
+		$matcher = [ 'class' => 'pt-mytalk' ];
 		$this->assertTag( $matcher, $instance->getHtml() );
 	}
 
@@ -70,14 +71,14 @@ class PersonalToolsTest extends GenericComponentTestCase {
 
 		$factory = MockupFactory::makeFactory( $this );
 		$factory->set( 'UserIsLoggedIn', true );
-		$factory->set( 'UserNewMessageLinks', array() );
+		$factory->set( 'UserNewMessageLinks', [] );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 
-		/** @var \Skins\Chameleon\Components\Component $instance */
+		/** @var Component $instance */
 		$instance = new $this->classUnderTest ( $chameleonTemplate, $domElement );
 
-		$matcher = array( 'class' => 'navbar-newtalk-not-available' );
-		$this->assertTag( $matcher, $instance->getHtml() );
+		$matcher = [ 'class' => 'pt-mytalk' ];
+		$this->assertNotTag( $matcher, $instance->getHtml() );
 	}
 
 

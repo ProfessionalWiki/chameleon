@@ -63,7 +63,7 @@ class ColoringTextUIResultPrinter extends \PHPUnit_TextUI_ResultPrinter {
 
 		}
 
-		if ($test instanceof \PHPUnit_Framework_TestCase) {
+		if ($test instanceof \PHPUnit\Framework\TestCase) {
 			$this->numAssertions += $test->getNumAssertions();
 		} elseif ($test instanceof \PHPUnit_Extensions_PhptTestCase) {
 			$this->numAssertions++;
@@ -71,7 +71,7 @@ class ColoringTextUIResultPrinter extends \PHPUnit_TextUI_ResultPrinter {
 
 		$this->lastTestFailed = false;
 
-		if ($test instanceof \PHPUnit_Framework_TestCase) {
+		if ($test instanceof \PHPUnit\Framework\TestCase) {
 			if (!$test->hasPerformedExpectationsOnOutput()) {
 				$this->write($test->getActualOutput());
 			}

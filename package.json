@@ -5,9 +5,8 @@
     "lint": "grunt lint",
     "prebuild": "npm install",
     "build:fontawesome": "mkdir -p resources/fontawesome && cp -R node_modules/@fortawesome/fontawesome-free-webfonts/scss resources/fontawesome && cp -R node_modules/@fortawesome/fontawesome-free-webfonts/webfonts resources/fontawesome",
-    "build:sticky": "mkdir -p resources/js/sticky-kit && browserify node_modules/sticky-kit/dist/sticky-kit.js -o resources/js/sticky-kit/jquery.sticky-kit.js",
     "build:docs": "grep -rl 'docs/' -e '<!-- START doctoc'|xargs doctoc --title '**Contents**' --maxlevel 3 --notitle",
-    "build": "npm run build:fontawesome && npm run build:sticky && npm run build:docs"
+    "build": "npm run build:fontawesome && npm run build:docs"
   },
   "devDependencies": {
     "browserify": "^13.1.0",
@@ -22,7 +21,6 @@
     "wdio-mediawiki": "~0.1.7"
   },
   "dependencies": {
-    "sticky-kit": "^1.1.3"
   },
   "browserify-shim": {
     "../../resources/lib/jquery/jquery.js": {

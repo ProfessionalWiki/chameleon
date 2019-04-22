@@ -42,7 +42,7 @@ use Skins\Chameleon\Hooks\SetupAfterCache;
  * @ingroup Skins
  * @ingroup Test
  */
-class StylesCompileTest extends \PHPUnit_Framework_TestCase {
+class StylesCompileTest extends \PHPUnit\Framework\TestCase {
 
 	public function testStylesCompile() {
 

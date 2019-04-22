@@ -65,7 +65,9 @@ class FooterIcons extends Component {
 		$this->indent( 1 );
 
 		$lines = [];
-		foreach ( $this->getSkinTemplate()->getFooterIcons( 'icononly' ) as $blockName => $footerIcons ) {
+		$blocks = $this->getSkinTemplate()->getFooterIcons( 'icononly' ) ?? [];
+
+		foreach ( $blocks as $blockName => $footerIcons ) {
 
 			$lines[] = $this->indent() . '<!-- ' . htmlspecialchars( $blockName ) . ' -->';
 

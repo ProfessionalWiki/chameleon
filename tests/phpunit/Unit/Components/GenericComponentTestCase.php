@@ -2,7 +2,7 @@
 /**
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke
+ * @copyright 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -26,6 +26,7 @@ namespace Skins\Chameleon\Tests\Unit\Components;
 
 use DOMDocument;
 use DOMXPath;
+use PHPUnit\Framework\TestCase;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\Tests\Util\DocumentElementFinder;
 use Skins\Chameleon\Tests\Util\MockupFactory;
@@ -44,7 +45,7 @@ use Skins\Chameleon\Tests\Util\XmlFileProvider;
  * @ingroup Skins
  * @ingroup Test
  */
-class GenericComponentTestCase extends \PHPUnit_Framework_TestCase {
+class GenericComponentTestCase extends TestCase {
 
 	private $successColor = '';
 	private $testObject;
@@ -129,7 +130,7 @@ class GenericComponentTestCase extends \PHPUnit_Framework_TestCase {
 		$xmlFileProvider = new XmlFileProvider( __DIR__ . '/../../../../layouts' );
 		$files = $xmlFileProvider->getFiles();
 
-		$elements = array();
+		$elements = [];
 		foreach ( $files as $file ) {
 			$elements = array_merge( $elements, $this->getDomElementsFromFile( $file ) );
 		}
@@ -217,15 +218,16 @@ class GenericComponentTestCase extends \PHPUnit_Framework_TestCase {
 	 *
 	 * @param array  $matcher
 	 * @param string $actual
-	 * @param string $message
 	 * @param bool   $isHtml
+	 *
+	 * @return int
 	 */
-	public static function assertTag( $matcher, $actual, $message = 'Failed asserting that the given fragment contained the described node.', $isHtml = true ) {
+	protected static function countTags( $matcher, $actual, $isHtml ) {
 
 		$doc = self::loadXML( $actual, $isHtml );
 
 		if ( $doc === false ) {
-			self::fail( $message );
+			return false;
 		}
 
 		$query = '//';
@@ -249,7 +251,35 @@ class GenericComponentTestCase extends \PHPUnit_Framework_TestCase {
 		$xpath = new DOMXPath( $doc );
 		$entries = $xpath->query( $query );
 
-		self::assertGreaterThan( 0, $entries->length, $message );
+		return $entries->length;
+	}
+
+
+	/**
+	 * @param array $matcher
+	 * @param string $actual
+	 * @param string $message
+	 * @param bool $isHtml
+	 */
+	public static function assertTag( $matcher, $actual, $message = 'Failed asserting that the given fragment contained the described node.', $isHtml = true ) {
+
+		$entryCount = self::countTags( $matcher, $actual, $isHtml );
+
+		self::assertTrue( $entryCount !== false && $entryCount > 0, $message );
+
+	}
+
+	/**
+	 * @param array $matcher
+	 * @param string $actual
+	 * @param string $message
+	 * @param bool $isHtml
+	 */
+	public static function assertNotTag( $matcher, $actual, $message = 'Failed asserting that the given fragment did not contain the described node.', $isHtml = true ) {
+
+		$entryCount = self::countTags( $matcher, $actual, $isHtml );
+
+		self::assertTrue( $entryCount === 0, $message );
 
 	}
 
@@ -278,17 +308,17 @@ class GenericComponentTestCase extends \PHPUnit_Framework_TestCase {
 		// cURL
 		$curl = curl_init();
 
-		curl_setopt_array( $curl, array(
+		curl_setopt_array( $curl, [
 			CURLOPT_CONNECTTIMEOUT => 1,
 			CURLOPT_URL            => 'http://validator.w3.org/check',
 			CURLOPT_USERAGENT      => 'cURL ' . $curlVersion[ 'version' ],
 			CURLOPT_RETURNTRANSFER => true,
 			CURLOPT_POST           => true,
-			CURLOPT_POSTFIELDS     => array(
+			CURLOPT_POSTFIELDS     => [
 				'output'   => 'json',
 				'fragment' => $actual,
-			),
-		) );
+			],
+		] );
 
 		@time_sleep_until( self::$lastValidatorCallTime + 1 );
 		self::$lastValidatorCallTime = time();
@@ -330,6 +360,10 @@ class GenericComponentTestCase extends \PHPUnit_Framework_TestCase {
 
 	}
 
+	/**
+	 * @return \Skins\Chameleon\ChameleonTemplate
+	 * @throws \MWException
+	 */
 	public function getChameleonSkinTemplateStub() {
 		return MockupFactory::makeFactory( $this )->getChameleonSkinTemplateStub();
 	}

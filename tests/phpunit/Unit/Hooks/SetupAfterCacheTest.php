@@ -2,7 +2,7 @@
 /**
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2016, Stephan Gambke, mwjames
+ * @copyright 2013 - 2019, Stephan Gambke, mwjames
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -24,7 +24,10 @@
 
 namespace Skins\Chameleon\Tests\Unit\Hooks;
 
+use Bootstrap\BootstrapManager;
+use PHPUnit\Framework\TestCase;
 use Skins\Chameleon\Hooks\SetupAfterCache;
+use WebRequest;
 
 /**
  * @coversDefaultClass \Skins\Chameleon\Hooks\SetupAfterCache
@@ -40,14 +43,14 @@ use Skins\Chameleon\Hooks\SetupAfterCache;
  * @ingroup Skins
  * @ingroup Test
  */
-class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
+class SetupAfterCacheTest extends TestCase {
 
 	protected $dummyExternalModule = null;
 
 	protected function setUp() {
 		parent::setUp();
 
-		$this->dummyExternalModule = __DIR__ . '/../../Fixture/externalmodule.less';
+		$this->dummyExternalModule = __DIR__ . '/../../Fixture/externalmodule.scss';
 	}
 
 	/**
@@ -71,11 +74,11 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function testCanConstruct() {
 
-		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
+		$bootstrapManager = $this->getMockBuilder( BootstrapManager::class )
 			->disableOriginalConstructor()
 			->getMock();
 
-		$configuration = array();
+		$configuration = [];
 
 		$request = $this->getMockBuilder('\WebRequest')
 			->disableOriginalConstructor()
@@ -90,46 +93,47 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @covers ::process
 	 * @covers ::registerCommonBootstrapModules
-	 * @covers ::registerExternalLessModules
+	 * @covers ::registerExternalScssModules
 	 */
-	public function testProcessWithValidExternalModuleWithoutLessVariables() {
+	public function testProcessWithValidExternalModuleWithoutScssVariables() {
 
-		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
+		$bootstrapManager = $this->getMockBuilder( BootstrapManager::class )
 			->disableOriginalConstructor()
 			->getMock();
 
-		$bootstrapManager->expects( $this->at( 1 ) )
-			->method( 'addExternalModule' );
+		$bootstrapManager->expects( $this->at( 8 ) )
+			->method( 'addStyleFile' )
+			->with(
+				$this->equalTo( $this->dummyExternalModule )
+			);
 
-		$bootstrapManager->expects( $this->at( 2 ) )
-			->method( 'addExternalModule' )
+		$bootstrapManager->expects( $this->at( 9 ) )
+			->method( 'addStyleFile' )
 			->with(
 				$this->equalTo( $this->dummyExternalModule ),
-				$this->equalTo( '' ) );
+				$this->equalTo( 'somePositionWeDontCheck' ) );
 
-		$bootstrapManager->expects( $this->at( 3 ) )
-			->method( 'addExternalModule' )
+		$bootstrapManager->expects( $this->once() )
+			->method( 'setScssVariable' )
 			->with(
-				$this->equalTo( $this->dummyExternalModule ),
-				$this->equalTo( 'someRemoteWeDontCheck' ) );
+				$this->equalTo( 'fa-font-path' ),
+				$this->anything()
+			);
 
-		$bootstrapManager->expects( $this->never() )
-			->method( 'setLessVariable' );
-
-		$mixedExternalStyleModules = array(
+		$mixedExternalStyleModules = [
 			$this->dummyExternalModule,
-			$this->dummyExternalModule => 'someRemoteWeDontCheck'
-		);
+			$this->dummyExternalModule => 'somePositionWeDontCheck'
+		];
 
-		$configuration = array(
+		$configuration = [
 			'egChameleonExternalStyleModules' => $mixedExternalStyleModules,
 			'IP'                              => 'notTestingIP',
 			'wgScriptPath'                    => 'notTestingwgScriptPath',
 			'wgStyleDirectory'                => 'notTestingwgStyleDirectory',
 			'wgStylePath'                     => 'notTestingwgStylePath',
-		);
+		];
 
-		$request = $this->getMockBuilder('\WebRequest')
+		$request = $this->getMockBuilder( WebRequest::class)
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -141,330 +145,331 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 
 		$instance->process();
 	}
+
+	///**
+	// * @covers ::process
+	// * @covers ::registerExternalScssModules
+	// */
+	//public function testProcessWithInvalidExternalModuleThrowsException() {
+	//
+	//	$bootstrapManager = $this->getMockBuilder( BootstrapManager::class )
+	//		->disableOriginalConstructor()
+	//		->getMock();
+	//
+	//	$bootstrapManager->expects( $this->atLeastOnce() )
+	//		->method( 'addStyleFile' );
+	//
+	//	$externalStyleModules = [
+	//		__DIR__ . '/../../Util/Fixture/' . 'externalFileDoesNotExist.scss'
+	//	];
+	//
+	//	$configuration = [
+	//		'egChameleonExternalStyleModules' => $externalStyleModules,
+	//		'IP'                              => 'notTestingIP',
+	//		'wgScriptPath'                    => 'notTestingwgScriptPath',
+	//		'wgStyleDirectory'                => 'notTestingwgStyleDirectory',
+	//		'wgStylePath'                     => 'notTestingwgStylePath'
+	//	];
+	//
+	//	$request = $this->getMockBuilder('\WebRequest')
+	//		->disableOriginalConstructor()
+	//		->getMock();
+	//
+	//	$instance = new SetupAfterCache(
+	//		$bootstrapManager,
+	//		$configuration,
+	//		$request
+	//	);
+	//
+	//	$this->expectException( 'RuntimeException' );
+	//
+	//	$instance->process();
+	//}
+	//
+	///**
+	// * @covers ::process
+	// * @covers ::registerExternalStyleVariables
+	// */
+	//public function testProcessWithScssVariables() {
+	//
+	//	$bootstrapManager = $this->getMockBuilder( BootstrapManager::class )
+	//		->disableOriginalConstructor()
+	//		->getMock();
+	//
+	//	$bootstrapManager->expects( $this->once() )
+	//		->method( 'addStyleFile' );
+	//
+	//	$bootstrapManager->expects( $this->once() )
+	//		->method( 'setScssVariable' )
+	//		->with(
+	//			$this->equalTo( 'foo' ),
+	//			$this->equalTo( '999px' ) );
+	//
+	//	$externalStyleVariables = [
+	//		'foo' => '999px'
+	//	];
+	//
+	//	$configuration = [
+	//		'egChameleonExternalStyleVariables'=> $externalStyleVariables,
+	//		'IP'                               => 'notTestingIP',
+	//		'wgScriptPath'                     => 'notTestingwgScriptPath',
+	//		'wgStyleDirectory'                 => 'notTestingwgStyleDirectory',
+	//		'wgStylePath'                      => 'notTestingwgStylePath'
+	//	];
+	//
+	//	$request = $this->getMockBuilder('\WebRequest')
+	//		->disableOriginalConstructor()
+	//		->getMock();
+	//
+	//	$instance = new SetupAfterCache(
+	//		$bootstrapManager,
+	//		$configuration,
+	//		$request
+	//	);
+	//
+	//	$instance->process();
+	//}
+	//
+	///**
+	// * @covers ::process
+	// * @covers ::registerExternalLessVariables
+	// *
+	// * @dataProvider processWithRequestedLayoutFileProvider
+	// */
+	//public function testProcessWithRequestedLayoutFile( $availableLayoutFiles, $defaultLayoutFile, $requestedLayout, $expectedLayoutfile ) {
+	//
+	//	$bootstrapManager = $this->getMockBuilder( BootstrapManager::class )
+	//		->disableOriginalConstructor()
+	//		->getMock();
+	//
+	//	$configuration = [
+	//		'egChameleonAvailableLayoutFiles'  => $availableLayoutFiles,
+	//		'egChameleonLayoutFile'            => $defaultLayoutFile,
+	//		'IP'                               => 'notTestingIP',
+	//		'wgScriptPath'                     => 'notTestingwgScriptPath',
+	//		'wgStyleDirectory'                 => 'notTestingwgStyleDirectory',
+	//		'wgStylePath'                      => 'notTestingwgStylePath'
+	//	];
+	//
+	//	$request = $this->getMockBuilder('\WebRequest')
+	//		->disableOriginalConstructor()
+	//		->getMock();
+	//
+	//	$request->expects( $this->once() )
+	//		->method( 'getVal' )
+	//		->will( $this->returnValue( $requestedLayout ) );
+	//
+	//	$instance = new SetupAfterCache(
+	//		$bootstrapManager,
+	//		$configuration,
+	//		$request
+	//	);
+	//
+	//	$instance->process();
+	//
+	//	$this->assertEquals(
+	//		$expectedLayoutfile,
+	//		$configuration['egChameleonLayoutFile']
+	//	);
+	//}
 
 	/**
-	 * @covers ::process
-	 * @covers ::registerExternalLessModules
+	 * @return array
 	 */
-	public function testProcessWithInvalidExternalModuleThrowsException() {
-
-		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$bootstrapManager->expects( $this->atLeastOnce() )
-			->method( 'addExternalModule' )
-			->will( $this->returnValue( true ) );
-
-		$externalStyleModules = array(
-			__DIR__ . '/../../Util/Fixture/' . 'externalmoduleDoesNotExist.less'
-		);
-
-		$configuration = array(
-			'egChameleonExternalStyleModules' => $externalStyleModules,
-			'IP'                              => 'notTestingIP',
-			'wgScriptPath'                    => 'notTestingwgScriptPath',
-			'wgStyleDirectory'                => 'notTestingwgStyleDirectory',
-			'wgStylePath'                     => 'notTestingwgStylePath'
-		);
-
-		$request = $this->getMockBuilder('\WebRequest')
-			->disableOriginalConstructor()
-			->getMock();
-
-		$instance = new SetupAfterCache(
-			$bootstrapManager,
-			$configuration,
-			$request
-		);
-
-		$this->setExpectedException( 'RuntimeException' );
-
-		$instance->process();
-	}
-
-	/**
-	 * @covers ::process
-	 * @covers ::registerExternalLessVariables
-	 */
-	public function testProcessWithLessVariables() {
-
-		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$bootstrapManager->expects( $this->once() )
-			->method( 'addExternalModule' )
-			->will( $this->returnValue( true ) );
-
-		$bootstrapManager->expects( $this->once() )
-			->method( 'setLessVariable' )
-			->with(
-				$this->equalTo( 'foo' ),
-				$this->equalTo( '999px' ) );
-
-		$externalLessVariables = array(
-			'foo' => '999px'
-		);
-
-		$configuration = array(
-			'egChameleonExternalLessVariables' => $externalLessVariables,
-			'IP'                               => 'notTestingIP',
-			'wgScriptPath'                     => 'notTestingwgScriptPath',
-			'wgStyleDirectory'                 => 'notTestingwgStyleDirectory',
-			'wgStylePath'                      => 'notTestingwgStylePath'
-		);
-
-		$request = $this->getMockBuilder('\WebRequest')
-			->disableOriginalConstructor()
-			->getMock();
-
-		$instance = new SetupAfterCache(
-			$bootstrapManager,
-			$configuration,
-			$request
-		);
-
-		$instance->process();
-	}
-
-	/**
-	 * @covers ::process
-	 * @covers ::registerExternalLessVariables
-	 *
-	 * @dataProvider processWithRequestedLayoutFileProvider
-	 */
-	public function testProcessWithRequestedLayoutFile( $availableLayoutFiles, $defaultLayoutFile, $requestedLayout, $expectedLayoutfile ) {
-
-		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$configuration = array(
-			'egChameleonAvailableLayoutFiles'  => $availableLayoutFiles,
-			'egChameleonLayoutFile'            => $defaultLayoutFile,
-			'IP'                               => 'notTestingIP',
-			'wgScriptPath'                     => 'notTestingwgScriptPath',
-			'wgStyleDirectory'                 => 'notTestingwgStyleDirectory',
-			'wgStylePath'                      => 'notTestingwgStylePath'
-		);
-
-		$request = $this->getMockBuilder('\WebRequest')
-			->disableOriginalConstructor()
-			->getMock();
-
-		$request->expects( $this->once() )
-			->method( 'getVal' )
-			->will( $this->returnValue( $requestedLayout ) );
-
-		$instance = new SetupAfterCache(
-			$bootstrapManager,
-			$configuration,
-			$request
-		);
-
-		$instance->process();
-
-		$this->assertEquals(
-			$expectedLayoutfile,
-			$configuration['egChameleonLayoutFile']
-		);
-	}
-
 	public function processWithRequestedLayoutFileProvider() {
 
-		$provider = array();
+		$provider = [];
 
 		// no layout files available => keep default layout file
-		$provider[] = array(
+		$provider[] = [
 			null,
 			'standard.xml',
 			'someOtherLayout',
 			'standard.xml'
-		);
+		];
 
 		// no specific layout requested => keep default layout file
-		$provider[] = array(
-			array(
+		$provider[] = [
+			[
 				'layout1' => 'layout1.xml',
 				'layout2' => 'layout2.xml',
-			),
+			],
 			'standard.xml',
 			null,
 			'standard.xml'
-		);
+		];
 
 		// requested layout not available => keep default layout file
-		$provider[] = array(
-			array(
+		$provider[] = [
+			[
 				'layout1' => 'layout1.xml',
 				'layout2' => 'layout2.xml',
-			),
+			],
 			'standard.xml',
 			'someOtherLayout',
 			'standard.xml'
-		);
+		];
 
 		// requested layout available => return requested layout file
-		$provider[] = array(
-			array(
+		$provider[] = [
+			[
 				'layout1' => 'layout1.xml',
 				'layout2' => 'layout2.xml',
-			),
+			],
 			'standard.xml',
 			'layout1',
 			'layout1.xml'
-		);
+		];
 
 		return $provider;
 	}
 
-	/**
-	 * @covers ::adjustConfiguration
-	 *
-	 * @dataProvider adjustConfigurationProvider
-	 */
-	public function testAdjustConfiguration( $origConfig, $changes, $expected ) {
-
-		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$request = $this->getMockBuilder('\WebRequest')
-			->disableOriginalConstructor()
-			->getMock();
-
-		$instance = new SetupAfterCache(
-			$bootstrapManager,
-			$changes,
-			$request
-		);
-
-		$instance->adjustConfiguration( $origConfig );
-
-		$this->assertEquals( $expected, $origConfig );
-	}
-
-	/**
-	 * @covers ::process
-	 * @covers ::addLateSettings
-	 *
-	 * @depends testAdjustConfiguration
-	 *
-	 * @dataProvider lateSettingsProvider
-	 */
-	public function testProcessWithLateSettingsToAdjustConfiguration( $configuration, $expected ) {
-
-		$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$dir = $this->getWorkDirectory();
-		$IP = dirname(dirname($dir));
-
-		$defaultConfiguration = array(
-			'IP'                => $IP,
-			'wgScriptPath'      => 'notTestingwgScriptPath',
-			'wgStylePath'      => 'notTestingwgStylePath',
-			'wgStyleDirectory'  => 'notTestingwgStyleDirectory',
-			'wgResourceModules' => array(),
-		);
-
-		$expected[ 'chameleonLocalPath' ] = $defaultConfiguration[ 'wgStyleDirectory' ] . '/chameleon';
-		$expected[ 'chameleonRemotePath' ] = $defaultConfiguration[ 'wgStylePath' ] . '/chameleon';
-
-		$expected[ 'wgResourceModules' ] = array();
-		$expected[ 'wgResourceModules' ][ 'skin.chameleon.jquery-sticky' ] = array(
-			'localBasePath'  => $expected[ 'chameleonLocalPath' ] . '/resources/js',
-			'remoteBasePath' => $expected[ 'chameleonRemotePath' ] . '/resources/js',
-			'group'          => 'skin.chameleon',
-			'skinScripts'    => array(
-				'chameleon' => array( 'sticky-kit/jquery.sticky-kit.js', 'Components/Modifications/sticky.js' )
-			)
-		);
-
-		$configurationToBeAdjusted = $configuration + $defaultConfiguration;
-
-		$request = $this->getMockBuilder('\WebRequest')
-			->disableOriginalConstructor()
-			->getMock();
-
-		$instance = new SetupAfterCache(
-			$bootstrapManager,
-			$configurationToBeAdjusted,
-			$request
-		);
-
-		$instance->process();
-
-		$this->assertEquals(
-			$expected + $defaultConfiguration,
-			$configurationToBeAdjusted
-		);
-	}
+	///**
+	// * @covers ::adjustConfiguration
+	// *
+	// * @dataProvider adjustConfigurationProvider
+	// */
+	//public function testAdjustConfiguration( $origConfig, $changes, $expected ) {
+	//
+	//	$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
+	//		->disableOriginalConstructor()
+	//		->getMock();
+	//
+	//	$request = $this->getMockBuilder('\WebRequest')
+	//		->disableOriginalConstructor()
+	//		->getMock();
+	//
+	//	$instance = new SetupAfterCache(
+	//		$bootstrapManager,
+	//		$changes,
+	//		$request
+	//	);
+	//
+	//	$instance->adjustConfiguration( $origConfig );
+	//
+	//	$this->assertEquals( $expected, $origConfig );
+	//}
+	//
+	///**
+	// * @covers ::process
+	// * @covers ::addLateSettings
+	// *
+	// * @depends testAdjustConfiguration
+	// *
+	// * @dataProvider lateSettingsProvider
+	// */
+	//public function testProcessWithLateSettingsToAdjustConfiguration( $configuration, $expected ) {
+	//
+	//	$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
+	//		->disableOriginalConstructor()
+	//		->getMock();
+	//
+	//	$dir = $this->getWorkDirectory();
+	//	$IP = dirname(dirname($dir));
+	//
+	//	$defaultConfiguration = [
+	//		'IP'                => $IP,
+	//		'wgScriptPath'      => 'notTestingwgScriptPath',
+	//		'wgStylePath'      => 'notTestingwgStylePath',
+	//		'wgStyleDirectory'  => 'notTestingwgStyleDirectory',
+	//		'wgResourceModules' => [],
+	//	];
+	//
+	//	$expected[ 'chameleonLocalPath' ] = $defaultConfiguration[ 'wgStyleDirectory' ] . '/chameleon';
+	//	$expected[ 'chameleonRemotePath' ] = $defaultConfiguration[ 'wgStylePath' ] . '/chameleon';
+	//
+	//	$expected[ 'wgResourceModules' ] = [];
+	//	$expected[ 'wgResourceModules' ][ 'skin.chameleon.jquery-sticky' ] = [
+	//		'localBasePath'  => $expected[ 'chameleonLocalPath' ] . '/resources/js',
+	//		'remoteBasePath' => $expected[ 'chameleonRemotePath' ] . '/resources/js',
+	//		'group'          => 'skin.chameleon',
+	//		'skinScripts'    => [
+	//			'chameleon' => [ 'sticky-kit/jquery.sticky-kit.js', 'Components/Modifications/sticky.js' ]
+	//		]
+	//	];
+	//
+	//	$configurationToBeAdjusted = $configuration + $defaultConfiguration;
+	//
+	//	$request = $this->getMockBuilder('\WebRequest')
+	//		->disableOriginalConstructor()
+	//		->getMock();
+	//
+	//	$instance = new SetupAfterCache(
+	//		$bootstrapManager,
+	//		$configurationToBeAdjusted,
+	//		$request
+	//	);
+	//
+	//	$instance->process();
+	//
+	//	$this->assertEquals(
+	//		$expected + $defaultConfiguration,
+	//		$configurationToBeAdjusted
+	//	);
+	//}
 
 	/**
 	 * Provides test data for the lateSettings test
 	 */
 	public function lateSettingsProvider() {
 
-		$provider = array();
+		$provider = [];
 
-		$provider[ ] = array(
-			array(),
-			array()
-		);
+		$provider[ ] = [
+			[],
+			[]
+		];
 
-		$provider[ ] = array(
-			array(
-				'wgVisualEditorSupportedSkins' => array(),
-			),
-			array(
-				'wgVisualEditorSupportedSkins' => array(),
-			)
-		);
+		$provider[ ] = [
+			[
+				'wgVisualEditorSupportedSkins' => [],
+			],
+			[
+				'wgVisualEditorSupportedSkins' => [],
+			]
+		];
 
-		$provider[ ] = array(
-			array(
+		$provider[ ] = [
+			[
 				'egChameleonEnableVisualEditor' => true,
-			),
-			array(
+			],
+			[
 				'egChameleonEnableVisualEditor' => true,
-			)
-		);
+			]
+		];
 
-		$provider[ ] = array(
-			array(
+		$provider[ ] = [
+			[
 				'egChameleonEnableVisualEditor' => true,
-				'wgVisualEditorSupportedSkins'  => array( 'foo' ),
-			),
-			array(
+				'wgVisualEditorSupportedSkins'  => [ 'foo' ],
+			],
+			[
 				'egChameleonEnableVisualEditor' => true,
-				'wgVisualEditorSupportedSkins'  => array( 'foo', 'chameleon' ),
-			)
-		);
+				'wgVisualEditorSupportedSkins'  => [ 'foo', 'chameleon' ],
+			]
+		];
 
-		$provider[ ] = array(
-			array(
+		$provider[ ] = [
+			[
 				'egChameleonEnableVisualEditor' => true,
-				'wgVisualEditorSupportedSkins'  => array( 'foo', 'chameleon' ),
-			),
-			array(
+				'wgVisualEditorSupportedSkins'  => [ 'foo', 'chameleon' ],
+			],
+			[
 				'egChameleonEnableVisualEditor' => true,
-				'wgVisualEditorSupportedSkins'  => array( 'foo', 'chameleon' ),
-			)
-		);
+				'wgVisualEditorSupportedSkins'  => [ 'foo', 'chameleon' ],
+			]
+		];
 
-		$provider[ ] = array(
-			array(
+		$provider[ ] = [
+			[
 				'egChameleonEnableVisualEditor' => false,
-				'wgVisualEditorSupportedSkins'  => array( 'chameleon', 'foo' => 'chameleon', 'foo' ),
-			),
-			array(
+				'wgVisualEditorSupportedSkins'  => [ 'chameleon', 'foo' => 'chameleon', 'foo' ],
+			],
+			[
 				'egChameleonEnableVisualEditor' => false,
-				'wgVisualEditorSupportedSkins'  => array( 1 => 'foo' ),
-			)
-		);
+				'wgVisualEditorSupportedSkins'  => [ 1 => 'foo' ],
+			]
+		];
 
 		return $provider;
 	}
@@ -474,23 +479,23 @@ class SetupAfterCacheTest extends \PHPUnit_Framework_TestCase {
 	 */
 	public function adjustConfigurationProvider() {
 
-		$provider = array();
+		$provider = [];
 
-		$provider[ ] = array(
-			array(
+		$provider[ ] = [
+			[
 				'key1' => 'value1',
 				'key2' => 'value2',
-			),
-			array(
+			],
+			[
 				'key2' => 'value2changed',
 				'key3' => 'value3changed',
-			),
-			array(
+			],
+			[
 				'key1' => 'value1',
 				'key2' => 'value2changed',
 				'key3' => 'value3changed',
-			)
-		);
+			]
+		];
 
 		return $provider;
 	}

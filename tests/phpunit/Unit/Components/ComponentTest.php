@@ -36,7 +36,7 @@ namespace Skins\Chameleon\Tests\Unit\Components;
  * @since   1.0
  * @ingroup Test
  */
-class ComponentTest extends \PHPUnit_Framework_TestCase {
+class ComponentTest extends \PHPUnit\Framework\TestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\Component';
 

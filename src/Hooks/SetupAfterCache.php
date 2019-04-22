@@ -134,7 +134,7 @@ class SetupAfterCache {
 			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/chameleon.scss'
 		);
 
-		$this->bootstrapManager->setScssVariable( 'fa-font-path', $GLOBALS[ 'wgStylePath' ] . '/chameleon/resources/fontawesome/webfonts' );
+		$this->bootstrapManager->setScssVariable( 'fa-font-path', $this->configuration[ 'chameleonRemotePath' ] . '/resources/fontawesome/webfonts' );
 
 	}
 

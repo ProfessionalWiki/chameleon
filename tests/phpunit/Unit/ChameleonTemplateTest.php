@@ -2,7 +2,7 @@
 /**
  * This file is part of the MediaWiki skin Chameleon.
  *
- * @copyright 2013 - 2014, Stephan Gambke, mwjames
+ * @copyright 2013 - 2019, Stephan Gambke, mwjames
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -24,6 +24,8 @@
 
 namespace Skins\Chameleon\Tests\Unit;
 
+use PHPUnit\Framework\TestCase;
+use Skins\Chameleon\Chameleon;
 use Skins\Chameleon\ChameleonTemplate;
 
 /**
@@ -41,7 +43,7 @@ use Skins\Chameleon\ChameleonTemplate;
  * @ingroup Skins
  * @ingroup Test
  */
-class ChameleonTemplateTest extends \PHPUnit_Framework_TestCase {
+class ChameleonTemplateTest extends TestCase {
 
 	// This is to ensure that the original value is cached since we are unable
 	// to inject the setting during testing
@@ -69,11 +71,11 @@ class ChameleonTemplateTest extends \PHPUnit_Framework_TestCase {
 
 	public function testInaccessibleLayoutFileThrowsExeception() {
 
-		$this->setExpectedException( 'RuntimeException' );
+		$this->expectException( 'RuntimeException' );
 
 		$GLOBALS['egChameleonLayoutFile'] = 'setInaccessibleLayoutFile';
 
-		$skin = new \SkinChameleon();
+		$skin = new Chameleon();
 
 		$instance = new ChameleonTemplate;
 		$instance->set( 'skin', $skin );

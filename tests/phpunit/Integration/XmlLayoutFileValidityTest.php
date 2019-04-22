@@ -41,7 +41,7 @@ use RuntimeException;
  * @ingroup Skins
  * @ingroup Test
  */
-class XmlLayoutFileValidityTest extends \PHPUnit_Framework_TestCase {
+class XmlLayoutFileValidityTest extends \PHPUnit\Framework\TestCase {
 
 	public function testXmlValidityOfLayoutFiles() {
 

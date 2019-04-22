@@ -88,7 +88,15 @@ function installSkinViaComposerOnMediaWikiRoot {
 	else
 
 		echo "Branch: $TRAVIS_BRANCH ($TRAVIS_COMMIT)"
-		composer require "mediawiki/chameleon-skin=dev-${TRAVIS_BRANCH}#${TRAVIS_COMMIT}"
+
+		if [[ $TRAVIS_BRANCH =~ ^(v?([0-9]+)(\.[0-9]+)*)(\.x)?$ ]]
+		then
+			# version-like
+			composer require "mediawiki/chameleon-skin=${BASH_REMATCH[1]}.x-dev#${TRAVIS_COMMIT}"
+		else
+			# feature branch
+			composer require "mediawiki/chameleon-skin=dev-${TRAVIS_BRANCH}#${TRAVIS_COMMIT}"
+		fi
 
 		composer dump-autoload
 

@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Dj"
 		]
 	},
+	"skinname-chameleon": "Kaméleon",
 	"chameleon-desc": "A Kaméleon felület",
 	"chameleon-loggedin": "Be vagy jelentkezve $1 néven.",
 	"chameleon-notloggedin": "Nem vagy bejelentkezve.",

@@ -3,11 +3,12 @@
 		"authors": [
 			"McSalama",
 			"01miki10",
-			"Nike"
+			"Nike",
+			"Pyscowicz"
 		]
 	},
-	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "The Chameleon-teema",
+	"skinname-chameleon": "Kameleontti",
+	"chameleon-desc": "Kameleontti-teema",
 	"chameleon-loggedin": "Olet kirjautunut sisään nimellä $1.",
 	"chameleon-notloggedin": "Et ole kirjautunut sisään.",
 	"chameleon-newmessages": "Sinulla on uusia viestejä.",

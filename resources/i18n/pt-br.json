@@ -3,7 +3,8 @@
 		"authors": [
 			"Jaideraf",
 			"!Silent",
-			"Felipe L. Ewald"
+			"Felipe L. Ewald",
+			"Eduardo Addad de Oliveira"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
@@ -11,5 +12,6 @@
 	"chameleon-loggedin": "Você está logado como $1.",
 	"chameleon-notloggedin": "Você não está logado.",
 	"chameleon-newmessages": "Você tem novas mensagens.",
-	"chameleon-nonewmessages": "Você não tem novas mensagens."
+	"chameleon-nonewmessages": "Você não tem novas mensagens.",
+	"chameleon-search-aria-label": "Ir para página"
 }

@@ -1,7 +1,7 @@
 {
 	"name": "mediawiki/chameleon-skin",
 	"type": "mediawiki-skin",
-	"description": "A highly flexible MediaWiki skin using Twitter Bootstrap 3",
+	"description": "A highly flexible MediaWiki skin using Bootstrap 4",
 	"keywords": [
 		"wiki",
 		"MediaWiki",
@@ -14,7 +14,7 @@
 	"authors"    : [
 		{
 			"name": "Stephan Gambke",
-			"email": "s7eph4n@gmail.com",
+			"email": "s7eph4n@protonmail.com",
 			"role": "Developer"
 		}
 	],
@@ -25,10 +25,11 @@
 		"irc": "irc://irc.freenode.org/mediawiki"
 	},
 	"require": {
-		"php": ">=5.6",
+		"php": ">=7.0",
 		"ext-dom": "*",
 		"ext-filter": "*",
 		"composer/installers": "^1.0.12",
+		"mediawiki/mediawiki": ">=1.31",
 		"mediawiki/mw-extension-registry-helper": "^1.0",
 		"mediawiki/bootstrap": "^2.0"
 	},

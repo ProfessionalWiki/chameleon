@@ -3,7 +3,7 @@
 #####
 # This file is part of the MediaWiki skin Chameleon.
 #
-# @copyright 2013 - 2016, Stephan Gambke, mwjames
+# @copyright 2013 - 2019, Stephan Gambke, mwjames
 # @license   GNU General Public License, version 3 (or any later version)
 #
 # The Chameleon skin is free software: you can redistribute it and/or modify
@@ -31,7 +31,18 @@ set -e  # exit immediately if a command exits with an error
 
 originalDirectory=$(pwd)
 
+function checkEnvironment {
+
+	if [ ! -f composer.json ]
+	then
+		echo "ERROR: composer.json not found."
+		exit -1
+	fi
+
+}
+
 function installMediaWiki {
+
 	cd ..
 
 	wget https://github.com/wikimedia/mediawiki/archive/$MW.tar.gz
@@ -40,11 +51,8 @@ function installMediaWiki {
 
 	cd mw
 
-	## MW 1.25+ installs packages using composer
-	if [ -f composer.json ]
-	then
-		composer install --prefer-source
-	fi
+	# install packages required by MW
+	composer install --prefer-source
 
 	mysql -e 'create database its_a_mw;'
 	php maintenance/install.php --dbtype $DBTYPE --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin
@@ -52,33 +60,57 @@ function installMediaWiki {
 
 function installSkinViaComposerOnMediaWikiRoot {
 
-	if [ ! -f composer.json ]
+
+#	composer remove --dev --update-with-dependencies 'phpunit/phpunit'
+#	composer require 'phpunit/phpunit=~4.0' 'mediawiki/chameleon-skin=@dev' --prefer-source
+
+	if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]
 	then
-		composer init
-	fi
+		echo "Pull Request: $TRAVIS_PULL_REQUEST"
+		composer require "mediawiki/chameleon-skin=dev-${TRAVIS_BRANCH}"
 
-	composer remove --dev --update-with-dependencies 'phpunit/phpunit'
-	composer require 'phpunit/phpunit=~4.0' 'mediawiki/chameleon-skin=@dev' --prefer-source
+		cd skins
+		cd chameleon
 
-	cd skins
-	cd chameleon
-
-	# Pull request number, "false" if it's not a pull request
-	if [ "$TRAVIS_PULL_REQUEST" != "false" ]
-	then
 		git fetch origin +refs/pull/"$TRAVIS_PULL_REQUEST"/merge:
 		git checkout -f FETCH_HEAD
+
+		cd ../..
+
+		composer dump-autoload
+
+	elif [[ "$TRAVIS_TAG" != "" ]]
+	then
+
+		echo "Tag: $TRAVIS_TAG"
+		composer require "mediawiki/chameleon-skin=${TRAVIS_TAG}"
+
 	else
-		git fetch origin "$TRAVIS_BRANCH"
-		git checkout -f FETCH_HEAD
+
+		echo "Branch: $TRAVIS_BRANCH ($TRAVIS_COMMIT)"
+		composer require "mediawiki/chameleon-skin=dev-${TRAVIS_BRANCH}#${TRAVIS_COMMIT}"
+
+		composer dump-autoload
+
 	fi
 
-	git log HEAD^..HEAD
-
-	cd ../..
-
-	# Rebuild the class map after git fetch
-	composer dump-autoload
+#	# Pull request number, "false" if it's not a pull request
+#	if [ "$TRAVIS_PULL_REQUEST" != "false" ]
+#	then
+#		git fetch origin +refs/pull/"$TRAVIS_PULL_REQUEST"/merge:
+#		git checkout -f FETCH_HEAD
+#	else
+#		git fetch origin "$TRAVIS_BRANCH"
+#		git checkout -f FETCH_HEAD
+#	fi
+#
+#	# Write latest commit message to console
+#	git log HEAD^..HEAD
+#
+#	cd ../..
+#
+#	# Rebuild the class map after git fetch
+#	composer dump-autoload
 
 	echo 'error_reporting(E_ALL| E_STRICT);' >> LocalSettings.php
 	echo 'ini_set("display_errors", 1);' >> LocalSettings.php
@@ -96,6 +128,7 @@ function uploadCoverageReport {
 
 composer self-update
 
+checkEnvironment
 installMediaWiki
 installSkinViaComposerOnMediaWikiRoot
 

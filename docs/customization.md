@@ -113,7 +113,7 @@ also change variables of style files that you
 To make the navigation bar a bit narrower you could add
 ```php
 $egChameleonExternalStyleVariables = [
-    'h1_font_size' => '3rem',
+    'cmln-collapse-point' => '960px',
 ];
 ```
 

@@ -64,10 +64,20 @@ function installSkinViaComposerOnMediaWikiRoot {
 #	composer remove --dev --update-with-dependencies 'phpunit/phpunit'
 #	composer require 'phpunit/phpunit=~4.0' 'mediawiki/chameleon-skin=@dev' --prefer-source
 
+	if [[ "${TRAVIS_BRANCH}" =~ ^(v?([0-9]+)(\.[0-9]+)*)(\.x)?$ ]]
+	then
+		# version-like
+		VERSION_CONSTRAINT="${BASH_REMATCH[1]}.x-dev"
+	else
+		# feature branch
+		VERSION_CONSTRAINT="dev-${TRAVIS_BRANCH}"
+	fi
+
+
 	if [[ "$TRAVIS_PULL_REQUEST" != "false" ]]
 	then
 		echo "Pull Request: $TRAVIS_PULL_REQUEST"
-		composer require "mediawiki/chameleon-skin=dev-${TRAVIS_BRANCH}"
+		composer require "mediawiki/chameleon-skin=${VERSION_CONSTRAINT}"
 
 		cd skins
 		cd chameleon
@@ -88,15 +98,7 @@ function installSkinViaComposerOnMediaWikiRoot {
 	else
 
 		echo "Branch: $TRAVIS_BRANCH ($TRAVIS_COMMIT)"
-
-		if [[ $TRAVIS_BRANCH =~ ^(v?([0-9]+)(\.[0-9]+)*)(\.x)?$ ]]
-		then
-			# version-like
-			composer require "mediawiki/chameleon-skin=${BASH_REMATCH[1]}.x-dev#${TRAVIS_COMMIT}"
-		else
-			# feature branch
-			composer require "mediawiki/chameleon-skin=dev-${TRAVIS_BRANCH}#${TRAVIS_COMMIT}"
-		fi
+		composer require "mediawiki/chameleon-skin=${VERSION_CONSTRAINT}#${TRAVIS_COMMIT}"
 
 		composer dump-autoload
 
@@ -138,6 +140,9 @@ composer self-update
 
 checkEnvironment
 installMediaWiki
+
+composer config minimum-stability dev
+
 installSkinViaComposerOnMediaWikiRoot
 
 cd skins/chameleon

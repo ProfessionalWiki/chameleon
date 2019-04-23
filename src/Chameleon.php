@@ -51,6 +51,9 @@ class Chameleon extends SkinTemplate {
 
 	private $componentFactory;
 
+	// FIXME: Remove when MW 1.31 compatibility is dropped
+	private $stylesHaveBeenProcessed = false;
+
 	/**
 	 * @throws \Exception
 	 */
@@ -103,15 +106,57 @@ class Chameleon extends SkinTemplate {
 	public function getDefaultModules() {
 		$modules = parent::getDefaultModules();
 
-		$modulePos = array_search( 'mediawiki.legacy.shared', $modules[ 'styles' ][ 'core' ] );
-		if ( $modulePos !== false ) {
-			unset( $modules[ 'styles' ][ 'core' ][ $modulePos ] ); // we have our own version
+		if ( array_key_exists( 'styles', $modules ) ) {
+
+			// FIXME: Remove when MW 1.31 is dropped
+			$this->stylesHaveBeenProcessed = true;
+
+			$modulePos = array_search( 'mediawiki.legacy.shared', $modules[ 'styles' ][ 'core' ] );
+
+			if ( $modulePos !== false ) {
+				unset( $modules[ 'styles' ][ 'core' ][ $modulePos ] ); // we have our own version of these styles
+			}
+
+			$modules[ 'styles' ][ 'content' ][] = '0.mediawiki.skinning.content';
+			$modules[ 'styles' ][ 'content' ][] = 'ext.bootstrap.styles';
+
 		}
 
-		$modules[ 'styles' ][ 'content' ][] = '0.mediawiki.skinning.content';
-		$modules[ 'styles' ][ 'content' ][] = 'ext.bootstrap.styles';
-
 		return $modules;
+	}
+
+	/**
+	 * Hook point for adding style modules to OutputPage.
+	 *
+	 *
+	 * @deprecated since 1.32 Kept here for compat with 1.31
+	 *
+	 * @fixme Remove this method completely when MW 1.31 compatibility is dropped.
+	 *
+	 * @param OutputPage $out Legacy parameter, identical to $this->getOutput()
+	 */
+	public function setupSkinUserCss( OutputPage $out ) {
+
+		if ( $this->stylesHaveBeenProcessed === false ) {
+
+			$moduleStyles = [
+				'0.mediawiki.skinning.content',
+				'mediawiki.legacy.commonPrint',
+				'ext.bootstrap.styles'
+			];
+
+			if ( $out->isSyndicated() ) {
+				$moduleStyles[] = 'mediawiki.feedlink';
+			}
+
+			// Deprecated since 1.26: Unconditional loading of mediawiki.ui.button
+			// on every page is deprecated. Express a dependency instead.
+			if ( strpos( $out->getHTML(), 'mw-ui-button' ) !== false ) {
+				$moduleStyles[] = 'mediawiki.ui.button';
+			}
+
+			$out->addModuleStyles( $moduleStyles );
+		}
 	}
 
 	/**

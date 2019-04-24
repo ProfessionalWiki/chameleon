@@ -27,6 +27,26 @@
 		margin-top: 1rem;
 	}
 
+	div.thumbinner {
+
+		// MW is hard-coding element widths. Calculations are done assuming content-box.
+		box-sizing: content-box;
+
+		// This assumes padding and border width values used by MW 1.33, resources/src/mediawiki.skinning/content.css
+		// FIXME: Reset MW core styles, then apply styles for Bootstrap thumbnails (e.g. .img-thumbnail)
+		$thumbpadding: 3px;
+		$thumbborder: 1px;
+
+		max-width: calc( 100% - #{2 * $thumbpadding + 2 * $thumbborder} );
+		height: auto;
+
+	}
+
+	div.thumb, img.thumbimage {
+		max-width: 100%;
+		height: auto;
+	}
+
 	.jump-to-nav {
 		@extend .sr-only;
 	}

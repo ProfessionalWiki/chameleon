@@ -11,5 +11,6 @@
 	"chameleon-loggedin": "您已登入為 $1。",
 	"chameleon-notloggedin": "您尚未登入",
 	"chameleon-newmessages": "您有新訊息。",
-	"chameleon-nonewmessages": "你沒有新訊息。"
+	"chameleon-nonewmessages": "你沒有新訊息。",
+	"chameleon-search-aria-label": "前往頁面"
 }

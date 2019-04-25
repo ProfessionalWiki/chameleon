@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Sjoerddebruin",
-			"Siebrand"
+			"Siebrand",
+			"Mainframe98"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
@@ -10,5 +11,6 @@
 	"chameleon-loggedin": "U bent aangemeld als $1 .",
 	"chameleon-notloggedin": "U bent niet aangemeld",
 	"chameleon-newmessages": "U hebt nieuwe berichten.",
-	"chameleon-nonewmessages": "U hebt geen nieuwe berichten."
+	"chameleon-nonewmessages": "U hebt geen nieuwe berichten.",
+	"chameleon-search-aria-label": "Naar pagina gaan"
 }

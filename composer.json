@@ -31,7 +31,7 @@
 		"composer/installers": "^1.0.12",
 		"mediawiki/mediawiki": ">=1.31",
 		"mediawiki/mw-extension-registry-helper": "^1.0",
-		"mediawiki/bootstrap": "^2.0"
+		"mediawiki/bootstrap": "^4.0"
 	},
 	"autoload": {
 		"psr-4": {

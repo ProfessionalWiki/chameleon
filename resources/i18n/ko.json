@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"아라"
+			"아라",
+			"Ykhwong"
 		]
 	},
 	"skinname-chameleon": "카멜레온",
@@ -9,5 +10,6 @@
 	"chameleon-loggedin": "$1님으로 로그인하고 있습니다.",
 	"chameleon-notloggedin": "로그인하고 있지 않습니다.",
 	"chameleon-newmessages": "새 메시지가 있습니다.",
-	"chameleon-nonewmessages": "새 메시지가 없습니다."
+	"chameleon-nonewmessages": "새 메시지가 없습니다.",
+	"chameleon-search-aria-label": "문서로 이동"
 }

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Matma Rex",
-			"Ty221"
+			"Ty221",
+			"Railfail536"
 		]
 	},
 	"skinname-chameleon": "Kameleon",
@@ -10,5 +11,6 @@
 	"chameleon-loggedin": "Jesteś zalogowany jako $1.",
 	"chameleon-notloggedin": "Nie jesteś zalogowany",
 	"chameleon-newmessages": "Masz nowe wiadomości.",
-	"chameleon-nonewmessages": "Nie masz nowych wiadomości."
+	"chameleon-nonewmessages": "Nie masz nowych wiadomości.",
+	"chameleon-search-aria-label": "Przejdź do strony"
 }

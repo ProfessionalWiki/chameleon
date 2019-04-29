@@ -11,5 +11,6 @@
 	"chameleon-loggedin": "Vous êtes connecté{{GENDER:$1||e}} en tant que $1.",
 	"chameleon-notloggedin": "Vous n’êtes pas connecté(e).",
 	"chameleon-newmessages": "Vous avez de nouveaux messages.",
-	"chameleon-nonewmessages": "Vous n’avez aucun nouveau message."
+	"chameleon-nonewmessages": "Vous n’avez aucun nouveau message.",
+	"chameleon-search-aria-label": "Aller à la page"
 }

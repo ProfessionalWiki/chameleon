@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vitorvicentevalente"
+			"Vitorvicentevalente",
+			"Hamilton Abreu"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
@@ -9,5 +10,6 @@
 	"chameleon-loggedin": "Sessão iniciada como $1.",
 	"chameleon-notloggedin": "Não tem sessão iniciada",
 	"chameleon-newmessages": "Tem novas mensagens.",
-	"chameleon-nonewmessages": "Não tem novas mensagens."
+	"chameleon-nonewmessages": "Não tem novas mensagens.",
+	"chameleon-search-aria-label": "Ir para a página"
 }

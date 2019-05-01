@@ -416,7 +416,9 @@ An additional menu.
 The structure of the menu can be specified either in a [MediaWiki
 message](https://www.mediawiki.org/wiki/Help:System_message) or directly in the
 layout file. The format is the same as that of the [MediaWiki
-sidebar](https://www.mediawiki.org/wiki/Manual:Interface/Sidebar).
+sidebar](https://www.mediawiki.org/wiki/Manual:Interface/Sidebar), except that a
+third component is allowed that can contain a class string that should be set on
+the menu item link. This can be used to show an icon in front of the menu item. 
 
 This component is intended to be used inside a
 [NavbarHorizontal](#component-navbarhorizontal) component. It will work in other
@@ -432,9 +434,10 @@ Using the message _MediaWiki:Secondary-menu_:
 Using an inline description:
 ``` xml
 <component type="Menu" >
-  * Foo
-  ** FooBar
-  * Test | Bar
+  * SomeMenuLabel
+  ** SomeMenuItem
+  * # | AnotherMenuLabel | fas fa-egg
+  ** SomeURL | SomeMenuItemLabel | fas fa-splotch
 </component>
 ```
 

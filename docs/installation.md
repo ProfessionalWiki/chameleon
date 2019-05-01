@@ -36,6 +36,9 @@ Here is the short version:
 5. __Done:__ Navigate to _Special:Version_ on your wiki to verify that the skin
    is successfully installed.
 
+**Remark:** It is _NOT_ necessary to install or load any extensions this skin
+depends on.
+
 If you run into problems, try the
 [troubleshooting](installation-troubleshooting.md).
 

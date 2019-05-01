@@ -50,8 +50,8 @@ abstract class Menu {
 	 *
 	 * @return string
 	 */
-	protected function getHtmlForMenuItem( $href, $text, $depth, $subitems ) {
-		return call_user_func( $this->getMenuItemFormatter(), $href, $text, $depth, $subitems );
+	protected function getHtmlForMenuItem( $href, $class, $text, $depth, $subitems ) {
+		return call_user_func( $this->getMenuItemFormatter(), $href, $class, $text, $depth, $subitems );
 	}
 
 	/**
@@ -61,16 +61,17 @@ abstract class Menu {
 
 		if ( $this->menuItemFormatter === null ) {
 
-			$this->setMenuItemFormatter( function ( $href, $text, $depth, $subitems ) {
+			$this->setMenuItemFormatter( function ( $href, $class, $text, $depth, $subitems ) {
 
 				$href = Sanitizer::cleanUrl( $href );
 				$text = htmlspecialchars( $text );
+				$class = htmlspecialchars( $class );
 				$indent = str_repeat( "\t", 2 * $depth );
 
 				if ( $subitems !== '' ) {
-					return "$indent<li>\n$indent\t<a href=\"$href\">$text</a>\n$subitems$indent</li>\n";
+					return "$indent<li>\n$indent\t<a href=\"$href\" class=\"$class\">$text</a>\n$subitems$indent</li>\n";
 				} else {
-					return "$indent<li><a href=\"$href\">$text</a></li>\n";
+					return "$indent<li><a href=\"$href\" class=\"$class\">$text</a></li>\n";
 				}
 			} );
 

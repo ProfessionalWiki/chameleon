@@ -52,15 +52,15 @@ class Menu extends Component {
 
 		$menu = $this->getMenu();
 
-		$menu->setMenuItemFormatter( function ( $href, $text, $depth, $subitems ) {
+		$menu->setMenuItemFormatter( function ( $href, $class, $text, $depth, $subitems ) {
 
 			$href = Sanitizer::cleanUrl( $href );
 			$text = htmlspecialchars( $text );
 
 			if ( $depth === 1 && !empty( $subitems ) ) {
-				return "<div class=\"nav-item dropdown\"><a class=\"nav-link dropdown-toggle\" href=\"#\"  data-toggle=\"dropdown\"  data-boundary=\"viewport\">$text</a>$subitems</div>";
+				return "<div class=\"nav-item dropdown\"><a class=\"nav-link dropdown-toggle $class\" href=\"#\"  data-toggle=\"dropdown\"  data-boundary=\"viewport\">$text</a>$subitems</div>";
 			} else {
-				return "<div><a class=\"nav-link\"  href=\"$href\">$text</a>$subitems</div>";
+				return "<div><a class=\"nav-link $class\"  href=\"$href\">$text</a>$subitems</div>";
 			}
 		} );
 

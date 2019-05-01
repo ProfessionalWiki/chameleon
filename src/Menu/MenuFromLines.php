@@ -56,7 +56,7 @@ class MenuFromLines extends Menu {
 
 		$this->lines = &$lines;
 		$this->inContentLanguage = $inContentLanguage;
-		$this->menuItemData = $itemData ?? [ 'text' => '', 'href' => '#', 'depth' => 0 ];
+		$this->menuItemData = $itemData ?? [ 'text' => '', 'class' => '', 'href' => '#', 'depth' => 0 ];
 
 	}
 
@@ -131,12 +131,13 @@ class MenuFromLines extends Menu {
 		}
 
 		list( $depth, $linkDescription ) = $this->extractDepthAndLine( $rawLine );
-		list( $href, $text ) = $this->extractHrefAndLinkText( $linkDescription );
+		list( $href, $text, $class ) = $this->extractMenuItemData( $linkDescription );
 
 		return [
 			'text'  => $text,
 			'href'  => $href,
-			'depth' => $depth
+			'depth' => $depth,
+			'class' => $class,
 		];
 	}
 
@@ -159,20 +160,22 @@ class MenuFromLines extends Menu {
 	/**
 	 * @param $linkDescription
 	 *
-	 * @return array
+	 * @return string[]
 	 */
-	protected function extractHrefAndLinkText( $linkDescription ) {
+	protected function extractMenuItemData( $linkDescription ) {
 
-		$linkAttributes = array_map( 'trim', explode( '|', $linkDescription, 2 ) );
+		$linkAttributes = array_map( 'trim', explode( '|', $linkDescription, 3 ) );
 
 		$linkTarget = trim( trim( $linkAttributes[ 0 ], '[]' ) );
 		$linkTarget = $this->getTextFromMessageName( $linkTarget );
 		$href = $this->getHrefForTarget( $linkTarget );
 
-		$linkDescription = count( $linkAttributes ) > 1 ? $linkAttributes[ 1 ] : '';
+		$linkDescription = $linkAttributes[ 1 ] ?? '';
 		$text = $linkDescription === '' ? $linkTarget : $this->getTextFromMessageName( $linkDescription );
 
-		return [ $href, $text ];
+		$class = $linkAttributes[ 2 ] ?? '';
+
+		return [ $href, $text, $class ];
 	}
 
 	/**
@@ -244,7 +247,7 @@ class MenuFromLines extends Menu {
 		$submenuHtml = $this->buildSubmenuHtml();
 
 		if ( $this->menuItemData[ 'text' ] !== '' ) {
-			return $this->getHtmlForMenuItem( $this->menuItemData[ 'href' ], $this->menuItemData[ 'text' ], $this->menuItemData[ 'depth' ], $submenuHtml );
+			return $this->getHtmlForMenuItem( $this->menuItemData[ 'href' ], $this->menuItemData[ 'class' ], $this->menuItemData[ 'text' ], $this->menuItemData[ 'depth' ], $submenuHtml );
 		} else {
 			return $submenuHtml;
 		}

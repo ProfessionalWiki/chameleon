@@ -88,6 +88,11 @@
 
 		}
 
+		> .nav-item > .nav-link::before {
+			margin-right: $cmln-icon-margin;
+			display: inline-block;
+			text-decoration: none;
+		}
 	}
 
 	.navbar-tool > a {

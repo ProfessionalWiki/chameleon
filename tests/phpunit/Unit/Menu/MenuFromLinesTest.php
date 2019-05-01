@@ -101,18 +101,18 @@ class MenuFromLinesTest extends \PHPUnit\Framework\TestCase {
 		$expected =
 			"\t<ul>\n" .
 			"\t\t<li>\n" .
-			"\t\t\t<a href=\"" . str_replace( '$1', 'Foo', $ap ) . "\">Foo</a>\n" .
+			"\t\t\t<a href=\"" . str_replace( '$1', 'Foo', $ap ) . "\" class=\"\">Foo</a>\n" .
 			"\t\t\t<ul>\n" .
 			"\t\t\t\t<li>\n" .
-			"\t\t\t\t\t<a href=\"#" . "\">FooBar</a>\n" .
+			"\t\t\t\t\t<a href=\"#\" class=\"\">FooBar</a>\n" .
 			"\t\t\t\t\t<ul>\n" .
-			"\t\t\t\t\t\t<li><a href=\"http://foo.com\">FooBarBaz</a></li>\n" .
-			"\t\t\t\t\t\t<li><a href=\"#\">FooBarQuok</a></li>\n" .
+			"\t\t\t\t\t\t<li><a href=\"http://foo.com\" class=\"\">FooBarBaz</a></li>\n" .
+			"\t\t\t\t\t\t<li><a href=\"#\" class=\"\">FooBarQuok</a></li>\n" .
 			"\t\t\t\t\t</ul>\n" .
 			"\t\t\t\t</li>\n" .
 			"\t\t\t</ul>\n" .
 			"\t\t</li>\n" .
-			"\t\t<li><a href=\"" . str_replace( '$1', 'Test', $ap ) . "\">Bar</a></li>\n" .
+			"\t\t<li><a href=\"" . str_replace( '$1', 'Test', $ap ) . "\" class=\"\">Bar</a></li>\n" .
 			"\t</ul>\n";
 
 		/** @var MenuFromLines $instance */

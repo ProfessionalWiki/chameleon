@@ -9,5 +9,6 @@
 	"chameleon-loggedin": "Dir sidd als $1 ageloggt.",
 	"chameleon-notloggedin": "Dir sidd net ageloggt",
 	"chameleon-newmessages": "Dir hutt nei Messagen.",
-	"chameleon-nonewmessages": "Dir hutt keng nei Messagen."
+	"chameleon-nonewmessages": "Dir hutt keng nei Messagen.",
+	"chameleon-search-aria-label": "Op d'Säit goen"
 }

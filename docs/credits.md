@@ -22,9 +22,9 @@ well.
 ### Included libraries
 
 The following libraries are included:
-* [Sticky-kit](http://leafo.net/sticky-kit/), which provides an easy way to
-  attach elements to the page when the user scrolls such that the element is
-  always visible. Author: Leaf Corcoran
+* [HC-Sticky](https://github.com/somewebmedia/hc-sticky), a dependency free
+  javascript library that makes any element on your page visible while you
+  scroll. Author: [Some Web Media](http://somewebmedia.com)
 
 
 ### Dependencies
@@ -33,11 +33,11 @@ The Chameleon skin uses several other libraries. These, while not included
 directly in, nor delivered with the code, are pulled in automatically by the
 Composer tool during installation. These are:
 * MediaWiki Bootstrap extension, which provides the Twitter Bootstrap
-  framework (version 3) to other MediaWiki extensions and skins. Author: Stephan
+  framework (version 4) to other MediaWiki extensions and skins. Author: Stephan
   Gambke. See https://www.mediawiki.org/wiki/Extension:Bootstrap
-* Twitter Bootstrap, the most popular HTML, CSS, and JS framework for
-  developing responsive, mobile first projects on the web. Maintained by the
-  [TWBS core team](https://github.com/orgs/twbs/people). See
+* Bootstrap 4, the most popular HTML, CSS, and JS framework for
+  developing responsive, mobile-first projects on the web. Maintained by the
+  [Bootstrap team](https://getbootstrap.com/docs/4.3/about/team/). See
   http://getbootstrap.com/
 * Font-Awesome, a full suite of pictographic icons for easy scalable vector
   graphics on websites, created and maintained by Dave Gandy. See

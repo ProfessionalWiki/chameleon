@@ -28,7 +28,6 @@ The following components and modifications are available:
 - [Component `NavMenu`](#component-navmenu)
 - [Component `NewtalkNotifier`](#component-newtalknotifier)
 - [Component `PageTools`](#component-pagetools)
-- [Component `PageToolsAdaptable`](#component-pagetoolsadaptable)
 - [Component `PersonalTools`](#component-personaltools)
 - [Component `SearchBar`](#component-searchbar)
 - [Component `Silent`](#component-silent)
@@ -505,7 +504,6 @@ From [navhead.xml](../layouts/navhead.xml):
 * Component [`NavMenu`](#component-navmenu)
 * Component [`PageTools`](#component-pagetools)
 * Component [`PersonalTools`](#component-personaltools)
-* Component [`PageToolsAdaptable`](#component-pagetoolsadaptable)
 * Component [`SearchBar`](#component-searchbar)
 * Any modification
 

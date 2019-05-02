@@ -75,7 +75,7 @@ These positions influence where a file appears among the compiled files. In
 general variable definitions should go in the `afterVariables` position. This
 way they come after and overrule the definitions of Bootstrap and Chameleon, but
 come before and are therefore used for the actual style definitions.
-Your own style definitions you want to put in the `afterMain` positions to allow
+Your own style definitions you want to put in the `afterMain` position to allow
 them to overrule the styles of Bootstrap and Chameleon.    
 
 If you don't care where in the order of files your file appears you may omit the
@@ -89,16 +89,16 @@ $egChameleonExternalStyleModules = [ $localPathToSCSSFile1, $localPathToSCSSFile
 Chameleon comes with many SCSS variables (see [this list](variables.md)). All of
 them have a default value. To change those values you should not edit the style
 files that come with Chameleon, because if you update Chameleon your changes
-will be overridden. Instead change the values of the variables in your
+will be overwritten. Instead change the values of the variables in your
 `LocalSettings.php` by adding them to the array
 `$egChameleonExternalStyleVariables`:
 
 ```php
-$egChameleonExternalStyleVariables = array(
+$egChameleonExternalStyleVariables = [
     'key1' => 'value1',
     'key2' => 'value2',
     ...
-);
+];
 ```
 
 If you add variables to the array (to change them), make sure you omit the `$`
@@ -110,7 +110,8 @@ also change variables of style files that you
 
 **Example:**
 
-To make the navigation bar a bit narrower you could add
+To change the window width at which the skin switches between desktop and mobile
+view you could add
 ```php
 $egChameleonExternalStyleVariables = [
     'cmln-collapse-point' => '960px',

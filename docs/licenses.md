@@ -20,4 +20,5 @@ Gambke](https://www.mediawiki.org/wiki/User:F.trott) and is licensed under [CC
 BY 3.0](http://creativecommons.org/licenses/by/3.0/) as well.
 
 Further licenses:
-* [HC-Sticky](https://github.com/somewebmedia/hc-sticky) v2.2.3, Copyright 2018, Some Web Media, MIT License
+* [HC-Sticky](https://github.com/somewebmedia/hc-sticky) v2.2.3, Copyright 2018,
+  Some Web Media, MIT License

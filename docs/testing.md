@@ -1,11 +1,12 @@
 ## Testing
 
 This skin provides unit tests that can be run by a [continuous integration
-platform][travis] or manually by executing the `mw-phpunit-runner.php` script or
-[`phpunit`][mw-testing] together with the PHPUnit configuration file found in
-the root directory of the skin.
+platform][travis] or manually using [`phpunit`][mw-testing] together with the
+PHPUnit configuration file found in the root directory of the skin.
+
+From the Chameleon installation directory run:
 ```sh
-php tests/mw-phpunit-runner.php [options]
+php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist [options]
 ```
 
 Useful optional parameters:
@@ -44,17 +45,17 @@ space, the dimensions being
 2. viewport types: large screen, small screen, print, etc.
 
 However, not all combinations need to be tested specifically, as many of them
-will overlap. If the Logo looks good on a medium screen, it will probably be
-fine on a large screen. The standard collapse-point at which Chameleon switches
-between collapsed and uncollapsed display of elements is at 768 px. The proposed
-screen widths are therefore:
+will overlap. If the Logo looks good on a large screen, it will probably be
+fine on a x-large screen. The standard collapse-point at which Chameleon switches
+between collapsed and uncollapsed display of elements is at **1105 px**. The
+proposed screen widths are therefore:
 
-* Large: 1200px - typical screen of a laptop or small desktop
-* Medium: 768px - just above the collapse-point
-* Small: 720ps - just below the collapse-point
+* XLarge: 1920px - typical desktop screen, well above the collapse point
+* Large: 1150px - typical screen of a laptop or small desktop, above the collapse point
+* Medium: 900px - below the collapse-point
 * XSmall: 360px - phone size
 
-| Component | lg screen (1200px) | md screen (768px)| sm screen (720px) | xs screen (360px) | print (A4) |
+| Component | xl screen (1920px) | lg screen (1150px)| md screen (900px) | xs screen (360px) | print (A4) |
 |-----------------------------|--------|--------|--------|--------|--------|
 | Component Container         |--------|--------|--------|--------|--------|
 | Component FooterIcons       |--------|--------|--------|--------|--------|
@@ -92,11 +93,11 @@ screen widths are therefore:
 | Layout clean                |--------|--------|--------|--------|--------|
 
 
-| Special page | lg screen (1200px) | md screen (768px)| sm screen (720px) | xs screen (360 px) | print (A4) |
+| Special page | xl screen (1920px) | lg screen (1150px)| md screen (900px) | xs screen (360px) | print (A4) |
 |-----------------------------|--------|--------|--------|--------|--------|
 | TODO: List relevant Special pages |--------|--------|--------|--------|--------|
 
-| MW/HTML Features | lg screen (1200px) | md screen (768px)| sm screen (720px) | xs screen (360 px) | print (A4) |
+| MW/HTML Features | xl screen (1920px) | lg screen (1150px)| md screen (900px) | xs screen (360px) | print (A4) |
 |-----------------------------|--------|--------|--------|--------|--------|
 | Image (small, < 360px)      |--------|--------|--------|--------|--------|
 | Image (large, > 1200px)     |--------|--------|--------|--------|--------|

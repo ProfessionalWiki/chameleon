@@ -7,7 +7,7 @@
 - [Composer][composer]
 
 Further required software packages will be installed automatically. It is *not*
-necessary to install any dependencies anymore. Composer will take care of that.
+necessary to install any dependencies. Composer will take care of that.
 
 ### Installation
 
@@ -17,22 +17,32 @@ If unsure try the detailed installation instructions for
 Here is the short version:
 
 1. On a command line go to your MediaWiki installation directory
+
 2. Open the `composer.local.json` file in an editor and add the Chameleon skin
    to the `require` section:
    ```
    "require": {
-       "mediawiki/chameleon-skin": "~1.0"
+       "mediawiki/chameleon-skin": "~2.0"
    }
    ```
-   * Remark 1: If you do not have a `composer.local.json` file (MediaWiki <1.25),
-     use `composer.json` instead.
    
-   * Remark 2: If you do not have a `composer.json` file (MediaWiki <1.23.5),
-     copy `composer.json.example` to `composer.json` first.
+   **Remark:** If you do not have a `composer.local.json` file, but a
+   `composer.local.json-sample`, rename the `-sample` file and add the
+   `"require"` section.
+   
 3. With Composer installed, run
    `composer update "mediawiki/chameleon-skin"`
-4. To set Chameleon as the default skin, open `LocalSettings.php` in an editor,
-   find `$wgDefaultSkin` and amend it: `$wgDefaultSkin='chameleon';`
+   
+4. Open `LocalSettings.php` in an editor, and add the following line:
+
+   ```php
+   wfLoadSkin( 'chameleon' );
+	```
+
+   To set Chameleon as the default skin, find `$wgDefaultSkin` and amend it:
+   ```php
+   $wgDefaultSkin='chameleon';
+   ```
 5. __Done:__ Navigate to _Special:Version_ on your wiki to verify that the skin
    is successfully installed.
 

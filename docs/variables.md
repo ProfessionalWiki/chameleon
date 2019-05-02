@@ -1,7 +1,7 @@
 ## SCSS Variables
 
 This is the list of all SCSS variables defined in the various style files used
-by the Chameleon skin. (although not all of the variables are actually used). 
+by the Chameleon skin (although not all of the variables are actually used). 
 
 These variables may be modified to change the look of your wiki. However, you
 should __not__ modify the style files of the Bootstrap framework or the

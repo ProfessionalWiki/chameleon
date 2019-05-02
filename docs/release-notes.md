@@ -5,9 +5,14 @@
 Released on TBD
 
 Changes:
-* Use Bootstrap 4
+* Use [Bootstrap 4](https://getbootstrap.com/docs/4.3)
 * Use Font-Awesome instead of Glyphicons
 * Remove button for fulltext search from Searchbar
+* Remove the PageToolsAdaptable component. It's functionality is now available
+  from the regular [PageTools component](components.md#component-pagetools).
+* Improve the [Menu component](components.md#component-menu) to allow setting a
+  class string on the menu item link. This can be used to show an icon in front
+  of a menu item.   
 
 ### Chameleon 1.7.1
 

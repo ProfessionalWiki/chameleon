@@ -13,17 +13,19 @@ operating systems as well:
    with the `LocalSettings.php` file in it.
 4. Open the `composer.local.json` file in an editor and add the Chameleon skin
    to the `require` section:
-   `require` section:
    ``` json
    "require": {
-       "mediawiki/chameleon-skin": "~1.0"
+       "mediawiki/chameleon-skin": "~2.0"
    },
    ```
-   * Remark 1: If you do not have a `composer.local.json` file, but a `composer.local.json-sample`, rename the `-sample` file and add the `"require"` section. It should then look like this:
+   
+   **Remark:** If you do not have a `composer.local.json` file, but a
+   `composer.local.json-sample`, rename the `-sample` file and add the
+   `"require"` section. It should then look like this:
    ``` json
    {
        "require": {
-           "mediawiki/chameleon-skin": "~1.0"
+           "mediawiki/chameleon-skin": "~2.0"
        },
        "extra": {
            "merge-plugin": {
@@ -35,18 +37,27 @@ operating systems as well:
    }
    ```
    
-   * Remark 2: If you do have neither `composer.local.json` nor `composer.local.json` file (MediaWiki <1.25),
-     use `composer.json` instead.
-   
-   * Remark 3: If you do not have a `composer.json` file (MediaWiki <1.23.5),
-     copy `composer.json.example` to `composer.json` first.
 5. To actually install Chameleon run the command
    `composer update "mediawiki/chameleon-skin"`
 6. If there were no errors, close the command line window.
 7. Open `LocalSettings.php` in an editor (e.g. Kate). Include
-   `$wgDefaultSkin='chameleon';` as the last line. Save the file and close the
-   editor.
-8. Open your wiki in a browser. Chameleon should be installed.
+   ```php
+   wfLoadSkin( 'chameleon' );
+   ```
+   as the last line.
+   
+   To set Chameleon as the default skin, find `$wgDefaultSkin` and amend it:
+   ```php
+   $wgDefaultSkin='chameleon';
+   ```
+
+   Save the file and close the editor.
+
+8. __Done:__ Open your wiki in a browser and navigate to the _Special:Version_
+   page to verify that the skin is successfully installed. (If you have set
+   Chameleon as default skin it should also be obvious that the skin has
+   changed.)
+
 9. If not, force reload the page to [refresh your browser cache][cache-refresh].
    (On Firefox or Chrome press Ctrl+F5)
 

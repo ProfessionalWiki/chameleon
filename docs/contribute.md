@@ -59,7 +59,7 @@ A few points to ease the process:
 [how to report a bug]: https://www.mediawiki.org/wiki/How_to_report_a_bug
 [screenshots]: https://www.mediawiki.org/wiki/Skin:Chameleon#Screenshots
 [twn]: https://translatewiki.net/
-[twn-stats]: https://translatewiki.net/w/i.php?title=Special%3AMessageGroupStats&x=D&group=mediawiki-skin-chameleon&suppressempty=1
+[twn-stats]: https://translatewiki.net/wiki/Special:MessageGroupStats?group=mwgithubskin-chameleon&x=D
 [patch uploader]: https://tools.wmflabs.org/gerrit-patch-uploader/
 [gerrit-tutorial]: https://www.mediawiki.org/wiki/Gerrit/Tutorial
 [coding]: https://www.mediawiki.org/wiki/Manual:Coding_conventions

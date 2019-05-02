@@ -7,12 +7,11 @@ Here is a step by step procedure for Windows:
 2.  Open a Windows Explorer window and navigate to the root folder of
     your MediaWiki installation. That's the one with the
     `LocalSettings.php` file in it.
-3.  For MediaWiki 1.22 and 1.23 you need to copy the file
+3.  For MediaWiki 1.22+ you need to copy the file
     `composer.json.example` to `composer.json`. For this, select
     `composer.json.example`, press Ctrl+C, then Ctrl+V and then rename
     the copy to `composer.json`.
-4.  Right-click on the new file and select *Use composer here*. A
-    command line window will open.
+4.  Shift right-click in an empty space in the folder with the new file and select *Open Command Prompt here* or *Open Powershell window here*. A command line window will open.
 5.  On the command line run the command
     `composer require "mediawiki/chameleon-skin:~1.0"`
 6.  If there were no errors, close the command line window.

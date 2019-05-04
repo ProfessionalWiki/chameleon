@@ -1,38 +1,13 @@
 {
   "scripts": {
-    "pretest": "npm install",
-    "test": "grunt test",
-    "lint": "grunt lint",
     "prebuild": "npm install",
-    "build:fontawesome": "mkdir -p resources/fontawesome && cp -R node_modules/@fortawesome/fontawesome-free-webfonts/scss resources/fontawesome && cp -R node_modules/@fortawesome/fontawesome-free-webfonts/webfonts resources/fontawesome",
+    "build:fontawesome": "mkdir -p resources/fontawesome && cp -R node_modules/@fortawesome/fontawesome-free/scss resources/fontawesome && cp -R node_modules/@fortawesome/fontawesome-free/webfonts resources/fontawesome",
     "build:docs": "grep -rl 'docs/' -e '<!-- START doctoc'|xargs doctoc --title '**Contents**' --maxlevel 3 --notitle",
     "build": "npm run build:fontawesome && npm run build:docs"
   },
   "devDependencies": {
-    "browserify": "^13.1.0",
-    "browserify-shim": "^3.8.12",
-    "doctoc": "^1.2.0",
-    "grunt": "^1.0.2",
-    "grunt-banana-checker": "^0.6.0",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-jshint": "^1.1.0",
-    "grunt-jsonlint": "^1.1.0",
-    "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
-    "wdio-mediawiki": "~0.1.7"
+    "@fortawesome/fontawesome-free": "^5",
+    "doctoc": "^1.4.0"
   },
-  "dependencies": {
-  },
-  "browserify-shim": {
-    "../../resources/lib/jquery/jquery.js": {
-      "exports": [
-        "jquery",
-        "$"
-      ]
-    }
-  },
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
-  }
+  "dependencies": {}
 }

@@ -2,7 +2,7 @@
 /**
  * Validates layout files.
  *
- * @copyright (C) 2013 - 2016, Stephan Gambke
+ * @copyright (C) 2013 - 2019, Stephan Gambke
  * @license   GNU General Public License, version 3 (or any later version)
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
@@ -64,8 +64,6 @@ function libxml_display_errors() {
 	libxml_clear_errors();
 }
 
-// FIXME: WTF? Move into validateFile()?
-libxml_use_internal_errors( true );
 
 function validateFile( $filename ) {
 
@@ -84,12 +82,14 @@ function validateFile( $filename ) {
 	$xml = new DOMDocument();
 	$xml->load( $filename );
 
-	if ( !$xml->relaxNGValidate( 'https://cmln.github.io/chameleon/schema/1.0/layout.rng' ) ) {
+	if ( !$xml->relaxNGValidate( 'https://cmln.github.io/chameleon/schema/3.0/layout.rng' ) ) {
 		libxml_display_errors();
 	} else {
 		print "Ok!\n";
 	}
 }
+
+libxml_use_internal_errors( true );
 
 $files = $argv;
 array_shift( $files );

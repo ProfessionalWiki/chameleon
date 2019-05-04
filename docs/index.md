@@ -1,6 +1,7 @@
 # The Chameleon Documentation
 
 <img src='https://upload.wikimedia.org/wikipedia/mediawiki/thumb/3/31/Chameleon.svg/220px-Chameleon.svg.png' align='left' title='Chameleon Skin Logo'>
+
 Chameleon is a highly customizable [MediaWiki][mw] skin that uses the
 [Bootstrap][twbs] framework.
 

@@ -43,9 +43,10 @@ $egChameleonExternalStyleVariables = array(
 ```
 
 ### Component name change
-If you're using a custom layout and the component 'ToolbarHorizontal', you will need to to change this to `Toolbox`:
+If you're using a custom layout and the **component 'ToolbarHorizontal'**:
 
-ToolbarHorizontal -> [Toolbox](https://github.com/cmln/chameleon/blob/master/docs/components.md#component-toolbox)
+* you will need to to change this to `Toolbox`
+* you might also need to add [NavbarHorizontal](https://github.com/cmln/chameleon/blob/master/docs/components.md#component-navbarhorizontal) as a parent component if you haven't done so already.
 
 Additionally, this component was added in Chameleon 2.x:
 

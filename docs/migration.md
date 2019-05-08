@@ -18,6 +18,12 @@ Chameleon 2 supports
 The PHP extensions [DOM](https://www.php.net/manual/en/book.dom.php) and [Filter](https://www.php.net/manual/en/book.filter.php)
 are required.
 
+## Update/Installation
+
+See the [installation instructions](installation.md).
+
+It should be enough to update `composer.local.json`, run `composer update` and add `wfLoadSkin( 'chameleon' );` to LocalSettings.php. If it does not work right away, try to completely uninstall and then re-install the skin.
+
 ## Move from Bootstrap 3 to Bootstrap 4
 
 Chameleon 2.0 comes with [Bootstrap 4](https://getbootstrap.com/docs/4.3), an upgraded version of Bootstrap 3 that came with Chameleon 1.x. Class names from Bootstrap 3 could be different in Bootstrap 4. It is highly recommended to read Bootstrap's migration guide here: https://getbootstrap.com/docs/4.0/migration/. 
@@ -110,11 +116,18 @@ Note the difference in the above example between _SomeMenuLabel_ and _AnotherMen
 
 To find icons, search on https://fontawesome.com/icons?d=gallery. Be aware that Chameleon 2 only ships the free icons.
 
+## Getting help
+
+For general questions, comments or suggestions you might use the [Chameleon skin talk page on MediaWiki.org][chameleon-talk].
+
+For direct contact please use the [Email functionality on MediaWiki.org][mw-mail].
+
+Finally the MediaWiki IRC channel (Server: [freenode.net][irc], Channel: #mediawiki) might be worth a try.
+
+
 [ToolBox]: components.md#component-toolbox
 [LangLinks]: components.md#component-langlinks
-
-
-
-
-
+[chameleon-talk]: https://www.mediawiki.org/wiki/Skin_talk:Chameleon
+[mw-mail]: https://www.mediawiki.org/wiki/Special:EmailUser/F.trott
+[irc]: http://webchat.freenode.net/
 

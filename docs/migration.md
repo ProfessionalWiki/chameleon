@@ -1,19 +1,39 @@
 # Migrating to Chameleon 2.0:
 
-### Core items changed
+## Core items changed
 
-* Move from Bootstrap 3 to Bootstrap 4
-* Move from less to scss (sass)
+* Move from Bootstrap 3 to [Bootstrap 4](https://getbootstrap.com/docs/4.3)
+* Move from Less to [SCSS](https://sass-lang.com/) (Sass)
 * New way of setting style variables in LocalSettings.php 
-* Component name change
+* Component name changes
 
-### Move from Bootstrap 3 to Bootstrap 4
-Chameleon 2.0 comes with Bootstrap 4, an upgraded version of Bootstrap 3 that comes with Chameleon 1.x. Class names as you know them in Bootstrap 3 could be different in Bootstrap 4. It is highly suggested to read Bootstraps's migration guide here: https://getbootstrap.com/docs/4.0/migration/. 
+Please also see the [release notes](release-noted.md).
 
-### Move from less to scss (sass)
-The transition to Bootstrap 4 also mandates a transition from less to sass. If you have created your own less files, it is imported that these are adapted to sass. If you have been an advanced user of less (using mixins and such), it's recommended to look up a migration guide to sass.
+## New minimum version requirements
 
-###  New way of setting style variables in LocalSettings.php 
+Chameleon 2 supports
+* MediaWiki 1.31.0 and later
+* PHP 7.0 and later
+
+The PHP extensions [DOM](https://www.php.net/manual/en/book.dom.php) and [Filter](https://www.php.net/manual/en/book.filter.php)
+are required.
+
+## Move from Bootstrap 3 to Bootstrap 4
+
+Chameleon 2.0 comes with [Bootstrap 4](https://getbootstrap.com/docs/4.3), an upgraded version of Bootstrap 3 that came with Chameleon 1.x. Class names from Bootstrap 3 could be different in Bootstrap 4. It is highly recommended to read Bootstrap's migration guide here: https://getbootstrap.com/docs/4.0/migration/. 
+
+## Move from Less to SCSS (Sass)
+
+The transition to Bootstrap 4 also mandates a transition from Less to SCSS, a variant of the Sass styling language. If you have created your own Less files, it is important that these are adapted to SCSS. If you have been an advanced user of Less (using mixins and such), it is recommended to look up a migration guide to SCSS.
+
+Various Less-to-SCSS online converters are available on the web. However, depending on the complexity of your stylesheets some
+manual rework may be necessary.
+
+Please be aware that the PHP SCSS compiler is only capable of working with the SCSS language variant. It can not process the
+Sass variant.
+
+##  New way of setting style variables in LocalSettings.php 
+
 **Configuration variable name change:**
 `$egChameleonExternalLessVariables` -> `$egChameleonExternalStyleVariables`
 
@@ -42,15 +62,56 @@ $egChameleonExternalStyleVariables = array(
 );
 ```
 
-### Component name change
-If you're using a custom layout and the **component 'ToolbarHorizontal'**:
+## Component changes
 
-* you will need to to change this to `Toolbox`
-* you might also need to add [NavbarHorizontal](https://github.com/cmln/chameleon/blob/master/docs/components.md#component-navbarhorizontal) as a parent component if you haven't done so already.
+### ToolbarHorizontal, Toolbox, LangLinks
+In Chameleon 1.x the **ToolbarHorizontal** component generated a Navbar containing the toolbox and language links.
+This component has been removed, as well as the attributes _showTools_ and _showLanguages_ from the **NavMenu** component.
 
-Additionally, this component was added in Chameleon 2.x:
+To achieve the same effect you will have to use the new components [Toolbox] and [LangLinks].
 
-[LangLinks](https://github.com/cmln/chameleon/blob/master/docs/components.md#component-langlinks)
+A ToolbarHorizontal-like component is now built like this:
+```xml
+<component type="NavbarHorizontal" collapsible="no" class="small mb-2" >
+	<component type="Toolbox" flatten="no" class="dropup"/>
+	<component type="LangLinks" flatten="no" class="dropup"/>
+</component>
+```
+
+To show the Toolbox and LangLinks next to the NavMenu, just add the newly available components after it:
+```xml
+<component type="NavMenu" flatten="navigation" />
+<component type="Toolbox" />
+<component type="LangLinks" />
+```
+
+### PageToolsAdaptable
+
+The **PageToolsAdaptable** component has been removed. It's functionality is now available from the regular [PageTools]
+component. Just add the _buttons_ attribute, e.g.:
+``` xml
+<component type="PageTools" buttons="edit,talk"/>
+```
+
+### Menu
+
+The Menu component now understands a third parameter for each menu entry, that can contain a class that should be set on
+the link for the menu item. The idea is to use it to show an icon in front of the menu item, e.g.:
+```xml
+<component type="Menu" >
+  * SomeMenuLabel
+  ** SomeMenuItem
+  * # | AnotherMenuLabel | fas fa-egg
+  ** SomeURL | SomeMenuItemLabel | fas fa-splotch
+</component>
+```
+
+Note the difference in the above example between _SomeMenuLabel_ and _AnotherMenuLabel_. In order to have the class parameter recognized, there has to be exactly three parameters, i.e. a link target, a link label and a link class. To satisfy this requirement, the link target for _AnotherMenuLabel_ has been set to `#`.
+
+To find icons, search on https://fontawesome.com/icons?d=gallery. Be aware that Chameleon 2 only ships the free icons.
+
+[ToolBox]: components.md#component-toolbox
+[LangLinks]: components.md#component-langlinks
 
 
 

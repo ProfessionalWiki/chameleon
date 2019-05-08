@@ -5,23 +5,35 @@
 Released on TBD
 
 Changes:
+* Support
+  * MediaWiki 1.31.0 and later
+  * PHP 7.0 and later
 * Use [Bootstrap 4](https://getbootstrap.com/docs/4.3)
 * Use Font-Awesome instead of Glyphicons
-* Add _Toolbox_ component, which allows to add the toolbox links (e.g. What
-  links here, Related changes, ...) to a _NavbarHorizontal_.
-* Add _LangLinks_ component, which allows to add language links to a
-  _NavbarHorizontal_.
-* Remove _ToolbarHorizontal_ component. Use a _NavbarHorizontal_ instead with
-  the new components _Toolbox_ and _LangLinks_.
-* Remove the _PageToolsAdaptable_ component. It's functionality is now available
-  from the regular [PageTools component](components.md#component-pagetools).
-* Add _buttons_ attribute to the _PageTools_ component.
-* Removed attributes _showTools_ and _showLanguages_ from the _NavMenu_
-  component. Use the new components _Toolbox_ and _LangLinks_ instead.
-* Improve the [Menu component](components.md#component-menu) to allow setting a
-  class string on the menu item link. This can be used to show an icon in front
-  of a menu item.   
-* Remove button for fulltext search from _Searchbar_
+* Use MediaWiki's new skin registration mechanism (i.e. `wfLoadSkin`) 
+* Add [Toolbox] component, which allows to add the toolbox links (e.g. What
+  links here, Related changes, ...) to a [NavbarHorizontal].
+* Add [LangLinks] component, which allows to add language links to a
+  [NavbarHorizontal].
+* Remove [ToolbarHorizontal] component. You can use [NavbarHorizontal] instead
+  with the new components [Toolbox] and [LangLinks].
+* Remove the [PageToolsAdaptable]() component. It's functionality is now
+  available from the regular [PageTools] component.
+* Add _buttons_ attribute to the [PageTools] component.
+* Remove attributes _showTools_ and _showLanguages_ from the [NavMenu]
+  component. You can use the new components [Toolbox] and [LangLinks] instead.
+* Improve the [Menu] component to allow setting a class string on the menu item
+  link. This can be used to show an icon in front of a menu item.   
+* Remove button for fulltext search from [Searchbar].
+
+[ToolBox]: components.md#component-toolbox
+[LangLinks]: components.md#component-langlinks
+[PageTools]: components.md#component-pagetools
+[Menu]: components.md#component-menu
+[NavbarHorizontal]: components.md#component-NavbarHorizontal
+[ToolbarHorizontal]: components.md#component-ToolbarHorizontal
+[Searchbar]: components.md#component-searchbar
+[NavMenu]: components.md#component-navmenu
 
 ### Chameleon 1.7.1
 

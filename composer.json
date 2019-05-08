@@ -47,7 +47,6 @@
 	"scripts": {
 		"phpunit": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist",
 		"test": [
-			"npm test",
 			"@phpunit"
 		],
 		"build": "npm run build"

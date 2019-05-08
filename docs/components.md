@@ -524,7 +524,7 @@ places, but will require additional styling effort.
 
 Using the message _MediaWiki:Secondary-menu_:
 ``` xml
-<component type="NavMenu" flatten="navigation" showTools="no" showLanguages="no" />
+<component type="NavMenu" flatten="navigation"/>
 ```
 
 #### Attributes:
@@ -648,7 +648,6 @@ History, Move, ...)
 #### Allowed Child Elements:
 * Any modification
 
--------------------------------------------------------------------------------
 #### Integration with VisualEditor
 Visual Editor has a late-executed javascript function, that replaces the content of certain page tool
 action links. Unfortunately, that also concerns corresponding buttons, you indicated to show.

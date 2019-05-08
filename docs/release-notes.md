@@ -7,12 +7,21 @@ Released on TBD
 Changes:
 * Use [Bootstrap 4](https://getbootstrap.com/docs/4.3)
 * Use Font-Awesome instead of Glyphicons
-* Remove button for fulltext search from Searchbar
-* Remove the PageToolsAdaptable component. It's functionality is now available
+* Add _Toolbox_ component, which allows to add the toolbox links (e.g. What
+  links here, Related changes, ...) to a _NavbarHorizontal_.
+* Add _LangLinks_ component, which allows to add language links to a
+  _NavbarHorizontal_.
+* Remove _ToolbarHorizontal_ component. Use a _NavbarHorizontal_ instead with
+  the new components _Toolbox_ and _LangLinks_.
+* Remove the _PageToolsAdaptable_ component. It's functionality is now available
   from the regular [PageTools component](components.md#component-pagetools).
+* Add _buttons_ attribute to the _PageTools_ component.
+* Removed attributes _showTools_ and _showLanguages_ from the _NavMenu_
+  component. Use the new components _Toolbox_ and _LangLinks_ instead.
 * Improve the [Menu component](components.md#component-menu) to allow setting a
   class string on the menu item link. This can be used to show an icon in front
   of a menu item.   
+* Remove button for fulltext search from _Searchbar_
 
 ### Chameleon 1.7.1
 

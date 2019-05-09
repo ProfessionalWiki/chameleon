@@ -131,6 +131,10 @@ class SetupAfterCache {
 		);
 
 		$this->bootstrapManager->addStyleFile(
+			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-brands.scss'
+		);
+
+		$this->bootstrapManager->addStyleFile(
 			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/chameleon.scss'
 		);
 

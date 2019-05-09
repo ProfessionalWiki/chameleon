@@ -1,5 +1,13 @@
 ## Release Notes
 
+### Chameleon 2.0.1
+
+Released on tbd
+
+Changes:
+* Add Font-Awesome Brands font
+
+
 ### Chameleon 2.0
 
 Released on 09-May-2019

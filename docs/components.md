@@ -625,6 +625,7 @@ History, Move, ...)
     * move
     * protect
     * purge
+    * talk
     * undelete
     * unprotect
     * unwatch

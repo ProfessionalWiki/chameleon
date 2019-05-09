@@ -6,7 +6,7 @@ the list of [open bugs][open bugs]. If not, [report it][report bugs]. Also see t
 
 For general questions, comments or suggestions you might use the [Chameleon skin
 talk page on MediaWiki.org][chameleon-talk]. For direct contact with the author
-please use the [Email functionality on MediaWiki.org.][mw-mail]
+please use the [Email functionality on MediaWiki.org][mw-mail].
 
 Finally there are the MediaWiki IRC channel (Server: [freenode.net][irc],
 Channel: #mediawiki) and the [MediaWiki mailing list][mw-ml]. 

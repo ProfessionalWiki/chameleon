@@ -2,7 +2,7 @@
 	"name": "Chameleon",
 	"type": "skin",
 	"author": "[https://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]",
-	"version": "2.0-dev",
+	"version": "2.0",
 	"url": "https://www.mediawiki.org/wiki/Skin:Chameleon",
 	"descriptionmsg": "chameleon-desc",
 	"license-name": "GPL-3.0-or-later",
@@ -11,10 +11,6 @@
 	},
 	"MessagesDirs": {
 		"Chameleon": "resources/i18n"
-	},
-	"@Hooks": "Is it really a good idea to specify static hook handlers here? Can this be done in PHP code?",
-	"Hooks": {
-
 	},
 	"config_prefix": "eg",
 	"config": {

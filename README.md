@@ -7,7 +7,8 @@
 
 <img src='https://upload.wikimedia.org/wikipedia/mediawiki/thumb/3/31/Chameleon.svg/220px-Chameleon.svg.png' style='float:left;' align="left" title='Chameleon Skin Logo'>
 
-Chameleon is a highly customizable [MediaWiki][mw] skin that uses the [Bootstrap][twbs] framework.
+Chameleon is a highly customizable [MediaWiki][mw] skin that uses the
+[Bootstrap][twbs] framework.
 
 It currently provides five different layouts to chose from. The standard layout
 features a horizontal navigation menu with dropdowns at the top and a horizontal

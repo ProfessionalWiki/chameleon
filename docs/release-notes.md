@@ -2,14 +2,15 @@
 
 ### Chameleon 2.0
 
-Released on TBD
+Released on 09-May-2019
 
 Changes:
 * Support
   * MediaWiki 1.31.0 and later
   * PHP 7.0 and later
 * Use [Bootstrap 4](https://getbootstrap.com/docs/4.3)
-* Use Font-Awesome instead of Glyphicons
+* Use [SCSS](https://sass-lang.com/) for styling
+* Use [Font-Awesome](https://fontawesome.com/) instead of Glyphicons
 * Use MediaWiki's new skin registration mechanism (i.e. `wfLoadSkin`) 
 * Add [Toolbox] component, which allows to add the toolbox links (e.g. What
   links here, Related changes, ...) to a [NavbarHorizontal].
@@ -25,6 +26,8 @@ Changes:
 * Improve the [Menu] component to allow setting a class string on the menu item
   link. This can be used to show an icon in front of a menu item.   
 * Remove button for fulltext search from [Searchbar].
+* Rename `$egChameleonExternalLessVariables` to `$egChameleonExternalStyleVariables`
+* New variable `$egScssCacheType`
 
 [ToolBox]: components.md#component-toolbox
 [LangLinks]: components.md#component-langlinks

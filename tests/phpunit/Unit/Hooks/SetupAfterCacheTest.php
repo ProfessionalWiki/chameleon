@@ -101,13 +101,13 @@ class SetupAfterCacheTest extends TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
-		$bootstrapManager->expects( $this->at( 8 ) )
+		$bootstrapManager->expects( $this->at( 9 ) )
 			->method( 'addStyleFile' )
 			->with(
 				$this->equalTo( $this->dummyExternalModule )
 			);
 
-		$bootstrapManager->expects( $this->at( 9 ) )
+		$bootstrapManager->expects( $this->at( 10 ) )
 			->method( 'addStyleFile' )
 			->with(
 				$this->equalTo( $this->dummyExternalModule ),

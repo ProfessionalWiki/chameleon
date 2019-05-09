@@ -9,5 +9,6 @@
 	"chameleon-loggedin": "Вы вошли как $1.",
 	"chameleon-notloggedin": "Вы не вошли в систему",
 	"chameleon-newmessages": "У вас есть новые сообщения.",
-	"chameleon-nonewmessages": "У вас нет новых сообщений."
+	"chameleon-nonewmessages": "У вас нет новых сообщений.",
+	"chameleon-search-aria-label": "Перейти к странице"
 }

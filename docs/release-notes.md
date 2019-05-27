@@ -7,6 +7,9 @@ Released on tbd
 Changes:
 * Add Font-Awesome Brands font
 
+Fixes:
+* ([#87](https://github.com/cmln/chameleon/issues/87)) Show formedit button
+
 
 ### Chameleon 2.0
 

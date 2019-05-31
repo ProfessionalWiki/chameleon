@@ -8,7 +8,8 @@ Changes:
 * Add Font-Awesome Brands font
 
 Fixes:
-* ([#87](https://github.com/cmln/chameleon/issues/87)) Show formedit button
+* ([#87](https://github.com/cmln/chameleon/issues/87)) Show formedit button on the navbar
+* ([#89](https://github.com/cmln/chameleon/issues/89)) Show default icon for unknown page tools on the navbar
 
 
 ### Chameleon 2.0

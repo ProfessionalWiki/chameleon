@@ -160,6 +160,7 @@ class PageTools extends Component {
 
 		$options = [
 			'tag' => 'div',
+			'link-class' => 'navbar-tool-link',
 		];
 
 		return $this->getSkinTemplate()->makeListItem(

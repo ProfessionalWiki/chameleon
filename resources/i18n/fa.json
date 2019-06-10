@@ -2,13 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Reza1615",
-			"Alirezaaa"
+			"Alirezaaa",
+			"FarsiNevis"
 		]
 	},
-	"skinname-chameleon": "آفتابپرست",
-	"chameleon-desc": "پوسته آفتاب‌پرست.",
-	"chameleon-loggedin": "شما به عنوان  $1 وارد شدید.",
-	"chameleon-notloggedin": "شما وارد نشده‌ايد",
-	"chameleon-newmessages": "پیام‌های جدیدی دارید",
-	"chameleon-nonewmessages": "پیام تازه ندارید."
+	"skinname-chameleon": "آفتاب‌پرست",
+	"chameleon-desc": "پوستهٔ آفتاب‌پرست",
+	"chameleon-loggedin": "شما به‌عنوان  $1 وارد شده‌اید.",
+	"chameleon-notloggedin": "شما وارد نشده‌ايد.",
+	"chameleon-newmessages": "پیام‌های تازه‌ای دارید.",
+	"chameleon-nonewmessages": "پیام تازه‌ای ندارید.",
+	"chameleon-search-aria-label": "برو به صفحهٔ"
 }

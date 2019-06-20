@@ -9,5 +9,6 @@
 	"chameleon-loggedin": "Tu ha aperite session como $1.",
 	"chameleon-notloggedin": "Tu non ha aperite session",
 	"chameleon-newmessages": "Tu ha nove messages.",
-	"chameleon-nonewmessages": "Tu non ha nove messages."
+	"chameleon-nonewmessages": "Tu non ha nove messages.",
+	"chameleon-search-aria-label": "Vader al pagina"
 }

@@ -89,7 +89,7 @@ class Chameleon extends SkinTemplate {
 		// FIXME: Put this in a proper class, so it can be tested
 		$GLOBALS[ 'wgHooks' ][ 'ResourceLoaderRegisterModules' ][ ] = function( ResourceLoader $rl ) {
 
-			$rl->register( '0.mediawiki.skinning.content', $rl->getModule( 'mediawiki.skinning.content' ) );
+			$rl->register( 'zzz.ext.bootstrap.styles', $rl->getModule( 'ext.bootstrap.styles' ) );
 
 		};
 
@@ -117,8 +117,8 @@ class Chameleon extends SkinTemplate {
 				unset( $modules[ 'styles' ][ 'core' ][ $modulePos ] ); // we have our own version of these styles
 			}
 
-			$modules[ 'styles' ][ 'content' ][] = '0.mediawiki.skinning.content';
-			$modules[ 'styles' ][ 'content' ][] = 'ext.bootstrap.styles';
+			$modules[ 'styles' ][ 'content' ][] = 'mediawiki.skinning.content';
+			$modules[ 'styles' ][ 'content' ][] = 'zzz.ext.bootstrap.styles';
 
 		}
 
@@ -140,9 +140,9 @@ class Chameleon extends SkinTemplate {
 		if ( $this->stylesHaveBeenProcessed === false ) {
 
 			$moduleStyles = [
-				'0.mediawiki.skinning.content',
+				'mediawiki.skinning.content',
 				'mediawiki.legacy.commonPrint',
-				'ext.bootstrap.styles'
+				'zzz.ext.bootstrap.styles'
 			];
 
 			if ( $out->isSyndicated() ) {

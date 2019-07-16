@@ -1,5 +1,15 @@
 ## Release Notes
 
+### Chameleon 2.1.1
+
+Released on tbd
+
+Changes:
+* ...
+
+Fixes:
+* ...
+
 ### Chameleon 2.1.0
 
 Released on 16-Jul-2019
@@ -11,7 +21,6 @@ Fixes:
 * ([#87](https://github.com/cmln/chameleon/issues/87)) Show formedit button on the navbar
 * ([#89](https://github.com/cmln/chameleon/issues/89)) Show default icon for unknown page tools on the navbar
 * ([#91](https://github.com/cmln/chameleon/issues/91)) Ensure mediawiki.skinning.content module is loadable
-
 
 ### Chameleon 2.0
 

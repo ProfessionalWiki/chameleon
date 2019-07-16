@@ -89,7 +89,7 @@ class Chameleon extends SkinTemplate {
 		// FIXME: Put this in a proper class, so it can be tested
 		$GLOBALS[ 'wgHooks' ][ 'ResourceLoaderRegisterModules' ][ ] = function( ResourceLoader $rl ) {
 
-			$rl->register( 'zzz.ext.bootstrap.styles', $rl->getModule( 'ext.bootstrap.styles' ) );
+			$rl->register( 'zzz.ext.bootstrap.styles', $GLOBALS['wgResourceModules']['ext.bootstrap.styles'] );
 
 		};
 

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"Steeve815"
 		]
 	},
 	"skinname-chameleon": "זיקית",
@@ -9,5 +10,6 @@
 	"chameleon-loggedin": "נכנסת בשם $1.",
 	"chameleon-notloggedin": "לא נכנסת",
 	"chameleon-newmessages": "יש לך הודעות חדשות",
-	"chameleon-nonewmessages": "אין לך הודעות חדשות."
+	"chameleon-nonewmessages": "אין לך הודעות חדשות.",
+	"chameleon-search-aria-label": "מעבר לדף"
 }

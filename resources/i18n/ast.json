@@ -9,5 +9,6 @@
 	"chameleon-loggedin": "Aniciasti sesión como $1.",
 	"chameleon-notloggedin": "Nun aniciasti sesión",
 	"chameleon-newmessages": "Tienes mensaxes nuevos.",
-	"chameleon-nonewmessages": "Nun tienes mensaxes nuevos."
+	"chameleon-nonewmessages": "Nun tienes mensaxes nuevos.",
+	"chameleon-search-aria-label": "Dir a páxina"
 }

@@ -25,6 +25,7 @@
 #####
 
 language: php
+services: mysql
 
 matrix:
   include:

@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ильнар"
+			"Ильнар",
+			"Ерней"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
 	"chameleon-desc": "Chameleon күренеше бизәлеше.",
 	"chameleon-loggedin": "Сез $1 булып кергәнсез.",
 	"chameleon-notloggedin": "Сез системага кермәгәнсез.",
-	"chameleon-newmessages": "Сезнең яңа хатларыгыз бар.",
-	"chameleon-nonewmessages": "Сезнең яңа хатларыгыз юк."
+	"chameleon-newmessages": "Сезнең яңа хәбәрләгез бар.",
+	"chameleon-nonewmessages": "Сезнең яңа хәбәрләрегез юк."
 }

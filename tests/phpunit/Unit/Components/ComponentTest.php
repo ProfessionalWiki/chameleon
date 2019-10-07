@@ -221,7 +221,6 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 
 	/**
 	 * @covers ::setClasses
-	 * @expectedException \MWException
 	 */
 	public function testSetClasses_WithInvalidParameter() {
 
@@ -232,6 +231,7 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
 
+		$this->expectException( \MWException::class );
 		$instance->setClasses( true ); // use bool instead of string
 
 	}

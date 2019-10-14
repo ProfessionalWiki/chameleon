@@ -9,5 +9,6 @@
 	"chameleon-loggedin": "Ахьа болх беш бу $1 санна.",
 	"chameleon-notloggedin": "Системин довзийтар",
 	"chameleon-newmessages": "Хьуна кхаьчна керла хаам.",
-	"chameleon-nonewmessages": "Хьан бац керла хаам."
+	"chameleon-nonewmessages": "Хьан бац керла хаам.",
+	"chameleon-search-aria-label": "АгӀона дехьадала"
 }

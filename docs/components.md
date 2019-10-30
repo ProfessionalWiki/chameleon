@@ -162,7 +162,7 @@ assign a CSS class for styling purposes.
 #### Example usage
 
 ``` xml
-<component type="container" class="foo bar">
+<component type="Container" class="foo bar">
   ...
 </component>
 ```

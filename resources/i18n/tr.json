@@ -1,11 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sayginer"
+			"Sayginer",
+			"BaRaN6161 TURK"
 		]
 	},
+	"skinname-chameleon": "Bukalemun",
+	"chameleon-desc": "Bukalemun görünümü",
 	"chameleon-loggedin": "$1 olarak oturum açtınız.",
 	"chameleon-notloggedin": "Oturum açmadınız",
 	"chameleon-newmessages": "Yeni mesajınız var.",
-	"chameleon-nonewmessages": "Yeni mesajınız yok."
+	"chameleon-nonewmessages": "Yeni mesajınız yok.",
+	"chameleon-search-aria-label": "Sayfaya git"
 }

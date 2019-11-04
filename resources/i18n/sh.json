@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"skinname-chameleon": "Kameleon",
+	"chameleon-loggedin": "Prijavljeni ste kao $1.",
+	"chameleon-notloggedin": "Niste prijavljeni",
+	"chameleon-newmessages": "Imate nove poruke",
+	"chameleon-nonewmessages": "Nemate nove poruke.",
+	"chameleon-search-aria-label": "Idi na stranicu"
+}

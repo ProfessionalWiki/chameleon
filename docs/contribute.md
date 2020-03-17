@@ -54,8 +54,8 @@ A few points to ease the process:
 
 
 [chameleon]: https://www.mediawiki.org/wiki/Skin:Chameleon
-[open bugs]: https://github.com/cmln/chameleon/issues
-[report bugs]: https://github.com/cmln/chameleon/issues/new
+[open bugs]: https://github.com/ProfessionalWiki/chameleon/issues
+[report bugs]: https://github.com/ProfessionalWiki/chameleon/issues/new
 [how to report a bug]: https://www.mediawiki.org/wiki/How_to_report_a_bug
 [screenshots]: https://www.mediawiki.org/wiki/Skin:Chameleon#Screenshots
 [twn]: https://translatewiki.net/

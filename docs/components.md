@@ -46,7 +46,7 @@ The root element of any layout.
 #### Example usage
 
 ``` xml
-<structure xmlns="https://github.com/cmln/chameleon/layout/1.0">
+<structure xmlns="https://github.com/ProfessionalWiki/chameleon/layout/1.0">
   ...
 </structure>
 ```

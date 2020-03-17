@@ -14,9 +14,9 @@ Changes:
 * Add Font-Awesome Brands font
 
 Fixes:
-* ([#87](https://github.com/cmln/chameleon/issues/87)) Show formedit button on the navbar
-* ([#89](https://github.com/cmln/chameleon/issues/89)) Show default icon for unknown page tools on the navbar
-* ([#91](https://github.com/cmln/chameleon/issues/91)) Ensure mediawiki.skinning.content module is loadable
+* ([#87](https://github.com/ProfessionalWiki/chameleon/issues/87)) Show formedit button on the navbar
+* ([#89](https://github.com/ProfessionalWiki/chameleon/issues/89)) Show default icon for unknown page tools on the navbar
+* ([#91](https://github.com/ProfessionalWiki/chameleon/issues/91)) Ensure mediawiki.skinning.content module is loadable
 
 ### Chameleon 2.0
 

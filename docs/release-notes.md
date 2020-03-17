@@ -1,14 +1,10 @@
 ## Release Notes
 
-### Chameleon 2.1.1
+### Chameleon 2.2.0
 
-Released on tbd
+Under development
 
-Changes:
-* ...
-
-Fixes:
-* ...
+* Raised minimum PHP version from 7.0 to 7.1
 
 ### Chameleon 2.1.0
 

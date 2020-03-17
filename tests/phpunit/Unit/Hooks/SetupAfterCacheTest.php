@@ -47,7 +47,7 @@ class SetupAfterCacheTest extends TestCase {
 
 	protected $dummyExternalModule = null;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->dummyExternalModule = __DIR__ . '/../../Fixture/externalmodule.scss';

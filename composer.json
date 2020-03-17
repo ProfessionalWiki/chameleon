@@ -25,7 +25,7 @@
 		"irc": "irc://irc.freenode.org/mediawiki"
 	},
 	"require": {
-		"php": ">=7.0",
+		"php": ">=7.1",
 		"ext-dom": "*",
 		"ext-filter": "*",
 		"composer/installers": "^1.0.12",

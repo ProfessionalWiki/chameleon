@@ -49,13 +49,13 @@ class ChameleonTemplateTest extends TestCase {
 	// to inject the setting during testing
 	protected $egChameleonLayoutFile = null;
 
-	protected function setUp() {
+	protected function setUp(): void {
 		parent::setUp();
 
 		$this->egChameleonLayoutFile = $GLOBALS['egChameleonLayoutFile'];
 	}
 
-	protected function tearDown() {
+	protected function tearDown(): void {
 		$GLOBALS['egChameleonLayoutFile'] = $this->egChameleonLayoutFile;
 
 		parent::tearDown();

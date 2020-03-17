@@ -11,8 +11,8 @@ please use the [Email functionality on MediaWiki.org][mw-mail].
 Finally there are the MediaWiki IRC channel (Server: [freenode.net][irc],
 Channel: #mediawiki) and the [MediaWiki mailing list][mw-ml]. 
 
-[open bugs]: https://github.com/cmln/chameleon/issues
-[report bugs]: https://github.com/cmln/chameleon/issues/new
+[open bugs]: https://github.com/ProfessionalWiki/chameleon/issues
+[report bugs]: https://github.com/ProfessionalWiki/chameleon/issues/new
 [chameleon-talk]: https://www.mediawiki.org/wiki/Skin_talk:Chameleon
 [mw-mail]: https://www.mediawiki.org/wiki/Special:EmailUser/F.trott
 [irc]: http://webchat.freenode.net/

@@ -9,7 +9,7 @@
 		"Twitter",
 		"Bootstrap"
 	],
-	"homepage"   : "https://github.com/cmln/chameleon",
+	"homepage"   : "https://github.com/ProfessionalWiki/chameleon",
 	"license"    : "GPL-3.0-or-later",
 	"authors"    : [
 		{
@@ -19,13 +19,13 @@
 		}
 	],
 	"support": {
-		"docs": "https://github.com/cmln/chameleon",
-		"source": "https://github.com/cmln/chameleon.git",
-		"issues": "https://github.com/cmln/chameleon/issues",
+		"docs": "https://github.com/ProfessionalWiki/chameleon",
+		"source": "https://github.com/ProfessionalWiki/chameleon.git",
+		"issues": "https://github.com/ProfessionalWiki/chameleon/issues",
 		"irc": "irc://irc.freenode.org/mediawiki"
 	},
 	"require": {
-		"php": ">=7.0",
+		"php": ">=7.1",
 		"ext-dom": "*",
 		"ext-filter": "*",
 		"composer/installers": "^1.0.12",

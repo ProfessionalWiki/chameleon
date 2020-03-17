@@ -1,14 +1,10 @@
 ## Release Notes
 
-### Chameleon 2.1.1
+### Chameleon 2.2.0
 
-Released on tbd
+Under development
 
-Changes:
-* ...
-
-Fixes:
-* ...
+* Raised minimum PHP version from 7.0 to 7.1
 
 ### Chameleon 2.1.0
 
@@ -18,9 +14,9 @@ Changes:
 * Add Font-Awesome Brands font
 
 Fixes:
-* ([#87](https://github.com/cmln/chameleon/issues/87)) Show formedit button on the navbar
-* ([#89](https://github.com/cmln/chameleon/issues/89)) Show default icon for unknown page tools on the navbar
-* ([#91](https://github.com/cmln/chameleon/issues/91)) Ensure mediawiki.skinning.content module is loadable
+* ([#87](https://github.com/ProfessionalWiki/chameleon/issues/87)) Show formedit button on the navbar
+* ([#89](https://github.com/ProfessionalWiki/chameleon/issues/89)) Show default icon for unknown page tools on the navbar
+* ([#91](https://github.com/ProfessionalWiki/chameleon/issues/91)) Ensure mediawiki.skinning.content module is loadable
 
 ### Chameleon 2.0
 

@@ -23,7 +23,7 @@ this setting sparingly. If you do this, you may also want to set
 additional attribute in the `phpunit` element to colorize then tests that
 connect to the external service.
 
-[travis]: https://travis-ci.org/cmln/chameleon
+[travis]: https://travis-ci.org/ProfessionalWiki/chameleon
 [mw-testing]: https://www.mediawiki.org/wiki/Manual:PHP_unit_testing
 
 ### By hand

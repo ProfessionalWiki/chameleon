@@ -85,7 +85,7 @@ class Logo extends Component {
 		if ( $this->shallLink() ) {
 
 			$linkAttributes = array_merge(
-				[ 'href' => $this->getSkinTemplate()->get( 'nav_urls', [ 'mainpage' => [ 'href' => '#' ] ] )[ 'mainpage' ][ 'href' ] ],
+				[ 'href' => $this->getLogoLink() ],
 				Linker::tooltipAndAccesskeyAttribs( 'p-logo' )
 			);
 
@@ -93,6 +93,12 @@ class Logo extends Component {
 		}
 
 		return $logo;
+	}
+
+	private function getLogoLink(): string {
+		$navUrls = $this->getSkinTemplate()->get( 'nav_urls', [ 'mainpage' => [ 'href' => '#' ] ] );
+		$mainPage = $navUrls['mainpage'] ?? [ 'href' => '#' ];
+		return $mainPage['href'];
 	}
 
 	/**

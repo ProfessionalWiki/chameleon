@@ -26,7 +26,6 @@ in an XML file and as such easily adaptable to your needs.
 5. [How to contribute](docs/contribute.md)
 6. [Credits](docs/credits.md)
 7. [Licenses](docs/licenses.md)
-8. [Contact](docs/contact.md)
 
 [mw]: https://www.mediawiki.org
 [mw-chameleon]: https://www.mediawiki.org/wiki/Skin:Chameleon

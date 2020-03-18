@@ -341,7 +341,7 @@ This version contains the following components:
 
 Known Issues:
 * The available documentation is insufficient. For now, if you have questions,
-  just [ask](contact.md).
+  just [ask](../README.md).
 * Many of the lesser used page elements are not properly styled yet.
 
 Compatibility:

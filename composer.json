@@ -15,7 +15,13 @@
 		{
 			"name": "Stephan Gambke",
 			"email": "s7eph4n@protonmail.com",
-			"role": "Developer"
+			"role": "Creator"
+		},
+		{
+			"name": "Professional.Wiki",
+			"email": "info@professional.wiki",
+			"homepage": "https://professional.wiki",
+			"role": "Maintainer"
 		}
 	],
 	"support": {

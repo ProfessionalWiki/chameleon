@@ -1,7 +1,5 @@
 # Chameleon skin
 [![Build Status](https://travis-ci.org/ProfessionalWiki/chameleon.svg?branch=master)](https://travis-ci.org/ProfessionalWiki/chameleon)
-[![Code Coverage](https://scrutinizer-ci.com/g/ProfessionalWiki/chameleon/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ProfessionalWiki/chameleon/?branch=master)
-[![Code Quality](https://scrutinizer-ci.com/g/ProfessionalWiki/chameleon/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ProfessionalWiki/chameleon/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/chameleon-skin/version.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 [![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/d/total.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 

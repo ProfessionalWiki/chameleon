@@ -181,7 +181,7 @@ class NavbarHorizontal extends Component {
 
 			if ( $position === 'right' ) {
 				$indentation++;
-			};
+			}
 
 			$this->indent( $indentation );
 			$html = $this->buildNavBarElementFromDomElement( $node );

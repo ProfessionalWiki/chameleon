@@ -108,7 +108,8 @@ class MenuFromLines extends Menu {
 
 		while ( count( $this->lines ) > 0 && empty( $line ) ) {
 			$line = trim( array_shift( $this->lines ) );
-		};
+		}
+
 		return $line;
 	}
 

@@ -47,7 +47,6 @@ class Chameleon extends SkinTemplate {
 	public $skinname = 'chameleon';
 	public $stylename = 'chameleon';
 	public $template = '\Skins\Chameleon\ChameleonTemplate';
-	public $useHeadElement = true;
 
 	private $componentFactory;
 

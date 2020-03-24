@@ -115,17 +115,17 @@ class MainContent extends Component {
 			$skintemplate->getMsg( 'comma-separator' )->escaped() . $idRegistry->element( 'a', [ 'href' => '#p-search' ], $skintemplate->getMsg( 'jumptosearch' )->escaped() )
 		);
 
-		$ret = $this->indent() . $idRegistry->element( 'div', [ 'class' => "contentHeader" ],
-
-			$firstHeading .
-			$siteSub .
-			$contentSub .
-			$contentSub2 .
-			$jumpToNav .
-			$this->indent( -1 )
+		return $this->indent()
+			. $idRegistry->element(
+				'div',
+				[ 'class' => "contentHeader" ],
+				$firstHeading .
+				$siteSub .
+				$contentSub .
+				$contentSub2 .
+				$jumpToNav .
+				$this->indent( -1 )
 			);
-
-		return $ret;
 	}
 
 	/**

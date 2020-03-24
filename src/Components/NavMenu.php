@@ -83,7 +83,7 @@ class NavMenu extends Component {
 
 		if ( $flatten ) {
 
-			$ret .= $this->buildMenuItemsForDropdownMenu( $menuDescription, $flatten );
+			$ret .= $this->buildMenuItemsForDropdownMenu( $menuDescription );
 
 		} elseif ( !$this->hasSubmenuItems( $menuDescription ) ) {
 
@@ -92,7 +92,7 @@ class NavMenu extends Component {
 		} else {
 
 			$ret .= $this->buildDropdownOpeningTags( $menuDescription ) .
-			        $this->buildMenuItemsForDropdownMenu( $menuDescription, $flatten, 1 ) .
+			        $this->buildMenuItemsForDropdownMenu( $menuDescription, 1 ) .
 			        $this->buildDropdownClosingTags();
 
 
@@ -108,7 +108,7 @@ class NavMenu extends Component {
 	 * @return string
 	 * @throws \MWException
 	 */
-	protected function buildMenuItemsForDropdownMenu( $menuDescription, $flatten = false, $indent = 0 ) {
+	protected function buildMenuItemsForDropdownMenu( $menuDescription, $indent = 0 ) {
 
 		// build the list of submenu items
 		if ( $this->hasSubmenuItems( $menuDescription ) ) {

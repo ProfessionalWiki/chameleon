@@ -25,7 +25,6 @@
 namespace Skins\Chameleon\Tests\Unit\Components;
 
 use Skins\Chameleon\Components\NavbarHorizontal;
-use Skins\Chameleon\Tests\Util\MockupFactory;
 
 /**
  * @coversDefaultClass \Skins\Chameleon\Components\NavbarHorizontal

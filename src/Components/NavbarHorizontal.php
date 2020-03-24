@@ -147,7 +147,7 @@ class NavbarHorizontal extends Component {
 			'right' => [],
 		];
 
-		/** @var \DOMElement[] $children */
+		/** @var DOMElement[] $children */
 		$children = $this->getDomElement()->hasChildNodes() ? $this->getDomElement()->childNodes : [];
 
 		// add components
@@ -181,7 +181,7 @@ class NavbarHorizontal extends Component {
 
 			if ( $position === 'right' ) {
 				$indentation++;
-			};
+			}
 
 			$this->indent( $indentation );
 			$html = $this->buildNavBarElementFromDomElement( $node );

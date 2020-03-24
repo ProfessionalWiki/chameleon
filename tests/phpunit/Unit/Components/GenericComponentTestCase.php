@@ -121,8 +121,7 @@ class GenericComponentTestCase extends TestCase {
 
 	public function domElementProviderFromSyntheticLayoutFiles() {
 		$file = __DIR__ . '/../../Fixture/' . $this->getNameOfComponentUnderTest() . '.xml';
-		$provider = array_chunk( $this->getDomElementsFromFile( $file ), 1 );
-		return $provider;
+		return array_chunk( $this->getDomElementsFromFile( $file ), 1 );
 	}
 
 	public function domElementProviderFromDeployedLayoutFiles() {
@@ -139,9 +138,7 @@ class GenericComponentTestCase extends TestCase {
 			$elements[ ] = null;
 		}
 
-		$provider = array_chunk( $elements, 1 );
-
-		return $provider;
+		return array_chunk( $elements, 1 );
 	}
 
 	protected function getDomElementsFromFile( $file ) {

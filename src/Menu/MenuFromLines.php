@@ -185,8 +185,7 @@ class MenuFromLines extends Menu {
 	 */
 	protected function getTextFromMessageName( $messageName ) {
 		$msgObj = $this->inContentLanguage ? wfMessage( $messageName )->inContentLanguage() : wfMessage( $messageName );
-		$messageText = ( $msgObj->isDisabled() ? $messageName : trim( $msgObj->inContentLanguage()->text() ) );
-		return $messageText;
+		return ( $msgObj->isDisabled() ? $messageName : trim( $msgObj->inContentLanguage()->text() ) );
 	}
 
 	/**

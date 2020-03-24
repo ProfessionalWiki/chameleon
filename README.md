@@ -1,4 +1,5 @@
 # Chameleon skin
+
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/chameleon-skin/version.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 [![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/d/total.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 [![Build Status](https://travis-ci.org/ProfessionalWiki/chameleon.svg?branch=master)](https://travis-ci.org/ProfessionalWiki/chameleon)
@@ -19,6 +20,7 @@ in an XML file and as such easily adaptable to your needs.
 <br/>
 
 ## Documentation
+
 1. [Installation, Update, De-Installation](docs/installation.md)
 2. [Customization](docs/customization.md)
 3. [Release Notes](docs/release-notes.md)
@@ -27,13 +29,6 @@ in an XML file and as such easily adaptable to your needs.
 6. [Credits](docs/credits.md)
 7. [Licenses](docs/licenses.md)
 
-[mw]: https://www.mediawiki.org
-[mw-chameleon]: https://www.mediawiki.org/wiki/Skin:Chameleon
-[mw-chameleon-talk]: https://www.mediawiki.org/wiki/Skin_talk:Chameleon
-[composer]: https://getcomposer.org/
-[twbs]: http://getbootstrap.com/
-[license]: https://www.gnu.org/copyleft/gpl.html
-
 ## Contact
 
 For bug reports and feature requests please see, if it is already reported on
@@ -41,16 +36,28 @@ the list of [open bugs][open bugs]. If not, [report it][report bugs]. Also see t
 [Contribute](contribute.md) section for instructions on bug reporting.
 
 For general questions, comments or suggestions you might use the [Chameleon skin
-talk page on MediaWiki.org][chameleon-talk]. For direct contact with the author
-please use the [Email functionality on MediaWiki.org][mw-mail].
+talk page on MediaWiki.org][chameleon-talk]. For direct contact with the maintainers
+please us [our contact form][contact-form].
 
 Finally there are the MediaWiki IRC channel (Server: [freenode.net][irc],
 Channel: #mediawiki) and the [MediaWiki mailing list][mw-ml]. 
 
+## Professional Support
+
+Chameleon is maintined by [Professional.Wiki](https://professional.wiki).
+You can [contract us][contact-form] to help you with installation or customization of Chameleon.
+We also do development work.
+
+[mw]: https://www.mediawiki.org
+[mw-chameleon]: https://www.mediawiki.org/wiki/Skin:Chameleon
+[mw-chameleon-talk]: https://www.mediawiki.org/wiki/Skin_talk:Chameleon
+[composer]: https://getcomposer.org/
+[twbs]: http://getbootstrap.com/
+[license]: https://www.gnu.org/copyleft/gpl.html
+
 [open bugs]: https://github.com/ProfessionalWiki/chameleon/issues
 [report bugs]: https://github.com/ProfessionalWiki/chameleon/issues/new
 [chameleon-talk]: https://www.mediawiki.org/wiki/Skin_talk:Chameleon
-[mw-mail]: https://www.mediawiki.org/wiki/Special:EmailUser/F.trott
+[contact-form]: https://professional.wiki/en/contact
 [irc]: http://webchat.freenode.net/
 [mw-ml]: https://lists.wikimedia.org/mailman/listinfo/mediawiki-l
-

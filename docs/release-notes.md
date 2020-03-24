@@ -8,7 +8,7 @@ Under development
 
 ### Chameleon 2.1.0
 
-Released on 16-Jul-2019
+Released on July 16, 2019.
 
 Changes:
 * Add Font-Awesome Brands font
@@ -20,7 +20,7 @@ Fixes:
 
 ### Chameleon 2.0
 
-Released on 09-May-2019
+Released on May 9, 2019.
 
 Changes:
 * Support
@@ -58,13 +58,13 @@ Changes:
 
 ### Chameleon 1.7.1
 
-Released on 10-May-2018
+Released on May 10, 2018.
 
 Fixes the reported version in Special:Version.
 
 ### Chameleon 1.7
 
-Released on 29-Apr-2018
+Released on April 29, 2018.
 
 Changes:
 * (#49) Allows skins that build on top of Chameleon to set a specific layout
@@ -82,7 +82,7 @@ Fixes:
 
 ### Chameleon 1.6
 
-Released on 08-Oct-2017
+Released on October 8, 2017.
 
 Changes:
 * Grid: Add `mode` attribute. This allows to switch the grid to fluid mode.
@@ -107,7 +107,7 @@ Fixes:
 
 ### Chameleon 1.5
 
-Released on 23-Nov-2016
+Released on November 23, 2016.
 
 Changes:
 * Move from WMF server to GitHub: Updates of documentation, some scripts,
@@ -131,7 +131,7 @@ Fixes:
 
 ### Chameleon 1.4
 
-Released on 20-Sep-2016
+Released on September 20, 2016.
 
 Changes:
 * Logo: add *addLink* attribute to Logo component
@@ -142,7 +142,7 @@ Fixes:
 
 ### Chameleon 1.3
 
-Released on 08-Mar-2016
+Released on March 8, 2016.
 
 Changes:
 * Add URL parameter 'uselayout'
@@ -159,7 +159,7 @@ Fixes:
 
 ### Chameleon 1.2
 
-Released on 16-Jan-2016
+Released on January 16, 2016.
 
 This release may break customized styles for the NavbarHorizontal component.
 
@@ -187,7 +187,7 @@ Fixes:
 
 ### Chameleon 1.1.4
 
-Released on 27-May-2015
+Released on May 27, 2015.
 
 Fixes:
 * Do not show mw-headline-anchor
@@ -196,7 +196,7 @@ Fixes:
 
 ### Chameleon 1.1.3
 
-Released on 01-Mar-2015
+Released on March 1, 2015.
 
 Bump minimum Bootstrap extension version to 1.1
 
@@ -216,7 +216,7 @@ Other changes:
 
 ### Chameleon 1.1.2
 
-Released on 19-Nov-2014
+Released on November 19, 2014.
 
 Fixes:
 * Load shared.css with correct remote base path, so ref'd images are found
@@ -242,7 +242,7 @@ Other changes:
 
 ### Chameleon 1.1.1
 
-Released on 08-Nov-2014
+Released on November 8, 2014.
 
 Fixes:
 * Fix styles for Special pages
@@ -255,7 +255,7 @@ Other changes:
 
 ### Chameleon 1.1
 
-Released on 06-Nov-2014
+Released on November 6, 2014.
 
 New layouts:
 * __clean__: This is a minimalist layout intended for wikis that are not open
@@ -285,7 +285,7 @@ Known issues:
 
 ### Chameleon 1.0.1
 
-Released on 22-Oct-2014
+Released on October 22, 2014.
 
 Fixes:
 * Fix TOC layout
@@ -296,7 +296,7 @@ Other changes:
 
 ### Chameleon 1.0
 
-Released on 19-Oct-2014
+Released on October 19, 2014.
 
 After nearly 1.5 years in development status, this is the first official version
 of the Chameleon skin for MediaWiki.

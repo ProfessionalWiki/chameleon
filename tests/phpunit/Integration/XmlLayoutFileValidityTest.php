@@ -27,7 +27,6 @@ namespace Skins\Chameleon\Tests\Integration;
 use Skins\Chameleon\Tests\Util\XmlFileProvider;
 
 use DOMDocument;
-use RuntimeException;
 
 /**
  * @coversNothing

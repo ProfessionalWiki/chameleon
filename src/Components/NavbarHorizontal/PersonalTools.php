@@ -128,7 +128,7 @@ class PersonalTools extends Component {
 
 		}
 
-		\Hooks::run( 'ChameleonNavbarHorizontalPersonalToolsLinkText', [ &$toolsLinkText, $this->getSkin() ] );
+		Hooks::run( 'ChameleonNavbarHorizontalPersonalToolsLinkText', [ &$toolsLinkText, $this->getSkin() ] );
 
 		$this->indent( 1 );
 

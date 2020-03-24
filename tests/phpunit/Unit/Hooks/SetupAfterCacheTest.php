@@ -54,22 +54,6 @@ class SetupAfterCacheTest extends TestCase {
 	}
 
 	/**
-	 * @return string
-	 */
-	private function getWorkDirectory() {
-
-		$directory = $GLOBALS[ 'argv' ][ 0 ];
-
-		if ( $directory[ 0 ] !== DIRECTORY_SEPARATOR ) {
-			$directory = $_SERVER[ 'PWD' ] . DIRECTORY_SEPARATOR . $directory;
-		}
-
-		$directory = dirname( $directory );
-
-		return $directory;
-	}
-
-	/**
 	 * @covers ::__construct
 	 */
 	public function testCanConstruct() {
@@ -323,90 +307,6 @@ class SetupAfterCacheTest extends TestCase {
 
 		return $provider;
 	}
-
-	///**
-	// * @covers ::adjustConfiguration
-	// *
-	// * @dataProvider adjustConfigurationProvider
-	// */
-	//public function testAdjustConfiguration( $origConfig, $changes, $expected ) {
-	//
-	//	$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
-	//		->disableOriginalConstructor()
-	//		->getMock();
-	//
-	//	$request = $this->getMockBuilder('\WebRequest')
-	//		->disableOriginalConstructor()
-	//		->getMock();
-	//
-	//	$instance = new SetupAfterCache(
-	//		$bootstrapManager,
-	//		$changes,
-	//		$request
-	//	);
-	//
-	//	$instance->adjustConfiguration( $origConfig );
-	//
-	//	$this->assertEquals( $expected, $origConfig );
-	//}
-	//
-	///**
-	// * @covers ::process
-	// * @covers ::addLateSettings
-	// *
-	// * @depends testAdjustConfiguration
-	// *
-	// * @dataProvider lateSettingsProvider
-	// */
-	//public function testProcessWithLateSettingsToAdjustConfiguration( $configuration, $expected ) {
-	//
-	//	$bootstrapManager = $this->getMockBuilder( '\Bootstrap\BootstrapManager' )
-	//		->disableOriginalConstructor()
-	//		->getMock();
-	//
-	//	$dir = $this->getWorkDirectory();
-	//	$IP = dirname(dirname($dir));
-	//
-	//	$defaultConfiguration = [
-	//		'IP'                => $IP,
-	//		'wgScriptPath'      => 'notTestingwgScriptPath',
-	//		'wgStylePath'      => 'notTestingwgStylePath',
-	//		'wgStyleDirectory'  => 'notTestingwgStyleDirectory',
-	//		'wgResourceModules' => [],
-	//	];
-	//
-	//	$expected[ 'chameleonLocalPath' ] = $defaultConfiguration[ 'wgStyleDirectory' ] . '/chameleon';
-	//	$expected[ 'chameleonRemotePath' ] = $defaultConfiguration[ 'wgStylePath' ] . '/chameleon';
-	//
-	//	$expected[ 'wgResourceModules' ] = [];
-	//	$expected[ 'wgResourceModules' ][ 'skin.chameleon.jquery-sticky' ] = [
-	//		'localBasePath'  => $expected[ 'chameleonLocalPath' ] . '/resources/js',
-	//		'remoteBasePath' => $expected[ 'chameleonRemotePath' ] . '/resources/js',
-	//		'group'          => 'skin.chameleon',
-	//		'skinScripts'    => [
-	//			'chameleon' => [ 'sticky-kit/jquery.sticky-kit.js', 'Components/Modifications/sticky.js' ]
-	//		]
-	//	];
-	//
-	//	$configurationToBeAdjusted = $configuration + $defaultConfiguration;
-	//
-	//	$request = $this->getMockBuilder('\WebRequest')
-	//		->disableOriginalConstructor()
-	//		->getMock();
-	//
-	//	$instance = new SetupAfterCache(
-	//		$bootstrapManager,
-	//		$configurationToBeAdjusted,
-	//		$request
-	//	);
-	//
-	//	$instance->process();
-	//
-	//	$this->assertEquals(
-	//		$expected + $defaultConfiguration,
-	//		$configurationToBeAdjusted
-	//	);
-	//}
 
 	/**
 	 * Provides test data for the lateSettings test

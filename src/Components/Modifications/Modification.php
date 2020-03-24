@@ -144,7 +144,6 @@ abstract class Modification extends Component {
 	 *
 	 * @param string | string[] | null $classes
 	 *
-	 * @return string
 	 * @throws \MWException
 	 */
 	public function removeClasses( $classes ) {

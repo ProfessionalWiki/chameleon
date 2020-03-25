@@ -2,9 +2,10 @@
 
 ### Chameleon 2.2.0
 
-Under development
+Released on March 25, 2020.
 
 * Raised minimum PHP version from 7.0 to 7.1
+* Translation updates
 
 ### Chameleon 2.1.0
 

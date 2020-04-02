@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Liuxinyu970226",
-			"Apflu"
+			"Apflu",
+			"500000000006城"
 		]
 	},
 	"skinname-chameleon": "变色龙",
@@ -10,5 +11,6 @@
 	"chameleon-loggedin": "您已作为$1登录。",
 	"chameleon-notloggedin": "您尚未登录。",
 	"chameleon-newmessages": "您有新消息。",
-	"chameleon-nonewmessages": "您没有新消息。"
+	"chameleon-nonewmessages": "您没有新消息。",
+	"chameleon-search-aria-label": "前往页面"
 }

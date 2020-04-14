@@ -16,8 +16,9 @@ an XML file. There are currently five pre-defined layouts available:
 * [clean](../layouts/clean.xml)
 
 They can be activated by setting the
-variable `$egChameleonLayoutFile` in LocalSettings.php. E.g. to activate the
-fixedhead layout you could add
+variable `$egChameleonLayoutFile` in LocalSettings.php.
+
+For example, to activate the `fixedhead` layout you could add
 ```php
 $egChameleonLayoutFile= __DIR__ . '/skins/chameleon/layouts/fixedhead.xml';
 ```
@@ -132,7 +133,7 @@ trigger an update of the style cache. There are two ways to do that:
    `copy /b LocalSettings.php +,,` from the MediaWiki installation directory
    on Windows. Alternatively, just open the file and re-save it.
 
-2. If the above becomes to cumbersome, you could add the following to your
+2. If the above becomes too cumbersome, you could add the following to your
    `LocalSettings.php`:
    `\Bootstrap\BootstrapManager::getInstance()->addCacheTriggerFile( __DIR__ . '/your-file.scss' );`.
 

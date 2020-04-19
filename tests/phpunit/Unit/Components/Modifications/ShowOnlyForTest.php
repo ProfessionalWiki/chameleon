@@ -37,7 +37,7 @@ namespace Skins\Chameleon\Tests\Unit\Components\Modifications;
  * @ingroup Skins
  * @ingroup Test
  */
-class ShowOnlyTest extends GenericModificationTestCase {
+class ShowOnlyForTest extends GenericModificationTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\Modifications\ShowOnlyFor';
 

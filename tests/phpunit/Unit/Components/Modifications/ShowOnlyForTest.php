@@ -25,7 +25,7 @@
 namespace Skins\Chameleon\Tests\Unit\Components\Modifications;
 
 /**
- * @coversDefaultClass \Skins\Chameleon\Components\Modifications\ShowOnlyForTest
+ * @coversDefaultClass \Skins\Chameleon\Components\Modifications\ShowOnlyFor
  * @covers ::<private>
  * @covers ::<protected>
  *

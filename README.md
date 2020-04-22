@@ -44,7 +44,7 @@ Channel: #mediawiki) and the [MediaWiki mailing list][mw-ml].
 
 ## Professional Support
 
-Chameleon is maintined by [Professional.Wiki](https://professional.wiki).
+Chameleon is maintained by [Professional.Wiki](https://professional.wiki).
 You can [contract us][contact-form] to help you with installation or customization of Chameleon.
 We also do development work.
 

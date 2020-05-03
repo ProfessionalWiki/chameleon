@@ -1,5 +1,12 @@
 ## Release Notes
 
+### Chameleon 2.3.0
+
+Under development
+
+* Fixed text color issue in the navbar
+* Added edit icon to the Visual Editor edit action in the navbar
+
 ### Chameleon 2.2.0
 
 Released on March 25, 2020.

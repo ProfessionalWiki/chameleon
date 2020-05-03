@@ -8,7 +8,7 @@ The Chameleon skin can be highly customized. There are two main areas that you c
 ## Layout of page elements
 
 The layout of the page elements (nav bar, logo, search bar, etc.) is defined in
-an XML file. There are currently five pre-defined layouts available:
+an XML file. There are currently five [pre-defined layouts](layouts.md) available:
 * [standard](../layouts/standard.xml)
 * [navhead](../layouts/navhead.xml)
 * [fixedhead](../layouts/fixedhead.xml)

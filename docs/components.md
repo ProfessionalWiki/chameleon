@@ -605,6 +605,13 @@ History, Move, ...)
   
   If set the link to the current page will not be shown among the page tools.
 
+* `hideDiscussionLink`
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+  
+  If set the link to the discussion page will not be shown among the page tools.
+
 * `buttons`
   * Allowed values: String
   * Default: `edit`
@@ -733,6 +740,13 @@ The search bar.
   * Optional.
   
   The buttons that should be shown with the search bar.
+
+* `placeholder`: 
+  * Allowed values: String
+  * Default: using the MediaWiki search text
+  * Optional
+  
+  The placeholder to show in the search field when the user has not enetered anything yet
 
 #### Allowed Parent Elements:
 * [Structure](#structure)

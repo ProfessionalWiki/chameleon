@@ -4,8 +4,9 @@
 
 Under development
 
-* Fixed text color issue in the navbar
-* Added edit icon to the Visual Editor edit action in the navbar
+* Fixed text color issue in the navbar (thanks @bertvandepoel)
+* Fixed spacing issue in the Menu component (thanks @JeroenDeDauw)
+* Added edit icon to the Visual Editor edit action in the navbar (thanks @JeroenDeDauw)
 
 ### Chameleon 2.2.0
 

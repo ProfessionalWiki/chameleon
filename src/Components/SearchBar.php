@@ -70,7 +70,7 @@ class SearchBar extends Component {
 			$this->indent( 1 ) . "<form $attribsSearchForm >" .
 			$this->indent( 1 ) . "<input type=\"hidden\" name=\"title\" value=\" {$this->getSkinTemplate()->data[ 'searchtitle' ]}\" />" .
 			$this->indent() . '<div class="input-group">' .
-			$this->indent( 1 ) . $this->getSkinTemplate()->makeSearchInput( [ 'id' => IdRegistry::getRegistry()->getId( 'searchInput' ), 'type' => 'text', 'class' => 'form-control' ] ) .
+			$this->indent( 1 ) . $this->getSearchInputHtml() .
 			$this->indent() . '<div class="input-group-append">';
 
 		$this->indent( 1 );
@@ -84,6 +84,14 @@ class SearchBar extends Component {
 			$this->indent( -1 ) . '</div>';
 
 		return $ret;
+	}
+
+	private function getSearchInputHtml(): string {
+		return $this->getSkinTemplate()->makeSearchInput( [
+			'id' => IdRegistry::getRegistry()->getId( 'searchInput' ),
+			'type' => 'text',
+			'class' => 'form-control'
+		] );
 	}
 
 	/**

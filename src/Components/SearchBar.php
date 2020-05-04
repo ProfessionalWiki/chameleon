@@ -87,11 +87,17 @@ class SearchBar extends Component {
 	}
 
 	private function getSearchInputHtml(): string {
-		return $this->getSkinTemplate()->makeSearchInput( [
+		$attributes = [
 			'id' => IdRegistry::getRegistry()->getId( 'searchInput' ),
 			'type' => 'text',
 			'class' => 'form-control'
-		] );
+		];
+
+		if ( $this->getAttribute( 'placeholder' ) !== '' ) {
+			$attributes['placeholder'] = $this->getAttribute( 'placeholder' );
+		}
+
+		return $this->getSkinTemplate()->makeSearchInput( $attributes );
 	}
 
 	/**

@@ -90,7 +90,6 @@ class NavMenu extends Component {
 			$ret .= $this->buildDropdownMenuStub( $menuDescription );
 
 		} else {
-
 			$ret .= $this->buildDropdownOpeningTags( $menuDescription ) .
 			        $this->buildMenuItemsForDropdownMenu( $menuDescription, 1 ) .
 			        $this->buildDropdownClosingTags();

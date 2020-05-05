@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 2.4.0
+
+Under development
+
+* Added `placeholder` option to the `SearchBar` component (thanks @JeroenDeDauw)
+
 ### Chameleon 2.3.0
 
 Released on May 5, 2020.
@@ -8,7 +14,6 @@ Released on May 5, 2020.
 * Fixed spacing issue in the `Menu` component (thanks @JeroenDeDauw)
 * Added edit icon to the Visual Editor edit action in the navbar (thanks @JeroenDeDauw)
 * Added `hideDiscussionLink` option to the `PageTools` component (thanks @JeroenDeDauw)
-* Added `placeholder` option to the `SearchBar` component (thanks @JeroenDeDauw)
 
 ### Chameleon 2.2.0
 

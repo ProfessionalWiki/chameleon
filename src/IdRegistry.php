@@ -24,7 +24,7 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon;
+namespace MediaWiki\Skins\Chameleon;
 
 /**
  * Class IdRegistry provides a registry and access methods to ensure each id is only used once per HTML page.

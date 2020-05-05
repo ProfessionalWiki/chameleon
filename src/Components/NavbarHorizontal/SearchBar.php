@@ -24,10 +24,10 @@
  * @ingroup   Skins
  */
 
-namespace Skins\Chameleon\Components\NavbarHorizontal;
+namespace MediaWiki\Skins\Chameleon\Components\NavbarHorizontal;
 
-use Skins\Chameleon\Components\Component;
-use Skins\Chameleon\Components\SearchBar as GenericSearchBar;
+use MediaWiki\Skins\Chameleon\Components\Component;
+use MediaWiki\Skins\Chameleon\Components\SearchBar as GenericSearchBar;
 
 /**
  * The NavbarHorizontal\PersonalTools class.

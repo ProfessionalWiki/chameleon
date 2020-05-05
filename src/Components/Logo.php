@@ -24,10 +24,10 @@
  * @ingroup   Skins
  */
 
-namespace Skins\Chameleon\Components;
+namespace MediaWiki\Skins\Chameleon\Components;
 
 use Linker;
-use Skins\Chameleon\IdRegistry;
+use MediaWiki\Skins\Chameleon\IdRegistry;
 
 /**
  * The Logo class.

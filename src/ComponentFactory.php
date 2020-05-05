@@ -24,14 +24,14 @@
  * @ingroup   Skins
  */
 
-namespace Skins\Chameleon;
+namespace MediaWiki\Skins\Chameleon;
 
 use DOMDocument;
 use DOMElement;
 use MWException;
 use RuntimeException;
-use Skins\Chameleon\Components\Component;
-use Skins\Chameleon\Components\Container;
+use MediaWiki\Skins\Chameleon\Components\Component;
+use MediaWiki\Skins\Chameleon\Components\Container;
 
 /**
  * Class ComponentFactory
@@ -48,7 +48,7 @@ class ComponentFactory {
 	private $layoutFile;
 	private $skinTemplate;
 
-	const NAMESPACE_HIERARCHY = 'Skins\\Chameleon\\Components';
+	const NAMESPACE_HIERARCHY = 'MediaWiki\\Skins\\Chameleon\\Components';
 
 	/**
 	 * @param string $layoutFileName

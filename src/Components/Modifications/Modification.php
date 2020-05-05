@@ -24,10 +24,10 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon\Components\Modifications;
+namespace MediaWiki\Skins\Chameleon\Components\Modifications;
 
-use Skins\Chameleon\ChameleonTemplate;
-use Skins\Chameleon\Components\Component;
+use MediaWiki\Skins\Chameleon\ChameleonTemplate;
+use MediaWiki\Skins\Chameleon\Components\Component;
 
 /**
  * Modification class

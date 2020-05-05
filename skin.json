@@ -12,6 +12,10 @@
 	"requires": {
 		"MediaWiki": ">= 1.31.0"
 	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Skins\\Chameleon\\": "src/",
+		"MediaWiki\\Skins\\Chameleon\\Tests\\": "tests/phpunit/"
+	},
 	"MessagesDirs": {
 		"Chameleon": "resources/i18n"
 	},
@@ -24,7 +28,7 @@
 			"value": true
 		}
 	},
-	"callback": "Skins\\Chameleon\\Chameleon::init",
+	"callback": "\\MediaWiki\\Skins\\Chameleon\\Chameleon::init",
 	"load_composer_autoloader": true,
 	"manifest_version": 2
 }

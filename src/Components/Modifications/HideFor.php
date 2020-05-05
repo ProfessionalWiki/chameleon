@@ -24,9 +24,9 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon\Components\Modifications;
-use Skins\Chameleon\Components\Silent;
-use Skins\Chameleon\PermissionsHelper;
+namespace MediaWiki\Skins\Chameleon\Components\Modifications;
+use MediaWiki\Skins\Chameleon\Components\Silent;
+use MediaWiki\Skins\Chameleon\PermissionsHelper;
 
 /**
  * HideFor class

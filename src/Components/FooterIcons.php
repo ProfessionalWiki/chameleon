@@ -24,8 +24,8 @@
  * @ingroup   Chameleon
  */
 
-namespace Skins\Chameleon\Components;
-use Skins\Chameleon\IdRegistry;
+namespace MediaWiki\Skins\Chameleon\Components;
+use MediaWiki\Skins\Chameleon\IdRegistry;
 
 /**
  * The FooterIcons class.

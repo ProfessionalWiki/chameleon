@@ -24,7 +24,7 @@
  * @ingroup   Skins
  */
 
-namespace Skins\Chameleon\Menu;
+namespace MediaWiki\Skins\Chameleon\Menu;
 
 use Sanitizer;
 

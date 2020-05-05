@@ -24,7 +24,7 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon\Components;
+namespace MediaWiki\Skins\Chameleon\Components;
 
 /**
  * The Html class.

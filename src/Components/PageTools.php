@@ -24,13 +24,13 @@
  * @ingroup   Skins
  */
 
-namespace Skins\Chameleon\Components;
+namespace MediaWiki\Skins\Chameleon\Components;
 
 use Action;
 use MediaWiki\MediaWikiServices;
 use MWNamespace;
-use Skins\Chameleon\ChameleonTemplate;
-use Skins\Chameleon\IdRegistry;
+use MediaWiki\Skins\Chameleon\ChameleonTemplate;
+use MediaWiki\Skins\Chameleon\IdRegistry;
 
 /**
  * The PageTools class.
@@ -94,11 +94,18 @@ class PageTools extends Component {
 	 * @throws \MWException
 	 */
 	protected function getToolGroups() {
+
+		$contentNavigation = $this->getPageToolsStructure();
+
+		if ( $this->hideSelectedNamespace() ) {
+			unset( $contentNavigation[ 'namespaces' ][ $this->getNamespaceKey() ] );
+		}
+
 		$toolGroups = [];
 
 		$this->indent( 1 );
 
-		foreach ( $this->getContentNavigation() as $category => $tabsDescription ) {
+		foreach ( $contentNavigation as $category => $tabsDescription ) {
 
 			$toolGroup = $this->getToolGroup( $category, $tabsDescription );
 
@@ -110,29 +117,6 @@ class PageTools extends Component {
 		$this->indent( -1 );
 
 		return $toolGroups;
-	}
-
-	private function getContentNavigation(): array {
-		$contentNavigation = $this->getPageToolsStructure();
-
-		$this->removeSelectedNamespaceIfNeedBe( $contentNavigation );
-		$this->removeDiscussionLinkIfNeedBe( $contentNavigation );
-
-		return $contentNavigation;
-	}
-
-	private function removeSelectedNamespaceIfNeedBe( array &$contentNavigation ) {
-		if ( $this->hideSelectedNamespace() ) {
-			unset( $contentNavigation[ 'namespaces' ][ $this->getNamespaceKey() ] );
-		}
-	}
-
-	private function removeDiscussionLinkIfNeedBe( array &$contentNavigation ) {
-		if ( $this->hideDiscussionLink() ) {
-			$talkNamespaceKey = $this->getNamespaceKey() === 'main' ? 'talk' : $this->getNamespaceKey() . '_talk';
-
-			unset( $contentNavigation[ 'namespaces' ][ $talkNamespaceKey ] );
-		}
 	}
 
 	/**
@@ -151,18 +135,14 @@ class PageTools extends Component {
 		$this->getSkinTemplate()->set( 'content_navigation', $pageToolsStructure );
 	}
 
-	private function hideSelectedNamespace(): bool {
-		return $this->attributeIsYes( 'hideSelectedNameSpace' )
-			&& Action::getActionName( $this->getSkin() ) === 'view';
-	}
-
-	private function hideDiscussionLink(): bool {
-		return $this->attributeIsYes( 'hideDiscussionLink' );
-	}
-
-	private function attributeIsYes( string $attributeName ): bool {
-		return $this->getDomElement() !== null &&
-			filter_var( $this->getDomElement()->getAttribute( $attributeName ), FILTER_VALIDATE_BOOLEAN );
+	/**
+	 * @return bool
+	 */
+	protected function hideSelectedNamespace() {
+		return
+			$this->getDomElement() !== null &&
+			filter_var( $this->getDomElement()->getAttribute( 'hideSelectedNameSpace' ), FILTER_VALIDATE_BOOLEAN ) &&
+			Action::getActionName( $this->getSkin() ) === 'view';
 	}
 
 	/**

@@ -24,9 +24,9 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon\Components;
+namespace MediaWiki\Skins\Chameleon\Components;
 
-use Skins\Chameleon\ChameleonTemplate;
+use MediaWiki\Skins\Chameleon\ChameleonTemplate;
 
 /**
  * The Cell class.

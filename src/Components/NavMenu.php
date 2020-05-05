@@ -24,10 +24,10 @@
  * @ingroup   Skins
  */
 
-namespace Skins\Chameleon\Components;
+namespace MediaWiki\Skins\Chameleon\Components;
 
 use Linker;
-use Skins\Chameleon\IdRegistry;
+use MediaWiki\Skins\Chameleon\IdRegistry;
 
 /**
  * The NavMenu class.
@@ -90,6 +90,7 @@ class NavMenu extends Component {
 			$ret .= $this->buildDropdownMenuStub( $menuDescription );
 
 		} else {
+
 			$ret .= $this->buildDropdownOpeningTags( $menuDescription ) .
 			        $this->buildMenuItemsForDropdownMenu( $menuDescription, 1 ) .
 			        $this->buildDropdownClosingTags();

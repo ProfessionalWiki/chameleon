@@ -24,10 +24,10 @@
  * @ingroup   Skins
  */
 
-namespace Skins\Chameleon\Components\NavbarHorizontal;
+namespace MediaWiki\Skins\Chameleon\Components\NavbarHorizontal;
 
-use Skins\Chameleon\Components\Component;
-use Skins\Chameleon\Components\Menu as GenMenu;
+use MediaWiki\Skins\Chameleon\Components\Component;
+use MediaWiki\Skins\Chameleon\Components\Menu as GenMenu;
 
 /**
  * The NavbarHorizontal\Menu class.

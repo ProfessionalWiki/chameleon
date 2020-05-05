@@ -24,15 +24,14 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon;
+namespace MediaWiki\Skins\Chameleon;
 
-use Bootstrap\BootstrapManager;
-use ExtensionRegistryHelper\ExtensionRegistryHelper;
+use MediaWiki\Extensions\Bootstrap\BootstrapManager;
 use OutputPage;
 use QuickTemplate;
 use ResourceLoader;
 use Sanitizer;
-use Skins\Chameleon\Hooks\SetupAfterCache;
+use MediaWiki\Skins\Chameleon\Hooks\SetupAfterCache;
 use SkinTemplate;
 
 /**
@@ -46,7 +45,7 @@ class Chameleon extends SkinTemplate {
 
 	public $skinname = 'chameleon';
 	public $stylename = 'chameleon';
-	public $template = '\Skins\Chameleon\ChameleonTemplate';
+	public $template = '\MediaWiki\Skins\Chameleon\ChameleonTemplate';
 
 	private $componentFactory;
 
@@ -57,8 +56,6 @@ class Chameleon extends SkinTemplate {
 	 * @throws \Exception
 	 */
 	public static function init() {
-
-		ExtensionRegistryHelper::singleton()->loadExtensionRecursive( 'Bootstrap' );
 
 		/**
 		 * Using callbacks for hook registration

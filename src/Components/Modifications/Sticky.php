@@ -24,7 +24,7 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon\Components\Modifications;
+namespace MediaWiki\Skins\Chameleon\Components\Modifications;
 
 /**
  * Class Sticky

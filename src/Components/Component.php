@@ -24,9 +24,9 @@
  * @ingroup   Skins
  */
 
-namespace Skins\Chameleon\Components;
+namespace MediaWiki\Skins\Chameleon\Components;
 
-use Skins\Chameleon\ChameleonTemplate;
+use MediaWiki\Skins\Chameleon\ChameleonTemplate;
 
 /**
  * Component class
@@ -123,7 +123,7 @@ abstract class Component {
 
 	/**
 	 * @since 1.1
-	 * @return \Skins\Chameleon\Chameleon
+	 * @return \MediaWiki\Skins\Chameleon\Chameleon
 	 */
 	public function getSkin() {
 

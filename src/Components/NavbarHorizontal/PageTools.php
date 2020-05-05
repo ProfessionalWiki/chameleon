@@ -24,10 +24,10 @@
  * @ingroup   Skins
  */
 
-namespace Skins\Chameleon\Components\NavbarHorizontal;
+namespace MediaWiki\Skins\Chameleon\Components\NavbarHorizontal;
 
-use Skins\Chameleon\Components\Component;
-use Skins\Chameleon\Components\PageTools as GenericPageTools;
+use MediaWiki\Skins\Chameleon\Components\Component;
+use MediaWiki\Skins\Chameleon\Components\PageTools as GenericPageTools;
 
 /**
  * The NavbarHorizontal\PageTools class.

@@ -24,10 +24,10 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon\Components;
+namespace MediaWiki\Skins\Chameleon\Components;
 
 use Sanitizer;
-use Skins\Chameleon\Menu\MenuFactory;
+use MediaWiki\Skins\Chameleon\Menu\MenuFactory;
 
 /**
  * Class Menu
@@ -80,7 +80,7 @@ class Menu extends Component {
 	}
 
 	/**
-	 * @return \Skins\Chameleon\Menu\Menu
+	 * @return \MediaWiki\Skins\Chameleon\Menu\Menu
 	 * @throws \MWException
 	 */
 	public function getMenu() {

@@ -24,13 +24,13 @@
  * @ingroup   Skins
  */
 
-namespace Skins\Chameleon\Components;
+namespace MediaWiki\Skins\Chameleon\Components;
 
 use Action;
 use MediaWiki\MediaWikiServices;
 use MWNamespace;
-use Skins\Chameleon\ChameleonTemplate;
-use Skins\Chameleon\IdRegistry;
+use MediaWiki\Skins\Chameleon\ChameleonTemplate;
+use MediaWiki\Skins\Chameleon\IdRegistry;
 
 /**
  * The PageTools class.

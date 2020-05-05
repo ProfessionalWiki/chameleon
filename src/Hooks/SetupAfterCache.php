@@ -24,12 +24,12 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon\Hooks;
+namespace MediaWiki\Skins\Chameleon\Hooks;
 
-use Bootstrap\BootstrapManager;
+use MediaWiki\Extensions\Bootstrap\BootstrapManager;
 use MediaWiki\MediaWikiServices;
 use RuntimeException;
-use Skins\Chameleon\Chameleon;
+use MediaWiki\Skins\Chameleon\Chameleon;
 
 /**
  * @see https://www.mediawiki.org/wiki/Manual:Hooks/SetupAfterCache

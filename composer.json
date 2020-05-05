@@ -39,12 +39,6 @@
 		"mediawiki/mw-extension-registry-helper": "^1.0",
 		"mediawiki/bootstrap": "^4.0"
 	},
-	"autoload": {
-		"psr-4": {
-			"Skins\\Chameleon\\Tests\\": "tests/phpunit",
-			"Skins\\Chameleon\\": "src"
-		}
-	},
 	"extra": {
 		"branch-alias": {
 			"dev-master": "2.x-dev"

@@ -24,7 +24,7 @@
  * @ingroup   Skins
  */
 
-namespace Skins\Chameleon;
+namespace MediaWiki\Skins\Chameleon;
 
 use DOMElement;
 

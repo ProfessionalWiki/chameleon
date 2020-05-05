@@ -24,7 +24,7 @@
  * @ingroup Skins
  */
 
-namespace Skins\Chameleon;
+namespace MediaWiki\Skins\Chameleon;
 
 use BaseTemplate;
 
@@ -82,7 +82,7 @@ class ChameleonTemplate extends BaseTemplate {
 	 * @deprecated since 1.6. Use getSkin()->getComponentFactory()->getComponent()
 	 *
 	 * @throws \MWException
-	 * @return \Skins\Chameleon\Components\Container
+	 * @return \MediaWiki\Skins\Chameleon\Components\Container
 	 */
 	public function getComponent( \DOMElement $description, $indent = 0, $htmlClassAttribute = '' ) {
 		return $this->getSkin()->getComponentFactory()->getComponent( $description, $indent, $htmlClassAttribute );

@@ -2,7 +2,7 @@
 
 ### Chameleon 2.3.0
 
-Under development
+Released on May 5, 2020.
 
 * Fixed text color issue in the navbar (thanks @bertvandepoel)
 * Fixed spacing issue in the `Menu` component (thanks @JeroenDeDauw)

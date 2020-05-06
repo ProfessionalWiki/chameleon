@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -24,6 +24,7 @@
 
 namespace Skins\Chameleon\Tests\Util;
 
+// @codingStandardsIgnoreStart
 /**
  * @group skins-chameleon
  * @group mediawiki-databaseless
@@ -33,12 +34,13 @@ namespace Skins\Chameleon\Tests\Util;
  * @ingroup Skins
  * @ingroup Test
  */
+// @codingStandardsIgnoreEnd
 class ColoringTextUIResultPrinter extends \PHPUnit_TextUI_ResultPrinter {
 
 	/**
 	 * @var array
 	 */
-	protected static $ansiCodes = array(
+	protected static $ansiCodes = [
 		'bold'       => 1,
 		'fg-black'   => 30,
 		'fg-red'     => 31,
@@ -49,57 +51,65 @@ class ColoringTextUIResultPrinter extends \PHPUnit_TextUI_ResultPrinter {
 		'bg-red'     => 41,
 		'bg-green'   => 42,
 		'bg-yellow'  => 43
-	);
+	];
 
-	public function endTest(\PHPUnit_Framework_Test $test, $time)
-	{
-		if (!$this->lastTestFailed) {
+	/**
+	 * @param \PHPUnit_Framework_Test $test
+	 * @param mixed $time
+	 */
+	public function endTest( \PHPUnit_Framework_Test $test, $time ) {
+		if ( !$this->lastTestFailed ) {
 
 			$color = '';
-			if ( method_exists($test, 'getSuccessColor' )) {
+			if ( method_exists( $test, 'getSuccessColor' ) ) {
 				$color = $test->getSuccessColor();
 			}
-			$this->writeProgressWithColor($color, '.');
+			$this->writeProgressWithColor( $color, '.' );
 
 		}
 
-		if ($test instanceof \PHPUnit\Framework\TestCase) {
+		if ( $test instanceof \PHPUnit\Framework\TestCase ) {
 			$this->numAssertions += $test->getNumAssertions();
-		} elseif ($test instanceof \PHPUnit_Extensions_PhptTestCase) {
+		} elseif ( $test instanceof \PHPUnit_Extensions_PhptTestCase ) {
 			$this->numAssertions++;
 		}
 
 		$this->lastTestFailed = false;
 
-		if ($test instanceof \PHPUnit\Framework\TestCase) {
-			if (!$test->hasPerformedExpectationsOnOutput()) {
-				$this->write($test->getActualOutput());
+		if ( $test instanceof \PHPUnit\Framework\TestCase ) {
+			if ( !$test->hasPerformedExpectationsOnOutput() ) {
+				$this->write( $test->getActualOutput() );
 			}
 		}
 	}
 
-	protected function formatWithColor($color, $buffer)
-	{
-		if (!$this->colors) {
+	/**
+	 * @param string $color
+	 * @param string $buffer
+	 *
+	 * @return string
+	 */
+	protected function formatWithColor( $color, $buffer ) {
+		if ( !$this->colors ) {
 			return $buffer;
 		}
 
-		$codes = array_filter( array_map('trim', explode(',', $color)) );
-		$lines = explode("\n", $buffer);
-		$padding = max(array_map('strlen', $lines));
+		$codes = array_filter( array_map( 'trim', explode( ',', $color ) ) );
+		$lines = explode( "\n", $buffer );
+		$padding = max( array_map( 'strlen', $lines ) );
 
-		$styles = array();
-		foreach ($codes as $code) {
+		$styles = [];
+		foreach ( $codes as $code ) {
 			$styles[] = self::$ansiCodes[$code];
 		}
-		$style = sprintf("\x1b[%sm", implode(';', $styles));
+		$style = sprintf( "\x1b[%sm", implode( ';', $styles ) );
 
-		$styledLines = array();
-		foreach ($lines as $line) {
-			$styledLines[] = $style . str_pad($line, $padding) . "\x1b[0m";
+		$styledLines = [];
+		foreach ( $lines as $line ) {
+			$styledLines[] = $style . str_pad( $line, $padding ) . "\x1b[0m";
 		}
 
-		return implode("\n", $styledLines);
+		return implode( "\n", $styledLines );
 	}
 
 }

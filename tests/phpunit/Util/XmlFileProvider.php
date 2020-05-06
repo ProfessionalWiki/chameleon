@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke, mwjames
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -26,6 +26,7 @@ namespace Skins\Chameleon\Tests\Util;
 
 use RuntimeException;
 
+// @codingStandardsIgnoreStart
 /**
  * @group skins-chameleon
  * @group mediawiki-databaseless
@@ -35,6 +36,7 @@ use RuntimeException;
  * @ingroup Skins
  * @ingroup Test
  */
+// @codingStandardsIgnoreEnd
 class XmlFileProvider {
 
 	protected $path = null;
@@ -57,9 +59,13 @@ class XmlFileProvider {
 		return $this->loadXmlFiles( $this->readDirectory( $this->path ) );
 	}
 
+	/**
+	 * @param string $path
+	 *
+	 * @return string
+	 */
 	protected function readDirectory( $path ) {
-
-		$path = str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, $path );
+		$path = str_replace( [ '\\', '/' ], DIRECTORY_SEPARATOR, $path );
 
 		if ( is_readable( $path ) ) {
 			return $path;
@@ -68,9 +74,13 @@ class XmlFileProvider {
 		throw new RuntimeException( "Expected an accessible {$path} path" );
 	}
 
+	/**
+	 * @param string $path
+	 *
+	 * @return array
+	 */
 	protected function loadXmlFiles( $path ) {
-
-		$files = array();
+		$files = [];
 		$directoryIterator = new \RecursiveDirectoryIterator( $path );
 
 		foreach ( new \RecursiveIteratorIterator( $directoryIterator ) as $fileInfo ) {

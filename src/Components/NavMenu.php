@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -45,7 +45,6 @@ class NavMenu extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
 		$ret = '';
 
 		$sidebar = $this->getSkinTemplate()->getSidebar(
@@ -60,7 +59,8 @@ class NavMenu extends Component {
 
 		// create a dropdown for each sidebar box
 		foreach ( $sidebar as $menuName => $menuDescription ) {
-			$ret .= $this->getDropdownForNavMenu( $menuName, $menuDescription, array_search( $menuName, $flatten ) !== false );
+			$ret .= $this->getDropdownForNavMenu( $menuName, $menuDescription,
+				array_search( $menuName, $flatten ) !== false );
 		}
 
 		return $ret;
@@ -77,7 +77,6 @@ class NavMenu extends Component {
 	 * @throws \MWException
 	 */
 	protected function getDropdownForNavMenu( $menuName, $menuDescription, $flatten = false ) {
-
 		// open list item containing the dropdown
 		$ret = $this->indent() . '<!-- ' . $menuName . ' -->';
 
@@ -91,9 +90,8 @@ class NavMenu extends Component {
 
 		} else {
 			$ret .= $this->buildDropdownOpeningTags( $menuDescription ) .
-			        $this->buildMenuItemsForDropdownMenu( $menuDescription, 1 ) .
-			        $this->buildDropdownClosingTags();
-
+					$this->buildMenuItemsForDropdownMenu( $menuDescription, 1 ) .
+					$this->buildDropdownClosingTags();
 
 		}
 
@@ -108,7 +106,6 @@ class NavMenu extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildMenuItemsForDropdownMenu( $menuDescription, $indent = 0 ) {
-
 		// build the list of submenu items
 		if ( $this->hasSubmenuItems( $menuDescription ) ) {
 
@@ -116,7 +113,8 @@ class NavMenu extends Component {
 			$this->indent( $indent );
 
 			foreach ( $menuDescription['content'] as $key => $item ) {
-				$menuitems .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item, [ 'tag' => 'div', 'class'=>'nav-item', 'link-class' => 'nav-link' ] );
+				$menuitems .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
+					[ 'tag' => 'div', 'class' => 'nav-item', 'link-class' => 'nav-link' ] );
 			}
 
 			$this->indent( - $indent );
@@ -134,7 +132,8 @@ class NavMenu extends Component {
 	 * @return bool
 	 */
 	protected function hasSubmenuItems( $menuDescription ) {
-		return is_array( $menuDescription['content'] ) && count( $menuDescription['content'] ) > 0;
+		return is_array( $menuDescription['content'] ) &&
+			count( $menuDescription['content'] ) > 0;
 	}
 
 	/**
@@ -144,8 +143,7 @@ class NavMenu extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildDropdownMenuStub( $menuDescription ) {
-		return
-			$this->indent() . \Html::rawElement( 'div',
+		return $this->indent() . \Html::rawElement( 'div',
 				[
 					'class' => 'nav-item',
 					'title' => Linker::titleAttrib( $menuDescription[ 'id' ] )
@@ -169,8 +167,9 @@ class NavMenu extends Component {
 				] );
 
 		// add the dropdown toggle
-		$ret .= $this->indent( 1 ) . '<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-boundary="viewport">' .
-		        htmlspecialchars( $menuDescription['header'] ) . '</a>';
+		$ret .= $this->indent( 1 ) .
+			'<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-boundary="viewport">' .
+			htmlspecialchars( $menuDescription['header'] ) . '</a>';
 
 		// open list of dropdown menu items
 		$ret .=

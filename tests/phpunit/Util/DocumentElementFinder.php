@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke, mwjames
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -29,6 +29,7 @@ use DOMElement;
 
 use RuntimeException;
 
+// @codingStandardsIgnoreStart
 /**
  * @group skins-chameleon
  * @group mediawiki-databaseless
@@ -39,6 +40,7 @@ use RuntimeException;
  * @ingroup Skins
  * @ingroup Test
  */
+// @codingStandardsIgnoreEnd
 class DocumentElementFinder {
 
 	protected $file = null;
@@ -61,7 +63,6 @@ class DocumentElementFinder {
 	 * @return DOMElement|null
 	 */
 	public function getComponentByTypeAttribute( $type ) {
-
 		$elements = $this->getComponentsByTypeAttribute( $type );
 
 		if ( count( $elements ) > 0 ) {
@@ -79,17 +80,17 @@ class DocumentElementFinder {
 	 * @return DOMElement[]
 	 */
 	public function getComponentsByTypeAttribute( $type ) {
-
-		$elements = array();
+		$elements = [];
 
 		$elementList = $this->getDocument()->getElementsByTagName( strtolower( $type ) );
-		foreach( $elementList as $element ){
+		foreach ( $elementList as $element ) {
 			$elements[] = $element;
 		}
 
 		$elementList = $this->getDocument()->getElementsByTagName( '*' );
 		foreach ( $elementList as $element ) {
-			if ( $element instanceOf DOMElement && $element->hasAttribute( 'type' ) && $element->getAttribute( 'type' ) === $type ) {
+			if ( $element instanceof DOMElement && $element->hasAttribute( 'type' ) &&
+				$element->getAttribute( 'type' ) === $type ) {
 				$elements[] = $element;
 			}
 		}
@@ -97,13 +98,15 @@ class DocumentElementFinder {
 		return $elements;
 	}
 
+	/**
+	 * @return DOMDocument
+	 */
 	protected function getDocument() {
-
 		if ( $this->document !== null ) {
 			return $this->document;
 		}
 
-		$file = str_replace( array( '\\', '/' ), DIRECTORY_SEPARATOR, $this->file );
+		$file = str_replace( [ '\\', '/' ], DIRECTORY_SEPARATOR, $this->file );
 
 		if ( !is_readable( $file ) ) {
 			throw new RuntimeException( "Expected an accessible {$file} path" );

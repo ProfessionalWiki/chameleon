@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -59,7 +59,9 @@ class ShowOnlyFor extends Modification {
 	 */
 	private function isShown() {
 		$p = $this->getPermissionsHelper();
-		return $p->userHasGroup( 'group' ) || $p->userHasPermission( 'permission' ) || $p->pageIsInNamespace( 'namespace' );
+		return $p->userHasGroup( 'group' ) ||
+			$p->userHasPermission( 'permission' ) ||
+			$p->pageIsInNamespace( 'namespace' );
 	}
 
 	/**
@@ -67,7 +69,8 @@ class ShowOnlyFor extends Modification {
 	 */
 	private function getPermissionsHelper() {
 		if ( $this->permissionsHelper === null ) {
-			$this->permissionsHelper = new PermissionsHelper( $this->getSkinTemplate()->getSkin(), $this->getDomElementOfModification(), false );
+			$this->permissionsHelper = new PermissionsHelper( $this->getSkinTemplate()->getSkin(),
+				$this->getDomElementOfModification(), false );
 		}
 
 		return $this->permissionsHelper;

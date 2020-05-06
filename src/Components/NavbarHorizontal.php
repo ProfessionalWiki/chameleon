@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -55,7 +55,6 @@ class NavbarHorizontal extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
 		if ( $this->mHtml === null ) {
 			$this->buildHtml();
 		}
@@ -67,7 +66,6 @@ class NavbarHorizontal extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildHtml() {
-
 		if ( $this->getDomElement() === null ) {
 			$this->mHtml = '';
 			return;
@@ -97,7 +95,8 @@ class NavbarHorizontal extends Component {
 			$this->indent() . \Html::openElement( 'nav', [
 					'class' => $class,
 					'role'  => 'navigation',
-					'id'    => $this->getHtmlId() // FIXME: ID to be repeated in classes
+					// FIXME: ID to be repeated in classes
+					'id'    => $this->getHtmlId()
 				]
 			);
 
@@ -121,13 +120,13 @@ class NavbarHorizontal extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildNavBarComponents() {
-
 		$elements = $this->buildNavBarElementsFromDomTree();
 
 		$head = $this->buildHead( $elements[ 'head' ] );
 
 		if ( $this->isCollapsible() ) {
-			$tail = $this->wrapDropdownMenu( $this->buildTail( $elements[ 'left' ], $elements[ 'right' ], 1 ) );
+			$tail = $this->wrapDropdownMenu( $this->buildTail( $elements[ 'left' ],
+				$elements[ 'right' ], 1 ) );
 		} else {
 			$tail = $this->buildTail( $elements[ 'left' ], $elements[ 'right' ] );
 		}
@@ -140,7 +139,6 @@ class NavbarHorizontal extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildNavBarElementsFromDomTree() {
-
 		$elements = [
 			'head'  => [],
 			'left'  => [],
@@ -159,13 +157,13 @@ class NavbarHorizontal extends Component {
 
 	/**
 	 * @param DOMElement $node
-	 * @param $elements
+	 * @param array &$elements
 	 *
 	 * @throws \MWException
 	 */
 	protected function buildAndCollectNavBarElementFromDomElement( $node, &$elements ) {
-
-		if ( $node instanceof DOMElement && $node->tagName === 'component' && $node->hasAttribute( 'type' ) ) {
+		if ( $node instanceof DOMElement && $node->tagName === 'component' &&
+			$node->hasAttribute( 'type' ) ) {
 
 			$position = $node->getAttribute( 'position' );
 
@@ -201,7 +199,8 @@ class NavbarHorizontal extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildNavBarElementFromDomElement( $node ) {
-		return $this->getSkin()->getComponentFactory()->getComponent( $node, $this->getIndent() )->getHtml();
+		return $this->getSkin()->getComponentFactory()->getComponent( $node,
+			$this->getIndent() )->getHtml();
 	}
 
 	/**
@@ -211,7 +210,6 @@ class NavbarHorizontal extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildHead( $headElements ) {
-
 		return implode( '', $headElements );
 	}
 
@@ -224,23 +222,23 @@ class NavbarHorizontal extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildTail( $leftElements = [], $rightElements = [], $indent = 0 ) {
-
 		$this->indent( $indent );
 
 		$tail = '';
 
 		if ( $leftElements ) {
-			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav' ], implode( '', $leftElements ), $this->indent() );
+			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav' ],
+				implode( '', $leftElements ), $this->indent() );
 		}
 
 		if ( $rightElements ) {
-			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav right' ], implode( '', $rightElements ), $this->indent() );
+			$tail .= IdRegistry::getRegistry()->element( 'div', [ 'class' => 'navbar-nav right' ],
+				implode( '', $rightElements ), $this->indent() );
 		}
 
 		$this->indent( -$indent );
 
 		return $tail;
-
 	}
 
 	/**
@@ -248,23 +246,23 @@ class NavbarHorizontal extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildNavBarClosingTags() {
-		return
-			$this->indent( -1 ) . '</nav>';
+		return $this->indent( -1 ) . '</nav>';
 	}
 
 	/**
-	 * @param $tail
+	 * @param string $tail
 	 *
 	 * @return string
 	 * @throws \MWException
 	 */
 	private function wrapDropdownMenu( $tail ) {
-
 		$id = IdRegistry::getRegistry()->getId();
 
-		return
-			$this->indent() . '<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#' . $id . '"></button>' .
-			IdRegistry::getRegistry()->element( 'div', ['class'=>'collapse navbar-collapse', 'id'=> $id ], $tail, $this->indent() );
+		return $this->indent() .
+			'<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#' . $id .
+			'"></button>' .
+			IdRegistry::getRegistry()->element( 'div', [ 'class' => 'collapse navbar-collapse',
+			'id' => $id ], $tail, $this->indent() );
 	}
 
 	/**

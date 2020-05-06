@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2014, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -43,7 +43,6 @@ class Html extends Component {
 	 * @return String the HTML code
 	 */
 	public function getHtml() {
-
 		$ret = '';
 
 		if ( $this->getDomElement() !== null ) {

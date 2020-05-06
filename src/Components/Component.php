@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2018, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -51,10 +51,10 @@ abstract class Component {
 	 *
 	 * @throws \MWException
 	 */
-	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
-
+	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null,
+		$indent = 0 ) {
 		$this->mSkinTemplate = $template;
-		$this->mIndent       = (int) $indent;
+		$this->mIndent       = (int)$indent;
 		$this->mDomElement   = $domElement;
 
 		if ( $domElement !== null ) {
@@ -70,21 +70,19 @@ abstract class Component {
 	 * @throws \MWException
 	 */
 	public function setClasses( $classes ) {
-
 		$this->mClasses = [];
 		$this->addClasses( $classes );
-
 	}
 
 	/**
-	 * Adds the given class to the class string that should be assigned to the top-level html element of this component
+	 * Adds the given class to the class string that should be assigned to the top-level html
+	 * element of this component
 	 *
 	 * @param string | array | null $classes
 	 *
 	 * @throws \MWException
 	 */
 	public function addClasses( $classes ) {
-
 		$classesArray = $this->transformClassesToArray( $classes );
 
 		if ( !empty( $classesArray ) ) {
@@ -99,25 +97,23 @@ abstract class Component {
 	 * @return array
 	 * @throws \MWException
 	 */
-	protected function transformClassesToArray ( $classes ) {
-
+	protected function transformClassesToArray( $classes ) {
 		if ( empty( $classes ) ) {
 			return [];
-		} elseif ( is_array( $classes )) {
+		} elseif ( is_array( $classes ) ) {
 			return $classes;
 		} elseif ( is_string( $classes ) ) {
 			return explode( ' ', $classes );
 		} else {
-			throw new \MWException( __METHOD__ . ': Expected String or Array; ' . gettype( $classes ) . ' given.' );
+			throw new \MWException( __METHOD__ . ': Expected String or Array; ' . gettype( $classes ) .
+				' given.' );
 		}
-
 	}
 
 	/**
 	 * @return ChameleonTemplate
 	 */
 	public function getSkinTemplate() {
-
 		return $this->mSkinTemplate;
 	}
 
@@ -126,7 +122,6 @@ abstract class Component {
 	 * @return \Skins\Chameleon\Chameleon
 	 */
 	public function getSkin() {
-
 		return $this->mSkinTemplate->getSkin();
 	}
 
@@ -136,29 +131,28 @@ abstract class Component {
 	 * @return int
 	 */
 	public function getIndent() {
-
 		return $this->mIndent;
 	}
 
 	/**
-	 * Returns the class string that should be assigned to the top-level html element of this component
+	 * Returns the class string that should be assigned to the top-level html element of this
+	 * component
 	 *
 	 * @return string
 	 */
 	public function getClassString() {
-
 		return implode( ' ', $this->mClasses );
 	}
 
 	/**
-	 * Removes the given class from the class string that should be assigned to the top-level html element of this component
+	 * Removes the given class from the class string that should be assigned to the top-level html
+	 * element of this component
 	 *
 	 * @param string | array | null $classes
 	 *
 	 * @throws \MWException
 	 */
 	public function removeClasses( $classes ) {
-
 		$classesArray = $this->transformClassesToArray( $classes );
 
 		$this->mClasses = array_diff( $this->mClasses, $classesArray );
@@ -196,11 +190,10 @@ abstract class Component {
 	 * @throws \MWException
 	 */
 	protected function indent( $indent = 0 ) {
-
-		$this->mIndent += (int) $indent;
+		$this->mIndent += (int)$indent;
 
 		if ( $this->mIndent < 0 ) {
-			throw new \MWException('Attempted HTML indentation of ' .$this->mIndent );
+			throw new \MWException( 'Attempted HTML indentation of ' . $this->mIndent );
 		}
 
 		return "\n" . str_repeat( "\t", $this->mIndent );
@@ -212,10 +205,9 @@ abstract class Component {
 	 * @return null | string
 	 */
 	protected function getAttribute( $attributeName, $default = '' ) {
-
 		$element = $this->getDomElement();
 
-		if ( is_a($element, 'DOMElement' ) && $element->hasAttribute( $attributeName ) ) {
+		if ( is_a( $element, 'DOMElement' ) && $element->hasAttribute( $attributeName ) ) {
 			return $element->getAttribute( $attributeName );
 		}
 

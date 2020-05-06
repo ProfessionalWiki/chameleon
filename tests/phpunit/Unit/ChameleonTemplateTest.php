@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke, mwjames
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -35,7 +35,7 @@ use Skins\Chameleon\ChameleonTemplate;
  * @group skins-chameleon-unit
  * @group mediawiki-databaseless
  *
- * @license GNU GPL v3+
+ * @license   GPL-3.0-or-later
  * @since 1.0
  *
  * @author mwjames
@@ -61,16 +61,20 @@ class ChameleonTemplateTest extends TestCase {
 		parent::tearDown();
 	}
 
+	/**
+	 * @covers \Skins\Chameleon\ChameloenTemplate
+	 */
 	public function testCanConstruct() {
-
 		$this->assertInstanceOf(
 			'\Skins\Chameleon\ChameleonTemplate',
 			new ChameleonTemplate()
 		);
 	}
 
+	/**
+	 * @covers \Skins\Chameleon\ChameloenTemplate
+	 */
 	public function testInaccessibleLayoutFileThrowsExeception() {
-
 		$this->expectException( 'RuntimeException' );
 
 		$GLOBALS['egChameleonLayoutFile'] = 'setInaccessibleLayoutFile';

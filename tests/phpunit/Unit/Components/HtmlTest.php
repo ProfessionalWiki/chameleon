@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -50,7 +50,6 @@ class HtmlTest extends GenericComponentTestCase {
 	 * @param \DOMElement $domElement
 	 */
 	public function testGetHtml_OnSyntheticLayoutXml( \DOMElement $domElement ) {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
 		$expected = '';
@@ -59,7 +58,7 @@ class HtmlTest extends GenericComponentTestCase {
 			$expected .= $domElement->ownerDocument->saveHTML( $child );
 		}
 
-		$instance = new Html ( $chameleonTemplate, $domElement );
+		$instance = new Html( $chameleonTemplate, $domElement );
 		$actual = $instance->getHtml();
 
 		$this->assertEquals( $expected, $actual );

@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2014, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -37,15 +37,20 @@ use Skins\Chameleon\ChameleonTemplate;
  */
 class Grid extends Container {
 
-	const ATTR_MODE = 'mode';
-	const MODE_FIXEDWIDTH = 'fixedwidth';
-	const MODE_FLUID = 'fluid';
+	private const ATTR_MODE = 'mode';
+	private const MODE_FIXEDWIDTH = 'fixedwidth';
+	private const MODE_FLUID = 'fluid';
 
-	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
-
+	/**
+	 * @param ChameleonTemplate $template
+	 * @param \DOMElement|null $domElement
+	 * @param int $indent
+	 */
+	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null,
+		$indent = 0 ) {
 		parent::__construct( $template, $domElement, $indent );
 
-		if( $this->isFluidMode() ) {
+		if ( $this->isFluidMode() ) {
 			$this->addClasses( 'container-fluid' );
 		} else {
 			$this->addClasses( 'container' );

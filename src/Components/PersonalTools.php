@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2018, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -44,7 +44,6 @@ class PersonalTools extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
 		$ret = $this->indent() . '<!-- personal tools -->' .
 			   $this->indent() . '<div class="p-personal ' . $this->getClassString() . '" id="p-personal" >';
 
@@ -58,8 +57,8 @@ class PersonalTools extends Component {
 		}
 
 		$ret .= $this->indent( -1 ) . '</ul>' .
-		        $this->indent( -1 ) . '</div>' . "\n" .
-		        $this->getNewtalkNotifier();
+				$this->indent( -1 ) . '</div>' . "\n" .
+				$this->getNewtalkNotifier();
 
 		return $ret;
 	}
@@ -69,16 +68,17 @@ class PersonalTools extends Component {
 	 * @throws \MWException
 	 */
 	private function getNewtalkNotifier() {
-
-		if ( $this->getDomElement() !== null && filter_var( $this->getDomElement()->getAttribute( 'hideNewtalkNotifier' ), FILTER_VALIDATE_BOOLEAN ) ) {
+		if ( $this->getDomElement() !== null &&
+			filter_var( $this->getDomElement()->getAttribute( 'hideNewtalkNotifier' ),
+			FILTER_VALIDATE_BOOLEAN ) ) {
 			return '';
 		}
 
 		// include message to a user about new messages on their talkpage
 		$newtalkNotifier = new NewtalkNotifier( $this->getSkinTemplate(), null, $this->getIndent() + 2 );
 
-		return $this->indent() . '<div class="newtalk-notifier pull-right">' . $newtalkNotifier->getHtml() .
-		       $this->indent() . '</div>';
+		return $this->indent() . '<div class="newtalk-notifier pull-right">' .
+			$newtalkNotifier->getHtml() . $this->indent() . '</div>';
 	}
 
 }

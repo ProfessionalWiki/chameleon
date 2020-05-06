@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -50,14 +50,13 @@ class PersonalToolsTest extends GenericComponentTestCase {
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
 	public function testGetHtml_LoggedInUserHasNewMessages( $domElement ) {
-
 		$factory = MockupFactory::makeFactory( $this );
 		$factory->set( 'UserIsLoggedIn', true );
 		$factory->set( 'UserNewMessageLinks', [ 'foo' ] );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 
 		/** @var Component $instance */
-		$instance = new $this->classUnderTest ( $chameleonTemplate, $domElement );
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
 
 		$matcher = [ 'class' => 'pt-mytalk' ];
 		$this->assertTag( $matcher, $instance->getHtml() );
@@ -68,18 +67,16 @@ class PersonalToolsTest extends GenericComponentTestCase {
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
 	public function testGetHtml_LoggedInUserHasNoNewMessages( $domElement ) {
-
 		$factory = MockupFactory::makeFactory( $this );
 		$factory->set( 'UserIsLoggedIn', true );
 		$factory->set( 'UserNewMessageLinks', [] );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 
 		/** @var Component $instance */
-		$instance = new $this->classUnderTest ( $chameleonTemplate, $domElement );
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
 
 		$matcher = [ 'class' => 'pt-mytalk' ];
 		$this->assertNotTag( $matcher, $instance->getHtml() );
 	}
-
 
 }

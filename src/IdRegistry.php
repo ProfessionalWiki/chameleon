@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2018, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -27,7 +27,8 @@
 namespace Skins\Chameleon;
 
 /**
- * Class IdRegistry provides a registry and access methods to ensure each id is only used once per HTML page.
+ * Class IdRegistry provides a registry and access methods to ensure each id is only used once per
+ * HTML page.
  *
  * @author Stephan Gambke
  * @since 1.0
@@ -42,13 +43,11 @@ class IdRegistry {
 	 * @return IdRegistry
 	 */
 	public static function getRegistry() {
-
 		if ( self::$sInstance === null ) {
 			self::$sInstance = new IdRegistry();
 		}
 
 		return self::$sInstance;
-
 	}
 
 	/**
@@ -58,7 +57,6 @@ class IdRegistry {
 	 * @return string
 	 */
 	public function getId( $id = null, $component = null ) {
-
 		if ( empty( $id ) ) {
 
 			// no specific id requested, just return a unique string
@@ -93,7 +91,6 @@ class IdRegistry {
 	 * @return string
 	 */
 	public function openElement( $tag, $attributes = [] ) {
-
 		$attributes = $this->getAttributesWithUniqueId( $attributes );
 
 		return \Html::openElement( $tag, $attributes );
@@ -112,21 +109,20 @@ class IdRegistry {
 	 * @return string
 	 */
 	public function element( $tag, $attributes = [], $contents = '', $indent = '' ) {
-
 		$attributes = $this->getAttributesWithUniqueId( $attributes );
 
 		return $indent . \Html::rawElement( $tag, $attributes, $contents . $indent );
 	}
 
 	/**
-	 * @param $attributes
+	 * @param array $attributes
 	 *
 	 * @return array
 	 */
 	protected function getAttributesWithUniqueId( $attributes ) {
-
 		if ( is_array( $attributes ) && isset( $attributes[ 'id' ] ) ) {
-			$attributes[ 'class' ] = ( isset( $attributes[ 'class' ] ) ? ( $attributes[ 'class' ] . ' ' ) : '' ) . $attributes[ 'id' ];
+			$attributes[ 'class' ] = ( isset( $attributes[ 'class' ] ) ?
+				( $attributes[ 'class' ] . ' ' ) : '' ) . $attributes[ 'id' ];
 			$attributes[ 'id' ] = $this->getId( $attributes[ 'id' ] );
 		}
 		return $attributes;

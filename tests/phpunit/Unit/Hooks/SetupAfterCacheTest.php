@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke, mwjames
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -57,14 +57,13 @@ class SetupAfterCacheTest extends TestCase {
 	 * @covers ::__construct
 	 */
 	public function testCanConstruct() {
-
 		$bootstrapManager = $this->getMockBuilder( BootstrapManager::class )
 			->disableOriginalConstructor()
 			->getMock();
 
 		$configuration = [];
 
-		$request = $this->getMockBuilder('\WebRequest')
+		$request = $this->getMockBuilder( '\WebRequest' )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -80,7 +79,6 @@ class SetupAfterCacheTest extends TestCase {
 	 * @covers ::registerExternalScssModules
 	 */
 	public function testProcessWithValidExternalModuleWithoutScssVariables() {
-
 		$bootstrapManager = $this->getMockBuilder( BootstrapManager::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -117,7 +115,7 @@ class SetupAfterCacheTest extends TestCase {
 			'wgStylePath'                     => 'notTestingwgStylePath',
 		];
 
-		$request = $this->getMockBuilder( WebRequest::class)
+		$request = $this->getMockBuilder( WebRequest::class )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -220,7 +218,8 @@ class SetupAfterCacheTest extends TestCase {
 	// *
 	// * @dataProvider processWithRequestedLayoutFileProvider
 	// */
-	//public function testProcessWithRequestedLayoutFile( $availableLayoutFiles, $defaultLayoutFile, $requestedLayout, $expectedLayoutfile ) {
+	//public function testProcessWithRequestedLayoutFile( $availableLayoutFiles, $defaultLayoutFile,
+	//	$requestedLayout, $expectedLayoutfile ) {
 	//
 	//	$bootstrapManager = $this->getMockBuilder( BootstrapManager::class )
 	//		->disableOriginalConstructor()
@@ -261,7 +260,6 @@ class SetupAfterCacheTest extends TestCase {
 	 * @return array
 	 */
 	public function processWithRequestedLayoutFileProvider() {
-
 		$provider = [];
 
 		// no layout files available => keep default layout file
@@ -312,7 +310,6 @@ class SetupAfterCacheTest extends TestCase {
 	 * Provides test data for the lateSettings test
 	 */
 	public function lateSettingsProvider() {
-
 		$provider = [];
 
 		$provider[ ] = [
@@ -378,7 +375,6 @@ class SetupAfterCacheTest extends TestCase {
 	 * Provides test data for the adjustConfiguration test
 	 */
 	public function adjustConfigurationProvider() {
-
 		$provider = [];
 
 		$provider[ ] = [

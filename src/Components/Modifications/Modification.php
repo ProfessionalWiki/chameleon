@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -46,12 +46,11 @@ abstract class Modification extends Component {
 
 	/**
 	 * @param Component $component
-	 * @param \DOMElement $domElement
+	 * @param \DOMElement|null $domElement
 	 *
 	 * @throws \MWException
 	 */
 	public function __construct( Component $component, \DOMElement $domElement = null ) {
-
 		$this->component = $component;
 		parent::__construct( $component->getSkinTemplate(), $domElement, $component->getIndent() );
 	}
@@ -103,7 +102,8 @@ abstract class Modification extends Component {
 	}
 
 	/**
-	 * Adds the given class to the class string that should be assigned to the top-level html element of this component
+	 * Adds the given class to the class string that should be assigned to the top-level html
+	 * element of this component
 	 *
 	 * @param string | string[] | null $classes
 	 *
@@ -130,7 +130,8 @@ abstract class Modification extends Component {
 	}
 
 	/**
-	 * Returns the class string that should be assigned to the top-level html element of this component
+	 * Returns the class string that should be assigned to the top-level html element of this
+	 * component
 	 *
 	 * @return string
 	 */
@@ -139,8 +140,8 @@ abstract class Modification extends Component {
 	}
 
 	/**
-	 * Removes the given class from the class string that should be assigned to the top-level html element of this
-	 * component
+	 * Removes the given class from the class string that should be assigned to the top-level html
+	 * element of this component
 	 *
 	 * @param string | string[] | null $classes
 	 *

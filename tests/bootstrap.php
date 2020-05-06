@@ -1,9 +1,10 @@
 <?php
+// @codingStandardsIgnoreFile
 /**
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke, mwjames
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -40,7 +41,6 @@ function registerAutoloaderPath( $identifier, $path ) {
  * @return string
  */
 function getDirectory() {
-
 	$directory = $GLOBALS[ 'argv' ][ 0 ];
 
 	if ( $directory[ 0 ] !== DIRECTORY_SEPARATOR ) {
@@ -53,7 +53,6 @@ function getDirectory() {
 }
 
 function runTestAutoLoader( $autoLoader = null ) {
-
 	$directory = getDirectory();
 
 	$mwVendorPath = $directory . '/../../vendor/autoload.php';
@@ -62,7 +61,7 @@ function runTestAutoLoader( $autoLoader = null ) {
 	if ( is_readable( $localVendorPath ) ) {
 		$autoLoader = registerAutoloaderPath( 'local', $localVendorPath );
 	} elseif ( is_readable( $mwVendorPath ) ) {
-		$autoLoader = registerAutoloaderPath( 'MediaWiki', $mwVendorPath  );
+		$autoLoader = registerAutoloaderPath( 'MediaWiki', $mwVendorPath );
 	}
 
 	if ( !$autoLoader instanceof \Composer\Autoload\ClassLoader ) {

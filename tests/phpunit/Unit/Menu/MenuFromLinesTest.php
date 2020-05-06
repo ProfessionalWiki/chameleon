@@ -3,7 +3,7 @@
  * File containing the MenuFromLinesTest class
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -23,6 +23,7 @@
  */
 
 namespace Skins\Chameleon\Tests\Unit\Menu;
+
 use Skins\Chameleon\Menu\MenuFromLines;
 
 /**
@@ -46,8 +47,7 @@ class MenuFromLinesTest extends \PHPUnit\Framework\TestCase {
 	 * @covers ::__construct
 	 */
 	public function testCanConstruct() {
-
-		$lines = array();
+		$lines = [];
 
 		/** @var MenuFromLines $instance */
 		$instance = new MenuFromLines( $lines, true );
@@ -65,15 +65,14 @@ class MenuFromLinesTest extends \PHPUnit\Framework\TestCase {
 	 * break the constructor. No actual functionality beyond that is tested.
 	 */
 	public function testCanConstructWithItemData() {
-
-		$lines = array();
+		$lines = [];
 
 		/** @var MenuFromLines $instance */
-		$instance = new MenuFromLines( $lines, true, array(
+		$instance = new MenuFromLines( $lines, true, [
 			'text'  => 'foo',
 			'href'  => 'bar',
 			'depth' => 42
-		) );
+		] );
 
 		$this->assertInstanceOf(
 			'Skins\Chameleon\Menu\MenuFromLines',
@@ -86,15 +85,14 @@ class MenuFromLinesTest extends \PHPUnit\Framework\TestCase {
 	 * @covers ::parseLines
 	 */
 	public function testBuildEmptyMenu() {
-
-		$lines = array(
+		$lines = [
 			'',
 			'* Foo',
 			'** | FooBar',
 			'*** http://foo.com | FooBarBaz',
 			'*** # | FooBarQuok',
 			'* Test | Bar',
-		);
+		];
 
 		$ap = $GLOBALS[ 'wgArticlePath' ];
 
@@ -122,6 +120,5 @@ class MenuFromLinesTest extends \PHPUnit\Framework\TestCase {
 			$expected,
 			$instance->getHtml()
 		);
-
 	}
 }

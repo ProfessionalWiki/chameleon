@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -27,7 +27,6 @@ namespace Skins\Chameleon\Tests\Unit\Components;
 use DOMDocument;
 use DOMXPath;
 use PHPUnit\Framework\TestCase;
-use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\Tests\Util\DocumentElementFinder;
 use Skins\Chameleon\Tests\Util\MockupFactory;
 use Skins\Chameleon\Tests\Util\XmlFileProvider;
@@ -58,7 +57,6 @@ class GenericComponentTestCase extends TestCase {
 	 * @covers ::__construct
 	 */
 	public function testCanConstruct() {
-
 		/** @var $instance Component */
 		$instance = $this->getTestObject();
 
@@ -67,15 +65,14 @@ class GenericComponentTestCase extends TestCase {
 			$instance
 		);
 
-		$this->assertEquals( 0, $instance->getIndent() );
+		$this->assertSame( 0, $instance->getIndent() );
 		$this->assertNull( $instance->getDomElement() );
 	}
 
 	/**
 	 * @covers ::getHtml
 	 */
-	public function testGetHtml_withEmptyElement() {
-
+	public function testGetHtmlwithEmptyElement() {
 		/** @var $instance Component */
 		$instance = $this->getTestObject();
 		$this->assertValidHTML( $instance->getHtml() );
@@ -87,19 +84,18 @@ class GenericComponentTestCase extends TestCase {
 	 *
 	 * @param \DOMElement $domElement
 	 */
-	public function testGetHtml_OnSyntheticLayoutXml( \DOMElement $domElement ) {
-
+	public function testGetHtmlOnSyntheticLayoutXml( \DOMElement $domElement ) {
 		/** @var $instance Component */
 		$instance = $this->getTestObject( $domElement );
 		$this->assertValidHTML( $instance->getHtml() );
 	}
 
 	/**
+	 * @param mixed $domElement
 	 * @covers ::getHtml
 	 * @dataProvider domElementProviderFromDeployedLayoutFiles
 	 */
-	public function testGetHtml_OnDeployedLayoutXml( $domElement ) {
-
+	public function testGetHtmlOnDeployedLayoutXml( $domElement ) {
 		if ( $domElement === null ) {
 			$this->assertTrue( true );
 			return;
@@ -111,10 +107,15 @@ class GenericComponentTestCase extends TestCase {
 		$this->assertValidHTML( $instance->getHtml() );
 	}
 
+	/**
+	 * @param \DOMElement|null $domElement
+	 *
+	 * @return object
+	 */
 	public function getTestObject( \DOMElement $domElement = null ) {
 		if ( $this->testObject === null ) {
 			$chameleonTemplate = $this->getChameleonSkinTemplateStub();
-			$this->testObject = new $this->classUnderTest ( $chameleonTemplate, $domElement );
+			$this->testObject = new $this->classUnderTest( $chameleonTemplate, $domElement );
 		}
 		return $this->testObject;
 	}
@@ -125,7 +126,6 @@ class GenericComponentTestCase extends TestCase {
 	}
 
 	public function domElementProviderFromDeployedLayoutFiles() {
-
 		$xmlFileProvider = new XmlFileProvider( __DIR__ . '/../../../../layouts' );
 		$files = $xmlFileProvider->getFiles();
 
@@ -141,6 +141,11 @@ class GenericComponentTestCase extends TestCase {
 		return array_chunk( $elements, 1 );
 	}
 
+	/**
+	 * @param string $file
+	 *
+	 * @return mixed
+	 */
 	protected function getDomElementsFromFile( $file ) {
 		$elementFinder = new DocumentElementFinder( $file );
 		$nameParts = array_values( explode( '\\', $this->getNameOfComponentUnderTest() ) );
@@ -148,8 +153,13 @@ class GenericComponentTestCase extends TestCase {
 		return $elementFinder->getComponentsByTypeAttribute( $componentName );
 	}
 
+	/**
+	 * @param string $fragment
+	 * @param bool $isHtml
+	 *
+	 * @return mixed
+	 */
 	protected static function loadXML( $fragment, $isHtml = true ) {
-
 		if ( $isHtml ) {
 			$fragment = self::wrapHtmlFragment( $fragment );
 		}
@@ -170,17 +180,24 @@ class GenericComponentTestCase extends TestCase {
 		} else {
 			return false;
 		}
-
 	}
 
+	/**
+	 * @param string $fragment
+	 *
+	 * @return string
+	 */
 	protected static function wrapHtmlFragment( $fragment ) {
-		return '<!DOCTYPE html><html><head><meta charset="utf-8" /><title>SomeTitle</title></head><body>' . $fragment . '</body></html>';
+		// @codingStandardsIgnoreStart
+		return '<!DOCTYPE html><html><head><meta charset="utf-8" /><title>SomeTitle</title></head><body>' .
+			$fragment . '</body></html>';
+		// @codingStandardsIgnoreEnd
 	}
 
 	/**
 	 * Evaluate an HTML or XML string and assert its structure and/or contents.
 	 *
-	 * @todo: Currently only supports 'tag' and 'class'
+	 * @todo Currently only supports 'tag' and 'class'
 	 *
 	 * The first argument ($matcher) is an associative array that specifies the
 	 * match criteria for the assertion:
@@ -213,14 +230,13 @@ class GenericComponentTestCase extends TestCase {
 	 *                       on the children, and only matching children will be
 	 *                       counted
 	 *
-	 * @param array  $matcher
+	 * @param array $matcher
 	 * @param string $actual
-	 * @param bool   $isHtml
+	 * @param bool $isHtml
 	 *
 	 * @return int
 	 */
 	protected static function countTags( $matcher, $actual, $isHtml ) {
-
 		$doc = self::loadXML( $actual, $isHtml );
 
 		if ( $doc === false ) {
@@ -237,12 +253,14 @@ class GenericComponentTestCase extends TestCase {
 		}
 
 		if ( array_key_exists( 'class', $matcher ) ) {
-			$query .= '[contains(concat(" ", normalize-space(@class), " "), " ' . $matcher[ 'class' ] . ' ")]';
+			$query .= '[contains(concat(" ", normalize-space(@class), " "), " ' . $matcher[ 'class' ] .
+				' ")]';
 			unset( $matcher[ 'class' ] );
 		}
 
 		if ( count( $matcher ) > 0 ) {
-			trigger_error( 'Found unsupported matcher tags: ' . implode( ', ', array_keys( $matcher ) ), E_USER_WARNING );
+			trigger_error( 'Found unsupported matcher tags: ' . implode( ', ', array_keys( $matcher ) ),
+				E_USER_WARNING );
 		}
 
 		$xpath = new DOMXPath( $doc );
@@ -251,19 +269,18 @@ class GenericComponentTestCase extends TestCase {
 		return $entries->length;
 	}
 
-
 	/**
 	 * @param array $matcher
 	 * @param string $actual
 	 * @param string $message
 	 * @param bool $isHtml
 	 */
-	public static function assertTag( $matcher, $actual, $message = 'Failed asserting that the given fragment contained the described node.', $isHtml = true ) {
-
+	public static function assertTag( $matcher, $actual,
+		$message = 'Failed asserting that the given fragment contained the described node.',
+		$isHtml = true ) {
 		$entryCount = self::countTags( $matcher, $actual, $isHtml );
 
 		self::assertTrue( $entryCount !== false && $entryCount > 0, $message );
-
 	}
 
 	/**
@@ -272,12 +289,12 @@ class GenericComponentTestCase extends TestCase {
 	 * @param string $message
 	 * @param bool $isHtml
 	 */
-	public static function assertNotTag( $matcher, $actual, $message = 'Failed asserting that the given fragment did not contain the described node.', $isHtml = true ) {
-
+	public static function assertNotTag( $matcher, $actual,
+		$message = 'Failed asserting that the given fragment did not contain the described node.',
+		$isHtml = true ) {
 		$entryCount = self::countTags( $matcher, $actual, $isHtml );
 
 		self::assertTrue( $entryCount === 0, $message );
-
 	}
 
 	/**
@@ -285,11 +302,10 @@ class GenericComponentTestCase extends TestCase {
 	 *
 	 * @todo Put this whole stuff in a PHPUnit_Framework_Constraint and just call assertThat
 	 *
-	 * @param        $actual
+	 * @param mixed $actual
 	 * @param string $message
 	 */
 	public function assertValidHTML( $actual, $message = 'HTML text is not valid. ' ) {
-
 		if ( !USE_EXTERNAL_HTML_VALIDATOR ) {
 
 			$doc = $this->loadXML( $actual, true );
@@ -317,7 +333,9 @@ class GenericComponentTestCase extends TestCase {
 			],
 		] );
 
+		// @codingStandardsIgnoreStart
 		@time_sleep_until( self::$lastValidatorCallTime + 1 );
+		// @codingStandardsIgnoreEnd
 		self::$lastValidatorCallTime = time();
 
 		$response = curl_exec( $curl );
@@ -330,13 +348,15 @@ class GenericComponentTestCase extends TestCase {
 		}
 
 		if ( $curlInfo[ 'http_code' ] != '200' ) {
-			$this->markTestIncomplete( 'Error connecting to validation service. HTTP ' . $curlInfo[ 'http_code' ] );
+			$this->markTestIncomplete( 'Error connecting to validation service. HTTP ' .
+				$curlInfo[ 'http_code' ] );
 		}
 
 		$response = json_decode( $response, true );
 
 		if ( $response === null ) {
-			$this->markTestIncomplete( 'Validation service returned an invalid response (invalid JSON): ' . $response );
+			$this->markTestIncomplete(
+				'Validation service returned an invalid response (invalid JSON): ' . $response );
 		}
 
 		// fail if errors or warnings
@@ -345,7 +365,8 @@ class GenericComponentTestCase extends TestCase {
 			foreach ( $response[ 'messages' ] as $responseMessage ) {
 
 				if ( $responseMessage[ 'type' ] === 'error' || $responseMessage[ 'type' ] === 'warning' ) {
-					$this->fail( $message . ucfirst( $response[ 'messages' ][ 0 ][ 'type' ] ) . ': ' . $response[ 'messages' ][ 0 ][ 'message' ] );
+					$this->fail( $message . ucfirst( $response[ 'messages' ][ 0 ][ 'type' ] ) . ': ' .
+						$response[ 'messages' ][ 0 ][ 'message' ] );
 				}
 
 			}
@@ -354,7 +375,6 @@ class GenericComponentTestCase extends TestCase {
 		// valid
 		$this->successColor = 'bg-green,fg-black';
 		$this->assertTrue( true );
-
 	}
 
 	/**
@@ -365,10 +385,16 @@ class GenericComponentTestCase extends TestCase {
 		return MockupFactory::makeFactory( $this )->getChameleonSkinTemplateStub();
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getSuccessColor() {
 		return $this->successColor;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getNameOfComponentUnderTest() {
 		return str_replace( 'Skins\\Chameleon\\Components\\', '', get_class( $this->getTestObject() ) );
 	}

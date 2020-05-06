@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -46,7 +46,6 @@ class PageTools extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
 		$pageTools = $this->createGenericPageTools();
 
 		$this->indent( 1 );
@@ -57,10 +56,10 @@ class PageTools extends Component {
 
 		if ( $actionButtonHtmlFragments !== [] || $pageToolsHtml !== '' ) {
 
-			return
-				$this->indent() . '<!-- page tools -->' .
-				$this->indent() . \Html::rawElement( 'div', [ 'class' => 'navbar-tools navbar-nav ' . $this->getClassString() ],
-					join( $actionButtonHtmlFragments ) .
+			return $this->indent() . '<!-- page tools -->' .
+				$this->indent() . \Html::rawElement( 'div', [ 'class' => 'navbar-tools navbar-nav ' .
+					$this->getClassString() ],
+					implode( $actionButtonHtmlFragments ) .
 					$pageToolsHtml .
 					$this->indent()
 				);
@@ -74,12 +73,13 @@ class PageTools extends Component {
 	 * @throws \MWException
 	 */
 	protected function createGenericPageTools() {
-
-		$pageTools = new GenericPageTools( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() + 2 );
+		$pageTools = new GenericPageTools( $this->getSkinTemplate(), $this->getDomElement(),
+			$this->getIndent() + 2 );
 
 		$pageTools->setFlat( true );
 
-		// FIXME: This removing/adding of classes is super-ugly. Create and use a PageToolsBuilder class instead.
+		// FIXME: This removing/adding of classes is super-ugly.
+		// Create and use a PageToolsBuilder class instead.
 		$pageTools->removeClasses( 'pagetools' );
 		$pageTools->addClasses( [ 'navbar-pagetools', 'dropdown-menu' ] );
 
@@ -93,7 +93,6 @@ class PageTools extends Component {
 	 * @throws \MWException
 	 */
 	protected function getActionButtonsHtml( $pageTools ) {
-
 		$htmlFragments = [];
 
 		foreach ( $this->getReplaceableActions() as $actionGroup ) {
@@ -117,7 +116,6 @@ class PageTools extends Component {
 	 * @return string[][]
 	 */
 	protected function getReplaceableActions() {
-
 		$actionList = $this->getAttribute( 'buttons', 'edit' );
 
 		$actions = [];
@@ -143,7 +141,6 @@ class PageTools extends Component {
 	 * @return string
 	 */
 	protected function getActionLink( $pageTools, $editActionId ) {
-
 		$editActionStructure = $this->getActionDescriptor( $pageTools, $editActionId );
 
 		if ( $editActionStructure === null ) {
@@ -177,7 +174,6 @@ class PageTools extends Component {
 	 * @return mixed
 	 */
 	protected function getActionDescriptor( $pageTools, $action ) {
-
 		$pageToolsStructure = $pageTools->getPageToolsStructure();
 
 		foreach ( $pageToolsStructure as $group => $groupStructure ) {
@@ -197,20 +193,18 @@ class PageTools extends Component {
 	 * @throws \MWException
 	 */
 	protected function getPageToolsHtml( GenericPageTools $pageTools ) {
-
 		$pageToolsHtml = $pageTools->getHtml();
 
 		if ( $pageToolsHtml === '' ) {
 			return '';
 		}
 
-		return
-			$this->indent() . \Html::rawElement( 'div', [ 'class' => 'navbar-tool dropdown' ],
-				$this->indent( 1 ) . \Html::rawElement( 'a', [ 'data-toggle' => 'dropdown', 'data-boundary' => 'viewport', 'class' => 'navbar-more-tools', 'href' => '#', 'title' => $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() ] ) .
-				$pageToolsHtml .
-				$this->indent( -1 )
+		return $this->indent() . \Html::rawElement( 'div', [ 'class' => 'navbar-tool dropdown' ],
+				$this->indent( 1 ) . \Html::rawElement( 'a', [ 'data-toggle' => 'dropdown',
+				'data-boundary' => 'viewport', 'class' => 'navbar-more-tools', 'href' => '#',
+				'title' => $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() ] ) .
+				$pageToolsHtml . $this->indent( -1 )
 			);
 	}
-
 
 }

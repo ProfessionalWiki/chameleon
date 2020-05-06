@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -48,16 +48,14 @@ class MenuFromLines extends Menu {
 	private $html = null;
 
 	/**
-	 * @param string[]      $lines
-	 * @param bool          $inContentLanguage
+	 * @param string[] &$lines
+	 * @param bool $inContentLanguage
 	 * @param null|string[] $itemData
 	 */
 	public function __construct( &$lines, $inContentLanguage = false, $itemData = null ) {
-
 		$this->lines = &$lines;
 		$this->inContentLanguage = $inContentLanguage;
 		$this->menuItemData = $itemData ?? [ 'text' => '', 'class' => '', 'href' => '#', 'depth' => 0 ];
-
 	}
 
 	/**
@@ -65,7 +63,6 @@ class MenuFromLines extends Menu {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
 		if ( $this->html === null ) {
 
 			$this->parseLines();
@@ -81,7 +78,6 @@ class MenuFromLines extends Menu {
 	 * @throws \MWException
 	 */
 	public function parseLines() {
-
 		if ( !$this->needsParse ) {
 			return null;
 		}
@@ -126,7 +122,6 @@ class MenuFromLines extends Menu {
 	 * @return array
 	 */
 	protected function parseOneLine( $rawLine ) {
-
 		if ( empty( $rawLine ) ) {
 			return null;
 		}
@@ -148,7 +143,6 @@ class MenuFromLines extends Menu {
 	 * @return array
 	 */
 	protected function extractDepthAndLine( $rawLine ) {
-
 		$matches = [];
 		preg_match( '/(\**)(.*)/', ltrim( $rawLine ), $matches );
 
@@ -159,12 +153,11 @@ class MenuFromLines extends Menu {
 	}
 
 	/**
-	 * @param $linkDescription
+	 * @param string $linkDescription
 	 *
 	 * @return string[]
 	 */
 	protected function extractMenuItemData( $linkDescription ) {
-
 		$linkAttributes = array_map( 'trim', explode( '|', $linkDescription, 3 ) );
 
 		$linkTarget = trim( trim( $linkAttributes[ 0 ], '[]' ) );
@@ -185,7 +178,8 @@ class MenuFromLines extends Menu {
 	 * @return string
 	 */
 	protected function getTextFromMessageName( $messageName ) {
-		$msgObj = $this->inContentLanguage ? wfMessage( $messageName )->inContentLanguage() : wfMessage( $messageName );
+		$msgObj = $this->inContentLanguage ?
+			wfMessage( $messageName )->inContentLanguage() : wfMessage( $messageName );
 		return ( $msgObj->isDisabled() ? $messageName : trim( $msgObj->inContentLanguage()->text() ) );
 	}
 
@@ -195,10 +189,10 @@ class MenuFromLines extends Menu {
 	 * @return string
 	 */
 	protected function getHrefForTarget( $linkTarget ) {
-
 		if ( empty( $linkTarget ) ) {
 			return '#';
-		} elseif ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $linkTarget ) || $linkTarget[ 0 ] === '#' ) {
+		} elseif ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $linkTarget ) ||
+			$linkTarget[ 0 ] === '#' ) {
 			return $linkTarget;
 		} else {
 			return $this->getHrefForWikiPage( $linkTarget );
@@ -227,7 +221,6 @@ class MenuFromLines extends Menu {
 	 * @throws \MWException
 	 */
 	protected function createChildAndParseNextLine( $subItemData ) {
-
 		$child = new self( $this->lines, $this->inContentLanguage, $subItemData );
 		$child->setMenuItemFormatter( $this->getMenuItemFormatter() );
 		$child->setItemListFormatter( $this->getItemListFormatter() );
@@ -243,11 +236,11 @@ class MenuFromLines extends Menu {
 	 * @return string
 	 */
 	protected function buildHtml() {
-
 		$submenuHtml = $this->buildSubmenuHtml();
 
 		if ( $this->menuItemData[ 'text' ] !== '' ) {
-			return $this->getHtmlForMenuItem( $this->menuItemData[ 'href' ], $this->menuItemData[ 'class' ], $this->menuItemData[ 'text' ], $this->menuItemData[ 'depth' ], $submenuHtml );
+			return $this->getHtmlForMenuItem( $this->menuItemData[ 'href' ], $this->menuItemData[ 'class' ],
+				$this->menuItemData[ 'text' ], $this->menuItemData[ 'depth' ], $submenuHtml );
 		} else {
 			return $submenuHtml;
 		}
@@ -257,7 +250,6 @@ class MenuFromLines extends Menu {
 	 * @return string
 	 */
 	protected function buildSubmenuHtml() {
-
 		if ( empty( $this->children ) ) {
 			return '';
 		}

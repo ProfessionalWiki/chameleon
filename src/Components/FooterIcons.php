@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -25,6 +25,7 @@
  */
 
 namespace Skins\Chameleon\Components;
+
 use Skins\Chameleon\IdRegistry;
 
 /**
@@ -45,9 +46,7 @@ class FooterIcons extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
-		return
-			$this->indent() . '<!-- footer icons -->' .
+		return $this->indent() . '<!-- footer icons -->' .
 			IdRegistry::getRegistry()->element(
 				'div',
 				[ 'id' => 'footer-icons', 'class' => $this->getClassString() ],
@@ -61,7 +60,6 @@ class FooterIcons extends Component {
 	 * @throws \MWException
 	 */
 	private function getIcons() {
-
 		$this->indent( 1 );
 
 		$lines = [];
@@ -72,7 +70,8 @@ class FooterIcons extends Component {
 			$lines[] = $this->indent() . '<!-- ' . htmlspecialchars( $blockName ) . ' -->';
 
 			foreach ( $footerIcons as $icon ) {
-				$lines[] = $this->indent() . '<div>' . $this->getSkinTemplate()->getSkin()->makeFooterIcon( $icon ) . '</div>';
+				$lines[] = $this->indent() . '<div>' .
+					$this->getSkinTemplate()->getSkin()->makeFooterIcon( $icon ) . '</div>';
 			}
 
 		}

@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -45,7 +45,6 @@ class Menu extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
 		if ( $this->getDomElement() === null ) {
 			return '';
 		}
@@ -53,19 +52,19 @@ class Menu extends Component {
 		$menu = $this->getMenu();
 
 		$menu->setMenuItemFormatter( function ( $href, $class, $text, $depth, $subitems ) {
-
 			$href = Sanitizer::cleanUrl( $href );
 			$text = htmlspecialchars( $text );
 
+			// @codingStandardsIgnoreStart
 			if ( $depth === 1 && !empty( $subitems ) ) {
 				return "<div class=\"nav-item dropdown\"><a class=\"nav-link dropdown-toggle $class\" href=\"#\"  data-toggle=\"dropdown\"  data-boundary=\"viewport\">$text</a>$subitems</div>";
 			} else {
 				return "<div class=\"nav-item\"><a class=\"nav-link $class\"  href=\"$href\">$text</a>$subitems</div>";
 			}
+			// @codingStandardsIgnoreEnd
 		} );
 
 		$menu->setItemListFormatter( function ( $rawItemsHtml, $depth ) {
-
 			if ( $depth === 0 ) {
 				return $rawItemsHtml;
 			} elseif ( $depth === 1 ) {
@@ -73,7 +72,6 @@ class Menu extends Component {
 			} else {
 				return "<div>$rawItemsHtml</div>";
 			}
-
 		} );
 
 		return $menu->getHtml();
@@ -84,7 +82,6 @@ class Menu extends Component {
 	 * @throws \MWException
 	 */
 	public function getMenu() {
-
 		$domElement = $this->getDomElement();
 		$msgKey = $domElement->getAttribute( 'message' );
 
@@ -96,6 +93,5 @@ class Menu extends Component {
 			return $menuFactory->getMenuFromMessage( $msgKey );
 
 		}
-
 	}
 }

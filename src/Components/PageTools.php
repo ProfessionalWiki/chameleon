@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -57,7 +57,8 @@ class PageTools extends Component {
 	 *
 	 * @throws \MWException
 	 */
-	public function __construct(  ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
+	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null,
+		$indent = 0 ) {
 		parent::__construct( $template, $domElement, $indent );
 		$this->addClasses( 'pagetools' );
 	}
@@ -70,22 +71,20 @@ class PageTools extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
 		$toolGroups = $this->getToolGroups();
 
 		if ( $toolGroups === [] ) {
 			return '';
 		}
 
-		return
-			$this->indent() . '<!-- Content navigation -->' .
+		return $this->indent() . '<!-- Content navigation -->' .
 			IdRegistry::getRegistry()->element(
-				$this->mFlat ? 'div' : 'div', // FIXME: this is just 'div'
+				// FIXME: this is just 'div'
+				$this->mFlat ? 'div' : 'div',
 				[ 'class' => $this->getClassString(), 'id' => 'p-contentnavigation' ],
-				join( $toolGroups ),
+				implode( $toolGroups ),
 				$this->indent()
 			);
-
 	}
 
 	/**
@@ -102,7 +101,7 @@ class PageTools extends Component {
 
 			$toolGroup = $this->getToolGroup( $category, $tabsDescription );
 
-			if ($toolGroup !== null) {
+			if ( $toolGroup !== null ) {
 				$toolGroups[] = $toolGroup;
 			}
 		}
@@ -112,6 +111,9 @@ class PageTools extends Component {
 		return $toolGroups;
 	}
 
+	/**
+	 * @return array
+	 */
 	private function getContentNavigation(): array {
 		$contentNavigation = $this->getPageToolsStructure();
 
@@ -121,15 +123,22 @@ class PageTools extends Component {
 		return $contentNavigation;
 	}
 
+	/**
+	 * @param array &$contentNavigation
+	 */
 	private function removeSelectedNamespaceIfNeedBe( array &$contentNavigation ) {
 		if ( $this->hideSelectedNamespace() ) {
 			unset( $contentNavigation[ 'namespaces' ][ $this->getNamespaceKey() ] );
 		}
 	}
 
+	/**
+	 * @param array &$contentNavigation
+	 */
 	private function removeDiscussionLinkIfNeedBe( array &$contentNavigation ) {
 		if ( $this->hideDiscussionLink() ) {
-			$talkNamespaceKey = $this->getNamespaceKey() === 'main' ? 'talk' : $this->getNamespaceKey() . '_talk';
+			$talkNamespaceKey = $this->getNamespaceKey() === 'main' ? 'talk' :
+				$this->getNamespaceKey() . '_talk';
 
 			unset( $contentNavigation[ 'namespaces' ][ $talkNamespaceKey ] );
 		}
@@ -143,7 +152,7 @@ class PageTools extends Component {
 	}
 
 	/**
-	 * @param $pageToolsStructure
+	 * @param mixed $pageToolsStructure
 	 *
 	 * @return void
 	 */
@@ -156,10 +165,18 @@ class PageTools extends Component {
 			&& Action::getActionName( $this->getSkin() ) === 'view';
 	}
 
+	/**
+	 * @return bool
+	 */
 	private function hideDiscussionLink(): bool {
 		return $this->attributeIsYes( 'hideDiscussionLink' );
 	}
 
+	/**
+	 * @param string $attributeName
+	 *
+	 * @return bool
+	 */
 	private function attributeIsYes( string $attributeName ): bool {
 		return $this->getDomElement() !== null &&
 			filter_var( $this->getDomElement()->getAttribute( $attributeName ), FILTER_VALIDATE_BOOLEAN );
@@ -177,7 +194,6 @@ class PageTools extends Component {
 	 * @throws \ConfigException
 	 */
 	public function getNamespaceKey() {
-
 		// Gets the subject namespace of this title
 		$title = $this->getSkinTemplate()->getSkin()->getTitle();
 
@@ -188,7 +204,8 @@ class PageTools extends Component {
 		}
 
 		// Makes namespace key lowercase
-		$namespaceKey = MediaWikiServices::getInstance()->getMainConfig()->get( 'ContLang' )->lc( $namespaceKey );
+		$namespaceKey =
+			MediaWikiServices::getInstance()->getMainConfig()->get( 'ContLang' )->lc( $namespaceKey );
 
 		if ( $namespaceKey === '' ) {
 			return 'main';
@@ -207,7 +224,6 @@ class PageTools extends Component {
 	 * @throws \MWException
 	 */
 	protected function getToolGroup( $category, $tabsDescription ) {
-
 		if ( empty( $tabsDescription ) ) {
 			return null;
 		}
@@ -215,7 +231,7 @@ class PageTools extends Component {
 		$comment = $this->indent() . "<!-- $category -->";
 
 		if ( $this->mFlat ) {
-			return $comment . join( $this->getToolsForGroup( $tabsDescription ) );
+			return $comment . implode( $this->getToolsForGroup( $tabsDescription ) );
 		}
 
 		return $comment .
@@ -226,17 +242,16 @@ class PageTools extends Component {
 				IdRegistry::getRegistry()->element( 'div',
 					[ 'class' => 'tab-group' ],
 
-					join( $this->getToolsForGroup( $tabsDescription, 2 ) ),
+					implode( $this->getToolsForGroup( $tabsDescription, 2 ) ),
 
 					$this->indent( 1 )
 				),
 				$this->indent( -1 )
 			);
-
 	}
 
 	/**
-	 * @param $tabsDescription
+	 * @param array $tabsDescription
 	 *
 	 * @param int $indent
 	 *
@@ -244,7 +259,6 @@ class PageTools extends Component {
 	 * @throws \MWException
 	 */
 	protected function getToolsForGroup( $tabsDescription, $indent = 0 ) {
-
 		$tabs = [];
 		$this->indent( $indent );
 
@@ -265,10 +279,10 @@ class PageTools extends Component {
 	 * @throws \MWException
 	 */
 	protected function getTool( $tabDescription, $key ) {
-
 		// skip redundant links (i.e. the 'view' link)
 		// TODO: make this dependent on an option
-		if ( array_key_exists( 'redundant', $tabDescription ) && $tabDescription[ 'redundant' ] === true ) {
+		if ( array_key_exists( 'redundant', $tabDescription ) && $tabDescription[ 'redundant' ]
+			=== true ) {
 			return '';
 		}
 
@@ -280,14 +294,14 @@ class PageTools extends Component {
 			$options[ 'link-class' ] = $tabDescription[ 'class' ];
 		}
 
-		return $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $tabDescription, $options );
-
+		return $this->indent() .
+			$this->getSkinTemplate()->makeListItem( $key, $tabDescription, $options );
 	}
 
 	/**
 	 * Set the page tool menu to have submenus or not
 	 *
-	 * @param boolean $flat
+	 * @param bool $flat
 	 */
 	public function setFlat( $flat ) {
 		$this->mFlat = $flat;
@@ -299,8 +313,7 @@ class PageTools extends Component {
 	 * @param string|string[] $tools
 	 */
 	public function setRedundant( $tools ) {
-
-		$tools = (array) $tools;
+		$tools = (array)$tools;
 
 		$pageToolsStructure = $this->getPageToolsStructure();
 
@@ -314,6 +327,5 @@ class PageTools extends Component {
 
 		$this->setPageToolsStructure( $pageToolsStructure );
 	}
-
 
 }

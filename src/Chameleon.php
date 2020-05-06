@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -57,7 +57,6 @@ class Chameleon extends SkinTemplate {
 	 * @throws \Exception
 	 */
 	public static function init() {
-
 		ExtensionRegistryHelper::singleton()->loadExtensionRecursive( 'Bootstrap' );
 
 		/**
@@ -74,8 +73,7 @@ class Chameleon extends SkinTemplate {
 		/**
 		 * @see https://www.mediawiki.org/wiki/Manual:Hooks/BeforeInitialize
 		 */
-		$GLOBALS[ 'wgHooks' ][ 'SetupAfterCache' ][ ] = function() {
-
+		$GLOBALS[ 'wgHooks' ][ 'SetupAfterCache' ][ ] = function () {
 			$setupAfterCache = new SetupAfterCache(
 				BootstrapManager::getInstance(),
 				$GLOBALS,
@@ -86,17 +84,16 @@ class Chameleon extends SkinTemplate {
 		};
 
 		// FIXME: Put this in a proper class, so it can be tested
-		$GLOBALS[ 'wgHooks' ][ 'ResourceLoaderRegisterModules' ][ ] = function( ResourceLoader $rl ) {
-
-			$rl->register( 'zzz.ext.bootstrap.styles', $GLOBALS['wgResourceModules']['ext.bootstrap.styles'] );
-
+		$GLOBALS[ 'wgHooks' ][ 'ResourceLoaderRegisterModules' ][ ] = function ( ResourceLoader $rl ) {
+			$rl->register( 'zzz.ext.bootstrap.styles',
+				$GLOBALS['wgResourceModules']['ext.bootstrap.styles'] );
 		};
 
 		// set default skin layout
 		if ( $GLOBALS[ 'egChameleonLayoutFile' ][0] !== '/' ) {
-			$GLOBALS[ 'egChameleonLayoutFile' ] = $GLOBALS[ 'wgStyleDirectory' ] . '/chameleon/' . $GLOBALS[ 'egChameleonLayoutFile' ];
+			$GLOBALS[ 'egChameleonLayoutFile' ] = $GLOBALS[ 'wgStyleDirectory' ] . '/chameleon/' .
+				$GLOBALS[ 'egChameleonLayoutFile' ];
 		}
-
 	}
 
 	/**
@@ -113,7 +110,8 @@ class Chameleon extends SkinTemplate {
 			$modulePos = array_search( 'mediawiki.legacy.shared', $modules[ 'styles' ][ 'core' ] );
 
 			if ( $modulePos !== false ) {
-				unset( $modules[ 'styles' ][ 'core' ][ $modulePos ] ); // we have our own version of these styles
+				// we have our own version of these styles
+				unset( $modules[ 'styles' ][ 'core' ][ $modulePos ] );
 			}
 
 			$modules[ 'styles' ][ 'content' ][] = 'mediawiki.skinning.content';
@@ -135,7 +133,6 @@ class Chameleon extends SkinTemplate {
 	 * @param OutputPage $out Legacy parameter, identical to $this->getOutput()
 	 */
 	public function setupSkinUserCss( OutputPage $out ) {
-
 		if ( $this->stylesHaveBeenProcessed === false ) {
 
 			$moduleStyles = [
@@ -162,7 +159,6 @@ class Chameleon extends SkinTemplate {
 	 * @param OutputPage $out
 	 */
 	public function initPage( OutputPage $out ) {
-
 		parent::initPage( $out );
 
 		// Enable responsive behaviour on mobile browsers
@@ -174,7 +170,6 @@ class Chameleon extends SkinTemplate {
 	 * @throws \MWException
 	 */
 	protected function setupTemplateForOutput() {
-
 		$template = parent::setupTemplateForOutput();
 
 		$this->getComponentFactory()->setSkinTemplate( $template );
@@ -189,8 +184,7 @@ class Chameleon extends SkinTemplate {
 	 * @return ComponentFactory
 	 */
 	public function getComponentFactory() {
-
-		if ( ! isset( $this->componentFactory ) ) {
+		if ( !isset( $this->componentFactory ) ) {
 			$this->componentFactory = new ComponentFactory(
 				$this->getLayoutFilePath()
 			);
@@ -206,8 +200,8 @@ class Chameleon extends SkinTemplate {
 		// load Bootstrap scripts
 		$output = $this->getOutput();
 		$output->addModules( [ 'ext.bootstrap.scripts' ] );
-		$output->addModules( $this->getComponentFactory()->getRootComponent()->getResourceLoaderModules() );
-
+		$output->addModules(
+			$this->getComponentFactory()->getRootComponent()->getResourceLoaderModules() );
 	}
 
 	/**

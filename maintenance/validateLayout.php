@@ -1,4 +1,5 @@
 <?php
+// @codingStandardsIgnoreFile
 /**
  * Validates layout files.
  *
@@ -21,7 +22,6 @@
  * @file
  * @ingroup Skins
  */
-
 
 function libxml_display_error( $error ) {
 	$return = '';
@@ -50,7 +50,6 @@ function libxml_display_error( $error ) {
 }
 
 function libxml_display_errors() {
-
 	$errors = libxml_get_errors();
 
 	print "\n";
@@ -64,9 +63,7 @@ function libxml_display_errors() {
 	libxml_clear_errors();
 }
 
-
 function validateFile( $filename ) {
-
 	print $filename . ': ';
 
 	if ( !file_exists( $filename ) ) {

@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -48,7 +48,7 @@ class ComponentFactory {
 	private $layoutFile;
 	private $skinTemplate;
 
-	const NAMESPACE_HIERARCHY = 'Skins\\Chameleon\\Components';
+	private const NAMESPACE_HIERARCHY = 'Skins\\Chameleon\\Components';
 
 	/**
 	 * @param string $layoutFileName
@@ -62,7 +62,6 @@ class ComponentFactory {
 	 * @throws MWException
 	 */
 	public function getRootComponent() {
-
 		if ( $this->mRootComponent === null ) {
 
 			$document = new DOMDocument();
@@ -78,19 +77,18 @@ class ComponentFactory {
 
 			} else {
 				// TODO: catch other errors, e.g. malformed XML
-				throw new MWException( sprintf( '%s: XML description is missing an element: structure.', $this->getLayoutFile() ) );
+				throw new MWException( sprintf( '%s: XML description is missing an element: structure.',
+					$this->getLayoutFile() ) );
 			}
 		}
 
 		return $this->mRootComponent;
-
 	}
 
 	/**
 	 * @return string
 	 */
 	protected function getLayoutFile() {
-
 		return $this->layoutFile;
 	}
 
@@ -98,7 +96,6 @@ class ComponentFactory {
 	 * @param string $fileName
 	 */
 	public function setLayoutFile( $fileName ) {
-
 		$fileName = $this->sanitizeFileName( $fileName );
 
 		if ( !is_readable( $fileName ) ) {
@@ -110,16 +107,16 @@ class ComponentFactory {
 
 	/**
 	 * @param DOMElement $description
-	 * @param int         $indent
-	 * @param string      $htmlClassAttribute
+	 * @param int $indent
+	 * @param string $htmlClassAttribute
 	 *
 	 * @throws MWException
 	 * @return Container
 	 */
 	public function getComponent( DOMElement $description, $indent = 0, $htmlClassAttribute = '' ) {
-
 		$className = $this->getComponentClassName( $description );
-		$component = new $className( $this->getSkinTemplate(), $description, $indent, $htmlClassAttribute );
+		$component = new $className( $this->getSkinTemplate(), $description, $indent,
+			$htmlClassAttribute );
 
 		$children = $description->childNodes;
 
@@ -140,11 +137,12 @@ class ComponentFactory {
 	 * @since 1.1
 	 */
 	protected function getComponentClassName( DOMElement $description ) {
-
 		$className = $this->mapDescriptionToClassName( $description );
 
-		if ( !class_exists( $className ) || !is_subclass_of( $className, self::NAMESPACE_HIERARCHY . '\\Component' ) ) {
-			throw new MWException( sprintf( '%s (line %d): Invalid component type: %s.', $this->getLayoutFile(), $description->getLineNo(), $description->getAttribute( 'type' ) ) );
+		if ( !class_exists( $className ) ||
+			!is_subclass_of( $className, self::NAMESPACE_HIERARCHY . '\\Component' ) ) {
+			throw new MWException( sprintf( '%s (line %d): Invalid component type: %s.',
+				$this->getLayoutFile(), $description->getLineNo(), $description->getAttribute( 'type' ) ) );
 		}
 
 		return $className;
@@ -157,7 +155,6 @@ class ComponentFactory {
 	 * @throws MWException
 	 */
 	protected function mapDescriptionToClassName( DOMElement $description ) {
-
 		$nodeName = strtolower( $description->nodeName );
 
 		$mapOfComponentsToClassNames = [
@@ -176,8 +173,8 @@ class ComponentFactory {
 			return $this->mapComponentDescriptionToClassName( $description );
 		}
 
-		throw new MWException( sprintf( '%s (line %d): XML element not allowed here: %s.', $this->getLayoutFile(), $description->getLineNo(), $description->nodeName ) );
-
+		throw new MWException( sprintf( '%s (line %d): XML element not allowed here: %s.',
+			$this->getLayoutFile(), $description->getLineNo(), $description->nodeName ) );
 	}
 
 	/**
@@ -196,25 +193,29 @@ class ComponentFactory {
 
 	/**
 	 * @param DOMElement $description
-	 * @param Component   $component
+	 * @param Component $component
 	 *
 	 * @return mixed
 	 * @throws MWException
 	 */
 	protected function getModifiedComponent( DOMElement $description, Component $component ) {
-
 		if ( !$description->hasAttribute( 'type' ) ) {
-			throw new MWException( sprintf( '%s (line %d): Modification element missing an attribute: type.', $this->getLayoutFile(), $description->getLineNo() ) );
+			throw new MWException(
+				sprintf( '%s (line %d): Modification element missing an attribute: type.',
+				$this->getLayoutFile(), $description->getLineNo() ) );
 		}
 
-		$className = 'Skins\\Chameleon\\Components\\Modifications\\' . $description->getAttribute( 'type' );
+		$className = 'Skins\\Chameleon\\Components\\Modifications\\' .
+			$description->getAttribute( 'type' );
 
-		if ( !class_exists( $className ) || !is_subclass_of( $className, 'Skins\\Chameleon\\Components\\Modifications\\Modification' ) ) {
-			throw new MWException( sprintf( '%s (line %d): Invalid modification type: %s.', $this->getLayoutFile(), $description->getLineNo(), $description->getAttribute( 'type' ) ) );
+		if ( !class_exists( $className ) || !is_subclass_of( $className,
+			'Skins\\Chameleon\\Components\\Modifications\\Modification' ) ) {
+			throw new MWException(
+				sprintf( '%s (line %d): Invalid modification type: %s.',
+				$this->getLayoutFile(), $description->getLineNo(), $description->getAttribute( 'type' ) ) );
 		}
 
 		return new $className( $component, $description );
-
 	}
 
 	/**
@@ -231,13 +232,12 @@ class ComponentFactory {
 	 * @return string
 	 */
 	protected function mapComponentDescriptionToClassName( DOMElement $description ) {
-
 		if ( $description->hasAttribute( 'type' ) ) {
 			$className = $description->getAttribute( 'type' );
 			$parent = $description->parentNode;
 
 			if ( $parent instanceof DOMElement && $parent->hasAttribute( 'type' ) ) {
-				$fullClassName = join(
+				$fullClassName = implode(
 					'\\',
 					[
 						self::NAMESPACE_HIERARCHY,
@@ -251,7 +251,7 @@ class ComponentFactory {
 				}
 			}
 
-			$chameleonClassName = join( '\\', [ self::NAMESPACE_HIERARCHY, $className ] );
+			$chameleonClassName = implode( '\\', [ self::NAMESPACE_HIERARCHY, $className ] );
 			if ( class_exists( $chameleonClassName ) ) {
 				return $chameleonClassName;
 			}

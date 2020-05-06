@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -25,15 +25,17 @@
  */
 
 namespace Skins\Chameleon\Components;
+
 use Skins\Chameleon\IdRegistry;
 
 /**
  * The FooterInfo class.
  *
- * A list of footer items (last modified time, view count, number of watching users, credits, copyright)
+ * A list of footer items (last modified time, view count, number of watching users, credits,
+ * copyright)
  *
- * Does not include so called places (about, privacy policy, and disclaimer links). They need to be added to the page
- * elsewhere.
+ * Does not include so called places (about, privacy policy, and disclaimer links). They need to
+ * be added to the page elsewhere.
  *
  * @author Stephan Gambke
  * @since 1.0
@@ -48,9 +50,7 @@ class FooterInfo extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
-		return
-			$this->indent() . '<!-- footer links -->' .
+		return $this->indent() . '<!-- footer links -->' .
 			IdRegistry::getRegistry()->element(
 				'div',
 				[ 'id' => 'footer-info', 'class' => $this->getClassString() ],
@@ -64,7 +64,6 @@ class FooterInfo extends Component {
 	 * @throws \MWException
 	 */
 	private function getFooterLines() {
-
 		$footerlinks = $this->getSkinTemplate()->getFooterLinks();
 
 		$this->indent( 1 );

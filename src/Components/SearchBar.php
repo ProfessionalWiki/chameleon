@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2014, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -26,7 +26,7 @@
 
 namespace Skins\Chameleon\Components;
 
-use \Linker;
+use Linker;
 use Skins\Chameleon\IdRegistry;
 
 /**
@@ -47,7 +47,6 @@ class SearchBar extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
 		$attribsSearchFormWrapper = \Html::expandAttributes( [
 				'id'    => IdRegistry::getRegistry()->getId( 'p-search' ),
 				'class' => 'p-search ' . $this->getClassString(),
@@ -60,10 +59,11 @@ class SearchBar extends Component {
 		$attribsSearchForm = \Html::expandAttributes( [
 				'id'    => IdRegistry::getRegistry()->getId( 'searchform' ),
 				'class' => 'mw-search',
-				'action'=> $this->getSkinTemplate()->data[ 'wgScript' ],
+				'action' => $this->getSkinTemplate()->data[ 'wgScript' ],
 			]
 		);
 
+		// @codingStandardsIgnoreStart
 		$ret = $this->indent() . '<!-- search form -->' .
 
 			$this->indent() . "<div $attribsSearchFormWrapper $tooltipSearchFormWrapper >" .
@@ -72,6 +72,7 @@ class SearchBar extends Component {
 			$this->indent() . '<div class="input-group">' .
 			$this->indent( 1 ) . $this->getSearchInputHtml() .
 			$this->indent() . '<div class="input-group-append">';
+		// @codingStandardsIgnoreEnd
 
 		$this->indent( 1 );
 
@@ -86,6 +87,9 @@ class SearchBar extends Component {
 		return $ret;
 	}
 
+	/**
+	 * @return string
+	 */
 	private function getSearchInputHtml(): string {
 		$attributes = [
 			'id' => IdRegistry::getRegistry()->getId( 'searchInput' ),
@@ -105,7 +109,6 @@ class SearchBar extends Component {
 	 * @throws \MWException
 	 */
 	private function getGoButton() {
-
 		$valueAttr = 'searcharticle';
 		$idAttr = 'searchGoButton';
 		$nameAttr = 'go';
@@ -119,7 +122,6 @@ class SearchBar extends Component {
 	 * @throws \MWException
 	 */
 	private function getSearchButton() {
-
 		$valueAttr = 'searchbutton';
 		$idAttr = 'mw-searchButton';
 		$nameAttr = 'fulltext';
@@ -129,16 +131,16 @@ class SearchBar extends Component {
 	}
 
 	/**
-	 * @param $valueAttr
-	 * @param $idAttr
-	 * @param $nameAttr
-	 * @param $glyphicon
+	 * @param string $button
+	 * @param string $valueAttr
+	 * @param string $idAttr
+	 * @param string $nameAttr
+	 * @param string $glyphicon
 	 *
 	 * @return string
 	 * @throws \MWException
 	 */
 	private function getButton( $button, $valueAttr, $idAttr, $nameAttr, $glyphicon ) {
-
 		if ( $this->shouldShowButton( $button ) ) {
 
 			$buttonAttrs = [
@@ -161,6 +163,11 @@ class SearchBar extends Component {
 		return '';
 	}
 
+	/**
+	 * @param string $button
+	 *
+	 * @return bool
+	 */
 	private function shouldShowButton( $button ) {
 		$buttonsAttribute = $this->getAttribute( 'buttons' );
 		return $button === 'go' && $buttonsAttribute !== 'search' ||

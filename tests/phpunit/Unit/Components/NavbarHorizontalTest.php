@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke, mwjames
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -48,7 +48,6 @@ class NavbarHorizontalTest extends GenericComponentTestCase {
 	 * @covers ::getHtml
 	 */
 	public function testGetHtml_containsNavElement() {
-
 		$element = $this->getMockBuilder( '\DOMElement' )
 			->disableOriginalConstructor()
 			->getMock();
@@ -70,7 +69,7 @@ class NavbarHorizontalTest extends GenericComponentTestCase {
 			$element
 		);
 
-		$matcher = array( 'tag' => 'nav' );
+		$matcher = [ 'tag' => 'nav' ];
 		$this->assertTag( $matcher, $instance->getHtml() );
 	}
 

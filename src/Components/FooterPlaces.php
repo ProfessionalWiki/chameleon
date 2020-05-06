@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -25,6 +25,7 @@
  */
 
 namespace Skins\Chameleon\Components;
+
 use Skins\Chameleon\IdRegistry;
 
 /**
@@ -45,9 +46,7 @@ class FooterPlaces extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
-		return
-			$this->indent() . '<!-- places -->' .
+		return $this->indent() . '<!-- places -->' .
 			IdRegistry::getRegistry()->element(
 				'div',
 				[ 'id' => 'footer-places', 'class' => $this->getClassString() ],
@@ -61,7 +60,6 @@ class FooterPlaces extends Component {
 	 * @throws \MWException
 	 */
 	private function getFooterLinks() {
-
 		$footerlinks = $this->getSkinTemplate()->getFooterLinks();
 
 		if ( !array_key_exists( 'places', $footerlinks ) ) {

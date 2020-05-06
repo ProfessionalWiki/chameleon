@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -49,14 +49,13 @@ class Toolbox extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
 		$introComment = $this->indent() . '<!-- toolbox -->';
 
 		if ( filter_var( $this->getAttribute( 'flatten' ), FILTER_VALIDATE_BOOLEAN ) ) {
 			$this->addClasses( 'navbar-nav' );
 			$linkList = implode( $this->getLinkListItems() );
 		} else {
-			//$this->addClasses( 'dropdown-menu' );
+			// $this->addClasses( 'dropdown-menu' );
 			$linkList = $this->wrapDropdownMenu( 'toolbox', implode( $this->getLinkListItems( 2 ) ) );
 		}
 
@@ -71,7 +70,6 @@ class Toolbox extends Component {
 	 * @throws \MWException
 	 */
 	private function getLinkListItems( $indent = 0 ) {
-
 		$this->indent( $indent );
 
 		$skinTemplate = $this->getSkinTemplate();
@@ -84,7 +82,8 @@ class Toolbox extends Component {
 			} else {
 				$linkItem[ 'class' ] = 'nav-item';
 			}
-			$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem, [ 'link-class' => 'nav-link', 'tag' => 'div' ] );
+			$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem,
+				[ 'link-class' => 'nav-link', 'tag' => 'div' ] );
 		}
 
 		ob_start();
@@ -105,22 +104,25 @@ class Toolbox extends Component {
 	}
 
 	/**
-	 * @param $labelMsg
-	 * @param $list
+	 * @param string $labelMsg
+	 * @param array $list
 	 *
 	 * @return string
 	 * @throws \MWException
 	 */
 	private function wrapDropdownMenu( $labelMsg, $list ) {
-
 		$trigger = $this->indent( 1 ) . IdRegistry::getRegistry()->element(
 				'a',
-				[ 'href' => '#', 'class' => 'nav-link dropdown-toggle p-tb-toggle', 'data-toggle' => 'dropdown', 'data-boundary' => 'viewport' ],
+				[ 'href' => '#', 'class' => 'nav-link dropdown-toggle p-tb-toggle',
+					'data-toggle' => 'dropdown', 'data-boundary' => 'viewport' ],
 				$this->getSkinTemplate()->getMsg( $labelMsg )->escaped()
 			);
 
-		$liElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'dropdown-menu' ], $list, $this->indent() );
-		$ulElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'nav-item p-tb-dropdown ' . $this->getClassString() ], $trigger . $liElement, $this->indent( -1 ) );
+		$liElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'dropdown-menu' ], $list,
+			$this->indent() );
+		$ulElement = IdRegistry::getRegistry()->element( 'div',
+			[ 'class' => 'nav-item p-tb-dropdown ' . $this->getClassString() ], $trigger . $liElement,
+			$this->indent( -1 ) );
 
 		return $ulElement;
 	}

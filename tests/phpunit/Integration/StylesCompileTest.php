@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -45,14 +45,13 @@ use Skins\Chameleon\Hooks\SetupAfterCache;
 class StylesCompileTest extends \PHPUnit\Framework\TestCase {
 
 	public function testStylesCompile() {
-
 		// FIXME
 		// Perhaps the assertion never really worked because it got null
 		// Failure: Failed asserting that '' is not equal to ''
 		// https://travis-ci.org/github/ProfessionalWiki/chameleon/jobs/663769240
 		$this->markTestSkipped( 'Test does not work on recent MW+PHP' );
 
-		$request = $this->getMockBuilder('\WebRequest')
+		$request = $this->getMockBuilder( '\WebRequest' )
 			->disableOriginalConstructor()
 			->getMock();
 
@@ -68,14 +67,14 @@ class StylesCompileTest extends \PHPUnit\Framework\TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
-		$module = new ResourceLoaderSCSSModule( $GLOBALS[ 'wgResourceModules' ][ 'ext.bootstrap.styles' ] );
+		$module =
+			new ResourceLoaderSCSSModule( $GLOBALS[ 'wgResourceModules' ][ 'ext.bootstrap.styles' ] );
 		$module->setCache( new HashBagOStuff() );
 
 		$styles = $module->getStyles( $resourceLoaderContext );
 		$css = CSSMin::minify( $styles[ 'all' ] );
 
 		$this->assertNotEquals( '', $css );
-
 	}
 
 }

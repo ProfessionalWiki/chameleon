@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2014, Stephan Gambke, mwjames
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -47,17 +47,16 @@ class MainContentTest extends GenericComponentTestCase {
 	 * @covers ::getHtml
 	 */
 	public function testGetHtml_OnEmptyDataProperty() {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$chameleonTemplate->data = array(
+		$chameleonTemplate->data = [
 			'subtitle'         => '',
 			'undelete'         => '',
 			'printfooter'      => '',
 			'dataAfterContent' => ''
-		);
+		];
 
 		$instance = new MainContent( $chameleonTemplate );
-		$this->assertInternalType( 'string', $instance->getHtml() );
+		$this->assertIsString( $instance->getHtml() );
 	}
 }

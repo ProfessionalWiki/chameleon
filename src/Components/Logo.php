@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -47,11 +47,9 @@ class Logo extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
 		$logo = $this->indent( 1 ) . $this->getLogo();
 
-		return
-			$this->indent( -1 ) . '<!-- logo and main page link -->' .
+		return $this->indent( -1 ) . '<!-- logo and main page link -->' .
 
 			IdRegistry::getRegistry()->element( 'div',
 				[ 'id' => 'p-logo', 'class' => $this->getClassString(), 'role' => 'banner', ],
@@ -64,7 +62,6 @@ class Logo extends Component {
 	 * @return string
 	 */
 	protected function getLogo() {
-
 		$logo = IdRegistry::getRegistry()->element( 'img',
 			[
 				'src' => $this->getSkinTemplate()->get( 'logopath', '' ),
@@ -76,12 +73,11 @@ class Logo extends Component {
 	}
 
 	/**
-	 * @param $logo
+	 * @param string $logo
 	 *
 	 * @return string
 	 */
 	protected function getLinkedLogo( $logo ) {
-
 		if ( $this->shallLink() ) {
 
 			$linkAttributes = array_merge(
@@ -95,6 +91,9 @@ class Logo extends Component {
 		return $logo;
 	}
 
+	/**
+	 * @return string
+	 */
 	private function getLogoLink(): string {
 		$navUrls = $this->getSkinTemplate()->get( 'nav_urls', [ 'mainpage' => [ 'href' => '#' ] ] );
 		$mainPage = $navUrls['mainpage'] ?? [ 'href' => '#' ];
@@ -109,7 +108,6 @@ class Logo extends Component {
 	 * @return bool
 	 */
 	private function shallLink() {
-
 		$domElement = $this->getDomElement();
 
 		if ( $domElement === null ) {

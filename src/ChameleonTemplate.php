@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -43,7 +43,6 @@ class ChameleonTemplate extends BaseTemplate {
 	 * @throws \MWException
 	 */
 	public function execute() {
-
 		// output the head element
 		// The headelement defines the <body> tag itself, it shouldn't be included in the html text
 		// To add attributes or classes to the body tag override addToBodyAttributes() in SkinChameleon
@@ -51,7 +50,6 @@ class ChameleonTemplate extends BaseTemplate {
 		echo $this->getSkin()->getComponentFactory()->getRootComponent()->getHtml();
 		$this->printTrail();
 		echo "</body>\n</html>";
-
 	}
 
 	/**
@@ -85,9 +83,9 @@ class ChameleonTemplate extends BaseTemplate {
 	 * @return \Skins\Chameleon\Components\Container
 	 */
 	public function getComponent( \DOMElement $description, $indent = 0, $htmlClassAttribute = '' ) {
-		return $this->getSkin()->getComponentFactory()->getComponent( $description, $indent, $htmlClassAttribute );
+		return $this->getSkin()->getComponentFactory()->getComponent( $description, $indent,
+			$htmlClassAttribute );
 	}
-
 
 	/**
 	 * Makes a link with a unique id, usually used by makeListItem to generate a
@@ -101,13 +99,12 @@ class ChameleonTemplate extends BaseTemplate {
 	 *
 	 * @return string
 	 */
-	function makeLink( $key, $item, $options = [] ) {
-
-		$item[ 'class' ] = isset( $item[ 'class' ] ) ? (array) $item[ 'class' ] : [];
+	public function makeLink( $key, $item, $options = [] ) {
+		$item[ 'class' ] = isset( $item[ 'class' ] ) ? (array)$item[ 'class' ] : [];
 
 		foreach ( [ 'id', 'single-id' ] as $attrib ) {
 
-			if ( isset ( $item[ $attrib ] ) ) {
+			if ( isset( $item[ $attrib ] ) ) {
 				$item[ 'class' ][] = $item[ $attrib ];
 				$item[ $attrib ] = IdRegistry::getRegistry()->getId( $item[ $attrib ], $this );
 			}
@@ -121,6 +118,5 @@ class ChameleonTemplate extends BaseTemplate {
 
 		return parent::makeLink( $key, $item, $options );
 	}
-
 
 }

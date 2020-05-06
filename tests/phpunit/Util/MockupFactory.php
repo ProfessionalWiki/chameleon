@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -35,6 +35,7 @@ use stdClass;
 use Title;
 use User;
 
+// @codingStandardsIgnoreStart
 /**
  * @group skins-chameleon
  * @group mediawiki-databaseless
@@ -44,6 +45,7 @@ use User;
  * @ingroup Skins
  * @ingroup Test
  */
+// @codingStandardsIgnoreEnd
 class MockupFactory {
 
 	private $testCase;
@@ -75,8 +77,8 @@ class MockupFactory {
 	}
 
 	/**
-	 * @param $key
-	 * @param $value
+	 * @param mixed $key
+	 * @param mixed $value
 	 */
 	public function set( $key, $value ) {
 		$this->configuration[ $key ] = $value;
@@ -87,7 +89,6 @@ class MockupFactory {
 	 * @throws \MWException
 	 */
 	public function getChameleonSkinTemplateStub() {
-
 		$chameleonTemplate = $this->testCase->getMockBuilder( ChameleonTemplate::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -151,6 +152,8 @@ class MockupFactory {
 	 *
 	 * Testing specific conditions should be done separately in each sub
 	 * component
+	 *
+	 * @return array
 	 */
 	protected function getSkinTemplateDummyDataSetForMainNamespace() {
 		return [
@@ -223,7 +226,6 @@ class MockupFactory {
 	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected function getTranslatorStub() {
-
 		$translator = $this->testCase->getMockBuilder( stdClass::class )
 			->setMethods( [ 'translate' ] )
 			->getMock();
@@ -239,7 +241,6 @@ class MockupFactory {
 	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected function getMessageStub() {
-
 		$message = $this->testCase->getMockBuilder( Message::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -249,7 +250,6 @@ class MockupFactory {
 			->will( $this->testCase->returnSelf() );
 
 		return $message;
-
 	}
 
 	/**
@@ -257,7 +257,6 @@ class MockupFactory {
 	 * @throws \MWException
 	 */
 	protected function getSkinStub() {
-
 		$title = Title::newFromText( 'FOO' );
 		$request = new FauxRequest();
 
@@ -288,7 +287,6 @@ class MockupFactory {
 	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected function getComponentStub() {
-
 		$component = $this->testCase->getMockBuilder( Component::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -304,7 +302,6 @@ class MockupFactory {
 	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected function getUserStub() {
-
 		$user = $this->testCase->getMockBuilder( User::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -330,30 +327,26 @@ class MockupFactory {
 			->will( $this->testCase->returnValue( $this->get( 'UserRights', [] ) ) );
 
 		return $user;
-
 	}
 
 	/**
-	 * @param $key
+	 * @param mixed $key
 	 * @param null $default
 	 *
 	 * @return mixed|null
 	 */
 	public function get( $key, $default = null ) {
-
 		if ( isset( $this->configuration[ $key ] ) ) {
 			return $this->configuration[ $key ];
 		} else {
 			return $default;
 		}
-
 	}
 
 	/**
 	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected function getTitleStub() {
-
 		$title = $this->testCase->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -363,14 +356,12 @@ class MockupFactory {
 			->will( $this->testCase->returnValue( 'SomeLinkUrl' ) );
 
 		return $title;
-
 	}
 
 	/**
 	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected function getComponentFactoryStub() {
-
 		$factory = $this->testCase->getMockBuilder( ComponentFactory::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -379,9 +370,7 @@ class MockupFactory {
 			->method( 'getComponent' )
 			->will( $this->testCase->returnValue( $this->getComponentStub() ) );
 
-
 		return $factory;
-
 	}
 
 }

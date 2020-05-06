@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2017, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -25,6 +25,7 @@
  */
 
 namespace Skins\Chameleon\Menu;
+
 use Message;
 
 /**
@@ -38,19 +39,19 @@ class MenuFactory {
 
 	/**
 	 * @param Message|string|string[] $message
-	 * @param bool                     $forContent
+	 * @param bool $forContent
 	 *
 	 * @throws \MWException
 	 *
 	 * @return Menu
 	 */
 	public function getMenuFromMessage( $message, $forContent = false ) {
-
 		if ( is_string( $message ) || is_array( $message ) ) {
 			$message = Message::newFromKey( $message );
 		}
 
-		$this->assert( $message instanceof Message, 'String, array of strings or Message object expected.', $message );
+		$this->assert( $message instanceof Message,
+			'String, array of strings or Message object expected.', $message );
 
 		if ( $forContent ) {
 			$message = $message->inContentLanguage();
@@ -65,13 +66,12 @@ class MenuFactory {
 
 	/**
 	 * @param string $text
-	 * @param bool   $forContent
+	 * @param bool $forContent
 	 *
 	 * @return Menu
 	 * @throws \MWException
 	 */
 	public function getMenuFromMessageText( $text, $forContent = false ) {
-
 		$this->assert( is_string( $text ), 'String expected.', $text );
 
 		$lines = explode( "\n", trim( $text ) );
@@ -80,12 +80,15 @@ class MenuFactory {
 	}
 
 	/**
-	 * @param $message
+	 * @param bool $condition
+	 * @param string $message
+	 * @param mixed $target
 	 * @throws \MWException
 	 */
 	protected function assert( $condition, $message, $target ) {
 		if ( !$condition ) {
-			throw new \MWException( $message . ' Got ' . (is_object( $target ) ? get_class( $target ) : gettype( $target )) . '.' );
+			throw new \MWException( $message . ' Got ' .
+				( is_object( $target ) ? get_class( $target ) : gettype( $target ) ) . '.' );
 		}
 	}
 }

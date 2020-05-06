@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -40,12 +40,16 @@ abstract class Menu {
 	private $menuItemFormatter = null;
 	private $itemListFormatter = null;
 
+	/**
+	 * @return string
+	 */
 	abstract public function getHtml();
 
 	/**
 	 * @param string $href
+	 * @param string $class
 	 * @param string $text
-	 * @param int    $depth
+	 * @param int $depth
 	 * @param string $subitems
 	 *
 	 * @return string
@@ -58,18 +62,18 @@ abstract class Menu {
 	 * @return callable
 	 */
 	public function getMenuItemFormatter() {
-
 		if ( $this->menuItemFormatter === null ) {
 
 			$this->setMenuItemFormatter( function ( $href, $class, $text, $depth, $subitems ) {
-
 				$href = Sanitizer::cleanUrl( $href );
 				$text = htmlspecialchars( $text );
 				$class = htmlspecialchars( $class );
 				$indent = str_repeat( "\t", 2 * $depth );
 
 				if ( $subitems !== '' ) {
+					// @codingStandardsIgnoreStart
 					return "$indent<li>\n$indent\t<a href=\"$href\" class=\"$class\">$text</a>\n$subitems$indent</li>\n";
+					// @codingStandardsIgnoreEnd
 				} else {
 					return "$indent<li><a href=\"$href\" class=\"$class\">$text</a></li>\n";
 				}
@@ -89,7 +93,7 @@ abstract class Menu {
 
 	/**
 	 * @param string $rawItemsHtml
-	 * @param int    $depth
+	 * @param int $depth
 	 *
 	 * @return string
 	 */
@@ -101,14 +105,11 @@ abstract class Menu {
 	 * @return callable
 	 */
 	public function getItemListFormatter() {
-
 		if ( $this->itemListFormatter === null ) {
 
 			$this->setItemListFormatter( function ( $rawItemsHtml, $depth ) {
-
 				$indent = str_repeat( "\t", 2 * $depth + 1 );
 				return "$indent<ul>\n$rawItemsHtml$indent</ul>\n";
-
 			} );
 		}
 

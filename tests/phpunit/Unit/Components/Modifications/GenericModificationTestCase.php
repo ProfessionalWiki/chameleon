@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -23,6 +23,7 @@
  */
 
 namespace Skins\Chameleon\Tests\Unit\Components\Modifications;
+
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\Components\Silent;
 use Skins\Chameleon\Tests\Unit\Components\GenericComponentTestCase;
@@ -42,9 +43,14 @@ use Skins\Chameleon\Tests\Unit\Components\GenericComponentTestCase;
  */
 class GenericModificationTestCase extends GenericComponentTestCase {
 
+	/**
+	 * @param \DOMElement|null $domElement
+	 *
+	 * @return object
+	 */
 	public function getTestObject( \DOMElement $domElement = null ) {
 		$component = $this->getModifiedComponent();
-		return new $this->classUnderTest ( $component, $domElement );
+		return new $this->classUnderTest( $component, $domElement );
 	}
 
 	/**

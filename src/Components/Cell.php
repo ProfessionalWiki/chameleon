@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -35,16 +35,23 @@ use Skins\Chameleon\ChameleonTemplate;
  */
 class Cell extends Container {
 
-	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null, $indent = 0 ) {
-
-		// FIXME: A single "span" attribute was probably misguided for multiple screen sizes. Better approach?
+	/**
+	 * @param ChameleonTemplate $template
+	 * @param \DOMElement|null $domElement
+	 * @param int $indent
+	 */
+	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null,
+		$indent = 0 ) {
+		// FIXME: A single "span" attribute was probably misguided for multiple screen sizes.
+		// Better approach?
 
 		//if ( !is_null( $domElement ) ) {
 		//
 		//	$span = $domElement->getAttribute( 'span' );
 		//
 		//	if ( ( !is_int( $span ) && !ctype_digit( $span ) ) || ( $span < 1 ) || ( $span > 12 ) ) {
-		//		$span = '12'; // FIXME: If the span attribute is not (properly) specified, just add class "col"
+		//		// FIXME: If the span attribute is not (properly) specified, just add class "col"
+		//		$span = '12';
 		//	}
 		//
 		//} else {
@@ -53,7 +60,7 @@ class Cell extends Container {
 
 		parent::__construct( $template, $domElement, $indent );
 
-		//$this->addClasses( "col-lg-$span" );
+		// $this->addClasses( "col-lg-$span" );
 		$this->addClasses( "col" );
 	}
 

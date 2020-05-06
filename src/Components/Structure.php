@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -25,6 +25,7 @@
  */
 
 namespace Skins\Chameleon\Components;
+
 use DOMElement;
 
 /**
@@ -46,7 +47,7 @@ class Structure extends Component {
 	 * @return string the HTML code
 	 * @throws \MWException
 	 */
-	public function getHtml(){
+	public function getHtml() {
 		$ret = '';
 
 		foreach ( $this->getSubcomponents() as $component ) {
@@ -75,8 +76,7 @@ class Structure extends Component {
 	 * @throws \MWException
 	 */
 	protected function getSubcomponents() {
-
-		if ( !isset ( $this->subcomponents ) ) {
+		if ( !isset( $this->subcomponents ) ) {
 
 			$this->subcomponents = [];
 
@@ -88,7 +88,8 @@ class Structure extends Component {
 
 				foreach ( $children as $child ) {
 					if ( $child instanceof DOMElement ) {
-						$this->subcomponents[] = $this->getSkin()->getComponentFactory()->getComponent( $child, $this->getIndent() + 1 );
+						$this->subcomponents[] = $this->getSkin()->getComponentFactory()->getComponent( $child,
+							$this->getIndent() + 1 );
 					}
 				}
 

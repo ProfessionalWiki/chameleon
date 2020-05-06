@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -45,7 +45,6 @@ class FooterPlacesTest extends GenericComponentTestCase {
 	 * @covers ::getHtml
 	 */
 	public function testGetHtml_GetsAllKeys() {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
 		$chameleonTemplate->expects( $this->at( 1 ) )
@@ -63,9 +62,8 @@ class FooterPlacesTest extends GenericComponentTestCase {
 			->with( $this->equalTo( 'disclaimer' ), $this->equalTo( null ) )
 			->will( $this->returnValue( 'SomeHTML' ) );
 
-		$instance = new $this->classUnderTest ( $chameleonTemplate );
+		$instance = new $this->classUnderTest( $chameleonTemplate );
 
 		$instance->getHtml();
-
 	}
 }

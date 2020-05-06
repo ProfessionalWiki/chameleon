@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -40,15 +40,13 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\Component';
 
-
 	/**
 	 * @covers ::__construct
 	 */
 	public function testCanConstruct() {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$instance = $this->getMockForAbstractClass( $this->classUnderTest, array( $chameleonTemplate ) );
+		$instance = $this->getMockForAbstractClass( $this->classUnderTest, [ $chameleonTemplate ] );
 		$instance->expects( $this->any() )
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
@@ -58,7 +56,7 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 			$instance
 		);
 
-		$this->assertEquals( 0, $instance->getIndent() );
+		$this->assertSame( 0, $instance->getIndent() );
 		$this->assertNull( $instance->getDomElement() );
 	}
 
@@ -66,7 +64,6 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	 * @covers ::__construct
 	 */
 	public function testCanConstruct_withClassAttribute() {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
 		$domElement = $this->getMockBuilder( '\DOMElement' )
@@ -75,9 +72,10 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 
 		$domElement->expects( $this->atLeastOnce() )
 			->method( 'getAttribute' )
-			->will( $this->returnValueMap( array( array( 'class', 'someClass' ) ) ) );
+			->will( $this->returnValueMap( [ [ 'class', 'someClass' ] ] ) );
 
-		$instance = $this->getMockForAbstractClass( $this->classUnderTest, array( $chameleonTemplate, $domElement ) );
+		$instance = $this->getMockForAbstractClass( $this->classUnderTest, [ $chameleonTemplate,
+			$domElement ] );
 		$instance->expects( $this->any() )
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
@@ -92,14 +90,12 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	 * @covers ::getHtml
 	 */
 	public function testGetHtml() {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$instance = $this->getMockForAbstractClass( $this->classUnderTest, array( $chameleonTemplate ) );
+		$instance = $this->getMockForAbstractClass( $this->classUnderTest, [ $chameleonTemplate ] );
 		$instance->expects( $this->any() )
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
-
 
 		$this->assertValidHTML( $instance->getHtml() );
 	}
@@ -108,10 +104,9 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	 * @covers ::getSkinTemplate
 	 */
 	public function testGetSkinTemplate() {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$instance = $this->getMockForAbstractClass( $this->classUnderTest, array( $chameleonTemplate ) );
+		$instance = $this->getMockForAbstractClass( $this->classUnderTest, [ $chameleonTemplate ] );
 		$instance->expects( $this->any() )
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
@@ -126,10 +121,10 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	 * @covers ::getIndent
 	 */
 	public function testGetIndent() {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$instance = $this->getMockForAbstractClass( $this->classUnderTest, array( $chameleonTemplate, null, 42 ) );
+		$instance = $this->getMockForAbstractClass( $this->classUnderTest, [ $chameleonTemplate, null,
+			42 ] );
 		$instance->expects( $this->any() )
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
@@ -144,10 +139,10 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	 * @covers ::indent
 	 */
 	public function testIndent() {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$instance = $this->getMockForAbstractClass( $this->classUnderTest, array( $chameleonTemplate, null, 42 ) );
+		$instance = $this->getMockForAbstractClass( $this->classUnderTest, [ $chameleonTemplate, null,
+			42 ] );
 		$instance->expects( $this->any() )
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
@@ -158,7 +153,7 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 
 		$this->assertEquals(
 			"\n" . str_repeat( "\t", 43 ),
-			$method->invokeArgs( $instance, array( 1 ) )
+			$method->invokeArgs( $instance, [ 1 ] )
 		);
 	}
 
@@ -166,14 +161,14 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	 * @covers ::getDomElement
 	 */
 	public function testGetDomElement() {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
 		$domElement = $this->getMockBuilder( '\DOMElement' )
 			->disableOriginalConstructor()
 			->getMock();
 
-		$instance = $this->getMockForAbstractClass( $this->classUnderTest, array( $chameleonTemplate, $domElement ) );
+		$instance = $this->getMockForAbstractClass( $this->classUnderTest, [ $chameleonTemplate,
+			$domElement ] );
 		$instance->expects( $this->any() )
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
@@ -188,16 +183,14 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	 * @covers ::getClassString
 	 */
 	public function testGetClassString_WithoutSetting() {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$instance = $this->getMockForAbstractClass( $this->classUnderTest, array( $chameleonTemplate ) );
+		$instance = $this->getMockForAbstractClass( $this->classUnderTest, [ $chameleonTemplate ] );
 		$instance->expects( $this->any() )
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
 
-		$this->assertInternalType( 'string', $instance->getClassString() );
-
+		$this->assertIsString( $instance->getClassString() );
 	}
 
 	/**
@@ -206,10 +199,9 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	 * @dataProvider setClassesProvider
 	 */
 	public function testSetClasses( $input, $expected ) {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$instance = $this->getMockForAbstractClass( $this->classUnderTest, array( $chameleonTemplate ) );
+		$instance = $this->getMockForAbstractClass( $this->classUnderTest, [ $chameleonTemplate ] );
 		$instance->expects( $this->any() )
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
@@ -223,17 +215,16 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	 * @covers ::setClasses
 	 */
 	public function testSetClasses_WithInvalidParameter() {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$instance = $this->getMockForAbstractClass( $this->classUnderTest, array( $chameleonTemplate ) );
+		$instance = $this->getMockForAbstractClass( $this->classUnderTest, [ $chameleonTemplate ] );
 		$instance->expects( $this->any() )
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
 
 		$this->expectException( \MWException::class );
-		$instance->setClasses( true ); // use bool instead of string
-
+		// use bool instead of string
+		$instance->setClasses( true );
 	}
 
 	/**
@@ -243,10 +234,9 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	 * @dataProvider addClassesProvider
 	 */
 	public function testAddClasses( $input1, $input2, $combined ) {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$instance = $this->getMockForAbstractClass( $this->classUnderTest, array( $chameleonTemplate ) );
+		$instance = $this->getMockForAbstractClass( $this->classUnderTest, [ $chameleonTemplate ] );
 		$instance->expects( $this->any() )
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
@@ -263,10 +253,9 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	 * @dataProvider removeClassesProvider
 	 */
 	public function testRemoveClasses( $combined, $toRemove, $remainder ) {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$instance = $this->getMockForAbstractClass( $this->classUnderTest, array( $chameleonTemplate ) );
+		$instance = $this->getMockForAbstractClass( $this->classUnderTest, [ $chameleonTemplate ] );
 		$instance->expects( $this->any() )
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
@@ -278,45 +267,45 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	}
 
 	public function setClassesProvider() {
-		return array(
-			array( null, '' ),
+		return [
+			[ null, '' ],
 
-			array( '', '' ),
-			array( array(), '' ),
+			[ '', '' ],
+			[ [], '' ],
 
-			array( 'foo bar baz', 'foo bar baz' ),
-			array( array( 'foo', 'bar', 'baz', ), 'foo bar baz' ),
-		);
+			[ 'foo bar baz', 'foo bar baz' ],
+			[ [ 'foo', 'bar', 'baz', ], 'foo bar baz' ],
+		];
 	}
 
 	public function addClassesProvider() {
-		return array(
-			array( 'foo bar', null, 'foo bar' ),
+		return [
+			[ 'foo bar', null, 'foo bar' ],
 
-			array( 'foo bar', '', 'foo bar' ),
-			array( 'foo bar', array(), 'foo bar' ),
+			[ 'foo bar', '', 'foo bar' ],
+			[ 'foo bar', [], 'foo bar' ],
 
-			array( 'foo bar', 'baz', 'foo bar baz' ),
-			array( 'foo bar', array( 'baz' ), 'foo bar baz' ),
+			[ 'foo bar', 'baz', 'foo bar baz' ],
+			[ 'foo bar', [ 'baz' ], 'foo bar baz' ],
 
-			array( 'foo bar', 'baz quok', 'foo bar baz quok' ),
-			array( 'foo bar', array( 'baz', 'quok' ), 'foo bar baz quok' ),
-		);
+			[ 'foo bar', 'baz quok', 'foo bar baz quok' ],
+			[ 'foo bar', [ 'baz', 'quok' ], 'foo bar baz quok' ],
+		];
 	}
 
 	public function removeClassesProvider() {
-		return array(
-			array( 'foo bar', null, 'foo bar' ),
+		return [
+			[ 'foo bar', null, 'foo bar' ],
 
-			array( 'foo bar', '', 'foo bar' ),
-			array( 'foo bar', array(), 'foo bar' ),
+			[ 'foo bar', '', 'foo bar' ],
+			[ 'foo bar', [], 'foo bar' ],
 
-			array( 'foo bar baz', 'bar', 'foo baz' ),
-			array( 'foo bar baz', array( 'baz' ), 'foo bar' ),
+			[ 'foo bar baz', 'bar', 'foo baz' ],
+			[ 'foo bar baz', [ 'baz' ], 'foo bar' ],
 
-			array( 'foo bar baz quok', 'foo baz', 'bar quok' ),
-			array( 'foo bar baz quok', array( 'bar', 'baz' ), 'foo quok' ),
-		);
+			[ 'foo bar baz quok', 'foo baz', 'bar quok' ],
+			[ 'foo bar baz quok', [ 'bar', 'baz' ], 'foo quok' ],
+		];
 	}
 
 	protected function getChameleonSkinTemplateStub() {
@@ -334,7 +323,7 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	 * @param string $message
 	 */
 	public function assertValidHTML( $actual, $message = '' ) {
-		$this->assertInternalType( 'string', $actual, $message );
+		$this->assertIsString( $actual, $message );
 	}
 
 }

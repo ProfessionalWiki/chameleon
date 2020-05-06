@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke, mwjames
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -51,10 +51,11 @@ class SetupAfterCache {
 	 * @since  1.0
 	 *
 	 * @param BootstrapManager $bootstrapManager
-	 * @param array $configuration
+	 * @param array &$configuration
 	 * @param \WebRequest $request
 	 */
-	public function __construct( BootstrapManager $bootstrapManager, array &$configuration, \WebRequest $request ) {
+	public function __construct( BootstrapManager $bootstrapManager, array &$configuration,
+		\WebRequest $request ) {
 		$this->bootstrapManager = $bootstrapManager;
 		$this->configuration = &$configuration;
 		$this->request = $request;
@@ -66,7 +67,6 @@ class SetupAfterCache {
 	 * @return self
 	 */
 	public function process() {
-
 		$this->setInstallPaths();
 		$this->addLateSettings();
 		$this->registerCommonBootstrapModules();
@@ -79,10 +79,9 @@ class SetupAfterCache {
 	/**
 	 * @since 1.0
 	 *
-	 * @param array $configuration
+	 * @param array &$configuration
 	 */
 	public function adjustConfiguration( array &$configuration ) {
-
 		foreach ( $this->configuration as $key => $value ) {
 			$configuration[ $key ] = $value;
 		}
@@ -92,13 +91,13 @@ class SetupAfterCache {
 	 * Set local and remote base path of the Chameleon skin
 	 */
 	protected function setInstallPaths() {
-
-		$this->configuration[ 'chameleonLocalPath' ] = $this->configuration['wgStyleDirectory'] . '/chameleon';
-		$this->configuration[ 'chameleonRemotePath' ] = $this->configuration['wgStylePath'] . '/chameleon';
+		$this->configuration[ 'chameleonLocalPath' ] =
+			$this->configuration['wgStyleDirectory'] . '/chameleon';
+		$this->configuration[ 'chameleonRemotePath' ] =
+			$this->configuration['wgStylePath'] . '/chameleon';
 	}
 
 	protected function addLateSettings() {
-
 		$this->registerSkinWithMW();
 		$this->addChameleonToVisualEditorSupportedSkins();
 		$this->addResourceModules();
@@ -106,47 +105,53 @@ class SetupAfterCache {
 	}
 
 	protected function registerCommonBootstrapModules() {
-
 		$this->bootstrapManager->addAllBootstrapModules();
 
-		//FIXME: Make configurable, e.g. in LocalSettings.php
+		// FIXME: Make configurable, e.g. in LocalSettings.php
 		$this->bootstrapManager->addStyleFile(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/themes/_light.scss', 'beforeVariables'
+			$this->configuration[ 'chameleonLocalPath' ] .
+				'/resources/styles/themes/_light.scss', 'beforeVariables'
 		);
 
 		$this->bootstrapManager->addStyleFile(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/_variables.scss', 'variables'
+			$this->configuration[ 'chameleonLocalPath' ] .
+				'/resources/styles/_variables.scss', 'variables'
 		);
 
 		$this->bootstrapManager->addStyleFile(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fontawesome.scss'
+			$this->configuration[ 'chameleonLocalPath' ] .
+				'/resources/fontawesome/scss/fontawesome.scss'
 		);
 
 		$this->bootstrapManager->addStyleFile(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-solid.scss'
+			$this->configuration[ 'chameleonLocalPath' ] .
+				'/resources/fontawesome/scss/fa-solid.scss'
 		);
 
 		$this->bootstrapManager->addStyleFile(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-regular.scss'
+			$this->configuration[ 'chameleonLocalPath' ] .
+				'/resources/fontawesome/scss/fa-regular.scss'
 		);
 
 		$this->bootstrapManager->addStyleFile(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-brands.scss'
+			$this->configuration[ 'chameleonLocalPath' ] .
+				'/resources/fontawesome/scss/fa-brands.scss'
 		);
 
 		$this->bootstrapManager->addStyleFile(
-			$this->configuration[ 'chameleonLocalPath' ] . '/resources/styles/chameleon.scss'
+			$this->configuration[ 'chameleonLocalPath' ] .
+				'/resources/styles/chameleon.scss'
 		);
 
-		$this->bootstrapManager->setScssVariable( 'fa-font-path', $this->configuration[ 'chameleonRemotePath' ] . '/resources/fontawesome/webfonts' );
-
+		$this->bootstrapManager->setScssVariable( 'fa-font-path',
+			$this->configuration[ 'chameleonRemotePath' ] . '/resources/fontawesome/webfonts' );
 	}
 
 	protected function registerExternalScssModules() {
-
 		if ( $this->hasConfigurationOfTypeArray( 'egChameleonExternalStyleModules' ) ) {
 
-			foreach ( $this->configuration[ 'egChameleonExternalStyleModules' ] as $localFile => $position ) {
+			foreach ( $this->configuration[ 'egChameleonExternalStyleModules' ]
+				as $localFile => $position ) {
 
 				$config = $this->matchAssociativeElement( $localFile, $position );
 				$config[ 0 ] = $this->isReadableFile( $config[ 0 ] );
@@ -157,7 +162,6 @@ class SetupAfterCache {
 	}
 
 	protected function registerExternalStyleVariables() {
-
 		if ( $this->hasConfigurationOfTypeArray( 'egChameleonExternalStyleVariables' ) ) {
 
 			foreach ( $this->configuration[ 'egChameleonExternalStyleVariables' ] as $key => $value ) {
@@ -167,7 +171,7 @@ class SetupAfterCache {
 	}
 
 	/**
-	 * @param $id
+	 * @param string $id
 	 * @return bool
 	 */
 	private function hasConfiguration( $id ) {
@@ -183,14 +187,13 @@ class SetupAfterCache {
 	}
 
 	/**
-	 * @param $localFile
-	 * @param $position
+	 * @param mixed $localFile
+	 * @param mixed $position
 	 *
 	 * @return array
 	 */
 	private function matchAssociativeElement( $localFile, $position ) {
-
-		if ( is_integer( $localFile ) ) {
+		if ( is_int( $localFile ) ) {
 			return [ $position ];
 		}
 
@@ -202,7 +205,6 @@ class SetupAfterCache {
 	 * @return string
 	 */
 	private function isReadableFile( $file ) {
-
 		if ( is_readable( $file ) ) {
 			return $file;
 		}
@@ -211,9 +213,9 @@ class SetupAfterCache {
 	}
 
 	protected function addChameleonToVisualEditorSupportedSkins() {
-
 		// if Visual Editor is installed and there is a setting to enable or disable it
-		if ( $this->hasConfiguration( 'wgVisualEditorSupportedSkins' ) && $this->hasConfiguration( 'egChameleonEnableVisualEditor' ) ) {
+		if ( $this->hasConfiguration( 'wgVisualEditorSupportedSkins' ) &&
+			$this->hasConfiguration( 'egChameleonEnableVisualEditor' ) ) {
 
 			// if VE should be enabled
 			if ( $this->configuration[ 'egChameleonEnableVisualEditor' ] === true ) {
@@ -238,26 +240,28 @@ class SetupAfterCache {
 			'localBasePath'  => $this->configuration[ 'chameleonLocalPath' ] . '/resources/js',
 			'remoteBasePath' => $this->configuration[ 'chameleonRemotePath' ] . '/resources/js',
 			'group'          => 'skin.chameleon',
-			'skinScripts'    => [ 'chameleon' => [ 'hc-sticky/hc-sticky.js', 'Components/Modifications/sticky.js' ] ]
+			'skinScripts'    =>
+				[ 'chameleon' => [ 'hc-sticky/hc-sticky.js', 'Components/Modifications/sticky.js' ] ]
 		];
 	}
 
 	protected function setLayoutFile() {
-
 		$layout = $this->request->getVal( 'uselayout' );
 
 		if ( $layout !== null &&
 			$this->hasConfigurationOfTypeArray( 'egChameleonAvailableLayoutFiles' ) &&
 			array_key_exists( $layout, $this->configuration[ 'egChameleonAvailableLayoutFiles' ] ) ) {
 
-			$this->configuration[ 'egChameleonLayoutFile' ] = $this->configuration[ 'egChameleonAvailableLayoutFiles' ][ $layout ];
+			$this->configuration[ 'egChameleonLayoutFile' ] =
+				$this->configuration[ 'egChameleonAvailableLayoutFiles' ][ $layout ];
 		}
 	}
 
 	protected function registerSkinWithMW() {
-		MediaWikiServices::getInstance()->getSkinFactory()->register( 'chameleon', 'Chameleon', function () {
-			return new Chameleon();
-		} );
+		MediaWikiServices::getInstance()->getSkinFactory()->register( 'chameleon', 'Chameleon',
+			function () {
+				return new Chameleon();
+			} );
 	}
 
 }

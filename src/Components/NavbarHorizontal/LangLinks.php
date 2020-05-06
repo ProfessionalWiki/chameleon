@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -47,7 +47,6 @@ class LangLinks extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-
 		if ( !$this->hasLangLinks() ) {
 			return '';
 		}
@@ -57,7 +56,8 @@ class LangLinks extends Component {
 		if ( filter_var( $this->getAttribute( 'flatten' ), FILTER_VALIDATE_BOOLEAN ) ) {
 			$languageLinks = implode( $this->getLinkListItems() );
 		} else {
-			$languageLinks = $this->wrapDropdownMenu( 'otherlanguages', implode( $this->getLinkListItems() ) );
+			$languageLinks = $this->wrapDropdownMenu( 'otherlanguages',
+				implode( $this->getLinkListItems() ) );
 		}
 
 		return $introComment . $languageLinks;
@@ -67,7 +67,8 @@ class LangLinks extends Component {
 	 * @return bool
 	 */
 	private function hasLangLinks() {
-		return array_key_exists( 'language_urls', $this->getSkinTemplate()->data ) && ( $this->getSkinTemplate()->data[ 'language_urls' ] );
+		return array_key_exists( 'language_urls', $this->getSkinTemplate()->data ) &&
+			( $this->getSkinTemplate()->data[ 'language_urls' ] );
 	}
 
 	/**
@@ -75,7 +76,6 @@ class LangLinks extends Component {
 	 * @throws \MWException
 	 */
 	private function getLinkListItems() {
-
 		$this->indent( 2 );
 
 		$skinTemplate = $this->getSkinTemplate();
@@ -87,7 +87,8 @@ class LangLinks extends Component {
 			} else {
 				$linkItem['class'] = 'nav-item';
 			}
-			$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem, [ 'link-class' => 'nav-link', 'tag' => 'div' ] );
+			$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem,
+				[ 'link-class' => 'nav-link', 'tag' => 'div' ] );
 		}
 
 		$this->indent( -2 );
@@ -96,19 +97,28 @@ class LangLinks extends Component {
 	}
 
 	/**
+	 * @param string $labelMsg
+	 * @param array $list
 	 * @return string
 	 * @throws \MWException
 	 */
 	private function wrapDropdownMenu( $labelMsg, $list ) {
-
 		$trigger = $this->indent( 1 ) . IdRegistry::getRegistry()->element(
 				'a',
-				[ 'href' => '#', 'class' => 'nav-link dropdown-toggle p-lang-toggle', 'data-toggle' => 'dropdown', 'data-boundary' => 'viewport' ],
+				[
+					'href' => '#',
+					'class' => 'nav-link dropdown-toggle p-lang-toggle',
+					'data-toggle' => 'dropdown',
+					'data-boundary' => 'viewport'
+				],
 				$this->getSkinTemplate()->getMsg( $labelMsg )->escaped()
 			);
 
-		$liElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'dropdown-menu' ], $list, $this->indent() );
-		$ulElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'nav-item p-lang-dropdown ' . $this->getClassString() ], $trigger . $liElement, $this->indent( -1 ) );
+		$liElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'dropdown-menu' ], $list,
+			$this->indent() );
+		$ulElement = IdRegistry::getRegistry()->element( 'div',
+			[ 'class' => 'nav-item p-lang-dropdown ' . $this->getClassString() ],
+			$trigger . $liElement, $this->indent( -1 ) );
 
 		return $ulElement;
 	}

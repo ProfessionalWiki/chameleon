@@ -3,7 +3,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -45,7 +45,6 @@ class FooterIconsTest extends GenericComponentTestCase {
 	 * @covers ::getHtml
 	 */
 	public function testGetHtml() {
-
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
 		$skin = $chameleonTemplate->getSkin();
@@ -72,12 +71,12 @@ class FooterIconsTest extends GenericComponentTestCase {
 
 		$chameleonTemplate->expects( $this->any() )
 			->method( 'getFooterIcons' )
-			->will( $this->returnValue( array(
-				'block1' => array( 'icon1', 'icon2' ),
-				'block2' => array( 'icon3', 'icon4' ),
-			) ) );
+			->will( $this->returnValue( [
+				'block1' => [ 'icon1', 'icon2' ],
+				'block2' => [ 'icon3', 'icon4' ],
+			] ) );
 
-		$instance = new $this->classUnderTest ( $chameleonTemplate );
+		$instance = new $this->classUnderTest( $chameleonTemplate );
 
 		$this->assertValidHTML( $instance->getHtml() );
 	}

@@ -5,7 +5,7 @@
  * This file is part of the MediaWiki skin Chameleon.
  *
  * @copyright 2013 - 2019, Stephan Gambke
- * @license   GNU General Public License, version 3 (or any later version)
+ * @license   GPL-3.0-or-later
  *
  * The Chameleon skin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by the Free
@@ -43,8 +43,8 @@ class PermissionsHelper {
 
 	/**
 	 * @param Chameleon $skin
-	 * @param DOMElement     $domElement
-	 * @param bool           $default
+	 * @param DOMElement|null $domElement
+	 * @param bool $default
 	 */
 	public function __construct( Chameleon $skin, DOMElement $domElement = null, $default = false ) {
 		$this->skin = $skin;
@@ -61,7 +61,6 @@ class PermissionsHelper {
 	 *
 	 */
 	public function userHasGroup( $attributeNameInDomElement ) {
-
 		return $this->userHas( 'group', $attributeNameInDomElement );
 	}
 
@@ -73,7 +72,6 @@ class PermissionsHelper {
 	 * @return bool
 	 */
 	protected function userHas( $attributeOfUser, $attributeNameInDomElement ) {
-
 		$user = $this->skin->getUser();
 		$attributeAccessors = [
 			'group'      => [ $user, 'getEffectiveGroups' ],
@@ -103,7 +101,8 @@ class PermissionsHelper {
 	 * @return bool
 	 */
 	public function hasAttribute( $attributeNameInDomElement ) {
-		return $this->domElement !== null && $this->domElement->hasAttribute( $attributeNameInDomElement );
+		return $this->domElement !== null &&
+			$this->domElement->hasAttribute( $attributeNameInDomElement );
 	}
 
 	/**
@@ -112,8 +111,8 @@ class PermissionsHelper {
 	 * @return string[]
 	 */
 	protected function getValueListFromAttribute( $attributeName ) {
-		return $this->domElement === null ? [] : array_map( 'trim', explode( ',', $this->domElement->getAttribute( $attributeName ) ) );
-
+		return $this->domElement === null ? [] :
+			array_map( 'trim', explode( ',', $this->domElement->getAttribute( $attributeName ) ) );
 	}
 
 	/**
@@ -125,7 +124,6 @@ class PermissionsHelper {
 	 *
 	 */
 	public function userHasPermission( $attributeNameInDomElement ) {
-
 		return $this->userHas( 'permission', $attributeNameInDomElement );
 	}
 
@@ -137,12 +135,12 @@ class PermissionsHelper {
 	 * @return bool
 	 */
 	public function pageIsInNamespace( $attributeNameInDomElement ) {
-
 		if ( !$this->hasAttribute( $attributeNameInDomElement ) ) {
 			return $this->default;
 		}
 
-		$expectedNamespaces = array_map( [ $this, 'getNamespaceNumberFromDefinedConstantName' ], $this->getValueListFromAttribute( $attributeNameInDomElement ) );
+		$expectedNamespaces = array_map( [ $this, 'getNamespaceNumberFromDefinedConstantName' ],
+			$this->getValueListFromAttribute( $attributeNameInDomElement ) );
 		$pageNamespace = $this->skin->getTitle()->getNamespace();
 
 		return in_array( $pageNamespace, $expectedNamespaces );
@@ -155,7 +153,7 @@ class PermissionsHelper {
 	 */
 	protected function getNamespaceNumberFromDefinedConstantName( $value ) {
 		$constants = get_defined_constants();
-		if ( !is_null( $value ) && array_key_exists( $value, $constants ) ) {
+		if ( $value !== null && array_key_exists( $value, $constants ) ) {
 			$value = $constants[ $value ];
 		}
 

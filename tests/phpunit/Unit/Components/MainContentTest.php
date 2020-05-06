@@ -57,6 +57,12 @@ class MainContentTest extends GenericComponentTestCase {
 		];
 
 		$instance = new MainContent( $chameleonTemplate );
-		$this->assertIsString( $instance->getHtml() );
+		if ( method_exists( '\PHPUnit\Framework\TestCase', 'assertIsString' ) ) {
+			$this->assertIsString( $instance->getHtml() );
+		} else {
+			// @codingStandardsIgnoreStart
+			$this->assertInternalType( 'string', $instance->getHtml() );
+			// @codingStandardsIgnoreEnd
+		}
 	}
 }

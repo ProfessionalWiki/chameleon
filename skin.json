@@ -12,6 +12,10 @@
 	"requires": {
 		"MediaWiki": ">= 1.31.0"
 	},
+	"AutoloadNamespaces": {
+		"Skins\\Chameleon\\": "src/",
+		"Skins\\Chameleon\\Tests\\": "tests/phpunit/"
+	},
 	"MessagesDirs": {
 		"Chameleon": "resources/i18n"
 	},

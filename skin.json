@@ -5,12 +5,15 @@
 		"[https://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]",
 		"[https://professional.wiki/ Professional.Wiki]"
 	],
-	"version": "2.4.0-alpha",
+	"version": "3.0.0-alpha",
 	"url": "https://www.mediawiki.org/wiki/Skin:Chameleon",
 	"descriptionmsg": "chameleon-desc",
 	"license-name": "GPL-3.0-or-later",
 	"requires": {
-		"MediaWiki": ">= 1.31.0"
+		"MediaWiki": ">= 1.31.0",
+		"extensions": {
+			"Bootstrap": "4.2"
+		}
 	},
 	"AutoloadNamespaces": {
 		"Skins\\Chameleon\\": "src/",

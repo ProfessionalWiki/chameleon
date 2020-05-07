@@ -27,7 +27,6 @@
 namespace Skins\Chameleon;
 
 use Bootstrap\BootstrapManager;
-use ExtensionRegistryHelper\ExtensionRegistryHelper;
 use OutputPage;
 use QuickTemplate;
 use ResourceLoader;
@@ -57,8 +56,6 @@ class Chameleon extends SkinTemplate {
 	 * @throws \Exception
 	 */
 	public static function init() {
-		ExtensionRegistryHelper::singleton()->loadExtensionRecursive( 'Bootstrap' );
-
 		/**
 		 * Using callbacks for hook registration
 		 *

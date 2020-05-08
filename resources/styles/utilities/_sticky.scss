@@ -9,3 +9,12 @@
 .sticky {
 	z-index: $zindex-sticky;
 }
+
+// https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top
+// Fix anchors being hidden under a sticky nav
+.reference,
+.firstHeading,
+h1, h2, h3, h4, h5
+{
+  scroll-margin-top: 120px;
+}

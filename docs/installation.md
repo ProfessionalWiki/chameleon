@@ -2,19 +2,26 @@
 
 ### Requirements
 
-- PHP 7.0 or later
+- PHP 7.1 or later
 - MediaWiki 1.31 or later
-- [Composer][composer]
-
-Further required software packages will be installed automatically. It is *not*
-necessary to install any dependencies. Composer will take care of that.
 
 ### Installation
+
+There are two methods for installing Chameleon: with or without [Composer][composer].
+
+If you install Chameleon with Composer, further required software packages will be installed
+automatically. In this case, it is *not* necessary to install any dependencies. Composer will
+take care of that.
+
+If you install Chameleon without Composer, you will need to install and enable the
+[Bootstrap extension][bootstrap] before you install and enable Chameleon.
 
 If unsure try the detailed installation instructions for
 [Windows](installation-windows.md) or [Linux](installation-linux.md).
 
 Here is the short version:
+
+#### Installation with Composer
 
 1. On a command line go to your MediaWiki installation directory
 
@@ -52,12 +59,33 @@ depends on.
 If you run into problems, try the
 [troubleshooting](installation-troubleshooting.md).
 
-### Update
+#### Installation without Composer
+
+1. Install and enable the [Bootstrap][bootstrap] extension.
+
+2. [Download][download] Chameleon and place the file(s) in a directory called Chameleon in your
+    skins/ folder.
+
+3. Add the following code at the bottom of your LocalSettings.php:
+
+   ```php
+   wfLoadSkin( 'chameleon' );
+	```
+
+   To set Chameleon as the default skin, find `$wgDefaultSkin` and amend it:
+   ```php
+   $wgDefaultSkin='chameleon';
+   ```
+
+4. __Done:__ Navigate to _Special:Version_ on your wiki to verify that the skin
+   is successfully installed.
+
+### Update with Composer
 
 From your MediaWiki installation directory run `composer update
 "mediawiki/chameleon-skin"`
 
-### De-installation
+### De-installation with Composer
 
 Before de-installation make sure you secure (move, backup) any custom files you
 might want to retain.
@@ -67,3 +95,5 @@ Remove the Chameleon skin from the `composer.local.json` file. Then run
 directory.
 
 [composer]: https://getcomposer.org/
+[bootstrap]: https://www.mediawiki.org/wiki/Extension:Bootstrap
+[download]: https://github.com/ProfessionalWiki/chameleon/archive/master.zip

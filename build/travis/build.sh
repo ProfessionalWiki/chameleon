@@ -126,6 +126,7 @@ function installSkinViaComposerOnMediaWikiRoot {
 	echo 'ini_set("display_errors", 1);' >> LocalSettings.php
 	echo '$wgShowExceptionDetails = true;' >> LocalSettings.php
 	echo '$wgDevelopmentWarnings = true;' >> LocalSettings.php
+	echo 'wfLoadExtension( "Bootstrap" );' >> LocalSettings.php
 	echo 'wfLoadSkin( "chameleon" );' >> LocalSettings.php
 	echo "putenv( 'MW_INSTALL_PATH=$(pwd)' );" >> LocalSettings.php
 

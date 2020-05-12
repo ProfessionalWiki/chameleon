@@ -23,38 +23,28 @@ Here is the short version:
 
 #### Installation with Composer
 
-1. On a command line go to your MediaWiki installation directory
+On a command line go to your MediaWiki installation directory and run these two commands
 
-2. Open the `composer.local.json` file in an editor and add the Chameleon skin
-   to the `require` section:
-   ```
-   "require": {
-       "mediawiki/chameleon-skin": "~2.0"
-   }
-   ```
-   
-   **Remark:** If you do not have a `composer.local.json` file, but a
-   `composer.local.json-sample`, rename the `-sample` file and add the
-   `"require"` section.
-   
-3. With Composer installed, run
-   `composer update "mediawiki/chameleon-skin"`
-   
-4. Open `LocalSettings.php` in an editor, and add the following line:
+```
+COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~2.0
 
-   ```php
-   wfLoadSkin( 'chameleon' );
-	```
+composer update mediawiki/chameleon-skin --no-dev -o
+```
 
-   To set Chameleon as the default skin, find `$wgDefaultSkin` and amend it:
-   ```php
-   $wgDefaultSkin='chameleon';
-   ```
-5. __Done:__ Navigate to _Special:Version_ on your wiki to verify that the skin
-   is successfully installed.
+Then, open `LocalSettings.php` in an editor, and add the following line:
 
-**Remark:** It is _NOT_ necessary to install or load any extensions this skin
-depends on.
+
+```php
+wfLoadSkin( 'chameleon' );
+```
+
+Optional: to set Chameleon as the default skin, find `$wgDefaultSkin` and amend it:
+
+```php
+$wgDefaultSkin='chameleon';
+```
+
+Save the file. To verifying Chameleon was installed correctly, navigate to _Special:Version_ on your wiki.
 
 If you run into problems, try the
 [troubleshooting](installation-troubleshooting.md).
@@ -82,8 +72,9 @@ If you run into problems, try the
 
 ### Update with Composer
 
-From your MediaWiki installation directory run `composer update
-"mediawiki/chameleon-skin"`
+From your MediaWiki installation directory run `composer update "mediawiki/chameleon-skin" --no-dev -o`
+
+If you want to upgrade from Chameleon 2.x to 3.x, first edit `composer.local.json`. Change `"mediawiki/chameleon-skin": "~2.0"` to `"mediawiki/chameleon-skin": "~3.0"`.
 
 ### De-installation with Composer
 

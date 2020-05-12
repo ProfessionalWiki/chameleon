@@ -1,10 +1,13 @@
 ## Release Notes
 
-### Chameleon 2.4.0
+### Chameleon 3.0.0
 
-Under development
+Released on May 12, 2020.
 
+* Breaking change: the Bootstrap extension now needs to be enabled manually (`wfLoadExtension` in `LocalSettings.php`)
+* Added support for installation without Composer (thanks @cicalese)
 * Added `placeholder` option to the `SearchBar` component (thanks @JeroenDeDauw)
+* Added toolbox icon for Special:RecentChanges (thanks @JeroenDeDauw)
 
 ### Chameleon 2.3.0
 

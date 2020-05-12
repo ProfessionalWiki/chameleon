@@ -31,10 +31,11 @@ COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-sk
 composer update mediawiki/chameleon-skin --no-dev -o
 ```
 
-Then, open `LocalSettings.php` in an editor, and add the following line:
+Then, open `LocalSettings.php` in an editor, and add the following lines:
 
 
 ```php
+wfLoadExtension( 'Bootstrap' );
 wfLoadSkin( 'chameleon' );
 ```
 

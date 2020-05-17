@@ -135,17 +135,12 @@ class Chameleon extends SkinTemplate {
 			$moduleStyles = [
 				'mediawiki.skinning.content',
 				'mediawiki.legacy.commonPrint',
+				'mediawiki.ui.button',
 				'zzz.ext.bootstrap.styles'
 			];
 
 			if ( $out->isSyndicated() ) {
 				$moduleStyles[] = 'mediawiki.feedlink';
-			}
-
-			// Deprecated since 1.26: Unconditional loading of mediawiki.ui.button
-			// on every page is deprecated. Express a dependency instead.
-			if ( strpos( $out->getHTML(), 'mw-ui-button' ) !== false ) {
-				$moduleStyles[] = 'mediawiki.ui.button';
 			}
 
 			$out->addModuleStyles( $moduleStyles );

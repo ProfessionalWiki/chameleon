@@ -2,7 +2,7 @@
 
 ### Chameleon 3.0.0
 
-Released on May 12, 2020.
+Released on May 20, 2020.
 
 * Breaking change: the Bootstrap extension now needs to be enabled manually (`wfLoadExtension` in `LocalSettings.php`)
 * Added support for installation without Composer (thanks @cicalese)

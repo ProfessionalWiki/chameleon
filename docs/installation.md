@@ -53,8 +53,8 @@ If you run into problems, try the
 
 1. Install and enable the [Bootstrap][bootstrap] extension.
 
-2. [Download][download] Chameleon and place the file(s) in a directory called Chameleon in your
-    skins/ folder.
+2. [Download][download] Chameleon and place the file(s) in a directory called **c**hameleon in your
+    skins/ folder. 
 
 3. Add the following code at the bottom of your LocalSettings.php:
 

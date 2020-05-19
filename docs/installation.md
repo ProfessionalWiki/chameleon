@@ -59,7 +59,7 @@ If you run into problems, try the
 3. Add the following code at the bottom of your LocalSettings.php:
 
    ```php
-   wfLoadSkin( 'Chameleon' );
+   wfLoadSkin( 'chameleon' );
 	```
 
    To set Chameleon as the default skin, find `$wgDefaultSkin` and amend it:

@@ -119,4 +119,48 @@ class ChameleonTemplate extends BaseTemplate {
 		return parent::makeLink( $key, $item, $options );
 	}
 
+	/**
+	 * @param array $options (optional) allows disabling certain sidebar elements.
+	 *  The keys `search`, `toolbox` and `languages` are accepted.
+	 * @return array representing the sidebar
+	 */
+	public function getSidebar( $options = [] ) {
+		return parent::getSidebar( $options );
+	}
+
+	/**
+	 * Returns an array of footerlinks trimmed down to only those footer links that
+	 * are valid.
+	 * If you pass "flat" as an option then the returned array will be a flat array
+	 * of footer icons instead of a key/value array of footerlinks arrays broken
+	 * up into categories.
+	 * @param string|null $option
+	 * @return array|mixed
+	 */
+	public function getFooterLinks( $option = null ) {
+		return parent::getFooterLinks( $option );
+	}
+
+	/**
+	 * Returns an array of footer icons. All footer icons which do not have an
+	 * image icon set will be filtered out.
+	 * @return array
+	 */
+	public function getFooterIconsWithImage() {
+		$footericons = $this->get( 'footericons' );
+
+		// Unset any icons which don't have an image
+		foreach ( $footericons as $footerIconsKey => &$footerIconsBlock ) {
+			foreach ( $footerIconsBlock as $footerIconKey => $footerIcon ) {
+				if ( !is_string( $footerIcon ) && !isset( $footerIcon['src'] ) ) {
+					unset( $footerIconsBlock[$footerIconKey] );
+				}
+			}
+			if ( count( $footerIconsBlock ) <= 0 ) {
+				unset( $footericons[$footerIconsKey] );
+			}
+		}
+
+		return $footericons;
+	}
 }

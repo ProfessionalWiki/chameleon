@@ -5,7 +5,7 @@
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "The Chameleon skin",
+	"chameleon-desc": "A highly flexible responsive skin using Bootstrap 4",
 	"chameleon-loggedin": "You are logged in as $1.",
 	"chameleon-notloggedin": "You are not logged in.",
 	"chameleon-newmessages": "You have new messages.",

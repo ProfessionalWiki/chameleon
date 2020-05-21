@@ -101,7 +101,7 @@ class SearchBar extends Component {
 			$attributes['placeholder'] = $this->getAttribute( 'placeholder' );
 		}
 
-		return $this->getSkinTemplate()->makeSearchInput( $attributes ) ?? '';
+		return $this->getSkin()->makeSearchInput( $attributes ) ?? '';
 	}
 
 	/**

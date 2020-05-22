@@ -70,7 +70,7 @@ class FooterIconsTest extends GenericComponentTestCase {
 			->will( $this->returnValue( 'SomeHTML' ) );
 
 		$chameleonTemplate->expects( $this->any() )
-			->method( 'getFooterIcons' )
+			->method( 'getFooterIconsWithImage' )
 			->will( $this->returnValue( [
 				'block1' => [ 'icon1', 'icon2' ],
 				'block2' => [ 'icon3', 'icon4' ],

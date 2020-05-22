@@ -28,6 +28,7 @@ namespace Skins\Chameleon\Components;
 
 use Linker;
 use Skins\Chameleon\IdRegistry;
+use Skin;
 
 /**
  * The SearchBar class.
@@ -102,7 +103,7 @@ class SearchBar extends Component {
 		}
 
 		// pre-MW 1.35 backward compatibility
-		if ( !method_exists( \Skin::class, 'makeSearchInput' ) ) {
+		if ( !method_exists( Skin::class, 'makeSearchInput' ) ) {
 			return $this->getSkinTemplate()->makeSearchInput( $attributes ) ?? '';
 		}
 

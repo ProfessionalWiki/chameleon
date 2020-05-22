@@ -101,13 +101,12 @@ class SearchBar extends Component {
 			$attributes['placeholder'] = $this->getAttribute( 'placeholder' );
 		}
 
-		$html = '';
-		if ( method_exists( 'Skin', 'makeSearchInput' ) ) {
-			$html = $this->getSkin()->makeSearchInput( $attributes ) ?? '';
-		} else {
-			$html = $this->getSkinTemplate()->makeSearchInput( $attributes ) ?? '';
+		// pre-MW 1.35 backward compatibility
+		if ( !method_exists( 'Skin', 'makeSearchInput' ) ) {
+			return $this->getSkinTemplate()->makeSearchInput( $attributes ) ?? '';
 		}
-		return $html;
+
+		return $this->getSkin()->makeSearchInput( $attributes ) ?? '';
 	}
 
 	/**

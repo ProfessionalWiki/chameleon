@@ -27,8 +27,8 @@
 namespace Skins\Chameleon\Components;
 
 use Linker;
-use Skins\Chameleon\IdRegistry;
 use Skin;
+use Skins\Chameleon\IdRegistry;
 
 /**
  * The SearchBar class.

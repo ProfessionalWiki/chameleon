@@ -1,5 +1,6 @@
 {
-	"name": "Chameleon",
+	"name": "chameleon",
+	"namemsg": "skinname-chameleon",
 	"type": "skin",
 	"author": [
 		"[https://www.mediawiki.org/wiki/User:F.trott Stephan Gambke]",

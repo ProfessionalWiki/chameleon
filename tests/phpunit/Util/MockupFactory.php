@@ -280,6 +280,9 @@ class MockupFactory {
 			->method( 'getComponentFactory' )
 			->will( $this->testCase->returnValue( $this->getComponentFactoryStub() ) );
 
+		$skin->expects( $this->testCase->any() )
+			->method( 'msg' )
+			->will( $this->testCase->returnValue( $this->getMessageStub() ) );
 		return $skin;
 	}
 

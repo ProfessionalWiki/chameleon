@@ -59,6 +59,7 @@ class NavMenu extends Component {
 
 		// create a dropdown for each sidebar box
 		foreach ( $sidebar as $menuName => $menuDescription ) {
+			/* @phan-suppress-next-line SecurityCheck-DoubleEscaped */
 			$ret .= $this->getDropdownForNavMenu( $menuName, $menuDescription,
 				array_search( $menuName, $flatten ) !== false );
 		}

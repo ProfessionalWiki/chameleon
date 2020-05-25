@@ -41,7 +41,10 @@ abstract class Component {
 
 	private $mSkinTemplate;
 	private $mIndent = 0;
+
+	/** @var $array */
 	private $mClasses = [];
+
 	private $mDomElement = null;
 
 	/**

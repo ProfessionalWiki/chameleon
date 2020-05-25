@@ -29,6 +29,7 @@ namespace Skins\Chameleon;
 use DOMDocument;
 use DOMElement;
 use MWException;
+use QuickTemplate;
 use RuntimeException;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\Components\Container;
@@ -46,6 +47,8 @@ class ComponentFactory {
 	private $mRootComponent = null;
 
 	private $layoutFile;
+
+	/** @var QuickTemplate|null */
 	private $skinTemplate;
 
 	private const NAMESPACE_HIERARCHY = 'Skins\\Chameleon\\Components';
@@ -73,7 +76,10 @@ class ComponentFactory {
 
 			if ( $roots->length > 0 ) {
 
-				$this->mRootComponent = $this->getComponent( $roots->item( 0 ) );
+				$element = $roots->item( 0 );
+				if ( $element instanceof DOMElement ) {
+					$this->mRootComponent = $this->getComponent( $element );
+				}
 
 			} else {
 				// TODO: catch other errors, e.g. malformed XML
@@ -178,16 +184,16 @@ class ComponentFactory {
 	}
 
 	/**
-	 * @return mixed
+	 * @return QuickTemplate|null
 	 */
 	public function getSkinTemplate() {
 		return $this->skinTemplate;
 	}
 
 	/**
-	 * @param ChameleonTemplate $skinTemplate
+	 * @param QuickTemplate $skinTemplate
 	 */
-	public function setSkinTemplate( ChameleonTemplate $skinTemplate ) {
+	public function setSkinTemplate( QuickTemplate $skinTemplate ) {
 		$this->skinTemplate = $skinTemplate;
 	}
 

@@ -98,11 +98,11 @@ class LangLinks extends Component {
 
 	/**
 	 * @param string $labelMsg
-	 * @param array $list
+	 * @param string $contents
 	 * @return string
 	 * @throws \MWException
 	 */
-	private function wrapDropdownMenu( $labelMsg, $list ) {
+	private function wrapDropdownMenu( $labelMsg, $contents ) {
 		$trigger = $this->indent( 1 ) . IdRegistry::getRegistry()->element(
 				'a',
 				[
@@ -114,7 +114,7 @@ class LangLinks extends Component {
 				$this->getSkinTemplate()->getMsg( $labelMsg )->escaped()
 			);
 
-		$liElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'dropdown-menu' ], $list,
+		$liElement = IdRegistry::getRegistry()->element( 'div', [ 'class' => 'dropdown-menu' ], $contents,
 			$this->indent() );
 		$ulElement = IdRegistry::getRegistry()->element( 'div',
 			[ 'class' => 'nav-item p-lang-dropdown ' . $this->getClassString() ],

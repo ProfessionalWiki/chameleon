@@ -3,7 +3,7 @@ $cfg = require __DIR__ . '/../vendor/mediawiki/mediawiki-phan-config/src/config.
 
 $IP = getenv( 'MW_INSTALL_PATH' ) !== false
 	? str_replace( '\\', '/', getenv( 'MW_INSTALL_PATH' ) )
-	: __DIR__ . '/../../';
+	: __DIR__ . '/../../..';
 
 $cfg['directory_list'] = array_merge(
 	$cfg['directory_list'],

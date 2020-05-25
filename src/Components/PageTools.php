@@ -79,8 +79,7 @@ class PageTools extends Component {
 
 		return $this->indent() . '<!-- Content navigation -->' .
 			IdRegistry::getRegistry()->element(
-				// FIXME: this is just 'div'
-				$this->mFlat ? 'div' : 'div',
+				'div',
 				[ 'class' => $this->getClassString(), 'id' => 'p-contentnavigation' ],
 				implode( $toolGroups ),
 				$this->indent()

@@ -269,7 +269,7 @@ class NavbarHorizontal extends Component {
 	 * @return mixed
 	 */
 	protected function isCollapsible() {
-		return filter_var( $this->getAttribute( 'collapsible', true ), FILTER_VALIDATE_BOOLEAN );
+		return filter_var( $this->getAttribute( 'collapsible', 'true' ), FILTER_VALIDATE_BOOLEAN );
 	}
 
 }

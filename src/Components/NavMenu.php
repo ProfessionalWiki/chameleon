@@ -70,7 +70,7 @@ class NavMenu extends Component {
 	 * Create a single dropdown
 	 *
 	 * @param string $menuName
-	 * @param mixed[] $menuDescription
+	 * @param array $menuDescription
 	 * @param bool $flatten
 	 *
 	 * @return string
@@ -99,7 +99,7 @@ class NavMenu extends Component {
 	}
 
 	/**
-	 * @param mixed[] $menuDescription
+	 * @param array $menuDescription
 	 * @param int $indent
 	 *
 	 * @return string
@@ -127,7 +127,7 @@ class NavMenu extends Component {
 	}
 
 	/**
-	 * @param mixed[] $menuDescription
+	 * @param array $menuDescription
 	 *
 	 * @return bool
 	 */
@@ -137,7 +137,7 @@ class NavMenu extends Component {
 	}
 
 	/**
-	 * @param mixed[] $menuDescription
+	 * @param array $menuDescription
 	 *
 	 * @return string
 	 * @throws \MWException
@@ -146,14 +146,14 @@ class NavMenu extends Component {
 		return $this->indent() . \Html::rawElement( 'div',
 				[
 					'class' => 'nav-item',
-					'title' => Linker::titleAttrib( $menuDescription[ 'id' ] )
+					'title' => Linker::titleAttrib( $menuDescription['id'] )
 				],
-				'<a href="#" class="nav-link">' . htmlspecialchars( $menuDescription[ 'header' ] ) . '</a>'
+				'<a href="#" class="nav-link">' . htmlspecialchars( $menuDescription['header'] ) . '</a>'
 			);
 	}
 
 	/**
-	 * @param mixed[] $menuDescription
+	 * @param array $menuDescription
 	 *
 	 * @return string
 	 * @throws \MWException
@@ -175,8 +175,8 @@ class NavMenu extends Component {
 		$ret .=
 			$this->indent() . \Html::openElement( 'div',
 				[
-					'class' => 'dropdown-menu ' . $menuDescription[ 'id' ],
-					'id'    => IdRegistry::getRegistry()->getId( $menuDescription[ 'id' ] ),
+					'class' => 'dropdown-menu ' . $menuDescription['id'],
+					'id'    => IdRegistry::getRegistry()->getId( $menuDescription['id'] ),
 				]
 			);
 		return $ret;

@@ -119,7 +119,7 @@ class MenuFromLines extends Menu {
 	 *
 	 * @param string $rawLine
 	 *
-	 * @return array
+	 * @return array|null
 	 */
 	protected function parseOneLine( $rawLine ) {
 		if ( empty( $rawLine ) ) {

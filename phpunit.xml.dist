@@ -36,7 +36,6 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		 stopOnSkipped="false"
 		 beStrictAboutOutputDuringTests="true"
 		 beStrictAboutTestsThatDoNotTestAnything="true"
-		 checkForUnintentionallyCoveredCode="false"
 		 verbose="true">
 	<testsuites>
 		<testsuite name="skins-chameleon">

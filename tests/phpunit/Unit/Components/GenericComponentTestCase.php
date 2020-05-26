@@ -27,6 +27,7 @@ namespace Skins\Chameleon\Tests\Unit\Components;
 use DOMDocument;
 use DOMXPath;
 use PHPUnit\Framework\TestCase;
+use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\Tests\Util\DocumentElementFinder;
 use Skins\Chameleon\Tests\Util\MockupFactory;
 use Skins\Chameleon\Tests\Util\XmlFileProvider;

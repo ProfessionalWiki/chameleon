@@ -307,7 +307,7 @@ class GenericComponentTestCase extends TestCase {
 	 * @param string $message
 	 */
 	public function assertValidHTML( $actual, $message = 'HTML text is not valid. ' ) {
-		if ( !USE_EXTERNAL_HTML_VALIDATOR ) {
+		if ( !defined( 'USE_EXTERNAL_HTML_VALIDATOR' ) || !USE_EXTERNAL_HTML_VALIDATOR ) {
 
 			$doc = $this->loadXML( $actual, true );
 			$this->assertNotFalse( $doc, $message );

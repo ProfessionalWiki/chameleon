@@ -62,7 +62,7 @@ class ChameleonTemplateTest extends TestCase {
 	}
 
 	/**
-	 * @covers \Skins\Chameleon\ChameloenTemplate
+	 * @covers \Skins\Chameleon\ChameleonTemplate
 	 */
 	public function testCanConstruct() {
 		$this->assertInstanceOf(
@@ -72,7 +72,7 @@ class ChameleonTemplateTest extends TestCase {
 	}
 
 	/**
-	 * @covers \Skins\Chameleon\ChameloenTemplate
+	 * @covers \Skins\Chameleon\ChameleonTemplate
 	 */
 	public function testInaccessibleLayoutFileThrowsExeception() {
 		$this->expectException( 'RuntimeException' );

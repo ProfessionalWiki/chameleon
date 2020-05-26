@@ -6,7 +6,7 @@
 		]
 	},
 	"skinname-chameleon": "Хамелеон",
-	"chameleon-desc": "Облик „Хамелеон“",
+	"chameleon-desc": "Много гъвкав и адаптивен облик използващ Bootstrap 4",
 	"chameleon-loggedin": "Вие сте влезли като $1.",
 	"chameleon-notloggedin": "Вие не сте влезли в системата",
 	"chameleon-newmessages": "Имате нови съобщения.",

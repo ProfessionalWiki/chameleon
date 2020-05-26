@@ -3,11 +3,12 @@
 		"authors": [
 			"Gomoko",
 			"Orlodrim",
-			"Verdy p"
+			"Verdy p",
+			"Wladek92"
 		]
 	},
 	"skinname-chameleon": "Caméléon",
-	"chameleon-desc": "L’habillage Caméléon.",
+	"chameleon-desc": "Un habillage dynamique très flexible utilisant Bootstrap 4",
 	"chameleon-loggedin": "Vous êtes connecté{{GENDER:$1||e}} en tant que $1.",
 	"chameleon-notloggedin": "Vous n’êtes pas connecté(e).",
 	"chameleon-newmessages": "Vous avez de nouveaux messages.",

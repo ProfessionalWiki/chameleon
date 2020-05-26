@@ -8,7 +8,7 @@
 		]
 	},
 	"skinname-chameleon": "變色龍",
-	"chameleon-desc": "變色龍佈景主題",
+	"chameleon-desc": "使用 Bootstrap 4 的高度彈性回應外觀",
 	"chameleon-loggedin": "您已登入為 $1。",
 	"chameleon-notloggedin": "您尚未登入",
 	"chameleon-newmessages": "您有新訊息。",

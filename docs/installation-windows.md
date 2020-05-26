@@ -14,7 +14,7 @@ Here is a step by step procedure for Windows:
     and add the Chameleon skin to the `require` section:
     ```json
     "require": { 
-    	"mediawiki/chameleon-skin": "~2.0"
+        "mediawiki/chameleon-skin": "~2.0"
     },
     ```
    
@@ -23,20 +23,20 @@ Here is a step by step procedure for Windows:
     `"require"` section. It should then look like this:
     ```json
     {
-    	"require": {
-    		"mediawiki/chameleon-skin": "~2.0"
-		},
-		"extra": {
-			"merge-plugin": {
-				"include": [
-					"extensions/example/composer.json"
-				]
-			}
-		}
+        "require": {
+            "mediawiki/chameleon-skin": "~2.0"
+        },
+        "extra": {
+            "merge-plugin": {
+                "include": [
+                    "extensions/example/composer.json"
+                ]
+            }
+        }
     }
     ```
 
-	Save the file and close the editor.
+    Save the file and close the editor.
 
 4.  Shift right-click in an empty space in the Windows Explorer window and
     select *Open Command Prompt here* or *Open Powershell window here*. A

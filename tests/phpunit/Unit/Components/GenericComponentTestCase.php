@@ -58,7 +58,7 @@ class GenericComponentTestCase extends TestCase {
 	 * @covers ::__construct
 	 */
 	public function testCanConstruct() {
-		/** @var $instance Component */
+		/** @var Component $instance */
 		$instance = $this->getTestObject();
 
 		$this->assertInstanceOf(
@@ -74,7 +74,7 @@ class GenericComponentTestCase extends TestCase {
 	 * @covers ::getHtml
 	 */
 	public function testGetHtmlwithEmptyElement() {
-		/** @var $instance Component */
+		/** @var Component $instance */
 		$instance = $this->getTestObject();
 		$this->assertValidHTML( $instance->getHtml() );
 	}
@@ -86,7 +86,7 @@ class GenericComponentTestCase extends TestCase {
 	 * @param \DOMElement $domElement
 	 */
 	public function testGetHtmlOnSyntheticLayoutXml( \DOMElement $domElement ) {
-		/** @var $instance Component */
+		/** @var Component $instance */
 		$instance = $this->getTestObject( $domElement );
 		$this->assertValidHTML( $instance->getHtml() );
 	}
@@ -102,7 +102,7 @@ class GenericComponentTestCase extends TestCase {
 			return;
 		}
 
-		/** @var $instance Component */
+		/** @var Component $instance */
 		$instance = $this->getTestObject( $domElement );
 
 		$this->assertValidHTML( $instance->getHtml() );

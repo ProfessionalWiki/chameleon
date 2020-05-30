@@ -39,7 +39,7 @@ use Skins\Chameleon\Tests\Util\XmlFileProvider;
  * @ingroup Skins
  * @ingroup Test
  */
-class XmlLayoutFileValidityTest extends \PHPUnit\Framework\TestCase {
+class XmlLayoutFileValidityTest extends \MediaWikiTestCase {
 
 	public function testXmlValidityOfLayoutFiles() {
 		$xmlFileProvider = new XmlFileProvider( __DIR__ . '/../../../layouts' );

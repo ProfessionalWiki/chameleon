@@ -42,14 +42,14 @@ use Skins\Chameleon\Hooks\SetupAfterCache;
  * @ingroup Skins
  * @ingroup Test
  */
-class StylesCompileTest extends \PHPUnit\Framework\TestCase {
+class StylesCompileTest extends \MediaWikiTestCase {
 
 	public function testStylesCompile() {
 		// FIXME
 		// Perhaps the assertion never really worked because it got null
 		// Failure: Failed asserting that '' is not equal to ''
 		// https://travis-ci.org/github/ProfessionalWiki/chameleon/jobs/663769240
-		$this->markTestSkipped( 'Test does not work on recent MW+PHP' );
+		//$this->markTestSkipped( 'Test does not work on recent MW+PHP' );
 
 		$request = $this->getMockBuilder( '\WebRequest' )
 			->disableOriginalConstructor()

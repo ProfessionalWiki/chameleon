@@ -42,7 +42,7 @@ use Skins\Chameleon\Hooks\SetupAfterCache;
  * @ingroup Skins
  * @ingroup Test
  */
-class StylesCompileTest extends \MediaWikiTestCase {
+class StylesCompileTest extends \PHPUnit\Framework\TestCase {
 
 	public function testStylesCompile() {
 		$request = $this->getMockBuilder( '\WebRequest' )

@@ -24,6 +24,7 @@
 
 namespace Skins\Chameleon\Tests\Unit;
 
+use PHPUnit\Framework\TestCase;
 use Skins\Chameleon\Chameleon;
 use Skins\Chameleon\ChameleonTemplate;
 
@@ -42,7 +43,7 @@ use Skins\Chameleon\ChameleonTemplate;
  * @ingroup Skins
  * @ingroup Test
  */
-class ChameleonTemplateTest extends \MediaWikiTestCase {
+class ChameleonTemplateTest extends TestCase {
 
 	// This is to ensure that the original value is cached since we are unable
 	// to inject the setting during testing

@@ -151,8 +151,8 @@ cd skins/chameleon
 
 if [ "$MW" == "master" ]
 then
-	php ../../tests/phpunit/phpunit.php --group skins-chameleon -c phpunit.xml.dist --coverage-clover=coverage.clover
+	php ../../tests/phpunit/phpunit.php --group skins-chameleon --coverage-clover=coverage.clover
 	uploadCoverageReport
 else
-	php ../../tests/phpunit/phpunit.php --group skins-chameleon -c phpunit.xml.dist
+	php ../../tests/phpunit/phpunit.php --group skins-chameleon
 fi

@@ -8,9 +8,10 @@
 		]
 	},
 	"skinname-chameleon": "Kameleontti",
-	"chameleon-desc": "Kameleontti-teema",
+	"chameleon-desc": "Erittäin mukautuva responsiivinen ulkoasu, joka käyttää Bootstrap 4:ää",
 	"chameleon-loggedin": "Olet kirjautunut sisään nimellä $1.",
 	"chameleon-notloggedin": "Et ole kirjautunut sisään.",
 	"chameleon-newmessages": "Sinulla on uusia viestejä.",
-	"chameleon-nonewmessages": "Sinulla ei ole uusia viestejä."
+	"chameleon-nonewmessages": "Sinulla ei ole uusia viestejä.",
+	"chameleon-search-aria-label": "Siirry sivulle"
 }

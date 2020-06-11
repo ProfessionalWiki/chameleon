@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Red Winged Duck"
+			"Red Winged Duck",
+			"Renessaince"
 		]
 	},
 	"skinname-chameleon": "Хамэлеон",
-	"chameleon-desc": "Тэма афармленьня «Хамэлеон».",
+	"chameleon-desc": "Высокагнуткая чуткая тэма афармленьня з выкарыстаньнем Bootstrap 4",
 	"chameleon-loggedin": "Вы ўвайшлі як $1.",
 	"chameleon-notloggedin": "Вы не ўвайшлі ў сыстэму",
 	"chameleon-newmessages": "Вы маеце новыя паведамленьні.",

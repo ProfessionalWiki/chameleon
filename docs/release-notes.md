@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 3.0.1
+
+Released on June 12, 2020.
+
+* Fixed dependency error with Bootstrap 4.2.1 and later (thanks @JeroenDeDauw)
+
 ### Chameleon 3.0.0
 
 Released on May 20, 2020.

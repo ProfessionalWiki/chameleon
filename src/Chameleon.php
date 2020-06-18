@@ -33,6 +33,7 @@ use ResourceLoader;
 use Sanitizer;
 use Skins\Chameleon\Hooks\SetupAfterCache;
 use SkinTemplate;
+use Hooks;
 
 /**
  * SkinTemplate class for the Chameleon skin
@@ -155,6 +156,15 @@ class Chameleon extends SkinTemplate {
 
 		// Enable responsive behaviour on mobile browsers
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no' );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function prepareQuickTemplate() {
+		$tpl = parent::prepareQuickTemplate();
+		Hooks::run( 'ChameleonSkinTemplateOutputPageBeforeExec', [ $this, $tpl ] );
+		return $tpl;
 	}
 
 	/**

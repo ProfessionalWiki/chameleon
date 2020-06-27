@@ -537,7 +537,7 @@ Using the message _MediaWiki:Secondary-menu_:
   whose menu items should appear not in a submenu, but as elements of the top
   structure.
   
-  This list may also be given in the message
+  A comma-separated list may also be given in the message
   _MediaWiki:skin-chameleon-navmenu-flatten_ instead. If both the message and
   this attribute are found, the message takes precedence.
 

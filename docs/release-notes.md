@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 3.1.0
+
+Under development
+
+* Added `ChameleonSkinTemplateOutputPageBeforeExec` hook (thanks @jdlrobson)
+
 ### Chameleon 3.0.1
 
 Released on June 12, 2020.

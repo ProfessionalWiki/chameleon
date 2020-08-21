@@ -55,7 +55,7 @@ function installMediaWiki {
 	composer install --prefer-source
 
 	mysql -e 'create database its_a_mw;'
-	php maintenance/install.php --dbtype $DBTYPE --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass nyan TravisWiki admin
+	php maintenance/install.php --dbtype $DBTYPE --dbuser root --dbname its_a_mw --dbpath $(pwd) --pass AdminPassword TravisWiki admin
 }
 
 function installSkinViaComposerOnMediaWikiRoot {

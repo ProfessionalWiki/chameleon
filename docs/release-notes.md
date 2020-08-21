@@ -5,6 +5,7 @@
 Under development
 
 * Added `ChameleonSkinTemplateOutputPageBeforeExec` hook (thanks @jdlrobson)
+* Fixed deprecation notice about `Sanitizer::escapeId` occuring on recent MediaWiki versions (thanks @JeroenDeDauw)
 
 ### Chameleon 3.0.1
 

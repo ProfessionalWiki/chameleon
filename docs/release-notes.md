@@ -4,15 +4,14 @@
 
 Under development
 
-* Added `ChameleonSkinTemplateOutputPageBeforeExec` hook (thanks @jdlrobson)
 * Fixed deprecation notice about `Sanitizer::escapeId` occuring on recent MediaWiki versions (thanks @JeroenDeDauw)
+* Added `ChameleonSkinTemplateOutputPageBeforeExec` hook (thanks @jdlrobson)
 
 ### Chameleon 3.0.1
 
 Released on June 12, 2020.
 
 * Fixed dependency error with Bootstrap 4.2.1 and later (thanks @JeroenDeDauw)
-* Translation updates
 
 ### Chameleon 3.0.0
 
@@ -22,7 +21,6 @@ Released on May 20, 2020.
 * Added support for installation without Composer (thanks @cicalese)
 * Added `placeholder` option to the `SearchBar` component (thanks @JeroenDeDauw)
 * Added toolbox icon for Special:RecentChanges (thanks @JeroenDeDauw)
-* Translation updates
 
 ### Chameleon 2.3.0
 
@@ -32,14 +30,12 @@ Released on May 5, 2020.
 * Fixed spacing issue in the `Menu` component (thanks @JeroenDeDauw)
 * Added edit icon to the Visual Editor edit action in the navbar (thanks @JeroenDeDauw)
 * Added `hideDiscussionLink` option to the `PageTools` component (thanks @JeroenDeDauw)
-* Translation updates
 
 ### Chameleon 2.2.0
 
 Released on March 25, 2020.
 
 * Raised minimum PHP version from 7.0 to 7.1
-* Translation updates
 
 ### Chameleon 2.1.0
 

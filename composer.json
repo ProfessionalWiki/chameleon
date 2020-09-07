@@ -35,7 +35,8 @@
 		"ext-dom": "*",
 		"ext-filter": "*",
 		"composer/installers": "^1.0.12",
-		"mediawiki/bootstrap": "^4.2"
+		"mediawiki/bootstrap": "^4.2",
+		"scssphp/scssphp": "1.1.1"
 	},
 	"require-dev": {
 		"php": ">=7.2",

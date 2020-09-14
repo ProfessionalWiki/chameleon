@@ -3,13 +3,15 @@
 		"authors": [
 			"2nd-player",
 			"Shirayuki",
-			"SkyDaisy9"
+			"SkyDaisy9",
+			"Yusuke1109"
 		]
 	},
 	"skinname-chameleon": "カメレオン",
-	"chameleon-desc": "カメレオン外装",
+	"chameleon-desc": "Bootstrap 4 を使用した柔軟性の高いレスポンシブ外装",
 	"chameleon-loggedin": "$1 としてログインしています。",
 	"chameleon-notloggedin": "ログインしていません。",
 	"chameleon-newmessages": "新着メッセージがあります。",
-	"chameleon-nonewmessages": "新しいメッセージはありません。"
+	"chameleon-nonewmessages": "新しいメッセージはありません。",
+	"chameleon-search-aria-label": "ページへ移動"
 }

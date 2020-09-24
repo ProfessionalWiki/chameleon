@@ -2,9 +2,10 @@
 
 ### Chameleon 3.1.0
 
-Under development
+Released on September 24, 2020.
 
 * Fixed deprecation notice about `Sanitizer::escapeId` occuring on recent MediaWiki versions (thanks @JeroenDeDauw)
+* Fixed formatting of definition lists (thanks @kghbln)
 * Added `ChameleonSkinTemplateOutputPageBeforeExec` hook (thanks @jdlrobson)
 
 ### Chameleon 3.0.1

@@ -157,7 +157,7 @@ class PageTools extends Component {
 
 		$options = [
 			'tag' => 'div',
-			'link-class' => 'navbar-tool-link',
+			'link-class' => 'navbar-tool-link '.$editActionStructure['id'] ,
 		];
 
 		return $this->getSkinTemplate()->makeListItem(

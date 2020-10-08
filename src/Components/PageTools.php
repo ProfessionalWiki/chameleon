@@ -290,9 +290,9 @@ class PageTools extends Component {
 			'tag' => 'div'
 		];
 		if ( array_key_exists( 'class', $tabDescription ) ) {
-			$options[ 'link-class' ] = $tabDescription[ 'class' ];
+			$options[ 'link-class' ] = $tabDescription[ 'class' ],' '.$tabDescription['id'];
 		}
-
+		
 		return $this->indent() .
 			$this->getSkinTemplate()->makeListItem( $key, $tabDescription, $options );
 	}

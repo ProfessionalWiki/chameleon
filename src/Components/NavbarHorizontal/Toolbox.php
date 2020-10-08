@@ -83,7 +83,7 @@ class Toolbox extends Component {
 				$linkItem[ 'class' ] = 'nav-item';
 			}
 			$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem,
-				[ 'link-class' => 'nav-link', 'tag' => 'div' ] );
+				[ 'link-class' => 'nav-link '.$linkItem['id'], 'tag' => 'div' ] );
 		}
 
 		ob_start();

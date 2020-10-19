@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Khaled",
+			"Meno25",
 			"ديفيد"
 		]
 	},
 	"skinname-chameleon": "حرباء",
-	"chameleon-desc": "تصميم الحرباء",
+	"chameleon-desc": "واجهة مرنة جدا باستخدام Bootstrap 4",
 	"chameleon-loggedin": "تم تسجيل دخولك كـ $1.",
 	"chameleon-notloggedin": "لم تسجل الدخول.",
 	"chameleon-newmessages": "لديك رسالة جديدة.",

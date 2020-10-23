@@ -53,7 +53,12 @@ class PersonalTools extends Component {
 
 		// add personal tools (links to user page, user talk, prefs, ...)
 		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
-			$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item, ['link-class' => $item['id']] );
+			if (isset($item['id'])){
+				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item, ['link-class' => $item['id']] );
+			}
+			else {
+				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
+			}
 		}
 
 		$ret .= $this->indent( -1 ) . '</ul>' .

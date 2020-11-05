@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"MuratTheTurkish",
 			"Okras"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Тема оформления Chameleon.",
+	"chameleon-desc": "Очень гибкая и отзывчивая кожа с использованием Bootstrap 4",
 	"chameleon-loggedin": "Вы вошли как $1.",
 	"chameleon-notloggedin": "Вы не вошли в систему",
 	"chameleon-newmessages": "У вас есть новые сообщения.",

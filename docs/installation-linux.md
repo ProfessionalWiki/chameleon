@@ -6,7 +6,7 @@ operating systems as well:
 1. Open a command line window (e.g. using Konsole or XTerm).
 2. If necessary [install Composer][]:
     ``` sh
-    curl -sS https://getcomposer.org/installer | php
+    wget -cO - https://getcomposer.org/composer-1.phar > composer.phar
     sudo mv composer.phar /usr/local/bin/composer
     ```
 3. Navigate to the root folder of your MediaWiki installation. That's the one
@@ -38,7 +38,9 @@ operating systems as well:
    ```
    
 5. To actually install Chameleon run the command
-   `composer update "mediawiki/chameleon-skin"`
+   ```bash
+   COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~3.0
+   composer update mediawiki/chameleon-skin --no-dev -o```
 6. If there were no errors, close the command line window.
 7. Open `LocalSettings.php` in an editor (e.g. Kate). Include
    ```php

@@ -16,9 +16,9 @@ jobs:
           - mw: 'REL1_31'
             php: 7.1
           - mw: 'REL1_34'
-            php: 7.2
+            php: 7.4
           - mw: 'REL1_35'
-            php: 7.3
+            php: 7.4
           - mw: 'master'
             php: 7.4
 

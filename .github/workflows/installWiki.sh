@@ -13,12 +13,11 @@ cd mediawiki
 composer install
 php maintenance/install.php --dbtype sqlite --dbuser root --dbname mw --dbpath $(pwd) --pass AdminPassword WikiName AdminUser
 
-echo 'error_reporting(E_ALL| E_STRICT);' >> LocalSettings.php
-echo 'ini_set("display_errors", 1);' >> LocalSettings.php
+# echo 'error_reporting(E_ALL| E_STRICT);' >> LocalSettings.php
+# echo 'ini_set("display_errors", 1);' >> LocalSettings.php
 echo '$wgShowExceptionDetails = true;' >> LocalSettings.php
 echo '$wgShowDBErrorBacktrace = true;' >> LocalSettings.php
 echo '$wgDevelopmentWarnings = true;' >> LocalSettings.php
-echo '$wgServer = WebRequest::detectServer();' >> LocalSettings.php
 
 echo 'wfLoadExtension( "Bootstrap" );' >> LocalSettings.php
 echo 'wfLoadSkin( "chameleon" );' >> LocalSettings.php

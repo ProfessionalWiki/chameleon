@@ -33,6 +33,16 @@
 			"value": true
 		}
 	},
+	"ResourceModules": {
+		"skins.chameleon": {
+			"class": "ResourceLoaderSkinModule",
+			"features": [ "elements", "content", "legacy" ],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		}
+	},
 	"callback": "Skins\\Chameleon\\Chameleon::init",
 	"load_composer_autoloader": true,
 	"manifest_version": 2

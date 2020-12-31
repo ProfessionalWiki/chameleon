@@ -114,8 +114,9 @@ class NavMenu extends Component {
 			$this->indent( $indent );
 
 			foreach ( $menuDescription['content'] as $key => $item ) {
+				$id = $item['id'] ?? '';
 				$menuitems .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
-					[ 'tag' => 'div', 'class' => 'nav-item', 'link-class' => 'nav-link '.$item['id'] ] );
+					[ 'tag' => 'div', 'class' => 'nav-item', 'link-class' => 'nav-link '. $id ] );
 			}
 
 			$this->indent( - $indent );

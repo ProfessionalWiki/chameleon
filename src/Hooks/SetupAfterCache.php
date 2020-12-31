@@ -260,7 +260,14 @@ class SetupAfterCache {
 	protected function registerSkinWithMW() {
 		MediaWikiServices::getInstance()->getSkinFactory()->register( 'chameleon', 'Chameleon',
 			function () {
-				return new Chameleon();
+				return new Chameleon( [
+					'name' => 'chameleon',
+					'styles' => [
+						'mediawiki.ui.button',
+						'skins.chameleon',
+						'zzz.ext.bootstrap.styles',
+					]
+				] );
 			} );
 	}
 

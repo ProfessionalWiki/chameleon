@@ -98,13 +98,12 @@ class Chameleon extends SkinTemplate {
 	 * @return array Array of modules
 	 */
 	public function getDefaultModules() {
+		global $wgVersion;
+
 		$modules = parent::getDefaultModules();
 
-		if ( array_key_exists( 'styles', $modules ) ) {
-
-			// FIXME: Remove when MW 1.31 is dropped
-			$this->stylesHaveBeenProcessed = true;
-
+		if ( version_compare( $wgVersion, '1.35', '<' ) ) {
+			// Not necessary in 1.35 (see #110)
 			$modulePos = array_search( 'mediawiki.legacy.shared', $modules[ 'styles' ][ 'core' ] );
 
 			if ( $modulePos !== false ) {
@@ -112,40 +111,18 @@ class Chameleon extends SkinTemplate {
 				unset( $modules[ 'styles' ][ 'core' ][ $modulePos ] );
 			}
 
+			// These are added in SetupAfterCache::registerSkinWithMW in >= 1.35
 			$modules[ 'styles' ][ 'content' ][] = 'mediawiki.skinning.content';
+			$modules[ 'styles' ][ 'content' ][] = 'mediawiki.ui.button';
 			$modules[ 'styles' ][ 'content' ][] = 'zzz.ext.bootstrap.styles';
+			$modules[ 'styles' ][ 'content' ][] = 'mediawiki.legacy.commonPrint';
 
+			if ( $out->isSyndicated() ) {
+				$modules[ 'styles' ][ 'content' ][] = 'mediawiki.feedlink';
+			}
 		}
 
 		return $modules;
-	}
-
-	/**
-	 * Hook point for adding style modules to OutputPage.
-	 *
-	 *
-	 * @deprecated since 1.32 Kept here for compat with 1.31
-	 *
-	 * @fixme Remove this method completely when MW 1.31 compatibility is dropped.
-	 *
-	 * @param OutputPage $out Legacy parameter, identical to $this->getOutput()
-	 */
-	public function setupSkinUserCss( OutputPage $out ) {
-		if ( $this->stylesHaveBeenProcessed === false ) {
-
-			$moduleStyles = [
-				'mediawiki.skinning.content',
-				'mediawiki.legacy.commonPrint',
-				'mediawiki.ui.button',
-				'zzz.ext.bootstrap.styles'
-			];
-
-			if ( $out->isSyndicated() ) {
-				$moduleStyles[] = 'mediawiki.feedlink';
-			}
-
-			$out->addModuleStyles( $moduleStyles );
-		}
 	}
 
 	/**

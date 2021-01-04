@@ -5,7 +5,7 @@
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Le apparentia Chameleon.",
+	"chameleon-desc": "Un apparentia reactive e multo flexibile que usa Bootstrap 4",
 	"chameleon-loggedin": "Tu ha aperite session como $1.",
 	"chameleon-notloggedin": "Tu non ha aperite session",
 	"chameleon-newmessages": "Tu ha nove messages.",

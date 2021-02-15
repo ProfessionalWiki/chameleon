@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Mikel Ibaiba",
-			"Subi"
+			"Subi",
+			"Xabier Armendaritz"
 		]
 	},
 	"skinname-chameleon": "Kamaleoia",
 	"chameleon-desc": "Kamaleoiaren azala",
-	"chameleon-loggedin": "$1 bezala saioa hasita daukazu.",
+	"chameleon-loggedin": "Saioa hasita duzu, $1 erabiltzaile izenarekin.",
 	"chameleon-notloggedin": "Ez duzu saioa hasi.",
 	"chameleon-newmessages": "Mezu berriak dituzu",
 	"chameleon-nonewmessages": "Ez duzu mezu berririk"

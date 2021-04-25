@@ -118,7 +118,7 @@ $h6-font-size:                $font-size-base * 1.0 !default;
 // Links
 $link-color: $cobalt;
 $cmln-link-formats: (
-	new: ('color': $burgundy, 'hover-color': darken($burgundy, 15%)),
+	new: ('color': $burgundy !important, 'hover-color': darken($burgundy, 15%) !important),
 );
 
 // Navbar

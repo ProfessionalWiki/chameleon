@@ -78,7 +78,7 @@ class Toolbox extends Component {
 
 		$listItems = [];
 
-		if ( version_compare( $wgVersion, '1.36', '<' ) ) {
+		if ( version_compare( $wgVersion, '1.35', '<' ) ) {
 			$toolbox = $skinTemplate->getToolbox();
 		} else {
 			$toolbox = $skinTemplate->get( 'sidebar' )[ 'TOOLBOX' ];

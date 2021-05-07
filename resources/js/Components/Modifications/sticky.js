@@ -33,6 +33,11 @@
 
     mw.loader.using('skin.chameleon.sticky', function () {
 		$('.sticky').hcSticky( {} );
+
+		// Reposition sticky if the page is loaded with a URI fragment.
+		if ($(location).attr('hash') != '') {
+			$('.sticky').hcSticky('refresh');
+		};
     });
 
 }(window, document, jQuery, mediaWiki) );

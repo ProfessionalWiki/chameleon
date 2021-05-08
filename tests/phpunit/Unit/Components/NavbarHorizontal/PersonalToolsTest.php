@@ -81,4 +81,40 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		$this->assertNotTag( $matcher, $instance->getHtml() );
 	}
 
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_LoggedOutUserHasNewMessages( $domElement ) {
+		$factory = MockupFactory::makeFactory( $this );
+		$factory->set( 'UserIsLoggedIn', false );
+		$factory->set( 'UserNewMessageLinks', [ 'foo' ] );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		$chameleonTemplate->data = [ 'newtalk' => 'foo' ];
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+
+		$matcher = [ 'class' => 'pt-anontalk' ];
+		$this->assertTag( $matcher, $instance->getHtml() );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_LoggedOutUserHasNoNewMessages( $domElement ) {
+		$factory = MockupFactory::makeFactory( $this );
+		$factory->set( 'UserIsLoggedIn', false );
+		$factory->set( 'UserNewMessageLinks', [] );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		$chameleonTemplate->data = [ 'newtalk' => '' ];
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+
+		$matcher = [ 'class' => 'pt-anontalk' ];
+		$this->assertNotTag( $matcher, $instance->getHtml() );
+	}
+
 }

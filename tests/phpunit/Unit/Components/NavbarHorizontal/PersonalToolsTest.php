@@ -54,6 +54,7 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		$factory->set( 'UserIsLoggedIn', true );
 		$factory->set( 'UserNewMessageLinks', [ 'foo' ] );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		$chameleonTemplate->data = [ 'newtalk' => 'foo' ];
 
 		/** @var Component $instance */
 		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
@@ -71,6 +72,7 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		$factory->set( 'UserIsLoggedIn', true );
 		$factory->set( 'UserNewMessageLinks', [] );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		$chameleonTemplate->data = [ 'newtalk' => '' ];
 
 		/** @var Component $instance */
 		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );

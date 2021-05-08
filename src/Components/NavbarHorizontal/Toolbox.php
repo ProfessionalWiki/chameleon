@@ -80,8 +80,10 @@ class Toolbox extends Component {
 
 		if ( version_compare( $wgVersion, '1.35', '<' ) ) {
 			$toolbox = $skinTemplate->getToolbox();
-		} else {
+		} else if ( isset( $skinTemplate->get( 'sidebar' )[ 'TOOLBOX' ] ) ) {
 			$toolbox = $skinTemplate->get( 'sidebar' )[ 'TOOLBOX' ];
+		} else {
+			$toolbox = array();
 		}
 		// FIXME: Do we need to care of dropdown menus here? E.g. RSS feeds?
 		foreach ( $toolbox as $key => $linkItem ) {

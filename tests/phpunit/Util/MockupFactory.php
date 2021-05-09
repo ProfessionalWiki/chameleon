@@ -51,7 +51,6 @@ class MockupFactory {
 	private $testCase;
 	private $configuration = [
 		'UserIsLoggedIn'      => false,
-		'UserNewMessageLinks' => [],
 		'UserEffectiveGroups' => [ '*' ],
 		'UserRights' => [],
 	];
@@ -312,10 +311,6 @@ class MockupFactory {
 		$user->expects( $this->testCase->any() )
 			->method( 'isLoggedIn' )
 			->will( $this->testCase->returnValue( $this->get( 'UserIsLoggedIn', true ) ) );
-
-		$user->expects( $this->testCase->any() )
-			->method( 'getNewMessageLinks' )
-			->will( $this->testCase->returnValue( $this->get( 'UserNewMessageLinks', 0 ) ) );
 
 		$user->expects( $this->testCase->any() )
 			->method( 'getEffectiveGroups' )

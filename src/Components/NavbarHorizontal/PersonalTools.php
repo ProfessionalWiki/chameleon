@@ -66,24 +66,13 @@ class PersonalTools extends Component {
 	 * @throws \MWException
 	 */
 	protected function getNewtalkNotifier() {
-		global $wgVersion;
 		$user = $this->getSkinTemplate()->getSkin()->getUser();
 
 		$newMessagesAlert = $this->getSkinTemplate()->getMsg( 'chameleon-newmessages' )->text();
-		$out = $this->getSkinTemplate()->getSkin()->getOutput();
 
-		if ( version_compare( $wgVersion, '1.35', '<' ) ) {
-			$newtalks = $user->getNewMessageLinks();
-			// Allow extensions to disable the new messages alert
-			if ( !Hooks::run( 'GetNewMessagesAlert', [ &$newMessagesAlert, $newtalks, $user, $out ] ) ||
-				count( $user->getNewMessageLinks() ) === 0 ) {
-				return '';
-			}
-		} else {
-			$data = $this->getSkinTemplate()->data;
-			if ( empty( $data[ 'newtalk' ] ) ) {
-				return '';
-			}
+		$data = $this->getSkinTemplate()->data;
+		if ( empty( $data[ 'newtalk' ] ) ) {
+			return '';
 		}
 
 		$talkClass = $user->isLoggedIn() ? 'pt-mytalk' : 'pt-anontalk';

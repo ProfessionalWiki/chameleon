@@ -52,7 +52,6 @@ class PersonalToolsTest extends GenericComponentTestCase {
 	public function testGetHtml_LoggedInUserHasNewMessages( $domElement ) {
 		$factory = MockupFactory::makeFactory( $this );
 		$factory->set( 'UserIsLoggedIn', true );
-		$factory->set( 'UserNewMessageLinks', [ 'foo' ] );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 		$chameleonTemplate->data = [ 'newtalk' => 'foo' ];
 
@@ -70,7 +69,6 @@ class PersonalToolsTest extends GenericComponentTestCase {
 	public function testGetHtml_LoggedInUserHasNoNewMessages( $domElement ) {
 		$factory = MockupFactory::makeFactory( $this );
 		$factory->set( 'UserIsLoggedIn', true );
-		$factory->set( 'UserNewMessageLinks', [] );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 		$chameleonTemplate->data = [ 'newtalk' => '' ];
 
@@ -88,7 +86,6 @@ class PersonalToolsTest extends GenericComponentTestCase {
 	public function testGetHtml_LoggedOutUserHasNewMessages( $domElement ) {
 		$factory = MockupFactory::makeFactory( $this );
 		$factory->set( 'UserIsLoggedIn', false );
-		$factory->set( 'UserNewMessageLinks', [ 'foo' ] );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 		$chameleonTemplate->data = [ 'newtalk' => 'foo' ];
 
@@ -106,7 +103,6 @@ class PersonalToolsTest extends GenericComponentTestCase {
 	public function testGetHtml_LoggedOutUserHasNoNewMessages( $domElement ) {
 		$factory = MockupFactory::makeFactory( $this );
 		$factory->set( 'UserIsLoggedIn', false );
-		$factory->set( 'UserNewMessageLinks', [] );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 		$chameleonTemplate->data = [ 'newtalk' => '' ];
 

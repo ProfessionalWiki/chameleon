@@ -24,6 +24,8 @@
 
 namespace Skins\Chameleon\Tests\Unit\Components;
 
+use Skins\Chameleon\Tests\Util\MockupFactory;
+
 /**
  * @coversDefaultClass \Skins\Chameleon\Components\PersonalTools
  * @covers ::<private>
@@ -40,5 +42,39 @@ namespace Skins\Chameleon\Tests\Unit\Components;
 class PersonalToolsTest extends GenericComponentTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\PersonalTools';
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ShowNewtalkNotifier( $domElement ) {
+		$factory = MockupFactory::makeFactory( $this );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		$chameleonTemplate->data = [ 'newtalk' => 'foo' ];
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+
+		$matcher = [ 'class' => 'usermessage' ];
+		$this->assertTag( $matcher, $instance->getHtml() );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_HideNewtalkNotifier( $domElement ) {
+		$domElement->setAttribute( 'hideNewtalkNotifier', true );
+
+		$factory = MockupFactory::makeFactory( $this );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		$chameleonTemplate->data = [ 'newtalk' => 'foo' ];
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+
+		$matcher = [ 'class' => 'usermessage' ];
+		$this->assertNotTag( $matcher, $instance->getHtml() );
+	}
 
 }

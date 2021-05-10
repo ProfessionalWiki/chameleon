@@ -636,6 +636,13 @@ History, Move, ...)
   
   If set the link to the discussion page will not be shown among the page tools.
 
+* `hideEchoLinks`
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+
+  If set the Echo extension links will not be shown among the page tools. Set to `yes` when using the [`EchoIcons`](#component-echoicons) component.
+
 * `buttons`
   * Allowed values: String
   * Default: `edit`

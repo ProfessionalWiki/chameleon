@@ -70,8 +70,7 @@ class PersonalTools extends Component {
 
 		$newMessagesAlert = $this->getSkinTemplate()->getMsg( 'chameleon-newmessages' )->text();
 
-		$data = $this->getSkinTemplate()->data;
-		if ( empty( $data[ 'newtalk' ] ) ) {
+		if ( empty( $this->getSkinTemplate()->data[ 'newtalk' ] ) ) {
 			return '';
 		}
 

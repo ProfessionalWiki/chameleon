@@ -98,9 +98,10 @@ $cmln-icons: map-merge((
 	pt-mycontris: fas fa-question,  // FIXME: Pers tools: My contribs
 	pt-logout: fas fa-sign-out-alt,
 	ca-nstab-main: far fa-file,
-	ca-nstab-mediawiki: far fa-cogs,
+	ca-nstab-mediawiki: fas fa-cogs,
 	ca-nstab-special: fas fa-cogs,
 	ca-nstab-image: far fa-file-image,
+	ca-nstab-user: far fa-user,
 	ca-talk: far fa-comments,
 	ca-edit: far fa-edit,
 	ca-ve-edit: far fa-edit,
@@ -128,6 +129,7 @@ $cmln-icons: map-merge((
 	t-info: fas fa-info,  // Toolbox link: Page information
 	t-cite: fas fa-question,  // Toolbox link: Cite this page
 	t-smwbrowselink: fas fa-compass,  // Toolbox link: Browser properties
+	t-userrights: fas fa-users, // Toolbox link: View user groups
 ), $cmln-icons);
 
 
@@ -169,4 +171,3 @@ $navbar-user-not-loggedin: $navbar-light-disabled-color; // FIXME: Fix color
 
 $navbar-newtalk-available: theme-color("primary"); // $brand-primary;
 $navbar-newtalk-not-available: $navbar-light-disabled-color; // FIXME: Fix color
-

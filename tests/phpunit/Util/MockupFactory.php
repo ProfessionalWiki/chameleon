@@ -130,7 +130,12 @@ class MockupFactory {
 
 		$chameleonTemplate->expects( $this->testCase->any() )
 			->method( 'getPersonalTools' )
-			->will( $this->testCase->returnValue( [ 'foo' => [], 'bar' => [] ] ) );
+			->will( $this->testCase->returnValue( [
+				'foo' => [],
+				'bar' => [],
+				'notifications-alert' => [],
+				'notifications-notice' => [],
+			] ) );
 
 		$chameleonTemplate->expects( $this->testCase->any() )
 			->method( 'getFooterLinks' )

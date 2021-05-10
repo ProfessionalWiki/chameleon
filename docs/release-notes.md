@@ -1,5 +1,13 @@
 ## Release Notes
 
+### Chameleon 3.2.0
+
+Under development
+
+* Fixed layout and scroll issues when using the sticky menue and clicking anchor links (thanks @vedmaka)
+* Fixed display of some icons (thanks @malberts)
+* Updated Font Awesome and hc-sticky libraries (thanks @malberts)
+
 ### Chameleon 3.1.0
 
 Released on September 24, 2020.

@@ -58,8 +58,7 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		/** @var Component $instance */
 		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
 
-		$matcher = [ 'class' => 'pt-mytalk' ];
-		$this->assertTag( $matcher, $instance->getHtml() );
+		$this->assertTag( [ 'class' => 'pt-mytalk' ], $instance->getHtml() );
 	}
 
 	/**
@@ -75,8 +74,7 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		/** @var Component $instance */
 		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
 
-		$matcher = [ 'class' => 'pt-mytalk' ];
-		$this->assertNotTag( $matcher, $instance->getHtml() );
+		$this->assertNotTag( [ 'class' => 'pt-mytalk' ], $instance->getHtml() );
 	}
 
 	/**
@@ -92,8 +90,7 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		/** @var Component $instance */
 		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
 
-		$matcher = [ 'class' => 'pt-anontalk' ];
-		$this->assertTag( $matcher, $instance->getHtml() );
+		$this->assertTag( [ 'class' => 'pt-anontalk' ], $instance->getHtml() );
 	}
 
 	/**
@@ -109,8 +106,7 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		/** @var Component $instance */
 		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
 
-		$matcher = [ 'class' => 'pt-anontalk' ];
-		$this->assertNotTag( $matcher, $instance->getHtml() );
+		$this->assertNotTag( [ 'class' => 'pt-anontalk' ], $instance->getHtml() );
 	}
 
 }

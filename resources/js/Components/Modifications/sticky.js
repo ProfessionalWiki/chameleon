@@ -35,4 +35,31 @@
 		$('.sticky').hcSticky( {} );
     });
 
+	/* Fixes sticky header overlaps the sections headers on anchor links */
+	$( function () {
+		$( window ).on( 'hashchange', function ( e ) {
+			adjustScroll();
+		} );
+
+		adjustScroll();
+	} );
+
+	function adjustScroll() {
+		var $header = $( 'nav.p-navbar.collapsible.sticky' ),
+			headerHeight = $header.height() + 20,
+			hash = window.location.hash,
+			$target = $( hash );
+
+		if ( !$header.length ) {
+			return;
+		}
+
+		if ( $target.length ) {
+			$( 'html,body' ).animate( {
+				scrollTop: $target.offset().top - headerHeight
+			}, 250 );
+			return false;
+		}
+	}
+
 }(window, document, jQuery, mediaWiki) );

@@ -50,7 +50,7 @@
 	} );
 
 	function adjustScroll() {
-		var $header = $( 'nav.p-navbar.collapsible.sticky' ),
+		var $header = $( 'nav.p-navbar.sticky' ),
 			headerHeight = $header.height() + 20,
 			hash = window.location.hash,
 			$target = $( hash );

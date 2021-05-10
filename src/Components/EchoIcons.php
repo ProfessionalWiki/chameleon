@@ -27,7 +27,7 @@
 namespace Skins\Chameleon\Components;
 
 /**
- * Class Menu
+ * Class EchoIcons
  *
  * @author Morne Alberts
  * @since 3.2

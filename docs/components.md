@@ -16,6 +16,7 @@ The following components and modifications are available:
 - [`Row`](#row)
 - [`Cell`](#cell)
 - [Component `Container`](#component-container)
+- [Component `EchoIcons`](#component-echoicons)
 - [Component `FooterIcons`](#component-footericons)
 - [Component `FooterInfo`](#component-footerinfo)
 - [Component `FooterPlaces`](#component-footerplaces)
@@ -181,6 +182,29 @@ assign a CSS class for styling purposes.
 
 #### Allowed Child Elements:
 * Any component
+* Any modification
+
+-------------------------------------------------------------------------------
+### Component `EchoIcons`
+
+This component inserts the Echo extension's icons.
+
+#### Example usage
+
+
+``` xml
+<component type="EchoIcons"/>
+```
+
+#### Attributes:
+None.
+
+#### Allowed Parent Elements:
+* [Structure](#structure)
+* [Cell](#cell)
+* [NavbarHorizontal](#component-navbarhorizontal)
+
+#### Allowed Child Elements:
 * Any modification
 
 -------------------------------------------------------------------------------

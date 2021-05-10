@@ -26,8 +26,6 @@
 
 namespace Skins\Chameleon\Components;
 
-use Skins\Chameleon\IdRegistry;
-
 /**
  * Class Menu
  *
@@ -49,11 +47,10 @@ class EchoIcons extends Component {
 			return '';
 		}
 
-		$idRegistry = IdRegistry::getRegistry();
-
 		return $this->indent() . '<!-- echo icons -->' .
-			$idRegistry->element( 'ul', [ 'id' => 'echo-icons',
-			'class' => 'echo-icons ' . $this->getClassString(), ], $icons );
+			$this->indent() . '<ul class="echo-icons ' . $this->getClassString() . '">' .
+			$icons .
+			$this->indent() . '</ul>';
 	}
 
 	/**

@@ -109,4 +109,35 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		$this->assertNotTag( [ 'class' => 'pt-anontalk' ], $instance->getHtml() );
 	}
 
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ShowEchoLinks( $domElement ) {
+		$factory = MockupFactory::makeFactory( $this );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		$chameleonTemplate->expects( $this->exactly( 4 ) )
+			->method( 'makeListItem' );
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$instance->getHtml();
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_HideEchoLinks( $domElement ) {
+		$domElement->setAttribute('hideEchoLinks', 'yes');
+		$factory = MockupFactory::makeFactory( $this );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		$chameleonTemplate->expects( $this->exactly( 2 ) )
+			->method( 'makeListItem' );
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$instance->getHtml();
+	}
+
 }

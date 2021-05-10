@@ -55,8 +55,7 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		/** @var Component $instance */
 		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
 
-		$matcher = [ 'class' => 'usermessage' ];
-		$this->assertTag( $matcher, $instance->getHtml() );
+		$this->assertTag( [ 'class' => 'usermessage' ], $instance->getHtml() );
 	}
 
 	/**
@@ -73,8 +72,7 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		/** @var Component $instance */
 		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
 
-		$matcher = [ 'class' => 'usermessage' ];
-		$this->assertNotTag( $matcher, $instance->getHtml() );
+		$this->assertNotTag( [ 'class' => 'usermessage' ], $instance->getHtml() );
 	}
 
 }

@@ -94,10 +94,13 @@ class PersonalTools extends Component {
 		// add personal tools (links to user page, user talk, prefs, ...)
 		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
 			// Exclude Echo extension links
-			if ( $key == 'notifications-alert' || $key == 'notifications-notice' ) {
-				continue;
+			if ( $this->getDomElement() !== null &&
+				filter_var( $this->getDomElement()->getAttribute( 'hideEchoLinks' ),
+				FILTER_VALIDATE_BOOLEAN ) &&
+				( $key == 'notifications-alert' || $key == 'notifications-notice' ) ) {
+					continue;
 			}
-			else if (isset($item['id'])){
+			if (isset($item['id'])){
 							$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
 							[ 'tag' => 'div', 'link-class' => $item['id']  ] );
 			}

@@ -751,8 +751,7 @@ applicable.
 
 #### Allowed Parent Elements:
 * [Structure](#structure)
-* [Cell](#cel
-l)
+* [Cell](#cell)
 * [NavbarHorizontal](#component-navbarhorizontal)
 
 #### Allowed Child Elements:

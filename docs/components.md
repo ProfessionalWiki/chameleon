@@ -636,13 +636,6 @@ History, Move, ...)
   
   If set the link to the discussion page will not be shown among the page tools.
 
-* `hideEchoLinks`
-  * Allowed values: Boolean (`yes`|`no`)
-  * Default: `no`
-  * Optional.
-
-  If set the Echo extension links will not be shown among the page tools. Set to `yes` when using the [`EchoIcons`](#component-echoicons) component.
-
 * `buttons`
   * Allowed values: String
   * Default: `edit`
@@ -737,9 +730,29 @@ applicable.
   attribute to *yes* and use an independent
   [NewtalkNotifier](#component-newtalknotifier) component.
 
+* `hideEchoLinks`
+  * Only applicable when parent is [NavbarHorizontal](#component-navbarhorizontal)
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+
+  If set the Echo extension links will not be shown in the menu.
+  Set to `yes` when using the [`EchoIcons`](#component-echoicons) component.
+
+* `showEchoAs`
+  * Only applicable when parent is not [NavbarHorizontal](#component-navbarhorizontal)
+  * Allowed values: String (`icons`|`links`|`hidden`)
+  * Default: `icons`
+  * Optional.
+
+  Use `icons` to render Echo links as icons with popups when clicked.
+  Use `links` to render Echo links as normal links without popups.
+  Use `hidden` to hide the icons when using the [`EchoIcons`](#component-echoicons) component.
+
 #### Allowed Parent Elements:
 * [Structure](#structure)
-* [Cell](#cell)
+* [Cell](#cel
+l)
 * [NavbarHorizontal](#component-navbarhorizontal)
 
 #### Allowed Child Elements:

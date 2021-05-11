@@ -53,18 +53,21 @@ class PersonalTools extends Component {
 
 		// add personal tools (links to user page, user talk, prefs, ...)
 		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
-			// Exclude Echo extension links
-			if ( $this->getDomElement() !== null &&
-				filter_var( $this->getDomElement()->getAttribute( 'hideEchoLinks' ),
-				FILTER_VALIDATE_BOOLEAN ) &&
-				( $key == 'notifications-alert' || $key == 'notifications-notice' ) ) {
-					continue;
+			$showEchoAs = '';
+			if ( $this->getDomElement() !== null ) {
+				$showEchoAs = $this->getDomElement()->getAttribute( 'showEchoAs' );
 			}
-			if (isset($item['id'])){
-				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item, ['link-class' => $item['id']] );
+			// Default Echo appearance in Chameleon 3.1.0
+			$showEchoAs = $showEchoAs ? $showEchoAs : 'icons';
+			$isEcho = $key == 'notifications-alert' || $key == 'notifications-notice';
+
+			if ( ( !$isEcho && isset( $item['id'] ) ) || ( $isEcho && $showEchoAs == 'links' ) ) {
+							$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
+							[ 'tag' => 'div', 'link-class' => $item['id']  ] );
 			}
-			else {
-				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
+			else if ( !$isEcho || ( $isEcho && $showEchoAs == 'icons' ) ) {
+							$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
+											[ 'tag' => 'div' ] );
 			}
 		}
 

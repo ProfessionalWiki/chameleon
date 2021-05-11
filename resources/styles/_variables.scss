@@ -140,8 +140,8 @@ $cmln-icons: map-merge((
 	pt-logout: fas fa-sign-out-alt,
 	pt-mycontris: fas fa-question,  // FIXME: Pers tools: My contribs
 	pt-mytalk: fas fa-comments,
-	pt-notifications-alert: fas fa-bell,
-	pt-notifications-notice: fas fa-inbox,
+	pt-notifications-alert: fas fa-bell,  // Personal tools link: Echo
+	pt-notifications-notice: fas fa-inbox,  // Personal tools link: Echo
 	pt-preferences: fas fa-sliders-h,
 	pt-userpage: fas fa-home,
 	pt-watchlist: far fa-eye,

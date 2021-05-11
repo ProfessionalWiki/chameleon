@@ -79,11 +79,20 @@ class PersonalToolsTest extends GenericComponentTestCase {
 	 * @covers ::getHtml
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
-	public function testGetHtml_ShowEchoLinks( $domElement ) {
+	public function testGetHtml_ShowEchoAsDefault( $domElement ) {
 		$factory = MockupFactory::makeFactory( $this );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 		$chameleonTemplate->expects( $this->exactly( 4 ) )
-			->method( 'makeListItem' );
+			->method( 'makeListItem' )
+			->withConsecutive(
+				[ 'foo', [ 'id' => 'pt-foo'], [ 'tag' => 'div', 'link-class' => 'pt-foo' ] ],
+				[ 'bar', [ 'id' => 'pt-bar'], [ 'tag' => 'div', 'link-class' => 'pt-bar' ] ],
+				// Icons are rendered without link-class
+				[ 'notifications-alert', [ 'id' => 'pt-notifications-alert'],
+					[ 'tag' => 'div' ] ],
+				[ 'notifications-notice', [ 'id' => 'pt-notifications-notice'],
+					[ 'tag' => 'div' ] ]
+			);
 
 		/** @var Component $instance */
 		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
@@ -94,12 +103,66 @@ class PersonalToolsTest extends GenericComponentTestCase {
 	 * @covers ::getHtml
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
-	public function testGetHtml_HideEchoLinks( $domElement ) {
-		$domElement->setAttribute('hideEchoLinks', 'yes');
+	public function testGetHtml_ShowEchoAsIcons( $domElement ) {
+		$domElement->setAttribute( 'showEchoAs', 'icons' );
+		$factory = MockupFactory::makeFactory( $this );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		$chameleonTemplate->expects( $this->exactly( 4 ) )
+			->method( 'makeListItem' )
+			->withConsecutive(
+				[ 'foo', [ 'id' => 'pt-foo'], [ 'tag' => 'div', 'link-class' => 'pt-foo' ] ],
+				[ 'bar', [ 'id' => 'pt-bar'], [ 'tag' => 'div', 'link-class' => 'pt-bar' ] ],
+				// Icons are rendered without link-class
+				[ 'notifications-alert', [ 'id' => 'pt-notifications-alert'],
+					[ 'tag' => 'div' ] ],
+				[ 'notifications-notice', [ 'id' => 'pt-notifications-notice'],
+					[ 'tag' => 'div' ] ]
+			);
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$instance->getHtml();
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ShowEchoAsLinks( $domElement ) {
+		$domElement->setAttribute( 'showEchoAs', 'links' );
+		$factory = MockupFactory::makeFactory( $this );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		$chameleonTemplate->expects( $this->exactly( 4 ) )
+			->method( 'makeListItem' )
+			->withConsecutive(
+				[ 'foo', [ 'id' => 'pt-foo'], [ 'tag' => 'div', 'link-class' => 'pt-foo' ] ],
+				[ 'bar', [ 'id' => 'pt-bar'], [ 'tag' => 'div', 'link-class' => 'pt-bar' ] ],
+				// Links are rendered with link-class
+				[ 'notifications-alert', [ 'id' => 'pt-notifications-alert'],
+					[ 'tag' => 'div', 'link-class' => 'pt-notifications-alert' ] ],
+				[ 'notifications-notice', [ 'id' => 'pt-notifications-notice'],
+					[ 'tag' => 'div', 'link-class' => 'pt-notifications-notice' ] ]
+			);
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$instance->getHtml();
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ShowEchoAsHidden( $domElement ) {
+		$domElement->setAttribute( 'showEchoAs', 'hidden' );
 		$factory = MockupFactory::makeFactory( $this );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 		$chameleonTemplate->expects( $this->exactly( 2 ) )
-			->method( 'makeListItem' );
+			->method( 'makeListItem' )
+			->withConsecutive(
+				[ 'foo', [ 'id' => 'pt-foo'], [ 'tag' => 'div', 'link-class' => 'pt-foo' ] ],
+				[ 'bar', [ 'id' => 'pt-bar'], [ 'tag' => 'div', 'link-class' => 'pt-bar' ] ]
+			);
 
 		/** @var Component $instance */
 		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );

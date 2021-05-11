@@ -116,6 +116,7 @@ class PersonalToolsTest extends GenericComponentTestCase {
 	public function testGetHtml_ShowEchoLinks( $domElement ) {
 		$factory = MockupFactory::makeFactory( $this );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		// 2 Echo and 2 non-Echo links must be generated
 		$chameleonTemplate->expects( $this->exactly( 4 ) )
 			->method( 'makeListItem' );
 
@@ -132,6 +133,7 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		$domElement->setAttribute('hideEchoLinks', 'yes');
 		$factory = MockupFactory::makeFactory( $this );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		// Only 2 non-Echo links must be generated
 		$chameleonTemplate->expects( $this->exactly( 2 ) )
 			->method( 'makeListItem' );
 

@@ -736,7 +736,8 @@ applicable.
   * Optional.
 
   If set the Echo extension links will not be shown in the menu.
-  Set to `yes` when using the [`EchoIcons`](#component-echoicons) component.
+  Set to `yes` to hide the links when using the standalone [`EchoIcons`](#component-echoicons)
+  component.
 
 * `showEchoAs`
   * Only applicable when parent is not [NavbarHorizontal](#component-navbarhorizontal)
@@ -746,7 +747,8 @@ applicable.
 
   Use `icons` to render Echo links as icons with popups when clicked.
   Use `links` to render Echo links as normal links without popups.
-  Use `hidden` to hide the icons when using the [`EchoIcons`](#component-echoicons) component.
+  Use `hidden` to hide the icons when using the standalone [`EchoIcons`](#component-echoicons)
+  component.
 
 #### Allowed Parent Elements:
 * [Structure](#structure)

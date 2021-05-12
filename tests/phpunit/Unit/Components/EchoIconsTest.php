@@ -53,10 +53,8 @@ class EchoIconsTest extends GenericComponentTestCase {
 		$chameleonTemplate->expects( $this->exactly( 2 ) )
 			->method( 'makeListItem' )
 			->withConsecutive(
-				[ 'notifications-alert', [ 'id' => 'pt-notifications-alert'],
-					[ 'tag' => 'li' ] ],
-				[ 'notifications-notice', [ 'id' => 'pt-notifications-notice'],
-					[ 'tag' => 'li' ] ]
+				[ 'notifications-alert', [ 'id' => 'pt-notifications-alert'] ],
+				[ 'notifications-notice', [ 'id' => 'pt-notifications-notice'] ]
 			);
 
 		/** @var Component $instance */

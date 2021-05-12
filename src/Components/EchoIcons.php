@@ -64,7 +64,7 @@ class EchoIcons extends Component {
 		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
 			if ( $key === 'notifications-alert' || $key === 'notifications-notice' ) {
 				$ret .= $this->indent() .
-					$this->getSkinTemplate()->makeListItem( $key, $item, [ 'tag' => 'li' ] );
+					$this->getSkinTemplate()->makeListItem( $key, $item );
 			}
 		}
 

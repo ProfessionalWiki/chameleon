@@ -24,6 +24,8 @@
 
 namespace Skins\Chameleon\Tests\Unit\Components;
 
+use Skins\Chameleon\Tests\Util\MockupFactory;
+
 /**
  * @coversDefaultClass \Skins\Chameleon\Components\EchoIcons
  * @covers ::<private>
@@ -40,5 +42,26 @@ namespace Skins\Chameleon\Tests\Unit\Components;
 class EchoIconsTest extends GenericComponentTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\EchoIcons';
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ShowIcons( $domElement ) {
+		$factory = MockupFactory::makeFactory( $this );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		$chameleonTemplate->expects( $this->exactly( 2 ) )
+			->method( 'makeListItem' )
+			->withConsecutive(
+				[ 'notifications-alert', [ 'id' => 'pt-notifications-alert'],
+					[ 'tag' => 'li' ] ],
+				[ 'notifications-notice', [ 'id' => 'pt-notifications-notice'],
+					[ 'tag' => 'li' ] ]
+			);
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$instance->getHtml();
+	}
 
 }

@@ -4,9 +4,11 @@
 
 Under development
 
-* Fixed layout and scroll issues when using the sticky menue and clicking anchor links (thanks @vedmaka)
-* Fixed display of some icons (thanks @malberts)
+* Fixed layout and scroll issues when using the sticky menu and clicking anchor links (thanks @vedmaka)
+* Fixed display of some icons (thanks @malberts and @WouterRademaker)
 * Updated Font Awesome and hc-sticky libraries (thanks @malberts)
+* Fixed Mediawiki 1.35 deprecations (thanks @jdlrobson and @malberts)
+* Fixed Mediawiki 1.35 missing menu icons (thanks @WouterRademaker)
 
 ### Chameleon 3.1.0
 

@@ -177,7 +177,7 @@ class SearchBar extends Component {
 	 */
 	private function shouldShowButton( $button ) {
 		$buttonsAttribute = $this->getAttribute( 'buttons' );
-		return $button === 'go' && $buttonsAttribute !== 'search' ||
-			$button === 'search' && $buttonsAttribute !== 'go';
+		return ( $button === 'go' && $buttonsAttribute !== 'search' ) ||
+			( $button === 'search' && $buttonsAttribute !== 'go' );
 	}
 }

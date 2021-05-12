@@ -191,7 +191,6 @@ This component inserts the Echo extension's icons.
 
 #### Example usage
 
-
 ``` xml
 <component type="EchoIcons"/>
 ```

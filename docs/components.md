@@ -713,7 +713,7 @@ applicable.
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
-* `hideNewtalkNotifier`
+* `hideNewtalkNotifier`:
   * **Deprecated.**
   * Allowed values: Boolean (`yes`|`no`)
   * Default: `no`
@@ -729,7 +729,7 @@ applicable.
   attribute to *yes* and use an independent
   [NewtalkNotifier](#component-newtalknotifier) component.
 
-* `hideEchoLinks`
+* `hideEchoLinks`:
   * Only applicable when parent is [NavbarHorizontal](#component-navbarhorizontal)
   * Allowed values: Boolean (`yes`|`no`)
   * Default: `no`
@@ -739,7 +739,7 @@ applicable.
   Set to `yes` to hide the links when using the standalone [`EchoIcons`](#component-echoicons)
   component.
 
-* `showEchoAs`
+* `showEchoAs`:
   * Only applicable when parent is not [NavbarHorizontal](#component-navbarhorizontal)
   * Allowed values: String (`icons`|`links`|`hidden`)
   * Default: `icons`

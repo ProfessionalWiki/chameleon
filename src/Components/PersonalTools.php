@@ -63,11 +63,10 @@ class PersonalTools extends Component {
 
 			if ( ( !$isEcho && isset( $item['id'] ) ) || ( $isEcho && $showEchoAs == 'links' ) ) {
 							$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
-							[ 'tag' => 'div', 'link-class' => $item['id']  ] );
+							[ 'link-class' => $item['id'] ] );
 			}
 			else if ( !$isEcho || ( $isEcho && $showEchoAs == 'icons' ) ) {
-							$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
-											[ 'tag' => 'div' ] );
+							$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
 			}
 		}
 

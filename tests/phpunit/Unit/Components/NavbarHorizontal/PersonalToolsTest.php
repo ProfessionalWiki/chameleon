@@ -113,12 +113,46 @@ class PersonalToolsTest extends GenericComponentTestCase {
 	 * @covers ::getHtml
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
-	public function testGetHtml_ShowEchoLinks( $domElement ) {
+	public function testGetHtml_ShowEchoLinksDefault( $domElement ) {
 		$factory = MockupFactory::makeFactory( $this );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 		// 2 Echo and 2 non-Echo links must be generated
 		$chameleonTemplate->expects( $this->exactly( 4 ) )
-			->method( 'makeListItem' );
+			->method( 'makeListItem' )
+			->withConsecutive(
+				[ 'foo', [ 'id' => 'pt-foo'], [ 'tag' => 'div', 'link-class' => 'pt-foo' ] ],
+				[ 'bar', [ 'id' => 'pt-bar'], [ 'tag' => 'div', 'link-class' => 'pt-bar' ] ],
+				// Links are rendered with link-class
+				[ 'notifications-alert', [ 'id' => 'pt-notifications-alert'],
+					[ 'tag' => 'div', 'link-class' => 'pt-notifications-alert' ] ],
+				[ 'notifications-notice', [ 'id' => 'pt-notifications-notice'],
+					[ 'tag' => 'div', 'link-class' => 'pt-notifications-notice' ] ]
+			);
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$instance->getHtml();
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ShowEchoLinks( $domElement ) {
+		$domElement->setAttribute('hideEchoLinks', 'no');
+		$factory = MockupFactory::makeFactory( $this );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+		$chameleonTemplate->expects( $this->exactly( 4 ) )
+			->method( 'makeListItem' )
+			->withConsecutive(
+				[ 'foo', [ 'id' => 'pt-foo'], [ 'tag' => 'div', 'link-class' => 'pt-foo' ] ],
+				[ 'bar', [ 'id' => 'pt-bar'], [ 'tag' => 'div', 'link-class' => 'pt-bar' ] ],
+				// Links are rendered with link-class
+				[ 'notifications-alert', [ 'id' => 'pt-notifications-alert'],
+					[ 'tag' => 'div', 'link-class' => 'pt-notifications-alert' ] ],
+				[ 'notifications-notice', [ 'id' => 'pt-notifications-notice'],
+					[ 'tag' => 'div', 'link-class' => 'pt-notifications-notice' ] ]
+			);
 
 		/** @var Component $instance */
 		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
@@ -135,7 +169,11 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 		// Only 2 non-Echo links must be generated
 		$chameleonTemplate->expects( $this->exactly( 2 ) )
-			->method( 'makeListItem' );
+			->method( 'makeListItem' )
+			->withConsecutive(
+				[ 'foo', [ 'id' => 'pt-foo'], [ 'tag' => 'div', 'link-class' => 'pt-foo' ] ],
+				[ 'bar', [ 'id' => 'pt-bar'], [ 'tag' => 'div', 'link-class' => 'pt-bar' ] ]
+			);
 
 		/** @var Component $instance */
 		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );

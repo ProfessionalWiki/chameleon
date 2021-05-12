@@ -47,7 +47,7 @@ class SearchBarTest extends GenericComponentTestCase {
 	 * @covers ::getHTML
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
-	public function testGetHTML_DefaultButtons( $domElement ) {
+	public function testGetHTML_ShowDefaultButtons( $domElement ) {
 		$factory = MockupFactory::makeFactory( $this );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 
@@ -63,7 +63,7 @@ class SearchBarTest extends GenericComponentTestCase {
 	 * @covers ::getHTML
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
-	public function testGetHTML_BothButtons( $domElement ) {
+	public function testGetHTML_ShowBothButtons( $domElement ) {
 		$domElement->setAttribute( 'buttons', 'search go' );
 
 		$factory = MockupFactory::makeFactory( $this );
@@ -81,7 +81,7 @@ class SearchBarTest extends GenericComponentTestCase {
 	 * @covers ::getHTML
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
-	public function testGetHTML_OnlySearchButton( $domElement ) {
+	public function testGetHTML_ShowOnlySearchButton( $domElement ) {
 		$domElement->setAttribute( 'buttons', 'search' );
 
 		$factory = MockupFactory::makeFactory( $this );
@@ -99,7 +99,7 @@ class SearchBarTest extends GenericComponentTestCase {
 	 * @covers ::getHTML
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
-	public function testGetHTML_OnlyGoButton( $domElement ) {
+	public function testGetHTML_ShowOnlyGoButton( $domElement ) {
 		$domElement->setAttribute( 'buttons', 'go' );
 
 		$factory = MockupFactory::makeFactory( $this );

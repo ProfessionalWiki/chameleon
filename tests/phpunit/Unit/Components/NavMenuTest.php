@@ -24,6 +24,8 @@
 
 namespace Skins\Chameleon\Tests\Unit\Components;
 
+use Skins\Chameleon\ChameleonTemplate;
+
 /**
  * @coversDefaultClass \Skins\Chameleon\Components\NavMenu
  * @covers ::<private>
@@ -40,5 +42,39 @@ namespace Skins\Chameleon\Tests\Unit\Components;
 class NavMenuTest extends GenericComponentTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\NavMenu';
+
+	/**
+	 * @covers ::getHTML
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHTML_HasValidId( $domElement ) {
+		$chameleonTemplate = $this->getMockBuilder( ChameleonTemplate::class )
+			->disableOriginalConstructor()
+			->getMock();
+
+		$chameleonTemplate->expects( $this->any() )
+			->method( 'getSidebar' )
+			->will( $this->returnValue( [
+				'A long question?!' => [
+					'id' => 'p-A long question?',
+					'header' => 'A long question?',
+					'generated' => 1,
+					'content' => [
+						[
+							'text' => 'An exclamation!',
+							'href' => '/wiki/An_exclamation!',
+							'id' => 'n-An-exclamation.21',
+							'active' => false,
+						]
+					]
+				]
+			] ) );
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+
+		self::assertTag( [ 'id' => 'p-A-long-question.3F' ], $instance->getHTML() );
+		self::assertTag( [ 'class' => 'p-A-long-question.3F' ], $instance->getHTML() );
+	}
 
 }

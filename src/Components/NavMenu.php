@@ -27,6 +27,7 @@
 namespace Skins\Chameleon\Components;
 
 use Linker;
+use Sanitizer;
 use Skins\Chameleon\IdRegistry;
 
 /**
@@ -59,6 +60,10 @@ class NavMenu extends Component {
 
 		// create a dropdown for each sidebar box
 		foreach ( $sidebar as $menuName => $menuDescription ) {
+			// Ensure parent menu item has a valid id.
+			$menuDescription['id'] = Sanitizer::escapeIdForAttribute(
+				strtr( $menuDescription['id'], ' ', '-' )
+			);
 			/* @phan-suppress-next-line SecurityCheck-DoubleEscaped */
 			$ret .= $this->getDropdownForNavMenu( $menuName, $menuDescription,
 				array_search( $menuName, $flatten ) !== false );

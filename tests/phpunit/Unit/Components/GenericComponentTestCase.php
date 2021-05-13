@@ -259,6 +259,11 @@ class GenericComponentTestCase extends TestCase {
 			unset( $matcher[ 'class' ] );
 		}
 
+		if ( array_key_exists( 'id', $matcher ) ) {
+			$query .= '[contains(concat(" ", normalize-space(@id), " "), " ' . $matcher[ 'id' ] . ' ")]';
+			unset( $matcher[ 'id' ] );
+		}
+
 		if ( count( $matcher ) > 0 ) {
 			trigger_error( 'Found unsupported matcher tags: ' . implode( ', ', array_keys( $matcher ) ),
 				E_USER_WARNING );

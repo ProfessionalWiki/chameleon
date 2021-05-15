@@ -93,20 +93,29 @@ class PersonalTools extends Component {
 
 		// add personal tools (links to user page, user talk, prefs, ...)
 		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
-			// Exclude Echo extension links
-			if ( $this->getDomElement() !== null &&
+			// Flatten classes to avoid MW bug: https://phabricator.wikimedia.org/T262160
+			if ( !empty( $item['links'][0]['class'] ) && is_array( $item['links'][0]['class'] ) ) {
+				$item['links'][0]['class'] = implode( ' ', $item['links'][0]['class'] );
+			}
+
+			$isEcho = $key == 'notifications-alert' || $key == 'notifications-notice';
+			if ( $isEcho && $this->getDomElement() !== null &&
 				filter_var( $this->getDomElement()->getAttribute( 'hideEchoLinks' ),
-				FILTER_VALIDATE_BOOLEAN ) &&
-				( $key == 'notifications-alert' || $key == 'notifications-notice' ) ) {
+				FILTER_VALIDATE_BOOLEAN ) ) {
 					continue;
 			}
-			if (isset($item['id'])){
-							$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
-							[ 'tag' => 'div', 'link-class' => $item['id']  ] );
+
+			// Remove Echo classes to always render as a link
+			if ( $isEcho ) {
+				unset( $item['links'][0]['class'] );
 			}
-			else {
-							$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
-											[ 'tag' => 'div' ] );
+
+			if ( isset( $item['id'] ) ) {
+				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
+					[ 'tag' => 'div', 'link-class' => $item['id']  ] );
+			} else {
+				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
+					[ 'tag' => 'div' ] );
 			}
 		}
 

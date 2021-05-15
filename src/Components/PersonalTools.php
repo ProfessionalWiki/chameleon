@@ -53,20 +53,28 @@ class PersonalTools extends Component {
 
 		// add personal tools (links to user page, user talk, prefs, ...)
 		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
+			// Flatten classes to avoid MW bug: https://phabricator.wikimedia.org/T262160
+			if ( !empty( $item['links'][0]['class'] ) && is_array( $item['links'][0]['class'] )) {
+				$item['links'][0]['class'] = implode( ' ', $item['links'][0]['class'] );
+			}
+
+			$isEcho = $key == 'notifications-alert' || $key == 'notifications-notice';
 			$showEchoAs = '';
 			if ( $this->getDomElement() !== null ) {
 				$showEchoAs = $this->getDomElement()->getAttribute( 'showEchoAs' );
 			}
-			// Default Echo appearance in Chameleon 3.1.0
 			$showEchoAs = $showEchoAs ? $showEchoAs : 'icons';
-			$isEcho = $key == 'notifications-alert' || $key == 'notifications-notice';
 
-			if ( ( !$isEcho && isset( $item['id'] ) ) || ( $isEcho && $showEchoAs == 'links' ) ) {
-							$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
-							[ 'link-class' => $item['id'] ] );
+			if ( isset( $item['id'] ) && ( !$isEcho || ( $isEcho && $showEchoAs == 'links' ) ) ) {
+				// Remove Echo classes to render as a link
+				if ( $isEcho ) {
+					unset( $item['links'][0]['class'] );
+				}
+				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
+					[ 'link-class' => $item['id'] ] );
 			}
 			else if ( !$isEcho || ( $isEcho && $showEchoAs == 'icons' ) ) {
-							$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
+				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
 			}
 		}
 

@@ -4,6 +4,7 @@
 
 Under development
 
+* Added external link icons support (thanks @malberts)
 * Fixed layout and scroll issues when using the sticky menu and clicking anchor links (thanks @vedmaka)
 * Fixed display of some icons (thanks @malberts and @WouterRademaker)
 * Updated Font Awesome and hc-sticky libraries (thanks @malberts)

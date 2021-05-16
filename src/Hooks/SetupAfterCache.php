@@ -260,13 +260,19 @@ class SetupAfterCache {
 	protected function registerSkinWithMW() {
 		MediaWikiServices::getInstance()->getSkinFactory()->register( 'chameleon', 'Chameleon',
 			function () {
+				$styles = [
+					'mediawiki.ui.button',
+					'skins.chameleon',
+					'zzz.ext.bootstrap.styles',
+				];
+
+				if ( $this->configuration[ 'egChameleonEnableExternalLinkIcons' ] === true ) {
+					array_unshift( $styles, 'mediawiki.skinning.content.externallinks' );
+				}
+
 				return new Chameleon( [
 					'name' => 'chameleon',
-					'styles' => [
-						'mediawiki.ui.button',
-						'skins.chameleon',
-						'zzz.ext.bootstrap.styles',
-					]
+					'styles' => $styles
 				] );
 			} );
 	}

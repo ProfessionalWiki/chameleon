@@ -140,3 +140,11 @@ trigger an update of the style cache. There are two ways to do that:
 3. Finally, you can set the following in your `LocalSettings.php` to disable
    caching of SCSS styles completely: `$egScssCacheType = CACHE_NONE;`. This
    should obviously never be done on a production site.    
+
+## Enable external link icons
+
+By default external links will not display the normal MediaWiki icons.
+To enable this, set the following:
+```php
+$egChameleonEnableExternalLinkIcons = true;
+```

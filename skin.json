@@ -31,6 +31,9 @@
 		},
 		"ChameleonEnableVisualEditor": {
 			"value": true
+		},
+		"ChameleonEnableExternalLinkIcons": {
+			"value": false
 		}
 	},
 	"ResourceModules": {

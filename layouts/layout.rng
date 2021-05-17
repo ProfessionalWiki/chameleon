@@ -106,15 +106,6 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<a:documentation></a:documentation>
 			<ref name="Component.CommonContent"/>
 
-			<optional>
-				<attribute name="span" a:defaultValue="1">
-					<data type="positiveInteger">
-						<param name="minInclusive">1</param>
-						<param name="maxInclusive">12</param>
-					</data>
-				</attribute>
-			</optional>
-
 			<zeroOrMore>
 				<choice>
 					<ref name="Row"/>

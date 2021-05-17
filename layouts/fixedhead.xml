@@ -37,13 +37,13 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 	<grid class="flex-fill">
 		<row>
-			<cell span="12">
+			<cell>
 				<component type="SiteNotice"/>
 			</cell>
 		</row>
 
 		<row>
-			<cell span="12">
+			<cell>
 				<component type="MainContent"/>
 			</cell>
 		</row>

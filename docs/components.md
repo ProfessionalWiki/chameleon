@@ -126,24 +126,16 @@ None.
 
 Holds components. 
 
-For each cell specify the number of columns you wish to span.
-
 #### Example usage
 
 ``` xml
-<cell span="12">
+<cell>
   ...
 </cell>
 ```
 
 #### Attributes:
-* `span`:
-  * Allowed values: Numbers (1 ... 12)
-  * Default: `12`
-  
-  The number of columns this cell shall span. All cells of a row should together
-  span 12 columns. If more than 12 columns are placed within a single row, each
-  group of extra columns will, as one unit, wrap onto a new line.
+None.
 
 #### Allowed Parent Elements:
 * [Row](#row)

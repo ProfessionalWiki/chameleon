@@ -1722,7 +1722,7 @@ non-default values in the order of occurence in the SCSS code.
 
 Variable: `$cmln-link-formats`
 
-This defines the link format for a few predefined MediaWiki link types: `new`, `stub`, `extiw`, `exernal`.
+This defines the link format for a few predefined MediaWiki link types: `new`, `stub`, `extiw`, `external`.
 Each entry in the list defines up to 4 values corresponding to the parameters used by the [`link()`](../resources/styles/_mixins.scss) mixin
 
 Example changing 2 of the link formats:

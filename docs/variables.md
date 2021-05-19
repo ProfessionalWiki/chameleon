@@ -1716,3 +1716,5 @@ non-default values in the order of occurence in the SCSS code.
  $zindex-popover                                       | 1060
  $zindex-sticky                                        | 1020
  $zindex-tooltip                                       | 1070
+
+## Examples

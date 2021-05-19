@@ -190,6 +190,9 @@ $list-bullet-size: 0.5 * $font-size-base;
 $list-bullet-color: $gray-300;
 $list-level-indent: 3.5ex;
 
+// Non-Bootstrap variables previously defined in _light.scss
+$error: $danger !default;
+
 /// ==> From Chameleon 1
 
 $thumbnail-caption-padding: 3px;

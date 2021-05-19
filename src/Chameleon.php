@@ -92,6 +92,12 @@ class Chameleon extends SkinTemplate {
 			$GLOBALS[ 'egChameleonLayoutFile' ] = $GLOBALS[ 'wgStyleDirectory' ] . '/chameleon/' .
 				$GLOBALS[ 'egChameleonLayoutFile' ];
 		}
+
+		// set default skin theme
+		if ( $GLOBALS[ 'egChameleonThemeFile' ][0] !== '/' ) {
+			$GLOBALS[ 'egChameleonThemeFile' ] = $GLOBALS[ 'wgStyleDirectory' ] . '/chameleon/' .
+				$GLOBALS[ 'egChameleonThemeFile' ];
+		}
 	}
 
 	/**
@@ -199,5 +205,13 @@ class Chameleon extends SkinTemplate {
 	 */
 	protected function getLayoutFilePath() {
 		return $GLOBALS[ 'egChameleonLayoutFile' ];
+	}
+
+	/**
+	 * Template method that can be overridden by subclasses
+	 * @return string Path to theme file
+	 */
+	protected function getThemeFilePath() {
+		return $GLOBALS[ 'egChameleonThemeFile' ];
 	}
 }

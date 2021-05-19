@@ -1717,7 +1717,7 @@ non-default values in the order of occurence in the SCSS code.
  $zindex-sticky                                        | 1020
  $zindex-tooltip                                       | 1070
 
-## Notes about specific variables
+## Examples
 
 ### Grid breakpoints
 
@@ -1743,3 +1743,4 @@ $egChameleonExternalStyleVariables = [
 ```
 
 In both cases the original `$cmln-collapse-point` variable used for setting the `cmln` breakpoint size will be ignored.
+

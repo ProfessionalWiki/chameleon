@@ -1740,7 +1740,6 @@ Example with the `cmln` breakpoint:
 $egChameleonExternalStyleVariables = [
         'cmln-grid-breakpoints' => '(xs: 0, sm: 576px, md: 768px, lg: 992px, cmln: 1105px, xl: 1900px)'
 ];
-
 ```
 
 In both cases the original `$cmln-collapse-point` variable used for setting the `cmln` breakpoint size will be ignored.

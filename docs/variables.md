@@ -1717,3 +1717,23 @@ non-default values in the order of occurence in the SCSS code.
  $zindex-tooltip                                       | 1070
 
 ## Examples
+
+### Predefined link formats
+
+Variable: `$cmln-link-formats`
+
+This defines the link format for a few predefined MediaWiki link types: `new`, `stub`, `extiw`, `exernal`.
+Each entry in the list defines up to 4 values corresponding to the parameters used by the [`link()`](../resources/styles/_mixins.scss) mixin
+
+Example changing 2 of the link formats:
+
+ link     | default color | default decoration | hover color | hover decoration
+----------|---------------|--------------------|-------------|------------------
+ red      | red           | underline          | blue        | none
+ external | green         | none               | brown       | underline
+
+```php
+$egChameleonExternalStyleVariables = [
+	'cmln-link-formats' => "(new: red underline blue none, external: green none brown underline)"
+];
+```

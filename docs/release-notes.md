@@ -4,6 +4,7 @@
 
 Under development
 
+* Added theme support via the new `ChameleonThemeFile` setting (thanks @malberts)
 * Added external link icons support via the new `ChameleonEnableExternalLinkIcons` setting (thanks @malberts)
 * Fixed layout and scroll issues when using the sticky menu and clicking anchor links (thanks @vedmaka)
 * Fixed display of some icons (thanks @malberts and @WouterRademaker)

@@ -46,6 +46,29 @@ You can of course also define and use your own layout. To start have a look at
 the [documentation of the components](components.md) and at the exisiting
 [layout description files](../layouts).
 
+## Changing themes
+
+By default Chameleon comes with a light theme. It is possible to override that
+by setting the `$egChameleonThemeFile` variable.
+
+To reset the theme back to Bootstrap defaults, set it to the bundled empty theme:
+```php
+$egChameleonThemeFile = 'resources/styles/themes/_empty.scss';
+```
+
+To use a predefined theme set it to the applicable scss file. This can be used
+to load an existing theme from [Bootswatch](https://bootswatch.com/4) or to 
+totally replace the default light styling with a project-specific theme.
+
+### Bootswatch 4 example
+Download the [United theme](https://bootswatch.com/4/united/) `_variables.scss`
+file and save it in the MediaWiki directory under `themes/united.scss`
+
+Add the following to load it:
+```php
+$egChameleonThemeFile = __DIR__ . '/themes/united.scss';
+```
+
 ## Changing styles: Fonts, Colors, Padding etc.
 
 You can customize the styles of the skin by 

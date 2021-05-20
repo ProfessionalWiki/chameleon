@@ -30,3 +30,13 @@
 		@extend .infobox;
 	}
 }
+
+/* Extension MultimediaViewer */
+// Revert Bootstrap overrides
+[class^="mw-mmv"] {
+	box-sizing: content-box;
+}
+
+.mw-mmv-image-links {
+	padding: 0px;
+}

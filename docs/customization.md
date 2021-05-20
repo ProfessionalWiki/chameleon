@@ -51,9 +51,10 @@ the [documentation of the components](components.md) and at the exisiting
 By default Chameleon comes with a light theme. It is possible to override that
 by setting the `$egChameleonThemeFile` variable.
 
-To reset the theme back to Bootstrap defaults, set it to the bundled empty theme:
+To reset the theme back to Bootstrap defaults, set it to an empty string in
+`LocalSettings.php`:
 ```php
-$egChameleonThemeFile = 'resources/styles/themes/_empty.scss';
+$egChameleonThemeFile = '';
 ```
 
 To use a predefined theme set it to the applicable scss file. This can be used
@@ -64,7 +65,7 @@ totally replace the default light styling with a project-specific theme.
 Download the [United theme](https://bootswatch.com/4/united/) `_variables.scss`
 file and save it in the MediaWiki directory under `themes/united.scss`
 
-Add the following to load it:
+Add the following to `LocalSettings.php`:
 ```php
 $egChameleonThemeFile = __DIR__ . '/themes/united.scss';
 ```

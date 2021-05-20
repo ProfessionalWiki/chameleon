@@ -109,7 +109,7 @@ class SetupAfterCacheTest extends TestCase {
 
 		$configuration = [
 			'egChameleonExternalStyleModules' => $mixedExternalStyleModules,
-			'egChameleonThemeFile'            => 'somepath',
+			'egChameleonThemeFile'            => $this->dummyExternalModule,
 			'IP'                              => 'notTestingIP',
 			'wgScriptPath'                    => 'notTestingwgScriptPath',
 			'wgStyleDirectory'                => 'notTestingwgStyleDirectory',

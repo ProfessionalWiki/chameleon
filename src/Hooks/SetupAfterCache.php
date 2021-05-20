@@ -107,9 +107,11 @@ class SetupAfterCache {
 	protected function registerCommonBootstrapModules() {
 		$this->bootstrapManager->addAllBootstrapModules();
 
-		$this->bootstrapManager->addStyleFile(
-			$this->configuration[ 'egChameleonThemeFile' ], 'beforeVariables'
-		);
+		if ( !empty( $this->configuration[ 'egChameleonThemeFile' ] ) ) {
+			$this->bootstrapManager->addStyleFile(
+				$this->configuration[ 'egChameleonThemeFile' ], 'beforeVariables'
+			);
+		}
 
 		$this->bootstrapManager->addStyleFile(
 			$this->configuration[ 'chameleonLocalPath' ] .

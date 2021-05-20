@@ -94,9 +94,9 @@ class Chameleon extends SkinTemplate {
 		}
 
 		// set default skin theme
-		if ( $GLOBALS[ 'egChameleonThemeFile' ][0] !== '/' ) {
-			$GLOBALS[ 'egChameleonThemeFile' ] = $GLOBALS[ 'wgStyleDirectory' ] . '/chameleon/' .
-				$GLOBALS[ 'egChameleonThemeFile' ];
+		$themeFile = &$GLOBALS[ 'egChameleonThemeFile' ];
+		if ( !empty( $themeFile ) && $themeFile[0] !== '/' ) {
+			$themeFile = $GLOBALS[ 'wgStyleDirectory' ] . '/chameleon/' . $themeFile;
 		}
 	}
 

@@ -32,11 +32,33 @@
 }
 
 /* Extension MultimediaViewer */
-// Revert Bootstrap overrides
-[class^="mw-mmv"] {
-	box-sizing: content-box;
-}
+.skin-chameleon {
+	[class*="mw-mmv"] {
+		box-sizing: content-box;
+	}
 
-.mw-mmv-image-links {
-	padding: 0px;
+	.mw-mmv-image-links {
+		padding: 0px;
+	}
+
+	.mw-mmv-post-image {
+		overflow: hidden;
+	}
+
+	@media (max-width: 550px) {
+		.mw-mmv-image-metadata-desc-column {
+			width: 50%;
+		}
+
+		.mw-mmv-image-metadata-links-column {
+			width: 40%;
+			max-width: 50%;
+		}
+
+		.mw-mmv-untruncated {
+			.mw-mmv-image-metadata-links-column {
+				width: 50%;
+			}
+		}
+	}
 }

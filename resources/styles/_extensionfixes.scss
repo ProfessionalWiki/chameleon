@@ -33,18 +33,24 @@
 
 /* Extension MultimediaViewer */
 .skin-chameleon {
+	// Revert Bootstrap override
 	[class*="mw-mmv"] {
-		box-sizing: content-box;
+		&, &::before, &::after {
+			box-sizing: content-box;
+		}
 	}
 
+	// Revert Bootstrap list padding
 	.mw-mmv-image-links {
 		padding: 0px;
 	}
 
+	// Prevent horizontal scrolling (but it might cut off text)
 	.mw-mmv-post-image {
 		overflow: hidden;
 	}
 
+	// Increase metadata column width on narrow screens
 	@media (max-width: 550px) {
 		.mw-mmv-image-metadata-desc-column {
 			width: 50%;

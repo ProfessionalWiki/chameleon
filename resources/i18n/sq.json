@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Besnik b",
 			"Kosovastar"
 		]
 	},
-	"chameleon-newmessages": "Ti ke mesazhe të reja.",
-	"chameleon-nonewmessages": "Ti nuk ke mesazhe të reja."
+	"chameleon-newmessages": "Keni mesazhe të reja.",
+	"chameleon-nonewmessages": "S’keni mesazhe të reja."
 }

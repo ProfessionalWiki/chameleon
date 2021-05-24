@@ -19,7 +19,7 @@
 		.navbar-collapse {
 
 			@extend .flex-column;
-			@extend .flex-cmln-row;
+			@extend .flex-#{$cmln-navbar-horizontal-collapse-point}-row;
 
 			&.show, &.collapsing {
 
@@ -56,8 +56,8 @@
 	.navbar-nav {
 
 		&.right {
-			@extend .ml-cmln-auto;
-			@extend .mt-cmln-0;
+			@extend .ml-#{$cmln-navbar-horizontal-collapse-point}-auto;
+			@extend .mt-#{$cmln-navbar-horizontal-collapse-point}-0;
 			@extend .mt-4;
 			@extend .flex-row;
 			@extend .justify-content-center;
@@ -149,7 +149,7 @@
 			}
 		}
 	}
-	
+
 	a.navbar-more-tools, a.navbar-usernotloggedin, a.navbar-userloggedin, a.navbar-tool-link, a:visited.navbar-tool-link {
 		    color: $navbar-light-color;
 	}

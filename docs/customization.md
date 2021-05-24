@@ -72,6 +72,13 @@ Add the following to `LocalSettings.php`:
 ```php
 $egChameleonThemeFile = __DIR__ . '/themes/united.scss';
 ```
+To also load the additional `_bootswatch.scss`, save it to 
+`themes/united_bootswatch.scss` and add the following:
+```php
+$egChameleonExternalStyleModules = [
+	__DIR__ . "/themes/united_bootswatch.scss" => "afterMain",
+];
+```
 
 ## Changing styles: Fonts, Colors, Padding etc.
 

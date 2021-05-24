@@ -46,12 +46,12 @@ You can of course also define and use your own layout. To start have a look at
 the [documentation of the components](components.md) and at the exisiting
 [layout description files](../layouts).
 
-## Changing themes
+## Changing styles: Themes
 
-By default Chameleon comes with a light theme. It is possible to override that
-by setting the `$egChameleonThemeFile` variable. This can either be an empty
-string to restore Bootstrap defaults or it can be an absolute path to a SCSS
-file.
+A theme is a collection of predefined styles and by default Chameleon comes
+with a light theme. It is possible to override that by setting the
+`$egChameleonThemeFile` variable. This can either be an empty string to
+restore Bootstrap defaults or it can be an absolute path to a SCSS file.
 
 This can be used to load an existing Bootstrap theme from somewhere like
 [Bootswatch](https://bootswatch.com/4) or to totally replace the default

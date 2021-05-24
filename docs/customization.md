@@ -76,7 +76,7 @@ To also load the additional `_bootswatch.scss`, save it to
 `themes/united_bootswatch.scss` and add the following:
 ```php
 $egChameleonExternalStyleModules = [
-	__DIR__ . "/themes/united_bootswatch.scss" => "afterMain",
+	__DIR__ . '/themes/united_bootswatch.scss' => 'afterMain',
 ];
 ```
 

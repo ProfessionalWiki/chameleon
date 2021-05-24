@@ -1755,7 +1755,7 @@ Example changing 2 of the link formats:
 
  link     | default color | default decoration | hover color | hover decoration
 ----------|---------------|--------------------|-------------|------------------
- red      | red           | underline          | blue        | none
+ new      | red           | underline          | blue        | none
  external | green         | none               | brown       | underline
 
 ```php

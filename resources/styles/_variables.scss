@@ -19,15 +19,16 @@
 
 $cmln-collapse-point: 1105px !default;
 
-$grid-breakpoints: (
+$cmln-grid-breakpoints: (
 	xs: 0,
 	sm: 576px,
 	md: 768px,
 	lg: 992px,
 	cmln: $cmln-collapse-point,
 	xl: 1200px
-);
+) !default;
 
+$grid-breakpoints: $cmln-grid-breakpoints;
 
 // Global textual link colors.
 $cmln-link-format: $link-color none darken($link-color, 15%) underline !default;

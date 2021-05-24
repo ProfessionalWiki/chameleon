@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gazimagomedov"
+			"Gazimagomedov",
+			"Omarov M."
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Chameleon сипат-сурат.",
+	"chameleon-desc": "Bootstrap 4 хІалтІизабигун бугеб цІакъ хьетІулеб ва жаваб кьолеб тема",
 	"chameleon-loggedin": "Мун $1 гIадин жаниве лъугьана",
 	"chameleon-notloggedin": "Мун жаниве лъугьун гьечIо",
-	"chameleon-newmessages": "Духъе цIиял кагътал руго.",
-	"chameleon-nonewmessages": "Духъе цIиял кагътал гьечIо."
+	"chameleon-newmessages": "Духъе цIиял рисалатал руго.",
+	"chameleon-nonewmessages": "Духъе цIиял рисалатал гьечIо."
 }

@@ -30,3 +30,49 @@
 		@extend .infobox;
 	}
 }
+
+/* Extension MultimediaViewer */
+.skin-chameleon {
+	// Revert Bootstrap override
+	[class*="mw-mmv"] {
+		&, &::before, &::after {
+			box-sizing: content-box;
+		}
+	}
+
+	// Prevent horizontal scrolling
+	.mw-mmv-post-image {
+		overflow: hidden;
+	}
+
+	.mw-mmv-image-links-div {
+		width: 100%;
+	}
+
+	// Revert Bootstrap list padding
+	.mw-mmv-image-links {
+		padding: 0px;
+	}
+
+	// Increase metadata column width on narrow screens
+	@media (max-width: 500px) {
+		.mw-mmv-image-metadata-desc-column {
+			width: 50%;
+		}
+
+		.mw-mmv-image-metadata-links-column {
+			width: 40%;
+			max-width: 50%;
+		}
+
+		.mw-mmv-untruncated {
+			.mw-mmv-image-metadata-links-column {
+				width: 50%;
+			}
+		}
+		
+		.mw-mmv-image-links {
+			word-break: break-word;
+		}
+	}
+}

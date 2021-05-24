@@ -14,7 +14,7 @@ Here is a step by step procedure for Windows:
     and add the Chameleon skin to the `require` section:
     ```json
     "require": { 
-        "mediawiki/chameleon-skin": "~2.0"
+        "mediawiki/chameleon-skin": "~3.0"
     },
     ```
    
@@ -24,7 +24,7 @@ Here is a step by step procedure for Windows:
     ```json
     {
         "require": {
-            "mediawiki/chameleon-skin": "~2.0"
+            "mediawiki/chameleon-skin": "~3.0"
         },
         "extra": {
             "merge-plugin": {
@@ -43,7 +43,7 @@ Here is a step by step procedure for Windows:
     command line window will open.
     
 5.  On the command line run the command
-    `composer require "mediawiki/chameleon-skin:~2.0"`
+    `composer require "mediawiki/chameleon-skin:~3.0"`
     
 6.  If there were no errors, close the command line window.
 

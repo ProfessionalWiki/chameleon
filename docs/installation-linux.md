@@ -15,7 +15,7 @@ operating systems as well:
    to the `require` section:
    ``` json
    "require": {
-       "mediawiki/chameleon-skin": "~2.0"
+       "mediawiki/chameleon-skin": "~3.0"
    },
    ```
    
@@ -25,7 +25,7 @@ operating systems as well:
    ``` json
    {
        "require": {
-           "mediawiki/chameleon-skin": "~2.0"
+           "mediawiki/chameleon-skin": "~3.0"
        },
        "extra": {
            "merge-plugin": {

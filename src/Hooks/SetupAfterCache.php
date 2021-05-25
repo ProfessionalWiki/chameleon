@@ -107,11 +107,11 @@ class SetupAfterCache {
 	protected function registerCommonBootstrapModules() {
 		$this->bootstrapManager->addAllBootstrapModules();
 
-		// FIXME: Make configurable, e.g. in LocalSettings.php
-		$this->bootstrapManager->addStyleFile(
-			$this->configuration[ 'chameleonLocalPath' ] .
-				'/resources/styles/themes/_light.scss', 'beforeVariables'
-		);
+		if ( !empty( $this->configuration[ 'egChameleonThemeFile' ] ) ) {
+			$this->bootstrapManager->addStyleFile(
+				$this->configuration[ 'egChameleonThemeFile' ], 'beforeVariables'
+			);
+		}
 
 		$this->bootstrapManager->addStyleFile(
 			$this->configuration[ 'chameleonLocalPath' ] .

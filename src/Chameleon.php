@@ -200,4 +200,12 @@ class Chameleon extends SkinTemplate {
 	protected function getLayoutFilePath() {
 		return $GLOBALS[ 'egChameleonLayoutFile' ];
 	}
+
+	/**
+	 * Template method that can be overridden by subclasses
+	 * @return string Path to theme file
+	 */
+	protected function getThemeFilePath() {
+		return $GLOBALS[ 'egChameleonThemeFile' ];
+	}
 }

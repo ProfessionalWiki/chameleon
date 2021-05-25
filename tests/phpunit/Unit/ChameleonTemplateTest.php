@@ -48,15 +48,18 @@ class ChameleonTemplateTest extends TestCase {
 	// This is to ensure that the original value is cached since we are unable
 	// to inject the setting during testing
 	protected $egChameleonLayoutFile = null;
+	protected $egChameleonThemeFile = null;
 
 	protected function setUp(): void {
 		parent::setUp();
 
 		$this->egChameleonLayoutFile = $GLOBALS['egChameleonLayoutFile'];
+		$this->egChameleonThemeFile = $GLOBALS['egChameleonThemeFile'];
 	}
 
 	protected function tearDown(): void {
 		$GLOBALS['egChameleonLayoutFile'] = $this->egChameleonLayoutFile;
+		$GLOBALS['egChameleonThemeFile'] = $this->egChameleonThemeFile;
 
 		parent::tearDown();
 	}

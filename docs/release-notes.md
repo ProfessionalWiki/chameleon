@@ -4,6 +4,7 @@
 
 Under development
 
+* Added theme support via the new `ChameleonThemeFile` setting (thanks @malberts)
 * Added grid breakpoint override support via the new `$cmln-grid-breakpoints` SCSS variable (thanks @malberts)
 * Improved MultimediaViewer extension support (requires [cache update](https://github.com/malberts/chameleon/blob/issue-178/docs/customization.md#triggering-a-cache-update)) (thanks @malberts) 
 * Added external link icons support via the new `ChameleonEnableExternalLinkIcons` setting (thanks @malberts)

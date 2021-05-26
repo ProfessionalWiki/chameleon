@@ -88,7 +88,7 @@ class Chameleon extends SkinTemplate {
 		};
 
 		// set default skin layout
-		if ( $GLOBALS[ 'egChameleonLayoutFile' ][0] !== '/' ) {
+		if ( DIRECTORY_SEPARATOR === '/' && $GLOBALS[ 'egChameleonLayoutFile' ][0] !== '/' ) {
 			$GLOBALS[ 'egChameleonLayoutFile' ] = $GLOBALS[ 'wgStyleDirectory' ] . '/chameleon/' .
 				$GLOBALS[ 'egChameleonLayoutFile' ];
 		}
@@ -199,5 +199,13 @@ class Chameleon extends SkinTemplate {
 	 */
 	protected function getLayoutFilePath() {
 		return $GLOBALS[ 'egChameleonLayoutFile' ];
+	}
+
+	/**
+	 * Template method that can be overridden by subclasses
+	 * @return string Path to theme file
+	 */
+	protected function getThemeFilePath() {
+		return $GLOBALS[ 'egChameleonThemeFile' ];
 	}
 }

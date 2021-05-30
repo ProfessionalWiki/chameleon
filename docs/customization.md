@@ -48,6 +48,8 @@ the [documentation of the components](components.md) and at the exisiting
 
 ## Changing styles: Themes
 
+Requires Chameleon version 3.2.0 or later.
+
 A theme is a collection of predefined styles and by default Chameleon comes
 with a light theme. It is possible to override that by setting the
 `$egChameleonThemeFile` variable. This can either be an empty string to
@@ -176,6 +178,8 @@ trigger an update of the style cache. There are two ways to do that:
    should obviously never be done on a production site.    
 
 ## Enable external link icons
+
+Requires Chameleon version 3.2.0 or later.
 
 By default external links will not display the normal MediaWiki icons.
 To enable this, set the following:

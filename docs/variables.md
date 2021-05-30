@@ -1749,8 +1749,8 @@ Variable: `$cmln-link-formats`
 
 *Important*:
 * This variable can currently only be overridden if the default theme is disabled or if
-  a custom theme is used. Refer to the section on [Customization](./customization.md#changing-styles-themes).
-* The link colors defined here might be overridden elsewhere.
+  a custom theme is used. Refer to the section on [Theme Customization](./customization.md#changing-styles-themes).
+* Some of the link colors defined here might be overridden elsewhere.
 
 This defines the link format for a few predefined MediaWiki link types: `new`, `stub`, `extiw`, `external`.
 

@@ -1747,19 +1747,39 @@ In both cases the original `$cmln-collapse-point` variable used for setting the 
 
 Variable: `$cmln-link-formats`
 
+*Important*:
+* This variable can currently only be overridden if the default theme is disabled or if
+  a custom theme is used. Refer to the section on [Customization](./customization.md#changing-styles-themes).
+* The link colors defined here might be overridden elsewhere.
+
 This defines the link format for a few predefined MediaWiki link types: `new`, `stub`, `extiw`, `external`.
 
-Each entry in the list defines 4 values corresponding to the parameters used by the [`link()`](../resources/styles/_mixins.scss) mixin
+Each each link type can define 4 values corresponding to the parameters used by the
+[`link()`](../resources/styles/_mixins.scss) mixin: `color`, `decoration`, `hover-color`, `hover-decoration`.
+If all 4 values are provided they can just be listed. If only some values are provided they must be named.
 
-Example changing 2 of the link formats:
+#### Example: change 2 of the link formats
 
- link     | default color | default decoration | hover color | hover decoration
-----------|---------------|--------------------|-------------|------------------
- new      | red           | underline          | blue        | none
- external | green         | none               | brown       | underline
+ link type | `color`  | `decoration` | `hover-color` | `hover-decoration`
+-----------|----------|--------------|---------------|--------------------
+ new       | red      | underline    | blue          | none
+ external  | green    | none         | brown         | underline
 
 ```php
 $egChameleonExternalStyleVariables = [
-	'cmln-link-formats' => "(new: red underline blue none, external: green none brown underline)"
+	'cmln-link-formats' => '(new: red underline blue none, external: green none brown underline)'
+];
+```
+
+#### Example: named values
+
+ link type | `color`  | `decoration` | `hover-color` | `hover-decoration`
+-----------|----------|--------------|---------------|--------------------
+ new       | #ff0000  | none         | #0000ff       | none
+ external  | #00ff00  | none         | #a52a2a       | none
+
+```php
+$egChameleonExternalStyleVariables = [
+        'cmln-link-formats' => "(new: ('color': #ff0000, 'hover-color': #0000ff), external: #00ff00 none #a52a2a none)"
 ];
 ```

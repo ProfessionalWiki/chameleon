@@ -1728,7 +1728,9 @@ Some examples are provided below:
 
 ## Grid breakpoints
 
-When overriding `$cmln-grid-breakpoints` you must either:
+Variable: `$cmln-grid-breakpoints`
+
+When overriding breakpoints you must either:
 * include the default `cmln` breakpoint; or
 * additionally set the NavbarHorizontal component's breakpoint variable `$cmln-navbar-horizontal-collapse-point` to one of the other breakpoint names
 

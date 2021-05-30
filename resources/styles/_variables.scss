@@ -176,16 +176,6 @@ $cmln-toc-group-margin-y: map_get($spacers, 1) !default;
 $cmln-toc-subgroup-margin-left: map_get($spacers, 2) !default;
 $cmln-toc-entry-number-padding-right: map_get($spacers, 2) !default;
 
-// Global textual link colors.
-$cmln-link-colors: () !default;
-$cmln-link-colors: map_merge((
-	new: theme-color("danger") none darken(theme-color("danger"), 15%) underline,
-	stub: $link-color none darken($link-color, 15%) underline,
-	extiw: $link-color none darken($link-color, 15%) underline,
-	external: $link-color none darken($link-color, 15%) underline
-), $cmln-link-colors);
-
-
 // list parameters
 $list-bullet-size: 0.5 * $font-size-base;
 $list-bullet-color: $gray-300;

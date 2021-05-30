@@ -16,6 +16,16 @@ as _the_ default value for a variable, discarding all subsequent `!default`
 values it encounters. It then overwrites the value of the variable with
 non-default values in the order of occurence in the SCSS code. 
 
+Some examples are provided below:
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Grid breakpoints](#grid-breakpoints)
+- [Link formats](#link-formats)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
  Name                                                  | Value                                          
 -------------------------------------------------------|----------------------
@@ -137,7 +147,6 @@ non-default values in the order of occurence in the SCSS code.
  $cmln-grid-breakpoints                                | (xs: 0, sm: 576px, md: 768px, lg: 992px, cmln: 1105px, xl: 1200px)
  $cmln-icon-margin                                     | 0.5rem
  $cmln-icons                                           | (go-btn: fas fa-share, search-btn: fas fa-search, navbar-toggler: fas fa-bars, navbar-tool-link: fas fa-asterisk, navbar-more-tools: fas fa-ellipsis-h, navbar-usernotloggedin: fas fa-user, navbar-userloggedin: fas fa-user, ca-cargo-purge: fas fa-redo, ca-delete: fas fa-trash-alt, ca-edit: far fa-edit, ca-formedit: far fa-edit, ca-history: fas fa-history, ca-move: fas fa-location-arrow, ca-nstab-category: fas fa-layer-group, ca-nstab-concept: fas fa-puzzle-piece, ca-nstab-form: fas fa-address-card, ca-nstab-geojson: fas fa-globe, ca-nstab-help: fas fa-question, ca-nstab-image: far fa-file-image, ca-nstab-main: far fa-file, ca-nstab-mediawiki: fas fa-cogs, ca-nstab-project: fas fa-project-diagram, ca-nstab-rule: fas fa-ruler, ca-nstab-special: fas fa-cogs, ca-nstab-template: fas fa-stamp, ca-nstab-user: far fa-user, ca-nstab-widget: fas fa-drafting-compass, ca-protect: fas fa-lock, ca-purge: fas fa-redo, ca-recreatedata: fas fa-database, ca-talk: far fa-comments, ca-unprotect: fas fa-lock, ca-unwatch: far fa-eye-slash, ca-ve-edit: far fa-edit, ca-viewsource: fas fa-code, ca-watch: far fa-eye, feedlink: fas fa-rss, interlanguage-link-target: fas fa-flag, mw-navigation: fas fa-directions, n-Homepage: fas fa-home, n-IRC: fas fa-hashtag, n-Index: fas fa-th, n-List-of-files-with-duplicates: fas fa-check-double, n-Slack: fab fa-slack, n-Uncategorized-files: fas fa-object-ungroup, n-help-mediawiki: fas fa-question, n-help: fas fa-question, n-mainpage-description: fas fa-home, n-mainpage: fas fa-home, n-newfiles: fas fa-images, n-newimages: fas fa-seedling, n-newpages: fas fa-seedling, n-portal: fas fa-archway, n-randompage: fas fa-random, n-recentchanges: fas fa-backward, n-upload: fas fa-upload, p-lang-toggle: fas fa-language, p-tb-toggle: fas fa-toolbox, pt-anoncontribs: fas fa-question, pt-anontalk: fas fa-comments, pt-createaccount: fas fa-user-plus, pt-login: fas fa-sign-in-alt, pt-logout: fas fa-sign-out-alt, pt-mycontris: fas fa-question, pt-mytalk: fas fa-comments, pt-notifications-alert: fas fa-bell, pt-notifications-notice: fas fa-inbox, pt-preferences: fas fa-sliders-h, pt-userpage: fas fa-home, pt-watchlist: far fa-eye, t-blockip: fas fa-user-slash, t-cargopagevalueslink: fas fa-thermometer-half, t-cite: fas fa-question, t-contributions: fas fa-user-edit, t-emailuser: fas fa-at, t-info: fas fa-info, t-log: fas fa-clipboard-list, t-permalink: fas fa-link, t-print: fas fa-print, t-recentchanges: fas fa-clock, t-recentchangeslinked: fas fa-backward, t-smwbrowselink: fas fa-compass, t-specialpages: fas fa-cogs, t-upload: fas fa-upload, t-userrights: fas fa-users, t-wb-concept-uri: fas fa-stroopwafel, t-whatlinkshere: fas fa-sitemap, t-wikibase: fas fa-stroopwafel)
- $cmln-link-colors                                     | (new: #dc3545 none #a71d2a underline, stub: #1b599b none #10345a underline, extiw: #1b599b none #10345a underline, external: #1b599b none #10345a underline)
  $cmln-link-format                                     | #1b599b none #10345a underline
  $cmln-link-formats                                    | (new: ('color': #9b1b2f, 'hover-color': #5a101b), stub: #1b599b none #10345a underline, extiw: #1b599b none #10345a underline, external: #1b599b none #10345a underline)
  $cmln-navbar-bg-color                                 | light
@@ -1717,15 +1726,13 @@ non-default values in the order of occurence in the SCSS code.
  $zindex-sticky                                        | 1020
  $zindex-tooltip                                       | 1070
 
-## Examples
-
-### Grid breakpoints
+## Grid breakpoints
 
 When overriding `$cmln-grid-breakpoints` you must either:
 * include the default `cmln` breakpoint; or
 * additionally set the NavbarHorizontal component's breakpoint variable `$cmln-navbar-horizontal-collapse-point` to one of the other breakpoint names
 
-Example without the `cmln` breakpoint and with the navbar breakpoint set to `lg` instead:
+**Example: Without the `cmln` breakpoint and with the navbar breakpoint set to `lg` instead:**
 
 ```php
 $egChameleonExternalStyleVariables = [
@@ -1734,7 +1741,7 @@ $egChameleonExternalStyleVariables = [
 ];
 ```
 
-Example with the `cmln` breakpoint:
+**Example: With the `cmln` breakpoint:**
 
 ```php
 $egChameleonExternalStyleVariables = [
@@ -1744,3 +1751,43 @@ $egChameleonExternalStyleVariables = [
 
 In both cases the original `$cmln-collapse-point` variable used for setting the `cmln` breakpoint size will be ignored.
 
+## Link formats
+
+Variable: `$cmln-link-formats`
+
+*Important*:
+* This variable can currently only be overridden if the default theme is disabled or if
+  a custom theme is used. Refer to the section on [Theme Customization](./customization.md#changing-styles-themes).
+* Some of the link colors defined here might be overridden elsewhere.
+
+This defines the link format for a few predefined MediaWiki link types: `new`, `stub`, `extiw`, `external`.
+
+Each each link type can define 4 values corresponding to the parameters used by the
+[`link()`](../resources/styles/_mixins.scss) mixin: `color`, `decoration`, `hover-color`, `hover-decoration`.
+If all 4 values are provided they can just be listed. If only some values are provided they must be named.
+
+**Example: Change 2 of the link formats**
+
+ link type | `color`  | `decoration` | `hover-color` | `hover-decoration`
+-----------|----------|--------------|---------------|--------------------
+ new       | red      | underline    | blue          | none
+ external  | green    | none         | brown         | underline
+
+```php
+$egChameleonExternalStyleVariables = [
+	'cmln-link-formats' => '(new: red underline blue none, external: green none brown underline)'
+];
+```
+
+**Example: Named values**
+
+ link type | `color`  | `decoration` | `hover-color` | `hover-decoration`
+-----------|----------|--------------|---------------|--------------------
+ new       | #ff0000  | none         | #0000ff       | none
+ external  | #00ff00  | none         | #a52a2a       | none
+
+```php
+$egChameleonExternalStyleVariables = [
+        'cmln-link-formats' => "(new: ('color': #ff0000, 'hover-color': #0000ff), external: #00ff00 none #a52a2a none)"
+];
+```

@@ -282,7 +282,23 @@ class MockupFactory {
 		$skin->expects( $this->testCase->any() )
 			->method( 'msg' )
 			->will( $this->testCase->returnValue( $this->getMessageStub() ) );
+
+		$skin->expects( $this->testCase->any() )
+			->method( 'getConfig' )
+			->will( $this->testCase->returnValue( $this->getConfigStub() ) );
+
 		return $skin;
+	}
+
+	/**
+	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 */
+	protected function getConfigStub() {
+		$config = $this->testCase->getMockBuilder( '\Config' )
+			->disableOriginalConstructor()
+			->getMock();
+
+		return $config;
 	}
 
 	/**

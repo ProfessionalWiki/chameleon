@@ -21,9 +21,8 @@ Some examples are provided below:
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Examples](#examples)
-  - [Grid breakpoints](#grid-breakpoints)
-  - [Link formats](#link-formats)
+- [Grid breakpoints](#grid-breakpoints)
+- [Link formats](#link-formats)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -1727,15 +1726,13 @@ Some examples are provided below:
  $zindex-sticky                                        | 1020
  $zindex-tooltip                                       | 1070
 
-## Examples
-
-### Grid breakpoints
+## Grid breakpoints
 
 When overriding `$cmln-grid-breakpoints` you must either:
 * include the default `cmln` breakpoint; or
 * additionally set the NavbarHorizontal component's breakpoint variable `$cmln-navbar-horizontal-collapse-point` to one of the other breakpoint names
 
-Example without the `cmln` breakpoint and with the navbar breakpoint set to `lg` instead:
+**Example: Without the `cmln` breakpoint and with the navbar breakpoint set to `lg` instead:**
 
 ```php
 $egChameleonExternalStyleVariables = [
@@ -1744,7 +1741,7 @@ $egChameleonExternalStyleVariables = [
 ];
 ```
 
-Example with the `cmln` breakpoint:
+**Example: With the `cmln` breakpoint:**
 
 ```php
 $egChameleonExternalStyleVariables = [
@@ -1754,7 +1751,7 @@ $egChameleonExternalStyleVariables = [
 
 In both cases the original `$cmln-collapse-point` variable used for setting the `cmln` breakpoint size will be ignored.
 
-### Link formats
+## Link formats
 
 Variable: `$cmln-link-formats`
 
@@ -1769,7 +1766,7 @@ Each each link type can define 4 values corresponding to the parameters used by 
 [`link()`](../resources/styles/_mixins.scss) mixin: `color`, `decoration`, `hover-color`, `hover-decoration`.
 If all 4 values are provided they can just be listed. If only some values are provided they must be named.
 
-#### Example: Change 2 of the link formats
+**Example: Change 2 of the link formats**
 
  link type | `color`  | `decoration` | `hover-color` | `hover-decoration`
 -----------|----------|--------------|---------------|--------------------
@@ -1782,7 +1779,7 @@ $egChameleonExternalStyleVariables = [
 ];
 ```
 
-#### Example: Named values
+**Example: Named values**
 
  link type | `color`  | `decoration` | `hover-color` | `hover-decoration`
 -----------|----------|--------------|---------------|--------------------

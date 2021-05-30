@@ -24,6 +24,7 @@
 
 namespace Skins\Chameleon\Tests\Util;
 
+use Config;
 use FauxRequest;
 use Message;
 use PHPUnit\Framework\TestCase;
@@ -294,7 +295,7 @@ class MockupFactory {
 	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected function getConfigStub() {
-		$config = $this->testCase->getMockBuilder( '\Config' )
+		$config = $this->testCase->getMockBuilder( Config::class )
 			->disableOriginalConstructor()
 			->getMock();
 

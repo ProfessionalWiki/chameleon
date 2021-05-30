@@ -16,6 +16,17 @@ as _the_ default value for a variable, discarding all subsequent `!default`
 values it encounters. It then overwrites the value of the variable with
 non-default values in the order of occurence in the SCSS code. 
 
+Some examples are provided below:
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Examples](#examples)
+  - [Grid breakpoints](#grid-breakpoints)
+  - [Link formats](#link-formats)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 
  Name                                                  | Value                                          
 -------------------------------------------------------|----------------------
@@ -1743,7 +1754,7 @@ $egChameleonExternalStyleVariables = [
 
 In both cases the original `$cmln-collapse-point` variable used for setting the `cmln` breakpoint size will be ignored.
 
-### Predefined link formats
+### Link formats
 
 Variable: `$cmln-link-formats`
 
@@ -1758,7 +1769,7 @@ Each each link type can define 4 values corresponding to the parameters used by 
 [`link()`](../resources/styles/_mixins.scss) mixin: `color`, `decoration`, `hover-color`, `hover-decoration`.
 If all 4 values are provided they can just be listed. If only some values are provided they must be named.
 
-#### Example: change 2 of the link formats
+#### Example: Change 2 of the link formats
 
  link type | `color`  | `decoration` | `hover-color` | `hover-decoration`
 -----------|----------|--------------|---------------|--------------------
@@ -1771,7 +1782,7 @@ $egChameleonExternalStyleVariables = [
 ];
 ```
 
-#### Example: named values
+#### Example: Named values
 
  link type | `color`  | `decoration` | `hover-color` | `hover-decoration`
 -----------|----------|--------------|---------------|--------------------

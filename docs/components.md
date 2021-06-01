@@ -16,7 +16,6 @@ The following components and modifications are available:
 - [`Row`](#row)
 - [`Cell`](#cell)
 - [Component `Container`](#component-container)
-- [Component `EchoIcons`](#component-echoicons)
 - [Component `FooterIcons`](#component-footericons)
 - [Component `FooterInfo`](#component-footerinfo)
 - [Component `FooterPlaces`](#component-footerplaces)
@@ -182,28 +181,6 @@ assign a CSS class for styling purposes.
 
 #### Allowed Child Elements:
 * Any component
-* Any modification
-
--------------------------------------------------------------------------------
-### Component `EchoIcons`
-
-This component inserts the Echo extension's icons.
-
-#### Example usage
-
-``` xml
-<component type="EchoIcons"/>
-```
-
-#### Attributes:
-None.
-
-#### Allowed Parent Elements:
-* [Structure](#structure)
-* [Cell](#cell)
-* [NavbarHorizontal](#component-navbarhorizontal)
-
-#### Allowed Child Elements:
 * Any modification
 
 -------------------------------------------------------------------------------
@@ -713,7 +690,7 @@ applicable.
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
-* `hideNewtalkNotifier`:
+* `hideNewtalkNotifier`
   * **Deprecated.**
   * Allowed values: Boolean (`yes`|`no`)
   * Default: `no`
@@ -729,26 +706,14 @@ applicable.
   attribute to *yes* and use an independent
   [NewtalkNotifier](#component-newtalknotifier) component.
 
-* `hideEchoLinks`:
-  * Only applicable when parent is [NavbarHorizontal](#component-navbarhorizontal)
-  * Allowed values: Boolean (`yes`|`no`)
-  * Default: `no`
-  * Optional.
-
-  If set the Echo extension links will not be shown in the menu.
-  Set to `yes` to hide the links when using the standalone [`EchoIcons`](#component-echoicons)
-  component.
-
-* `showEchoAs`:
-  * Only applicable when parent is not [NavbarHorizontal](#component-navbarhorizontal)
-  * Allowed values: String (`icons`|`links`|`hidden`)
+* `showEcho`:
+  * Allowed values: String (`icons`|`links`)
   * Default: `icons`
   * Optional.
 
-  Use `icons` to render Echo links as icons with popups when clicked.
+  Use `icons` to render Echo links as icons that trigger popups (default Echo behavior).
+  When the parent is `NavbarHorizontal` the Echo icons will be displayed next to the dropdown.
   Use `links` to render Echo links as normal links without popups.
-  Use `hidden` to hide the icons when using the standalone [`EchoIcons`](#component-echoicons)
-  component.
 
 #### Allowed Parent Elements:
 * [Structure](#structure)

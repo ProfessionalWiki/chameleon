@@ -37,6 +37,11 @@ namespace Skins\Chameleon\Components;
  */
 class PersonalTools extends Component {
 
+	private const ECHO_LINK_KEYS = [ 'notifications-alert', 'notifications-notice' ];
+	private const ATTR_SHOW_ECHO = 'showEcho';
+	private const SHOW_ECHO_ICONS = 'icons';
+	private const SHOW_ECHO_LINKS = 'links';
+
 	/**
 	 * Builds the HTML code for this component
 	 *
@@ -54,26 +59,23 @@ class PersonalTools extends Component {
 		// add personal tools (links to user page, user talk, prefs, ...)
 		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
 			// Flatten classes to avoid MW bug: https://phabricator.wikimedia.org/T262160
-			if ( !empty( $item['links'][0]['class'] ) && is_array( $item['links'][0]['class'] )) {
+			if ( !empty( $item['links'][0]['class'] ) && is_array( $item['links'][0]['class'] ) ) {
 				$item['links'][0]['class'] = implode( ' ', $item['links'][0]['class'] );
 			}
 
-			$isEcho = $key == 'notifications-alert' || $key == 'notifications-notice';
-			$showEchoAs = '';
-			if ( $this->getDomElement() !== null ) {
-				$showEchoAs = $this->getDomElement()->getAttribute( 'showEchoAs' );
-			}
-			$showEchoAs = $showEchoAs ? $showEchoAs : 'icons';
+			if ( in_array( $key, self::ECHO_LINK_KEYS ) ) {
+				$showEcho = $this->getAttribute( self::ATTR_SHOW_ECHO, self::SHOW_ECHO_ICONS );
 
-			if ( isset( $item['id'] ) && ( !$isEcho || ( $isEcho && $showEchoAs == 'links' ) ) ) {
-				// Remove Echo classes to render as a link
-				if ( $isEcho ) {
+				if ( $showEcho === self::SHOW_ECHO_LINKS ) {
+					// Remove Echo classes to render as a link
 					unset( $item['links'][0]['class'] );
 				}
+			}
+
+			if ( isset( $item['id'] ) ) {
 				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
 					[ 'link-class' => $item['id'] ] );
-			}
-			else if ( !$isEcho || ( $isEcho && $showEchoAs == 'icons' ) ) {
+			} else {
 				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item );
 			}
 		}

@@ -109,10 +109,11 @@ class PersonalTools extends Component {
 			}
 
 			if ( in_array( $key, self::ECHO_LINK_KEYS ) ) {
-				if ( $this->getShowEcho() === self::SHOW_ECHO_LINKS ) {
+				$showEcho = $this->getShowEcho();
+				if ( $showEcho === self::SHOW_ECHO_LINKS ) {
 					// Remove Echo classes to render as a link
 					unset( $item['links'][0]['class'] );
-				} elseif ( $this->getShowEcho() === self::SHOW_ECHO_ICONS ) {
+				} elseif ( $showEcho === self::SHOW_ECHO_ICONS ) {
 					// Icons will be rendered elsewhere
 					continue;
 				}

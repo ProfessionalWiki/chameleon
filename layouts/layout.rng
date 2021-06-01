@@ -261,17 +261,10 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</optional>
 
 		<optional>
-			<attribute name="hideEchoLinks" a:defaultValue="no">
-				<ref name="BoolValues"/>
-			</attribute>
-		</optional>
-
-		<optional>
-			<attribute name="showEchoAs" a:defaultValue="icons">
+			<attribute name="showEcho" a:defaultValue="icons">
 				<choice>
 					<value>icons</value>
 					<value>links</value>
-					<value>hidden</value>
 				</choice>
 			</attribute>
 		</optional>
@@ -528,19 +521,6 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 			<attribute name="type">
 				<value>FooterIcons</value>
-			</attribute>
-
-		</element>
-	</define>
-
-	<!-- EchoIcons -->
-	<define name="Component" combine="choice">
-		<element name="component">
-			<a:documentation></a:documentation>
-			<ref name="Component.CommonContent"/>
-
-			<attribute name="type">
-				<value>EchoIcons</value>
 			</attribute>
 
 		</element>

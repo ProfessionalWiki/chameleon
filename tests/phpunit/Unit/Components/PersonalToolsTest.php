@@ -79,7 +79,7 @@ class PersonalToolsTest extends GenericComponentTestCase {
 	 * @covers ::getHtml
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
-	public function testGetHtml_ShowEchoAsDefault( $domElement ) {
+	public function testGetHtml_ShowEchoDefault( $domElement ) {
 		$factory = MockupFactory::makeFactory( $this );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 		$chameleonTemplate->expects( $this->exactly( 4 ) )
@@ -101,8 +101,8 @@ class PersonalToolsTest extends GenericComponentTestCase {
 	 * @covers ::getHtml
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
-	public function testGetHtml_ShowEchoAsIcons( $domElement ) {
-		$domElement->setAttribute( 'showEchoAs', 'icons' );
+	public function testGetHtml_ShowEchoIcons( $domElement ) {
+		$domElement->setAttribute( 'showEcho', 'icons' );
 		$factory = MockupFactory::makeFactory( $this );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 		$chameleonTemplate->expects( $this->exactly( 4 ) )
@@ -124,8 +124,8 @@ class PersonalToolsTest extends GenericComponentTestCase {
 	 * @covers ::getHtml
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
-	public function testGetHtml_ShowEchoAsLinks( $domElement ) {
-		$domElement->setAttribute( 'showEchoAs', 'links' );
+	public function testGetHtml_ShowEchoLinks( $domElement ) {
+		$domElement->setAttribute( 'showEcho', 'links' );
 		$factory = MockupFactory::makeFactory( $this );
 		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
 		$chameleonTemplate->expects( $this->exactly( 4 ) )
@@ -145,23 +145,4 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		$instance->getHtml();
 	}
 
-	/**
-	 * @covers ::getHtml
-	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
-	 */
-	public function testGetHtml_ShowEchoAsHidden( $domElement ) {
-		$domElement->setAttribute( 'showEchoAs', 'hidden' );
-		$factory = MockupFactory::makeFactory( $this );
-		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
-		$chameleonTemplate->expects( $this->exactly( 2 ) )
-			->method( 'makeListItem' )
-			->withConsecutive(
-				[ 'foo', [ 'id' => 'pt-foo'], [ 'link-class' => 'pt-foo' ] ],
-				[ 'bar', [ 'id' => 'pt-bar'], [ 'link-class' => 'pt-bar' ] ]
-			);
-
-		/** @var Component $instance */
-		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
-		$instance->getHtml();
-	}
 }

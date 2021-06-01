@@ -31,6 +31,36 @@
 	}
 }
 
+/* Extension Echo */
+.skin-chameleon {
+	.mw-echo-ui-overlay {
+		// Prevent the popup from being below the content on the Notifications page
+		z-index: 2;
+	}
+
+	.mw-echo-alert {
+		padding: 0px;
+	}
+
+	#pt-notifications-alert .mw-echo-notifications-badge,
+	#pt-notifications-notice .mw-echo-notifications-badge {
+		top: 0px;
+	}
+}
+
+.echo-icons {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	list-style: none;
+	margin: 0;
+
+	& > * + * {
+		margin-left: 0.75rem;
+	}
+}
+
 /* Extension MultimediaViewer */
 .skin-chameleon {
 	// Revert Bootstrap override
@@ -70,13 +100,9 @@
 				width: 50%;
 			}
 		}
-		
+
 		.mw-mmv-image-links {
 			word-break: break-word;
 		}
 	}
-
-/* Extension Echo */
-.mw-echo-alert {
-	padding: 0px;
 }

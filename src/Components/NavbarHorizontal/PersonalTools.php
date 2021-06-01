@@ -41,6 +41,11 @@ use Skins\Chameleon\IdRegistry;
  */
 class PersonalTools extends Component {
 
+	private const ECHO_LINK_KEYS = [ 'notifications-alert', 'notifications-notice' ];
+	private const ATTR_SHOW_ECHO = 'showEcho';
+	private const SHOW_ECHO_ICONS = 'icons';
+	private const SHOW_ECHO_LINKS = 'links';
+
 	/**
 	 * @return String
 	 * @throws \FatalError
@@ -48,7 +53,12 @@ class PersonalTools extends Component {
 	 */
 	public function getHtml() {
 		// start personal tools element
-		return $this->indent() . '<!-- personal tools -->' .
+		$echoHtml = '';
+		if ( $this->getShowEcho() === self::SHOW_ECHO_ICONS ) {
+			$echoHtml = $this->indent() . $this->getEchoIcons();
+		}
+		return $echoHtml .
+			$this->indent() . '<!-- personal tools -->' .
 			$this->indent() . '<div class="navbar-tools navbar-nav" >' .
 			$this->indent( 1 ) . \Html::rawElement( 'div', [ 'class' => 'navbar-tool dropdown' ],
 
@@ -98,21 +108,19 @@ class PersonalTools extends Component {
 				$item['links'][0]['class'] = implode( ' ', $item['links'][0]['class'] );
 			}
 
-			$isEcho = $key == 'notifications-alert' || $key == 'notifications-notice';
-			if ( $isEcho && $this->getDomElement() !== null &&
-				filter_var( $this->getDomElement()->getAttribute( 'hideEchoLinks' ),
-				FILTER_VALIDATE_BOOLEAN ) ) {
+			if ( in_array( $key, self::ECHO_LINK_KEYS ) ) {
+				if ( $this->getShowEcho() === self::SHOW_ECHO_LINKS ) {
+					// Remove Echo classes to render as a link
+					unset( $item['links'][0]['class'] );
+				} elseif ( $this->getShowEcho() === self::SHOW_ECHO_ICONS ) {
+					// Icons will be rendered elsewhere
 					continue;
-			}
-
-			// Remove Echo classes to always render as a link
-			if ( $isEcho ) {
-				unset( $item['links'][0]['class'] );
+				}
 			}
 
 			if ( isset( $item['id'] ) ) {
 				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
-					[ 'tag' => 'div', 'link-class' => $item['id']  ] );
+					[ 'tag' => 'div', 'link-class' => $item['id'] ] );
 			} else {
 				$ret .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
 					[ 'tag' => 'div' ] );
@@ -122,6 +130,36 @@ class PersonalTools extends Component {
 		$this->indent( -1 );
 		return $ret;
 	}
+
+	/**
+	 * @return string
+	 * @throws \MWException
+	 */
+	protected function getEchoIcons() {
+		$items = '';
+
+		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
+			if ( in_array( $key, self::ECHO_LINK_KEYS ) ) {
+				// Flatten classes to avoid MW bug: https://phabricator.wikimedia.org/T262160
+				if ( !empty( $item['links'][0]['class'] ) && is_array( $item['links'][0]['class'] ) ) {
+					$item['links'][0]['class'] = implode( ' ', $item['links'][0]['class'] );
+				}
+
+				$items .= $this->indent() .
+					$this->getSkinTemplate()->makeListItem( $key, $item );
+			}
+		}
+
+		if ( empty( $items ) ) {
+			return '';
+		}
+
+		return '<!-- echo icons -->' .
+			'<ul class="navbar-tools echo-icons">' .
+			$this->indent() . $items .
+			'</ul>';
+	}
+
 
 	/**
 	 * @return string
@@ -156,6 +194,13 @@ class PersonalTools extends Component {
 		$this->indent( -1 );
 
 		return $dropdownToggle;
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function getShowEcho() {
+		return $this->getAttribute( self::ATTR_SHOW_ECHO, self::SHOW_ECHO_ICONS );
 	}
 
 }

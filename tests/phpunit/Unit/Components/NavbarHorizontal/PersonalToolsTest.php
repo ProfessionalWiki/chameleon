@@ -123,7 +123,7 @@ class PersonalToolsTest extends GenericComponentTestCase {
 				[ 'notifications-alert', [ 'id' => 'pt-notifications-alert'] ],
 				[ 'notifications-notice', [ 'id' => 'pt-notifications-notice'] ],
 				[ 'foo', [ 'id' => 'pt-foo'], [ 'tag' => 'div' , 'link-class' => 'pt-foo' ] ],
-				[ 'bar', [ 'id' => 'pt-bar'], [ 'tag' => 'div' , 'link-class' => 'pt-bar' ] ],
+				[ 'bar', [ 'id' => 'pt-bar'], [ 'tag' => 'div' , 'link-class' => 'pt-bar' ] ]
 			);
 
 		/** @var Component $instance */

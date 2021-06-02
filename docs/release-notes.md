@@ -2,7 +2,7 @@
 
 ### Chameleon 3.2.0
 
-Under development
+Released on June 2, 2021.
 
 * Improved Echo support in the `PersonalTools` components (thanks @malberts)
 * Added theme support via the new `ChameleonThemeFile` setting (thanks @malberts)

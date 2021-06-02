@@ -88,7 +88,7 @@ class LangLinks extends Component {
 				$linkItem['class'] = 'nav-item';
 			}
 			$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem,
-				[ 'link-class' => 'nav-link '.$linkItem['id'] , 'tag' => 'div' ] );
+				[ 'link-class' => 'nav-link ' , 'tag' => 'div' ] );
 		}
 
 		$this->indent( -2 );

@@ -6,7 +6,7 @@ Under development.
 
 * Raised minimum Bootstrap extension version from 4.2 to 4.5
 * Raised minimum MediaWiki version from 1.31 to 1.35
-* Raised minimum PHP version from 7.1 to 7.3.19
+* Raised minimum PHP version from 7.1 to 7.4.3
 
 ### Chameleon 3.2.1
 

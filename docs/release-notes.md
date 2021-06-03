@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 3.2.1
+
+Released on June 3, 2021.
+
+* Fixed `LangLinks` component PHP notice (thanks @WouterRademaker)
+
 ### Chameleon 3.2.0
 
 Released on June 2, 2021.

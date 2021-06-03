@@ -37,7 +37,7 @@ For general questions, comments or suggestions you might use the [Chameleon skin
 talk page on MediaWiki.org][chameleon-talk]. For direct contact with the maintainers
 please use [our contact form][contact-form].
 
-Finally there are the MediaWiki IRC channel (Server: [freenode.net][irc],
+Finally there are the MediaWiki IRC channel (Server: [libera.chat][irc],
 Channel: #mediawiki) and the [MediaWiki mailing list][mw-ml]. 
 
 ## Professional Support
@@ -57,5 +57,5 @@ We also do development work.
 [report bugs]: https://github.com/ProfessionalWiki/chameleon/issues/new
 [chameleon-talk]: https://www.mediawiki.org/wiki/Skin_talk:Chameleon
 [contact-form]: https://professional.wiki/en/contact
-[irc]: http://webchat.freenode.net/
+[irc]: https://web.libera.chat/?channel=#mediawiki
 [mw-ml]: https://lists.wikimedia.org/mailman/listinfo/mediawiki-l

@@ -122,12 +122,12 @@ For general questions, comments or suggestions you might use the [Chameleon skin
 
 For direct contact please use the [Email functionality on MediaWiki.org][mw-mail].
 
-Finally the MediaWiki IRC channel (Server: [freenode.net][irc], Channel: #mediawiki) might be worth a try.
+Finally the MediaWiki IRC channel (Server: [libera.chat][irc], Channel: #mediawiki) might be worth a try.
 
 
 [ToolBox]: components.md#component-toolbox
 [LangLinks]: components.md#component-langlinks
 [chameleon-talk]: https://www.mediawiki.org/wiki/Skin_talk:Chameleon
 [mw-mail]: https://www.mediawiki.org/wiki/Special:EmailUser/F.trott
-[irc]: http://webchat.freenode.net/
+[irc]: https://web.libera.chat/?channel=#mediawiki
 

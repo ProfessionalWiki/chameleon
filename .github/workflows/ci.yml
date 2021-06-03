@@ -13,10 +13,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - mw: 'REL1_31'
-            php: 7.1
-          - mw: 'REL1_34'
-            php: 7.4
           - mw: 'REL1_35'
             php: 7.4
           - mw: 'REL1_36'

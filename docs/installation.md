@@ -2,8 +2,8 @@
 
 ### Requirements
 
-- PHP 7.1 or later
-- MediaWiki 1.31 or later
+- PHP 7.3.19 or later
+- MediaWiki 1.35 or later
 
 ### Installation
 

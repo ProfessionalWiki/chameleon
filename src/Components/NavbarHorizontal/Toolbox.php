@@ -70,21 +70,13 @@ class Toolbox extends Component {
 	 * @throws \MWException
 	 */
 	private function getLinkListItems( $indent = 0 ) {
-		global $wgVersion;
-
 		$this->indent( $indent );
 
 		$skinTemplate = $this->getSkinTemplate();
 
 		$listItems = [];
+		$toolbox = $skinTemplate->get( 'sidebar' )[ 'TOOLBOX' ] ?? array();
 
-		if ( version_compare( $wgVersion, '1.35', '<' ) ) {
-			$toolbox = $skinTemplate->getToolbox();
-		} else if ( isset( $skinTemplate->get( 'sidebar' )[ 'TOOLBOX' ] ) ) {
-			$toolbox = $skinTemplate->get( 'sidebar' )[ 'TOOLBOX' ];
-		} else {
-			$toolbox = array();
-		}
 		// FIXME: Do we need to care of dropdown menus here? E.g. RSS feeds?
 		foreach ( $toolbox as $key => $linkItem ) {
 			if ( isset( $linkItem[ 'class' ] ) ) {

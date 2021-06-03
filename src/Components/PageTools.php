@@ -205,13 +205,8 @@ class PageTools extends Component {
 		}
 
 		// Makes namespace key lowercase
-		if ( version_compare( $wgVersion, '1.36', '<' ) ) {
-			$namespaceKey =
-				MediaWikiServices::getInstance()->getMainConfig()->get( 'ContLang' )->lc( $namespaceKey );
-		} else {
-			$namespaceKey =
-				MediaWikiServices::getInstance()->getContentLanguage()->lc( $namespaceKey );
-		}
+		$namespaceKey =
+			MediaWikiServices::getInstance()->getContentLanguage()->lc( $namespaceKey );
 
 		if ( $namespaceKey === '' ) {
 			return 'main';

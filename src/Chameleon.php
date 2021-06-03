@@ -50,9 +50,6 @@ class Chameleon extends SkinTemplate {
 
 	private $componentFactory;
 
-	// FIXME: Remove when MW 1.31 compatibility is dropped
-	private $stylesHaveBeenProcessed = false;
-
 	/**
 	 * @throws \Exception
 	 */

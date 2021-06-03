@@ -193,8 +193,6 @@ class PageTools extends Component {
 	 * @throws \ConfigException
 	 */
 	public function getNamespaceKey() {
-		global $wgVersion;
-
 		// Gets the subject namespace of this title
 		$title = $this->getSkinTemplate()->getSkin()->getTitle();
 

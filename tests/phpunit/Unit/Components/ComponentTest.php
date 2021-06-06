@@ -190,13 +190,7 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 			->method( 'getHtml' )
 			->will( $this->returnValue( 'SomeHtml' ) );
 
-		if ( method_exists( '\PHPUnit\Framework\TestCase', 'assertIsString' ) ) {
-			$this->assertIsString( $instance->getClassString() );
-		} else {
-			// @codingStandardsIgnoreStart
-			$this->assertInternalType( 'string', $instance->getClassString() );
-			// @codingStandardsIgnoreEnd
-		}
+		$this->assertIsString( $instance->getClassString() );
 	}
 
 	/**
@@ -329,13 +323,7 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 	 * @param string $message
 	 */
 	public function assertValidHTML( $actual, $message = '' ) {
-		if ( method_exists( '\PHPUnit\Framework\TestCase', 'assertIsString' ) ) {
-			$this->assertIsString( $actual, $message );
-		} else {
-			// @codingStandardsIgnoreStart
-			$this->assertInternalType( 'string', $actual, $message );
-			// @codingStandardsIgnoreEnd
-		}
+		$this->assertIsString( $actual, $message );
 	}
 
 }

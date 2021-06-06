@@ -31,20 +31,20 @@
 		"irc": "irc://libera.chat:6667/mediawiki"
 	},
 	"require": {
-		"php": ">=7.1",
+		"php": ">=7.4.3",
 		"ext-dom": "*",
 		"ext-filter": "*",
 		"composer/installers": "^1.0.12",
-		"mediawiki/bootstrap": "^4.2"
+		"mediawiki/bootstrap": "^4.5"
 	},
 	"require-dev": {
-		"php": ">=7.2",
+		"php": ">=7.4.3",
 		"mediawiki/mediawiki-codesniffer": "36.0.0",
 		"mediawiki/mediawiki-phan-config": "0.10.6"
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "3.x-dev"
+			"dev-master": "4.x-dev"
 		}
 	},
 	"scripts": {

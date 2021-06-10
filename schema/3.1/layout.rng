@@ -19,7 +19,7 @@ You should have received a copy of the GNU General Public License along
 with this program. If not, see <http://www.gnu.org/licenses/>.
 
 @author Stephan Gambke
-@since 1.5
+@since 3.2
 @ingroup Skins
 -->
 <grammar
@@ -158,6 +158,22 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 			<optional>
 				<attribute name="id"/>
+			</optional>
+		</element>
+	</define>
+
+	<!-- Container -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<attribute name="type">
+				<value>Html</value>
+			</attribute>
+
+			<optional>
+				<text/>
 			</optional>
 		</element>
 	</define>

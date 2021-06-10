@@ -25,13 +25,13 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 <grammar
 		xmlns="http://relaxng.org/ns/structure/1.0"
 		xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-		ns="https://ProfessionalWiki.github.io/chameleon/schema/3.0/layout.rng"
+		ns="https://ProfessionalWiki.github.io/chameleon/schema/3.1/layout.rng"
 		datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
 >
 
 	<a:documentation>
 		Schema for Chameleon layout files
-		Version 3.0
+		Version 3.1
 		Copyright 2013 - 2019, Stephan Gambke
 		GNU General Public License, version 3 (or any later version)
 	</a:documentation>
@@ -72,6 +72,9 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<a:documentation></a:documentation>
 			<ref name="Component.CommonContent"/>
 
+			<optional>
+				<attribute name="id"/>
+			</optional>
 
 			<optional>
 				<attribute name="mode" a:defaultValue="fixedwidth">
@@ -94,6 +97,10 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<a:documentation></a:documentation>
 			<ref name="Component.CommonContent"/>
 
+			<optional>
+				<attribute name="id"/>
+			</optional>
+
 			<zeroOrMore>
 				<ref name="Cell"/>
 			</zeroOrMore>
@@ -105,6 +112,10 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<element name="cell">
 			<a:documentation></a:documentation>
 			<ref name="Component.CommonContent"/>
+
+			<optional>
+				<attribute name="id"/>
+			</optional>
 
 			<zeroOrMore>
 				<choice>
@@ -132,6 +143,22 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 				<attribute name="type"  a:defaultValue="Container"/>
 			</optional>
 
+		</element>
+	</define>
+
+	<!-- Container -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<attribute name="type">
+				<value>Container</value>
+			</attribute>
+
+			<optional>
+				<attribute name="id"/>
+			</optional>
 		</element>
 	</define>
 

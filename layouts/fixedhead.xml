@@ -23,7 +23,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 @since 1.0
 @ingroup Skins
 -->
-<structure xmlns="https://ProfessionalWiki.github.io/chameleon/schema/3.0/layout.rng">
+<structure xmlns="https://ProfessionalWiki.github.io/chameleon/schema/3.1/layout.rng">
 
 	<component type="NavbarHorizontal">
 		<modification type="Sticky"/>

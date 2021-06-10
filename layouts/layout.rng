@@ -140,9 +140,24 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<ref name="Component.CommonContent"/>
 
 			<optional>
-				<attribute name="type"  a:defaultValue="Container"/>
+				<attribute name="type" a:defaultValue="Container"/>
+			</optional>
+		</element>
+	</define>
+
+	<!-- Default Component: Container -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<optional>
+				<attribute name="id"/>
 			</optional>
 
+			<zeroOrMore>
+				<ref name="Component"/>
+			</zeroOrMore>
 		</element>
 	</define>
 
@@ -159,10 +174,14 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<optional>
 				<attribute name="id"/>
 			</optional>
+
+			<zeroOrMore>
+				<ref name="Component"/>
+			</zeroOrMore>
 		</element>
 	</define>
 
-	<!-- Container -->
+	<!-- Html -->
 	<define name="Component" combine="choice">
 		<element name="component">
 			<a:documentation></a:documentation>

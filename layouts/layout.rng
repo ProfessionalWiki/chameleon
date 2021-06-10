@@ -145,31 +145,18 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</element>
 	</define>
 
-	<!-- Default Component: Container -->
-	<define name="Component" combine="choice">
-		<element name="component">
-			<a:documentation></a:documentation>
-			<ref name="Component.CommonContent"/>
-
-			<optional>
-				<attribute name="id"/>
-			</optional>
-
-			<zeroOrMore>
-				<ref name="Component"/>
-			</zeroOrMore>
-		</element>
-	</define>
-
 	<!-- Container -->
 	<define name="Component" combine="choice">
 		<element name="component">
 			<a:documentation></a:documentation>
 			<ref name="Component.CommonContent"/>
 
-			<attribute name="type">
-				<value>Container</value>
-			</attribute>
+			<!-- No type, or Container -->
+			<optional>
+				<attribute name="type">
+					<value>Container</value>
+				</attribute>
+			</optional>
 
 			<optional>
 				<attribute name="id"/>

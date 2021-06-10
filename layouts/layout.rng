@@ -2,7 +2,7 @@
 <!--
 This file is part of the MediaWiki skin Chameleon.
 
-@copyright 2013 - 2019, Stephan Gambke
+@copyright 2013 - 2021, Stephan Gambke
 @license   GNU General Public License, version 3 (or any later version)
 
 The Chameleon skin is free software: you can redistribute it and/or modify it
@@ -19,7 +19,7 @@ You should have received a copy of the GNU General Public License along
 with this program. If not, see <http://www.gnu.org/licenses/>.
 
 @author Stephan Gambke
-@since 1.5
+@since 3.2
 @ingroup Skins
 -->
 <grammar
@@ -32,7 +32,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 	<a:documentation>
 		Schema for Chameleon layout files
 		Version 3.1
-		Copyright 2013 - 2019, Stephan Gambke
+		Copyright 2013 - 2021, Stephan Gambke
 		GNU General Public License, version 3 (or any later version)
 	</a:documentation>
 

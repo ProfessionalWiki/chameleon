@@ -8,6 +8,12 @@ Under development.
 * Raised minimum MediaWiki version from 1.31 to 1.35
 * Raised minimum PHP version from 7.1 to 7.4.3
 
+### Chameleon 3.2.2
+
+Under development.
+
+* Added `id` attribute to structure components: `Grid`, `Row`, `Cell` and `Component` (thanks @malberts)
+
 ### Chameleon 3.2.1
 
 Released on June 3, 2021.

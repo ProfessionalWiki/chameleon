@@ -151,7 +151,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<a:documentation></a:documentation>
 			<ref name="Component.CommonContent"/>
 
-			<!-- No type, or Container -->
+			<!-- No type (default) or explicit Container type -->
 			<optional>
 				<attribute name="type">
 					<value>Container</value>

@@ -90,6 +90,21 @@ recommended.
   Use `fixedwidth` for a responsive fixed width layout. Use `fluid` for a full
   width layout, spanning the entire width of the viewport.
 
+* `id`:
+  * Allowed values: Any string
+  * Default: -
+  * Optional.
+
+  The id that should be assigned to the grid element.
+
+* `class`:
+  * Allowed values: Any string
+  * Default: -
+  * Optional.
+
+  The class (or classes) that should be assigned to the grid element.
+
+
 #### Allowed Parent Elements:
 * [Structure](#structure)
 
@@ -112,7 +127,20 @@ cells, and only cells may be immediate children of rows.
 ```
 
 #### Attributes:
-None.
+* `id`:
+  * Allowed values: Any string
+  * Default: -
+  * Optional.
+
+  The id that should be assigned to the row element.
+
+* `class`:
+  * Allowed values: Any string
+  * Default: -
+  * Optional.
+
+  The class (or classes) that should be assigned to the row element.
+
 
 #### Allowed Parent Elements:
 * [Grid](#grid)
@@ -126,24 +154,29 @@ None.
 
 Holds components. 
 
-For each cell specify the number of columns you wish to span.
-
 #### Example usage
 
 ``` xml
-<cell span="12">
+<cell>
   ...
 </cell>
 ```
 
 #### Attributes:
-* `span`:
-  * Allowed values: Numbers (1 ... 12)
-  * Default: `12`
-  
-  The number of columns this cell shall span. All cells of a row should together
-  span 12 columns. If more than 12 columns are placed within a single row, each
-  group of extra columns will, as one unit, wrap onto a new line.
+* `id`:
+  * Allowed values: Any string
+  * Default: -
+  * Optional.
+
+  The id that should be assigned to the cell element.
+
+* `class`:
+  * Allowed values: Any string
+  * Default: -
+  * Optional.
+
+  The class (or classes) that should be assigned to the cell element.
+
 
 #### Allowed Parent Elements:
 * [Row](#row)
@@ -157,7 +190,7 @@ For each cell specify the number of columns you wish to span.
 ### Component `Container`
 
 This component will wrap its content elements in a `<div>`. It may be used to
-assign a CSS class for styling purposes.
+assign a CSS id or class for styling purposes.
 
 #### Example usage
 
@@ -168,6 +201,13 @@ assign a CSS class for styling purposes.
 ```
 
 #### Attributes:
+* `id`:
+  * Allowed values: Any string
+  * Default: -
+  * Optional.
+
+  The id that should be assigned to the `<div>` element.
+
 * `class`:
   * Allowed values: Any string
   * Default: -

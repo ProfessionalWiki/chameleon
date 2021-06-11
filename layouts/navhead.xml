@@ -3,7 +3,7 @@
 <?xml-model href="https://ProfessionalWiki.github.io/chameleon/schema/3.0/layout.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 This file is part of the MediaWiki skin Chameleon.
 
-@copyright 2013 - 2019, Stephan Gambke
+@copyright 2013 - 2021, Stephan Gambke
 @license   GNU General Public License, version 3 (or any later version)
 
 The Chameleon skin is free software: you can redistribute it and/or modify it
@@ -23,7 +23,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 @since 1.0
 @ingroup Skins
 -->
-<structure xmlns="https://ProfessionalWiki.github.io/chameleon/schema/3.0/layout.rng">
+<structure xmlns="https://ProfessionalWiki.github.io/chameleon/schema/3.1/layout.rng">
 	<component type="NavbarHorizontal">
 		<component type="Logo" position="head"/>
 		<component type="NavMenu" flatten="navigation" />

@@ -31,7 +31,8 @@ namespace Skins\Chameleon\Components;
  *
  * It will wrap its content elements in a DIV.
  *
- * Supported attributes:
+ * Supported attribs:
+ * - id
  * - class
  *
  * @author Stephan Gambke
@@ -47,7 +48,14 @@ class Container extends Structure {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-		$ret = $this->indent() . \Html::openElement( 'div', [ 'class' => $this->getClassString() ] );
+		$attribs = [ 'class' => $this->getClassString() ];
+
+		$id = $this->getAttribute( 'id' );
+		if ( $id !== '' ) {
+			$attribs['id'] = $id;
+		}
+
+		$ret = $this->indent() . \Html::openElement( 'div', $attribs );
 		$this->indent( 1 );
 
 		$ret .= parent::getHtml();

@@ -2,7 +2,7 @@
 <!--
 This file is part of the MediaWiki skin Chameleon.
 
-@copyright 2013 - 2019, Stephan Gambke
+@copyright 2013 - 2021, Stephan Gambke
 @license   GNU General Public License, version 3 (or any later version)
 
 The Chameleon skin is free software: you can redistribute it and/or modify it
@@ -19,20 +19,20 @@ You should have received a copy of the GNU General Public License along
 with this program. If not, see <http://www.gnu.org/licenses/>.
 
 @author Stephan Gambke
-@since 1.5
+@since 3.2
 @ingroup Skins
 -->
 <grammar
 		xmlns="http://relaxng.org/ns/structure/1.0"
 		xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-		ns="https://ProfessionalWiki.github.io/chameleon/schema/3.0/layout.rng"
+		ns="https://ProfessionalWiki.github.io/chameleon/schema/3.1/layout.rng"
 		datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
 >
 
 	<a:documentation>
 		Schema for Chameleon layout files
-		Version 3.0
-		Copyright 2013 - 2019, Stephan Gambke
+		Version 3.1
+		Copyright 2013 - 2021, Stephan Gambke
 		GNU General Public License, version 3 (or any later version)
 	</a:documentation>
 
@@ -72,6 +72,9 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<a:documentation></a:documentation>
 			<ref name="Component.CommonContent"/>
 
+			<optional>
+				<attribute name="id"/>
+			</optional>
 
 			<optional>
 				<attribute name="mode" a:defaultValue="fixedwidth">
@@ -94,6 +97,10 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<a:documentation></a:documentation>
 			<ref name="Component.CommonContent"/>
 
+			<optional>
+				<attribute name="id"/>
+			</optional>
+
 			<zeroOrMore>
 				<ref name="Cell"/>
 			</zeroOrMore>
@@ -107,12 +114,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<ref name="Component.CommonContent"/>
 
 			<optional>
-				<attribute name="span" a:defaultValue="1">
-					<data type="positiveInteger">
-						<param name="minInclusive">1</param>
-						<param name="maxInclusive">12</param>
-					</data>
-				</attribute>
+				<attribute name="id"/>
 			</optional>
 
 			<zeroOrMore>
@@ -138,9 +140,47 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<ref name="Component.CommonContent"/>
 
 			<optional>
-				<attribute name="type"  a:defaultValue="Container"/>
+				<attribute name="type" a:defaultValue="Container"/>
+			</optional>
+		</element>
+	</define>
+
+	<!-- Container -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<!-- No type (default) or explicit Container type -->
+			<optional>
+				<attribute name="type">
+					<value>Container</value>
+				</attribute>
 			</optional>
 
+			<optional>
+				<attribute name="id"/>
+			</optional>
+
+			<zeroOrMore>
+				<ref name="Component"/>
+			</zeroOrMore>
+		</element>
+	</define>
+
+	<!-- Html -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<attribute name="type">
+				<value>Html</value>
+			</attribute>
+
+			<optional>
+				<text/>
+			</optional>
 		</element>
 	</define>
 

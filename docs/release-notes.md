@@ -12,7 +12,7 @@ Under development.
 
 Under development.
 
-* Added `id` attribute to structure components: `Grid`, `Row`, `Cell` and `Component` (thanks @malberts)
+* Added `id` attribute to structure components: `Grid`, `Row`, `Cell` and `Container` (thanks @malberts)
 
 ### Chameleon 3.2.1
 

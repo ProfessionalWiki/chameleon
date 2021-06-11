@@ -50,11 +50,9 @@ class Container extends Structure {
 	public function getHtml() {
 		$attribs = [ 'class' => $this->getClassString() ];
 
-		if ( $this->getDomElement() !== null ) {
-			$id = $this->getAttribute( 'id' );
-			if ( $id !== '' ) {
-				$attribs['id'] = $id;
-			}
+		$id = $this->getAttribute( 'id' );
+		if ( $id !== '' ) {
+			$attribs['id'] = $id;
 		}
 
 		$ret = $this->indent() . \Html::openElement( 'div', $attribs );

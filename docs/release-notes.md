@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 3.2.2
+
+Under development.
+
+* Added `id` attribute to structure components: `Grid`, `Row`, `Cell` and `Component` (thanks @malberts)
+
 ### Chameleon 3.2.1
 
 Released on June 3, 2021.

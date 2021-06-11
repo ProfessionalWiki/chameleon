@@ -42,39 +42,6 @@ class CellTest extends GenericComponentTestCase {
 	protected $classUnderTest = '\Skins\Chameleon\Components\Cell';
 
 	/**
-	 * @covers ::__construct
-	 * @dataProvider provideSpanAttributeValues
-	 * @param string $in
-	 * @param string $expected
-	 */
-	public function testSpanAttribute( $in, $expected ) {
-		$chameleonTemplate = $this->getMockBuilder( '\Skins\Chameleon\ChameleonTemplate' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$domElement = $this->getMockBuilder( '\DOMElement' )
-			->disableOriginalConstructor()
-			->getMock();
-
-		$domElement->expects( $this->any() )
-			->method( 'getAttribute' )
-			->will( $this->returnValueMap( [ [ 'span', $in ] ] ) );
-
-		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
-
-		// FIXME: span attribute is not taken into account. See Cell.php
-		//$this->assertEquals(
-		//	"col-lg-$expected",
-		//	$instance->getClassString()
-		//);
-
-		$this->assertEquals(
-			'col',
-			$instance->getClassString()
-		);
-	}
-
-	/**
 	 * @covers ::getClassString
 	 */
 	public function testGetClassString_WithoutSetting() {
@@ -84,22 +51,7 @@ class CellTest extends GenericComponentTestCase {
 
 		$instance = new $this->classUnderTest( $chameleonTemplate );
 
-		// FIXME: span attribute is not taken into account. See Cell.php
-		//$this->assertTrue( $instance->getClassString() === 'col-lg-12' );
 		$this->assertTrue( $instance->getClassString() === 'col' );
-	}
-
-	/**
-	 * @return array
-	 */
-	public function provideSpanAttributeValues() {
-		return [
-			[ '9', '9' ],
-			[ '-1', '12' ],
-			[ '42', '12' ],
-			[ 'foo', '12' ],
-			[ '10.5', '12' ],
-		];
 	}
 
 }

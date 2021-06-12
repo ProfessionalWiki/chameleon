@@ -260,7 +260,7 @@ class NavbarHorizontal extends Component {
 
 		return $this->indent() .
 			'<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#' . $id .
-			'"></button>' .
+			'">' . $this->getTogglerText() . '</button>' .
 			IdRegistry::getRegistry()->element( 'div', [ 'class' => 'collapse navbar-collapse',
 			'id' => $id ], $tail, $this->indent() );
 	}
@@ -270,6 +270,18 @@ class NavbarHorizontal extends Component {
 	 */
 	protected function isCollapsible() {
 		return filter_var( $this->getAttribute( 'collapsible', 'true' ), FILTER_VALIDATE_BOOLEAN );
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function getTogglerText() {
+		$msgKey = $this->getAttribute( 'togglerMessage' );
+		if ( $msgKey === '' ) {
+			return '';
+		}
+		return \Html::rawElement( 'span', [ 'class' => 'navbar-toggler-text' ],
+			$this->getSkinTemplate()->getMsg( $msgKey )->escaped());
 	}
 
 }

@@ -1,6 +1,6 @@
 ## Release Notes
 
-### Chameleon 3.2.2
+### Chameleon 3.3.0
 
 Under development.
 

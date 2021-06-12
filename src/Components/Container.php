@@ -26,6 +26,8 @@
 
 namespace Skins\Chameleon\Components;
 
+use Skins\Chameleon\IdRegistry;
+
 /**
  * The Container class.
  *
@@ -52,7 +54,7 @@ class Container extends Structure {
 
 		$id = $this->getAttribute( 'id' );
 		if ( $id !== '' ) {
-			$attribs['id'] = $id;
+			$attribs['id'] = IdRegistry::getRegistry()->getId( $id );
 		}
 
 		$ret = $this->indent() . \Html::openElement( 'div', $attribs );

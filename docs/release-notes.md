@@ -8,7 +8,7 @@ Under development.
 * Raised minimum MediaWiki version from 1.31 to 1.35
 * Raised minimum PHP version from 7.1 to 7.4.3
 
-### Chameleon 3.2.2
+### Chameleon 3.3.0
 
 Under development.
 

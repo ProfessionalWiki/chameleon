@@ -66,8 +66,6 @@ class Chameleon extends SkinTemplate {
 		 * a instantiated class
 		 */
 
-		 global $wgVersion;
-
 		/**
 		 * @see https://www.mediawiki.org/wiki/Manual:Hooks/BeforeInitialize
 		 */
@@ -86,28 +84,6 @@ class Chameleon extends SkinTemplate {
 			$rl->register( 'zzz.ext.bootstrap.styles',
 				$GLOBALS['wgResourceModules']['ext.bootstrap.styles'] );
 		};
-
-		// Add styles for MediaWiki 1.31
-		if ( version_compare( $wgVersion, '1.32', '<') ) {
-			$GLOBALS[ 'wgHooks' ][ 'BeforePageDisplay' ][ ] = function ( OutputPage $out, Skin $skin ) {
-				$moduleStyles = [
-					'mediawiki.skinning.content',
-					'mediawiki.legacy.commonPrint',
-					'mediawiki.ui.button',
-					'zzz.ext.bootstrap.styles'
-				];
-
-				if ( $out->isSyndicated() ) {
-					$moduleStyles[] = 'mediawiki.feedlink';
-				}
-
-				if ( $GLOBALS[ 'egChameleonEnableExternalLinkIcons' ] === true ) {
-					$moduleStyles[] = 'mediawiki.skinning.content.externallinks';
-				}
-
-				$out->addModuleStyles( $moduleStyles );
-			};
-		}
 
 		// set default skin layout
 		if ( DIRECTORY_SEPARATOR === '/' && $GLOBALS[ 'egChameleonLayoutFile' ][0] !== '/' ) {
@@ -153,6 +129,28 @@ class Chameleon extends SkinTemplate {
 	 */
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
+
+		global $wgVersion;
+
+		// Add styles for MediaWiki 1.31
+		if ( version_compare( $wgVersion, '1.32', '<' ) ) {
+			$moduleStyles = [
+				'mediawiki.skinning.content',
+				'mediawiki.legacy.commonPrint',
+				'mediawiki.ui.button',
+				'zzz.ext.bootstrap.styles'
+			];
+
+			if ( $out->isSyndicated() ) {
+				$moduleStyles[] = 'mediawiki.feedlink';
+			}
+
+			if ( $GLOBALS[ 'egChameleonEnableExternalLinkIcons' ] === true ) {
+				$moduleStyles[] = 'mediawiki.skinning.content.externallinks';
+			}
+
+			$out->addModuleStyles( $moduleStyles );
+		}
 
 		// Enable responsive behaviour on mobile browsers
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no' );

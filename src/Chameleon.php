@@ -31,6 +31,7 @@ use OutputPage;
 use QuickTemplate;
 use ResourceLoader;
 use Sanitizer;
+use Skin;
 use Skins\Chameleon\Hooks\SetupAfterCache;
 use SkinTemplate;
 use Hooks;
@@ -50,9 +51,6 @@ class Chameleon extends SkinTemplate {
 
 	private $componentFactory;
 
-	// FIXME: Remove when MW 1.31 compatibility is dropped
-	private $stylesHaveBeenProcessed = false;
-
 	/**
 	 * @throws \Exception
 	 */
@@ -67,6 +65,8 @@ class Chameleon extends SkinTemplate {
 		 * GLOBAL state should be encapsulated by the callback and not leaked into
 		 * a instantiated class
 		 */
+
+		 global $wgVersion;
 
 		/**
 		 * @see https://www.mediawiki.org/wiki/Manual:Hooks/BeforeInitialize
@@ -87,6 +87,28 @@ class Chameleon extends SkinTemplate {
 				$GLOBALS['wgResourceModules']['ext.bootstrap.styles'] );
 		};
 
+		// Add styles for MediaWiki 1.31
+		if ( version_compare( $wgVersion, '1.32', '<') ) {
+			$GLOBALS[ 'wgHooks' ][ 'BeforePageDisplay' ][ ] = function ( OutputPage $out, Skin $skin ) {
+				$moduleStyles = [
+					'mediawiki.skinning.content',
+					'mediawiki.legacy.commonPrint',
+					'mediawiki.ui.button',
+					'zzz.ext.bootstrap.styles'
+				];
+
+				if ( $out->isSyndicated() ) {
+					$moduleStyles[] = 'mediawiki.feedlink';
+				}
+
+				if ( $GLOBALS[ 'egChameleonEnableExternalLinkIcons' ] === true ) {
+					$moduleStyles[] = 'mediawiki.skinning.content.externallinks';
+				}
+
+				$out->addModuleStyles( $moduleStyles );
+			};
+		}
+
 		// set default skin layout
 		if ( DIRECTORY_SEPARATOR === '/' && $GLOBALS[ 'egChameleonLayoutFile' ][0] !== '/' ) {
 			$GLOBALS[ 'egChameleonLayoutFile' ] = $GLOBALS[ 'wgStyleDirectory' ] . '/chameleon/' .
@@ -102,7 +124,7 @@ class Chameleon extends SkinTemplate {
 
 		$modules = parent::getDefaultModules();
 
-		if ( version_compare( $wgVersion, '1.35', '<' ) ) {
+		if ( version_compare( $wgVersion, '1.32', '>=' ) && version_compare( $wgVersion, '1.35', '<' ) ) {
 			// Not necessary in 1.35 (see #110)
 			$modulePos = array_search( 'mediawiki.legacy.shared', $modules[ 'styles' ][ 'core' ] );
 
@@ -117,6 +139,7 @@ class Chameleon extends SkinTemplate {
 			$modules[ 'styles' ][ 'content' ][] = 'zzz.ext.bootstrap.styles';
 			$modules[ 'styles' ][ 'content' ][] = 'mediawiki.legacy.commonPrint';
 
+			$out = $this->getOutput();
 			if ( $out->isSyndicated() ) {
 				$modules[ 'styles' ][ 'content' ][] = 'mediawiki.feedlink';
 			}

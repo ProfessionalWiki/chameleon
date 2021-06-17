@@ -31,6 +31,7 @@ use OutputPage;
 use QuickTemplate;
 use ResourceLoader;
 use Sanitizer;
+use Skin;
 use Skins\Chameleon\Hooks\SetupAfterCache;
 use SkinTemplate;
 use Hooks;
@@ -49,9 +50,6 @@ class Chameleon extends SkinTemplate {
 	public $template = '\Skins\Chameleon\ChameleonTemplate';
 
 	private $componentFactory;
-
-	// FIXME: Remove when MW 1.31 compatibility is dropped
-	private $stylesHaveBeenProcessed = false;
 
 	/**
 	 * @throws \Exception
@@ -102,7 +100,7 @@ class Chameleon extends SkinTemplate {
 
 		$modules = parent::getDefaultModules();
 
-		if ( version_compare( $wgVersion, '1.35', '<' ) ) {
+		if ( version_compare( $wgVersion, '1.32', '>=' ) && version_compare( $wgVersion, '1.35', '<' ) ) {
 			// Not necessary in 1.35 (see #110)
 			$modulePos = array_search( 'mediawiki.legacy.shared', $modules[ 'styles' ][ 'core' ] );
 
@@ -117,6 +115,7 @@ class Chameleon extends SkinTemplate {
 			$modules[ 'styles' ][ 'content' ][] = 'zzz.ext.bootstrap.styles';
 			$modules[ 'styles' ][ 'content' ][] = 'mediawiki.legacy.commonPrint';
 
+			$out = $this->getOutput();
 			if ( $out->isSyndicated() ) {
 				$modules[ 'styles' ][ 'content' ][] = 'mediawiki.feedlink';
 			}
@@ -130,6 +129,28 @@ class Chameleon extends SkinTemplate {
 	 */
 	public function initPage( OutputPage $out ) {
 		parent::initPage( $out );
+
+		global $wgVersion;
+
+		// Add styles for MediaWiki 1.31
+		if ( version_compare( $wgVersion, '1.32', '<' ) ) {
+			$moduleStyles = [
+				'mediawiki.skinning.content',
+				'mediawiki.legacy.commonPrint',
+				'mediawiki.ui.button',
+				'zzz.ext.bootstrap.styles'
+			];
+
+			if ( $out->isSyndicated() ) {
+				$moduleStyles[] = 'mediawiki.feedlink';
+			}
+
+			if ( $GLOBALS[ 'egChameleonEnableExternalLinkIcons' ] === true ) {
+				$moduleStyles[] = 'mediawiki.skinning.content.externallinks';
+			}
+
+			$out->addModuleStyles( $moduleStyles );
+		}
 
 		// Enable responsive behaviour on mobile browsers
 		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no' );

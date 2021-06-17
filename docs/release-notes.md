@@ -4,14 +4,14 @@
 
 Under development.
 
-* Fixes MediaWiki 1.31 regression in Chameleon 3.2
+* Fixes MediaWiki 1.31 compatibility
 * Added `id` attribute to structure components: `Grid`, `Row`, `Cell` and `Container` (thanks @malberts)
 
 ### Chameleon 3.2.1
 
 Released on June 3, 2021.
 
-Warning: This release contains a regression that causes incomaptibility with MediaWiki 1.31.
+Warning: This release contains a regression that causes incompatibility with MediaWiki 1.31.
 
 * Fixed `LangLinks` component PHP notice (thanks @WouterRademaker)
 
@@ -19,7 +19,7 @@ Warning: This release contains a regression that causes incomaptibility with Med
 
 Released on June 2, 2021.
 
-Warning: This release contains a regression that causes incomaptibility with MediaWiki 1.31.
+Warning: This release contains a regression that causes incompatibility with MediaWiki 1.31.
 
 * Improved Echo support in the `PersonalTools` components (thanks @malberts)
 * Added theme support via the new `ChameleonThemeFile` setting (thanks @malberts)

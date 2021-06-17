@@ -4,7 +4,7 @@
 
 Under development.
 
-* Fixes MediaWiki 1.31 compatibility
+* Fixed MediaWiki 1.31 compatibility
 * Added `id` attribute to structure components: `Grid`, `Row`, `Cell` and `Container` (thanks @malberts)
 
 ### Chameleon 3.2.1

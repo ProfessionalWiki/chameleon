@@ -115,6 +115,10 @@
 
 	.navbar-toggler {
 		@extend .ml-auto;
+
+		.navbar-toggler-text {
+			padding-left: $navbar-toggler-padding-x;
+		}
 	}
 
 	.navbar-brand {

@@ -280,7 +280,7 @@ class NavbarHorizontal extends Component {
 			return '';
 		}
 		return \Html::rawElement( 'span', [ 'class' => 'navbar-toggler-text' ],
-			$this->getSkinTemplate()->getMsg( 'chameleon-toggler' )->escaped());
+			$this->getSkinTemplate()->getMsg( 'chameleon-toggler' )->escaped() );
 	}
 
 }

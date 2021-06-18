@@ -514,6 +514,13 @@ From [navhead.xml](../layouts/navhead.xml):
 </component>
 ```
 
+Add "Menu" text next to the toggler button:
+``` xml
+<component type="NavbarHorizontal" showTogglerText="yes">
+	<!-- ... -->
+</component>
+```
+
 #### Attributes:
 * `class`:
   * Allowed values: String
@@ -533,6 +540,14 @@ From [navhead.xml](../layouts/navhead.xml):
   * **Deprecated.** Use the [Sticky](#modification-sticky) modification instead.
   * Allowed values: Boolean (`yes`|`no`)
   * Default: `no`
+
+* `showTogglerText`:
+  * Since Chameleon 3.3.0
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+
+  Displays text next to the toggler icon. The text is defined in the system message `chameleon-toggler`.
 
 #### Allowed Parent Elements:
 * [Structure](#structure)

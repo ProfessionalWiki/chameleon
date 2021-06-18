@@ -13,5 +13,6 @@
 	"chameleon-notloggedin": "Text shown, when the user is not logged in.\n\nSee also:\n* {{msg-mw|Chameleon-loggedin}}",
 	"chameleon-newmessages": "Text shown, when the user has new messages.\n\nSee also:\n* {{msg-mw|Chameleon-nonewmessages}}",
 	"chameleon-nonewmessages": "Text shown, when the user has no new messages.\n\nSee also:\n* {{msg-mw|Chameleon-newmessages}}",
-	"chameleon-search-aria-label": "ARIA label for the search bar button."
+	"chameleon-search-aria-label": "ARIA label for the search bar button.",
+	"chameleon-toggler": "Text for the NavbarHorizontal toggler button."
 }

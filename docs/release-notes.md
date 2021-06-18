@@ -5,6 +5,7 @@
 Under development.
 
 * Fixed MediaWiki 1.31 compatibility
+* Added `NavbarHorizontal` component toggler text support via the new `showTogglerText` attribute (thanks @malberts)
 * Added `id` attribute to structure components: `Grid`, `Row`, `Cell` and `Container` (thanks @malberts)
 
 ### Chameleon 3.2.1

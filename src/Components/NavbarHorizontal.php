@@ -276,8 +276,7 @@ class NavbarHorizontal extends Component {
 	 * @return string
 	 */
 	protected function getTogglerText() {
-		$show = filter_var( $this->getAttribute( 'showTogglerText', 'false' ), FILTER_VALIDATE_BOOLEAN );
-		if ( !$show ) {
+		if ( !filter_var( $this->getAttribute( 'showTogglerText', 'false' ), FILTER_VALIDATE_BOOLEAN ) ) {
 			return '';
 		}
 		return \Html::rawElement( 'span', [ 'class' => 'navbar-toggler-text' ],

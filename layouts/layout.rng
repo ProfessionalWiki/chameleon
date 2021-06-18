@@ -207,7 +207,9 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			</optional>
 
 			<optional>
-				<attribute name="togglerMessage"/>
+				<attribute name="showTogglerText" a:defaultValue="no">
+					<ref name="BoolValues"/>
+				</attribute>
 			</optional>
 
 			<zeroOrMore>

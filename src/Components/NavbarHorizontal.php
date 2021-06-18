@@ -276,12 +276,12 @@ class NavbarHorizontal extends Component {
 	 * @return string
 	 */
 	protected function getTogglerText() {
-		$msgKey = $this->getAttribute( 'togglerMessage' );
-		if ( $msgKey === '' ) {
+		$show = filter_var( $this->getAttribute( 'showTogglerText', 'false' ), FILTER_VALIDATE_BOOLEAN );
+		if ( !$show ) {
 			return '';
 		}
 		return \Html::rawElement( 'span', [ 'class' => 'navbar-toggler-text' ],
-			$this->getSkinTemplate()->getMsg( $msgKey )->escaped());
+			$this->getSkinTemplate()->getMsg( 'chameleon-toggler' )->escaped());
 	}
 
 }

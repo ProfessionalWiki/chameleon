@@ -10,7 +10,7 @@ Under development.
 
 ### Chameleon 3.3.0
 
-Under development.
+Released on June 20, 2021.
 
 * Fixed MediaWiki 1.31 compatibility
 * Added `NavbarHorizontal` component toggler text support via the new `showTogglerText` attribute (thanks @malberts)

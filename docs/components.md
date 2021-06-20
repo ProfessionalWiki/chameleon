@@ -762,6 +762,7 @@ applicable.
   [NewtalkNotifier](#component-newtalknotifier) component.
 
 * `showEcho`:
+  * Since Chameleon 3.2.0
   * Allowed values: String (`icons`|`links`)
   * Default: `icons`
   * Optional.

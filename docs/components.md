@@ -91,6 +91,7 @@ recommended.
   width layout, spanning the entire width of the viewport.
 
 * `id`:
+  * Since Chameleon 3.3.0
   * Allowed values: Any string
   * Default: -
   * Optional.
@@ -128,6 +129,7 @@ cells, and only cells may be immediate children of rows.
 
 #### Attributes:
 * `id`:
+  * Since Chameleon 3.3.0
   * Allowed values: Any string
   * Default: -
   * Optional.
@@ -164,6 +166,7 @@ Holds components.
 
 #### Attributes:
 * `id`:
+  * Since Chameleon 3.3.0
   * Allowed values: Any string
   * Default: -
   * Optional.
@@ -202,6 +205,7 @@ assign a CSS id or class for styling purposes.
 
 #### Attributes:
 * `id`:
+  * Since Chameleon 3.3.0
   * Allowed values: Any string
   * Default: -
   * Optional.
@@ -762,6 +766,7 @@ applicable.
   [NewtalkNotifier](#component-newtalknotifier) component.
 
 * `showEcho`:
+  * Since Chameleon 3.2.0
   * Allowed values: String (`icons`|`links`)
   * Default: `icons`
   * Optional.

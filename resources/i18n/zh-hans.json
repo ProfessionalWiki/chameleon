@@ -3,6 +3,7 @@
 		"authors": [
 			"500000000006城",
 			"Apflu",
+			"GuoPC",
 			"Liuxinyu970226",
 			"列维劳德"
 		]
@@ -13,5 +14,6 @@
 	"chameleon-notloggedin": "您尚未登录。",
 	"chameleon-newmessages": "您有新消息。",
 	"chameleon-nonewmessages": "您没有新消息。",
-	"chameleon-search-aria-label": "前往页面"
+	"chameleon-search-aria-label": "前往页面",
+	"chameleon-toggler": "菜单"
 }

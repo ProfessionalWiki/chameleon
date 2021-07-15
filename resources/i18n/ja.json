@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"2nd-player",
+			"MathXplore",
 			"Shirayuki",
 			"SkyDaisy9",
 			"Yusuke1109"
@@ -13,5 +14,6 @@
 	"chameleon-notloggedin": "ログインしていません。",
 	"chameleon-newmessages": "新着メッセージがあります。",
 	"chameleon-nonewmessages": "新しいメッセージはありません。",
-	"chameleon-search-aria-label": "ページへ移動"
+	"chameleon-search-aria-label": "ページへ移動",
+	"chameleon-toggler": "メニュー"
 }

@@ -1,14 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
+			"Giannaras99",
 			"Glavkos",
 			"Nikosguard"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Θέμα εμφάνισης The Chameleon",
+	"chameleon-desc": "Ένα εξαιρετικά ευέλικτο Θέμα εμφάνισης που ανταποκρίνεται χρησιμοποιώντας το Bootstrap 4.",
 	"chameleon-loggedin": "Έχετε συνδεθεί ως $1.",
 	"chameleon-notloggedin": "Δεν έχετε συνδεθεί",
 	"chameleon-newmessages": "Έχετε νέα μηνύματα.",
-	"chameleon-nonewmessages": "Δεν έχετε νέα μηνύματα."
+	"chameleon-nonewmessages": "Δεν έχετε νέα μηνύματα.",
+	"chameleon-toggler": "Μενού"
 }

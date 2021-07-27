@@ -10,5 +10,6 @@
 	"chameleon-notloggedin": "Tu non ha aperite session",
 	"chameleon-newmessages": "Tu ha nove messages.",
 	"chameleon-nonewmessages": "Tu non ha nove messages.",
-	"chameleon-search-aria-label": "Vader al pagina"
+	"chameleon-search-aria-label": "Vader al pagina",
+	"chameleon-toggler": "Menu"
 }

@@ -12,5 +12,6 @@
 	"chameleon-notloggedin": "로그인하고 있지 않습니다.",
 	"chameleon-newmessages": "새 메시지가 있습니다.",
 	"chameleon-nonewmessages": "새 메시지가 없습니다.",
-	"chameleon-search-aria-label": "문서로 이동"
+	"chameleon-search-aria-label": "문서로 이동",
+	"chameleon-toggler": "메뉴"
 }

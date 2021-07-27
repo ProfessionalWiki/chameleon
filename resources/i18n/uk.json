@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alex Khimich",
+			"DDPAT",
 			"Ата"
 		]
 	},
@@ -11,5 +12,6 @@
 	"chameleon-notloggedin": "Ви не ввійшли в систему",
 	"chameleon-newmessages": "У Вас є нові повідомлення.",
 	"chameleon-nonewmessages": "У вас немає нових повідомлень.",
-	"chameleon-search-aria-label": "Перейти на сторінку"
+	"chameleon-search-aria-label": "Перейти на сторінку",
+	"chameleon-toggler": "Меню"
 }

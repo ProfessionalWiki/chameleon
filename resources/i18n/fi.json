@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"01miki10",
+			"MITO",
 			"McSalama",
 			"Nike",
 			"Pyscowicz"
@@ -13,5 +14,6 @@
 	"chameleon-notloggedin": "Et ole kirjautunut sisään.",
 	"chameleon-newmessages": "Sinulla on uusia viestejä.",
 	"chameleon-nonewmessages": "Sinulla ei ole uusia viestejä.",
-	"chameleon-search-aria-label": "Siirry sivulle"
+	"chameleon-search-aria-label": "Siirry sivulle",
+	"chameleon-toggler": "Valikko"
 }

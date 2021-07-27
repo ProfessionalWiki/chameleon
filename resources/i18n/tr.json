@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
+			"Hedda",
 			"Sayginer"
 		]
 	},
@@ -11,5 +12,6 @@
 	"chameleon-notloggedin": "Oturum açmadınız.",
 	"chameleon-newmessages": "Yeni mesajınız var.",
 	"chameleon-nonewmessages": "Yeni mesajınız yok.",
-	"chameleon-search-aria-label": "Sayfaya git"
+	"chameleon-search-aria-label": "Sayfaya git",
+	"chameleon-toggler": "Menü"
 }

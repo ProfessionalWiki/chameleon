@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
+			"Nimrod Rak",
 			"Steeve815",
 			"YaronSh"
 		]
@@ -12,5 +13,6 @@
 	"chameleon-notloggedin": "לא נכנסת",
 	"chameleon-newmessages": "יש לך הודעות חדשות",
 	"chameleon-nonewmessages": "אין לך הודעות חדשות.",
-	"chameleon-search-aria-label": "מעבר לדף"
+	"chameleon-search-aria-label": "מעבר לדף",
+	"chameleon-toggler": "תפריט"
 }

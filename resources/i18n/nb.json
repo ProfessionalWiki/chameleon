@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fredrilj",
 			"Jon Harald Søby"
 		]
 	},
@@ -10,5 +11,6 @@
 	"chameleon-notloggedin": "Du er ikke logget inn.",
 	"chameleon-newmessages": "Du har nye meldinger.",
 	"chameleon-nonewmessages": "Du har ingen nye meldinger.",
-	"chameleon-search-aria-label": "Gå til side"
+	"chameleon-search-aria-label": "Gå til side",
+	"chameleon-toggler": "Meny"
 }

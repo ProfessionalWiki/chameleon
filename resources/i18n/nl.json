@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Mainframe98",
+			"McDutchie",
 			"Siebrand",
 			"Sjoerddebruin"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Het uiterlijk Chameleon",
+	"chameleon-desc": "Een zeer flexibele responsieve vormgeving met gebruik van Bootstrap 4",
 	"chameleon-loggedin": "U bent aangemeld als $1 .",
 	"chameleon-notloggedin": "U bent niet aangemeld",
 	"chameleon-newmessages": "U hebt nieuwe berichten.",

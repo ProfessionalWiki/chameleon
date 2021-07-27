@@ -4,6 +4,8 @@
 
 Under development.
 
+* Translation updates for system messages (thanks @translatewiki and its translator community)
+
 ### Chameleon 3.3.0
 
 Released on June 20, 2021.

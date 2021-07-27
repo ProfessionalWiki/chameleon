@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Gomoko",
 			"Orlodrim",
 			"Verdy p",
@@ -13,5 +14,6 @@
 	"chameleon-notloggedin": "Vous n’êtes pas connecté(e).",
 	"chameleon-newmessages": "Vous avez de nouveaux messages.",
 	"chameleon-nonewmessages": "Vous n’avez aucun nouveau message.",
-	"chameleon-search-aria-label": "Aller à la page"
+	"chameleon-search-aria-label": "Aller à la page",
+	"chameleon-toggler": "Menu"
 }

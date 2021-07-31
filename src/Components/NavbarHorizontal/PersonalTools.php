@@ -45,6 +45,7 @@ class PersonalTools extends Component {
 	private const ATTR_SHOW_ECHO = 'showEcho';
 	private const SHOW_ECHO_ICONS = 'icons';
 	private const SHOW_ECHO_LINKS = 'links';
+	private const ATTR_SHOW_USER_NAME = 'showUserName';
 
 	/**
 	 * @return String
@@ -91,6 +92,22 @@ class PersonalTools extends Component {
 		$this->indent( -1 );
 
 		return $newtalkNotifier;
+	}
+
+	/**
+	 * @return string
+	 * @throws \FatalError
+	 * @throws \MWException
+	 */
+	protected function getUserName() {
+		if ( filter_var( $this->getAttribute( self::ATTR_SHOW_USER_NAME ), FILTER_VALIDATE_BOOLEAN ) ) {
+			$user = $this->getSkinTemplate()->getSkin()->getUser();
+			if ( $user->isLoggedIn() ) {
+				$username = !empty( $user->getRealName() ) ? $user->getRealName() : $user->getName();
+				return '<span class="user-name">' . htmlspecialchars( $username ) . '</span>';
+			}
+		}
+		return '';
 	}
 
 	/**
@@ -190,7 +207,8 @@ class PersonalTools extends Component {
 
 		$dropdownToggle = IdRegistry::getRegistry()->element( 'a', [ 'class' => $toolsClass,
 			'href' => '#', 'data-toggle' => 'dropdown', 'data-boundary' => 'viewport',
-			'title' => $toolsLinkText ], $this->getNewtalkNotifier(), $this->indent() );
+			'title' => $toolsLinkText ], $this->getNewtalkNotifier() . $this->getUserName(),
+			$this->indent() );
 
 		$this->indent( -1 );
 

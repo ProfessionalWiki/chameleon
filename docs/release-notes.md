@@ -4,6 +4,7 @@
 
 Under development.
 
+* Added `PersonalTools` user name display via the new `showUserName` attribute (thanks @malberts)
 * Fixed `Toolbox` component PHP notice (thanks @WouterRademaker)
 * Translation updates for system messages (thanks @translatewiki and its translator community)
 

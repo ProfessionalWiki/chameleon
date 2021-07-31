@@ -92,8 +92,13 @@ class Toolbox extends Component {
 			} else {
 				$linkItem[ 'class' ] = 'nav-item';
 			}
-			$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem,
-				[ 'link-class' => 'nav-link '.$linkItem['id'], 'tag' => 'div' ] );
+			if ( isset( $linkItem[ 'id' ] ) ) {
+				$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem,
+					[ 'link-class' => 'nav-link ' . $linkItem['id'], 'tag' => 'div' ] );
+			} else {
+				$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem,
+					[ 'link-class' => 'nav-link' , 'tag' => 'div' ] );
+			}
 		}
 
 		ob_start();

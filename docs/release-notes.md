@@ -4,6 +4,7 @@
 
 Under development.
 
+* Fixed `Toolbox` component PHP notice (thanks @WouterRademaker)
 * Translation updates for system messages (thanks @translatewiki and its translator community)
 
 ### Chameleon 3.3.0

@@ -24,6 +24,7 @@ The following components and modifications are available:
 - [Component `Logo`](#component-logo)
 - [Component `MainContent`](#component-maincontent)
 - [Component `Menu`](#component-menu)
+- [Component `Message`](#component-message)
 - [Component `NavbarHorizontal`](#component-navbarhorizontal)
 - [Component `NavMenu`](#component-navmenu)
 - [Component `NewtalkNotifier`](#component-newtalknotifier)
@@ -496,6 +497,33 @@ Using an inline description:
 * [Structure](#structure)
 * [Cell](#cell)
 * [NavbarHorizontal](#component-navbarhorizontal)
+
+#### Allowed Child Elements:
+* Any modification
+
+-------------------------------------------------------------------------------
+### Component `Message`
+
+Displays a [MediaWiki message](https://www.mediawiki.org/wiki/Help:System_message).
+
+#### Example usage
+
+To display the message _MediaWiki:MyMessage_:
+
+``` xml
+<component type="Message" name="MyMessage" />
+```
+
+#### Attributes:
+* `name`:
+  * Allowed values: String
+  * Default: -
+
+  The message name without the _MediaWiki:_ prefix.
+
+#### Allowed Parent Elements:
+* [Structure](#structure)
+* [Cell](#cell)
 
 #### Allowed Child Elements:
 * Any modification

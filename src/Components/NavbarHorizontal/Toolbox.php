@@ -92,20 +92,21 @@ class Toolbox extends Component {
 			} else {
 				$linkItem[ 'class' ] = 'nav-item';
 			}
-			if ( isset( $linkItem[ 'id' ] ) ) {
-				$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem,
-					[ 'link-class' => 'nav-link ' . $linkItem['id'], 'tag' => 'div' ] );
-			} else {
-				$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem,
-					[ 'link-class' => 'nav-link' , 'tag' => 'div' ] );
+			// Add missing id for legacy links
+			if ( !isset( $linkItem[ 'id' ] ) ) {
+				$linkItem[ 'id' ] = 't-' . $key;
 			}
+			$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem,
+				[ 'link-class' => 'nav-link ' . $linkItem[ 'id' ], 'tag' => 'div' ] );
 		}
 
 		ob_start();
 		// We pass an extra 'true' at the end so extensions using BaseTemplateToolbox
 		// can abort and avoid outputting double toolbox links
 		// See BaseTemplate::getSideBar()
-		Hooks::run( 'SkinTemplateToolboxEnd', [ &$skinTemplate, true ] );
+		if ( version_compare( $wgVersion, '1.35', '<' ) ) {
+			Hooks::run( 'SkinTemplateToolboxEnd', [ &$skinTemplate, true ] );
+		}
 		$contents = ob_get_contents();
 		ob_end_clean();
 

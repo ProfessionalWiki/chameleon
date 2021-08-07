@@ -46,12 +46,6 @@
 	#pt-notifications-notice .mw-echo-notifications-badge.oo-ui-icon-tray {
 		top: 0px;
 	}
-
-	// MW 1.31
-	#pt-notifications-alert .mw-echo-notifications-badge:not(.oo-ui-icon-bell):before,
-	#pt-notifications-notice .mw-echo-notifications-badge:not(.oo-ui-icon-tray):before {
-		top: 1005px;
-	}
 }
 
 .echo-icons {

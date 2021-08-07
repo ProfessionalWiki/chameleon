@@ -24,6 +24,7 @@ The following components and modifications are available:
 - [Component `Logo`](#component-logo)
 - [Component `MainContent`](#component-maincontent)
 - [Component `Menu`](#component-menu)
+- [Component `Message`](#component-message)
 - [Component `NavbarHorizontal`](#component-navbarhorizontal)
 - [Component `NavMenu`](#component-navmenu)
 - [Component `NewtalkNotifier`](#component-newtalknotifier)
@@ -501,6 +502,35 @@ Using an inline description:
 * Any modification
 
 -------------------------------------------------------------------------------
+### Component `Message`
+
+Displays a [MediaWiki message](https://www.mediawiki.org/wiki/Help:System_message).
+
+Since Chamaleon 3.4.0
+
+#### Example usage
+
+To display the message _MediaWiki:MyMessage_:
+
+``` xml
+<component type="Message" name="MyMessage" />
+```
+
+#### Attributes:
+* `name`:
+  * Allowed values: String
+  * Default: -
+
+  The message name without the _MediaWiki:_ prefix.
+
+#### Allowed Parent Elements:
+* [Structure](#structure)
+* [Cell](#cell)
+
+#### Allowed Child Elements:
+* Any modification
+
+-------------------------------------------------------------------------------
 ### Component `NavbarHorizontal`
 
 A horizontal navbar that takes its contents from its child elements.
@@ -758,7 +788,7 @@ applicable.
   If set the newtalk notifier will not be shown.
 
   This attribute has no effect when used inside the
-  [NavbarHorizontal](#component-navbar-horizontal) component.
+  [NavbarHorizontal](#component-navbarhorizontal) component.
   
   This attribute was introduced to keep backwards compatibility. If the
   PersonalTools component is used, it is recommended to always set this
@@ -774,6 +804,18 @@ applicable.
   Use `icons` to render Echo links as icons that trigger popups (default Echo behavior).
   When the parent is `NavbarHorizontal` the Echo icons will be displayed next to the dropdown.
   Use `links` to render Echo links as normal links without popups.
+
+* `showUserName`:
+  * Since Chameleon 3.4.0
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+
+  If set the logged in user's real name (if available) or username will be shown next to the
+  dropdown icon.
+
+  This attribute applies only when used inside the
+  [NavbarHorizontal](#component-navbarhorizontal) component.
 
 #### Allowed Parent Elements:
 * [Structure](#structure)

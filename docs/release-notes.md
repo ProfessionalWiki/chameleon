@@ -2,7 +2,7 @@
 
 ### Chameleon 3.4.0
 
-Under development.
+Released on August 7, 2021.
 
 * Added `Message` component to display system messages (thanks @malberts)
 * Added `PersonalTools` component user name display support via the new `showUserName` attribute (thanks @malberts)

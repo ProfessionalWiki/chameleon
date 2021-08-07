@@ -92,20 +92,6 @@ class Toolbox extends Component {
 				[ 'link-class' => 'nav-link ' . $linkItem[ 'id' ], 'tag' => 'div' ] );
 		}
 
-		ob_start();
-		// We pass an extra 'true' at the end so extensions using BaseTemplateToolbox
-		// can abort and avoid outputting double toolbox links
-		// See BaseTemplate::getSideBar()
-		if ( version_compare( $wgVersion, '1.35', '<' ) ) {
-			Hooks::run( 'SkinTemplateToolboxEnd', [ &$skinTemplate, true ] );
-		}
-		$contents = ob_get_contents();
-		ob_end_clean();
-
-		if ( trim( $contents ) ) {
-			$listItems[] = $this->indent() . $contents;
-		}
-
 		$this->indent( -$indent );
 
 		return $listItems;

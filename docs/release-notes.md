@@ -8,6 +8,15 @@ Under development.
 * Raised minimum MediaWiki version from 1.31 to 1.35
 * Raised minimum PHP version from 7.1 to 7.4.3
 
+### Chameleon 3.4.0
+
+Released on August 7, 2021.
+
+* Added `Message` component to display system messages (thanks @malberts)
+* Added `PersonalTools` component user name display support via the new `showUserName` attribute (thanks @malberts)
+* Fixed `Toolbox` component PHP notice (thanks @WouterRademaker and @malberts)
+* Translation updates for system messages (thanks @translatewiki and its translator community)
+
 ### Chameleon 3.3.0
 
 Released on June 20, 2021.

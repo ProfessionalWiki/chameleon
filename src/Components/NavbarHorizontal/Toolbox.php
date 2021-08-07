@@ -84,20 +84,12 @@ class Toolbox extends Component {
 			} else {
 				$linkItem[ 'class' ] = 'nav-item';
 			}
+			// Add missing id for legacy links
+			if ( !isset( $linkItem[ 'id' ] ) ) {
+				$linkItem[ 'id' ] = 't-' . $key;
+			}
 			$listItems[] = $this->indent() . $skinTemplate->makeListItem( $key, $linkItem,
-				[ 'link-class' => 'nav-link '.$linkItem['id'], 'tag' => 'div' ] );
-		}
-
-		ob_start();
-		// We pass an extra 'true' at the end so extensions using BaseTemplateToolbox
-		// can abort and avoid outputting double toolbox links
-		// See BaseTemplate::getSideBar()
-		Hooks::run( 'SkinTemplateToolboxEnd', [ &$skinTemplate, true ] );
-		$contents = ob_get_contents();
-		ob_end_clean();
-
-		if ( trim( $contents ) ) {
-			$listItems[] = $this->indent() . $contents;
+				[ 'link-class' => 'nav-link ' . $linkItem[ 'id' ], 'tag' => 'div' ] );
 		}
 
 		$this->indent( -$indent );

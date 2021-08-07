@@ -506,6 +506,8 @@ Using an inline description:
 
 Displays a [MediaWiki message](https://www.mediawiki.org/wiki/Help:System_message).
 
+Since Chamaleon 3.4.0
+
 #### Example usage
 
 To display the message _MediaWiki:MyMessage_:

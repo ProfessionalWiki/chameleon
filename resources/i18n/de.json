@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kghbln",
-			"Metalhead64"
+			"Metalhead64",
+			"Umlaut"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
@@ -11,5 +12,6 @@
 	"chameleon-notloggedin": "Du bist nicht angemeldet.",
 	"chameleon-newmessages": "Du hast neue Nachrichten.",
 	"chameleon-nonewmessages": "Du hast keine neuen Nachrichten.",
-	"chameleon-search-aria-label": "Gehe zu Seite"
+	"chameleon-search-aria-label": "Gehe zu Seite",
+	"chameleon-toggler": "Menü"
 }

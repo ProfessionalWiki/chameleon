@@ -8,6 +8,12 @@ Under development.
 * Raised minimum MediaWiki version from 1.31 to 1.35
 * Raised minimum PHP version from 7.1 to 7.4.3
 
+### Chameleon 3.4.1
+
+Released on September 16, 2021.
+
+* Fixed scssphp 1.7.0 compatibility (@thanks malberts)
+
 ### Chameleon 3.4.0
 
 Released on August 7, 2021.

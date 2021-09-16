@@ -31,11 +31,11 @@ $cmln-grid-breakpoints: (
 $grid-breakpoints: $cmln-grid-breakpoints;
 
 // Global textual link colors.
-$cmln-link-format: $link-color none darken($link-color, 15%) underline !default;
+$cmln-link-format: $link-color none darken($link-color, 0.15) underline !default;
 
 $cmln-link-formats: () !default;
 $cmln-link-formats: map_merge((
-	new: theme-color("danger") none darken(theme-color("danger"), 15%) underline,
+	new: theme-color("danger") none darken(theme-color("danger"), 0.15) underline,
 	stub: $cmln-link-format,
 	extiw: $cmln-link-format,
 	external: $cmln-link-format,

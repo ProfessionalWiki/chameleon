@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 3.4.1
+
+Released on September 16, 2021.
+
+* Fixed scssphp 1.7.0 compatibility (@thanks malberts)
+
 ### Chameleon 3.4.0
 
 Released on August 7, 2021.

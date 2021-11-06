@@ -48,6 +48,11 @@ class NavMenuTest extends GenericComponentTestCase {
 	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
 	public function testGetHTML_HasValidId( $domElement ) {
+		global $wgFragmentMode;
+		// MW 1.37 defaults to html5 fragment mode. Force legacy mode for the test
+		// to ensure the question mark is encoded as "3F" instead of "?".
+		$wgFragmentMode = [ 'legacy' ];
+
 		$chameleonTemplate = $this->getMockBuilder( ChameleonTemplate::class )
 			->disableOriginalConstructor()
 			->getMock();

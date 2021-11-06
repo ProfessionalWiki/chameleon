@@ -51,7 +51,7 @@ class MockupFactory {
 
 	private $testCase;
 	private $configuration = [
-		'UserIsLoggedIn'      => false,
+		'UserIsRegistered'    => false,
 		'UserEffectiveGroups' => [ '*' ],
 		'UserRights' => [],
 	];
@@ -331,8 +331,8 @@ class MockupFactory {
 			->getMock();
 
 		$user->expects( $this->testCase->any() )
-			->method( 'isLoggedIn' )
-			->will( $this->testCase->returnValue( $this->get( 'UserIsLoggedIn', true ) ) );
+			->method( 'isRegistered' )
+			->will( $this->testCase->returnValue( $this->get( 'UserIsRegistered', true ) ) );
 
 		$user->expects( $this->testCase->any() )
 			->method( 'getEffectiveGroups' )

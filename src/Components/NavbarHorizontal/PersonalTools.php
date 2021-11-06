@@ -85,7 +85,7 @@ class PersonalTools extends Component {
 			return '';
 		}
 
-		$talkClass = $user->isLoggedIn() ? 'pt-mytalk' : 'pt-anontalk';
+		$talkClass = $user->isRegistered() ? 'pt-mytalk' : 'pt-anontalk';
 
 		$newtalkNotifier = $this->indent( 1 ) . '<span class="badge badge-pill badge-info ' .
 			$talkClass . '" title="' . $newMessagesAlert . '" href="#"></span>';
@@ -102,7 +102,7 @@ class PersonalTools extends Component {
 	protected function getUserName() {
 		if ( filter_var( $this->getAttribute( self::ATTR_SHOW_USER_NAME ), FILTER_VALIDATE_BOOLEAN ) ) {
 			$user = $this->getSkinTemplate()->getSkin()->getUser();
-			if ( $user->isLoggedIn() ) {
+			if ( $user->isRegistered() ) {
 				$username = !empty( $user->getRealName() ) ? $user->getRealName() : $user->getName();
 				return '<span class="user-name">' . htmlspecialchars( $username ) . '</span>';
 			}
@@ -187,7 +187,7 @@ class PersonalTools extends Component {
 	protected function getDropdownToggle(): string {
 		$user = $this->getSkinTemplate()->getSkin()->getUser();
 
-		if ( $user->isLoggedIn() ) {
+		if ( $user->isRegistered() ) {
 
 			$toolsClass = 'navbar-userloggedin';
 			$toolsLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-loggedin' )->

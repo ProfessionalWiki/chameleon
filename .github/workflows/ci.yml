@@ -17,6 +17,8 @@ jobs:
             php: 7.4
           - mw: 'REL1_36'
             php: 7.4
+          - mw: 'REL1_37'
+            php: 7.4
 
     runs-on: ubuntu-latest
 

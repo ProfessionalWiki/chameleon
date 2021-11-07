@@ -43,12 +43,11 @@ use Skins\Chameleon\Components\Container;
 class ComponentFactory {
 
 	// the root component of the page; should be of type Container
-	private $mRootComponent = null;
+	private ?Container $rootComponent = null;
 
 	private string $layoutFileName;
 
-	/** @var QuickTemplate|null */
-	private $skinTemplate;
+	private ?QuickTemplate $skinTemplate;
 
 	private HookContainer $hookContainer;
 	private FileFetcher $fileFetcher;
@@ -62,11 +61,10 @@ class ComponentFactory {
 	}
 
 	/**
-	 * @return Container
 	 * @throws MWException
 	 */
-	public function getRootComponent() {
-		if ( $this->mRootComponent === null ) {
+	public function getRootComponent(): Container {
+		if ( $this->rootComponent === null ) {
 
 			$document = $this->getDomDocument();
 
@@ -76,7 +74,7 @@ class ComponentFactory {
 
 				$element = $roots->item( 0 );
 				if ( $element instanceof DOMElement ) {
-					$this->mRootComponent = $this->getComponent( $element );
+					$this->rootComponent = $this->getComponent( $element );
 				}
 
 			} else {
@@ -86,7 +84,7 @@ class ComponentFactory {
 			}
 		}
 
-		return $this->mRootComponent;
+		return $this->rootComponent;
 	}
 
 	private function getDomDocument(): DOMDocument {
@@ -114,14 +112,9 @@ class ComponentFactory {
 	}
 
 	/**
-	 * @param DOMElement $description
-	 * @param int $indent
-	 * @param string $htmlClassAttribute
-	 *
 	 * @throws MWException
-	 * @return Container
 	 */
-	public function getComponent( DOMElement $description, $indent = 0, $htmlClassAttribute = '' ) {
+	public function getComponent( DOMElement $description, int $indent = 0, string $htmlClassAttribute = '' ): Container {
 		$className = $this->getComponentClassName( $description );
 		$component = new $className( $this->getSkinTemplate(), $description, $indent,
 			$htmlClassAttribute );
@@ -138,13 +131,10 @@ class ComponentFactory {
 	}
 
 	/**
-	 * @param DOMElement $description
-	 *
-	 * @return string
 	 * @throws MWException
 	 * @since 1.1
 	 */
-	protected function getComponentClassName( DOMElement $description ) {
+	protected function getComponentClassName( DOMElement $description ): string {
 		$className = $this->mapDescriptionToClassName( $description );
 
 		if ( !class_exists( $className ) ||
@@ -157,12 +147,9 @@ class ComponentFactory {
 	}
 
 	/**
-	 * @param DOMElement $description
-	 *
-	 * @return string
 	 * @throws MWException
 	 */
-	protected function mapDescriptionToClassName( DOMElement $description ) {
+	protected function mapDescriptionToClassName( DOMElement $description ): string {
 		$nodeName = strtolower( $description->nodeName );
 
 		$mapOfComponentsToClassNames = [
@@ -185,24 +172,15 @@ class ComponentFactory {
 			$this->layoutFileName, $description->getLineNo(), $description->nodeName ) );
 	}
 
-	/**
-	 * @return QuickTemplate|null
-	 */
-	public function getSkinTemplate() {
+	public function getSkinTemplate(): ?QuickTemplate {
 		return $this->skinTemplate;
 	}
 
-	/**
-	 * @param QuickTemplate $skinTemplate
-	 */
 	public function setSkinTemplate( QuickTemplate $skinTemplate ) {
 		$this->skinTemplate = $skinTemplate;
 	}
 
 	/**
-	 * @param DOMElement $description
-	 * @param Component $component
-	 *
 	 * @return mixed
 	 * @throws MWException
 	 */
@@ -226,20 +204,11 @@ class ComponentFactory {
 		return new $className( $component, $description );
 	}
 
-	/**
-	 * @param string $fileName
-	 *
-	 * @return string
-	 */
-	public function sanitizeFileName( $fileName ) {
+	public function sanitizeFileName( string $fileName ): string {
 		return str_replace( [ '\\', '/' ], DIRECTORY_SEPARATOR, $fileName );
 	}
 
-	/**
-	 * @param DOMElement $description
-	 * @return string
-	 */
-	protected function mapComponentDescriptionToClassName( DOMElement $description ) {
+	protected function mapComponentDescriptionToClassName( DOMElement $description ): string {
 		if ( $description->hasAttribute( 'type' ) ) {
 			$className = $description->getAttribute( 'type' );
 			$parent = $description->parentNode;

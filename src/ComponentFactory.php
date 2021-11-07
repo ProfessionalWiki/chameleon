@@ -204,7 +204,7 @@ class ComponentFactory {
 		return new $className( $component, $description );
 	}
 
-	public function sanitizeFileName( string $fileName ): string {
+	private function sanitizeFileName( string $fileName ): string {
 		return str_replace( [ '\\', '/' ], DIRECTORY_SEPARATOR, $fileName );
 	}
 

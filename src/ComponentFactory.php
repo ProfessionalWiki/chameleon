@@ -46,18 +46,15 @@ class ComponentFactory {
 	// the root component of the page; should be of type Container
 	private $mRootComponent = null;
 
-	private $layoutFile;
+	private string $layoutFileName;
 
 	/** @var QuickTemplate|null */
 	private $skinTemplate;
 
 	private const NAMESPACE_HIERARCHY = 'Skins\\Chameleon\\Components';
 
-	/**
-	 * @param string $layoutFileName
-	 */
-	public function __construct( $layoutFileName ) {
-		$this->setLayoutFile( $layoutFileName );
+	public function __construct( string $layoutFileName ) {
+		$this->setLayoutFileName( $layoutFileName );
 	}
 
 	/**
@@ -81,7 +78,7 @@ class ComponentFactory {
 			} else {
 				// TODO: catch other errors, e.g. malformed XML
 				throw new MWException( sprintf( '%s: XML description is missing an element: structure.',
-					$this->getLayoutFile() ) );
+					$this->layoutFileName ) );
 			}
 		}
 
@@ -91,30 +88,23 @@ class ComponentFactory {
 	private function getDomDocument(): DOMDocument {
 		$document = new DOMDocument();
 
-		$document->load( $this->getLayoutFile() );
+		$document->load( $this->layoutFileName );
 		$document->normalizeDocument();
 
 		return $document;
 	}
 
 	/**
-	 * @return string
-	 */
-	protected function getLayoutFile() {
-		return $this->layoutFile;
-	}
-
-	/**
 	 * @param string $fileName
 	 */
-	public function setLayoutFile( $fileName ) {
+	public function setLayoutFileName( $fileName ) {
 		$fileName = $this->sanitizeFileName( $fileName );
 
 		if ( !is_readable( $fileName ) ) {
 			throw new RuntimeException( "Expected an accessible {$fileName} layout file" );
 		}
 
-		$this->layoutFile = $fileName;
+		$this->layoutFileName = $fileName;
 	}
 
 	/**
@@ -154,7 +144,7 @@ class ComponentFactory {
 		if ( !class_exists( $className ) ||
 			!is_subclass_of( $className, self::NAMESPACE_HIERARCHY . '\\Component' ) ) {
 			throw new MWException( sprintf( '%s (line %d): Invalid component type: %s.',
-				$this->getLayoutFile(), $description->getLineNo(), $description->getAttribute( 'type' ) ) );
+				$this->layoutFileName, $description->getLineNo(), $description->getAttribute( 'type' ) ) );
 		}
 
 		return $className;
@@ -186,7 +176,7 @@ class ComponentFactory {
 		}
 
 		throw new MWException( sprintf( '%s (line %d): XML element not allowed here: %s.',
-			$this->getLayoutFile(), $description->getLineNo(), $description->nodeName ) );
+			$this->layoutFileName, $description->getLineNo(), $description->nodeName ) );
 	}
 
 	/**
@@ -214,7 +204,7 @@ class ComponentFactory {
 		if ( !$description->hasAttribute( 'type' ) ) {
 			throw new MWException(
 				sprintf( '%s (line %d): Modification element missing an attribute: type.',
-				$this->getLayoutFile(), $description->getLineNo() ) );
+					$this->layoutFileName, $description->getLineNo() ) );
 		}
 
 		$className = 'Skins\\Chameleon\\Components\\Modifications\\' .
@@ -224,7 +214,7 @@ class ComponentFactory {
 			'Skins\\Chameleon\\Components\\Modifications\\Modification' ) ) {
 			throw new MWException(
 				sprintf( '%s (line %d): Invalid modification type: %s.',
-				$this->getLayoutFile(), $description->getLineNo(), $description->getAttribute( 'type' ) ) );
+					$this->layoutFileName, $description->getLineNo(), $description->getAttribute( 'type' ) ) );
 		}
 
 		return new $className( $component, $description );

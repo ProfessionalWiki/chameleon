@@ -28,6 +28,8 @@ namespace Skins\Chameleon;
 
 use DOMDocument;
 use DOMElement;
+use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\MediaWikiServices;
 use MWException;
 use QuickTemplate;
 use RuntimeException;
@@ -51,10 +53,13 @@ class ComponentFactory {
 	/** @var QuickTemplate|null */
 	private $skinTemplate;
 
+	private HookContainer $hookContainer;
+
 	private const NAMESPACE_HIERARCHY = 'Skins\\Chameleon\\Components';
 
-	public function __construct( string $layoutFileName ) {
+	public function __construct( string $layoutFileName, HookContainer $hookContainer ) {
 		$this->setLayoutFileName( $layoutFileName );
+		$this->hookContainer = $hookContainer;
 	}
 
 	/**
@@ -95,7 +100,14 @@ class ComponentFactory {
 	}
 
 	private function getLayoutXml(): string {
-		return file_get_contents( $this->layoutFileName );
+		$xml = file_get_contents( $this->layoutFileName );
+
+		$this->hookContainer->run(
+			Chameleon::HOOK_GET_LAYOUT_XML,
+			[ &$xml ]
+		);
+
+		return $xml;
 	}
 
 	private function setLayoutFileName( string $fileName ) {

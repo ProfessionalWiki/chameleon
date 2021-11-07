@@ -94,10 +94,7 @@ class ComponentFactory {
 		return $document;
 	}
 
-	/**
-	 * @param string $fileName
-	 */
-	public function setLayoutFileName( $fileName ) {
+	private function setLayoutFileName( string $fileName ) {
 		$fileName = $this->sanitizeFileName( $fileName );
 
 		if ( !is_readable( $fileName ) ) {

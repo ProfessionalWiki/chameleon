@@ -67,10 +67,7 @@ class ComponentFactory {
 	public function getRootComponent() {
 		if ( $this->mRootComponent === null ) {
 
-			$document = new DOMDocument();
-
-			$document->load( $this->getLayoutFile() );
-			$document->normalizeDocument();
+			$document = $this->getDomDocument();
 
 			$roots = $document->getElementsByTagName( 'structure' );
 
@@ -89,6 +86,15 @@ class ComponentFactory {
 		}
 
 		return $this->mRootComponent;
+	}
+
+	private function getDomDocument(): DOMDocument {
+		$document = new DOMDocument();
+
+		$document->load( $this->getLayoutFile() );
+		$document->normalizeDocument();
+
+		return $document;
 	}
 
 	/**

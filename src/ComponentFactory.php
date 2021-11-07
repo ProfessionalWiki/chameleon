@@ -112,9 +112,10 @@ class ComponentFactory {
 	}
 
 	/**
+	 * @return Container
 	 * @throws MWException
 	 */
-	public function getComponent( DOMElement $description, int $indent = 0, string $htmlClassAttribute = '' ): Container {
+	public function getComponent( DOMElement $description, int $indent = 0, string $htmlClassAttribute = '' ) {
 		$className = $this->getComponentClassName( $description );
 		$component = new $className( $this->getSkinTemplate(), $description, $indent,
 			$htmlClassAttribute );

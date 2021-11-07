@@ -29,7 +29,6 @@ namespace Skins\Chameleon;
 use DOMDocument;
 use DOMElement;
 use MediaWiki\HookContainer\HookContainer;
-use MediaWiki\MediaWikiServices;
 use MWException;
 use QuickTemplate;
 use RuntimeException;

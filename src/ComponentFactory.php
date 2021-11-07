@@ -96,7 +96,7 @@ class ComponentFactory {
 		return $document;
 	}
 
-	private function getLayoutXml(): string {
+	public function getLayoutXml(): string {
 		$xml = $this->fileFetcher->fetchFile( $this->layoutFileName );
 
 		$this->hookContainer->run(

@@ -28,16 +28,14 @@ namespace Skins\Chameleon;
 
 use DOMDocument;
 use DOMElement;
+use FileFetcher\FileFetcher;
 use MediaWiki\HookContainer\HookContainer;
 use MWException;
 use QuickTemplate;
-use RuntimeException;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\Components\Container;
 
 /**
- * Class ComponentFactory
- *
  * @author  Stephan Gambke
  * @since   1.0
  * @ingroup Skins
@@ -53,12 +51,14 @@ class ComponentFactory {
 	private $skinTemplate;
 
 	private HookContainer $hookContainer;
+	private FileFetcher $fileFetcher;
 
 	private const NAMESPACE_HIERARCHY = 'Skins\\Chameleon\\Components';
 
-	public function __construct( string $layoutFileName, HookContainer $hookContainer ) {
+	public function __construct( string $layoutFileName, HookContainer $hookContainer, FileFetcher $fileFetcher ) {
 		$this->setLayoutFileName( $layoutFileName );
 		$this->hookContainer = $hookContainer;
+		$this->fileFetcher = $fileFetcher;
 	}
 
 	/**
@@ -99,7 +99,7 @@ class ComponentFactory {
 	}
 
 	private function getLayoutXml(): string {
-		$xml = file_get_contents( $this->layoutFileName );
+		$xml = $this->fileFetcher->fetchFile( $this->layoutFileName );
 
 		$this->hookContainer->run(
 			Chameleon::HOOK_GET_LAYOUT_XML,
@@ -110,13 +110,7 @@ class ComponentFactory {
 	}
 
 	private function setLayoutFileName( string $fileName ) {
-		$fileName = $this->sanitizeFileName( $fileName );
-
-		if ( !is_readable( $fileName ) ) {
-			throw new RuntimeException( "Expected an accessible {$fileName} layout file" );
-		}
-
-		$this->layoutFileName = $fileName;
+		$this->layoutFileName = $this->sanitizeFileName( $fileName );
 	}
 
 	/**

@@ -88,10 +88,14 @@ class ComponentFactory {
 	private function getDomDocument(): DOMDocument {
 		$document = new DOMDocument();
 
-		$document->load( $this->layoutFileName );
+		$document->loadXML( $this->getLayoutXml() );
 		$document->normalizeDocument();
 
 		return $document;
+	}
+
+	private function getLayoutXml(): string {
+		return file_get_contents( $this->layoutFileName );
 	}
 
 	private function setLayoutFileName( string $fileName ) {

@@ -27,6 +27,7 @@
 namespace Skins\Chameleon;
 
 use Bootstrap\BootstrapManager;
+use MediaWiki\MediaWikiServices;
 use OutputPage;
 use QuickTemplate;
 use ResourceLoader;
@@ -49,6 +50,8 @@ class Chameleon extends SkinTemplate {
 	public $template = '\Skins\Chameleon\ChameleonTemplate';
 
 	private $componentFactory;
+
+	public const HOOK_GET_LAYOUT_XML = 'ChameleonGetLayoutXml';
 
 	/**
 	 * @throws \Exception
@@ -131,7 +134,8 @@ class Chameleon extends SkinTemplate {
 	public function getComponentFactory() {
 		if ( !isset( $this->componentFactory ) ) {
 			$this->componentFactory = new ComponentFactory(
-				$this->getLayoutFilePath()
+				$this->getLayoutFilePath(),
+				MediaWikiServices::getInstance()->getHookContainer()
 			);
 		}
 

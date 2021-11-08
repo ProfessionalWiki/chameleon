@@ -28,15 +28,14 @@ namespace Skins\Chameleon;
 
 use DOMDocument;
 use DOMElement;
+use FileFetcher\FileFetcher;
+use MediaWiki\HookContainer\HookContainer;
 use MWException;
 use QuickTemplate;
-use RuntimeException;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\Components\Container;
 
 /**
- * Class ComponentFactory
- *
  * @author  Stephan Gambke
  * @since   1.0
  * @ingroup Skins
@@ -44,33 +43,30 @@ use Skins\Chameleon\Components\Container;
 class ComponentFactory {
 
 	// the root component of the page; should be of type Container
-	private $mRootComponent = null;
+	private ?Container $rootComponent = null;
 
-	private $layoutFile;
+	private string $layoutFileName;
 
-	/** @var QuickTemplate|null */
-	private $skinTemplate;
+	private ?QuickTemplate $skinTemplate;
+
+	private HookContainer $hookContainer;
+	private FileFetcher $fileFetcher;
 
 	private const NAMESPACE_HIERARCHY = 'Skins\\Chameleon\\Components';
 
-	/**
-	 * @param string $layoutFileName
-	 */
-	public function __construct( $layoutFileName ) {
-		$this->setLayoutFile( $layoutFileName );
+	public function __construct( string $layoutFileName, HookContainer $hookContainer, FileFetcher $fileFetcher ) {
+		$this->setLayoutFileName( $layoutFileName );
+		$this->hookContainer = $hookContainer;
+		$this->fileFetcher = $fileFetcher;
 	}
 
 	/**
-	 * @return Container
 	 * @throws MWException
 	 */
-	public function getRootComponent() {
-		if ( $this->mRootComponent === null ) {
+	public function getRootComponent(): Container {
+		if ( $this->rootComponent === null ) {
 
-			$document = new DOMDocument();
-
-			$document->load( $this->getLayoutFile() );
-			$document->normalizeDocument();
+			$document = $this->getDomDocument();
 
 			$roots = $document->getElementsByTagName( 'structure' );
 
@@ -78,48 +74,48 @@ class ComponentFactory {
 
 				$element = $roots->item( 0 );
 				if ( $element instanceof DOMElement ) {
-					$this->mRootComponent = $this->getComponent( $element );
+					$this->rootComponent = $this->getComponent( $element );
 				}
 
 			} else {
 				// TODO: catch other errors, e.g. malformed XML
 				throw new MWException( sprintf( '%s: XML description is missing an element: structure.',
-					$this->getLayoutFile() ) );
+					$this->layoutFileName ) );
 			}
 		}
 
-		return $this->mRootComponent;
+		return $this->rootComponent;
+	}
+
+	private function getDomDocument(): DOMDocument {
+		$document = new DOMDocument();
+
+		$document->loadXML( $this->getLayoutXml() );
+		$document->normalizeDocument();
+
+		return $document;
+	}
+
+	public function getLayoutXml(): string {
+		$xml = $this->fileFetcher->fetchFile( $this->layoutFileName );
+
+		$this->hookContainer->run(
+			Chameleon::HOOK_GET_LAYOUT_XML,
+			[ &$xml ]
+		);
+
+		return $xml;
+	}
+
+	private function setLayoutFileName( string $fileName ) {
+		$this->layoutFileName = $this->sanitizeFileName( $fileName );
 	}
 
 	/**
-	 * @return string
-	 */
-	protected function getLayoutFile() {
-		return $this->layoutFile;
-	}
-
-	/**
-	 * @param string $fileName
-	 */
-	public function setLayoutFile( $fileName ) {
-		$fileName = $this->sanitizeFileName( $fileName );
-
-		if ( !is_readable( $fileName ) ) {
-			throw new RuntimeException( "Expected an accessible {$fileName} layout file" );
-		}
-
-		$this->layoutFile = $fileName;
-	}
-
-	/**
-	 * @param DOMElement $description
-	 * @param int $indent
-	 * @param string $htmlClassAttribute
-	 *
-	 * @throws MWException
 	 * @return Container
+	 * @throws MWException
 	 */
-	public function getComponent( DOMElement $description, $indent = 0, $htmlClassAttribute = '' ) {
+	public function getComponent( DOMElement $description, int $indent = 0, string $htmlClassAttribute = '' ) {
 		$className = $this->getComponentClassName( $description );
 		$component = new $className( $this->getSkinTemplate(), $description, $indent,
 			$htmlClassAttribute );
@@ -136,31 +132,25 @@ class ComponentFactory {
 	}
 
 	/**
-	 * @param DOMElement $description
-	 *
-	 * @return string
 	 * @throws MWException
 	 * @since 1.1
 	 */
-	protected function getComponentClassName( DOMElement $description ) {
+	protected function getComponentClassName( DOMElement $description ): string {
 		$className = $this->mapDescriptionToClassName( $description );
 
 		if ( !class_exists( $className ) ||
 			!is_subclass_of( $className, self::NAMESPACE_HIERARCHY . '\\Component' ) ) {
 			throw new MWException( sprintf( '%s (line %d): Invalid component type: %s.',
-				$this->getLayoutFile(), $description->getLineNo(), $description->getAttribute( 'type' ) ) );
+				$this->layoutFileName, $description->getLineNo(), $description->getAttribute( 'type' ) ) );
 		}
 
 		return $className;
 	}
 
 	/**
-	 * @param DOMElement $description
-	 *
-	 * @return string
 	 * @throws MWException
 	 */
-	protected function mapDescriptionToClassName( DOMElement $description ) {
+	protected function mapDescriptionToClassName( DOMElement $description ): string {
 		$nodeName = strtolower( $description->nodeName );
 
 		$mapOfComponentsToClassNames = [
@@ -180,27 +170,18 @@ class ComponentFactory {
 		}
 
 		throw new MWException( sprintf( '%s (line %d): XML element not allowed here: %s.',
-			$this->getLayoutFile(), $description->getLineNo(), $description->nodeName ) );
+			$this->layoutFileName, $description->getLineNo(), $description->nodeName ) );
 	}
 
-	/**
-	 * @return QuickTemplate|null
-	 */
-	public function getSkinTemplate() {
+	public function getSkinTemplate(): ?QuickTemplate {
 		return $this->skinTemplate;
 	}
 
-	/**
-	 * @param QuickTemplate $skinTemplate
-	 */
 	public function setSkinTemplate( QuickTemplate $skinTemplate ) {
 		$this->skinTemplate = $skinTemplate;
 	}
 
 	/**
-	 * @param DOMElement $description
-	 * @param Component $component
-	 *
 	 * @return mixed
 	 * @throws MWException
 	 */
@@ -208,7 +189,7 @@ class ComponentFactory {
 		if ( !$description->hasAttribute( 'type' ) ) {
 			throw new MWException(
 				sprintf( '%s (line %d): Modification element missing an attribute: type.',
-				$this->getLayoutFile(), $description->getLineNo() ) );
+					$this->layoutFileName, $description->getLineNo() ) );
 		}
 
 		$className = 'Skins\\Chameleon\\Components\\Modifications\\' .
@@ -218,26 +199,17 @@ class ComponentFactory {
 			'Skins\\Chameleon\\Components\\Modifications\\Modification' ) ) {
 			throw new MWException(
 				sprintf( '%s (line %d): Invalid modification type: %s.',
-				$this->getLayoutFile(), $description->getLineNo(), $description->getAttribute( 'type' ) ) );
+					$this->layoutFileName, $description->getLineNo(), $description->getAttribute( 'type' ) ) );
 		}
 
 		return new $className( $component, $description );
 	}
 
-	/**
-	 * @param string $fileName
-	 *
-	 * @return string
-	 */
-	public function sanitizeFileName( $fileName ) {
+	private function sanitizeFileName( string $fileName ): string {
 		return str_replace( [ '\\', '/' ], DIRECTORY_SEPARATOR, $fileName );
 	}
 
-	/**
-	 * @param DOMElement $description
-	 * @return string
-	 */
-	protected function mapComponentDescriptionToClassName( DOMElement $description ) {
+	protected function mapComponentDescriptionToClassName( DOMElement $description ): string {
 		if ( $description->hasAttribute( 'type' ) ) {
 			$className = $description->getAttribute( 'type' );
 			$parent = $description->parentNode;

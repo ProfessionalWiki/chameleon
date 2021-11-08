@@ -85,13 +85,16 @@ class PermissionsHelper {
 		}
 
 		$expectedValues = $this->getValueListFromAttribute( $attributeNameInDomElement );
-		$services = MediaWikiServices::getInstance();
 		switch ( $attributeOfUser ) {
 			case 'group':
-				$observedValues = $services->getUserGroupManager()->getUserGroups( $user );
+				$observedValues = MediaWikiServices::getInstance()
+					->getUserGroupManager()
+					->getUserEffectiveGroups( $user );
 				break;
 			case 'permission';
-				$observedValues = $services->getPermissionManager()->getUserPermissions( $user );
+				$observedValues = MediaWikiServices::getInstance()
+					->getPermissionManager()
+					->getUserPermissions( $user );
 				break;
 		}
 		$effectiveValues = array_intersect( $expectedValues, $observedValues );

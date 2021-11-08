@@ -34,6 +34,7 @@ use MWException;
 use QuickTemplate;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\Components\Container;
+use Skins\Chameleon\Components\Structure;
 
 /**
  * @author  Stephan Gambke
@@ -43,7 +44,7 @@ use Skins\Chameleon\Components\Container;
 class ComponentFactory {
 
 	// the root component of the page; should be of type Container
-	private ?Container $rootComponent = null;
+	private ?Structure $rootComponent = null;
 
 	private string $layoutFileName;
 
@@ -63,7 +64,7 @@ class ComponentFactory {
 	/**
 	 * @throws MWException
 	 */
-	public function getRootComponent(): Container {
+	public function getRootComponent(): Structure {
 		if ( $this->rootComponent === null ) {
 
 			$document = $this->getDomDocument();

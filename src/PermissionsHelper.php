@@ -27,6 +27,7 @@
 namespace Skins\Chameleon;
 
 use DOMElement;
+use MediaWiki\MediaWikiServices;
 
 /**
  * PermissionsHelper class
@@ -73,12 +74,9 @@ class PermissionsHelper {
 	 */
 	protected function userHas( $attributeOfUser, $attributeNameInDomElement ) {
 		$user = $this->skin->getUser();
-		$attributeAccessors = [
-			'group'      => [ $user, 'getEffectiveGroups' ],
-			'permission' => [ $user, 'getRights' ],
-		];
+		$attributeAccessors = [ 'group', 'permission' ];
 
-		if ( !array_key_exists( $attributeOfUser, $attributeAccessors ) ) {
+		if ( !in_array( $attributeOfUser, $attributeAccessors ) ) {
 			throw new \MWException( sprintf( 'Unknown permission: %s', $attributeOfUser ) );
 		}
 
@@ -87,7 +85,18 @@ class PermissionsHelper {
 		}
 
 		$expectedValues = $this->getValueListFromAttribute( $attributeNameInDomElement );
-		$observedValues = call_user_func( $attributeAccessors[ $attributeOfUser ] );
+		switch ( $attributeOfUser ) {
+			case 'group':
+				$observedValues = MediaWikiServices::getInstance()
+					->getUserGroupManager()
+					->getUserEffectiveGroups( $user );
+				break;
+			case 'permission';
+				$observedValues = MediaWikiServices::getInstance()
+					->getPermissionManager()
+					->getUserPermissions( $user );
+				break;
+		}
 		$effectiveValues = array_intersect( $expectedValues, $observedValues );
 
 		return !empty( $effectiveValues );

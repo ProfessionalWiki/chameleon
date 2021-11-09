@@ -326,6 +326,8 @@ class MockupFactory {
 	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected function getUserStub() {
+		$request = new FauxRequest();
+
 		$user = $this->testCase->getMockBuilder( User::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -343,8 +345,8 @@ class MockupFactory {
 			->will( $this->testCase->returnValue( $this->getTitleStub() ) );
 
 		$user->expects( $this->testCase->any() )
-			->method( 'getRights' )
-			->will( $this->testCase->returnValue( $this->get( 'UserRights', [] ) ) );
+			->method( 'getRequest' )
+			->will( $this->testCase->returnValue( $request ) );
 
 		return $user;
 	}

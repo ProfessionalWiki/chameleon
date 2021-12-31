@@ -7,6 +7,7 @@ Under development.
 * Raised minimum Bootstrap extension version from 4.2 to 4.5
 * Raised minimum MediaWiki version from 1.31 to 1.35
 * Raised minimum PHP version from 7.1 to 7.4.3
+* Fixed MediaWiki 1.37 compatibility issues (@thanks malberts)
 * Added `ChameleonGetLayoutXml` hook, which allows altering the layout XML (thanks @JeroenDeDauw)
 
 ### Chameleon 3.4.1

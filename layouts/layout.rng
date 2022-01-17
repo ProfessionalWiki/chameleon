@@ -549,11 +549,11 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 				<value>MainContent</value>
 			</attribute>
 
-                        <optional>
-                                <attribute name="hideCatLinks" a:defaultValue="no">
-                                        <ref name="BoolValues"/>
-                                </attribute>
-                        </optional>
+			<optional>
+				<attribute name="hideCatLinks" a:defaultValue="no">
+					<ref name="BoolValues"/>
+				</attribute>
+			</optional>
 
 		</element>
 	</define>

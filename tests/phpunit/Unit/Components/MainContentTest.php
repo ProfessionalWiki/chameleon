@@ -24,8 +24,6 @@
 
 namespace Skins\Chameleon\Tests\Unit\Components;
 
-use Skins\Chameleon\Components\MainContent;
-
 /**
  * @coversDefaultClass \Skins\Chameleon\Components\MainContent
  * @covers ::<private>
@@ -45,8 +43,9 @@ class MainContentTest extends GenericComponentTestCase {
 
 	/**
 	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
 	 */
-	public function testGetHtml_OnEmptyDataProperty() {
+	public function testGetHtml_OnEmptyDataProperty( $domElement ) {
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
 		$chameleonTemplate->data = [
@@ -56,7 +55,33 @@ class MainContentTest extends GenericComponentTestCase {
 			'dataAfterContent' => ''
 		];
 
-		$instance = new MainContent( $chameleonTemplate );
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
 		$this->assertIsString( $instance->getHtml() );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_WithoutHideCatLinks( $domElement ) {
+		$domElement->setAttribute( 'hideCatLinks', 'no' );
+
+		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
+
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$this->assertStringContainsString( 'SomeCategory', $instance->getHtml() );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_WithHideCatLinks( $domElement ) {
+		$domElement->setAttribute( 'hideCatLinks', 'yes' );
+
+		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
+
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$this->assertStringNotContainsString( 'SomeCategory', $instance->getHtml() );
 	}
 }

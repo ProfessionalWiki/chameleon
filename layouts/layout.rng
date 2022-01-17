@@ -19,19 +19,19 @@ You should have received a copy of the GNU General Public License along
 with this program. If not, see <http://www.gnu.org/licenses/>.
 
 @author Stephan Gambke
-@since 3.2
+@since 1.5
 @ingroup Skins
 -->
 <grammar
 		xmlns="http://relaxng.org/ns/structure/1.0"
 		xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-		ns="https://ProfessionalWiki.github.io/chameleon/schema/3.2/layout.rng"
+		ns="https://ProfessionalWiki.github.io/chameleon/schema/3.3/layout.rng"
 		datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
 >
 
 	<a:documentation>
 		Schema for Chameleon layout files
-		Version 3.2
+		Version 3.3
 		Copyright 2013 - 2021, Stephan Gambke
 		GNU General Public License, version 3 (or any later version)
 	</a:documentation>
@@ -196,6 +196,18 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 			<attribute name="name">
 				<data type="string"/>
+			</attribute>
+		</element>
+	</define>
+
+	<!-- CategoryLinks -->
+	<define name="Component" combine="choice">
+		<element name="component">
+			<a:documentation></a:documentation>
+			<ref name="Component.CommonContent"/>
+
+			<attribute name="type">
+				<value>CategoryLinks</value>
 			</attribute>
 		</element>
 	</define>
@@ -536,6 +548,12 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<attribute name="type">
 				<value>MainContent</value>
 			</attribute>
+
+			<optional>
+				<attribute name="hideCatLinks" a:defaultValue="no">
+					<ref name="BoolValues"/>
+				</attribute>
+			</optional>
 
 		</element>
 	</define>

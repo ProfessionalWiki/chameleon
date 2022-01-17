@@ -15,6 +15,7 @@ The following components and modifications are available:
 - [`Grid`](#grid)
 - [`Row`](#row)
 - [`Cell`](#cell)
+- [Component `CategoryLinks`](#component-categorylinks)
 - [Component `Container`](#component-container)
 - [Component `FooterIcons`](#component-footericons)
 - [Component `FooterInfo`](#component-footerinfo)
@@ -56,7 +57,7 @@ The root element of any layout.
 * `xmlns`:
   * Allowed values: URI of XML namespace definition
   * Optional.
-  
+
   Ignored by the skin itself, but may be specified to validate the layout. See
   [Layouts](layouts.md).
 
@@ -155,7 +156,7 @@ cells, and only cells may be immediate children of rows.
 -------------------------------------------------------------------------------
 ### `Cell`
 
-Holds components. 
+Holds components.
 
 #### Example usage
 
@@ -191,6 +192,34 @@ Holds components.
 * Any modification
 
 -------------------------------------------------------------------------------
+### Component `CategoryLinks`
+
+Displays category links.
+
+Since Chameleon 4.0.0
+
+#### Example usage
+
+Hide category links on the `MainContent` component and add the `Categorylinks`
+component separately:
+
+``` xml
+<component type="MainContent" hideCatLinks="yes" />
+<!-- other components -->
+<component type="CategoryLinks" />
+```
+
+#### Attributes:
+None.
+
+#### Allowed Parent Elements:
+* [Structure](#structure)
+* [Cell](#cell)
+
+#### Allowed Child Elements:
+* Any modification
+
+-------------------------------------------------------------------------------
 ### Component `Container`
 
 This component will wrap its content elements in a `<div>`. It may be used to
@@ -217,7 +246,7 @@ assign a CSS id or class for styling purposes.
   * Allowed values: Any string
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the `<div>` element.
 
 #### Allowed Parent Elements:
@@ -244,7 +273,7 @@ A list containing the "powered by" icons.
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
@@ -273,7 +302,7 @@ policy, and disclaimer links).
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
@@ -300,7 +329,7 @@ A list containing links to places (about, privacy policy, and disclaimer links).
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
@@ -355,18 +384,18 @@ See also: [Manual:Interwiki](https://www.mediawiki.org/wiki/Manual:Interwiki#Int
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the top-level html element
   of this component.
-  
+
 * `flatten`
   * Allowed values: Boolean (`yes`|`no`)
   * Default: `no`
   * Optional.
-    
+
   Whether the list of languages should be flattened, i.e. its items should
   appear not in a submenu, but as elements of the top structure.
-    
+
 
 #### Allowed Parent Elements:
 <!-- * [Structure](#structure) -->
@@ -398,10 +427,10 @@ the wiki.
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the top-level html element
   of this component.
-  
+
 * `addLink`:
   * Allowed values: Boolean (`yes`|`no`)
   * Default: `yes`
@@ -441,9 +470,16 @@ Includes:
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the top-level html element
   of this component.
+* `hideCatLinks`:
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+
+  Hide the category links. Use in conjunction with the [CategoryLinks](#component-categorylinks)
+  component to display the links elsewhere.
 
 #### Allowed Parent Elements:
 * [Structure](#structure)
@@ -462,7 +498,7 @@ message](https://www.mediawiki.org/wiki/Help:System_message) or directly in the
 layout file. The format is the same as that of the [MediaWiki
 sidebar](https://www.mediawiki.org/wiki/Manual:Interface/Sidebar), except that a
 third component is allowed that can contain a class string that should be set on
-the menu item link. This can be used to show an icon in front of the menu item. 
+the menu item link. This can be used to show an icon in front of the menu item.
 
 This component is intended to be used inside a
 [NavbarHorizontal](#component-navbarhorizontal) component. It will work in other
@@ -490,8 +526,8 @@ Using an inline description:
   * Allowed values: String
   * Default: -
   * Optional.
-  
-  The name of the MediaWiki message that holds the menu description. 
+
+  The name of the MediaWiki message that holds the menu description.
 
 #### Allowed Parent Elements:
 * [Structure](#structure)
@@ -534,7 +570,7 @@ To display the message _MediaWiki:MyMessage_:
 ### Component `NavbarHorizontal`
 
 A horizontal navbar that takes its contents from its child elements.
- 
+
 #### Example usage
 
 From [navhead.xml](../layouts/navhead.xml):
@@ -560,7 +596,7 @@ Add "Menu" text next to the toggler button:
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
@@ -621,11 +657,11 @@ Using the message _MediaWiki:Secondary-menu_:
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   A semicolon-separated list of section names that are to be flattened, i.e.
   whose menu items should appear not in a submenu, but as elements of the top
   structure.
-  
+
   A comma-separated list may also be given in the message
   _MediaWiki:skin-chameleon-navmenu-flatten_ instead. If both the message and
   this attribute are found, the message takes precedence.
@@ -655,7 +691,7 @@ like "You have [a new message]() ([last change]())."
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
@@ -671,7 +707,7 @@ like "You have [a new message]() ([last change]())."
 
 A component containing content navigation links (Page, Discussion, Edit,
 History, Move, ...)
- 
+
 #### Example usage
 
 ``` xml
@@ -683,7 +719,7 @@ History, Move, ...)
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
@@ -691,29 +727,29 @@ History, Move, ...)
   * Allowed values: Boolean (`yes`|`no`)
   * Default: `no`
   * Optional.
-  
+
   If set the link to the current page will not be shown among the page tools.
 
 * `hideDiscussionLink`
   * Allowed values: Boolean (`yes`|`no`)
   * Default: `no`
   * Optional.
-  
+
   If set the link to the discussion page will not be shown among the page tools.
 
 * `buttons`
   * Allowed values: String
   * Default: `edit`
   * Optional.
-  
+
   The actions that will be shown as a button on the navbar directly. They will
   also be removed from the PageTools drop-down.
-  
+
   This attribute will be ignored if the PageTools are not a child element of a
   NavbarHorizontal.
-  
+
   Among others, possible actions are:
-  
+
     * delete
     * edit
     * formedit
@@ -728,11 +764,11 @@ History, Move, ...)
     * ve-edit
     * view
     * watch
-    
+
   Note that button for actions, that are not valid for a given page will be
   omitted automatically. So in the above example, the visual-editor edit action
   button will only be shown for pages in a valid visual-editor namespace.
-  
+
   Note also, that the buttons will be shown in the order provided in
   the `buttons` attribute. In the example above, history would
   be the last action right before the ellipsis.
@@ -763,7 +799,7 @@ LocalSettings.php. So for example:
 A component containing the personal tools like link to user page and user's talk
 page, preferences, watchlist, etc. Also shows the new talk notifier, when
 applicable.
- 
+
 #### Example usage
 
 ``` xml
@@ -775,7 +811,7 @@ applicable.
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
@@ -784,12 +820,12 @@ applicable.
   * Allowed values: Boolean (`yes`|`no`)
   * Default: `no`
   * Optional.
-  
+
   If set the newtalk notifier will not be shown.
 
   This attribute has no effect when used inside the
   [NavbarHorizontal](#component-navbarhorizontal) component.
-  
+
   This attribute was introduced to keep backwards compatibility. If the
   PersonalTools component is used, it is recommended to always set this
   attribute to *yes* and use an independent
@@ -829,7 +865,7 @@ applicable.
 ### Component `SearchBar`
 
 The search bar.
- 
+
 #### Example usage
 
 ``` xml
@@ -841,22 +877,22 @@ The search bar.
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the top-level html element
   of this component.
-  
+
 * `buttons`:
   * Allowed values: String (`search`|`go`|`search go`)
   * Default: `search go`
   * Optional.
-  
+
   The buttons that should be shown with the search bar.
 
-* `placeholder`: 
+* `placeholder`:
   * Allowed values: String
   * Default: using the MediaWiki search text
   * Optional
-  
+
   The placeholder to show in the search field when the user has not enetered anything yet
 
 #### Allowed Parent Elements:
@@ -870,8 +906,8 @@ The search bar.
 -------------------------------------------------------------------------------
 ### Component `Silent`
 
-This component does not output anything. It may be used as a placeholder during development. 
- 
+This component does not output anything. It may be used as a placeholder during development.
+
 #### Example usage
 
 ``` xml
@@ -879,7 +915,7 @@ This component does not output anything. It may be used as a placeholder during 
 ```
 
 #### Attributes:
-None.  
+None.
 
 #### Allowed Parent Elements:
 * [Structure](#structure)
@@ -892,7 +928,7 @@ None.
 ### Component `SiteNotice`
 
 The wiki's [site notice](https://www.mediawiki.org/wiki/Manual:Interface/Sitenotice).
- 
+
 #### Example usage
 
 ``` xml
@@ -904,7 +940,7 @@ The wiki's [site notice](https://www.mediawiki.org/wiki/Manual:Interface/Sitenot
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
@@ -934,7 +970,7 @@ and a link to a list of pages linking to the current page.
   * Allowed values: String
   * Default: -
   * Optional.
-  
+
   The class (or classes) that should be assigned to the top-level html element
   of this component.
 
@@ -971,7 +1007,7 @@ if one of the values matches.
 ```
 
 This will hide the parent component of the modification if the user has the
-_edit_ right and the current page is in the 'Main' or 'Talk' namespace. 
+_edit_ right and the current page is in the 'Main' or 'Talk' namespace.
 
 #### Attributes
 
@@ -982,14 +1018,14 @@ _edit_ right and the current page is in the 'Main' or 'Talk' namespace.
   A comma-separated list of [user
   groups](https://www.mediawiki.org/wiki/Manual:User_rights#List_of_groups) for
   which the component should be hidden.
-  
+
   It is generally not advised to use the _group_ attribute, as it
   bypasses the permission system. Use _permission_ instead.
 
 * permission
   * Allowed values: String value
   * Example: `permission="createpage, createtalk"`
-  
+
   A comma-separated list of [user
   permissions](https://www.mediawiki.org/wiki/Manual:User_rights#List_of_permissions)
   for which the component should be hidden.
@@ -1019,7 +1055,7 @@ attributes match.
 ```
 
 This will show the parent component of the modification if the user has the
-_edit_ right or if the current page is in the 'Talk' namespace (or both). 
+_edit_ right or if the current page is in the 'Talk' namespace (or both).
 
 #### Attributes
 
@@ -1050,7 +1086,7 @@ _edit_ right or if the current page is in the 'Talk' namespace (or both).
   [namespaces](https://www.mediawiki.org/wiki/Manual:Namespace_constants) for
   which the component should be shown. The namespaces may be specified as
   namespace constants or as namespace index numbers.
-  
+
 -------------------------------------------------------------------------------
 ### Modification `Sticky`
 
@@ -1063,7 +1099,7 @@ when the user scrolls.
 <modification type="Sticky" />
 ```
 
-This will make the parent component of the modification stick to the page. 
+This will make the parent component of the modification stick to the page.
 
 #### Attributes
 None.

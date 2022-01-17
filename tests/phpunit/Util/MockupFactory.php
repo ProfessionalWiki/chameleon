@@ -224,6 +224,7 @@ class MockupFactory {
 			'subtitle'           => 'SomeSubtitle',
 			'undelete'           => 'SomeUndeleteMessage',
 			'dataAfterContent'   => 'SomeDataAfterContent',
+			'catlinks'           => 'SomeCategory',
 		];
 	}
 

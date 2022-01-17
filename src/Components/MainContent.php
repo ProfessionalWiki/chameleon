@@ -164,13 +164,14 @@ class MainContent extends Component {
 		// * dataAfterContent should come after the the category links.
 		// * only one extension is known to use it dataAfterContent and it is geared specifically
 		// towards MonoBook
-		// => provide an attribute hideCatLinks for the XML and -if present- hide category links and
-		// assume somebody knows what they are doing?
-		// => alternatively provide a sub-component CategoryLinks and use it if present in the layout
-		// DOM
-
-		return $this->indent() . '<!-- category links -->' .
-			$this->indent() . $this->getSkinTemplate()->get( 'catlinks' );
+		if ( $this->getDomElement() !== null &&
+			filter_var( $this->getDomElement()->getAttribute( 'hideCatLinks' ), FILTER_VALIDATE_BOOLEAN )
+		) {
+			return '';
+		} else {
+			return $this->indent() . '<!-- category links -->' .
+				$this->indent() . $this->getSkinTemplate()->get( 'catlinks' );
+		}
 	}
 
 	/**

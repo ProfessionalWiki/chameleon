@@ -43,7 +43,7 @@
 	"ResourceModules": {
 		"skins.chameleon": {
 			"class": "ResourceLoaderSkinModule",
-			"features": [ "elements", "content", "legacy" ],
+			"features": [ "elements", "content", "legacy", "toc" ],
 			"targets": [
 				"desktop",
 				"mobile"

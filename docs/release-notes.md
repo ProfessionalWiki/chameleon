@@ -2,7 +2,7 @@
 
 ### Chameleon 4.0.0
 
-Under development.
+Released on January 18, 2022.
 
 * Raised minimum Bootstrap extension version from 4.2 to 4.5
 * Raised minimum MediaWiki version from 1.31 to 1.35

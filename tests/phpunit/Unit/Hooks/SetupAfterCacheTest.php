@@ -68,7 +68,7 @@ class SetupAfterCacheTest extends TestCase {
 			->getMock();
 
 		$this->assertInstanceOf(
-			'\Skins\Chameleon\Hooks\SetupAfterCache',
+			SetupAfterCache::class,
 			new SetupAfterCache( $bootstrapManager, $configuration, $request )
 		);
 	}
@@ -79,9 +79,7 @@ class SetupAfterCacheTest extends TestCase {
 	 * @covers ::registerExternalScssModules
 	 */
 	public function testProcessWithValidExternalModuleWithoutScssVariables() {
-		$bootstrapManager = $this->getMockBuilder( BootstrapManager::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$bootstrapManager = $this->createMock( BootstrapManager::class );
 
 		$bootstrapManager->expects( $this->at( 9 ) )
 			->method( 'addStyleFile' )
@@ -116,14 +114,10 @@ class SetupAfterCacheTest extends TestCase {
 			'wgStylePath'                     => 'notTestingwgStylePath',
 		];
 
-		$request = $this->getMockBuilder( WebRequest::class )
-			->disableOriginalConstructor()
-			->getMock();
-
 		$instance = new SetupAfterCache(
 			$bootstrapManager,
 			$configuration,
-			$request
+			$this->createMock( WebRequest::class )
 		);
 
 		$instance->process();

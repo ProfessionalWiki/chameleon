@@ -1,5 +1,9 @@
 ## Release Notes
 
+### Chameleon 4.0.1
+
+* Added PHP 8.1 compatibility (thanks @JeroenDeDauw)
+
 ### Chameleon 4.0.0
 
 Released on January 18, 2022.

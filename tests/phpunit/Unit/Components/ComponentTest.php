@@ -62,6 +62,7 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 
 	/**
 	 * @covers ::__construct
+	 * @requires PHP < 8.1
 	 */
 	public function testCanConstruct_withClassAttribute() {
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
@@ -159,6 +160,7 @@ class ComponentTest extends \PHPUnit\Framework\TestCase {
 
 	/**
 	 * @covers ::getDomElement
+	 * @requires PHP < 8.1
 	 */
 	public function testGetDomElement() {
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();

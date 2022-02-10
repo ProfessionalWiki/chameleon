@@ -2,8 +2,8 @@
 
 ### Requirements
 
-- PHP 7.4.3 or later
-- MediaWiki 1.35 or later
+- PHP 7.4.3 or later (tested up to PHP 8.1)
+- MediaWiki 1.35 or later (tested up to MediaWiki 1.37)
 
 ### Installation
 
@@ -26,7 +26,7 @@ Here is the short version:
 On a command line go to your MediaWiki installation directory and run these two commands
 
 ```
-COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~3.0
+COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~4.0
 
 composer update mediawiki/chameleon-skin --no-dev -o
 ```
@@ -55,7 +55,7 @@ If you run into problems, try the
 1. Install and enable the [Bootstrap][bootstrap] extension.
 
 2. [Download][download] Chameleon and place the file(s) in a directory called **c**hameleon in your
-    skins/ folder. 
+    skins/ folder.
 
 3. Add the following code at the bottom of your LocalSettings.php:
 

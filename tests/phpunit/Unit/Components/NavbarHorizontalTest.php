@@ -46,6 +46,7 @@ class NavbarHorizontalTest extends GenericComponentTestCase {
 
 	/**
 	 * @covers ::getHtml
+	 * @requires PHP < 8.1
 	 */
 	public function testGetHtml_containsNavElement() {
 		$element = $this->getMockBuilder( '\DOMElement' )

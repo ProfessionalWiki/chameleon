@@ -159,6 +159,12 @@ class Chameleon extends SkinTemplate {
 	public function getPageClasses( $title ) {
 		$layoutFilePath = $this->getLayoutFilePath();
 		$layoutName = Sanitizer::escapeClass( 'layout-' . basename( $layoutFilePath, '.xml' ) );
+
+		// When viewing a page revision with a non-existent namespace, Skin::getPageClasses() will fail.
+		if ( !MediaWikiServices::getInstance()->getNamespaceInfo()->exists( $title->getNamespace() ) ) {
+			return $layoutName;
+		}
+
 		return implode( ' ', [ parent::getPageClasses( $title ), $layoutName ] );
 	}
 

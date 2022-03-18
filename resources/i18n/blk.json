@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Khun Kt",
+			"咽頭べさ"
+		]
+	},
+	"chameleon-loggedin": "နာꩻနွို့ခါꩻဗာႏတဝ်းအကောက် နုဲင်း$1အနေႏ။",
+	"chameleon-notloggedin": "နာꩻနွို့ခါꩻတဝ်းအကောက်သြ",
+	"chameleon-newmessages": "နာꩻလိတ်မဲက်သေ့တသာဖုံႏ အဝ်ႏသြ။",
+	"chameleon-nonewmessages": "နာꩻလိတ်မဲက်သေ့တသာဖုံႏ အဝ်ႏတဝ်း။",
+	"chameleon-search-aria-label": "လွေꩻလိတ်မဲ့ငါထျꩻ",
+	"chameleon-toggler": "မီနူး"
+}

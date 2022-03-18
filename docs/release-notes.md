@@ -15,6 +15,13 @@ Released on January 18, 2022.
 * Added `ChameleonGetLayoutXml` hook, which allows altering the layout XML (thanks @JeroenDeDauw)
 * Added `CategoryLinks` component to display category links separate from the `MainContent` component (thanks @malberts)
 
+### Chameleon 3.4.2
+
+Released on March 18, 2022.
+
+* Fixed WikiEditor sizing (thanks Laurent Mischler)
+* Translation updates for system messages (thanks @translatewiki and its translator community)
+
 ### Chameleon 3.4.1
 
 Released on September 16, 2021.

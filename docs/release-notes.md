@@ -5,6 +5,7 @@
 Released on March 18, 2022.
 
 * Fixed WikiEditor sizing (thanks Laurent Mischler)
+* Translation updates for system messages (thanks @translatewiki and its translator community)
 
 ### Chameleon 3.4.1
 

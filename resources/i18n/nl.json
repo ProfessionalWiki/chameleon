@@ -3,6 +3,7 @@
 		"authors": [
 			"Mainframe98",
 			"McDutchie",
+			"Romaine",
 			"Siebrand",
 			"Sjoerddebruin"
 		]
@@ -13,5 +14,6 @@
 	"chameleon-notloggedin": "U bent niet aangemeld",
 	"chameleon-newmessages": "U hebt nieuwe berichten.",
 	"chameleon-nonewmessages": "U hebt geen nieuwe berichten.",
-	"chameleon-search-aria-label": "Naar pagina gaan"
+	"chameleon-search-aria-label": "Naar pagina gaan",
+	"chameleon-toggler": "Menu"
 }

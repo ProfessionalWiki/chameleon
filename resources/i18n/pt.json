@@ -11,5 +11,6 @@
 	"chameleon-notloggedin": "Não tem sessão iniciada",
 	"chameleon-newmessages": "Tem novas mensagens.",
 	"chameleon-nonewmessages": "Não tem novas mensagens.",
-	"chameleon-search-aria-label": "Ir para a página"
+	"chameleon-search-aria-label": "Ir para a página",
+	"chameleon-toggler": "Menu"
 }

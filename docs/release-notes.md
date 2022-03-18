@@ -2,7 +2,11 @@
 
 ### Chameleon 4.0.1
 
+Released on March 18, 2022.
+
 * Added PHP 8.1 compatibility (thanks @JeroenDeDauw)
+* Fixed WikiEditor sizing (thanks Laurent Mischler)
+* Translation updates for system messages (thanks @translatewiki and its translator community)
 
 ### Chameleon 4.0.0
 

@@ -1,5 +1,12 @@
 ## Release Notes
 
+### Chameleon 3.4.2
+
+Released on March 18, 2022.
+
+* Fixed WikiEditor sizing (thanks Laurent Mischler)
+* Translation updates for system messages (thanks @translatewiki and its translator community)
+
 ### Chameleon 3.4.1
 
 Released on September 16, 2021.
@@ -40,7 +47,7 @@ Warning: This release contains a regression that causes incompatibility with Med
 * Improved Echo support in the `PersonalTools` components (thanks @malberts)
 * Added theme support via the new `ChameleonThemeFile` setting (thanks @malberts)
 * Added grid breakpoint override support via the new `$cmln-grid-breakpoints` SCSS variable (thanks @malberts)
-* Improved MultimediaViewer extension support (requires [cache update](https://github.com/malberts/chameleon/blob/issue-178/docs/customization.md#triggering-a-cache-update)) (thanks @malberts) 
+* Improved MultimediaViewer extension support (requires [cache update](https://github.com/malberts/chameleon/blob/issue-178/docs/customization.md#triggering-a-cache-update)) (thanks @malberts)
 * Added external link icons support via the new `ChameleonEnableExternalLinkIcons` setting (thanks @malberts)
 * Fixed layout and scroll issues when using the sticky menu and clicking anchor links (thanks @vedmaka)
 * Fixed display of some icons (thanks @malberts and @WouterRademaker)
@@ -110,7 +117,7 @@ Changes:
 * Use [Bootstrap 4](https://getbootstrap.com/docs/4.3)
 * Use [SCSS](https://sass-lang.com/) for styling
 * Use [Font-Awesome](https://fontawesome.com/) instead of Glyphicons
-* Use MediaWiki's new skin registration mechanism (i.e. `wfLoadSkin`) 
+* Use MediaWiki's new skin registration mechanism (i.e. `wfLoadSkin`)
 * Add [Toolbox] component, which allows to add the toolbox links (e.g. What
   links here, Related changes, ...) to a [NavbarHorizontal].
 * Add [LangLinks] component, which allows to add language links to a
@@ -123,7 +130,7 @@ Changes:
 * Remove attributes _showTools_ and _showLanguages_ from the [NavMenu]
   component. You can use the new components [Toolbox] and [LangLinks] instead.
 * Improve the [Menu] component to allow setting a class string on the menu item
-  link. This can be used to show an icon in front of a menu item.   
+  link. This can be used to show an icon in front of a menu item.
 * Remove button for fulltext search from [Searchbar].
 * Rename `$egChameleonExternalLessVariables` to `$egChameleonExternalStyleVariables`
 * New variable `$egScssCacheType`
@@ -283,17 +290,17 @@ Bump minimum Bootstrap extension version to 1.1
 
 Fixes:
 * Set @navbar-default-link-active-bg to @navbar-default-bg color
-* Bullets for ULs respond to list-style:none again 
+* Bullets for ULs respond to list-style:none again
 * Align personal tools drop-down with lower edge of navbar
-* Let .tleft float left 
-* Let jumped-to section heads appear below fixed/sticky header 
+* Let .tleft float left
+* Let jumped-to section heads appear below fixed/sticky header
 * Add mediawiki.sectionAnchor module (for compatibility with MW 1.25)
-* Fix i18n for page tools link 
+* Fix i18n for page tools link
 
 Other changes:
 * Minor doc fixes
 * Add integration test StylesCompileTest
-* Restructure test file layout 
+* Restructure test file layout
 
 ### Chameleon 1.1.2
 

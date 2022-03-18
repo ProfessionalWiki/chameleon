@@ -7,5 +7,9 @@
 		]
 	},
 	"chameleon-loggedin": "သင်သည် $1 အဖြစ် အကောင့်သို့ မဝင်ထားပါ။",
-	"chameleon-notloggedin": "သင်သည် အကောင့်သို့ မဝင်ထားပါ။"
+	"chameleon-notloggedin": "သင်သည် အကောင့်သို့ မဝင်ထားပါ။",
+	"chameleon-newmessages": "မက်ဆေ့အသစ်များ ရောက်နေသည်",
+	"chameleon-nonewmessages": "မက်ဆေ့အသစ်များ မရောက်ရှိပါ",
+	"chameleon-search-aria-label": "စာမျက်နှာသို့ သွားပါ",
+	"chameleon-toggler": "မီးနူး"
 }

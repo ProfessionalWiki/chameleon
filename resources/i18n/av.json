@@ -6,9 +6,9 @@
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Bootstrap 4 хІалтІизабигун бугеб цІакъ хьетІулеб ва жаваб кьолеб тема",
-	"chameleon-loggedin": "Мун $1 гIадин жаниве лъугьана",
-	"chameleon-notloggedin": "Мун жаниве лъугьун гьечIо",
-	"chameleon-newmessages": "Духъе цIиял рисалатал руго.",
-	"chameleon-nonewmessages": "Духъе цIиял рисалатал гьечIо."
+	"chameleon-desc": "Bootstrap 4 хӀалтӀизабигун бугеб цӀакъ хьетӀулеб ва жаваб кьолеб тема",
+	"chameleon-loggedin": "Мун $1 гӀадин жаниве лӀугьана",
+	"chameleon-notloggedin": "Нуж жанире лӀугьун гьечӀо",
+	"chameleon-newmessages": "Духъе цӀиял ругьелал руго.",
+	"chameleon-nonewmessages": "Духъе цӀиял ругьелал гьечӀо."
 }

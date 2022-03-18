@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Avengium",
 			"DannyS712",
 			"Fitoschido"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "La apariencia Chameleon.",
+	"chameleon-desc": "Una apariencia responsiva altamente flexible usando Bootstrap 4",
 	"chameleon-loggedin": "Has accedido como $1.",
 	"chameleon-notloggedin": "No has accedido",
 	"chameleon-newmessages": "Tienes mensajes nuevos.",

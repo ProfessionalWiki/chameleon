@@ -48,13 +48,13 @@ class Grid extends Container {
 	 */
 	public function __construct( ChameleonTemplate $template, \DOMElement $domElement = null,
 		$indent = 0 ) {
-		parent::__construct( $template, $domElement, $indent );
-
 		if ( $this->isFluidMode() ) {
 			$this->addClasses( 'container-fluid' );
 		} else {
 			$this->addClasses( 'container' );
 		}
+		
+		parent::__construct( $template, $domElement, $indent );
 	}
 
 	protected function isFluidMode() {

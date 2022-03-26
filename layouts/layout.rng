@@ -80,6 +80,11 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 				<attribute name="mode" a:defaultValue="fixedwidth">
 					<choice>
 						<value>fixedwidth</value>
+						<value>sm</value>
+						<value>md</value>
+						<value>lg</value>
+						<value>xl</value>
+						<value>xxl</value>
 						<value>fluid</value>
 					</choice>
 				</attribute>

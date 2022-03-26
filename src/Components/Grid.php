@@ -53,7 +53,7 @@ class Grid extends Container {
 		self::MODE_LG,
 		self::MODE_XL,
 		self::MODE_XXL,
-		self::MODE_FLUID,
+		self::MODE_FLUID
 	];
 
 	/**

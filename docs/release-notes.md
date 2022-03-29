@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 4.1.0
+
+Under development.
+
+* Added support for responsive containers on the `Grid` component (thanks @chrisrishel)
+
 ### Chameleon 4.0.1
 
 Released on March 18, 2022.

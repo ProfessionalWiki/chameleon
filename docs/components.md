@@ -85,12 +85,14 @@ recommended.
 
 #### Attributes:
 * `mode`:
-  * Allowed values: String (`fixedwidth`|`fluid`)
+  * Allowed values: String (`fixedwidth`|`fluid`|`sm`|`md`|`lg`|`xl`|`xxl`)
   * Default: `fixedwidth`
   * Optional.
 
   Use `fixedwidth` for a responsive fixed width layout. Use `fluid` for a full
   width layout, spanning the entire width of the viewport.
+  
+  Use a breakpoint name for a responsive container (since Chameleon 4.1.0).
 
 * `id`:
   * Since Chameleon 3.3.0

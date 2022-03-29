@@ -39,7 +39,22 @@ class Grid extends Container {
 
 	private const ATTR_MODE = 'mode';
 	private const MODE_FIXEDWIDTH = 'fixedwidth';
+	private const MODE_SM = 'sm';
+	private const MODE_MD = 'md';
+	private const MODE_LG = 'lg';
+	private const MODE_XL = 'xl';
+	private const MODE_XXL = 'xxl';
 	private const MODE_FLUID = 'fluid';
+
+	private const VALID_MODES = [
+		self::MODE_FIXEDWIDTH,
+		self::MODE_SM,
+		self::MODE_MD,
+		self::MODE_LG,
+		self::MODE_XL,
+		self::MODE_XXL,
+		self::MODE_FLUID
+	];
 
 	/**
 	 * @param ChameleonTemplate $template
@@ -50,15 +65,11 @@ class Grid extends Container {
 		$indent = 0 ) {
 		parent::__construct( $template, $domElement, $indent );
 
-		if ( $this->isFluidMode() ) {
-			$this->addClasses( 'container-fluid' );
-		} else {
+		$mode = $this->getAttribute( self::ATTR_MODE, self::MODE_FIXEDWIDTH );
+		if( $mode === self::MODE_FIXEDWIDTH || !in_array( $mode, self::VALID_MODES ) ) {
 			$this->addClasses( 'container' );
+		} else {
+			$this->addClasses( 'container-' . $mode );
 		}
 	}
-
-	protected function isFluidMode() {
-		return $this->getAttribute( self::ATTR_MODE, self::MODE_FIXEDWIDTH ) === self::MODE_FLUID;
-	}
-
 }

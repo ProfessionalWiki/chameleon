@@ -11,7 +11,7 @@ use Skins\Chameleon\ComponentFactory;
 /**
  * @covers \Skins\Chameleon\ComponentFactory
  */
-class ComponentFactoryTest extends \MediaWikiTestCase {
+class ComponentFactoryTest extends \MediaWikiIntegrationTestCase {
 
 	/**
 	 * Refactor idea: inject a LayoutXmlSource into ComponentFactory,

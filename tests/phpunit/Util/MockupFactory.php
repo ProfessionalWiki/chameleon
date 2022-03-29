@@ -337,9 +337,11 @@ class MockupFactory {
 			->method( 'isRegistered' )
 			->will( $this->testCase->returnValue( $this->get( 'UserIsRegistered', true ) ) );
 
-		$user->expects( $this->testCase->any() )
-			->method( 'getEffectiveGroups' )
-			->will( $this->testCase->returnValue( $this->get( 'UserEffectiveGroups', 0 ) ) );
+		if ( version_compare( MW_VERSION, '1.38', '<' ) ) {
+			$user->expects( $this->testCase->any() )
+				->method( 'getEffectiveGroups' )
+				->will( $this->testCase->returnValue( $this->get( 'UserEffectiveGroups', 0 ) ) );
+		}
 
 		$user->expects( $this->testCase->any() )
 			->method( 'getTalkPage' )

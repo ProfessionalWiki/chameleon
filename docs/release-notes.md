@@ -5,6 +5,7 @@
 Under development.
 
 * Added support for responsive containers on the `Grid` component (thanks @chrisrishel)
+* Fixed Mediawiki 1.38 hard deprecations (thanks @malberts)
 
 ### Chameleon 4.0.1
 

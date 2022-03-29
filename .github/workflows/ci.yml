@@ -23,11 +23,11 @@ jobs:
             php: 8.0
           - mw: 'REL1_37'
             php: 8.1
-          - mw: 'REL1_38'
+          - mw: 'master'
             php: 7.4
-          - mw: 'REL1_38'
+          - mw: 'master'
             php: 8.0
-          - mw: 'REL1_38'
+          - mw: 'master'
             php: 8.1
 
     runs-on: ubuntu-latest

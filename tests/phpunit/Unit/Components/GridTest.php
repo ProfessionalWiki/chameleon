@@ -24,6 +24,10 @@
 
 namespace Skins\Chameleon\Tests\Unit\Components;
 
+use DOMElement;
+use Skins\Chameleon\Components\Component;
+use Skins\Chameleon\Tests\Util\MockupFactory;
+
 /**
  * @coversDefaultClass \Skins\Chameleon\Components\Grid
  * @covers ::<private>
@@ -40,5 +44,88 @@ namespace Skins\Chameleon\Tests\Unit\Components;
 class GridTest extends GenericComponentTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\Grid';
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_DefaultModeIsFixed( DomElement $domElement ): void {
+		$factory = MockupFactory::makeFactory( $this );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+
+		$this->assertTag( [ 'class' => 'container' ], $instance->getHtml() );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ModeIsFixed( DomElement $domElement ): void {
+		$domElement->setAttribute( 'mode', 'fixedwidth' );
+		$factory = MockupFactory::makeFactory( $this );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+
+		$this->assertTag( [ 'class' => 'container' ], $instance->getHtml() );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ModeIsFluid( DomElement $domElement ): void {
+		$domElement->setAttribute( 'mode', 'fluid' );
+		$factory = MockupFactory::makeFactory( $this );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+
+		$this->assertTag( [ 'class' => 'container-fluid' ], $instance->getHtml() );
+	}
+
+	public function breakpointProvider(): iterable {
+		$domElement = $this->domElementProviderFromSyntheticLayoutFiles()[0][0];
+		yield 'sm' => [ $domElement, 'sm' ];
+		yield 'md' => [ $domElement, 'md' ];
+		yield 'lg' => [ $domElement, 'lg' ];
+		yield 'xl' => [ $domElement, 'xl' ];
+		yield 'xxl' => [ $domElement, 'xxl' ];
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider breakpointProvider
+	 */
+	public function testGetHtml_ModeIsBreakpoint( DomElement $domElement, string $breakpoint ): void {
+		$domElement->setAttribute( 'mode', $breakpoint );
+		$factory = MockupFactory::makeFactory( $this );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+
+		$this->assertTag( [ 'class' => "container-$breakpoint" ], $instance->getHtml() );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ModeIsInvalid( DomElement $domElement ): void {
+		$domElement->setAttribute( 'mode', 'invalid' );
+		$factory = MockupFactory::makeFactory( $this );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+
+		$this->assertTag( [ 'class' => 'container' ], $instance->getHtml() );
+	}
 
 }

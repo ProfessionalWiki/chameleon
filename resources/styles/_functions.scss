@@ -11,7 +11,7 @@
 //
 // @param $value a value in rem or px
 // @return unitless px value
-@function abs( $value ) {
+@function rem-to-px( $value ) {
 	@if (type-of($value) == "number") and ($value != 0) {
 
 		$unit: unit($value);

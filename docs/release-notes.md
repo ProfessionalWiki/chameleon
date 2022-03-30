@@ -7,6 +7,7 @@ Under development.
 * Added support for responsive containers on the `Grid` component (thanks @chrisrishel)
 * Fixed Mediawiki 1.38 hard deprecations (thanks @malberts)
 * Fixed Bootstrap 4.6.1 compatibility (thanks @malberts)
+* Updated FontAwesome to 5.15.4 (thanks @malberts)
 
 ### Chameleon 4.0.1
 

@@ -2,7 +2,7 @@
 
 ### Chameleon 4.1.0
 
-Under development.
+Released on March 30, 2022.
 
 * Added support for responsive containers on the `Grid` component (thanks @chrisrishel)
 * Fixed Mediawiki 1.38 hard deprecations (thanks @malberts)

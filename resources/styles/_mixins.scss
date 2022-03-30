@@ -53,8 +53,8 @@
 // top vertically (or as far down as possible given the diameter)
 @mixin bullet( $color: $list-bullet-color, $width: $list-bullet-size, $height: $font-size-base ) {
 
-	$width: abs($width);
-	$height: abs($height);
+	$width: rem-to-px($width);
+	$height: rem-to-px($height);
 	list-style: outside disc url("data:image/svg+xml;charset=UTF-8,<svg width='#{$width}' height='#{$height}' version='1.1' xmlns='http://www.w3.org/2000/svg'><circle cx='#{$width/2}' cy='#{min($height - min($width, $height)/2, 0.65*$height)}' r='#{min($width, $height)/2}' fill='#{$color}'/></svg>");
 	// IE hack: IE < 9 does not properly work with SVGs. Serve them some fallback PNG.
 	list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAJCAYAAAARml2dAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABUSURBVAiZdY4xDsAgFELB2J0DdnbwQI5OHvDfgC62SY0yvhAetI1dWEq5JN0kKwDYbhEx8oT9a5JdEtLb/M2QNW0FAJLttkLbLUfEkIRVztPdo+MBm8UkW9Zxc20AAAAASUVORK5CYII=")#{"\9"};

@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 3.4.3
+
+Released on March 30, 2022.
+
+* Fixed Bootstrap 4.6.1 compatibility (thanks @malberts)
+
 ### Chameleon 3.4.2
 
 Released on March 18, 2022.

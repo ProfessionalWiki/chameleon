@@ -55,6 +55,12 @@ class MainContent extends Component {
 			$this->getIndent());
 		$contentBody = new ContentBody($this->getSkinTemplate(), $this->getDomElement(),
 			$this->getIndent());
+		$categoryLinks = new CategoryLinks($this->getSkinTemplate(), $this->getDomElement(),
+			$this->getIndent());
+
+		$hideCategoryLinks = $this->getDomElement() !== null && filter_var( $this->getDomElement()
+			->getAttribute( 'hideCatLinks' ),
+				FILTER_VALIDATE_BOOLEAN );
 
 		$mwBody =
 			$topAnchor .
@@ -62,7 +68,7 @@ class MainContent extends Component {
 			$indicators->getHtml() .
 			$contentHeader->getHtml() .
 			$contentBody->getHtml() .
-			$this->buildCategoryLinks() .
+			($hideCategoryLinks ? '' : $categoryLinks->getHtml()) .
 			$this->indent( -1 );
 
 		return $this->indent() . '<!-- start the content area -->' .
@@ -71,25 +77,6 @@ class MainContent extends Component {
 				[ 'id' => 'content', 'class' => 'mw-body ' . $this->getClassString() ],
 				$mwBody
 			);
-	}
-
-	/**
-	 * @return string
-	 * @throws \MWException
-	 */
-	protected function buildCategoryLinks() {
-		// TODO: Category links should be a separate component, but
-		// * dataAfterContent should come after the the category links.
-		// * only one extension is known to use it dataAfterContent and it is geared specifically
-		// towards MonoBook
-		if ( $this->getDomElement() !== null &&
-			filter_var( $this->getDomElement()->getAttribute( 'hideCatLinks' ), FILTER_VALIDATE_BOOLEAN )
-		) {
-			return '';
-		} else {
-			return $this->indent() . '<!-- category links -->' .
-				$this->indent() . $this->getSkinTemplate()->get( 'catlinks' );
-		}
 	}
 
 }

@@ -229,14 +229,14 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</element>
 	</define>
 
-	<!-- ContentMain -->
+	<!-- ContentHeader -->
 	<define name="Component" combine="choice">
 		<element name="component">
 			<a:documentation></a:documentation>
 			<ref name="Component.CommonContent"/>
 
 			<attribute name="type">
-				<value>ContentMain</value>
+				<value>ContentHeader</value>
 			</attribute>
 		</element>
 	</define>
@@ -591,6 +591,15 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			</attribute>
 
 			<optional>
+				<attribute name="hideIndicators" a:defaultValue="no">
+					<ref name="BoolValues"/>
+				</attribute>
+				<attribute name="hideContentHeader" a:defaultValue="no">
+					<ref name="BoolValues"/>
+				</attribute>
+				<attribute name="hideContentBody" a:defaultValue="no">
+					<ref name="BoolValues"/>
+				</attribute>
 				<attribute name="hideCatLinks" a:defaultValue="no">
 					<ref name="BoolValues"/>
 				</attribute>

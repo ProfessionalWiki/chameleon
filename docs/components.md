@@ -547,6 +547,27 @@ Includes:
 
   The class (or classes) that should be assigned to the top-level html element
   of this component.
+* `hideIndicators`:
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+
+  Hide the indicators. Use in conjunction with the [Indicators](#component-indicators)
+  component to display the indicators elsewhere.
+* `hideContentHeader`:
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+
+  Hide the content header. Use in conjunction with the [ContentHeader](#component-contentheader)
+  component to display the header elsewhere.
+* `hideContentBody`:
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+
+  Hide the content body. Use in conjunction with the [ContentBody](#component-contentbody)
+  component to display the body elsewhere.
 * `hideCatLinks`:
   * Allowed values: Boolean (`yes`|`no`)
   * Default: `no`

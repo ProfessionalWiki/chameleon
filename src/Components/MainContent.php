@@ -39,6 +39,8 @@ use Skins\Chameleon\IdRegistry;
  */
 class MainContent extends Component {
 
+	use AggregateComponentTrait;
+
 	/**
 	 * Builds the HTML code for this component
 	 *
@@ -49,27 +51,18 @@ class MainContent extends Component {
 		$idRegistry = IdRegistry::getRegistry();
 
 		$topAnchor = $idRegistry->element( 'a', [ 'id' => 'top' ] );
-		$indicators = new Indicators($this->getSkinTemplate(), $this->getDomElement(),
-				$this->getIndent());
-		$contentHeader = new ContentHeader($this->getSkinTemplate(), $this->getDomElement(),
-			$this->getIndent());
-		$contentBody = new ContentBody($this->getSkinTemplate(), $this->getDomElement(),
-			$this->getIndent());
-		$categoryLinks = new CategoryLinks($this->getSkinTemplate(), $this->getDomElement(),
-			$this->getIndent());
 
-		$hideCategoryLinks = $this->getDomElement() !== null && filter_var( $this->getDomElement()
-			->getAttribute( 'hideCatLinks' ),
-				FILTER_VALIDATE_BOOLEAN );
+		$subComponents = [
+			$this->getSubComponentHtml( Indicators::class, 'Indicators' ),
+			$this->getSubComponentHtml( ContentHeader::class, 'ContentHeader' ),
+			$this->getSubComponentHtml( ContentBody::class, 'ContentBody' ),
+			$this->getSubComponentHtml( CategoryLinks::class, 'CatLinks' ),
+		];
 
 		$mwBody =
-			$topAnchor .
-			$this->indent( 1 ) .
-			$indicators->getHtml() .
-			$contentHeader->getHtml() .
-			$contentBody->getHtml() .
-			($hideCategoryLinks ? '' : $categoryLinks->getHtml()) .
-			$this->indent( -1 );
+			$topAnchor . $this->indent( 1 ) .
+			join($subComponents);
+			$this->indent( - 1 );
 
 		return $this->indent() . '<!-- start the content area -->' .
 			$this->indent() . $idRegistry->element(
@@ -78,5 +71,4 @@ class MainContent extends Component {
 				$mwBody
 			);
 	}
-
 }

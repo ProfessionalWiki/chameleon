@@ -24,6 +24,9 @@
 
 namespace Skins\Chameleon\Tests\Unit\Components;
 
+use Message;
+use Skins\Chameleon\ChameleonTemplate;
+
 /**
  * @coversDefaultClass \Skins\Chameleon\Components\MainContent
  * @covers ::<private>
@@ -83,5 +86,27 @@ class MainContentTest extends GenericComponentTestCase {
 
 		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
 		$this->assertStringNotContainsString( 'SomeCategory', $instance->getHtml() );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @throws \MWException
+	 */
+	public function testGetHtml_AllSubComponentsDisplayed() {
+		$chameleonTemplate = $this->createStub( ChameleonTemplate::class );
+		$chameleonTemplate->method( 'get' )->willReturnMap([
+			['title', null, 'SomeTitle'],
+			['bodytext', null, 'SomeBodytext'],
+			['indicators', null, ['SomeIndicatorId', 'SomeIndicatorContent']],
+		]);
+		$chameleonTemplate->method( 'getMsg' )->willReturn(new Message(''));
+		$instance = new $this->classUnderTest( $chameleonTemplate, null );
+
+		$html = $instance->getHtml();
+
+		$this->assertStringContainsString( 'SomeTitle', $html );
+		$this->assertStringContainsString( 'SomeBodytext', $html );
+		$this->assertStringContainsString( 'SomeIndicatorId', $html );
+		$this->assertStringContainsString( 'SomeIndicatorContent', $html );
 	}
 }

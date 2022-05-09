@@ -6,12 +6,8 @@
 //
 // @since 2.0
 
-.mw-body {
 
-	@include media-breakpoint-up($cmln-search-bar-collapse-point) {
-		padding: 0 2rem;
-		margin-bottom: 1rem;
-	}
+.contentHeader {
 
 	#siteSub {
 		display: none
@@ -21,6 +17,19 @@
 		border-bottom: $cmln-first-heading-underline-width solid $cmln-first-heading-underline-color;
 		margin-bottom: $cmln-first-heading-margin-bottom;
 		overflow: visible;
+	}
+
+	.jump-to-nav {
+		@extend .sr-only;
+	}
+
+}
+
+.mw-body {
+
+	@include media-breakpoint-up($cmln-search-bar-collapse-point) {
+		padding: 0 2rem;
+		margin-bottom: 1rem;
 	}
 
 	h1, h2 {
@@ -45,10 +54,6 @@
 	div.thumb, img.thumbimage {
 		max-width: 100%;
 		height: auto;
-	}
-
-	.jump-to-nav {
-		@extend .sr-only;
 	}
 
 	.mw-indicators {

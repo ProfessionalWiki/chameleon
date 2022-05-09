@@ -17,10 +17,13 @@ The following components and modifications are available:
 - [`Cell`](#cell)
 - [Component `CategoryLinks`](#component-categorylinks)
 - [Component `Container`](#component-container)
+- [Component `ContentBody`](#component-contentbody)
+- [Component `ContentHeader`](#component-contentheader)
 - [Component `FooterIcons`](#component-footericons)
 - [Component `FooterInfo`](#component-footerinfo)
 - [Component `FooterPlaces`](#component-footerplaces)
 - [Component `Html`](#component-html)
+- [Component `Indicators`](#component-indicators)
 - [Component `LangLinks`](#component-langlinks)
 - [Component `Logo`](#component-logo)
 - [Component `MainContent`](#component-maincontent)
@@ -260,6 +263,52 @@ assign a CSS id or class for styling purposes.
 * Any modification
 
 -------------------------------------------------------------------------------
+### Component `ContentBody`
+
+Allows to display the content body independently of the [MainContent](#component-maincontent). 
+
+Since Chameleon 4.2.0
+
+#### Example usage
+
+``` xml
+<component type="ContentBody" />
+```
+
+#### Attributes:
+None.
+
+#### Allowed Parent Elements:
+* [Structure](#structure)
+* [Cell](#cell)
+
+#### Allowed Child Elements:
+* Any modification
+
+-------------------------------------------------------------------------------
+### Component `ContentHeader`
+
+Allows to display the content header independently of the [MainContent](#component-maincontent).
+
+Since Chameleon 4.2.0
+
+#### Example usage
+
+``` xml
+<component type="ContentHeader" />
+```
+
+#### Attributes:
+None.
+
+#### Allowed Parent Elements:
+* [Structure](#structure)
+* [Cell](#cell)
+
+#### Allowed Child Elements:
+* Any modification
+
+-------------------------------------------------------------------------------
 ### Component `FooterIcons`
 
 A list containing the "powered by" icons.
@@ -354,6 +403,29 @@ This component allows insertion of raw HTML into the page.
 <component type="Html"><![CDATA[
   <b>Hello World!</b>
 ]]></component>
+```
+
+#### Attributes:
+None.
+
+#### Allowed Parent Elements:
+* [Structure](#structure)
+* [Cell](#cell)
+
+#### Allowed Child Elements:
+* Any modification
+
+-------------------------------------------------------------------------------
+### Component `Indicators`
+
+Allows to display the indicators independently of the [MainContent](#component-maincontent).
+
+Since Chameleon 4.2.0
+
+#### Example usage
+
+``` xml
+<component type="Indicators" />
 ```
 
 #### Attributes:
@@ -475,6 +547,27 @@ Includes:
 
   The class (or classes) that should be assigned to the top-level html element
   of this component.
+* `hideIndicators`:
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+
+  Hide the indicators. Use in conjunction with the [Indicators](#component-indicators)
+  component to display the indicators elsewhere.
+* `hideContentHeader`:
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+
+  Hide the content header. Use in conjunction with the [ContentHeader](#component-contentheader)
+  component to display the header elsewhere.
+* `hideContentBody`:
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+
+  Hide the content body. Use in conjunction with the [ContentBody](#component-contentbody)
+  component to display the body elsewhere.
 * `hideCatLinks`:
   * Allowed values: Boolean (`yes`|`no`)
   * Default: `no`

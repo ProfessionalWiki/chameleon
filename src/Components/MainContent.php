@@ -52,16 +52,12 @@ class MainContent extends Component {
 
 		$topAnchor = $idRegistry->element( 'a', [ 'id' => 'top' ] );
 
-		$subComponents = [
-			$this->getSubComponentHtml( Indicators::class, 'Indicators' ),
-			$this->getSubComponentHtml( ContentHeader::class, 'ContentHeader' ),
-			$this->getSubComponentHtml( ContentBody::class, 'ContentBody' ),
-			$this->getSubComponentHtml( CategoryLinks::class, 'CatLinks' ),
-		];
-
 		$mwBody =
 			$topAnchor . $this->indent( 1 ) .
-			join($subComponents);
+			$this->getSubComponentHtml( Indicators::class, 'Indicators' ) .
+			$this->getSubComponentHtml( ContentHeader::class, 'ContentHeader' ) .
+			$this->getSubComponentHtml( ContentBody::class, 'ContentBody' ) .
+			$this->getSubComponentHtml( CategoryLinks::class, 'CatLinks' ) .
 			$this->indent( - 1 );
 
 		return $this->indent() . '<!-- start the content area -->' .

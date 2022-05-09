@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 4.2.0
+
+Under development.
+
+* Extracted `Indicators`, `ContentHeader`, `ContentBody` and `CategoryLinks` sub-components from `MainContent` component (thanks @gesinn-it-wam)
+
 ### Chameleon 4.1.0
 
 Released on March 30, 2022.

@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Fulup",
+			"Huñvreüs",
 			"Y-M D"
 		]
 	},
@@ -10,5 +11,7 @@
 	"chameleon-loggedin": "Kevreet oc'h evel $1.",
 	"chameleon-notloggedin": "N'hoc'h ket kevreet.",
 	"chameleon-newmessages": "Kemennadennoù nevez hoc'h eus.",
-	"chameleon-nonewmessages": "N'hoc'h eus kemennadenn nevez ."
+	"chameleon-nonewmessages": "N'hoc'h eus kemennadenn nevez .",
+	"chameleon-search-aria-label": "Mont d'ar bajenn",
+	"chameleon-toggler": "Lañser"
 }

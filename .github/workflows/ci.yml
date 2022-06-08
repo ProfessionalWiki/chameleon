@@ -15,13 +15,17 @@ jobs:
         include:
           - mw: 'REL1_35'
             php: 7.4
-          - mw: 'REL1_36'
-            php: 7.4
           - mw: 'REL1_37'
             php: 7.4
           - mw: 'REL1_37'
             php: 8.0
           - mw: 'REL1_37'
+            php: 8.1
+          - mw: 'REL1_38'
+            php: 7.4
+          - mw: 'REL1_38'
+            php: 8.0
+          - mw: 'REL1_38'
             php: 8.1
           - mw: 'master'
             php: 7.4

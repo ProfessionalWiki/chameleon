@@ -89,7 +89,7 @@ jobs:
           path: mediawiki/skins/chameleon
       
       - name: Composer allow-plugins
-        run: composer config --no-plugins allow-plugins.composer/installers true
+        run: composer config --no-plugins allow-plugins.composer/installers false
 
       - name: Composer update
         run: composer update

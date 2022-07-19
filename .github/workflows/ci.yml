@@ -9,30 +9,41 @@ on:
 jobs:
   test:
     name: "PHPUnit: MW ${{ matrix.mw }}, PHP ${{ matrix.php }}"
+    continue-on-error: ${{ matrix.experimental }}
 
     strategy:
       matrix:
         include:
           - mw: 'REL1_35'
             php: 7.4
+            experimental: false
           - mw: 'REL1_37'
             php: 7.4
+            experimental: false
           - mw: 'REL1_37'
             php: 8.0
+            experimental: false
           - mw: 'REL1_37'
             php: 8.1
+            experimental: false
           - mw: 'REL1_38'
             php: 7.4
+            experimental: false
           - mw: 'REL1_38'
             php: 8.0
+            experimental: false
           - mw: 'REL1_38'
             php: 8.1
+            experimental: false
           - mw: 'master'
             php: 7.4
+            experimental: true
           - mw: 'master'
             php: 8.0
+            experimental: true
           - mw: 'master'
             php: 8.1
+            experimental: true
 
     runs-on: ubuntu-latest
 

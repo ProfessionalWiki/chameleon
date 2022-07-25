@@ -25,7 +25,8 @@ $cmln-grid-breakpoints: (
 	md: 768px,
 	lg: 992px,
 	cmln: $cmln-collapse-point,
-	xl: 1200px
+	xl: 1200px,
+	xxl: 1400px
 ) !default;
 
 $grid-breakpoints: $cmln-grid-breakpoints;

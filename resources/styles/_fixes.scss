@@ -58,3 +58,8 @@
 .alert p:last-child {
 	margin-bottom: 0;
 }
+
+// prevent ugly linebreaks within navbar links
+.navbar-nav .nav-link {
+	white-space: nowrap;
+}

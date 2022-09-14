@@ -5,6 +5,7 @@
 Under development.
 
 * Extracted `Indicators`, `ContentHeader`, `ContentBody` and `CategoryLinks` sub-components from `MainContent` component (thanks @gesinn-it-wam)
+* Fixed navbar whitespace issue (thanks @mdoggydog)
 
 ### Chameleon 4.1.0
 

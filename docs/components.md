@@ -938,12 +938,15 @@ applicable.
 
 * `showUserName`:
   * Since Chameleon 3.4.0
-  * Allowed values: Boolean (`yes`|`no`)
-  * Default: `no`
+  * Allowed values: String (`none`|`username-only`|`try-realname`)
+  * Default: `none`
   * Optional.
 
-  If set the logged in user's real name (if available) or username will be shown next to the
-  dropdown icon.
+  If set to `username-only`, the logged-in user's username will be shown next to the dropdown icon
+  (since Chameleon 4.2.0).
+
+  If set to `try-realname`, the logged-in user's real name will be shown next to the dropdown icon,
+  if it is non-empty. If the real name is empty, the user's username will be shown.
 
   This attribute applies only when used inside the
   [NavbarHorizontal](#component-navbarhorizontal) component.

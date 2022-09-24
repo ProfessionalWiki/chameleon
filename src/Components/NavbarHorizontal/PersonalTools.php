@@ -49,7 +49,7 @@ class PersonalTools extends Component {
 	private const SHOW_USER_NAME_NONE = 'none';
 	private const SHOW_USER_NAME_TRY_REALNAME = 'try-realname';
 	private const SHOW_USER_NAME_USERNAME_ONLY = 'username-only';
-	# Boolean values for showUserName deprecated since Chameleon 4.2.0:
+	// Boolean values for showUserName deprecated since Chameleon 4.2.0:
 	private const SHOW_USER_NAME_NO = 'no';
 	private const SHOW_USER_NAME_YES = 'yes';
 

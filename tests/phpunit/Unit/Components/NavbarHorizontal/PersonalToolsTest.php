@@ -179,4 +179,133 @@ class PersonalToolsTest extends GenericComponentTestCase {
 		$instance->getHtml();
 	}
 
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ShowUserNameNo( $domElement ) {
+		$domElement->setAttribute( 'showUserName', 'no' );
+		$factory = MockupFactory::makeFactory( $this );
+		$factory->set( 'UserIsRegistered', true );
+		$factory->set( 'UserRealName', 'John Doe' );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$html = $instance->getHtml();
+
+		$this->assertStringNotContainsString( 'FooUser', $html );
+		$this->assertStringNotContainsString( 'John Doe', $html );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ShowUserNameYesWithoutRealName( $domElement ) {
+		$domElement->setAttribute( 'showUserName', 'yes' );
+		$factory = MockupFactory::makeFactory( $this );
+		$factory->set( 'UserIsRegistered', true );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$html = $instance->getHtml();
+
+		$this->assertStringContainsString( 'FooUser', $html );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ShowUserNameYesWithRealName( $domElement ) {
+		$domElement->setAttribute( 'showUserName', 'yes' );
+		$factory = MockupFactory::makeFactory( $this );
+		$factory->set( 'UserIsRegistered', true );
+		$factory->set( 'UserRealName', 'John Doe' );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$html = $instance->getHtml();
+
+		$this->assertStringNotContainsString( 'FooUser', $html );
+		$this->assertStringContainsString( 'John Doe', $html );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ShowUserNameNone( $domElement ) {
+		$domElement->setAttribute( 'showUserName', 'none' );
+		$factory = MockupFactory::makeFactory( $this );
+		$factory->set( 'UserIsRegistered', true );
+		$factory->set( 'UserRealName', 'John Doe' );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$html = $instance->getHtml();
+
+		$this->assertStringNotContainsString( 'FooUser', $html );
+		$this->assertStringNotContainsString( 'John Doe', $html );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ShowUserNameUsernameOnly( $domElement ) {
+		$domElement->setAttribute( 'showUserName', 'username-only' );
+		$factory = MockupFactory::makeFactory( $this );
+		$factory->set( 'UserIsRegistered', true );
+		$factory->set( 'UserRealName', 'John Doe' );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$html = $instance->getHtml();
+
+		$this->assertStringContainsString( 'FooUser', $html );
+		$this->assertStringNotContainsString( 'John Doe', $html );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ShowUserNameTryRealNameWithoutRealName( $domElement ) {
+		$domElement->setAttribute( 'showUserName', 'try-realname' );
+		$factory = MockupFactory::makeFactory( $this );
+		$factory->set( 'UserIsRegistered', true );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$html = $instance->getHtml();
+
+		$this->assertStringContainsString( 'FooUser', $html );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 * @dataProvider domElementProviderFromSyntheticLayoutFiles
+	 */
+	public function testGetHtml_ShowUserNameTryRealNameWithRealName( $domElement ) {
+		$domElement->setAttribute( 'showUserName', 'try-realname' );
+		$factory = MockupFactory::makeFactory( $this );
+		$factory->set( 'UserIsRegistered', true );
+		$factory->set( 'UserRealName', 'John Doe' );
+		$chameleonTemplate = $factory->getChameleonSkinTemplateStub();
+
+		/** @var Component $instance */
+		$instance = new $this->classUnderTest( $chameleonTemplate, $domElement );
+		$html = $instance->getHtml();
+
+		$this->assertStringNotContainsString( 'FooUser', $html );
+		$this->assertStringContainsString( 'John Doe', $html );
+	}
+
 }

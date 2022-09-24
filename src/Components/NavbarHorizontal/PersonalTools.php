@@ -46,6 +46,12 @@ class PersonalTools extends Component {
 	private const SHOW_ECHO_ICONS = 'icons';
 	private const SHOW_ECHO_LINKS = 'links';
 	private const ATTR_SHOW_USER_NAME = 'showUserName';
+	private const SHOW_USER_NAME_NONE = 'none';
+	private const SHOW_USER_NAME_TRY_REALNAME = 'try-realname';
+	private const SHOW_USER_NAME_USERNAME_ONLY = 'username-only';
+	# Boolean values for showUserName deprecated since Chameleon 4.2.0:
+	private const SHOW_USER_NAME_NO = 'no';
+	private const SHOW_USER_NAME_YES = 'yes';
 
 	/**
 	 * @return String
@@ -100,11 +106,15 @@ class PersonalTools extends Component {
 	 * @throws \MWException
 	 */
 	protected function getUserName() {
-		if ( filter_var( $this->getAttribute( self::ATTR_SHOW_USER_NAME ), FILTER_VALIDATE_BOOLEAN ) ) {
-			$user = $this->getSkinTemplate()->getSkin()->getUser();
-			if ( $user->isRegistered() ) {
+		$user = $this->getSkinTemplate()->getSkin()->getUser();
+		if ( $user->isRegistered() ) {
+			$showUserName = $this->getAttribute( self::ATTR_SHOW_USER_NAME );
+			if ( ( $showUserName == self::SHOW_USER_NAME_TRY_REALNAME ) ||
+				 ( $showUserName == self::SHOW_USER_NAME_YES ) ) {
 				$username = !empty( $user->getRealName() ) ? $user->getRealName() : $user->getName();
 				return '<span class="user-name">' . htmlspecialchars( $username ) . '</span>';
+			} elseif ( $showUserName == self::SHOW_USER_NAME_USERNAME_ONLY ) {
+				return '<span class="user-name">' . htmlspecialchars( $user->getName() ) . '</span>';
 			}
 		}
 		return '';

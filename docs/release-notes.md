@@ -6,6 +6,7 @@ Under development.
 
 * Extracted `Indicators`, `ContentHeader`, `ContentBody` and `CategoryLinks` sub-components from `MainContent` component (thanks @gesinn-it-wam)
 * Fixed navbar whitespace issue (thanks @mdoggydog)
+* For `PersonalTools` component used within `NavbarHorizontal`, changed the set of allowed values to `none`, `try-realname`, and `username-only` (new).  `no` and `yes` are deprecated but still accepted for backwards compatibility. (thanks @mdoggydog)
 
 ### Chameleon 4.1.0
 

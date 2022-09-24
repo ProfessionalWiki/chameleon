@@ -351,6 +351,14 @@ class MockupFactory {
 			->method( 'getRequest' )
 			->will( $this->testCase->returnValue( $request ) );
 
+		$user->expects( $this->testCase->any() )
+			->method( 'getName' )
+			->will( $this->testCase->returnValue( $this->get( 'UserName', 'FooUser' ) ) );
+
+		$user->expects( $this->testCase->any() )
+			->method( 'getRealName' )
+			->will( $this->testCase->returnValue( $this->get( 'UserRealName', '' ) ) );
+
 		return $user;
 	}
 

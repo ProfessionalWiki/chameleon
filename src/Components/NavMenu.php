@@ -150,12 +150,19 @@ class NavMenu extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildDropdownMenuStub( $menuDescription ) {
+		$menuId = $menuDescription['id'];
+
 		return $this->indent() . \Html::rawElement( 'div',
 				[
-					'class' => 'nav-item',
-					'title' => Linker::titleAttrib( $menuDescription['id'] )
+					'class' => 'nav-item ' . $menuId . '-dropdown',
+					'title' => Linker::titleAttrib( $menuId )
 				],
-				'<a href="#" class="nav-link">' . htmlspecialchars( $menuDescription['header'] ) . '</a>'
+				\Html::rawElement( 'a',
+					[
+						'href' => '#',
+						'class' => 'nav-link ' . $menuId . '-toggle',
+					],
+					htmlspecialchars( $menuDescription['header'] ) )
 			);
 	}
 
@@ -166,24 +173,32 @@ class NavMenu extends Component {
 	 * @throws \MWException
 	 */
 	protected function buildDropdownOpeningTags( $menuDescription ) {
+		$menuId = $menuDescription['id'];
+
 		// open list item containing the dropdown
 		$ret = $this->indent() . \Html::openElement( 'div',
 				[
-					'class' => 'nav-item dropdown',
-					'title' => Linker::titleAttrib( $menuDescription['id'] ),
+					'class' => 'nav-item dropdown ' . $menuId . '-dropdown',
+					'title' => Linker::titleAttrib( $menuId ),
 				] );
 
 		// add the dropdown toggle
 		$ret .= $this->indent( 1 ) .
-			'<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-boundary="viewport">' .
-			htmlspecialchars( $menuDescription['header'] ) . '</a>';
+			\Html::rawElement( 'a',
+				[
+					'href' => '#',
+					'class' => 'nav-link dropdown-toggle ' . $menuId . '-toggle',
+					'data-toggle' => 'dropdown',
+					'data-boundary' => 'viewport',
+				],
+				htmlspecialchars( $menuDescription['header'] ) );
 
 		// open list of dropdown menu items
 		$ret .=
 			$this->indent() . \Html::openElement( 'div',
 				[
-					'class' => 'dropdown-menu ' . $menuDescription['id'],
-					'id'    => IdRegistry::getRegistry()->getId( $menuDescription['id'] ),
+					'class' => 'dropdown-menu ' . $menuId,
+					'id'    => IdRegistry::getRegistry()->getId( $menuId ),
 				]
 			);
 		return $ret;

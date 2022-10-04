@@ -155,12 +155,12 @@ class NavMenu extends Component {
 		return $this->indent() . \Html::rawElement( 'div',
 				[
 					'class' => 'nav-item ' . $menuId . '-dropdown',
-					'title' => Linker::titleAttrib( $menuId )
 				],
 				\Html::rawElement( 'a',
 					[
 						'href' => '#',
 						'class' => 'nav-link ' . $menuId . '-toggle',
+						'title' => Linker::titleAttrib( $menuId ),
 					],
 					htmlspecialchars( $menuDescription['header'] ) )
 			);
@@ -179,7 +179,6 @@ class NavMenu extends Component {
 		$ret = $this->indent() . \Html::openElement( 'div',
 				[
 					'class' => 'nav-item dropdown ' . $menuId . '-dropdown',
-					'title' => Linker::titleAttrib( $menuId ),
 				] );
 
 		// add the dropdown toggle
@@ -190,6 +189,7 @@ class NavMenu extends Component {
 					'class' => 'nav-link dropdown-toggle ' . $menuId . '-toggle',
 					'data-toggle' => 'dropdown',
 					'data-boundary' => 'viewport',
+					'title' => Linker::titleAttrib( $menuId ),
 				],
 				htmlspecialchars( $menuDescription['header'] ) );
 

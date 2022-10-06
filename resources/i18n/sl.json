@@ -5,9 +5,12 @@
 			"Eleassar"
 		]
 	},
+	"skinname-chameleon": "Kameleon",
 	"chameleon-desc": "Zelo prilagodljiva odzivna preobleka, ki uporablja Bootstrap 4",
 	"chameleon-loggedin": "Prijavljeni ste kot $1.",
 	"chameleon-notloggedin": "Niste prijavljeni.",
 	"chameleon-newmessages": "Imate nova sporočila.",
-	"chameleon-nonewmessages": "Nimate novih sporočil."
+	"chameleon-nonewmessages": "Nimate novih sporočil.",
+	"chameleon-search-aria-label": "Pojdi na stran",
+	"chameleon-toggler": "Meni"
 }

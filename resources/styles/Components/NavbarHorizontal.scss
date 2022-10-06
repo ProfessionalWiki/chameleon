@@ -59,8 +59,6 @@
 			@extend .ml-#{$cmln-navbar-horizontal-collapse-point}-auto;
 			@extend .mt-#{$cmln-navbar-horizontal-collapse-point}-0;
 			@extend .mt-4;
-			@extend .flex-row;
-			@extend .justify-content-center;
 		}
 
 		.dropdown-menu {

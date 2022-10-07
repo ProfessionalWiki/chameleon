@@ -951,6 +951,22 @@ applicable.
   This attribute applies only when used inside the
   [NavbarHorizontal](#component-navbarhorizontal) component.
 
+* `promoteLoneItems`:
+  * Since Chameleon 4.2.0
+  * Allowed values: String
+  * Default: -
+  * Optional.
+
+  A semicolon-separated list of menu items that are candidates for promotion
+  to the navbar.  If the personal tools menu contains a single, lone item,
+  and if that item is in this list, then that menu item will be rendered
+  in the navbar directly, instead of the dropdown toggle and single-item menu.
+
+  This is particularly useful for the `"login"` item in semi-private wikis.
+
+  This attribute applies only when used inside the
+  [NavbarHorizontal](#component-navbarhorizontal) component.
+
 #### Allowed Parent Elements:
 * [Structure](#structure)
 * [Cell](#cell)

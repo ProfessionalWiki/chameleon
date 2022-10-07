@@ -52,6 +52,7 @@ class PersonalTools extends Component {
 	// Boolean values for showUserName deprecated since Chameleon 4.2.0:
 	private const SHOW_USER_NAME_NO = 'no';
 	private const SHOW_USER_NAME_YES = 'yes';
+	private const ATTR_PROMOTE_LONE_ITEMS = 'promoteLoneItems';
 
 	/**
 	 * @return String
@@ -59,11 +60,42 @@ class PersonalTools extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
+		$tools = $this->getSkinTemplate()->getPersonalTools();
+
+		// Flatten classes to avoid MW bug: https://phabricator.wikimedia.org/T262160
+		// NB: This bug is finally fixed in MW >=1.36.
+		foreach ( $tools as $key => $item ) {
+			if ( !empty( $item['links'][0]['class'] ) && is_array( $item['links'][0]['class'] ) ) {
+				$tools[$key]['links'][0]['class'] = implode( ' ', $item['links'][0]['class'] );
+			}
+		}
+
 		// start personal tools element
 		$echoHtml = '';
 		if ( $this->getShowEcho() === self::SHOW_ECHO_ICONS ) {
-			$echoHtml = $this->indent() . $this->getEchoIcons();
+			$echoHtml = $this->indent() . $this->getEchoIcons( $tools );
 		}
+
+		if ( count( $tools ) == 1 ) {
+			$promotableItems =
+				array_map( 'trim',
+					explode( ';', $this->getAttribute( self::ATTR_PROMOTE_LONE_ITEMS ) ) );
+			$loneKey = array_key_first( $tools );
+			if ( in_array( $loneKey, $promotableItems, true ) ) {
+				$item = $tools[$loneKey];
+				return $echoHtml .
+					$this->indent() . '<!-- personal tools, lone item -->' .
+					$this->indent() . '<div class="navbar-tools navbar-nav" >' .
+					$this->indent( 1 ) . $this->getSkinTemplate()->makeListItem(
+						$loneKey, $item,
+						[
+							'tag' => 'div',
+							'link-class' => 'nav-link ' . ($item['id'] ?? ''),
+						] ) .
+					$this->indent( -1 ) . '</div>';
+			}
+        }
+
 		return $echoHtml .
 			$this->indent() . '<!-- personal tools -->' .
 			$this->indent() . '<div class="navbar-tools navbar-nav" >' .
@@ -71,7 +103,8 @@ class PersonalTools extends Component {
 
 				$this->getDropdownToggle() .
 				$this->indent( 1 ) . \Html::rawElement( 'div',
-				[ 'class' => 'p-personal-tools dropdown-menu' ], $this->getTools() . $this->indent() ) .
+					[ 'class' => 'p-personal-tools dropdown-menu' ],
+					$this->getToolsHtml( $tools ) . $this->indent() ) .
 				$this->indent( -1 )
 			) .
 			$this->indent( -1 ) . '</div>';
@@ -121,20 +154,17 @@ class PersonalTools extends Component {
 	}
 
 	/**
+	 * @param array $tools
+	 *
 	 * @return string
 	 * @throws \MWException
 	 */
-	protected function getTools() {
+	protected function getToolsHtml( $tools ) {
 		$this->indent( 1 );
 		$ret = '';
 
 		// add personal tools (links to user page, user talk, prefs, ...)
-		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
-			// Flatten classes to avoid MW bug: https://phabricator.wikimedia.org/T262160
-			if ( !empty( $item['links'][0]['class'] ) && is_array( $item['links'][0]['class'] ) ) {
-				$item['links'][0]['class'] = implode( ' ', $item['links'][0]['class'] );
-			}
-
+		foreach ( $tools as $key => $item ) {
 			if ( in_array( $key, self::ECHO_LINK_KEYS ) ) {
 				$showEcho = $this->getShowEcho();
 				if ( $showEcho === self::SHOW_ECHO_LINKS ) {
@@ -160,19 +190,16 @@ class PersonalTools extends Component {
 	}
 
 	/**
+	 * @param array $tools
+	 *
 	 * @return string
 	 * @throws \MWException
 	 */
-	protected function getEchoIcons() {
+	protected function getEchoIcons( $tools ) {
 		$items = '';
 
-		foreach ( $this->getSkinTemplate()->getPersonalTools() as $key => $item ) {
+		foreach ( $tools as $key => $item ) {
 			if ( in_array( $key, self::ECHO_LINK_KEYS ) ) {
-				// Flatten classes to avoid MW bug: https://phabricator.wikimedia.org/T262160
-				if ( !empty( $item['links'][0]['class'] ) && is_array( $item['links'][0]['class'] ) ) {
-					$item['links'][0]['class'] = implode( ' ', $item['links'][0]['class'] );
-				}
-
 				$items .= $this->indent() .
 					$this->getSkinTemplate()->makeListItem( $key, $item );
 			}

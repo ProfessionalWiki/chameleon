@@ -761,6 +761,28 @@ Using the message _MediaWiki:Secondary-menu_:
   _MediaWiki:skin-chameleon-navmenu-flatten_ instead. If both the message and
   this attribute are found, the message takes precedence.
 
+* `include`
+  * Allowed values: String
+  * Default: -
+  * Optional.
+
+  A semicolon-separated list of section names that are to be included exclusively;
+  i.e., if this parameter is supplied, then only the sections in this list will be
+  rendered.
+
+* `exclude`
+  * Allowed values: String
+  * Default: -
+  * Optional.
+
+  A semicolon-separated list of section names that are to be excluded;
+  i.e., if this parameter is supplied, then the sections in this list will not
+  be rendered.
+
+  `exclude` takes priority over `include`.  It does not make much sense to use
+  both attributes in the same `NavMenu` instance, but it can make sense to use
+  them separately in complementary instances.
+
 #### Allowed Parent Elements:
 * [Structure](#structure)
 * [Cell](#cell)

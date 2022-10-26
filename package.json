@@ -7,6 +7,6 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
-    "doctoc": "^1.4.0"
+    "doctoc": "^2.2.1"
   }
 }

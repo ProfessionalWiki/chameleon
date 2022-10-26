@@ -81,17 +81,19 @@ class SetupAfterCacheTest extends TestCase {
 	public function testProcessWithValidExternalModuleWithoutScssVariables() {
 		$bootstrapManager = $this->createMock( BootstrapManager::class );
 
-		$bootstrapManager->expects( $this->at( 9 ) )
+		$bootstrapManager->expects( $this->exactly( 9 ) )
 			->method( 'addStyleFile' )
-			->with(
-				$this->equalTo( $this->dummyExternalModule )
+			->withConsecutive(
+				[ $this->anything() ],
+				[ $this->anything() ],
+				[ $this->anything() ],
+				[ $this->anything() ],
+				[ $this->anything() ],
+				[ $this->anything() ],
+				[ $this->anything() ],
+				[ $this->equalTo( $this->dummyExternalModule ) ],
+				[ $this->equalTo( $this->dummyExternalModule ),	$this->equalTo( 'somePositionWeDontCheck' ) ]
 			);
-
-		$bootstrapManager->expects( $this->at( 10 ) )
-			->method( 'addStyleFile' )
-			->with(
-				$this->equalTo( $this->dummyExternalModule ),
-				$this->equalTo( 'somePositionWeDontCheck' ) );
 
 		$bootstrapManager->expects( $this->once() )
 			->method( 'setScssVariable' )

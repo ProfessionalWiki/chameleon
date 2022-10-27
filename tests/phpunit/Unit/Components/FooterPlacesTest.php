@@ -54,11 +54,7 @@ class FooterPlacesTest extends GenericComponentTestCase {
 				[ $this->equalTo( 'about' ), $this->equalTo( null ) ],
 				[ $this->equalTo( 'disclaimer' ), $this->equalTo( null ) ]
 			)
-			->willReturnOnConsecutiveCalls(
-				$this->returnValue( 'SomeHTML' ),
-				$this->returnValue( 'SomeHTML' ),
-				$this->returnValue( 'SomeHTML' )
-			);
+			->willReturn( $this->returnValue( 'SomeHTML' ) );
 
 		$instance = new $this->classUnderTest( $chameleonTemplate );
 

@@ -57,12 +57,7 @@ class FooterIconsTest extends GenericComponentTestCase {
 				[ $this->equalTo( 'icon3' ) ],
 				[ $this->equalTo( 'icon4' ) ]
 			)
-			->willReturnOnConsecutiveCalls(
-				$this->returnValue( 'SomeHTML' ),
-				$this->returnValue( 'SomeHTML' ),
-				$this->returnValue( 'SomeHTML' ),
-				$this->returnValue( 'SomeHTML' )
-			);
+			->willReturn( $this->returnValue( 'SomeHTML' ) );
 
 		$chameleonTemplate->expects( $this->any() )
 			->method( 'getFooterIconsWithImage' )

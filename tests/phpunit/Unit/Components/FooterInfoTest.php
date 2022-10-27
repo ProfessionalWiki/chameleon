@@ -56,12 +56,7 @@ class FooterInfoTest extends GenericComponentTestCase {
 				[ $this->equalTo( 'key3' ) ],
 				[ $this->equalTo( 'key4' ) ]
 			)
-			->willReturnOnConsecutiveCalls(
-				$this->returnValue( 'SomeHTML' ),
-				$this->returnValue( 'SomeHTML' ),
-				$this->returnValue( 'SomeHTML' ),
-				$this->returnValue( 'SomeHTML' )
-			);
+			->willReturn( $this->returnValue( 'SomeHTML' ) );
 
 		$instance = new $this->classUnderTest( $chameleonTemplate );
 

@@ -48,25 +48,15 @@ class FooterInfoTest extends GenericComponentTestCase {
 	public function testGetHtml_GetsAllKeys() {
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$chameleonTemplate->expects( $this->at( 1 ) )
+		$chameleonTemplate->expects( $this->exactly( 4 ) )
 			->method( 'get' )
-			->with( $this->equalTo( 'key1' ), $this->equalTo( null ) )
-			->will( $this->returnValue( 'SomeHTML' ) );
-
-		$chameleonTemplate->expects( $this->at( 2 ) )
-			->method( 'get' )
-			->with( $this->equalTo( 'key2' ), $this->equalTo( null ) )
-			->will( $this->returnValue( 'SomeHTML' ) );
-
-		$chameleonTemplate->expects( $this->at( 3 ) )
-			->method( 'get' )
-			->with( $this->equalTo( 'key3' ), $this->equalTo( null ) )
-			->will( $this->returnValue( 'SomeHTML' ) );
-
-		$chameleonTemplate->expects( $this->at( 4 ) )
-			->method( 'get' )
-			->with( $this->equalTo( 'key4' ), $this->equalTo( null ) )
-			->will( $this->returnValue( 'SomeHTML' ) );
+			->withConsecutive(
+				[ $this->equalTo( 'key1' ) ],
+				[ $this->equalTo( 'key2' ) ],
+				[ $this->equalTo( 'key3' ) ],
+				[ $this->equalTo( 'key4' ) ]
+			)
+			->willReturn( $this->returnValue( 'SomeHTML' ) );
 
 		$instance = new $this->classUnderTest( $chameleonTemplate );
 

@@ -47,20 +47,14 @@ class FooterPlacesTest extends GenericComponentTestCase {
 	public function testGetHtml_GetsAllKeys() {
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$chameleonTemplate->expects( $this->at( 1 ) )
+		$chameleonTemplate->expects( $this->exactly( 3 ) )
 			->method( 'get' )
-			->with( $this->equalTo( 'privacy' ), $this->equalTo( null ) )
-			->will( $this->returnValue( 'SomeHTML' ) );
-
-		$chameleonTemplate->expects( $this->at( 2 ) )
-			->method( 'get' )
-			->with( $this->equalTo( 'about' ), $this->equalTo( null ) )
-			->will( $this->returnValue( 'SomeHTML' ) );
-
-		$chameleonTemplate->expects( $this->at( 3 ) )
-			->method( 'get' )
-			->with( $this->equalTo( 'disclaimer' ), $this->equalTo( null ) )
-			->will( $this->returnValue( 'SomeHTML' ) );
+			->withConsecutive(
+				[ $this->equalTo( 'privacy' ), $this->equalTo( null ) ],
+				[ $this->equalTo( 'about' ), $this->equalTo( null ) ],
+				[ $this->equalTo( 'disclaimer' ), $this->equalTo( null ) ]
+			)
+			->willReturn( $this->returnValue( 'SomeHTML' ) );
 
 		$instance = new $this->classUnderTest( $chameleonTemplate );
 

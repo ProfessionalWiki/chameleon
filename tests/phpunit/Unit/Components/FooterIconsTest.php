@@ -49,25 +49,15 @@ class FooterIconsTest extends GenericComponentTestCase {
 
 		$skin = $chameleonTemplate->getSkin();
 
-		$skin->expects( $this->at( 0 ) )
+		$skin->expects( $this->exactly( 4 ) )
 			->method( 'makeFooterIcon' )
-			->with( $this->equalTo( 'icon1' ) )
-			->will( $this->returnValue( 'SomeHTML' ) );
-
-		$skin->expects( $this->at( 1 ) )
-			->method( 'makeFooterIcon' )
-			->with( $this->equalTo( 'icon2' ) )
-			->will( $this->returnValue( 'SomeHTML' ) );
-
-		$skin->expects( $this->at( 2 ) )
-			->method( 'makeFooterIcon' )
-			->with( $this->equalTo( 'icon3' ) )
-			->will( $this->returnValue( 'SomeHTML' ) );
-
-		$skin->expects( $this->at( 3 ) )
-			->method( 'makeFooterIcon' )
-			->with( $this->equalTo( 'icon4' ) )
-			->will( $this->returnValue( 'SomeHTML' ) );
+			->withConsecutive(
+				[ $this->equalTo( 'icon1' ) ],
+				[ $this->equalTo( 'icon2' ) ],
+				[ $this->equalTo( 'icon3' ) ],
+				[ $this->equalTo( 'icon4' ) ]
+			)
+			->willReturn( $this->returnValue( 'SomeHTML' ) );
 
 		$chameleonTemplate->expects( $this->any() )
 			->method( 'getFooterIconsWithImage' )

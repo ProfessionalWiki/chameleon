@@ -59,7 +59,12 @@
 	margin-bottom: 0;
 }
 
-// prevent ugly linebreaks within navbar links
-.navbar-nav .nav-link {
-	white-space: nowrap;
+.navbar-nav {
+	// in minor axis direction, center-align navbar items
+	align-items: center;
+
+	.nav-link {
+		// prevent ugly linebreaks within navbar links
+		white-space: nowrap;
+	}
 }

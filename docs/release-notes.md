@@ -8,6 +8,7 @@ Under development.
 * Fixed navbar whitespace issue (thanks @mdoggydog)
 * For `PersonalTools` component used within `NavbarHorizontal`, changed the set of allowed values to `none`, `try-realname`, and `username-only` (new).  `no` and `yes` are deprecated but still accepted for backwards compatibility. (thanks @mdoggydog)
 * Added `NavMenu` component dropdown classes and title attribute (thanks @mdoggydog)
+* Fixed navbar link alignment (thanks @mdoggydog)
 
 ### Chameleon 4.1.0
 

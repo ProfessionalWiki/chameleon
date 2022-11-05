@@ -39,6 +39,9 @@ use Skins\Chameleon\IdRegistry;
  */
 class NavMenu extends Component {
 
+	private const ATTR_INCLUDE = 'include';
+	private const ATTR_EXCLUDE = 'exclude';
+
 	/**
 	 * Builds the HTML code for this component
 	 *
@@ -55,6 +58,26 @@ class NavMenu extends Component {
 				'languages' => false,
 			]
 		);
+
+		$include = $this->getAttribute( self::ATTR_INCLUDE, false );
+		if ( $include !== false ) {
+			$sidebar = array_intersect_key(
+				$sidebar,
+				// Split on ';', trim whitespace, remove empty strings,
+				// and shove resulting tokens into an arrays as keys.
+				array_fill_keys( preg_split('/\s*;+\s*/', $include,
+						NULL, PREG_SPLIT_NO_EMPTY ), true ) );
+		}
+
+		$exclude = $this->getAttribute( self::ATTR_EXCLUDE, false );
+		if ( $exclude !== false ) {
+			$sidebar = array_diff_key(
+				$sidebar,
+				// Split on ';', trim whitespace, remove empty strings,
+				// and shove resulting tokens into an arrays as keys.
+				array_fill_keys( preg_split('/\s*;+\s*/', $exclude,
+						NULL, PREG_SPLIT_NO_EMPTY ), true ) );
+		}
 
 		$flatten = $this->getMenusToBeFlattened();
 

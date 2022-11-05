@@ -314,6 +314,17 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			</attribute>
 		</optional>
 
+		<optional>
+			<attribute name="include">
+				<data type="string"/>
+			</attribute>
+		</optional>
+
+		<optional>
+			<attribute name="exclude">
+				<data type="string"/>
+			</attribute>
+		</optional>
 	</define>
 
 	<define name="Component" combine="choice">

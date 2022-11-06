@@ -12,6 +12,7 @@ Under development.
 * Added `ChameleonNavbarHorizontalPersonalToolsLinkInnerHtml` hook, which allows customizing the inner HTML of the dropdown link of the `PersonalTools` component (thanks @mdoggydog)
 * Added `promoteLoneItems` parameter for showing a single link instead of a dropdown in the `PersonalTools` component (thanks @mdoggydog)
 * Added `include` and `exclude` parameters for displaying only specific menu sections in the `NavMenu` component (thanks @mdoggydog)
+* Added `xxl` breakpoint (thanks @gesinn-it-gea)
 
 ### Chameleon 4.1.0
 

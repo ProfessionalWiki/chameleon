@@ -43,13 +43,20 @@ class ChameleonTemplate extends BaseTemplate {
 	 * @throws \MWException
 	 */
 	public function execute() {
+		$skin = $this->getSkin();
+		$skinOptions = method_exists( $skin, 'getOptions' ) ? $skin->getOptions() : [];
+		$bodyOnly = $skinOptions['bodyOnly'] ?? false;
 		// output the head element
 		// The headelement defines the <body> tag itself, it shouldn't be included in the html text
 		// To add attributes or classes to the body tag use OutputPageBodyAttributes hook
-		$this->html( 'headelement' );
+		if ( !$bodyOnly ) {
+			$this->html( 'headelement' );
+		}
 		echo $this->getSkin()->getComponentFactory()->getRootComponent()->getHtml();
-		$this->printTrail();
-		echo "</body>\n</html>";
+		if ( !$bodyOnly ) {
+			$this->printTrail();
+			echo "</body>\n</html>";
+		}
 	}
 
 	/**

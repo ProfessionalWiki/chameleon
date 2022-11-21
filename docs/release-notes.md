@@ -13,6 +13,7 @@ Under development.
 * Added `promoteLoneItems` parameter for showing a single link instead of a dropdown in the `PersonalTools` component (thanks @mdoggydog)
 * Added `include` and `exclude` parameters for displaying only specific menu sections in the `NavMenu` component (thanks @mdoggydog)
 * Added `xxl` breakpoint (thanks @gesinn-it-gea)
+* Fixed a MediaWiki 1.39 deprecation (thanks @jdlrobson)
 
 ### Chameleon 4.1.0
 

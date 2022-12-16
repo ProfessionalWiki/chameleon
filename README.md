@@ -1,6 +1,6 @@
 # Chameleon skin
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ProfessionalWiki/chameleon/CI/master)](https://github.com/ProfessionalWiki/chameleon/actions?query=workflow%3ACI)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ProfessionalWiki/chameleon/ci.yml?branch=master)](https://github.com/ProfessionalWiki/chameleon/actions?query=workflow%3ACI)
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/chameleon-skin/version.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 [![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/d/total.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
 

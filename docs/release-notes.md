@@ -2,7 +2,9 @@
 
 ### Chameleon 4.2.0
 
-Under development.
+Released on January 26, 2023.
+
+Note: This release improves compatibility with MediaWiki 1.39, however some deprecated MediaWiki CSS resources are missing and will be addressed in a future release.
 
 * Extracted `Indicators`, `ContentHeader`, `ContentBody` and `CategoryLinks` sub-components from `MainContent` component (thanks @gesinn-it-wam)
 * Fixed navbar whitespace issue (thanks @mdoggydog)

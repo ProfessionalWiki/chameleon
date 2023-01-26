@@ -3,7 +3,7 @@
 ### Requirements
 
 - PHP 7.4.3 or later (tested up to PHP 8.1)
-- MediaWiki 1.35 or later (tested up to MediaWiki 1.37)
+- MediaWiki 1.35 or later (tested up to MediaWiki 1.39)
 
 ### Installation
 

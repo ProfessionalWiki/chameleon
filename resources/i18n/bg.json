@@ -11,5 +11,6 @@
 	"chameleon-notloggedin": "Вие не сте влезли в системата",
 	"chameleon-newmessages": "Имате нови съобщения.",
 	"chameleon-nonewmessages": "Нямате нови съобщения.",
-	"chameleon-search-aria-label": "Към страницата"
+	"chameleon-search-aria-label": "Към страницата",
+	"chameleon-toggler": "Меню"
 }

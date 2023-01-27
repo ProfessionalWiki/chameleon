@@ -44,14 +44,6 @@ use Skins\Chameleon\Hooks\ResourceLoaderRegisterModules;
  */
 class ResourceLoaderRegisterModulesTest extends TestCase {
 
-	protected $dummyExternalModule = null;
-
-	protected function setUp(): void {
-		parent::setUp();
-
-		$this->dummyExternalModule = __DIR__ . '/../../Fixture/externalmodule.scss';
-	}
-
 	private function newBaseConfig(): array {
 		return [
 			'wgResourceModules' => [

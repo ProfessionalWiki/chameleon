@@ -38,11 +38,11 @@ talk page on MediaWiki.org][chameleon-talk]. For direct contact with the maintai
 please use [our contact form][contact-form].
 
 Finally there are the MediaWiki IRC channel (Server: [libera.chat][irc],
-Channel: #mediawiki) and the [MediaWiki mailing list][mw-ml]. 
+Channel: #mediawiki) and the [MediaWiki mailing list][mw-ml].
 
 ## Professional Support
 
-Chameleon is maintained by [Professional.Wiki](https://professional.wiki).
+Chameleon is maintained by [Professional Wiki](https://professional.wiki).
 You can [contract us][contact-form] to help you with installation or customization of Chameleon.
 We also do development work.
 

@@ -33,6 +33,7 @@ use OutputPage;
 use QuickTemplate;
 use ResourceLoader;
 use Sanitizer;
+use Skins\Chameleon\Hooks\ResourceLoaderRegisterModules;
 use Skins\Chameleon\Hooks\SetupAfterCache;
 use SkinTemplate;
 use Hooks;
@@ -82,10 +83,8 @@ class Chameleon extends SkinTemplate {
 			$setupAfterCache->process();
 		};
 
-		// FIXME: Put this in a proper class, so it can be tested
 		$GLOBALS[ 'wgHooks' ][ 'ResourceLoaderRegisterModules' ][ ] = function ( ResourceLoader $rl ) {
-			$rl->register( 'zzz.ext.bootstrap.styles',
-				$GLOBALS['wgResourceModules']['ext.bootstrap.styles'] );
+			( new ResourceLoaderRegisterModules( $rl, $GLOBALS ) )->process();
 		};
 
 		// set default skin layout

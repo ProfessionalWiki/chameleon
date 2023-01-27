@@ -230,7 +230,8 @@ class SetupAfterCache {
 					'zzz.ext.bootstrap.styles',
 				];
 
-				if ( $this->configuration[ 'egChameleonEnableExternalLinkIcons' ] === true ) {
+				if ( $this->configuration[ 'egChameleonEnableExternalLinkIcons' ] === true &&
+					version_compare( $this->configuration['wgVersion'], '1.39', '<' ) ) {
 					array_unshift( $styles, 'mediawiki.skinning.content.externallinks' );
 				}
 

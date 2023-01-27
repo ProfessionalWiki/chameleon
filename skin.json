@@ -8,7 +8,7 @@
 		"Morne Alberts",
 		"[https://www.EntropyWins.wtf/mediawiki Jeroen De Dauw]"
 	],
-	"version": "4.2.0",
+	"version": "4.2.1-dev",
 	"url": "https://www.mediawiki.org/wiki/Skin:Chameleon",
 	"descriptionmsg": "chameleon-desc",
 	"license-name": "GPL-3.0-or-later",
@@ -40,16 +40,6 @@
 		},
 		"ChameleonEnableExternalLinkIcons": {
 			"value": false
-		}
-	},
-	"ResourceModules": {
-		"skins.chameleon": {
-			"class": "ResourceLoaderSkinModule",
-			"features": [ "elements", "content", "legacy", "toc" ],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
 		}
 	},
 	"callback": "Skins\\Chameleon\\Chameleon::init",

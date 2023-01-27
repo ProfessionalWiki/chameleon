@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 4.2.1
+
+Under development.
+
+* Fixed deprecated external link icons for MediaWiki 1.39 (thanks @malberts)
+
 ### Chameleon 4.2.0
 
 Released on January 26, 2023.

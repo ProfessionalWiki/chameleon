@@ -55,7 +55,7 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 	private function newBaseConfig(): array {
 		return [
 			'wgResourceModules' => [
-				'ext.bootstrap.styles' => []
+				'ext.bootstrap.styles' => [ 'foo' => 'bar' ]
 			],
 			'egChameleonEnableExternalLinkIcons' => false
 		];
@@ -70,10 +70,6 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 			->getMock();
 
 		$configuration = $this->newBaseConfig();
-
-		$request = $this->getMockBuilder( '\WebRequest' )
-			->disableOriginalConstructor()
-			->getMock();
 
 		$this->assertInstanceOf(
 			ResourceLoaderRegisterModules::class,
@@ -94,7 +90,7 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 		$resourceLoader->expects( $this->exactly( 2 ) )
 			->method( 'register' )
 			->withConsecutive(
-				[ 'zzz.ext.bootstrap.styles', [] ],
+				[ 'zzz.ext.bootstrap.styles', [ 'foo' => 'bar' ] ],
 				[ 'skins.chameleon', [
 					'class' => 'ResourceLoaderSkinModule',
 					'features' => [ 'elements', 'content', 'legacy', 'toc' ],
@@ -109,6 +105,7 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 
 		( new ResourceLoaderRegisterModules( $resourceLoader, $configuration ) )->process();
 	}
+
 	/**
 	 * @covers ::process
 	 * @covers ::registerBootstrap
@@ -128,7 +125,7 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 		$resourceLoader->expects( $this->exactly( 2 ) )
 			->method( 'register' )
 			->withConsecutive(
-				[ 'zzz.ext.bootstrap.styles', [] ],
+				[ 'zzz.ext.bootstrap.styles', [ 'foo' => 'bar' ] ],
 				[ 'skins.chameleon', [
 					'class' => 'ResourceLoaderSkinModule',
 					'features' => $features,

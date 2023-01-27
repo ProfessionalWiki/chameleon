@@ -4,7 +4,7 @@
 
 Under development.
 
-* Fixed external link icons deprecated in MediaWiki 1.39. (thanks @malberts)
+* Fixed deprecated external link icons for MediaWiki 1.39 (thanks @malberts)
 
 ### Chameleon 4.2.0
 

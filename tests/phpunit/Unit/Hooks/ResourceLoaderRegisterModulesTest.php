@@ -85,7 +85,7 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 				[ 'zzz.ext.bootstrap.styles', [ 'foo' => 'bar' ] ],
 				[ 'skins.chameleon', [
 					'class' => 'ResourceLoaderSkinModule',
-					'features' => [ 'elements', 'content', 'legacy', 'toc' ],
+					'features' => $this->getBaseFeatures(),
 					'targets' => [
 						'desktop',
 						'mobile'
@@ -108,7 +108,7 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 			->disableOriginalConstructor()
 			->getMock();
 
-		$features = [ 'elements', 'content', 'legacy', 'toc' ];
+		$features = $this->getBaseFeatures();
 
 		if ( version_compare( MW_VERSION, '1.39', '>=' ) ) {
 			$features[] = 'content-links-external';
@@ -131,6 +131,25 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 		$configuration = [ 'egChameleonEnableExternalLinkIcons' => true ] + $this->newBaseConfig();
 
 		( new ResourceLoaderRegisterModules( $resourceLoader, $configuration ) )->process();
+	}
+
+	private function getBaseFeatures(): array {
+		if ( version_compare( MW_VERSION, '1.39', '<' ) ) {
+			return [ 'elements', 'content', 'legacy', 'toc' ];
+		}
+
+		return [
+			'elements',
+			'content-links',
+			'content-media',
+			'interface-message-box',
+			'interface-category',
+			'content-tables',
+			'i18n-ordered-lists',
+			'i18n-all-lists-margins',
+			'i18n-headings',
+			'toc'
+		];
 	}
 
 }

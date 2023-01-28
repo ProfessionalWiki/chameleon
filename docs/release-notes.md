@@ -5,6 +5,7 @@
 Under development.
 
 * Fixed deprecated external link icons for MediaWiki 1.39 (thanks @malberts)
+* Fixed deprecated ResourceLoaderSkinModule features for MediaWiki 1.39 (thanks @malberts)
 
 ### Chameleon 4.2.0
 

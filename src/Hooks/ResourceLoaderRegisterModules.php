@@ -58,21 +58,39 @@ class ResourceLoaderRegisterModules {
 	}
 
 	private function registerChameleon(): void {
-		$features = [ 'elements', 'content', 'legacy', 'toc' ];
-
-		if ( $this->configuration['egChameleonEnableExternalLinkIcons'] === true &&
-			version_compare( MW_VERSION, '1.39', '>=' ) ) {
-			$features[] = 'content-links-external';
-		}
-
 		$this->resourceLoader->register( 'skins.chameleon', [
 			'class' => 'ResourceLoaderSkinModule',
-			'features' => $features,
+			'features' => $this->getFeatures(),
 			'targets' => [
 				'desktop',
 				'mobile'
 			]
 		] );
+	}
+
+	private function getFeatures(): array {
+		if ( version_compare( MW_VERSION, '1.39', '<' ) ) {
+			return [ 'elements', 'content', 'legacy', 'toc' ];
+		}
+
+		$features = [
+			'elements',
+			'content-links',
+			'content-media',
+			'interface-message-box',
+			'interface-category',
+			'content-tables',
+			'i18n-ordered-lists',
+			'i18n-all-lists-margins',
+			'i18n-headings',
+			'toc'
+		];
+
+		if ( $this->configuration['egChameleonEnableExternalLinkIcons'] === true ) {
+			$features[] = 'content-links-external';
+		}
+
+		return $features;
 	}
 
 }

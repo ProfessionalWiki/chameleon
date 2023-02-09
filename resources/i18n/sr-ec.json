@@ -9,10 +9,11 @@
 		]
 	},
 	"skinname-chameleon": "Камелеон",
-	"chameleon-desc": "Тема „Камелеон”",
+	"chameleon-desc": "Веома флексибилна респонзивна тема која користи Bootstrap 4",
 	"chameleon-loggedin": "Пријављени сте као $1.",
 	"chameleon-notloggedin": "Нисте пријављени.",
 	"chameleon-newmessages": "Имате нове поруке.",
 	"chameleon-nonewmessages": "Немате нове поруке.",
-	"chameleon-search-aria-label": "Иди на страницу"
+	"chameleon-search-aria-label": "Иди на страницу",
+	"chameleon-toggler": "Мени"
 }

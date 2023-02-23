@@ -7,10 +7,11 @@
 		]
 	},
 	"skinname-chameleon": "Kameleon",
-	"chameleon-desc": "Tema „Kameleon”",
+	"chameleon-desc": "Veoma fleksibilna responzivna tema koja koristi Bootstrap 4",
 	"chameleon-loggedin": "Prijavljeni ste kao $1.",
 	"chameleon-notloggedin": "Niste prijavljeni.",
 	"chameleon-newmessages": "Imate nove poruke.",
 	"chameleon-nonewmessages": "Nemate nove poruke.",
-	"chameleon-search-aria-label": "Idi na stranicu"
+	"chameleon-search-aria-label": "Idi na stranicu",
+	"chameleon-toggler": "Meni"
 }

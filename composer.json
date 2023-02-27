@@ -39,7 +39,7 @@
 		"jeroen/file-fetcher": "^6|^5|^4.4"
 	},
 	"require-dev": {
-		"mediawiki/mediawiki-codesniffer": "40.0.1",
+		"mediawiki/mediawiki-codesniffer": "41.0.0",
 		"mediawiki/mediawiki-phan-config": "0.12.0"
 	},
 	"extra": {

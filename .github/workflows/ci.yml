@@ -87,9 +87,6 @@ jobs:
       - uses: actions/checkout@v3
         with:
           path: mediawiki/skins/chameleon
-      
-      - name: Composer allow-plugins
-        run: composer config --no-plugins allow-plugins.composer/installers true
 
       - name: Composer update
         run: composer update

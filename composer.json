@@ -57,5 +57,10 @@
 			"@phpunit"
 		],
 		"build": "npm run build"
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true
+		}
 	}
 }

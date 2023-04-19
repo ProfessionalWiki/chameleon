@@ -36,7 +36,8 @@
 		"ext-filter": "*",
 		"composer/installers": "^2|^1.0.12",
 		"mediawiki/bootstrap": "^4.5",
-		"jeroen/file-fetcher": "^6|^5|^4.4"
+		"jeroen/file-fetcher": "^6|^5|^4.4",
+		"psr/http-message": "^1"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "41.0.0",

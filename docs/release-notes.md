@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 4.2.2
+
+Under development.
+
+* Fixed deprecated Hooks usage for MediaWiki 1.40 (thanks @malberts)
+
 ### Chameleon 4.2.1
 
 Released on January 30, 2023.

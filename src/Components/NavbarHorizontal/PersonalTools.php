@@ -26,7 +26,7 @@
 
 namespace Skins\Chameleon\Components\NavbarHorizontal;
 
-use Hooks;
+use MediaWiki\MediaWikiServices;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\IdRegistry;
 
@@ -238,12 +238,12 @@ class PersonalTools extends Component {
 		}
 
 		// TODO Rename '...LinkText' to '...LinkTitle' in both the hook and variable.
-		Hooks::run( 'ChameleonNavbarHorizontalPersonalToolsLinkText', [ &$toolsLinkText,
+		MediaWikiServices::getInstance()->getHookContainer()->run( 'ChameleonNavbarHorizontalPersonalToolsLinkText', [ &$toolsLinkText,
 			$this->getSkin() ] );
 
 		$newtalkNotifierHtml = $this->getNewtalkNotifier();
 		$userNameHtml = $this->getUserName();
-		Hooks::run( 'ChameleonNavbarHorizontalPersonalToolsLinkInnerHtml',
+		MediaWikiServices::getInstance()->getHookContainer()->run( 'ChameleonNavbarHorizontalPersonalToolsLinkInnerHtml',
 			[ &$newtalkNotifierHtml, &$userNameHtml, $this ] );
 
 		$this->indent( 1 );

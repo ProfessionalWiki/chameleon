@@ -40,7 +40,22 @@
 		},
 		"ChameleonEnableExternalLinkIcons": {
 			"value": false
+		},
+		"ChameleonStickyTOCFloat": {
+			"description": "To which side to float",
+			"value": "left"
+		},
+		"ChameleonStickyTOCNavbar": {
+			"description": "Forces TOC to run in sticky navbar compatible mode",
+			"value": false
+		},
+		"ChameleonStickyTOCReplaceTitle": {
+			"description": "Replaces TOC title with article title",
+			"value": false
 		}
+	},
+	"ConfigRegistry": {
+		"chameleon": "GlobalVarConfig::newInstance"
 	},
 	"callback": "Skins\\Chameleon\\Chameleon::init",
 	"load_composer_autoloader": true,

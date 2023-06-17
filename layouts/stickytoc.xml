@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<structure xmlns="https://ProfessionalWiki.github.io/chameleon/schema/3.5/layout.rng">
+
+	<component type="NavbarHorizontal">
+		<component type="Logo" position="head"/>
+		<component type="NavMenu" flatten="navigation"/>
+		<component type="Menu" message="secondary-menu"/>
+		<component type="PageTools" class="flex-row" position="right" hideSelectedNameSpace="yes"/>
+		<component type="SearchBar" class="order-first order-cmln-0" position="right" buttons="go"/>
+		<component type="PersonalTools" position="right"/>
+	</component>
+
+	<grid class="flex-fill">
+		<row>
+			<cell>
+				<component type="SiteNotice"/>
+			</cell>
+		</row>
+
+		<row>
+			<cell>
+				<modification type="Stickytoc"/>
+				<component type="MainContent"/>
+			</cell>
+		</row>
+	</grid>
+
+	<grid class="mb-2 mt-4" mode="fluid">
+		<row>
+			<cell>
+				<component type="NavbarHorizontal" collapsible="no" class="small mb-2" >
+					<component type="Toolbox" flatten="no" class="dropup"/>
+					<component type="LangLinks" flatten="no" class="dropup"/>
+				</component>
+			</cell>
+		</row>
+
+		<row>
+			<cell>
+				<component type="FooterInfo"/>
+				<component type="FooterPlaces"/>
+			</cell>
+			<cell>
+				<component type="FooterIcons" class="justify-content-end"/>
+			</cell>
+		</row>
+	</grid>
+</structure>

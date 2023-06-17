@@ -27,7 +27,9 @@
 namespace Skins\Chameleon;
 
 use Bootstrap\BootstrapManager;
+use Config;
 use FileFetcher\SimpleFileFetcher;
+use GlobalVarConfig;
 use MediaWiki\MediaWikiServices;
 use OutputPage;
 use QuickTemplate;
@@ -87,6 +89,13 @@ class Chameleon extends SkinTemplate {
 			( new ResourceLoaderRegisterModules( $rl, $GLOBALS ) )->process();
 		};
 
+		$GLOBALS[ 'wgHooks' ][ 'ResourceLoaderGetConfigVars' ][ ] = function ( &$vars ) {
+			$config = new GlobalVarConfig( 'eg' );
+			$vars['egChameleonStickyTOCFloat'] = $config->get( 'ChameleonStickyTOCFloat' );
+			$vars['egChameleonStickyTOCNavbar'] = $config->get( 'ChameleonStickyTOCNavbar' );
+			$vars['egChameleonStickyTOCReplaceTitle'] = $config->get( 'ChameleonStickyTOCReplaceTitle' );
+		};
+
 		// set default skin layout
 		if ( DIRECTORY_SEPARATOR === '/' && $GLOBALS[ 'egChameleonLayoutFile' ][0] !== '/' ) {
 			$GLOBALS[ 'egChameleonLayoutFile' ] = $GLOBALS[ 'wgStyleDirectory' ] . '/chameleon/' .
@@ -109,7 +118,8 @@ class Chameleon extends SkinTemplate {
 	 */
 	protected function prepareQuickTemplate() {
 		$tpl = parent::prepareQuickTemplate();
-		Hooks::run( 'ChameleonSkinTemplateOutputPageBeforeExec', [ $this, $tpl ] );
+		$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
+		$hookContainer->run( 'ChameleonSkinTemplateOutputPageBeforeExec', [ $this, $tpl ] );
 		return $tpl;
 	}
 

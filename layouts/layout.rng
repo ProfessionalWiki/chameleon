@@ -710,6 +710,18 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</element>
 	</define>
 
+	<!-- Stickytoc -->
+	<define name="Modification" combine="choice">
+		<element name="modification">
+			<a:documentation></a:documentation>
+
+			<attribute name="type">
+				<value>Stickytoc</value>
+			</attribute>
+
+		</element>
+	</define>
+
 	<!-- ShowOnlyFor -->
 	<define name="Modification" combine="choice">
 		<element name="modification">

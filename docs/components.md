@@ -94,7 +94,7 @@ recommended.
 
   Use `fixedwidth` for a responsive fixed width layout. Use `fluid` for a full
   width layout, spanning the entire width of the viewport.
-  
+
   Use a breakpoint name for a responsive container (since Chameleon 4.1.0).
 
 * `id`:
@@ -265,7 +265,7 @@ assign a CSS id or class for styling purposes.
 -------------------------------------------------------------------------------
 ### Component `ContentBody`
 
-Allows to display the content body independently of the [MainContent](#component-maincontent). 
+Allows to display the content body independently of the [MainContent](#component-maincontent).
 
 Since Chameleon 4.2.0
 
@@ -1236,6 +1236,24 @@ when the user scrolls.
 ```
 
 This will make the parent component of the modification stick to the page.
+
+#### Attributes
+None.
+
+-------------------------------------------------------------------------------
+### Modification `Stickytoc`
+
+A modification that will ensure that the table of content component stays always visible
+when the user scrolls.
+
+#### Example usage
+
+``` xml
+<modification type="Stickytoc" />
+```
+
+This will make the table of content component of the modification stick to the page
+defaulting to the left.
 
 #### Attributes
 None.

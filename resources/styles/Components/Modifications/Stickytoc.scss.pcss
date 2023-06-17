@@ -1,0 +1,99 @@
+.stickytoc {
+	top: 20px;
+	margin-top: 1rem;
+	width: 16rem;
+	clear: both;
+	float: left;
+	margin-bottom: 1rem;
+	&.force-sticky {
+		top: 80px;
+	}
+}
+
+.layout-stickyhead .stickytoc {
+	top: 80px;
+}
+
+.stickytoc.stickytoc-pull-left {
+	float: left;
+	margin-right: 1rem;
+}
+
+.stickytoc.stickytoc-pull-right {
+	float: right;
+	margin-left: 1rem;
+}
+
+.stickytoc.stickytoc-pull-aside {
+	float: none;
+	margin: 0 1rem 0 0;
+	align-self: flex-start;
+	min-width: 16rem;
+	&.force-sticky {
+		margin-top: 20px;
+	}
+}
+
+.stickytoc #toc {
+	margin: 0;
+	width: 100%;
+}
+
+.stickytoc #toc .toctitle {
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+.stickytoc #toc .toctitle h2 {
+	font-weight: 700;
+	font-size: 15px;
+//color: white;
+}
+
+.stickytoc #toc .toctogglespan {
+	display: none;
+}
+
+.stickytoc ul li {
+	font-size: 16px;
+	color: #355B84;
+	a {
+		color: #355B84;
+	}
+	.tocnumber {
+		color: #355B84;
+	}
+}
+
+.stickytoc.sticky-top {
+	position: sticky;
+	z-index: 1019;
+}
+
+.stickytoc-parent {
+	display: flex;
+	flex-direction: row;
+}
+
+@media (max-width: 760px) {
+	.stickytoc-parent {
+		flex-direction: column;
+	}
+	.stickytoc.sticky-top {
+		position: relative;
+		width: 100%;
+	}
+	.layout-stickyhead .stickytoc,
+	.stickytoc {
+		top: 0;
+		&.force-sticky {
+			top: 0;
+		}
+	}
+}
+
+/* fixes z-index collision with Chameleon navbar */
+body > nav#mw-navigation {
+	z-index: 1020;
+}

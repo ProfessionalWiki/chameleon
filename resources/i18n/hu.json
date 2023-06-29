@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Dj",
+			"Krisztina",
 			"Tacsipacsi"
 		]
 	},
@@ -10,5 +11,6 @@
 	"chameleon-loggedin": "Be vagy jelentkezve $1 néven.",
 	"chameleon-notloggedin": "Nem vagy bejelentkezve.",
 	"chameleon-newmessages": "Új üzeneteid vannak.",
-	"chameleon-nonewmessages": "Nincsenek új üzeneteid."
+	"chameleon-nonewmessages": "Nincsenek új üzeneteid.",
+	"chameleon-toggler": "Menü"
 }

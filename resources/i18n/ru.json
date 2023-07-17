@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BerryAVGN",
 			"Helpau",
 			"Kareyac",
 			"MuratTheTurkish",
@@ -10,7 +11,7 @@
 	"skinname-chameleon": "Chameleon",
 	"chameleon-desc": "Очень гибкая и отзывчивая тема с использованием Bootstrap 4",
 	"chameleon-loggedin": "Вы вошли как $1.",
-	"chameleon-notloggedin": "Вы не вошли в систему",
+	"chameleon-notloggedin": "Вы не вошли.",
 	"chameleon-newmessages": "У вас есть новые сообщения.",
 	"chameleon-nonewmessages": "У вас нет новых сообщений.",
 	"chameleon-search-aria-label": "Перейти к странице",

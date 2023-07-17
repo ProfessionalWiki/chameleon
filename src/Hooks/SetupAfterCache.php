@@ -206,13 +206,7 @@ class SetupAfterCache {
 			'remoteBasePath' => $GLOBALS[ 'chameleonRemotePath' ] . '/resources/js',
 			'group'          => 'skin.chameleon',
 			'skinScripts'    =>
-				[
-					'chameleon' => [
-						'hc-sticky/hc-sticky.js',
-						'Components/Modifications/sticky.js',
-						'Components/Modifications/stickytoc.js',
-					]
-				]
+				[ 'chameleon' => [ 'hc-sticky/hc-sticky.js', 'Components/Modifications/sticky.js' ] ]
 		];
 
 		$GLOBALS[ 'wgResourceModules' ][ 'skin.chameleon.stickytoc' ] = [
@@ -222,13 +216,13 @@ class SetupAfterCache {
 			'skinScripts'    =>
 				[
 					'chameleon' => [
-						'Components/Modifications/stickytoc.js',
+						'js/Components/Modifications/stickytoc.js',
 					]
 				],
 			'skinStyles'    =>
 				[
 					'chameleon' => [
-						'Components/Modifications/Stickytoc.less',
+						'styles/Components/Modifications/Stickytoc.less',
 					]
 				]
 		];

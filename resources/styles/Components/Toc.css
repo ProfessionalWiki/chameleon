@@ -1,0 +1,13 @@
+#mw-toc-heading {
+	font-size: unset;
+	border-bottom: unset;
+}
+
+#toc .active {
+	font-weight: bold;
+	border: 1px solid red;
+}
+
+#toc .tocnumber {
+	display: none;
+}

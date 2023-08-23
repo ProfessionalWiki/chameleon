@@ -47,6 +47,16 @@
 
 		$( 'body' ).addClass( 'position-relative' );
 		$( 'body' ).scrollspy( { target: '#toc', offset: offset } );
+
+		// Trigger hashchange event when hash is the same.
+		$( '#toc ul li a').on( 'click', function () {
+			const href = $( this ).attr( 'href' );
+			const anchor = href.substr( href.indexOf( '#' ) );
+
+			if ( window.location.hash === anchor ) {
+				window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
+			}
+		} );
 	} );
 
 

@@ -38,27 +38,38 @@ namespace Skins\Chameleon\Components;
 class Toc extends Component {
 
 	/**
-	 * Builds the HTML code for this component
-	 *
-	 * @return String the HTML code
+	 * @inheritDoc
 	 */
-	public function getHtml() {
-		$html = str_replace( ' class="toc"', '', $this->extractTocHtml() );
+	public function getHtml(): string {
+		$html = $this->extractTocHtml();
 
-		return '<div id="chameleon-toc">' . $html . '</div>';
+		// Add Top link.
+		$html = substr_replace( $html, '<ul><li><a href="#">(Top)</a></li></ul><ul>', strpos( $html, '<ul>' ), 4 );
+
+		// Add Bootstrap nav classes.
+		$html = str_replace( '<ul>', '<ul class="nav">', $html );
+		$html = str_replace( '<a href', '<a class="nav-link" href', $html );
+
+//		print_r($html);
+
+		return '<div class="chameleon-toc-wrapper"><div class="chameleon-toc">' . $html . '</div></div>';
 	}
 
 	/**
-	 * @return string[] the resource loader modules needed by this component
+	 * @inheritDoc
 	 */
-	public function getResourceLoaderModules() {
+	public function getResourceLoaderModules(): array {
 		$modules = parent::getResourceLoaderModules();
 		$modules[] = 'skin.chameleon.toc';
 		return $modules;
 	}
 
 	private function extractTocHtml(): string {
-		preg_match( '|<div id="toc"[\s\S]*</div>[\s\S]*</ul>[\s]*</div>|s', $this->getSkin()->getOutput()->getHTML(), $matches );
+		preg_match(
+			'|<div id="toc"[\s\S]*?</div>[\s\S]*?</ul>[\s]*</div>|s',
+			$this->getSkin()->getOutput()->getHTML(),
+			$matches
+		);
 
 		return $matches[0] ?? '';
 	}

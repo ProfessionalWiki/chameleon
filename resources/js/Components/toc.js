@@ -32,24 +32,23 @@
     'use strict';
 
 	$( function () {
-		$( '#bodyContent #toc' ).remove();
-
-		// Convert to Bootstrap nav
-		$( '#toc ul').addClass( 'nav flex-column' );
-		$( '#toc ul li').addClass( 'nav-item' );
-		$( '#toc ul li a').addClass( 'nav-link' );
-
-		var offset = 70;
-		var stickyNavbar = $( '.p-navbar.sticky' );
-		if ( stickyNavbar.length > 0 ) {
-			offset += stickyNavbar.height();
+		if ( window.outerWidth < 768 ) {
+			$( '.chameleon-toc' ).remove();
+			return;
 		}
 
-		$( 'body' ).addClass( 'position-relative' );
-		$( 'body' ).scrollspy( { target: '#toc', offset: offset } );
+		$( '#bodyContent #toc' ).remove();
+
+		var offset = 30;
+		var stickyNavbar = $( '.p-navbar[style*="position' );
+		if ( stickyNavbar.length > 0 ) {
+			offset += stickyNavbar.outerHeight();
+		}
+
+		$( 'body' ).scrollspy( { target: '.chameleon-toc', offset: offset } );
 
 		// Trigger hashchange event when hash is the same.
-		$( '#toc ul li a').on( 'click', function () {
+		$( '#toc ul li a').on( 'click', function ( e ) {
 			const href = $( this ).attr( 'href' );
 			const anchor = href.substr( href.indexOf( '#' ) );
 

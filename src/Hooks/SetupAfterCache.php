@@ -213,8 +213,7 @@ class SetupAfterCache {
 			'localBasePath'  => $GLOBALS[ 'chameleonLocalPath' ] . '/resources',
 			'remoteBasePath' => $GLOBALS[ 'chameleonRemotePath' ] . '/resources',
 			'group'          => 'skin.chameleon',
-			'skinScripts'    => [ 'chameleon' => [ 'js/Components/toc.js' ] ],
-			'skinStyles'     => [ 'chameleon' => [ 'styles/Components/Toc.css' ] ]
+			'skinScripts'    => [ 'chameleon' => [ 'js/Components/toc.js' ] ]
 		];
 	}
 

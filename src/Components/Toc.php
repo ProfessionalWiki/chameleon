@@ -43,6 +43,10 @@ class Toc extends Component {
 	public function getHtml(): string {
 		$html = $this->extractTocHtml();
 
+		if ( $html === '' ) {
+			return '';
+		}
+
 		// Add Top link.
 		$html = substr_replace( $html, '<ul><li><a href="#">(Top)</a></li></ul><ul>', strpos( $html, '<ul>' ), 4 );
 

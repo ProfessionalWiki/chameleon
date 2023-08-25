@@ -9,7 +9,9 @@
 .chameleon-toc-wrapper {
 	position: sticky;
 	top: 0;
-	z-index: $zindex-sticky;
+
+	max-height: 100vh;
+	overflow: auto;
 }
 
 .chameleon-toc {

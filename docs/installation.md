@@ -27,7 +27,8 @@ On a command line go to your MediaWiki installation directory and run these two 
 
 ```
 COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~4.0
-
+```
+```
 composer update mediawiki/chameleon-skin --no-dev -o
 ```
 
@@ -65,7 +66,7 @@ If you run into problems, try the
 
    To set Chameleon as the default skin, find `$wgDefaultSkin` and amend it:
    ```php
-   $wgDefaultSkin='chameleon';
+   $wgDefaultSkin = 'chameleon';
    ```
 
 4. __Done:__ Navigate to _Special:Version_ on your wiki to verify that the skin

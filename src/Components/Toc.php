@@ -48,13 +48,11 @@ class Toc extends Component {
 		}
 
 		// Add Top link.
-		$html = substr_replace( $html, '<ul><li><a href="#">(Top)</a></li></ul><ul>', strpos( $html, '<ul>' ), 4 );
+		$html = substr_replace( $html, '<ul><li><a class="nav-link top active" href="#">(Top)</a></li></ul><ul>', strpos( $html, '<ul>' ), 4 );
 
 		// Add Bootstrap nav classes.
 		$html = str_replace( '<ul>', '<ul class="nav">', $html );
 		$html = str_replace( '<a href', '<a class="nav-link" href', $html );
-
-//		print_r($html);
 
 		return '<div class="chameleon-toc-wrapper"><div class="chameleon-toc">' . $html . '</div></div>';
 	}

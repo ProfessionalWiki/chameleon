@@ -39,22 +39,34 @@
 
 		$( '#bodyContent #toc' ).remove();
 
-		var offset = 30;
-		var stickyNavbar = $( '.p-navbar[style*="position' );
+		var offset = 40;
+		var stickyNavbar = $( '.p-navbar[style*="position"]' );
 		if ( stickyNavbar.length > 0 ) {
 			offset += stickyNavbar.outerHeight();
 		}
 
 		$( 'body' ).scrollspy( { target: '.chameleon-toc', offset: offset } );
 
-		// Trigger hashchange event when hash is the same.
-		$( '#toc ul li a').on( 'click', function ( e ) {
+		$( window ).on( 'scroll', function() {
+			var activeLink = $( '.chameleon-toc a.active' );
+
+			if ( activeLink.length !== 0 ) {
+				return;
+			}
+
+			$( '.chameleon-toc a.top' ).addClass( 'active' );
+		} );
+
+		$( '.chameleon-toc ul li a').on( 'click', function ( e ) {
 			const href = $( this ).attr( 'href' );
 			const anchor = href.substr( href.indexOf( '#' ) );
 
+			// Trigger hashchange event when hash is the same (for sticky navbar).
 			if ( window.location.hash === anchor ) {
 				window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
 			}
+
+			$( this ).addClass( 'clicked' );
 		} );
 	} );
 

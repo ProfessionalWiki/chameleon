@@ -27,7 +27,8 @@ On a command line go to your MediaWiki installation directory and run these two 
 
 ```
 COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~4.0
-
+```
+```
 composer update mediawiki/chameleon-skin --no-dev -o
 ```
 

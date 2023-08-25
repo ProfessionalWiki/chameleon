@@ -66,7 +66,7 @@ If you run into problems, try the
 
    To set Chameleon as the default skin, find `$wgDefaultSkin` and amend it:
    ```php
-   $wgDefaultSkin='chameleon';
+   $wgDefaultSkin = 'chameleon';
    ```
 
 4. __Done:__ Navigate to _Special:Version_ on your wiki to verify that the skin

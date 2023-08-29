@@ -48,7 +48,7 @@ class Toc extends Component {
 		}
 
 		// Add Top link.
-		$html = substr_replace( $html, '<ul><li><a class="nav-link top active" href="#">(Top)</a></li></ul><ul>', strpos( $html, '<ul>' ), 4 );
+		$html = substr_replace( $html, '<ul><li><a class="nav-link top" href="#">(Top)</a></li></ul><ul>', strpos( $html, '<ul>' ), 4 );
 
 		// Add Bootstrap nav classes.
 		$html = str_replace( '<ul>', '<ul class="nav">', $html );

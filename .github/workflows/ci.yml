@@ -31,10 +31,7 @@ jobs:
             experimental: false
           - mw: 'REL1_40'
             php: 8.1
-            experimental: true
-          - mw: 'master'
-            php: 8.1
-            experimental: true
+            experimental: false
 
     runs-on: ubuntu-latest
 

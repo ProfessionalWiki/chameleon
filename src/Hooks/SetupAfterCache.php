@@ -208,6 +208,13 @@ class SetupAfterCache {
 			'skinScripts'    =>
 				[ 'chameleon' => [ 'hc-sticky/hc-sticky.js', 'Components/Modifications/sticky.js' ] ]
 		];
+
+		$GLOBALS[ 'wgResourceModules' ][ 'skin.chameleon.toc' ] = [
+			'localBasePath'  => $GLOBALS[ 'chameleonLocalPath' ] . '/resources',
+			'remoteBasePath' => $GLOBALS[ 'chameleonRemotePath' ] . '/resources',
+			'group'          => 'skin.chameleon',
+			'skinScripts'    => [ 'chameleon' => [ 'js/Components/toc.js' ] ]
+		];
 	}
 
 	protected function setLayoutFile(): void {

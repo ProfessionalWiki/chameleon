@@ -1,0 +1,75 @@
+//
+// Styling for Toc
+//
+// This file is part of the MediaWiki skin Chameleon.
+// @copyright 2023, Morne Alberts, GNU General Public License, version 3 (or any later version)
+//
+// @since 3.5
+
+.chameleon-toc-wrapper {
+	position: sticky;
+	top: 0;
+
+	max-height: 100vh;
+	overflow: auto;
+}
+
+.chameleon-toc {
+	.toctitle {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		border-bottom: 1px solid $border-color;
+	}
+
+	#mw-toc-heading {
+		font-size: unset;
+		border-bottom: unset;
+		margin: 0;
+		padding: 0;
+	}
+
+	label.toctogglelabel {
+		margin-bottom: 0;
+	}
+
+	.toc {
+		border: unset;
+		background-color: unset;
+		font-size: unset;
+		width: 100%;
+
+		ul {
+			display: flex;
+			flex-direction: column;
+			margin: 0;
+		}
+
+		ul ul {
+			margin-left: 1rem;
+		}
+	}
+
+	.tocnumber {
+		display: none;
+	}
+
+	.nav-link {
+		padding: 0.2rem 0;
+	}
+
+	a,
+	a:visited {
+		color: $link-color;
+	}
+
+	a.active {
+		font-weight: bold;
+		color: $body-color;
+	}
+
+}
+
+.p-navbar.sticky + div .chameleon-toc-wrapper {
+	top: $navbar-padding-y * 2 + $nav-link-padding-y * 2 + $font-size-base * $line-height-base;
+}

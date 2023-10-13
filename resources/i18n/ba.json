@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Sagan",
+			"З. ӘЙЛЕ",
 			"Рустам Нурыев"
 		]
 	},
-	"chameleon-desc": "Chameleon биҙәү темаһы.",
-	"chameleon-loggedin": "Һеҙ $1 булып танылғанһығыҙ.",
-	"chameleon-notloggedin": "Һеҙ танылмағанһығыҙ.",
-	"chameleon-newmessages": "Һеҙгә яңы хәбәрҙәр бар",
-	"chameleon-nonewmessages": "Һеҙгә яңы хәбәрҙәр юҡ."
+	"chameleon-desc": "Bootstrap 4 ҡулланған һығылмалы тема",
+	"chameleon-loggedin": "$1 булып танылғанһығыҙ.",
+	"chameleon-notloggedin": "Танылмағанһығыҙ.",
+	"chameleon-newmessages": "Яңы хәбәрҙәрегеҙ бар.",
+	"chameleon-nonewmessages": "Яңы хәбәрҙәрегеҙ юҡ."
 }

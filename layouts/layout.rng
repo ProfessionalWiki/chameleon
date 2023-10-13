@@ -559,6 +559,21 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		</element>
 	</define>
 
+	<!-- TOC -->
+	<define name="Toc.Content">
+		<ref name="Component.CommonContent"/>
+
+		<attribute name="type">
+			<value>Toc</value>
+		</attribute>
+
+		<optional>
+<!--			<attribute name="follow" a:defaultValue="yes">-->
+<!--				<ref name="BoolValues"/>-->
+<!--			</attribute>-->
+		</optional>
+	</define>
+
 	<!-- Toolbox -->
 	<define name="Toolbox.Content">
 		<ref name="Component.CommonContent"/>

@@ -243,6 +243,9 @@ class PersonalTools extends Component {
 
 		$newtalkNotifierHtml = $this->getNewtalkNotifier();
 		$userNameHtml = $this->getUserName();
+		
+		$this->setUserAvatar( $userNameHtml );
+
 		MediaWikiServices::getInstance()->getHookContainer()->run( 'ChameleonNavbarHorizontalPersonalToolsLinkInnerHtml',
 			[ &$newtalkNotifierHtml, &$userNameHtml, $this ] );
 
@@ -256,6 +259,29 @@ class PersonalTools extends Component {
 		$this->indent( -1 );
 
 		return $dropdownToggle;
+	}
+
+	/**
+	 * @return string &$userNameHtml
+	 */
+	private function setUserAvatar( &$userNameHtml ) {
+		$user = $this->getSkinTemplate()->getSkin()->getUser();
+		$imageExt = [ 'png', 'jpg', 'jpeg' ];
+		$imagePage = null;
+		$username = $user->getName();
+		foreach ( $imageExt as $ext ) {
+			$title_ = \Title::makeTitleSafe( NS_FILE, "$username.$ext" );			
+			if ( $title_ && $title_->isKnown() ) {
+				$imagePage = new \WikiFilePage( $title_ );
+				break;
+			}
+		}
+		if ( !$imagePage ) {
+			return;
+		}
+
+		$userNameHtml = '<img src="'
+			. $imagePage->getFile()->createThumb( 41, 41 ) . '">';
 	}
 
 	/**

@@ -272,7 +272,6 @@ class PersonalTools extends Component {
 		return $dropdownToggle;
 	}
 
-	// the avatar is retrieved
 	private function setUserAvatar() {
 		$user = $this->getSkinTemplate()->getSkin()->getUser();
 		if ( ! $user->isRegistered() ) {

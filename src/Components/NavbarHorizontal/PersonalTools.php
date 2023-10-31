@@ -279,7 +279,7 @@ class PersonalTools extends Component {
 			return;
 		}
 
-		// let user set an avatar url by some
+		// let users of the skin set an avatar url by some
 		// other criteria. e.g. SMW could use
 		// \SMW\DIProperty::newFromUserLabel( 'User image' )
 		if ( !Hooks::run( 'ChameleonNavbarHorizontalPersonalToolsAvatarUrl', [ &$this->avatarUrl, $this->getSkin() ] ) ) {

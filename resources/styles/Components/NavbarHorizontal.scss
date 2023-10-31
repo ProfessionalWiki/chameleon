@@ -155,4 +155,18 @@
 	a.navbar-more-tools, a.navbar-usernotloggedin, a.navbar-userloggedin, a.navbar-tool-link, a:visited.navbar-tool-link {
 		    color: $navbar-light-color;
 	}
+	
+	.navbar-tool.avatar {
+		background: white;
+		border-radius: 99px;
+		overflow: hidden;
+	}
+
+	a.navbar-userloggedin-avatar {
+		width: 41px;
+		height: 41px;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;		
+	}
 }

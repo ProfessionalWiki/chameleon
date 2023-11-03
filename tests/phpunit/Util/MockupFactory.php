@@ -124,9 +124,12 @@ class MockupFactory {
 			->method( 'getSidebar' )
 			->will( $this->testCase->returnValue( [] ) );
 
-		$chameleonTemplate->expects( $this->testCase->any() )
-			->method( 'getToolbox' )
-			->will( $this->testCase->returnValue( [] ) );
+
+		if ( version_compare( MW_VERSION, '1.41', '<' ) ) {
+			$chameleonTemplate->expects( $this->testCase->any() )
+				->method( 'getToolbox' )
+				->will( $this->testCase->returnValue( [] ) );
+		}
 
 		$chameleonTemplate->expects( $this->testCase->any() )
 			->method( 'getPersonalTools' )

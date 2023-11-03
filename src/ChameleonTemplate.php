@@ -45,6 +45,7 @@ class ChameleonTemplate extends BaseTemplate {
 	public function execute() {
 		$skin = $this->getSkin();
 		$skinOptions = method_exists( $skin, 'getOptions' ) ? $skin->getOptions() : [];
+		// TODO: Remove $bodyOnly when dropping < MW 1.39 support.
 		$bodyOnly = $skinOptions['bodyOnly'] ?? false;
 		// output the head element
 		// The headelement defines the <body> tag itself, it shouldn't be included in the html text

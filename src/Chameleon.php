@@ -109,7 +109,10 @@ class Chameleon extends SkinTemplate {
 	 */
 	protected function prepareQuickTemplate() {
 		$tpl = parent::prepareQuickTemplate();
-		Hooks::run( 'ChameleonSkinTemplateOutputPageBeforeExec', [ $this, $tpl ] );
+		$hookContainer = MediaWikiServices::getInstance()->getHookContainer()->run(
+			'ChameleonSkinTemplateOutputPageBeforeExec',
+			[ $this, $tpl ]
+		);
 		return $tpl;
 	}
 

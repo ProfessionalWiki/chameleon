@@ -26,7 +26,7 @@
 
 namespace Skins\Chameleon\Components\NavbarHorizontal;
 
-use Hooks;
+use MediaWiki\MediaWikiServices;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\IdRegistry;
 
@@ -243,13 +243,13 @@ class PersonalTools extends Component {
 		}
 
 		// TODO Rename '...LinkText' to '...LinkTitle' in both the hook and variable.
-		Hooks::run( 'ChameleonNavbarHorizontalPersonalToolsLinkText', [ &$toolsLinkText,
+		MediaWikiServices::getInstance()->getHookContainer()->run( 'ChameleonNavbarHorizontalPersonalToolsLinkText', [ &$toolsLinkText,
 			$this->getSkin() ] );
 
 		$newtalkNotifierHtml = $this->getNewtalkNotifier();
 		$userNameHtml = $this->getUserName();
 
-		Hooks::run( 'ChameleonNavbarHorizontalPersonalToolsLinkInnerHtml',
+		MediaWikiServices::getInstance()->getHookContainer()->run( 'ChameleonNavbarHorizontalPersonalToolsLinkInnerHtml',
 			[ &$newtalkNotifierHtml, &$userNameHtml, $this ] );
 
 		$this->indent( 1 );
@@ -285,7 +285,8 @@ class PersonalTools extends Component {
 		// let users of the skin set an avatar url by some
 		// other criteria. e.g. SMW could use
 		// \SMW\DIProperty::newFromUserLabel( 'User image' )
-		if ( !Hooks::run( 'ChameleonNavbarHorizontalPersonalToolsAvatarUrl', [ &$this->avatarUrl, $this->getSkin() ] ) ) {
+		if ( !MediaWikiServices::getInstance()->getHookContainer()->run( 'ChameleonNavbarHorizontalPersonalToolsAvatarUrl',
+			[ &$this->avatarUrl, $this->getSkin() ] ) ) {
 			return false;
 		}
 

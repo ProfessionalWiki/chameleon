@@ -272,7 +272,11 @@ class PersonalTools extends Component {
 		return $dropdownToggle;
 	}
 
-	private function setUserAvatar() {
+	private function setUserAvatar() {		
+		if ( !empty( $GLOBALS['chameleonDisableAvatar'] ) ) {
+			return;
+		}
+
 		$user = $this->getSkinTemplate()->getSkin()->getUser();
 		if ( ! $user->isRegistered() ) {
 			return;

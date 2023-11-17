@@ -1,10 +1,11 @@
 ## Release Notes
 
-### Chameleon 4.2.2
+### Chameleon 4.3.0
 
 Under development.
 
 * Fixed deprecated Hooks usage for MediaWiki 1.40 (thanks @malberts)
+* Added `showActive` parameter for highlighting the current page in the `NavMenu` component (thanks @malberts)
 
 ### Chameleon 4.2.1
 

@@ -143,8 +143,11 @@ class NavMenu extends Component {
 
 			foreach ( $menuDescription['content'] as $key => $item ) {
 				$id = $item['id'] ?? '';
-				$menuitems .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item,
-					[ 'tag' => 'div', 'class' => 'nav-item', 'link-class' => 'nav-link '. $id ] );
+				$menuitems .= $this->indent() . $this->getSkinTemplate()->makeListItem( $key, $item, [
+					'tag' => 'div',
+					'class' => 'nav-item',
+					'link-class' => 'nav-link '. $id . ( $this->isHrefActive( $item['href'] ) ? ' active' : '' )
+				] );
 			}
 
 			$this->indent( - $indent );
@@ -253,6 +256,11 @@ class NavMenu extends Component {
 		}
 
 		return $flatten;
+	}
+
+	private function isHrefActive( string $href ): bool {
+		return filter_var( $this->getDomElement()->getAttribute( 'showActive' ), FILTER_VALIDATE_BOOLEAN )
+			&& $href === $this->getSkin()->getTitle()->getLocalURL();
 	}
 
 }

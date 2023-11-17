@@ -25,13 +25,13 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 <grammar
 		xmlns="http://relaxng.org/ns/structure/1.0"
 		xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-		ns="https://ProfessionalWiki.github.io/chameleon/schema/3.5/layout.rng"
+		ns="https://ProfessionalWiki.github.io/chameleon/schema/3.6/layout.rng"
 		datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
 >
 
 	<a:documentation>
 		Schema for Chameleon layout files
-		Version 3.5
+		Version 3.6
 		Copyright 2013 - 2021, Stephan Gambke
 		GNU General Public License, version 3 (or any later version)
 	</a:documentation>
@@ -325,6 +325,13 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 				<data type="string"/>
 			</attribute>
 		</optional>
+
+		<optional>
+			<attribute name="showActive" a:defaultValue="no">
+				<ref name="BoolValues"/>
+			</attribute>
+		</optional>
+
 	</define>
 
 	<define name="Component" combine="choice">
@@ -567,11 +574,6 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			<value>Toc</value>
 		</attribute>
 
-		<optional>
-<!--			<attribute name="follow" a:defaultValue="yes">-->
-<!--				<ref name="BoolValues"/>-->
-<!--			</attribute>-->
-		</optional>
 	</define>
 
 	<!-- Toolbox -->

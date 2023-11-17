@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-<?xml-model href="https://ProfessionalWiki.github.io/chameleon/schema/3.4/layout.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://ProfessionalWiki.github.io/chameleon/schema/3.6/layout.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
 This file is part of the MediaWiki skin Chameleon.
 
 @copyright 2013 - 2021, Stephan Gambke
@@ -23,7 +23,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 @since 1.0
 @ingroup Skins
 -->
-<structure xmlns="https://ProfessionalWiki.github.io/chameleon/schema/3.5/layout.rng">
+<structure xmlns="https://ProfessionalWiki.github.io/chameleon/schema/3.6/layout.rng">
 
 	<component type="NavbarHorizontal" class="small bg-darker">
 		<component type="Menu" message="secondary-menu"/>

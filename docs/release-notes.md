@@ -2,7 +2,7 @@
 
 ### Chameleon 4.3.0
 
-Under development.
+Released on November 26, 2023.
 
 * Fixed deprecated Hooks usage for MediaWiki 1.40 (thanks @malberts)
 * Added `showActive` parameter for highlighting the current page in the `NavMenu` component (thanks @malberts)

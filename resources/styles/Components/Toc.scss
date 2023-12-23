@@ -50,6 +50,10 @@
 		}
 	}
 
+	.toctogglecheckbox:checked ~ ul {
+		display: none;
+	}
+
 	.tocnumber {
 		display: none;
 	}

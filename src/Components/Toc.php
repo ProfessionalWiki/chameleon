@@ -54,7 +54,19 @@ class Toc extends Component {
 		$html = str_replace( '<ul>', '<ul class="nav">', $html );
 		$html = str_replace( '<a href', '<a class="nav-link" href', $html );
 
-		return '<div class="chameleon-toc-wrapper"><div class="chameleon-toc">' . $html . '</div></div>';
+		// Add collapsible button
+		$count = 0;
+		$html = preg_replace(
+			'|(<li class="toclevel-1.*?)(<a.*?</a>[\s\n]*?)<ul class="|i',
+			'$1<button class="btn toggle">+</button>$2<ul class="collapse ',
+			$html,
+			-1,
+			$count
+		);
+
+		$hasCollapsibleClass = $count > 0 ? ' has-collapsible' : '';
+
+		return '<div class="chameleon-toc-wrapper"><div class="chameleon-toc' . $hasCollapsibleClass . '">' . $html . '</div></div>';
 	}
 
 	/**

@@ -120,6 +120,10 @@
 		});
 
 		setInitialLink();
+
+		$( '.toclevel-1 .toggle' ).click( function () {
+			$( this ).siblings( 'ul' ).collapse( 'toggle' );
+		} );
 	} );
 
 

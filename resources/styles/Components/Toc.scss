@@ -40,7 +40,6 @@
 		width: 100%;
 
 		ul {
-			display: flex;
 			flex-direction: column;
 			margin: 0;
 		}
@@ -72,6 +71,27 @@
 		color: $body-color;
 	}
 
+	.btn.toggle {
+		padding: 0;
+	}
+
+	.toclevel-1 {
+		display: flex;
+		flex-wrap: wrap;
+
+		.toggle {
+			order: -1;
+		}
+
+		.nav {
+			flex-basis: 100%;
+		}
+
+		ul.collapsing {
+			display: flex;
+			flex-wrap: nowrap;
+		}
+	}
 }
 
 .p-navbar.sticky + div .chameleon-toc-wrapper {

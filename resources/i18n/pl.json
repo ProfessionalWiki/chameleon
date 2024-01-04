@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Chrumps",
 			"Matma Rex",
 			"Rail",
 			"Railfail536",
@@ -13,5 +14,6 @@
 	"chameleon-notloggedin": "Nie jesteś zalogowany",
 	"chameleon-newmessages": "Masz nowe wiadomości.",
 	"chameleon-nonewmessages": "Nie masz nowych wiadomości.",
-	"chameleon-search-aria-label": "Przejdź do strony"
+	"chameleon-search-aria-label": "Przejdź do strony",
+	"chameleon-toggler": "Menu"
 }

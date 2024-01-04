@@ -4,6 +4,7 @@
 			"Alvaro Vidal-Abarca",
 			"Fitoschido",
 			"Jmarchn",
+			"SMP",
 			"Toniher"
 		]
 	},
@@ -12,5 +13,7 @@
 	"chameleon-loggedin": "Esteu connectat com a $1.",
 	"chameleon-notloggedin": "No esteu connectat.",
 	"chameleon-newmessages": "Teniu missatges nous.",
-	"chameleon-nonewmessages": "No teniu missatges nous."
+	"chameleon-nonewmessages": "No teniu missatges nous.",
+	"chameleon-search-aria-label": "Vés a la pàgina",
+	"chameleon-toggler": "Menú"
 }

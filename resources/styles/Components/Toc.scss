@@ -9,6 +9,7 @@
 .chameleon-toc-wrapper {
 	position: sticky;
 	top: 0;
+	z-index: 1;
 
 	max-height: 100vh;
 	overflow: auto;
@@ -35,9 +36,7 @@
 
 	.toc {
 		border: unset;
-		background-color: unset;
 		font-size: unset;
-		width: 100%;
 
 		ul {
 			display: flex;

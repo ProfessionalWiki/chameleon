@@ -49,6 +49,10 @@
 		}
 	}
 
+	li {
+		margin-bottom: 0;
+	}
+
 	.toctogglecheckbox:checked ~ ul {
 		display: none;
 	}
@@ -73,6 +77,21 @@
 
 	.btn.toggle {
 		padding: 0;
+		margin-right: 5px;
+		width: 12px;
+		margin-left: -1rem;
+	}
+
+	.toggle-icon {
+		display: block;
+	}
+
+	.toggle-icon::before {
+		content: "+";
+	}
+
+	.nav.show ~ .btn.toggle .toggle-icon::before {
+		content: "-";
 	}
 
 	.toclevel-1 {
@@ -90,6 +109,12 @@
 		ul.collapsing {
 			display: flex;
 			flex-wrap: nowrap;
+		}
+	}
+
+	&.has-collapsible {
+		.toc > ul {
+			margin-left: 1rem;
 		}
 	}
 }

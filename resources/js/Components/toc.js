@@ -47,6 +47,11 @@
 
 		$( 'body' ).scrollspy( { target: '.chameleon-toc', offset: offset } );
 
+		// Move toggle buttons after collapsible nav for styling purposes.
+		$( '.chameleon-toc .btn.toggle' ).each( function() {
+			$( this ).insertAfter( $( this ).nextAll ( '.nav' ) );
+		} );
+
 		function goToLink( $link ) {
 			var $activeLink = $( '.chameleon-toc .active' );
 

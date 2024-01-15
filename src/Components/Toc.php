@@ -58,7 +58,7 @@ class Toc extends Component {
 		$count = 0;
 		$html = preg_replace(
 			'|(<li class="toclevel-1.*?)(<a.*?</a>[\s\n]*?)<ul class="|i',
-			'$1<button class="btn toggle">+</button>$2<ul class="collapse ',
+			'$1<button class="btn toggle"><span class="toggle-icon"></span></button>$2<ul class="collapse ',
 			$html,
 			-1,
 			$count

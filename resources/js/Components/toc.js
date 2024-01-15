@@ -82,6 +82,7 @@
 				targetLink = $( '.chameleon-toc a[href="' + hash + '"]' );
 			}
 			if ( targetLink.length !== 0 ) {
+				targetLink.parents( '.nav.collapse' ).collapse('show');
 				goToLink( targetLink );
 			}
 		}

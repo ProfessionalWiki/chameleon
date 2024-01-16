@@ -122,3 +122,10 @@
 .p-navbar.sticky + div .chameleon-toc-wrapper {
 	top: $navbar-padding-y * 2 + $nav-link-padding-y * 2 + $font-size-base * $line-height-base;
 }
+
+// Hide page TOC to prevent page content shift.
+@include media-breakpoint-up(md) {
+	#bodyContent #toc {
+		display: none;
+	}
+}

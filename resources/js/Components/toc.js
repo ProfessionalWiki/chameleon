@@ -75,10 +75,12 @@
 
 	function enableScrollspy() {
 		var offset = 179;
-		var stickyNavbar = $( '.p-navbar[style*="position"]' );
-		if ( stickyNavbar.length > 0 ) {
-			offset += stickyNavbar.outerHeight();
-		}
+
+		// TODO: re-test when using Sticky Modification.
+		// var stickyNavbar = $( '.p-navbar[style*="position"]' );
+		// if ( stickyNavbar.length > 0 ) {
+		// 	offset += stickyNavbar.outerHeight();
+		// }
 
 		$( 'body' ).scrollspy( { target: '.chameleon-toc', offset: offset } );
 	}
@@ -112,8 +114,8 @@
 
 	function addTocLinkClickEvent() {
 		$( '.chameleon-toc ul li a').on( 'click', function () {
-			const href = $( this ).attr( 'href' );
-			const anchor = href.substr( href.indexOf( '#' ) );
+			var href = $( this ).attr( 'href' );
+			var anchor = href.substr( href.indexOf( '#' ) );
 
 			// Trigger hashchange event when hash is the same (for sticky navbar).
 			if ( window.location.hash === anchor ) {

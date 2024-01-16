@@ -31,14 +31,49 @@
 
     'use strict';
 
-	$( function () {
-		if ( window.outerWidth < 768 ) {
-			$( '.chameleon-toc' ).remove();
+	function goToLink( $link ) {
+		var $activeLink = $( '.chameleon-toc .active' );
+
+		if ( $activeLink.last().is( $link ) ) {
 			return;
 		}
 
-		$( '#bodyContent #toc' ).remove();
+		$activeLink.removeClass( 'active' );
 
+		$link.addClass( 'active' );
+		$link.parents( '.nav' ).prev( '.nav-link'  + ", " +  '.list-group-item' ).addClass( 'active' );
+		$link.parents( '.nav' ).prev( '.nav-item' ).children( '.nav-link' ).addClass( 'active' );
+	}
+
+	function getCurrentHash() {
+		var hash = window.location.hash;
+		return hash.substring( hash.indexOf( '#' ) )
+	}
+
+	function setInitialLink() {
+		var hash = getCurrentHash();
+		var activeLink = $('.chameleon-toc a.active');
+		var targetLink;
+
+		if ( hash === '' && activeLink.length === 0) {
+			targetLink = $( '.chameleon-toc a.top' );
+		} else {
+			targetLink = $( '.chameleon-toc a[href="' + hash + '"]' );
+		}
+		if ( targetLink.length !== 0 ) {
+			targetLink.parents( '.nav.collapse' ).collapse('show');
+			goToLink( targetLink );
+		}
+	}
+
+	function rearrangeToggleButtons() {
+		// Move toggle buttons after collapsible nav for styling purposes.
+		$( '.chameleon-toc .btn.toggle' ).each( function() {
+			$( this ).insertAfter( $( this ).nextAll ( '.nav' ) );
+		} );
+	}
+
+	function enableScrollspy() {
 		var offset = 179;
 		var stickyNavbar = $( '.p-navbar[style*="position"]' );
 		if ( stickyNavbar.length > 0 ) {
@@ -46,47 +81,22 @@
 		}
 
 		$( 'body' ).scrollspy( { target: '.chameleon-toc', offset: offset } );
+	}
 
-		// Move toggle buttons after collapsible nav for styling purposes.
-		$( '.chameleon-toc .btn.toggle' ).each( function() {
-			$( this ).insertAfter( $( this ).nextAll ( '.nav' ) );
-		} );
+	function addScrollspyEvent() {
+		// Highlight and scroll to value in TOC when scrolling in body.
+		$( window ).on( 'activate.bs.scrollspy', function ( e, obj ) {
+			var clickedLink = $( '.chameleon-toc .clicked' );
 
-		function goToLink( $link ) {
-			var $activeLink = $( '.chameleon-toc .active' );
-
-			if ( $activeLink.last().is( $link ) ) {
+			if ( clickedLink.length === 0 ) {
 				return;
 			}
 
-			$activeLink.removeClass( 'active' );
+			goToLink( clickedLink );
+		});
+	}
 
-			$link.addClass( 'active' );
-			$link.parents( '.nav' ).prev( '.nav-link'  + ", " +  '.list-group-item' ).addClass( 'active' );
-			$link.parents( '.nav' ).prev( '.nav-item' ).children( '.nav-link' ).addClass( 'active' );
-		}
-
-		function getCurrentHash() {
-			var hash = window.location.hash;
-			return hash.substring( hash.indexOf( '#' ) )
-		}
-
-		function setInitialLink() {
-			var hash = getCurrentHash();
-			var activeLink = $('.chameleon-toc a.active');
-			var targetLink;
-
-			if ( hash === '' && activeLink.length === 0) {
-				targetLink = $( '.chameleon-toc a.top' );
-			} else {
-				targetLink = $( '.chameleon-toc a[href="' + hash + '"]' );
-			}
-			if ( targetLink.length !== 0 ) {
-				targetLink.parents( '.nav.collapse' ).collapse('show');
-				goToLink( targetLink );
-			}
-		}
-
+	function addWindowScrollEvent() {
 		$( window ).on( 'scroll', function() {
 			$( '.chameleon-toc a.clicked' ).removeClass( 'clicked' );
 
@@ -98,7 +108,9 @@
 
 			goToLink( $( '.chameleon-toc a.top' ) );
 		} );
+	}
 
+	function addTocLinkClickEvent() {
 		$( '.chameleon-toc ul li a').on( 'click', function () {
 			const href = $( this ).attr( 'href' );
 			const anchor = href.substr( href.indexOf( '#' ) );
@@ -113,24 +125,29 @@
 
 			goToLink( $( this ) );
 		} );
+	}
 
-		// Highlight and scroll to value in TOC when scrolling in body.
-		$( window ).on( 'activate.bs.scrollspy', function ( e, obj ) {
-			var clickedLink = $( '.chameleon-toc .clicked' );
-
-			if ( clickedLink.length === 0 ) {
-				return;
-			}
-
-			goToLink( clickedLink );
-		});
-
-		setInitialLink();
-
+	function addToggleButtonClickEvent() {
 		$( '.toclevel-1 .toggle' ).click( function () {
 			$( this ).siblings( 'ul' ).collapse( 'toggle' );
 		} );
-	} );
+	}
 
+	$( function () {
+		if ( window.outerWidth < 768 ) {
+			$( '.chameleon-toc' ).remove();
+			return;
+		}
+
+		$( '#bodyContent #toc' ).remove();
+
+		rearrangeToggleButtons();
+		enableScrollspy();
+		addScrollspyEvent();
+		addWindowScrollEvent();
+		addTocLinkClickEvent();
+		addToggleButtonClickEvent();
+		setInitialLink();
+	} );
 
 }(window, document, jQuery, mediaWiki) );

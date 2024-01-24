@@ -40,7 +40,6 @@
 		width: 100%;
 
 		ul {
-			display: flex;
 			flex-direction: column;
 			margin: 0;
 		}
@@ -48,6 +47,10 @@
 		ul ul {
 			margin-left: 1rem;
 		}
+	}
+
+	li {
+		margin-bottom: 0;
 	}
 
 	.toctogglecheckbox:checked ~ ul {
@@ -72,8 +75,57 @@
 		color: $body-color;
 	}
 
+	.btn.toggle {
+		padding: 0;
+		margin-right: 5px;
+		width: 12px;
+		margin-left: -1rem;
+	}
+
+	.toggle-icon {
+		display: block;
+	}
+
+	.toggle-icon::before {
+		content: "+";
+	}
+
+	.nav.show ~ .btn.toggle .toggle-icon::before {
+		content: "-";
+	}
+
+	.toclevel-1 {
+		display: flex;
+		flex-wrap: wrap;
+
+		.toggle {
+			order: -1;
+		}
+
+		.nav {
+			flex-basis: 100%;
+		}
+
+		ul.collapsing {
+			display: flex;
+			flex-wrap: nowrap;
+		}
+	}
+
+	&.has-collapsible {
+		.toc > ul {
+			margin-left: 1rem;
+		}
+	}
 }
 
 .p-navbar.sticky + div .chameleon-toc-wrapper {
 	top: $navbar-padding-y * 2 + $nav-link-padding-y * 2 + $font-size-base * $line-height-base;
+}
+
+// Hide page TOC to prevent page content shift.
+@include media-breakpoint-up(md) {
+	#bodyContent #toc {
+		display: none;
+	}
 }

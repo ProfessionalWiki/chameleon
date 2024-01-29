@@ -40,7 +40,7 @@
 		"psr/http-message": "^1"
 	},
 	"require-dev": {
-		"mediawiki/mediawiki-codesniffer": "42.0.0",
+		"mediawiki/mediawiki-codesniffer": "43.0.0",
 		"mediawiki/mediawiki-phan-config": "0.13.0"
 	},
 	"extra": {

@@ -4,12 +4,13 @@
 			"500000000006城",
 			"Apflu",
 			"GuoPC",
+			"LittlePaw365",
 			"Liuxinyu970226",
 			"列维劳德"
 		]
 	},
 	"skinname-chameleon": "变色龙",
-	"chameleon-desc": "使用 Bootstrap 4 的高度灵活的响应性皮肤",
+	"chameleon-desc": "使用Bootstrap 4的高度灵活的响应式皮肤",
 	"chameleon-loggedin": "您已作为$1登录。",
 	"chameleon-notloggedin": "您尚未登录。",
 	"chameleon-newmessages": "您有新消息。",

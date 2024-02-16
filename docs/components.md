@@ -94,7 +94,7 @@ recommended.
 
   Use `fixedwidth` for a responsive fixed width layout. Use `fluid` for a full
   width layout, spanning the entire width of the viewport.
-  
+
   Use a breakpoint name for a responsive container (since Chameleon 4.1.0).
 
 * `id`:
@@ -265,7 +265,7 @@ assign a CSS id or class for styling purposes.
 -------------------------------------------------------------------------------
 ### Component `ContentBody`
 
-Allows to display the content body independently of the [MainContent](#component-maincontent). 
+Allows to display the content body independently of the [MainContent](#component-maincontent).
 
 Since Chameleon 4.2.0
 
@@ -782,6 +782,13 @@ Using the message _MediaWiki:Secondary-menu_:
   `exclude` takes priority over `include`.  It does not make much sense to use
   both attributes in the same `NavMenu` instance, but it can make sense to use
   them separately in complementary instances.
+
+* `showActive`:
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+
+  If set the menu link for the current page will be highlighted.
 
 #### Allowed Parent Elements:
 * [Structure](#structure)

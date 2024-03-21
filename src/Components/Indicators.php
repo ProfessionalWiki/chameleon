@@ -39,9 +39,13 @@ class Indicators extends Component {
 
 	/**
 	 * @inheritDoc
+	 * @param ChameleonTemplate $tpl
 	 * @throws \MWException
 	 */
-	public function getHtml(): string {
+	public function getHtml($tpl = null): string {
+		if ( !is_null( $tpl ) ) {
+		$this->setSkinTemplate( $tpl );
+    }
 		$idRegistry = IdRegistry::getRegistry();
 
 		return $idRegistry->element( 'div', [ 'id' => 'mw-indicators',

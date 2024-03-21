@@ -46,10 +46,14 @@ class FooterInfo extends Component {
 	/**
 	 * Builds the HTML code for this component
 	 *
+	 * @param ChameleonTemplate $tpl
 	 * @return String the HTML code
 	 * @throws \MWException
 	 */
-	public function getHtml() {
+	public function getHtml($tpl = null) {
+      if ( !is_null( $tpl ) ) {
+          $this->setSkinTemplate( $tpl );
+      }
 		return $this->indent() . '<!-- footer links -->' .
 			IdRegistry::getRegistry()->element(
 				'div',

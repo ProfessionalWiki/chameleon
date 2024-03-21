@@ -43,10 +43,14 @@ class Logo extends Component {
 	/**
 	 * Builds the HTML code for this component
 	 *
+	 * @param ChameleonTemplate $tpl
 	 * @return String the HTML code
 	 * @throws \MWException
 	 */
-	public function getHtml() {
+	public function getHtml($tpl = null) {
+      if ( !is_null( $tpl ) ) {
+          $this->setSkinTemplate( $tpl );
+      }
 		$logo = $this->indent( 1 ) . $this->getLogo();
 
 		return $this->indent( -1 ) . '<!-- logo and main page link -->' .

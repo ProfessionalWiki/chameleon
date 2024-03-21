@@ -41,10 +41,14 @@ use Skins\Chameleon\Components\Logo as GenLogo;
 class Logo extends Component {
 
 	/**
+	 * @param ChameleonTemplate $tpl
 	 * @return String
 	 * @throws \MWException
 	 */
-	public function getHtml() {
+	public function getHtml($tpl = null) {
+      if ( !is_null( $tpl ) ) {
+          $this->setSkinTemplate( $tpl );
+      }
 		$logo = new GenLogo( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );
 		$logo->addClasses( 'navbar-brand' );
 

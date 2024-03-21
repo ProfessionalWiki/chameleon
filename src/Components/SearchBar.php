@@ -44,10 +44,14 @@ class SearchBar extends Component {
 	/**
 	 * Builds the HTML code for this component
 	 *
+	 * @param ChameleonTemplate $tpl
 	 * @return string
 	 * @throws \MWException
 	 */
-	public function getHtml() {
+	public function getHtml($tpl = null) {
+      if ( !is_null( $tpl ) ) {
+          $this->setSkinTemplate( $tpl );
+      }
 		$attribsSearchFormWrapper = \Html::expandAttributes( [
 				'id'    => IdRegistry::getRegistry()->getId( 'p-search' ),
 				'class' => 'p-search ' . $this->getClassString(),

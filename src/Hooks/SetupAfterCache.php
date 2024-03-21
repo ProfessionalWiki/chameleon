@@ -232,7 +232,6 @@ class SetupAfterCache {
 		MediaWikiServices::getInstance()->getSkinFactory()->register( 'chameleon', 'Chameleon',
 			function () {
 				$styles = [
-					'mediawiki.ui.button',
 					'skins.chameleon',
 					'zzz.ext.bootstrap.styles',
 				];

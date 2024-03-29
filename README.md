@@ -29,16 +29,15 @@ in an XML file and as such easily adaptable to your needs.
 
 ## Contact
 
-For bug reports and feature requests please see, if it is already reported on
+[Paid professional support](https://professional.wiki/en/mediawiki-theme-development) is avilable via 
+[Professional Wiki](https://professional.wiki/), the maintainer of Chameleon.
+
+For bug reports and feature requests, please see if it is already reported on
 the list of [open bugs][open bugs]. If not, [report it][report bugs]. Also see the
 [Contribute](contribute.md) section for instructions on bug reporting.
 
-For general questions, comments or suggestions you might use the [Chameleon skin
-talk page on MediaWiki.org][chameleon-talk]. For direct contact with the maintainers
-please use [our contact form][contact-form].
-
-Finally there are the MediaWiki IRC channel (Server: [libera.chat][irc],
-Channel: #mediawiki) and the [MediaWiki mailing list][mw-ml].
+The community support channels include the [Chameleon skin talk page on MediaWiki.org][chameleon-talk],
+the MediaWiki IRC channel (Server: [libera.chat][irc] Channel: #mediawiki), and the [MediaWiki mailing list][mw-ml].
 
 ## Professional Support
 

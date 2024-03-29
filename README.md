@@ -30,7 +30,8 @@ in an XML file and as such easily adaptable to your needs.
 ## Contact
 
 [Paid professional support](https://professional.wiki/en/mediawiki-theme-development) is avilable via 
-[Professional Wiki](https://professional.wiki/), the maintainer of Chameleon.
+[Professional Wiki](https://professional.wiki/), the maintainer of Chameleon. This includes installation,
+customization, and theme development.
 
 For bug reports and feature requests, please see if it is already reported on
 the list of [open bugs][open bugs]. If not, [report it][report bugs]. Also see the
@@ -38,12 +39,6 @@ the list of [open bugs][open bugs]. If not, [report it][report bugs]. Also see t
 
 The community support channels include the [Chameleon skin talk page on MediaWiki.org][chameleon-talk],
 the MediaWiki IRC channel (Server: [libera.chat][irc] Channel: #mediawiki), and the [MediaWiki mailing list][mw-ml].
-
-## Professional Support
-
-Chameleon is maintained by [Professional Wiki](https://professional.wiki).
-You can [contract us][contact-form] to help you with installation or customization of Chameleon.
-We also do development work.
 
 [mw]: https://www.mediawiki.org
 [mw-chameleon]: https://www.mediawiki.org/wiki/Skin:Chameleon

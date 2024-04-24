@@ -26,7 +26,7 @@
 
 namespace Skins\Chameleon\Hooks;
 
-use ResourceLoader;
+use MediaWiki\ResourceLoader\ResourceLoader;
 
 /**
  * @see https://www.mediawiki.org/wiki/Manual:Hooks/ResourceLoaderRegisterModules

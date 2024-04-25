@@ -1,5 +1,12 @@
 ## Release Notes
 
+### Chameleon 5.0.0
+
+Under development.
+
+* Raised minimum MediaWiki version from 1.35 to 1.39
+* Raised minimum PHP version from 7.4.3 to 8.0
+
 ### Chameleon 4.3.0
 
 Released on November 26, 2023.

@@ -14,9 +14,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - mw: 'REL1_35'
-            php: 7.4
-            experimental: false
           - mw: 'REL1_39'
             php: 8.1
             experimental: false

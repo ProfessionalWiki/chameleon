@@ -27,6 +27,7 @@ namespace Skins\Chameleon\Tests\Integration;
 use Bootstrap\BootstrapManager;
 use CSSMin;
 use HashBagOStuff;
+use MediaWiki\ResourceLoader\Context;
 use SCSS\ResourceLoaderSCSSModule;
 use Skins\Chameleon\Hooks\SetupAfterCache;
 
@@ -57,7 +58,7 @@ class StylesCompileTest extends \PHPUnit\Framework\TestCase {
 
 		$setupAfterCache->process();
 
-		$resourceLoaderContext = $this->getMockBuilder( '\ResourceLoaderContext' )
+		$resourceLoaderContext = $this->getMockBuilder( Context::class )
 			->disableOriginalConstructor()
 			->getMock();
 

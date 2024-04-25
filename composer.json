@@ -31,7 +31,7 @@
 		"irc": "irc://libera.chat:6667/mediawiki"
 	},
 	"require": {
-		"php": ">=7.4.3",
+		"php": ">=8.0.0",
 		"ext-dom": "*",
 		"ext-filter": "*",
 		"composer/installers": "^2|^1.0.12",
@@ -45,7 +45,7 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"dev-master": "4.x-dev"
+			"dev-master": "5.x-dev"
 		}
 	},
 	"scripts": {

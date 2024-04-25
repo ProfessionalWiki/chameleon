@@ -24,7 +24,7 @@
 
 namespace Skins\Chameleon\Tests\Unit\Hooks;
 
-use ResourceLoader;
+use MediaWiki\ResourceLoader\ResourceLoader;
 use PHPUnit\Framework\TestCase;
 use Skins\Chameleon\Hooks\ResourceLoaderRegisterModules;
 

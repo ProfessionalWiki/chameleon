@@ -8,18 +8,20 @@
 		"Morne Alberts",
 		"[https://www.EntropyWins.wtf/mediawiki Jeroen De Dauw]"
 	],
-	"version": "4.3.0",
+	"version": "5.0.0-dev",
 	"url": "https://www.mediawiki.org/wiki/Skin:Chameleon",
 	"descriptionmsg": "chameleon-desc",
 	"license-name": "GPL-3.0-or-later",
 	"requires": {
-		"MediaWiki": ">= 1.35.0",
+		"MediaWiki": ">= 1.39.0",
 		"extensions": {
-			"Bootstrap": "~4.5"
+			"Bootstrap": "~5.0"
 		}
 	},
 	"AutoloadNamespaces": {
-		"Skins\\Chameleon\\": "src/",
+		"Skins\\Chameleon\\": "src/"
+	},
+	"TestAutoloadNamespaces": {
 		"Skins\\Chameleon\\Tests\\": "tests/phpunit/"
 	},
 	"MessagesDirs": {

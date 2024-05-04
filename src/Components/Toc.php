@@ -39,8 +39,12 @@ class Toc extends Component {
 
 	/**
 	 * @inheritDoc
+   * @param ChameleonTemplate $tpl
 	 */
-	public function getHtml(): string {
+public function getHtml($tpl = null): string {
+  if ( !is_null( $tpl ) ) {
+  $this->setSkinTemplate( $tpl );
+  }
 		$html = $this->extractTocHtml();
 
 		if ( $html === '' ) {

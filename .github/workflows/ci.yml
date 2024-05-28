@@ -14,9 +14,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - mw: 'REL1_35'
-            php: 7.4
-            experimental: false
           - mw: 'REL1_39'
             php: 8.1
             experimental: false
@@ -26,6 +23,12 @@ jobs:
           - mw: 'REL1_41'
             php: 8.1
             experimental: false
+          - mw: 'REL1_42'
+            php: 8.2
+            experimental: true
+          - mw: 'master'
+            php: 8.3
+            experimental: true
 
     runs-on: ubuntu-latest
 
@@ -43,7 +46,7 @@ jobs:
 
       - name: Cache MediaWiki
         id: cache-mediawiki
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             mediawiki
@@ -52,12 +55,12 @@ jobs:
           key: mw_${{ matrix.mw }}-php${{ matrix.php }}-v20
 
       - name: Cache Composer cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache
           key: composer-php${{ matrix.php }}
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: EarlyCopy
 
@@ -66,7 +69,7 @@ jobs:
         working-directory: ~
         run: bash EarlyCopy/.github/workflows/installWiki.sh ${{ matrix.mw }}
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: mediawiki/skins/chameleon
 

@@ -26,7 +26,8 @@
 
 namespace Skins\Chameleon\Hooks;
 
-use ResourceLoader;
+use MediaWiki\ResourceLoader\ResourceLoader;
+use MediaWiki\ResourceLoader\SkinModule;
 
 /**
  * @see https://www.mediawiki.org/wiki/Manual:Hooks/ResourceLoaderRegisterModules
@@ -59,7 +60,7 @@ class ResourceLoaderRegisterModules {
 
 	private function registerChameleon(): void {
 		$this->resourceLoader->register( 'skins.chameleon', [
-			'class' => 'ResourceLoaderSkinModule',
+			'class' => SkinModule::class,
 			'features' => $this->getFeatures(),
 			'targets' => [
 				'desktop',

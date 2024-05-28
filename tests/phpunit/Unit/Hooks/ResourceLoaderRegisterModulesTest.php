@@ -24,7 +24,8 @@
 
 namespace Skins\Chameleon\Tests\Unit\Hooks;
 
-use ResourceLoader;
+use MediaWiki\ResourceLoader\ResourceLoader;
+use MediaWiki\ResourceLoader\SkinModule;
 use PHPUnit\Framework\TestCase;
 use Skins\Chameleon\Hooks\ResourceLoaderRegisterModules;
 
@@ -84,7 +85,7 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 			->withConsecutive(
 				[ 'zzz.ext.bootstrap.styles', [ 'foo' => 'bar' ] ],
 				[ 'skins.chameleon', [
-					'class' => 'ResourceLoaderSkinModule',
+					'class' => SkinModule::class,
 					'features' => $this->getBaseFeatures(),
 					'targets' => [
 						'desktop',
@@ -119,7 +120,7 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 			->withConsecutive(
 				[ 'zzz.ext.bootstrap.styles', [ 'foo' => 'bar' ] ],
 				[ 'skins.chameleon', [
-					'class' => 'ResourceLoaderSkinModule',
+					'class' => SkinModule::class,
 					'features' => $features,
 					'targets' => [
 						'desktop',

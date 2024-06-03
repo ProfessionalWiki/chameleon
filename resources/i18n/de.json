@@ -8,10 +8,10 @@
 	},
 	"skinname-chameleon": "Chameleon",
 	"chameleon-desc": "Stellt eine flexible wie responsive, auf Twitter Bootstrap 4 gestützte, Benutzeroberfläche bereit",
-	"chameleon-loggedin": "Du bist als $1 angemeldet.",
-	"chameleon-notloggedin": "Du bist nicht angemeldet.",
-	"chameleon-newmessages": "Du hast neue Nachrichten.",
-	"chameleon-nonewmessages": "Du hast keine neuen Nachrichten.",
-	"chameleon-search-aria-label": "Gehe zu Seite",
+	"chameleon-loggedin": "{{#FORMAL:Du bist|Sie sind}} als $1 angemeldet.",
+	"chameleon-notloggedin": "{{#FORMAL:Du bist|Sie sind}} nicht angemeldet.",
+	"chameleon-newmessages": "{{#FORMAL:Du hast|Sie haben}} neue Nachrichten.",
+	"chameleon-nonewmessages": "{{#FORMAL:Du hast|Sie haben}} keine neuen Nachrichten.",
+	"chameleon-search-aria-label": "{{#FORMAL:Gehe|Gehen Sie}} zu Seite",
 	"chameleon-toggler": "Menü"
 }

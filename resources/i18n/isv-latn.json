@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"IJzeren Jan"
+		]
+	},
+	"skinname-chameleon": "Kameleon",
+	"chameleon-desc": "Mnogo gybka i adaptivna tema, ktora koristaje Bootstrap 4",
+	"chameleon-loggedin": "Vy jeste prijavjeni kako $1.",
+	"chameleon-notloggedin": "Vy ne jeste prijavjeni.",
+	"chameleon-newmessages": "Vy imajete nove soobčenja.",
+	"chameleon-nonewmessages": "Vy ne imajete nove soobčenja.",
+	"chameleon-search-aria-label": "Prějdti na stranicu",
+	"chameleon-toggler": "Menju"
+}

@@ -1,14 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Xuacu"
+			"Xuacu",
+			"YoaR"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "El tema Chameleon.",
+	"chameleon-desc": "Una piel altamente flexible qu'usa Bootstrap 4",
 	"chameleon-loggedin": "Aniciasti sesión como $1.",
 	"chameleon-notloggedin": "Nun aniciasti sesión",
 	"chameleon-newmessages": "Tienes mensaxes nuevos.",
 	"chameleon-nonewmessages": "Nun tienes mensaxes nuevos.",
-	"chameleon-search-aria-label": "Dir a páxina"
+	"chameleon-search-aria-label": "Dir a páxina",
+	"chameleon-toggler": "Menú"
 }

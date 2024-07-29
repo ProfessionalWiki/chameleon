@@ -8,6 +8,14 @@ Under development.
 * Raised minimum PHP version from 7.4.3 to 8.0
 * Improved compatibility with MediaWiki 1.42 and 1.43 (thanks @JeroenDeDauw and @malberts)
 
+### Chameleon 4.4.0
+
+Under development.
+
+* Added experimental Table of Contents component `Toc` (thanks @malberts, and @DanielWTQ for bug fixes)
+* Added user avatar support in `PersonalTools` component (thanks @thomas-topway-it)
+* Translation updates for system messages (thanks @translatewiki and its translator community)
+
 ### Chameleon 4.3.0
 
 Released on November 26, 2023.

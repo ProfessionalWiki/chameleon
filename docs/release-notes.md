@@ -7,6 +7,7 @@ Under development.
 * Raised minimum MediaWiki version from 1.35 to 1.39
 * Raised minimum PHP version from 7.4.3 to 8.0
 * Improved compatibility with MediaWiki 1.42 and 1.43 (thanks @JeroenDeDauw and @malberts)
+* Removed deprecated code (thanks @Daimona and @ronald-stewart-cs50)
 
 ### Chameleon 4.4.0
 

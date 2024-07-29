@@ -29,10 +29,10 @@ namespace Skins\Chameleon\Components;
 /**
  * The Toc class.
  *
- * This component allows placing the TOC outside of the main content.
+ * This component allows placing the TOC outside the main content.
  *
  * @author Morne Alberts
- * @since 3.5
+ * @since 4.4
  * @ingroup Skins
  */
 class Toc extends Component {

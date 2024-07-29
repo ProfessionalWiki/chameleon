@@ -1,8 +1,8 @@
 # Chameleon skin
 
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ProfessionalWiki/chameleon/ci.yml?branch=master)](https://github.com/ProfessionalWiki/chameleon/actions?query=workflow%3ACI)
-[![Latest Stable Version](https://poser.pugx.org/mediawiki/chameleon-skin/version.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
-[![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/d/total.png)](https://packagist.org/packages/mediawiki/chameleon-skin)
+[![Latest Stable Version](https://poser.pugx.org/mediawiki/chameleon-skin/v/stable)](https://packagist.org/packages/mediawiki/chameleon-skin)
+[![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/downloads)](https://packagist.org/packages/mediawiki/chameleon-skin)
 
 <img src='https://upload.wikimedia.org/wikipedia/mediawiki/thumb/3/31/Chameleon.svg/220px-Chameleon.svg.png' style='float:left;' align="left" title='Chameleon Skin Logo'>
 
@@ -29,7 +29,7 @@ in an XML file and as such easily adaptable to your needs.
 
 ## Contact
 
-[Paid professional support](https://professional.wiki/en/mediawiki-theme-development) is avilable via 
+[Paid professional support](https://professional.wiki/en/mediawiki-theme-development) is avilable via
 [Professional Wiki](https://professional.wiki/), the maintainer of Chameleon. This includes installation,
 customization, and theme development.
 

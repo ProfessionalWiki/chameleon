@@ -36,7 +36,6 @@ use Skins\Chameleon\IdRegistry;
  * Provides a PersonalTools component to be included in a NavbarHorizontal component.
  *
  * @author Stephan Gambke
- * @reviewer thomas-topway-it - user-avatar (for KM-A)
  * @since 1.6
  * @ingroup Skins
  */
@@ -55,8 +54,7 @@ class PersonalTools extends Component {
 	private const SHOW_USER_NAME_YES = 'yes';
 	private const ATTR_PROMOTE_LONE_ITEMS = 'promoteLoneItems';
 
-	/** @var avatarUrl */
-	protected $avatarUrl = null;
+	protected ?string $avatarUrl = null;
 
 	/**
 	 * @return String
@@ -65,7 +63,7 @@ class PersonalTools extends Component {
 	 */
 	public function getHtml() {
 		$tools = $this->getSkinTemplate()->getPersonalTools();
-		
+
 		$this->setUserAvatar();
 
 		// Flatten classes to avoid MW bug: https://phabricator.wikimedia.org/T262160
@@ -232,12 +230,11 @@ class PersonalTools extends Component {
 		$user = $this->getSkinTemplate()->getSkin()->getUser();
 
 		if ( $user->isRegistered() ) {
-			$toolsClass = 'navbar-userloggedin'
-				. ( !$this->avatarUrl ? '' : '-avatar' );
+			$toolsClass = 'navbar-userloggedin' . ( !$this->avatarUrl ? '' : '-avatar' );
 			$toolsLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-loggedin' )->
 				params( $user->getName() )->text();
 
-		} else { 
+		} else {
 			$toolsClass = 'navbar-usernotloggedin';
 			$toolsLinkText = $this->getSkinTemplate()->getMsg( 'chameleon-notloggedin' )->text();
 		}
@@ -259,11 +256,11 @@ class PersonalTools extends Component {
 			'href' => '#', 'data-toggle' => 'dropdown', 'data-boundary' => 'viewport',
 			'title' => $toolsLinkText
 		];
-		
+
 		if ( $this->avatarUrl ) {
 			$attr['style'] = "background-image:url('$this->avatarUrl')";
 		}
-		
+
 		$dropdownToggle = IdRegistry::getRegistry()->element( 'a', $attr, $newtalkNotifierHtml . $userNameHtml,
 			$this->indent() );
 
@@ -272,13 +269,13 @@ class PersonalTools extends Component {
 		return $dropdownToggle;
 	}
 
-	private function setUserAvatar() {		
+	private function setUserAvatar(): void {
 		if ( !empty( $GLOBALS['chameleonDisableAvatar'] ) ) {
 			return;
 		}
 
 		$user = $this->getSkinTemplate()->getSkin()->getUser();
-		if ( ! $user->isRegistered() ) {
+		if ( !$user->isRegistered() ) {
 			return;
 		}
 
@@ -287,7 +284,7 @@ class PersonalTools extends Component {
 		// \SMW\DIProperty::newFromUserLabel( 'User image' )
 		if ( !MediaWikiServices::getInstance()->getHookContainer()->run( 'ChameleonNavbarHorizontalPersonalToolsAvatarUrl',
 			[ &$this->avatarUrl, $this->getSkin() ] ) ) {
-			return false;
+			return;
 		}
 
 		// retrieve an image with the same name
@@ -296,9 +293,9 @@ class PersonalTools extends Component {
 		$imagePage = null;
 		$username = $user->getName();
 		foreach ( $imageExt as $ext ) {
-			$title_ = \Title::makeTitleSafe( NS_FILE, "$username.$ext" );			
-			if ( $title_ && $title_->isKnown() ) {
-				$imagePage = new \WikiFilePage( $title_ );
+			$title = \Title::makeTitleSafe( NS_FILE, "$username.$ext" );
+			if ( $title && $title->isKnown() ) {
+				$imagePage = new \WikiFilePage( $title );
 				break;
 			}
 		}

@@ -14,7 +14,7 @@ Under development.
 Under development.
 
 * Added experimental Table of Contents component `Toc` (thanks @malberts, and @DanielWTQ for bug fixes)
-* Added user avatar support in `PersonalTools` component (thanks @thomas-topway-it)
+* Added `showUserAvatar` parameter for showing a user avatar in the `PersonalTools` component (thanks @thomas-topway-it)
 * Translation updates for system messages (thanks @translatewiki and its translator community)
 
 ### Chameleon 4.3.0

@@ -79,7 +79,7 @@ function validateFile( $filename ) {
 	$xml = new DOMDocument();
 	$xml->load( $filename );
 
-	if ( !$xml->relaxNGValidate( 'https://ProfessionalWiki.github.io/chameleon/schema/3.6/layout.rng' ) ) {
+	if ( !$xml->relaxNGValidate( 'https://ProfessionalWiki.github.io/chameleon/schema/3.7/layout.rng' ) ) {
 		libxml_display_errors();
 	} else {
 		print "Ok!\n";

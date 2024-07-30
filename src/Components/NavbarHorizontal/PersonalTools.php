@@ -53,6 +53,7 @@ class PersonalTools extends Component {
 	private const SHOW_USER_NAME_NO = 'no';
 	private const SHOW_USER_NAME_YES = 'yes';
 	private const ATTR_PROMOTE_LONE_ITEMS = 'promoteLoneItems';
+	private const ATTR_SHOW_USER_AVATAR = 'showUserAvatar';
 
 	protected ?string $avatarUrl = null;
 
@@ -270,7 +271,7 @@ class PersonalTools extends Component {
 	}
 
 	private function setUserAvatar(): void {
-		if ( !empty( $GLOBALS['chameleonDisableAvatar'] ) ) {
+		if ( !$this->shouldShowUserAvatar() ) {
 			return;
 		}
 
@@ -304,6 +305,10 @@ class PersonalTools extends Component {
 		}
 
 		$this->avatarUrl = $imagePage->getFile()->createThumb( 41, 41 );
+	}
+
+	private function shouldShowUserAvatar(): bool {
+		return filter_var( $this->getAttribute( self::ATTR_SHOW_USER_AVATAR ), FILTER_VALIDATE_BOOLEAN );
 	}
 
 	/**

@@ -996,6 +996,27 @@ applicable.
   This attribute applies only when used inside the
   [NavbarHorizontal](#component-navbarhorizontal) component.
 
+* `showUserAvatar`:
+  * Since Chameleon 4.4.0
+  * Allowed values: Boolean (`yes`|`no`)
+  * Default: `no`
+  * Optional.
+
+  Whether to show a user avatar instead of a generic icon for the dropdown. This will look for an image file on the
+  wiki with a title matching `USERNAME.EXTENSION`. The supported extensions are: `png`, `jpg`, `jpeg`.
+
+  Alternatively, the avatar URL can be provided by implementing the `ChameleonNavbarHorizontalPersonalToolsAvatarUrl`
+  hook. Example:
+  ```php
+  $wgHooks['ChameleonNavbarHorizontalPersonalToolsAvatarUrl'][] = function ( &$avatarUrl, $skin ) {
+    avatarUrl = 'https://upload.wikimedia.org/wikipedia/mediawiki/thumb/3/31/Chameleon.svg/170px-Chameleon.svg.png';
+    return false;
+  };
+  ```
+
+  This attribute applies only when used inside the
+  [NavbarHorizontal](#component-navbarhorizontal) component.
+
 #### Allowed Parent Elements:
 * [Structure](#structure)
 * [Cell](#cell)

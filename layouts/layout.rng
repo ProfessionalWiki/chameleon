@@ -25,13 +25,13 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 <grammar
 		xmlns="http://relaxng.org/ns/structure/1.0"
 		xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-		ns="https://ProfessionalWiki.github.io/chameleon/schema/3.6/layout.rng"
+		ns="https://ProfessionalWiki.github.io/chameleon/schema/3.7/layout.rng"
 		datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
 >
 
 	<a:documentation>
 		Schema for Chameleon layout files
-		Version 3.6
+		Version 3.7
 		Copyright 2013 - 2021, Stephan Gambke
 		GNU General Public License, version 3 (or any later version)
 	</a:documentation>
@@ -417,6 +417,12 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		<optional>
 			<attribute name="promoteLoneItems">
 				<data type="string"/>
+			</attribute>
+		</optional>
+
+		<optional>
+			<attribute name="showUserAvatar" a:defaultValue="no">
+				<ref name="BoolValues"/>
 			</attribute>
 		</optional>
 	</define>

@@ -110,7 +110,7 @@ proposed screen widths are therefore:
 | List OL                     |--------|--------|--------|--------|--------|
 | Definition list             |--------|--------|--------|--------|--------|
 | Indenting                   |--------|--------|--------|--------|--------|
-| TODO: ... (see e.g. https://meta.wikimedia.org/wiki/Help:Advanced_editing)
+| TODO: ... (see e.g. https://www.mediawiki.org/wiki/Help:Advanced_editing)
 
 
 

@@ -10,7 +10,6 @@ The following components and modifications are available:
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [`Structure`](#structure)
 - [`Grid`](#grid)
 - [`Row`](#row)
@@ -38,6 +37,7 @@ The following components and modifications are available:
 - [Component `Silent`](#component-silent)
 - [Component `SiteNotice`](#component-sitenotice)
 - [Component `Toolbox`](#component-toolbox)
+- [Component `Toc`](#component-toc)
 - [Modification `HideFor`](#modification-hidefor)
 - [Modification `ShowOnlyFor`](#modification-showonlyfor)
 - [Modification `Sticky`](#modification-sticky)
@@ -1153,6 +1153,25 @@ and a link to a list of pages linking to the current page.
 
 #### Allowed Child Elements:
 * Any modification
+
+-------------------------------------------------------------------------------
+### Component `Toc`
+
+The table of contents. This removes the table of contents from the main content and allows it to be placed elsewhere.
+Subsections are collapsed, and it tracks the user's position on the page.
+
+This component is experimental. Additional styling is required depending on where the component is placed.
+
+Since Chameleon 4.4.0
+
+#### Example usage
+
+``` xml
+<component type="Toc" />
+```
+
+#### Attributes:
+None
 
 -------------------------------------------------------------------------------
 ### Modification `HideFor`

@@ -2,7 +2,7 @@
 
 ### Chameleon 4.4.0
 
-Under development.
+Released on July 31, 2024.
 
 * Added experimental Table of Contents component `Toc` (thanks @malberts, and @DanielWTQ for bug fixes)
 * Added `showUserAvatar` parameter for showing a user avatar in the `PersonalTools` component (thanks @thomas-topway-it)

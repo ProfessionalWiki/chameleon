@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 4.4.1
+
+Released on August 2, 2024.
+
+* Fixed MediaWiki 1.39 compatibility issue with the `Toc` component (thanks @malberts)
+
 ### Chameleon 4.4.0
 
 Released on July 31, 2024.

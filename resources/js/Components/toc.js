@@ -74,8 +74,7 @@
 	}
 
 	function enableScrollspy() {
-		// Default offset is one navbar plus extra.
-		var offset = parseFloat( $( '.chameleon-toc-wrapper' ).css( '--scrollspy-offset' ) || 80 );
+		var offset = parseFloat( $( '.chameleon-toc-wrapper' ).css( '--scrollspy-offset' ) );
 
 		// TODO: re-test when using Sticky Modification.
 		// var stickyNavbar = $( '.p-navbar[style*="position"]' );

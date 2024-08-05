@@ -121,6 +121,14 @@ abstract class Component {
 	}
 
 	/**
+   * @param ChameleonTemplate $tpl
+   * @return void
+   */
+     public function setSkinTemplate( $tpl ) {
+         $this->mSkinTemplate = $tpl;
+     }
+
+	/**
 	 * @since 1.1
 	 * @return \Skins\Chameleon\Chameleon
 	 */
@@ -173,9 +181,10 @@ abstract class Component {
 	/**
 	 * Builds the HTML code for this component
 	 *
+	 * @param ChameleonTemplate $tpl
 	 * @return String the HTML code
 	 */
-	abstract public function getHtml();
+	abstract public function getHtml( $tpl );
 
 	/**
 	 * @return string[] the resource loader modules needed by this component

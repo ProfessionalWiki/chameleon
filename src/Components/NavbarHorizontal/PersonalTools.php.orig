@@ -58,7 +58,6 @@ class PersonalTools extends Component {
 	protected ?string $avatarUrl = null;
 
 	/**
-	 * @param ChameleonTemplate $tpl
 	 * @return String
 	 * @throws \FatalError
 	 * @throws \MWException

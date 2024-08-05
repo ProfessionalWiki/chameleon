@@ -44,14 +44,15 @@ class Structure extends Component {
 	/**
 	 * Builds the HTML code for the component
 	 *
+	 * @param ChameleonTemplate $tpl
 	 * @return string the HTML code
 	 * @throws \MWException
 	 */
-	public function getHtml() {
+	public function getHtml($tpl = null) {
 		$ret = '';
 
 		foreach ( $this->getSubcomponents() as $component ) {
-			$ret .= $component->getHtml();
+			$ret .= $component->getHtml( $tpl );
 		}
 
 		return $ret;

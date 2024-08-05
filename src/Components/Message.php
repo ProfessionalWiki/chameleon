@@ -40,9 +40,13 @@ class Message extends Component {
 	/**
 	 * Builds the HTML code for this component
 	 *
+	 * @param ChameleonTemplate $tpl
 	 * @return String the HTML code
 	 */
-	public function getHtml() {
+	public function getHtml($tpl = null) {
+      if ( !is_null( $tpl ) ) {
+          $this->setSkinTemplate( $tpl );
+      }
 		$name = $this->getAttribute( 'name' );
 		if ( !empty( $name ) ) {
 			return $this->getSkinTemplate()->getMsg( $name )->parse();

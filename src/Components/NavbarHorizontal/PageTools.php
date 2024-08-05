@@ -41,11 +41,15 @@ use Skins\Chameleon\Components\PageTools as GenericPageTools;
 class PageTools extends Component {
 
 	/**
+	 * @param ChameleonTemplate $tpl
 	 * @return string
 	 * @throws \ConfigException
 	 * @throws \MWException
 	 */
-	public function getHtml() {
+	public function getHtml($tpl = null) {
+      if ( !is_null( $tpl ) ) {
+          $this->setSkinTemplate( $tpl );
+      }
 		$pageTools = $this->createGenericPageTools();
 
 		$this->indent( 1 );

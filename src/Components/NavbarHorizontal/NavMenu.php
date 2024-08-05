@@ -41,10 +41,14 @@ use Skins\Chameleon\Components\NavMenu as GenNavMenu;
 class NavMenu extends Component {
 
 	/**
+	 * @param ChameleonTemplate $tpl
 	 * @return String
 	 * @throws \MWException
 	 */
-	public function getHtml() {
+	public function getHtml($tpl = null) {
+      if ( !is_null( $tpl ) ) {
+          $this->setSkinTemplate( $tpl );
+      }
 		$navMenu = new GenNavMenu( $this->getSkinTemplate(), $this->getDomElement(),
 			$this->getIndent() + 1 );
 		return $navMenu->getHtml();

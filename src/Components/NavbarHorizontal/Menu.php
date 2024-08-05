@@ -41,10 +41,14 @@ use Skins\Chameleon\Components\Menu as GenMenu;
 class Menu extends Component {
 
 	/**
+	 * @param ChameleonTemplate $tpl
 	 * @return String
 	 * @throws \MWException
 	 */
-	public function getHtml() {
+	public function getHtml($tpl = null) {
+      if ( !is_null( $tpl ) ) {
+          $this->setSkinTemplate( $tpl );
+      }
 		$menu = new GenMenu( $this->getSkinTemplate(), $this->getDomElement(), $this->getIndent() );
 		return $menu->getHtml();
 	}

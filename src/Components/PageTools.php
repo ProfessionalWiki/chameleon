@@ -65,11 +65,15 @@ class PageTools extends Component {
 	/**
 	 * Builds the HTML code for this component
 	 *
+	 * @param ChameleonTemplate $tpl
 	 * @return string the HTML code
 	 * @throws \ConfigException
 	 * @throws \MWException
 	 */
-	public function getHtml() {
+	public function getHtml($tpl = null) {
+      if ( !is_null( $tpl ) ) {
+          $this->setSkinTemplate( $tpl );
+      }
 		$toolGroups = $this->getToolGroups();
 
 		if ( $toolGroups === [] ) {

@@ -40,9 +40,13 @@ class SiteNotice extends Component {
 	/**
 	 * Builds the HTML code for this component
 	 *
+	 * @param ChameleonTemplate $tpl
 	 * @return String the HTML code
 	 */
-	public function getHtml() {
+	 public function getHtml($tpl = null) {
+         if ( !is_null( $tpl ) ) {
+             $this->setSkinTemplate( $tpl );
+         }
 		$data = $this->getSkinTemplate()->data;
 
 		if ( array_key_exists( 'sitenotice', $data ) && $data[ 'sitenotice' ] ) {

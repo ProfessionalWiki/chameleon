@@ -46,10 +46,14 @@ class Container extends Structure {
 	/**
 	 * Builds the HTML code for the main container
 	 *
+	 * @param ChameleonTemplate $tpl
 	 * @return String the HTML code
 	 * @throws \MWException
 	 */
-	public function getHtml() {
+	 public function getHtml($tpl = null) {
+			 if ( !is_null( $tpl ) ) {
+					 $this->setSkinTemplate( $tpl );
+			 }
 		$attribs = [ 'class' => $this->getClassString() ];
 
 		$id = $this->getAttribute( 'id' );
@@ -60,7 +64,7 @@ class Container extends Structure {
 		$ret = $this->indent() . \Html::openElement( 'div', $attribs );
 		$this->indent( 1 );
 
-		$ret .= parent::getHtml();
+		$ret .= parent::getHtml( $tpl );
 
 		$ret .= $this->indent( -1 ) . '</div>';
 

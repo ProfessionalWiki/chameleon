@@ -53,7 +53,7 @@ class ChameleonTemplate extends BaseTemplate {
 		if ( !$bodyOnly ) {
 			$this->html( 'headelement' );
 		}
-		echo $this->getSkin()->getComponentFactory()->getRootComponent()->getHtml();
+		echo $this->getSkin()->getComponentFactory()->getRootComponent()->getHtml($this);
 		if ( !$bodyOnly ) {
 			$this->printTrail();
 			echo "</body>\n</html>";

@@ -58,11 +58,15 @@ class PersonalTools extends Component {
 	protected ?string $avatarUrl = null;
 
 	/**
+	 * @param ChameleonTemplate $tpl
 	 * @return String
 	 * @throws \FatalError
 	 * @throws \MWException
 	 */
-	public function getHtml() {
+	public function getHtml($tpl = null) {
+      if ( !is_null( $tpl ) ) {
+          $this->setSkinTemplate( $tpl );
+      }
 		$tools = $this->getSkinTemplate()->getPersonalTools();
 
 		$this->setUserAvatar();

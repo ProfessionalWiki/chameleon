@@ -127,7 +127,7 @@
 
 // Hide page TOC to prevent page content shift.
 @include media-breakpoint-up(md) {
-	#bodyContent #toc {
+	.has-chameleon-toc #bodyContent #toc {
 		display: none;
 	}
 }

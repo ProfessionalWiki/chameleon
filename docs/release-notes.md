@@ -9,6 +9,12 @@ Under development.
 * Improved compatibility with MediaWiki 1.42 and 1.43 (thanks @JeroenDeDauw and @malberts)
 * Removed deprecated code (thanks @Daimona and @ronald-stewart-cs50)
 
+### Chameleon 4.4.2
+
+Released on October 9, 2024.
+
+* Fixed hidden Table of Contents when `Toc` component is not used (thanks @malberts)
+
 ### Chameleon 4.4.1
 
 Released on August 2, 2024.

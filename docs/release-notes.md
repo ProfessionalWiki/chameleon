@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 4.4.2
+
+Released on October 9, 2024.
+
+* Fixed hidden Table of Contents when `Toc` component is not used (thanks @malberts)
+
 ### Chameleon 4.4.1
 
 Released on August 2, 2024.

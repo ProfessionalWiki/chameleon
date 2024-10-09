@@ -47,6 +47,8 @@ class Toc extends Component {
 			return '';
 		}
 
+		$this->getSkin()->getOutput()->addBodyClasses( 'has-chameleon-toc' );
+
 		// Add Top link.
 		$html = substr_replace( $html, '<ul><li><a class="nav-link top" href="#">(Top)</a></li></ul><ul>', strpos( $html, '<ul>' ), 4 );
 

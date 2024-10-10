@@ -26,6 +26,7 @@
 
 namespace Skins\Chameleon\Menu;
 
+use MediaWiki\MediaWikiServices;
 use Title;
 
 /**
@@ -191,7 +192,7 @@ class MenuFromLines extends Menu {
 	protected function getHrefForTarget( $linkTarget ) {
 		if ( empty( $linkTarget ) ) {
 			return '#';
-		} elseif ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $linkTarget ) ||
+		} elseif ( preg_match( '/^(?:' . MediaWikiServices::getInstance()->getUrlUtils()->validProtocols() . ')/', $linkTarget ) ||
 			$linkTarget[ 0 ] === '#' ) {
 			return $linkTarget;
 		} else {

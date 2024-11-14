@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Cabal",
 			"Kuldeepburjbhalaike",
 			"Tow"
 		]
 	},
+	"skinname-chameleon": "ਗਿਰਗਿਟ",
 	"chameleon-loggedin": "ਤੁਸੀਂ $1 ਵਜੋਂ ਦਾਖ਼ਲ ਹੋਏ ਹੋ",
 	"chameleon-notloggedin": "ਤੁਸੀਂ ਲਾਗਇਨ ਨਹੀਂ ਹੋ।",
 	"chameleon-newmessages": "ਤੁਹਾਡੇ ਲਈ ਨਵੇਂ ਸੁਨੇਹੇ ਹਨ।",

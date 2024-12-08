@@ -111,3 +111,9 @@
 .wikiEditor-ui * {
 	box-sizing: content-box;
 }
+
+/* Extension PageForm */
+form#pfForm  {
+	clear: both;
+	border-top: $hr-border-width solid $hr-border-color;
+}

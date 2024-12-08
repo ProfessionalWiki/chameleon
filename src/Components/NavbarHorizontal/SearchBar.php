@@ -41,9 +41,13 @@ use Skins\Chameleon\Components\SearchBar as GenericSearchBar;
 class SearchBar extends Component {
 
 	/**
+	 * @param ChameleonTemplate $tpl
 	 * @return String
 	 */
-	public function getHtml() {
+	public function getHtml($tpl = null) {
+      if ( !is_null( $tpl ) ) {
+          $this->setSkinTemplate( $tpl );
+      }
 		$search = new GenericSearchBar( $this->getSkinTemplate(), $this->getDomElement(),
 			$this->getIndent() );
 		$search->addClasses( 'navbar-form' );

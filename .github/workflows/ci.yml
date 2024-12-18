@@ -27,7 +27,7 @@ jobs:
             php: 8.3
             experimental: false
           - mw: 'master'
-            php: 8.3
+            php: 8.4
             experimental: true
 
     runs-on: ubuntu-latest

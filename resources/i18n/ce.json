@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Исмаил Садуев",
 			"Умар"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
 	"chameleon-desc": "Bootstrap 4 лелош чӀогӀа говза тема",
 	"chameleon-loggedin": "Ахьа болх беш бу $1 санна.",
-	"chameleon-notloggedin": "Системин довзийтар",
+	"chameleon-notloggedin": "Хьо чу ца (й)ваьлла.",
 	"chameleon-newmessages": "Хьуна кхаьчна керла хаам.",
 	"chameleon-nonewmessages": "Хьан бац керла хаам.",
 	"chameleon-search-aria-label": "АгӀонан чугӀо"

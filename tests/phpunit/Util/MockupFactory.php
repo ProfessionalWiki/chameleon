@@ -27,6 +27,7 @@ namespace Skins\Chameleon\Tests\Util;
 use Config;
 use FauxRequest;
 use Message;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Skins\Chameleon\Chameleon;
 use Skins\Chameleon\ChameleonTemplate;
@@ -85,7 +86,7 @@ class MockupFactory {
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|ChameleonTemplate
+	 * @return MockObject|ChameleonTemplate
 	 * @throws \MWException
 	 */
 	public function getChameleonSkinTemplateStub() {
@@ -232,7 +233,7 @@ class MockupFactory {
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 * @return MockObject
 	 */
 	protected function getTranslatorStub() {
 		$translator = $this->testCase->getMockBuilder( stdClass::class )
@@ -247,7 +248,7 @@ class MockupFactory {
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 * @return MockObject
 	 */
 	protected function getMessageStub() {
 		$message = $this->testCase->getMockBuilder( Message::class )
@@ -262,7 +263,7 @@ class MockupFactory {
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 * @return MockObject
 	 * @throws \MWException
 	 */
 	protected function getSkinStub() {
@@ -301,7 +302,7 @@ class MockupFactory {
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 * @return MockObject
 	 */
 	protected function getConfigStub() {
 		$config = $this->testCase->getMockBuilder( Config::class )
@@ -312,7 +313,7 @@ class MockupFactory {
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 * @return MockObject
 	 */
 	protected function getComponentStub() {
 		$component = $this->testCase->getMockBuilder( Component::class )
@@ -327,7 +328,7 @@ class MockupFactory {
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 * @return MockObject
 	 */
 	protected function getUserStub() {
 		$request = new FauxRequest();
@@ -380,7 +381,7 @@ class MockupFactory {
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 * @return MockObject
 	 */
 	protected function getTitleStub() {
 		$title = $this->testCase->getMockBuilder( Title::class )
@@ -395,7 +396,7 @@ class MockupFactory {
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|\PHPUnit_Framework_MockObject_MockObject
+	 * @return MockObject
 	 */
 	protected function getComponentFactoryStub() {
 		$factory = $this->testCase->getMockBuilder( ComponentFactory::class )

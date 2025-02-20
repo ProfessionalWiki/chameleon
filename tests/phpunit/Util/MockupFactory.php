@@ -95,7 +95,6 @@ class MockupFactory {
 			->getMock();
 
 		$chameleonTemplate->data = $this->getSkinTemplateDummyDataSetForMainNamespace();
-		$chameleonTemplate->translator = $this->getTranslatorStub();
 
 		$dataMap = array_map(
 			function ( $key, $value ) {
@@ -230,21 +229,6 @@ class MockupFactory {
 			'dataAfterContent'   => 'SomeDataAfterContent',
 			'catlinks'           => 'SomeCategory',
 		];
-	}
-
-	/**
-	 * @return MockObject
-	 */
-	protected function getTranslatorStub() {
-		$translator = $this->testCase->getMockBuilder( stdClass::class )
-			->setMethods( [ 'translate' ] )
-			->getMock();
-
-		$translator->expects( $this->testCase->any() )
-			->method( 'translate' )
-			->will( $this->testCase->returnValue( 'translate' ) );
-
-		return $translator;
 	}
 
 	/**

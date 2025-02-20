@@ -243,8 +243,7 @@ class SetupAfterCache {
 
 				return new Chameleon( [
 					'name' => 'chameleon',
-					'styles' => $styles,
-					'bodyOnly' => version_compare( $this->configuration['wgVersion'], '1.39', '>=' ),
+					'styles' => $styles
 				] );
 			} );
 	}

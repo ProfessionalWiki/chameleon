@@ -8,6 +8,8 @@ Under development.
 * Raised minimum PHP version from 7.4.3 to 8.0
 * Improved compatibility with MediaWiki 1.42 and 1.43 (thanks @JeroenDeDauw and @malberts)
 * Removed deprecated code (thanks @Daimona and @ronald-stewart-cs50)
+* Fixed scrolling when heading contains special characters (thanks @gesinn-it-ilm)
+* Translation updates for system messages (thanks @translatewiki and its translator community)
 
 ### Chameleon 4.4.2
 

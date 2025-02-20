@@ -86,10 +86,9 @@ class MockupFactory {
 	}
 
 	/**
-	 * @return MockObject|ChameleonTemplate
 	 * @throws \MWException
 	 */
-	public function getChameleonSkinTemplateStub() {
+	public function getChameleonSkinTemplateStub(): MockObject|ChameleonTemplate {
 		$chameleonTemplate = $this->testCase->getMockBuilder( ChameleonTemplate::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -231,10 +230,7 @@ class MockupFactory {
 		];
 	}
 
-	/**
-	 * @return MockObject
-	 */
-	protected function getMessageStub() {
+	protected function getMessageStub(): MockObject {
 		$message = $this->testCase->getMockBuilder( Message::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -247,10 +243,9 @@ class MockupFactory {
 	}
 
 	/**
-	 * @return MockObject
 	 * @throws \MWException
 	 */
-	protected function getSkinStub() {
+	protected function getSkinStub(): MockObject {
 		$title = Title::newFromText( 'FOO' );
 		$request = new FauxRequest();
 
@@ -285,10 +280,7 @@ class MockupFactory {
 		return $skin;
 	}
 
-	/**
-	 * @return MockObject
-	 */
-	protected function getConfigStub() {
+	protected function getConfigStub(): MockObject{
 		$config = $this->testCase->getMockBuilder( Config::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -296,10 +288,7 @@ class MockupFactory {
 		return $config;
 	}
 
-	/**
-	 * @return MockObject
-	 */
-	protected function getComponentStub() {
+	protected function getComponentStub(): MockObject {
 		$component = $this->testCase->getMockBuilder( Component::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -311,10 +300,7 @@ class MockupFactory {
 		return $component;
 	}
 
-	/**
-	 * @return MockObject
-	 */
-	protected function getUserStub() {
+	protected function getUserStub(): MockObject {
 		$request = new FauxRequest();
 
 		$user = $this->testCase->getMockBuilder( User::class )
@@ -364,10 +350,7 @@ class MockupFactory {
 		}
 	}
 
-	/**
-	 * @return MockObject
-	 */
-	protected function getTitleStub() {
+	protected function getTitleStub(): MockObject {
 		$title = $this->testCase->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -379,10 +362,7 @@ class MockupFactory {
 		return $title;
 	}
 
-	/**
-	 * @return MockObject
-	 */
-	protected function getComponentFactoryStub() {
+	protected function getComponentFactoryStub(): MockObject {
 		$factory = $this->testCase->getMockBuilder( ComponentFactory::class )
 			->disableOriginalConstructor()
 			->getMock();

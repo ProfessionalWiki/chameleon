@@ -59,7 +59,7 @@
 	function adjustScroll() {
 		var $header = $( 'nav.p-navbar.sticky' ),
 			headerHeight = $header.height() + 20,
-			hash = window.location.hash.replace( '#', '' ),
+			hash = decodeURIComponent( window.location.hash.replace( '#', '' ) ),
 			$target = $( '[id="' + hash + '"]' );
 
 		if ( !$header.length || !hash || !$target.length ) {

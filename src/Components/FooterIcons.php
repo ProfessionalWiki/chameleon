@@ -71,7 +71,7 @@ class FooterIcons extends Component {
 
 			foreach ( $footerIcons as $icon ) {
 				$lines[] = $this->indent() . '<div>' .
-					$this->getSkinTemplate()->getSkin()->makeFooterIcon( $icon ) . '</div>';
+					$this->getSkinTemplate()->makeFooterIcon( $icon ) . '</div>';
 			}
 
 		}

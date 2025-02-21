@@ -111,9 +111,7 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 
 		$features = $this->getBaseFeatures();
 
-		if ( version_compare( MW_VERSION, '1.39', '>=' ) ) {
-			$features[] = 'content-links-external';
-		}
+		$features[] = 'content-links-external';
 
 		$resourceLoader->expects( $this->exactly( 2 ) )
 			->method( 'register' )
@@ -135,10 +133,6 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 	}
 
 	private function getBaseFeatures(): array {
-		if ( version_compare( MW_VERSION, '1.39', '<' ) ) {
-			return [ 'elements', 'content', 'legacy', 'toc' ];
-		}
-
 		return [
 			'elements',
 			'content-links',

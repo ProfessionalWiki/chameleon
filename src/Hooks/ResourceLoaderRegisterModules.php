@@ -70,10 +70,6 @@ class ResourceLoaderRegisterModules {
 	}
 
 	private function getFeatures(): array {
-		if ( version_compare( MW_VERSION, '1.39', '<' ) ) {
-			return [ 'elements', 'content', 'legacy', 'toc' ];
-		}
-
 		$features = [
 			'elements',
 			'content-links',

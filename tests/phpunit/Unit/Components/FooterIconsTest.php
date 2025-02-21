@@ -47,9 +47,7 @@ class FooterIconsTest extends GenericComponentTestCase {
 	public function testGetHtml() {
 		$chameleonTemplate = $this->getChameleonSkinTemplateStub();
 
-		$skin = $chameleonTemplate->getSkin();
-
-		$skin->expects( $this->exactly( 4 ) )
+		$chameleonTemplate->expects( $this->exactly( 4 ) )
 			->method( 'makeFooterIcon' )
 			->withConsecutive(
 				[ $this->equalTo( 'icon1' ) ],
@@ -57,7 +55,7 @@ class FooterIconsTest extends GenericComponentTestCase {
 				[ $this->equalTo( 'icon3' ) ],
 				[ $this->equalTo( 'icon4' ) ]
 			)
-			->willReturn( $this->returnValue( 'SomeHTML' ) );
+			->willReturn( 'SomeHTML' );
 
 		$chameleonTemplate->expects( $this->any() )
 			->method( 'getFooterIconsWithImage' )

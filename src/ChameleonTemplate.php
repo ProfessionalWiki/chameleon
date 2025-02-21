@@ -157,4 +157,9 @@ class ChameleonTemplate extends BaseTemplate {
 
 		return $footericons;
 	}
+
+	public function makeFooterIcon( string|array $icon ): string {
+		return $this->getSkin()->makeFooterIcon( $icon );
+	}
+
 }

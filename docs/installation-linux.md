@@ -15,17 +15,17 @@ operating systems as well:
    to the `require` section:
    ``` json
    "require": {
-       "mediawiki/chameleon-skin": "~3.0"
+       "mediawiki/chameleon-skin": "~5.0"
    },
    ```
-   
+
    **Remark:** If you do not have a `composer.local.json` file, but a
    `composer.local.json-sample`, rename the `-sample` file and add the
    `"require"` section. It should then look like this:
    ``` json
    {
        "require": {
-           "mediawiki/chameleon-skin": "~3.0"
+           "mediawiki/chameleon-skin": "~5.0"
        },
        "extra": {
            "merge-plugin": {
@@ -36,7 +36,7 @@ operating systems as well:
        }
    }
    ```
-   
+
 5. To actually install Chameleon run the command
    ```bash
    COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~3.0
@@ -47,7 +47,7 @@ operating systems as well:
    wfLoadSkin( 'chameleon' );
    ```
    as the last line.
-   
+
    To set Chameleon as the default skin, find `$wgDefaultSkin` and amend it:
    ```php
    $wgDefaultSkin='chameleon';

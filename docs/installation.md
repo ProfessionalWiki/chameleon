@@ -2,8 +2,8 @@
 
 ### Requirements
 
-- PHP 7.4.3 or later (tested up to PHP 8.1)
-- MediaWiki 1.35 or later (tested up to MediaWiki 1.39)
+- PHP 8.0.0 or later (tested up to PHP 8.3)
+- MediaWiki 1.39 or later (tested up to MediaWiki 1.43)
 
 ### Installation
 
@@ -26,7 +26,7 @@ Here is the short version:
 On a command line go to your MediaWiki installation directory and run these two commands
 
 ```
-COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~4.0
+COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~5.0
 ```
 ```
 composer update mediawiki/chameleon-skin --no-dev -o
@@ -76,7 +76,7 @@ If you run into problems, try the
 
 From your MediaWiki installation directory run `composer update "mediawiki/chameleon-skin" --no-dev -o`
 
-If you want to upgrade from Chameleon 2.x to 3.x, first edit `composer.local.json`. Change `"mediawiki/chameleon-skin": "~2.0"` to `"mediawiki/chameleon-skin": "~3.0"`.
+If you want to upgrade from Chameleon 4.x to 5.x, first edit `composer.local.json`. Change `"mediawiki/chameleon-skin": "~4.0"` to `"mediawiki/chameleon-skin": "~5.0"`.
 
 ### De-installation with Composer
 

@@ -1,5 +1,11 @@
 ## Release Notes
 
+### Chameleon 5.x.x
+
+Under development.
+
+* Removed deprecated ResourceLoaderRegisterModules features (thanks @lyrixn)
+
 ### Chameleon 5.0.0
 
 Released on February 21, 2025.

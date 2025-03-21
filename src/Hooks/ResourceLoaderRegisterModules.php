@@ -83,6 +83,10 @@ class ResourceLoaderRegisterModules {
 			'toc'
 		];
 
+		if ( version_compare( MW_VERSION, '1.43', '>=') ) {
+			$features = array_values(array_diff($features, ['i18n-all-lists-margins', 'interface-message-box']));
+		}
+
 		if ( $this->configuration['egChameleonEnableExternalLinkIcons'] === true ) {
 			$features[] = 'content-links-external';
 		}

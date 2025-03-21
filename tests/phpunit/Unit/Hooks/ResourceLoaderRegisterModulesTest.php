@@ -133,7 +133,7 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 	}
 
 	private function getBaseFeatures(): array {
-		return [
+		$features = [
 			'elements',
 			'content-links',
 			'content-media',
@@ -145,6 +145,13 @@ class ResourceLoaderRegisterModulesTest extends TestCase {
 			'i18n-headings',
 			'toc'
 		];
+
+		if ( version_compare( MW_VERSION, '1.43', '>=' ) ) {
+			$removed = [ 'i18n-all-lists-margins', 'interface-message-box' ];
+			$features = array_values( array_diff( $features, $removed ) );
+		}
+
+		return $features;
 	}
 
 }

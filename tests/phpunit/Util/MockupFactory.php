@@ -24,8 +24,9 @@
 
 namespace Skins\Chameleon\Tests\Util;
 
-use Config;
-use FauxRequest;
+use MediaWiki\Config;
+use MediaWiki\Request\FauxRequest;
+use MediaWiki\Title\Title;
 use Message;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -33,8 +34,6 @@ use Skins\Chameleon\Chameleon;
 use Skins\Chameleon\ChameleonTemplate;
 use Skins\Chameleon\ComponentFactory;
 use Skins\Chameleon\Components\Component;
-use stdClass;
-use Title;
 use User;
 
 // @codingStandardsIgnoreStart
@@ -96,7 +95,7 @@ class MockupFactory {
 		$chameleonTemplate->data = $this->getSkinTemplateDummyDataSetForMainNamespace();
 
 		$dataMap = array_map(
-			function ( $key, $value ) {
+			static function ( $key, $value ) {
 				return [ $key, null, $value ];
 			},
 			array_keys( $chameleonTemplate->data ),
@@ -123,7 +122,6 @@ class MockupFactory {
 			->method( 'getSidebar' )
 			->will( $this->testCase->returnValue( [] ) );
 
-
 		if ( version_compare( MW_VERSION, '1.41', '<' ) ) {
 			$chameleonTemplate->expects( $this->testCase->any() )
 				->method( 'getToolbox' )
@@ -136,7 +134,7 @@ class MockupFactory {
 				'foo' => [ 'id' => 'pt-foo' ],
 				'bar' => [ 'id' => 'pt-bar' ],
 				'notifications-alert' => [ 'id' => 'pt-notifications-alert' ],
-				'notifications-notice' => [ 'id' => 'pt-notifications-notice'],
+				'notifications-notice' => [ 'id' => 'pt-notifications-notice' ],
 			] ) );
 
 		$chameleonTemplate->expects( $this->testCase->any() )
@@ -280,7 +278,7 @@ class MockupFactory {
 		return $skin;
 	}
 
-	protected function getConfigStub(): MockObject{
+	protected function getConfigStub(): MockObject {
 		$config = $this->testCase->getMockBuilder( Config::class )
 			->disableOriginalConstructor()
 			->getMock();

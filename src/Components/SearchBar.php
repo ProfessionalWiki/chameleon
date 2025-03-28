@@ -26,8 +26,9 @@
 
 namespace Skins\Chameleon\Components;
 
-use Linker;
-use Skin;
+use Exception;
+use MediaWiki\Linker\Linker;
+use MediaWiki\Html\Html;
 use Skins\Chameleon\IdRegistry;
 
 /**
@@ -45,10 +46,10 @@ class SearchBar extends Component {
 	 * Builds the HTML code for this component
 	 *
 	 * @return string
-	 * @throws \MWException
+	 * @throws Exception
 	 */
 	public function getHtml() {
-		$attribsSearchFormWrapper = \Html::expandAttributes( [
+		$attribsSearchFormWrapper = Html::expandAttributes( [
 				'id'    => IdRegistry::getRegistry()->getId( 'p-search' ),
 				'class' => 'p-search ' . $this->getClassString(),
 				'role'  => 'search',
@@ -57,7 +58,7 @@ class SearchBar extends Component {
 
 		$tooltipSearchFormWrapper = Linker::tooltip( 'p-search' );
 
-		$attribsSearchForm = \Html::expandAttributes( [
+		$attribsSearchForm = Html::expandAttributes( [
 				'id'    => IdRegistry::getRegistry()->getId( 'searchform' ),
 				'class' => 'mw-search',
 				'action' => $this->getSkinTemplate()->data[ 'wgScript' ],
@@ -107,7 +108,7 @@ class SearchBar extends Component {
 
 	/**
 	 * @return string
-	 * @throws \MWException
+	 * @throws Exception
 	 */
 	private function getGoButton() {
 		$valueAttr = 'searcharticle';
@@ -120,7 +121,7 @@ class SearchBar extends Component {
 
 	/**
 	 * @return string
-	 * @throws \MWException
+	 * @throws Exception
 	 */
 	private function getSearchButton() {
 		$valueAttr = 'searchbutton';
@@ -139,7 +140,7 @@ class SearchBar extends Component {
 	 * @param string $glyphicon
 	 *
 	 * @return string
-	 * @throws \MWException
+	 * @throws Exception
 	 */
 	private function getButton( $button, $valueAttr, $idAttr, $nameAttr, $glyphicon ) {
 		if ( $this->shouldShowButton( $button ) ) {
@@ -158,7 +159,7 @@ class SearchBar extends Component {
 				Linker::tooltipAndAccesskeyAttribs( "search-$nameAttr" )
 			);
 
-			return $this->indent() . \Html::rawElement( 'button', $buttonAttrs );
+			return $this->indent() . Html::rawElement( 'button', $buttonAttrs );
 		}
 
 		return '';

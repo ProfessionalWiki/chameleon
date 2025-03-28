@@ -26,6 +26,7 @@
 
 namespace Skins\Chameleon\Components\NavbarHorizontal;
 
+use MediaWiki\Html\Html;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\Components\PageTools as GenericPageTools;
 
@@ -57,7 +58,7 @@ class PageTools extends Component {
 		if ( $actionButtonHtmlFragments !== [] || $pageToolsHtml !== '' ) {
 
 			return $this->indent() . '<!-- page tools -->' .
-				$this->indent() . \Html::rawElement( 'div', [ 'class' => 'navbar-tools navbar-nav ' .
+				$this->indent() . Html::rawElement( 'div', [ 'class' => 'navbar-tools navbar-nav ' .
 					$this->getClassString() ],
 					implode( $actionButtonHtmlFragments ) .
 					$pageToolsHtml .
@@ -199,8 +200,8 @@ class PageTools extends Component {
 			return '';
 		}
 
-		return $this->indent() . \Html::rawElement( 'div', [ 'class' => 'navbar-tool dropdown' ],
-				$this->indent( 1 ) . \Html::rawElement( 'a', [ 'data-toggle' => 'dropdown',
+		return $this->indent() . Html::rawElement( 'div', [ 'class' => 'navbar-tool dropdown' ],
+				$this->indent( 1 ) . Html::rawElement( 'a', [ 'data-toggle' => 'dropdown',
 				'data-boundary' => 'viewport', 'class' => 'navbar-more-tools', 'href' => '#',
 				'title' => $this->getSkinTemplate()->getMsg( 'specialpages-group-pagetools' )->text() ] ) .
 				$pageToolsHtml . $this->indent( -1 )

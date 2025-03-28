@@ -26,6 +26,7 @@
 
 namespace Skins\Chameleon\Components\NavbarHorizontal;
 
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\IdRegistry;
@@ -104,11 +105,11 @@ class PersonalTools extends Component {
 		return $echoHtml .
 			$this->indent() . '<!-- personal tools -->' .
 			$this->indent() . '<div class="navbar-tools navbar-nav" >' .
-			$this->indent( 1 ) . \Html::rawElement( 'div',
+			$this->indent( 1 ) . Html::rawElement( 'div',
 				[ 'class' => 'navbar-tool' . ( !$this->avatarUrl ? '' : ' avatar' ) . ' dropdown' ],
 
 				$this->getDropdownToggle() .
-				$this->indent( 1 ) . \Html::rawElement( 'div',
+				$this->indent( 1 ) . Html::rawElement( 'div',
 					[ 'class' => 'p-personal-tools dropdown-menu' ],
 					$this->getToolsHtml( $tools ) . $this->indent() ) .
 				$this->indent( -1 )

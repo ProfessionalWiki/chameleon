@@ -26,8 +26,10 @@
 
 namespace Skins\Chameleon\Components;
 
-use Linker;
-use Sanitizer;
+use Exception;
+use MediaWiki\Html\Html;
+use MediaWiki\Linker\Linker;
+use MediaWiki\Parser\Sanitizer;
 use Skins\Chameleon\IdRegistry;
 
 /**
@@ -46,7 +48,7 @@ class NavMenu extends Component {
 	 * Builds the HTML code for this component
 	 *
 	 * @return string the HTML code
-	 * @throws \MWException
+	 * @throws Exception
 	 */
 	public function getHtml() {
 		$ret = '';
@@ -103,7 +105,7 @@ class NavMenu extends Component {
 	 * @param bool $flatten
 	 *
 	 * @return string
-	 * @throws \MWException
+	 * @throws Exception
 	 */
 	protected function getDropdownForNavMenu( $menuName, $menuDescription, $flatten = false ) {
 		// open list item containing the dropdown
@@ -132,7 +134,7 @@ class NavMenu extends Component {
 	 * @param int $indent
 	 *
 	 * @return string
-	 * @throws \MWException
+	 * @throws Exception
 	 */
 	protected function buildMenuItemsForDropdownMenu( $menuDescription, $indent = 0 ) {
 		// build the list of submenu items
@@ -173,16 +175,16 @@ class NavMenu extends Component {
 	 * @param array $menuDescription
 	 *
 	 * @return string
-	 * @throws \MWException
+	 * @throws Exception
 	 */
 	protected function buildDropdownMenuStub( $menuDescription ) {
 		$menuId = $menuDescription['id'];
 
-		return $this->indent() . \Html::rawElement( 'div',
+		return $this->indent() . Html::rawElement( 'div',
 				[
 					'class' => 'nav-item ' . $menuId . '-dropdown',
 				],
-				\Html::rawElement( 'a',
+				Html::rawElement( 'a',
 					[
 						'href' => '#',
 						'class' => 'nav-link ' . $menuId . '-toggle',
@@ -196,20 +198,20 @@ class NavMenu extends Component {
 	 * @param array $menuDescription
 	 *
 	 * @return string
-	 * @throws \MWException
+	 * @throws Exception
 	 */
 	protected function buildDropdownOpeningTags( $menuDescription ) {
 		$menuId = $menuDescription['id'];
 
 		// open list item containing the dropdown
-		$ret = $this->indent() . \Html::openElement( 'div',
+		$ret = $this->indent() . Html::openElement( 'div',
 				[
 					'class' => 'nav-item dropdown ' . $menuId . '-dropdown',
 				] );
 
 		// add the dropdown toggle
 		$ret .= $this->indent( 1 ) .
-			\Html::rawElement( 'a',
+			Html::rawElement( 'a',
 				[
 					'href' => '#',
 					'class' => 'nav-link dropdown-toggle ' . $menuId . '-toggle',
@@ -221,7 +223,7 @@ class NavMenu extends Component {
 
 		// open list of dropdown menu items
 		$ret .=
-			$this->indent() . \Html::openElement( 'div',
+			$this->indent() . Html::openElement( 'div',
 				[
 					'class' => 'dropdown-menu ' . $menuId,
 					'id'    => IdRegistry::getRegistry()->getId( $menuId ),
@@ -232,7 +234,7 @@ class NavMenu extends Component {
 
 	/**
 	 * @return string
-	 * @throws \MWException
+	 * @throws Exception
 	 */
 	protected function buildDropdownClosingTags() {
 		return $this->indent() . '</div>' .

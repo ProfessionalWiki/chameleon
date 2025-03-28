@@ -26,8 +26,7 @@
 
 namespace Skins\Chameleon\Components\NavbarHorizontal;
 
-use Hooks;
-use Linker;
+use MediaWiki\Linker\Linker;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\IdRegistry;
 
@@ -46,8 +45,8 @@ class Toolbox extends Component {
 	/**
 	 * Builds the HTML code for this component
 	 *
-	 * @return String the HTML code
-	 * @throws \MWException
+	 * @return string the HTML code
+	 * @throws \Exception
 	 */
 	public function getHtml() {
 		$introComment = $this->indent() . '<!-- toolbox -->';
@@ -68,7 +67,7 @@ class Toolbox extends Component {
 	 *
 	 * @return string[]
 	 * @throws \FatalError
-	 * @throws \MWException
+	 * @throws \Exception
 	 */
 	private function getLinkListItems( $indent = 0 ) {
 		$this->indent( $indent );

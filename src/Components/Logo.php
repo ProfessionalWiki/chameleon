@@ -26,7 +26,7 @@
 
 namespace Skins\Chameleon\Components;
 
-use Linker;
+use MediaWiki\Linker\Linker;
 use Skins\Chameleon\IdRegistry;
 
 /**

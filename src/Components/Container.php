@@ -26,6 +26,7 @@
 
 namespace Skins\Chameleon\Components;
 
+use MediaWiki\Html\Html;
 use Skins\Chameleon\IdRegistry;
 
 /**
@@ -46,7 +47,7 @@ class Container extends Structure {
 	/**
 	 * Builds the HTML code for the main container
 	 *
-	 * @return String the HTML code
+	 * @return string the HTML code
 	 * @throws \MWException
 	 */
 	public function getHtml() {
@@ -57,7 +58,7 @@ class Container extends Structure {
 			$attribs['id'] = IdRegistry::getRegistry()->getId( $id );
 		}
 
-		$ret = $this->indent() . \Html::openElement( 'div', $attribs );
+		$ret = $this->indent() . Html::openElement( 'div', $attribs );
 		$this->indent( 1 );
 
 		$ret .= parent::getHtml();

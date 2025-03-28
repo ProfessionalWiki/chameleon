@@ -27,6 +27,7 @@
 namespace Skins\Chameleon\Components;
 
 use DOMElement;
+use MediaWiki\Html\Html;
 use Skins\Chameleon\IdRegistry;
 
 /**
@@ -92,7 +93,7 @@ class NavbarHorizontal extends Component {
 
 		$openingTags =
 			$this->indent() . '<!-- navigation bar -->' .
-			$this->indent() . \Html::openElement( 'nav', [
+			$this->indent() . Html::openElement( 'nav', [
 					'class' => $class,
 					'role'  => 'navigation',
 					// FIXME: ID to be repeated in classes
@@ -279,7 +280,7 @@ class NavbarHorizontal extends Component {
 		if ( !filter_var( $this->getAttribute( 'showTogglerText', 'false' ), FILTER_VALIDATE_BOOLEAN ) ) {
 			return '';
 		}
-		return \Html::rawElement( 'span', [ 'class' => 'navbar-toggler-text' ],
+		return Html::rawElement( 'span', [ 'class' => 'navbar-toggler-text' ],
 			$this->getSkinTemplate()->getMsg( 'chameleon-toggler' )->escaped() );
 	}
 

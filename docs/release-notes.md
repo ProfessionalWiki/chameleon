@@ -1,11 +1,11 @@
 ## Release Notes
 
-### Chameleon 5.x.x
+### Chameleon 5.0.1
 
-Under development.
+Released on March 30, 2025.
 
 * Removed deprecated ResourceLoaderRegisterModules features (thanks @lyrixn)
-* Improved compatibility with MediaWiki 1.44 (thanks @physikerwelt and @malberts)
+* Added initial compatibility with MediaWiki 1.44 (thanks @physikerwelt and @malberts)
 
 ### Chameleon 5.0.0
 

@@ -5,6 +5,7 @@
 Under development.
 
 * Removed deprecated ResourceLoaderRegisterModules features (thanks @lyrixn)
+* Improved compatibility with MediaWiki 1.44 (thanks @physikerwelt and @malberts)
 
 ### Chameleon 5.0.0
 

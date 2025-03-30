@@ -186,3 +186,12 @@ class Chameleon extends SkinTemplate {
 		return $GLOBALS[ 'egChameleonThemeFile' ];
 	}
 }
+
+// Support MediaWiki 1.39 and 1.44. Remove this when dropping support for 1.39.
+// Aliases as per https://gerrit.wikimedia.org/r/c/mediawiki/core/+/1124809
+if ( version_compare( MW_VERSION, '1.44', '>=' ) ) {
+	class_alias( \MediaWiki\Html\Html::class, 'Html' );
+	class_alias( \MediaWiki\Linker\Linker::class, 'Linker' );
+	class_alias( \MediaWiki\Request\FauxRequest::class, 'FauxRequest' );
+	class_alias( \MediaWiki\Title\Title::class, 'Title' );
+}

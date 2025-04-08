@@ -9,10 +9,10 @@
 Chameleon is a highly customizable [MediaWiki][mw] skin that uses the
 [Bootstrap][twbs] framework.
 
-It currently provides five different layouts to chose from. The standard layout
+It currently provides five different layouts to choose from. The standard layout
 features a horizontal navigation menu with dropdowns at the top and a horizontal
-menu with dropups for the language links at the bottom. Each layout is defined
-in an XML file and as such easily adaptable to your needs.
+menu with dropups for the language links at the bottom. You can easily customize
+each layout via its XML file.
 <br/>
 <br/>
 <br/>
@@ -29,9 +29,9 @@ in an XML file and as such easily adaptable to your needs.
 
 ## Contact
 
-[Paid professional support](https://professional.wiki/en/mediawiki-theme-development) is avilable via
+[Paid professional support](https://professional.wiki/en/mediawiki-theme-development) is available via
 [Professional Wiki](https://professional.wiki/), the maintainer of Chameleon. This includes installation,
-customization, and theme development.
+customization, and [theme development](https://professional.wiki/en/mediawiki-theme-development).
 
 For bug reports and feature requests, please see if it is already reported on
 the list of [open bugs][open bugs]. If not, [report it][report bugs]. Also see the

@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ahmed-Najib-Biabani-Ibrahimkhel"
+			"Ahmed-Najib-Biabani-Ibrahimkhel",
+			"شاه زمان پټان"
 		]
 	},
-	"chameleon-desc": "د کامېليون پوښۍ",
+	"chameleon-desc": "د بوټسراپ  ۴ په کارولو سره خورااېلېدونکي ځوابگره پوښۍ",
 	"chameleon-loggedin": "تاسې د $1 په توگه ننوتلئ.",
 	"chameleon-notloggedin": "تاسې نه ياست ورننوتلي.",
 	"chameleon-newmessages": "تاسې نوي پيغامونه لرئ.",

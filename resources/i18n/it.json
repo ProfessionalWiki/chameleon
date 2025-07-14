@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
+			"Emabarto01",
 			"Lorem Ipsum",
 			"Selven"
 		]
@@ -12,5 +13,6 @@
 	"chameleon-notloggedin": "Non hai effettuato l'accesso",
 	"chameleon-newmessages": "Hai nuovi messaggi.",
 	"chameleon-nonewmessages": "Non hai nuovi messaggi.",
+	"chameleon-search-aria-label": "Vai alla pagina",
 	"chameleon-toggler": "Menu"
 }

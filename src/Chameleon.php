@@ -95,16 +95,6 @@ class Chameleon extends SkinTemplate {
 	}
 
 	/**
-	 * @param OutputPage $out
-	 */
-	public function initPage( OutputPage $out ) {
-		parent::initPage( $out );
-
-		// Enable responsive behaviour on mobile browsers
-		$out->addMeta( 'viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no' );
-	}
-
-	/**
 	 * @inheritDoc
 	 */
 	protected function prepareQuickTemplate() {

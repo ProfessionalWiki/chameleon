@@ -239,6 +239,7 @@ class SetupAfterCache {
 				return new Chameleon( [
 					'name' => 'chameleon',
 					'styles' => $styles,
+					'responsive' => true,
 					'bodyOnly' => true
 				] );
 			} );

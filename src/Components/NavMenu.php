@@ -213,8 +213,8 @@ class NavMenu extends Component {
 				[
 					'href' => '#',
 					'class' => 'nav-link dropdown-toggle ' . $menuId . '-toggle',
-					'data-toggle' => 'dropdown',
-					'data-boundary' => 'viewport',
+					'data-bs-toggle' => 'dropdown',
+					'data-bs-boundary' => 'viewport',
 					'title' => Linker::titleAttrib( $menuId ),
 				],
 				htmlspecialchars( $menuDescription['header'] ) );

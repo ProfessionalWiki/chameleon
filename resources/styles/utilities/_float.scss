@@ -6,5 +6,5 @@
 //
 // @since 2.0
 
-.pull-left { @include float-left; }
-.pull-right { @include float-right; }
+.pull-left { @extend .float-start; }
+.pull-right { @extend .float-end; }

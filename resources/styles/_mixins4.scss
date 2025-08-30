@@ -1,0 +1,24 @@
+//
+// Deprecated Bootstrap 4 mixins
+//
+// TODO: Update Chameleon to not use these mixins.
+
+// For each breakpoint, define the maximum width of the container in a media query
+@mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
+	@each $breakpoint, $container-max-width in $max-widths {
+		@include media-breakpoint-up($breakpoint, $breakpoints) {
+			max-width: $container-max-width;
+		}
+	}
+}
+
+@mixin hover() {
+	&:hover { @content; }
+}
+
+@mixin hover-focus() {
+	&:hover,
+	&:focus {
+		@content;
+	}
+}

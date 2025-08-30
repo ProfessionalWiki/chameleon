@@ -1,10 +1,24 @@
-# Migrating to Chameleon 2.0:
+# Migrating to Chameleon 6.0:
+
+## Core items changed
+
+* Move from Bootstrap 4 to [Bootstrap 5](https://getbootstrap.com/docs/5.3)
+
+Please also see the [release notes](release-noted.md).
+
+## New minimum version requirements
+
+Chameleon 6 supports
+* MediaWiki 1.43.0 and later
+* PHP 8.1 and later
+
+TODO
 
 ## Core items changed
 
 * Move from Bootstrap 3 to [Bootstrap 4](https://getbootstrap.com/docs/4.3)
 * Move from Less to [SCSS](https://sass-lang.com/) (Sass)
-* New way of setting style variables in LocalSettings.php 
+* New way of setting style variables in LocalSettings.php
 * Component name changes
 
 Please also see the [release notes](release-noted.md).
@@ -26,7 +40,7 @@ It should be enough to update `composer.local.json`, run `composer update` and a
 
 ## Move from Bootstrap 3 to Bootstrap 4
 
-Chameleon 2.0 comes with [Bootstrap 4](https://getbootstrap.com/docs/4.3), an upgraded version of Bootstrap 3 that came with Chameleon 1.x. Class names from Bootstrap 3 could be different in Bootstrap 4. It is highly recommended to read Bootstrap's migration guide here: https://getbootstrap.com/docs/4.0/migration/. 
+Chameleon 2.0 comes with [Bootstrap 4](https://getbootstrap.com/docs/4.3), an upgraded version of Bootstrap 3 that came with Chameleon 1.x. Class names from Bootstrap 3 could be different in Bootstrap 4. It is highly recommended to read Bootstrap's migration guide here: https://getbootstrap.com/docs/4.0/migration/.
 
 ## Move from Less to SCSS (Sass)
 
@@ -38,7 +52,7 @@ manual rework may be necessary.
 Please be aware that the PHP SCSS compiler is only capable of working with the SCSS language variant. It can not process the
 Sass variant.
 
-##  New way of setting style variables in LocalSettings.php 
+##  New way of setting style variables in LocalSettings.php
 
 **Configuration variable name change:**
 `$egChameleonExternalLessVariables` -> `$egChameleonExternalStyleVariables`
@@ -46,7 +60,7 @@ Sass variant.
 **Using sass variables instead of less variables:**
 OLD style (1.x) example:
 ```
-$egChameleonExternalLessVariables = array(    
+$egChameleonExternalLessVariables = array(
     'font-size-base' 	=> '1rem',
     'font-size-h1' 		=> 'floor((@font-size-base * 2))', 		// originally 36px
     'font-size-h2' 		=> 'floor((@font-size-base * 1.7))',	// originally 30px
@@ -130,4 +144,3 @@ Finally the MediaWiki IRC channel (Server: [libera.chat][irc], Channel: #mediawi
 [chameleon-talk]: https://www.mediawiki.org/wiki/Skin_talk:Chameleon
 [mw-mail]: https://www.mediawiki.org/wiki/Special:EmailUser/F.trott
 [irc]: https://web.libera.chat/?channel=#mediawiki
-

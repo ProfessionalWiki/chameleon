@@ -35,15 +35,15 @@ Composer tool during installation. These are:
 * MediaWiki Bootstrap extension, which provides the Twitter Bootstrap
   framework (version 4) to other MediaWiki extensions and skins. Author: Stephan
   Gambke. See https://www.mediawiki.org/wiki/Extension:Bootstrap
-* Bootstrap 4, the most popular HTML, CSS, and JS framework for
+* Bootstrap 5, the most popular HTML, CSS, and JS framework for
   developing responsive, mobile-first projects on the web. Maintained by the
-  [Bootstrap team](https://getbootstrap.com/docs/4.3/about/team/). See
+  [Bootstrap team](https://getbootstrap.com/docs/5.3/about/team/). See
   http://getbootstrap.com/
 * Font-Awesome, a full suite of pictographic icons for easy scalable vector
   graphics on websites, created and maintained by Dave Gandy. See
   http://fontawesome.io/
-* scssphp, a compiler for SCSS written in PHP. Author: Leaf Corcoran. See
-  http://leafo.github.io/scssphp/  
+* scssphp, a compiler for SCSS written in PHP. See
+  https://github.com/scssphp/scssphp
 * loads of other software that I either forgot, am not aware of or that should
   be obvious (e.g. PHP, MediaWiki, etc.)
 

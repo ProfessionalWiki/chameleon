@@ -36,7 +36,7 @@ $cmln-link-format: $link-color none darken($link-color, 0.15) underline !default
 
 $cmln-link-formats: () !default;
 $cmln-link-formats: map_merge((
-	new: theme-color("danger") none darken(theme-color("danger"), 0.15) underline,
+	new: map-get($theme-colors, "danger") none darken(map-get($theme-colors, "danger"), 0.15) underline,
 	stub: $cmln-link-format,
 	extiw: $cmln-link-format,
 	external: $cmln-link-format,
@@ -201,8 +201,8 @@ $thumbnail-caption-padding: 3px;
 // (this value should be less than the navbar-height)
 //$navbar-logo-height: .9 * $navbar-height;
 //
-$navbar-user-loggedin: theme-color("primary");
+$navbar-user-loggedin: map-get($theme-colors, "primary");
 $navbar-user-not-loggedin: $navbar-light-disabled-color; // FIXME: Fix color
 
-$navbar-newtalk-available: theme-color("primary"); // $brand-primary;
+$navbar-newtalk-available: map-get($theme-colors, "primary"); // $brand-primary;
 $navbar-newtalk-not-available: $navbar-light-disabled-color; // FIXME: Fix color

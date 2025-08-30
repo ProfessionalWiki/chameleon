@@ -8,6 +8,7 @@
 
 @import "functions";
 // @import "variables"; // imported at the correct position in SetupAfterCache.php
+@import "mixins4";
 @import "mixins";
 @import "mediawiki.legacy.shared";
 @import "utilities";

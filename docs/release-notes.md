@@ -1,5 +1,13 @@
 ## Release Notes
 
+### Chameleon 6.0.0
+
+Under development.
+
+* Raised minimum MediaWiki version from 1.39 to 1.43
+* Raised minimum PHP version from 8.0 to 8.1
+* Implements Bootstrap 5.3
+
 ### Chameleon 5.0.1
 
 Released on March 30, 2025.

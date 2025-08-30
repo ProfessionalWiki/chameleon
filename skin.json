@@ -8,14 +8,14 @@
 		"Morne Alberts",
 		"[https://www.EntropyWins.wtf/mediawiki Jeroen De Dauw]"
 	],
-	"version": "5.0.1",
+	"version": "6.0.0-dev",
 	"url": "https://www.mediawiki.org/wiki/Skin:Chameleon",
 	"descriptionmsg": "chameleon-desc",
 	"license-name": "GPL-3.0-or-later",
 	"requires": {
-		"MediaWiki": ">= 1.39.0",
+		"MediaWiki": ">= 1.43.0",
 		"extensions": {
-			"Bootstrap": "~5.0"
+			"Bootstrap": "~6.0"
 		}
 	},
 	"AutoloadNamespaces": {

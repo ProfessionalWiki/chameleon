@@ -254,7 +254,7 @@ class PersonalTools extends Component {
 
 		$attr = [
 			'class' => $toolsClass,
-			'href' => '#', 'data-toggle' => 'dropdown', 'data-boundary' => 'viewport',
+			'href' => '#', 'data-bs-toggle' => 'dropdown', 'data-bs-boundary' => 'viewport',
 			'title' => $toolsLinkText
 		];
 

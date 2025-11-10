@@ -40,3 +40,7 @@ ol, ul {
 		}
 	}
 }
+
+table > caption {
+	caption-side: initial;
+}

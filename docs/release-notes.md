@@ -1,5 +1,12 @@
 ## Release Notes
 
+### Chameleon 5.0.2
+
+Under development.
+
+* Fixed table caption position (thanks @D-Groenewegen)
+* Translation updates for system messages (thanks @translatewiki and its translator community)
+
 ### Chameleon 5.0.1
 
 Released on March 30, 2025.

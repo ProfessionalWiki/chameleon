@@ -5,6 +5,7 @@
 Under development.
 
 * Fixed table caption position (thanks @D-Groenewegen)
+* Improved viewport tag handling (thanks @mdoggydog)
 * Translation updates for system messages (thanks @translatewiki and its translator community)
 
 ### Chameleon 5.0.1

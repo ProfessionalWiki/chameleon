@@ -2,7 +2,7 @@
 
 ### Chameleon 5.0.2
 
-Under development.
+Released on November 14, 2025.
 
 * Fixed table caption position (thanks @D-Groenewegen)
 * Improved viewport tag handling (thanks @mdoggydog)

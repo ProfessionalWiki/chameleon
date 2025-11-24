@@ -86,6 +86,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 						<value>xl</value>
 						<value>xxl</value>
 						<value>fluid</value>
+						<value>simple</value>
 					</choice>
 				</attribute>
 			</optional>

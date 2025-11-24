@@ -45,6 +45,7 @@ class Grid extends Container {
 	private const MODE_XL = 'xl';
 	private const MODE_XXL = 'xxl';
 	private const MODE_FLUID = 'fluid';
+	private const MODE_SIMPLE = 'simple';
 
 	private const VALID_MODES = [
 		self::MODE_FIXEDWIDTH,
@@ -53,7 +54,8 @@ class Grid extends Container {
 		self::MODE_LG,
 		self::MODE_XL,
 		self::MODE_XXL,
-		self::MODE_FLUID
+		self::MODE_FLUID,
+		self::MODE_SIMPLE
 	];
 
 	/**
@@ -68,6 +70,8 @@ class Grid extends Container {
 		$mode = $this->getAttribute( self::ATTR_MODE, self::MODE_FIXEDWIDTH );
 		if( $mode === self::MODE_FIXEDWIDTH || !in_array( $mode, self::VALID_MODES ) ) {
 			$this->addClasses( 'container' );
+		} elseif( $mode === self::MODE_SIMPLE ) {
+			// No class
 		} else {
 			$this->addClasses( 'container-' . $mode );
 		}

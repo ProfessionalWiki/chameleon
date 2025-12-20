@@ -14,20 +14,20 @@ jobs:
     strategy:
       matrix:
         include:
-          - mw: 'REL1_39'
-            php: 8.0
-            experimental: false
-          - mw: 'REL1_41'
+          - mw: 'REL1_43'
             php: 8.1
             experimental: false
-          - mw: 'REL1_42'
+          - mw: 'REL1_44'
             php: 8.2
             experimental: false
-          - mw: 'REL1_43'
+          - mw: 'REL1_45'
             php: 8.3
             experimental: false
           - mw: 'master'
             php: 8.4
+            experimental: true
+          - mw: 'master'
+            php: 8.5
             experimental: true
 
     runs-on: ubuntu-latest

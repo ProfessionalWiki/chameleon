@@ -26,8 +26,7 @@
 
 namespace Skins\Chameleon\Components\NavbarHorizontal;
 
-use Hooks;
-use Linker;
+use MediaWiki\Linker\Linker;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\IdRegistry;
 

@@ -25,7 +25,8 @@
 namespace Skins\Chameleon\Tests\Util;
 
 use Config;
-use FauxRequest;
+use MediaWiki\Request\FauxRequest;
+use MediaWiki\Title\Title;
 use Message;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -34,7 +35,6 @@ use Skins\Chameleon\ChameleonTemplate;
 use Skins\Chameleon\ComponentFactory;
 use Skins\Chameleon\Components\Component;
 use stdClass;
-use Title;
 use User;
 
 // @codingStandardsIgnoreStart

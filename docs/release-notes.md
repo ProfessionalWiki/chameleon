@@ -322,7 +322,7 @@ Changes:
   registration with [translatewiki](https://translatewiki.net)
 * Improve documentation
 * Replace [jquery-sticky](https://github.com/garand/sticky) by
-  [sticky-kit](http://leafo.net/sticky-kit/)
+  [sticky-kit](https://leafo.net/sticky-kit/)
 * Use sticky for the navbar of the fixedhead layout
 * NavbarHorizontal: Allow custom types and classes for Navbar elements
 * PersonalTools: Add attribute *hideNewtalkNotifier*

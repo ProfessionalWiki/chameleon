@@ -42,7 +42,7 @@ Some cases I can think of:
   compatibility.
 * Chameleon itself might become part of a tarball, e.g. some pre-build,
   pre-configured wiki for I don't know what purpose.
-* Parts of the skin might be included in other software. 
+* Parts of the skin might be included in other software.
 * If I get it right, it might be possible to use this skin (or a derivative)
   for other frameworks than MediaWiki. Didn't look into that, but it's
   conceivable.
@@ -102,4 +102,4 @@ that the one was not derived from the other.
 [why-upgrade]: https://www.gnu.org/licenses/rms-why-gplv3.html
 [wmf-git-server]: https://git.wikimedia.org/
 [patch-uploader]: https://tools.wmflabs.org/gerrit-patch-uploader/
-[WTFPL]: http://www.wtfpl.net
+[WTFPL]: https://www.wtfpl.net

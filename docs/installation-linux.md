@@ -64,4 +64,4 @@ operating systems as well:
    (On Firefox or Chrome press Ctrl+F5)
 
 [Install Composer]: https://getcomposer.org/doc/00-intro.md#installation-nix
-[cache-refresh]: http://www.refreshyourcache.com/en/home/
+[cache-refresh]: https://www.refreshyourcache.com/en/home/

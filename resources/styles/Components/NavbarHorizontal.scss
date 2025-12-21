@@ -146,7 +146,8 @@
 			//@extend .btn-#{$cmln-search-bar-btn-color}; // FIXME: Should this be ".btn-secondary"? Or some self-defined button style?
 			color: $navbar-light-color;
 
-			@include hover-focus {
+			&:hover,
+			&:focus {
 				color: $navbar-light-hover-color;
 			}
 		}

@@ -6,5 +6,7 @@
 //
 // @since 2.0
 
+// Bootstrap 4 compatibility - deprecated, will be removed in v7.0
+// See: https://getbootstrap.com/docs/5.3/migration/#utilities
 .pull-left { @extend .float-start; }
 .pull-right { @extend .float-end; }

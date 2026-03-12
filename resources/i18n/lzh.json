@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Davidzdh",
 			"SolidBlock"
 		]
 	},
-	"chameleon-loggedin": "君登與$1。",
-	"chameleon-notloggedin": "未入簿。",
+	"chameleon-loggedin": "業已籍名曰$1。",
+	"chameleon-notloggedin": "未有籍記。",
 	"chameleon-newmessages": "新訊",
 	"chameleon-nonewmessages": "無新訊"
 }

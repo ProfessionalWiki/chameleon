@@ -323,7 +323,7 @@ Some examples are provided below:
  $enable-pointer-cursor-for-buttons                    | 1
  $enable-prefers-reduced-motion-media-query            | 1
  $enable-print-styles                                  | 1
- $enable-responsive-font-sizes                         | 1
+ $enable-responsive-font-sizes                         | _Removed in Bootstrap 5 - RFS is always enabled_
  $enable-rounded                                       | 1
  $enable-shadows                                       | 1
  $enable-transitions                                   | 1
@@ -1427,7 +1427,7 @@ Some examples are provided below:
  $input-font-size-sm                                   | 0.875rem
  $input-font-weight                                    | 400
  $input-group-addon-bg                                 | #e9ecef
- $input-group-addon-border-color                       | #ced4da
+ $input-group-addon-border-color                       | _Removed in Bootstrap 5 - use `$input-border-color`_
  $input-group-addon-color                              | #495057
  $input-height                                         | calc(1.5em + 0.75rem + 2px)
  $input-height-border                                  | 2px

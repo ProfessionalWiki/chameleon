@@ -56,7 +56,7 @@
 	.navbar-nav {
 
 		&.right {
-			@extend .ml-#{$cmln-navbar-horizontal-collapse-point}-auto;
+			@extend .ms-#{$cmln-navbar-horizontal-collapse-point}-auto;
 			@extend .mt-#{$cmln-navbar-horizontal-collapse-point}-0;
 			@extend .mt-4;
 		}
@@ -112,7 +112,7 @@
 	}
 
 	.navbar-toggler {
-		@extend .ml-auto;
+		@extend .ms-auto;
 
 		.navbar-toggler-text {
 			padding-left: $navbar-toggler-padding-x;
@@ -146,7 +146,8 @@
 			//@extend .btn-#{$cmln-search-bar-btn-color}; // FIXME: Should this be ".btn-secondary"? Or some self-defined button style?
 			color: $navbar-light-color;
 
-			@include hover-focus {
+			&:hover,
+			&:focus {
 				color: $navbar-light-hover-color;
 			}
 		}
@@ -155,7 +156,7 @@
 	a.navbar-more-tools, a.navbar-usernotloggedin, a.navbar-userloggedin, a.navbar-tool-link, a:visited.navbar-tool-link {
 		    color: $navbar-light-color;
 	}
-	
+
 	.navbar-tool.avatar {
 		background: white;
 		border-radius: 99px;
@@ -167,6 +168,6 @@
 		height: 41px;
 		background-size: contain;
 		background-repeat: no-repeat;
-		background-position: center;		
+		background-position: center;
 	}
 }

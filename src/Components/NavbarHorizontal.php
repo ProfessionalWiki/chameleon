@@ -27,6 +27,7 @@
 namespace Skins\Chameleon\Components;
 
 use DOMElement;
+use MediaWiki\Html\Html;
 use Skins\Chameleon\IdRegistry;
 
 /**
@@ -92,7 +93,7 @@ class NavbarHorizontal extends Component {
 
 		$openingTags =
 			$this->indent() . '<!-- navigation bar -->' .
-			$this->indent() . \Html::openElement( 'nav', [
+			$this->indent() . Html::openElement( 'nav', [
 					'class' => $class,
 					'role'  => 'navigation',
 					// FIXME: ID to be repeated in classes
@@ -259,7 +260,7 @@ class NavbarHorizontal extends Component {
 		$id = IdRegistry::getRegistry()->getId();
 
 		return $this->indent() .
-			'<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#' . $id .
+			'<button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#' . $id .
 			'">' . $this->getTogglerText() . '</button>' .
 			IdRegistry::getRegistry()->element( 'div', [ 'class' => 'collapse navbar-collapse',
 			'id' => $id ], $tail, $this->indent() );
@@ -279,7 +280,7 @@ class NavbarHorizontal extends Component {
 		if ( !filter_var( $this->getAttribute( 'showTogglerText', 'false' ), FILTER_VALIDATE_BOOLEAN ) ) {
 			return '';
 		}
-		return \Html::rawElement( 'span', [ 'class' => 'navbar-toggler-text' ],
+		return Html::rawElement( 'span', [ 'class' => 'navbar-toggler-text' ],
 			$this->getSkinTemplate()->getMsg( 'chameleon-toggler' )->escaped() );
 	}
 

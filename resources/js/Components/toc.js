@@ -61,7 +61,10 @@
 			targetLink = $( '.chameleon-toc a[href="' + hash + '"]' );
 		}
 		if ( targetLink.length !== 0 ) {
-			targetLink.parents( '.nav.collapse' ).collapse('show');
+			targetLink.parents( '.nav.collapse' ).each( function () {
+				var collapseInstance = bootstrap.Collapse.getOrCreateInstance( this );
+				collapseInstance.show();
+			} );
 			goToLink( targetLink );
 		}
 	}
@@ -82,7 +85,10 @@
 		// 	offset += stickyNavbar.outerHeight();
 		// }
 
-		$( 'body' ).scrollspy( { target: '.chameleon-toc', offset: offset } );
+		new bootstrap.ScrollSpy( document.body, {
+			target: '.chameleon-toc',
+			offset: offset
+		} );
 	}
 
 	function addScrollspyEvent() {
@@ -131,7 +137,10 @@
 
 	function addToggleButtonClickEvent() {
 		$( '.toclevel-1 .toggle' ).click( function () {
-			$( this ).siblings( 'ul' ).collapse( 'toggle' );
+			$( this ).siblings( 'ul' ).each( function () {
+				var collapseInstance = bootstrap.Collapse.getOrCreateInstance( this );
+				collapseInstance.toggle();
+			} );
 		} );
 	}
 

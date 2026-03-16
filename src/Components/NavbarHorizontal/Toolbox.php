@@ -26,8 +26,7 @@
 
 namespace Skins\Chameleon\Components\NavbarHorizontal;
 
-use Hooks;
-use Linker;
+use MediaWiki\Linker\Linker;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\IdRegistry;
 
@@ -109,7 +108,7 @@ class Toolbox extends Component {
 		$trigger = $this->indent( 1 ) . IdRegistry::getRegistry()->element(
 				'a',
 				[ 'href' => '#', 'class' => 'nav-link dropdown-toggle p-tb-toggle',
-                  'data-toggle' => 'dropdown', 'data-boundary' => 'viewport',
+                  'data-bs-toggle' => 'dropdown', 'data-bs-boundary' => 'viewport',
                   'title' => Linker::titleAttrib( 'p-tb' ), ],
 				$this->getSkinTemplate()->getMsg( $labelMsg )->escaped()
 			);

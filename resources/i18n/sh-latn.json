@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aca",
 			"Winston Sung"
 		]
 	},
 	"skinname-chameleon": "Kameleon",
-	"chameleon-desc": "Visokoprilagodljiv i odzivni izgled koji rabi Bootstrap 4",
+	"chameleon-desc": "Visokoprilagodljiv i odzivni izgled koji koristi Bootstrap 4",
 	"chameleon-loggedin": "Prijavljeni ste kao $1.",
 	"chameleon-notloggedin": "Niste prijavljeni",
 	"chameleon-newmessages": "Imate nove poruke",

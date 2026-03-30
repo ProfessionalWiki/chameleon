@@ -118,13 +118,13 @@ $h6-font-size:                $font-size-base * 1.0 !default;
 // Links
 $link-color: $cobalt;
 $cmln-link-formats: (
-	new: ('color': $burgundy, 'hover-color': darken($burgundy, 0.15)),
+	new: ('color': $burgundy, 'hover-color': darken($burgundy, 15%)),
 );
 
 // Navbar
 $navbar-light-color:                $chambray !default; // cmln: improved contrast
-$navbar-light-hover-color:          darken($navbar-light-color, 0.15) !default;
-$navbar-light-active-color:         darken($navbar-light-color, 0.3) !default;
+$navbar-light-hover-color:          darken($navbar-light-color, 15%) !default;
+$navbar-light-active-color:         darken($navbar-light-color, 30%) !default;
 $navbar-light-disabled-color:       fade_out($navbar-light-color, 0.3) !default;
 $navbar-light-toggler-border-color: fade_out($navbar-light-color, 0.5) !default;
 
@@ -139,10 +139,10 @@ $body-bg:                   $white !default;
 $body-color:                $gray-900 !default;
 
 // PersonalTools
-$cmln-personal-tools-link-new: ('color': $gray-600, 'hover-color': darken($gray-600, 0.15)) !default;
+$cmln-personal-tools-link-new: ('color': $gray-600, 'hover-color': darken($gray-600, 15%)) !default;
 
 // PageTools
-$cmln-page-tools-link-new: ('color': $gray-600, 'hover-color': darken($gray-600, 0.15)) !default;
+$cmln-page-tools-link-new: ('color': $gray-600, 'hover-color': darken($gray-600, 15%)) !default;
 
 //$enable-caret:                                true !default;
 //$enable-rounded:                              true !default;
@@ -154,6 +154,6 @@ $cmln-page-tools-link-new: ('color': $gray-600, 'hover-color': darken($gray-600,
 //$enable-grid-classes:                         true !default;
 //$enable-pointer-cursor-for-buttons:           true !default;
 //$enable-print-styles:                         true !default;
-$enable-responsive-font-sizes:                true !default;
+//$enable-responsive-font-sizes:                true !default; // Removed in Bootstrap 5 - RFS is always enabled
 //$enable-validation-icons:                     true !default;
 //$enable-deprecation-messages:                 true !default;

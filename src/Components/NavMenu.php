@@ -26,8 +26,9 @@
 
 namespace Skins\Chameleon\Components;
 
-use Linker;
-use Sanitizer;
+use MediaWiki\Html\Html;
+use MediaWiki\Linker\Linker;
+use MediaWiki\Parser\Sanitizer;
 use Skins\Chameleon\IdRegistry;
 
 /**
@@ -178,11 +179,11 @@ class NavMenu extends Component {
 	protected function buildDropdownMenuStub( $menuDescription ) {
 		$menuId = $menuDescription['id'];
 
-		return $this->indent() . \Html::rawElement( 'div',
+		return $this->indent() . Html::rawElement( 'div',
 				[
 					'class' => 'nav-item ' . $menuId . '-dropdown',
 				],
-				\Html::rawElement( 'a',
+				Html::rawElement( 'a',
 					[
 						'href' => '#',
 						'class' => 'nav-link ' . $menuId . '-toggle',
@@ -202,26 +203,26 @@ class NavMenu extends Component {
 		$menuId = $menuDescription['id'];
 
 		// open list item containing the dropdown
-		$ret = $this->indent() . \Html::openElement( 'div',
+		$ret = $this->indent() . Html::openElement( 'div',
 				[
 					'class' => 'nav-item dropdown ' . $menuId . '-dropdown',
 				] );
 
 		// add the dropdown toggle
 		$ret .= $this->indent( 1 ) .
-			\Html::rawElement( 'a',
+			Html::rawElement( 'a',
 				[
 					'href' => '#',
 					'class' => 'nav-link dropdown-toggle ' . $menuId . '-toggle',
-					'data-toggle' => 'dropdown',
-					'data-boundary' => 'viewport',
+					'data-bs-toggle' => 'dropdown',
+					'data-bs-boundary' => 'viewport',
 					'title' => Linker::titleAttrib( $menuId ),
 				],
 				htmlspecialchars( $menuDescription['header'] ) );
 
 		// open list of dropdown menu items
 		$ret .=
-			$this->indent() . \Html::openElement( 'div',
+			$this->indent() . Html::openElement( 'div',
 				[
 					'class' => 'dropdown-menu ' . $menuId,
 					'id'    => IdRegistry::getRegistry()->getId( $menuId ),

@@ -57,7 +57,7 @@ class Menu extends Component {
 
 			// @codingStandardsIgnoreStart
 			if ( $depth === 1 && !empty( $subitems ) ) {
-				return "<div class=\"nav-item dropdown\"><a class=\"nav-link dropdown-toggle $class\" href=\"#\"  data-toggle=\"dropdown\"  data-boundary=\"viewport\">$text</a>$subitems</div>";
+				return "<div class=\"nav-item dropdown\"><a class=\"nav-link dropdown-toggle $class\" href=\"#\"  data-bs-toggle=\"dropdown\"  data-bs-boundary=\"viewport\">$text</a>$subitems</div>";
 			} else {
 				return "<div class=\"nav-item\"><a class=\"nav-link $class\"  href=\"$href\">$text</a>$subitems</div>";
 			}

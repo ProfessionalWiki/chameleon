@@ -20,13 +20,13 @@
 		@extend .btn-#{$cmln-search-bar-btn-color}; // FIXME: Should this be ".btn-secondary"? Or some self-defined button style?
 
 		border: {
-			top-color: $input-group-addon-border-color;
-			bottom-color: $input-group-addon-border-color;
+			top-color: $input-border-color;
+			bottom-color: $input-border-color;
 			left-width: 0;
 		}
 
 		&:last-child {
-			border-right-color: $input-group-addon-border-color;
+			border-right-color: $input-border-color;
 		}
 	}
 }

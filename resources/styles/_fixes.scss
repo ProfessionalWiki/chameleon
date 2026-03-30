@@ -6,14 +6,15 @@
 //
 // @since 2.0
 
+// TODO: BS53
 // Add a max width for container when screen width is xs
-@if $enable-grid-classes {
-	@include media-breakpoint-down(xs) {
-		.container {
-			@include make-container-max-widths((xs: map_get($container-max-widths, sm)), $grid-breakpoints);
-		}
-	}
-}
+//@if $enable-grid-classes {
+//	@include media-breakpoint-down(xs) {
+//		.container {
+//			@include make-container-max-widths((xs: map_get($container-max-widths, sm)), $grid-breakpoints);
+//		}
+//	}
+//}
 
 // Put the font setting on the :before pseudo element, not on the element itself
 // Do not set the line-height on the element

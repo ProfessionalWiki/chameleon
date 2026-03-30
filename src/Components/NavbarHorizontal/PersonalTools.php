@@ -26,7 +26,9 @@
 
 namespace Skins\Chameleon\Components\NavbarHorizontal;
 
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use Skins\Chameleon\Components\Component;
 use Skins\Chameleon\IdRegistry;
 
@@ -104,11 +106,11 @@ class PersonalTools extends Component {
 		return $echoHtml .
 			$this->indent() . '<!-- personal tools -->' .
 			$this->indent() . '<div class="navbar-tools navbar-nav" >' .
-			$this->indent( 1 ) . \Html::rawElement( 'div',
+			$this->indent( 1 ) . Html::rawElement( 'div',
 				[ 'class' => 'navbar-tool' . ( !$this->avatarUrl ? '' : ' avatar' ) . ' dropdown' ],
 
 				$this->getDropdownToggle() .
-				$this->indent( 1 ) . \Html::rawElement( 'div',
+				$this->indent( 1 ) . Html::rawElement( 'div',
 					[ 'class' => 'p-personal-tools dropdown-menu' ],
 					$this->getToolsHtml( $tools ) . $this->indent() ) .
 				$this->indent( -1 )
@@ -254,7 +256,7 @@ class PersonalTools extends Component {
 
 		$attr = [
 			'class' => $toolsClass,
-			'href' => '#', 'data-toggle' => 'dropdown', 'data-boundary' => 'viewport',
+			'href' => '#', 'data-bs-toggle' => 'dropdown', 'data-bs-boundary' => 'viewport',
 			'title' => $toolsLinkText
 		];
 
@@ -294,7 +296,7 @@ class PersonalTools extends Component {
 		$imagePage = null;
 		$username = $user->getName();
 		foreach ( $imageExt as $ext ) {
-			$title = \Title::makeTitleSafe( NS_FILE, "$username.$ext" );
+			$title = Title::makeTitleSafe( NS_FILE, "$username.$ext" );
 			if ( $title && $title->isKnown() ) {
 				$imagePage = new \WikiFilePage( $title );
 				break;

@@ -32,31 +32,31 @@ $cmln-grid-breakpoints: (
 $grid-breakpoints: $cmln-grid-breakpoints;
 
 // Global textual link colors.
-$cmln-link-format: $link-color none darken($link-color, 0.15) underline !default;
+$cmln-link-format: $link-color none darken($link-color, 15%) underline !default;
 
 $cmln-link-formats: () !default;
-$cmln-link-formats: map_merge((
-	new: theme-color("danger") none darken(theme-color("danger"), 0.15) underline,
+$cmln-link-formats: map-merge((
+	new: map-get($theme-colors, "danger") none darken(map-get($theme-colors, "danger"), 15%) underline,
 	stub: $cmln-link-format,
 	extiw: $cmln-link-format,
 	external: $cmln-link-format,
 ), $cmln-link-formats);
 
 // PersonalTools
-$cmln-personal-tools-item-margin: map_get( $spacers, 4 ) !default;
+$cmln-personal-tools-item-margin: map-get( $spacers, 4 ) !default;
 
 $cmln-personal-tools-font-size: $font-size-sm !default;
-$cmln-personal-tools-item-margin: map_get( $spacers, 4 ) !default;
+$cmln-personal-tools-item-margin: map-get( $spacers, 4 ) !default;
 
 $cmln-personal-tools-link: $cmln-link-format !default;
-$cmln-personal-tools-link-new: map_get( $cmln-link-formats, "new" ) !default;
+$cmln-personal-tools-link-new: map-get( $cmln-link-formats, "new" ) !default;
 
 // PageTools
 $cmln-page-tools-font-size: $font-size-sm !default;
-$cmln-page-tools-item-margin: map_get( $spacers, 4 ) !default;
+$cmln-page-tools-item-margin: map-get( $spacers, 4 ) !default;
 
 $cmln-page-tools-link: $cmln-link-format !default;
-$cmln-page-tools-link-new: map_get( $cmln-link-formats, "new" ) !default;
+$cmln-page-tools-link-new: map-get( $cmln-link-formats, "new" ) !default;
 
 // SearchBar
 $cmln-search-bar-collapse-point: cmln !default;
@@ -72,7 +72,7 @@ $cmln-navbar-logo-height: 2 * $nav-link-padding-y + $font-size-base + $navbar-pa
 $cmln-navbar-horizontal-collapse-point: cmln !default;
 
 // Icon defaults
-$cmln-icon-margin: map_get( $spacers, 2 ) !default;
+$cmln-icon-margin: map-get( $spacers, 2 ) !default;
 
 $cmln-icons: () !default;
 $cmln-icons: map-merge((
@@ -181,9 +181,9 @@ $cmln-first-heading-underline-color: $hr-border-color !default;
 $cmln-first-heading-margin-bottom: $hr-margin-y !default;
 
 $cmln-toc-title-font-size: $font-size-lg !default;
-$cmln-toc-group-margin-y: map_get($spacers, 1) !default;
-$cmln-toc-subgroup-margin-left: map_get($spacers, 2) !default;
-$cmln-toc-entry-number-padding-right: map_get($spacers, 2) !default;
+$cmln-toc-group-margin-y: map-get($spacers, 1) !default;
+$cmln-toc-subgroup-margin-left: map-get($spacers, 2) !default;
+$cmln-toc-entry-number-padding-right: map-get($spacers, 2) !default;
 
 // list parameters
 $list-bullet-size: 0.5 * $font-size-base;
@@ -201,8 +201,8 @@ $thumbnail-caption-padding: 3px;
 // (this value should be less than the navbar-height)
 //$navbar-logo-height: .9 * $navbar-height;
 //
-$navbar-user-loggedin: theme-color("primary");
+$navbar-user-loggedin: map-get($theme-colors, "primary");
 $navbar-user-not-loggedin: $navbar-light-disabled-color; // FIXME: Fix color
 
-$navbar-newtalk-available: theme-color("primary"); // $brand-primary;
+$navbar-newtalk-available: map-get($theme-colors, "primary"); // $brand-primary;
 $navbar-newtalk-not-available: $navbar-light-disabled-color; // FIXME: Fix color

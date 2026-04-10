@@ -37,7 +37,7 @@
 		"composer/installers": "^2|^1.0.12",
 		"mediawiki/bootstrap": "^5.0",
 		"jeroen/file-fetcher": "^6",
-		"psr/http-message": "^1"
+		"psr/http-message": "^2"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "47.0.0",

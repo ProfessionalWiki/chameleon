@@ -9,7 +9,7 @@
 		"Twitter",
 		"Bootstrap"
 	],
-	"homepage"   : "https://github.com/ProfessionalWiki/chameleon",
+	"homepage"   : "https://professional.wiki/en/chameleon-mediawiki-skin",
 	"license"    : "GPL-3.0-or-later",
 	"authors"    : [
 		{
@@ -27,8 +27,7 @@
 	"support": {
 		"docs": "https://github.com/ProfessionalWiki/chameleon",
 		"source": "https://github.com/ProfessionalWiki/chameleon.git",
-		"issues": "https://github.com/ProfessionalWiki/chameleon/issues",
-		"irc": "irc://libera.chat:6667/mediawiki"
+		"issues": "https://github.com/ProfessionalWiki/chameleon/issues"
 	},
 	"require": {
 		"php": ">=8.0.0",

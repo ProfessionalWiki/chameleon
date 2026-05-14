@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kallmemel"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "Un diseño sumamente fleksibel i adaptabel ku uso di Bootstrap 4",
+	"chameleon-loggedin": "Bo ta registrá komo $1.",
+	"chameleon-notloggedin": "Bo no ta registrá.",
+	"chameleon-newmessages": "Bo tin mensahe nobo.",
+	"chameleon-nonewmessages": "Bo no tin mensahe nobo.",
+	"chameleon-search-aria-label": "Bai na página",
+	"chameleon-toggler": "Menú"
+}

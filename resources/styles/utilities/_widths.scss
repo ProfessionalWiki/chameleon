@@ -9,10 +9,10 @@
 
 
 @function max-width( $breakpoint ) {
-	@return #{ "max-width: " + ( map_get( $grid-breakpoints, $breakpoint ) - 0.02px ) };
+	@return #{ "max-width: " + ( map-get( $grid-breakpoints, $breakpoint ) - 0.02px ) };
 }
 
 @function min-width( $breakpoint ) {
-	@return #{ "min-width: "+ map_get( $grid-breakpoints, $breakpoint ) };
+	@return #{ "min-width: "+ map-get( $grid-breakpoints, $breakpoint ) };
 }
 

@@ -131,7 +131,6 @@ $navbar-light-toggler-border-color: fade_out($navbar-light-color, 0.5) !default;
 $navbar-toggler-padding-y:          .1rem !default;
 $navbar-toggler-padding-x:          .5rem !default;
 $navbar-toggler-font-size:          1rem !default;
-//$navbar-toggler-border-radius:      $btn-border-radius !default;
 $navbar-nav-link-padding-x:         1rem !default;
 
 // Body
@@ -143,17 +142,3 @@ $cmln-personal-tools-link-new: ('color': $gray-600, 'hover-color': darken($gray-
 
 // PageTools
 $cmln-page-tools-link-new: ('color': $gray-600, 'hover-color': darken($gray-600, 0.15)) !default;
-
-//$enable-caret:                                true !default;
-//$enable-rounded:                              true !default;
-//$enable-shadows:                              false !default;
-//$enable-gradients:                            false !default;
-//$enable-transitions:                          true !default;
-//$enable-prefers-reduced-motion-media-query:   true !default;
-//$enable-hover-media-query:                    false !default; // Deprecated, no longer affects any compiled CSS
-//$enable-grid-classes:                         true !default;
-//$enable-pointer-cursor-for-buttons:           true !default;
-//$enable-print-styles:                         true !default;
-$enable-responsive-font-sizes:                true !default;
-//$enable-validation-icons:                     true !default;
-//$enable-deprecation-messages:                 true !default;

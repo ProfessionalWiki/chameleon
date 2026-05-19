@@ -7,11 +7,11 @@
 // @since 2.0
 
 #p-personal, .p-personal {
-	&.pull-right .p-personal-tools {
+	&.float-end .p-personal-tools {
 		justify-content: flex-end;
 	}
 
-	&.pull-left .p-personal-tools {
+	&.float-start .p-personal-tools {
 		justify-content: flex-start;
 	}
 

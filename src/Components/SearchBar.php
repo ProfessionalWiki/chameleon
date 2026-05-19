@@ -26,7 +26,8 @@
 
 namespace Skins\Chameleon\Components;
 
-use Linker;
+use MediaWiki\Html\Html;
+use MediaWiki\Linker\Linker;
 use Skin;
 use Skins\Chameleon\IdRegistry;
 
@@ -48,7 +49,7 @@ class SearchBar extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-		$attribsSearchFormWrapper = \Html::expandAttributes( [
+		$attribsSearchFormWrapper = Html::expandAttributes( [
 				'id'    => IdRegistry::getRegistry()->getId( 'p-search' ),
 				'class' => 'p-search ' . $this->getClassString(),
 				'role'  => 'search',
@@ -57,7 +58,7 @@ class SearchBar extends Component {
 
 		$tooltipSearchFormWrapper = Linker::tooltip( 'p-search' );
 
-		$attribsSearchForm = \Html::expandAttributes( [
+		$attribsSearchForm = Html::expandAttributes( [
 				'id'    => IdRegistry::getRegistry()->getId( 'searchform' ),
 				'class' => 'mw-search',
 				'action' => $this->getSkinTemplate()->data[ 'wgScript' ],
@@ -71,16 +72,12 @@ class SearchBar extends Component {
 			$this->indent( 1 ) . "<form $attribsSearchForm >" .
 			$this->indent( 1 ) . "<input type=\"hidden\" name=\"title\" value=\" {$this->getSkinTemplate()->data[ 'searchtitle' ]}\" />" .
 			$this->indent() . '<div class="input-group">' .
-			$this->indent( 1 ) . $this->getSearchInputHtml() .
-			$this->indent() . '<div class="input-group-append">';
+			$this->indent( 1 ) . $this->getSearchInputHtml();
 		// @codingStandardsIgnoreEnd
-
-		$this->indent( 1 );
 
 		$ret .=
 			$this->getGoButton() .
 			$this->getSearchButton() .
-			$this->indent( -1 ) . '</div>' .
 			$this->indent( -1 ) . '</div>' .
 			$this->indent( -1 ) . '</form>' .
 			$this->indent( -1 ) . '</div>';
@@ -158,7 +155,7 @@ class SearchBar extends Component {
 				Linker::tooltipAndAccesskeyAttribs( "search-$nameAttr" )
 			);
 
-			return $this->indent() . \Html::rawElement( 'button', $buttonAttrs );
+			return $this->indent() . Html::rawElement( 'button', $buttonAttrs );
 		}
 
 		return '';

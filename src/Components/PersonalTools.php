@@ -101,7 +101,7 @@ class PersonalTools extends Component {
 		// include message to a user about new messages on their talkpage
 		$newtalkNotifier = new NewtalkNotifier( $this->getSkinTemplate(), null, $this->getIndent() + 2 );
 
-		return $this->indent() . '<div class="newtalk-notifier pull-right">' .
+		return $this->indent() . '<div class="newtalk-notifier float-end">' .
 			$newtalkNotifier->getHtml() . $this->indent() . '</div>';
 	}
 

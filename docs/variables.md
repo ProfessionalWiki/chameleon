@@ -1,5 +1,14 @@
 ## SCSS Variables
 
+> **⚠️ Pending Bootstrap 5 regeneration.** This table still reflects
+> Bootstrap **4**-era variables and their Bootstrap 4 calculated values.
+> Chameleon now uses Bootstrap 5.3 (see
+> [issue #385](https://github.com/ProfessionalWiki/chameleon/issues/385)):
+> some variables listed here were removed or renamed in Bootstrap 5, several
+> values have changed, and new Bootstrap 5 variables are not yet listed. Do
+> not rely on the specific values below until this document is regenerated
+> for Bootstrap 5.
+
 This is the list of all SCSS variables defined in the various style files used
 by the Chameleon skin (although not all of the variables are actually used).
 
@@ -323,7 +332,7 @@ Some examples are provided below:
  $enable-pointer-cursor-for-buttons                    | 1
  $enable-prefers-reduced-motion-media-query            | 1
  $enable-print-styles                                  | 1
- $enable-responsive-font-sizes                         | 1
+ $enable-responsive-font-sizes                         | _Removed in Bootstrap 5 - RFS is always enabled_
  $enable-rounded                                       | 1
  $enable-shadows                                       | 1
  $enable-transitions                                   | 1
@@ -1427,7 +1436,7 @@ Some examples are provided below:
  $input-font-size-sm                                   | 0.875rem
  $input-font-weight                                    | 400
  $input-group-addon-bg                                 | #e9ecef
- $input-group-addon-border-color                       | #ced4da
+ $input-group-addon-border-color                       | _Removed in Bootstrap 5 - use `$input-border-color`_
  $input-group-addon-color                              | #495057
  $input-height                                         | calc(1.5em + 0.75rem + 2px)
  $input-height-border                                  | 2px

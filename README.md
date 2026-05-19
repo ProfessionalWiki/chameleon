@@ -44,7 +44,7 @@ the MediaWiki IRC channel (Server: [libera.chat][irc] Channel: #mediawiki), and 
 [mw-chameleon]: https://www.mediawiki.org/wiki/Skin:Chameleon
 [mw-chameleon-talk]: https://www.mediawiki.org/wiki/Skin_talk:Chameleon
 [composer]: https://getcomposer.org/
-[twbs]: http://getbootstrap.com/
+[twbs]: https://getbootstrap.com/
 [license]: https://www.gnu.org/copyleft/gpl.html
 
 [open bugs]: https://github.com/ProfessionalWiki/chameleon/issues

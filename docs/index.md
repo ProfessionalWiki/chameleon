@@ -28,4 +28,4 @@ particular version of the skin.
 8. [Contact](contact.md)
 
 [mw]: https://www.mediawiki.org/
-[twbs]: http://getbootstrap.com/
+[twbs]: https://getbootstrap.com/

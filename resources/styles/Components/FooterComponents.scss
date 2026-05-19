@@ -18,6 +18,8 @@
 
 	> div {
 		@extend .small;
+		// BS5's `.small` no longer carries $small-font-size; re-add it explicitly.
+		@include font-size( $small-font-size );
 
 		margin: {
 			left: map-get( $spacers, 2);

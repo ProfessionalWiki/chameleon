@@ -30,17 +30,17 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 				<component type="Logo" addLink="yes"/>
 			</cell>
 
-			<cell class="ml-auto col-12 col-cmln">
+			<cell class="ms-auto col-12 col-cmln">
 
 				<row>
 					<cell>
-						<component type="PersonalTools" hideNewtalkNotifier="yes" class="pull-right"/>
+						<component type="PersonalTools" hideNewtalkNotifier="yes" class="float-end"/>
 					</cell>
 				</row>
 
 				<row>
 					<cell>
-						<component type="SearchBar" buttons="go" class="pull-right"/>
+						<component type="SearchBar" buttons="go" class="float-end"/>
 					</cell>
 				</row>
 

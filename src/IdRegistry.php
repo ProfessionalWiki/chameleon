@@ -26,6 +26,8 @@
 
 namespace Skins\Chameleon;
 
+use MediaWiki\Html\Html;
+
 /**
  * Class IdRegistry provides a registry and access methods to ensure each id is only used once per
  * HTML page.
@@ -93,7 +95,7 @@ class IdRegistry {
 	public function openElement( $tag, $attributes = [] ) {
 		$attributes = $this->getAttributesWithUniqueId( $attributes );
 
-		return \Html::openElement( $tag, $attributes );
+		return Html::openElement( $tag, $attributes );
 	}
 
 	/**
@@ -111,7 +113,7 @@ class IdRegistry {
 	public function element( $tag, $attributes = [], $contents = '', $indent = '' ) {
 		$attributes = $this->getAttributesWithUniqueId( $attributes );
 
-		return $indent . \Html::rawElement( $tag, $attributes, $contents . $indent );
+		return $indent . Html::rawElement( $tag, $attributes, $contents . $indent );
 	}
 
 	/**

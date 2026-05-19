@@ -25,7 +25,8 @@
 namespace Skins\Chameleon\Tests\Util;
 
 use Config;
-use FauxRequest;
+use MediaWiki\Request\FauxRequest;
+use MediaWiki\Title\Title;
 use Message;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -34,7 +35,6 @@ use Skins\Chameleon\ChameleonTemplate;
 use Skins\Chameleon\ComponentFactory;
 use Skins\Chameleon\Components\Component;
 use stdClass;
-use Title;
 use User;
 
 // @codingStandardsIgnoreStart
@@ -122,13 +122,6 @@ class MockupFactory {
 		$chameleonTemplate->expects( $this->testCase->any() )
 			->method( 'getSidebar' )
 			->will( $this->testCase->returnValue( [] ) );
-
-
-		if ( version_compare( MW_VERSION, '1.41', '<' ) ) {
-			$chameleonTemplate->expects( $this->testCase->any() )
-				->method( 'getToolbox' )
-				->will( $this->testCase->returnValue( [] ) );
-		}
 
 		$chameleonTemplate->expects( $this->testCase->any() )
 			->method( 'getPersonalTools' )

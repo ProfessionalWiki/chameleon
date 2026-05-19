@@ -26,6 +26,8 @@
 
 namespace Skins\Chameleon\Components;
 
+use MediaWiki\Html\Html;
+
 /**
  * The NewtalkNotifier class.
  *
@@ -49,7 +51,7 @@ class NewtalkNotifier extends Component {
 		if ( array_key_exists( 'newtalk', $data ) && $data[ 'newtalk' ] ) {
 			return $this->indent() .
 				'<!-- new talk notifier message to a user about new messages on their talkpage -->' .
-			  $this->indent() . \Html::rawElement( 'div', [ 'class' => 'usermessage ' .
+			  $this->indent() . Html::rawElement( 'div', [ 'class' => 'usermessage ' .
 				$this->getClassString() ], $data[ 'newtalk' ] );
 		} else {
 			return '';

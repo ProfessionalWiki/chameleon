@@ -20,7 +20,7 @@
 	}
 
 	.jump-to-nav {
-		@extend .sr-only;
+		@extend .visually-hidden;
 	}
 
 }

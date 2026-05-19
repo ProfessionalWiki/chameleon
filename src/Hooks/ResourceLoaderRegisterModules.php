@@ -74,19 +74,12 @@ class ResourceLoaderRegisterModules {
 			'elements',
 			'content-links',
 			'content-media',
-			'interface-message-box',
 			'interface-category',
 			'content-tables',
 			'i18n-ordered-lists',
-			'i18n-all-lists-margins',
 			'i18n-headings',
 			'toc'
 		];
-
-		if ( version_compare( MW_VERSION, '1.43', '>=' ) ) {
-			$removed = [ 'i18n-all-lists-margins', 'interface-message-box' ];
-			$features = array_values( array_diff( $features, $removed ) );
-		}
 
 		if ( $this->configuration['egChameleonEnableExternalLinkIcons'] === true ) {
 			$features[] = 'content-links-external';

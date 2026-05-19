@@ -6,6 +6,9 @@
 //
 // @since 2.0
 
+// Disable Bootstrap 5's dark-mode emission; Chameleon ships no color modes.
+// Dark mode is tracked separately in issue #449.
+$enable-dark-mode: false;
 
 // Variable names should follow the `$component-state-property-size` formula
 // (leaving out inapplicable parts) for consistent naming.

@@ -16,7 +16,7 @@ Useful optional parameters:
 ```
 
 To test against an external HTML validation service
-(http://validator.w3.org/check) set the `USE_EXTERNAL_HTML_VALIDATOR` setting to
+(https://validator.w3.org/check) set the `USE_EXTERNAL_HTML_VALIDATOR` setting to
 `true` in `phpunit.xml.dist`. Please be careful with their resources and use
 this setting sparingly. If you do this, you may also want to set
 `printerClass="Skins\Chameleon\Tests\Util\ColoringTextUIResultPrinter"` as an
@@ -33,7 +33,7 @@ Yes, really.
 Some features are hard to test automatically and (at least for the moment) have
 to be tested manually. This mostly concerns styling, where it is hard to specify
 test results in a way that CI testing would pick up on failures (and more
-importantly let deviations irrelevant for the test objective pass). 
+importantly let deviations irrelevant for the test objective pass).
 
 Testing of the Chameleon styling is done in a two-dimensional test
 space, the dimensions being
@@ -111,6 +111,3 @@ proposed screen widths are therefore:
 | Definition list             |--------|--------|--------|--------|--------|
 | Indenting                   |--------|--------|--------|--------|--------|
 | TODO: ... (see e.g. https://www.mediawiki.org/wiki/Help:Advanced_editing)
-
-
-

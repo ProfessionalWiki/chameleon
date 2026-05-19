@@ -72,6 +72,6 @@ Here is a step by step procedure for Windows:
     Ctrl+Shift+F5 on Internet Explorer.)
 
 [composer-installer]: https://getcomposer.org/Composer-Setup.exe
-[Notepad++]: http://notepad-plus-plus.org/
-[Kate]:http://kate-editor.org/
-[cache-refresh]: http://www.refreshyourcache.com/en/home/
+[Notepad++]: https://notepad-plus-plus.org/
+[Kate]:https://kate-editor.org/
+[cache-refresh]: https://www.refreshyourcache.com/en/home/

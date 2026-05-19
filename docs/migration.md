@@ -1,3 +1,25 @@
+# Migrating to Chameleon 6.0
+
+## Core items changed
+
+* Move from Bootstrap 4 to [Bootstrap 5](https://getbootstrap.com/docs/5.3)
+
+See the [release notes](release-notes.md).
+
+## New minimum version requirements
+
+Chameleon 6 supports
+* MediaWiki 1.43.0 and later
+* PHP 8.1 and later
+
+## Move from Bootstrap 4 to Bootstrap 5
+
+Chameleon 6.0 comes with [Bootstrap 5](https://getbootstrap.com/docs/5.3), an upgraded version of Bootstrap 4 that came with Chameleon 2.x to 5.x. Class names from Bootstrap 4 could be different or removed in Bootstrap 5. It is highly recommended to read Bootstrap's migration guide here: https://getbootstrap.com/docs/5.3/migration/.
+
+In addition to the library-level changes covered by Bootstrap's own migration guide, Chameleon 6.0 removes the Bootstrap 4 `.pull-left` / `.pull-right` compatibility classes that earlier Chameleon releases shipped (previously emitted by `resources/styles/utilities/_float.scss`). If you used these in your own content, layouts or stylesheets, switch to Bootstrap 5's `.float-start` / `.float-end`.
+
+---
+
 # Migrating to Chameleon 2.0:
 
 ## Core items changed

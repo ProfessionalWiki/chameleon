@@ -17,13 +17,6 @@
 	z-index: 1; // FIXME: Was $zindex-navbar-fixed + 1. What was $zindex-navbar-fixed?
 }
 
-// float the VE UI toolbar below a fixed or sticky navbar
-.navbar.navbar-fixed-top, .navbar + .sticky-wrapper {
-	~ * .ve-ui-toolbar-floating > .oo-ui-toolbar-bar {
-		//			transform: translateY($navbar-height);
-	}
-}
-
 /* Extension SemanticMediaWiki */
 .skin-chameleon {
 	.smw-editpage-help, .smw-search-results-prepend {

@@ -10,6 +10,10 @@
 // Dark mode is tracked separately in issue #449.
 $enable-dark-mode: false;
 
+// Restore the Bootstrap 4 link-decoration defaults (BS5 flipped to underline).
+$link-decoration: none;
+$link-hover-decoration: underline;
+
 // Variable names should follow the `$component-state-property-size` formula
 // (leaving out inapplicable parts) for consistent naming.
 // Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.

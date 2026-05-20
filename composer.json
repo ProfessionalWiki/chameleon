@@ -40,7 +40,7 @@
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "47.0.0",
-		"mediawiki/mediawiki-phan-config": "0.16.0"
+		"mediawiki/mediawiki-phan-config": "0.20.0"
 	},
 	"extra": {
 		"branch-alias": {

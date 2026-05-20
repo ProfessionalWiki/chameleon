@@ -75,7 +75,7 @@
 		} );
 	}
 
-	function enableScrollspy() {
+	function getScrollspyOffset() {
 		var offset = parseFloat( $( '.chameleon-toc-wrapper' ).css( '--scrollspy-offset' ) );
 
 		// TODO: re-test when using Sticky Modification.
@@ -84,10 +84,85 @@
 		// 	offset += stickyNavbar.outerHeight();
 		// }
 
-		new bootstrap.ScrollSpy( document.body, {
-			target: '.chameleon-toc',
-			offset: offset
+		return isNaN( offset ) ? 0 : offset;
+	}
+
+	function getScrollspyTargets() {
+		// Resolve each TOC nav link to its heading, sorted top-to-bottom.
+		// The Top link (href "#") is excluded; it is handled explicitly as the
+		// "above the first section" state.
+		var targets = [];
+
+		$( '.chameleon-toc a.nav-link' ).each( function () {
+			var href = $( this ).attr( 'href' );
+
+			if ( !href || href === '#' || href.indexOf( '#' ) === -1 ) {
+				return;
+			}
+
+			var id = decodeURIComponent( href.substr( href.indexOf( '#' ) + 1 ) );
+			var el = id ? document.getElementById( id ) : null;
+
+			if ( el ) {
+				targets.push( {
+					link: this,
+					top: el.getBoundingClientRect().top + window.pageYOffset
+				} );
+			}
 		} );
+
+		targets.sort( function ( a, b ) {
+			return a.top - b.top;
+		} );
+
+		return targets;
+	}
+
+	function enableScrollspy() {
+		// BS5's ScrollSpy is IntersectionObserver-based and has no `offset`
+		// option. Reimplement the historical scroll-threshold behaviour:
+		// the active section is the last heading whose top is at or above
+		// `scrollTop + --scrollspy-offset`, and stays active until the next
+		// heading crosses that line.
+		var offset = getScrollspyOffset();
+
+		function updateActiveSection() {
+			var targets = getScrollspyTargets();
+
+			if ( targets.length === 0 ) {
+				return;
+			}
+
+			var threshold = window.pageYOffset + offset;
+			var maxScroll = Math.max(
+				document.documentElement.scrollHeight - window.innerHeight,
+				0
+			);
+			var current = null;
+
+			for ( var i = 0; i < targets.length; i++ ) {
+				if ( targets[ i ].top <= threshold ) {
+					current = targets[ i ].link;
+				} else {
+					break;
+				}
+			}
+
+			// At the bottom the last heading can no longer cross the threshold;
+			// pin it active.
+			if ( window.pageYOffset >= maxScroll - 2 ) {
+				current = targets[ targets.length - 1 ].link;
+			}
+
+			if ( current ) {
+				goToLink( $( current ) );
+			} else {
+				goToLink( $( '.chameleon-toc a.top' ) );
+			}
+		}
+
+		$( window ).on( 'scroll.chameleonToc resize.chameleonToc', updateActiveSection );
+		updateActiveSection();
 	}
 
 	function addScrollspyEvent() {

@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "E ganz flexibele reaktiven Interface dee Bootstrap 4 benotzt",
+	"chameleon-desc": "E ganz flexibel, reaktiv Benotzeruewerfläch, déi Bootstrap 5 benotzt",
 	"chameleon-loggedin": "Dir sidd als $1 ageloggt.",
 	"chameleon-notloggedin": "Dir sidd net ageloggt",
 	"chameleon-newmessages": "Dir hutt nei Messagen.",

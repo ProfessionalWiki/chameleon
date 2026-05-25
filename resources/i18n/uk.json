@@ -4,11 +4,12 @@
 			"Alex Khimich",
 			"DDPAT",
 			"Ice bulldog",
+			"Movses",
 			"Ата"
 		]
 	},
 	"skinname-chameleon": "Хамелеон",
-	"chameleon-desc": "Тема оформлення \"Хамелеон\"",
+	"chameleon-desc": "Дуже гнучкий адаптивний скін із використанням Bootstrap 5",
 	"chameleon-loggedin": "Ви увійшли як  $1.",
 	"chameleon-notloggedin": "Ви не ввійшли в систему",
 	"chameleon-newmessages": "У Вас є нові повідомлення.",

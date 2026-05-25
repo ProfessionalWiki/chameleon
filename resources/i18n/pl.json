@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Chrumps",
+			"G3raltJJ",
 			"Matma Rex",
 			"Rail",
 			"Railfail536",
@@ -9,7 +10,7 @@
 		]
 	},
 	"skinname-chameleon": "Kameleon",
-	"chameleon-desc": "Wysoce elastyczna, responsywna skórka używająca technologii Bootstrap 4",
+	"chameleon-desc": "Wysoce elastyczna, responsywna skórka używająca technologii Bootstrap 5",
 	"chameleon-loggedin": "Jesteś zalogowany jako $1.",
 	"chameleon-notloggedin": "Nie jesteś zalogowany",
 	"chameleon-newmessages": "Masz nowe wiadomości.",

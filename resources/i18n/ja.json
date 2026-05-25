@@ -5,11 +5,12 @@
 			"MathXplore",
 			"Shirayuki",
 			"SkyDaisy9",
+			"Tensama0415",
 			"Yusuke1109"
 		]
 	},
 	"skinname-chameleon": "カメレオン",
-	"chameleon-desc": "Bootstrap 4 を使用した柔軟性の高いレスポンシブ外装",
+	"chameleon-desc": "Bootstrap 5 を使用した柔軟性の高いレスポンシブ外装",
 	"chameleon-loggedin": "$1 としてログインしています。",
 	"chameleon-notloggedin": "ログインしていません。",
 	"chameleon-newmessages": "新着メッセージがあります。",

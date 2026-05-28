@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chinamoonroll"
+			"Chinamoonroll",
+			"Neriah"
 		]
 	},
 	"skinname-chameleon": "Bunglon",
-	"chameleon-desc": "Kules résponsip sané sanget pléksibel nganggén Bootstrap 4",
+	"chameleon-desc": "Kules résponsip sané sanget pléksibel nganggén Bootstrap 5",
 	"chameleon-loggedin": "Ida sampun manjing log manados $1.",
 	"chameleon-notloggedin": "Ida durung manjing log",
 	"chameleon-newmessages": "Ragané madué séwala anyar",

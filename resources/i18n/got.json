@@ -4,5 +4,9 @@
 			"Gothicspeaker"
 		]
 	},
-	"chameleon-notloggedin": "𐌽𐌹 𐌹𐍃 {{GENDER:|𐌰𐍄𐌲𐌰𐌲𐌲𐌰𐌽𐍃|𐌰𐍄𐌲𐌰𐌲𐌲𐌰𐌽𐌰}}."
+	"chameleon-notloggedin": "𐌽𐌹 𐌹𐍃 {{GENDER:|𐌰𐍄𐌲𐌰𐌲𐌲𐌰𐌽𐍃|𐌰𐍄𐌲𐌰𐌲𐌲𐌰𐌽𐌰}}.",
+	"chameleon-newmessages": "𐌽𐌹𐌿𐌾𐌰 𐍅𐌰𐌿𐍂𐌳𐌰 𐌷𐌰𐌱𐌰𐌹𐍃.",
+	"chameleon-nonewmessages": "𐌽𐌹 𐌷𐌰𐌱𐌰𐌹𐍃 𐌽𐌹𐌿𐌾𐌰 𐍅𐌰𐌿𐍂𐌳𐌰.",
+	"chameleon-search-aria-label": "𐌲𐌰𐌲𐌲 𐌳𐌿 𐌻𐌰𐌿𐌱𐌰",
+	"chameleon-toggler": "𐌼𐌰𐌹𐌽𐍅"
 }

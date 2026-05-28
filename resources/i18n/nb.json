@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Fredrilj",
-			"Jon Harald Søby"
+			"Jon Harald Søby",
+			"Neriah"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "En meget fleksibel drakt som bruker Bootstrap 4",
+	"chameleon-desc": "En meget fleksibel drakt som bruker Bootstrap 5",
 	"chameleon-loggedin": "Du er logget inn som $1.",
 	"chameleon-notloggedin": "Du er ikke logget inn.",
 	"chameleon-newmessages": "Du har nye meldinger.",

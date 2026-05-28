@@ -4,12 +4,13 @@
 			"Cwlin0416",
 			"Kly",
 			"Liuxinyu970226",
+			"Neriah",
 			"Peterxy12",
 			"Winston Sung"
 		]
 	},
 	"skinname-chameleon": "變色龍",
-	"chameleon-desc": "使用Bootstrap 4的高度彈性回應外觀",
+	"chameleon-desc": "使用Bootstrap 5的高度彈性回應外觀",
 	"chameleon-loggedin": "您以$1登入。",
 	"chameleon-notloggedin": "您尚未登入。",
 	"chameleon-newmessages": "您有新訊息。",

@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bugoslav"
+			"Bugoslav",
+			"Neriah"
 		]
 	},
-	"chameleon-desc": "Visokoprilagodljiv izgled s promjenjivim (interaktivnim) odzivom koji rabi Bootstrap 4 (Chameleon)",
+	"chameleon-desc": "Visokoprilagodljiv izgled s promjenjivim (interaktivnim) odzivom koji rabi Bootstrap 5 (Chameleon)",
 	"chameleon-loggedin": "Prijavljeni ste pod suradničkim imenom $1.",
 	"chameleon-notloggedin": "Trenutačno niste prijavljeni.",
 	"chameleon-newmessages": "Imate nove poruke.",

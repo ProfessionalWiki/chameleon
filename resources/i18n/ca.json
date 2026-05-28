@@ -4,12 +4,13 @@
 			"Alvaro Vidal-Abarca",
 			"Fitoschido",
 			"Jmarchn",
+			"Neriah",
 			"SMP",
 			"Toniher"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Una aparença sensible i altament flexible que utilitza Bootstrap 4.",
+	"chameleon-desc": "Una aparença sensible i altament flexible que utilitza Bootstrap 5",
 	"chameleon-loggedin": "Esteu connectat com a $1.",
 	"chameleon-notloggedin": "No esteu connectat.",
 	"chameleon-newmessages": "Teniu missatges nous.",

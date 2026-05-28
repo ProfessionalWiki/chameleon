@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Hamilton Abreu",
+			"Neriah",
 			"Vitorvicentevalente"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Um tema de resposta rápida e altamente flexível que usa Bootstrap 4",
+	"chameleon-desc": "Um tema de resposta rápida e altamente flexível que usa Bootstrap 5",
 	"chameleon-loggedin": "Sessão iniciada como $1.",
 	"chameleon-notloggedin": "Não tem sessão iniciada",
 	"chameleon-newmessages": "Tem novas mensagens.",

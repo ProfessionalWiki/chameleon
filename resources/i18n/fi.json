@@ -4,12 +4,13 @@
 			"01miki10",
 			"MITO",
 			"McSalama",
+			"Neriah",
 			"Nike",
 			"Pyscowicz"
 		]
 	},
 	"skinname-chameleon": "Kameleontti",
-	"chameleon-desc": "Erittäin mukautuva responsiivinen ulkoasu, joka käyttää Bootstrap 4:ää",
+	"chameleon-desc": "Erittäin mukautuva responsiivinen ulkoasu, joka käyttää Bootstrap 5:ää",
 	"chameleon-loggedin": "Olet kirjautunut sisään nimellä $1.",
 	"chameleon-notloggedin": "Et ole kirjautunut sisään.",
 	"chameleon-newmessages": "Sinulla on uusia viestejä.",

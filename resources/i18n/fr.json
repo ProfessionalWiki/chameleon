@@ -3,13 +3,14 @@
 		"authors": [
 			"Ajeje Brazorf",
 			"Gomoko",
+			"Neriah",
 			"Orlodrim",
 			"Verdy p",
 			"Wladek92"
 		]
 	},
 	"skinname-chameleon": "Caméléon",
-	"chameleon-desc": "Un habillage dynamique très flexible utilisant Bootstrap 4",
+	"chameleon-desc": "Un habillage dynamique très flexible utilisant Bootstrap 5",
 	"chameleon-loggedin": "Vous êtes connecté{{GENDER:$1||e}} en tant que $1.",
 	"chameleon-notloggedin": "Vous n’êtes pas connecté(e).",
 	"chameleon-newmessages": "Vous avez de nouveaux messages.",

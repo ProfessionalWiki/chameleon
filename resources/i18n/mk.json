@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Neriah"
 		]
 	},
 	"skinname-chameleon": "Камелеон",
-	"chameleon-desc": "Мошне прилагодливо и одѕивно руво што користи Bootstrap 4",
+	"chameleon-desc": "Мошне прилагодливо и одѕивно руво што користи Bootstrap 5",
 	"chameleon-loggedin": "Најавени сте како $1.",
 	"chameleon-notloggedin": "Не сте најавени",
 	"chameleon-newmessages": "Имате нови пораки",

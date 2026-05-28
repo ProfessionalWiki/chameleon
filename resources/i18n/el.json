@@ -3,11 +3,12 @@
 		"authors": [
 			"Giannaras99",
 			"Glavkos",
+			"Neriah",
 			"Nikosguard"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Ένα εξαιρετικά ευέλικτο Θέμα εμφάνισης που ανταποκρίνεται χρησιμοποιώντας το Bootstrap 4.",
+	"chameleon-desc": "Ένα εξαιρετικά ευέλικτο Θέμα εμφάνισης που ανταποκρίνεται χρησιμοποιώντας το Bootstrap 5",
 	"chameleon-loggedin": "Έχετε συνδεθεί ως $1.",
 	"chameleon-notloggedin": "Δεν έχετε συνδεθεί",
 	"chameleon-newmessages": "Έχετε νέα μηνύματα.",

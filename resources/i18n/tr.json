@@ -3,11 +3,12 @@
 		"authors": [
 			"BaRaN6161 TURK",
 			"Hedda",
+			"Neriah",
 			"Sayginer"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Bootstrap 4 kullanarak oldukça esnek ve hassas bir görünüm",
+	"chameleon-desc": "Bootstrap 5 kullanarak oldukça esnek ve hassas bir görünüm",
 	"chameleon-loggedin": "$1 olarak oturum açtınız.",
 	"chameleon-notloggedin": "Oturum açmadınız.",
 	"chameleon-newmessages": "Yeni mesajınız var.",

@@ -3,11 +3,12 @@
 		"authors": [
 			"Kghbln",
 			"Metalhead64",
+			"Neriah",
 			"Umlaut"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Stellt eine flexible wie responsive, auf Twitter Bootstrap 4 gestützte, Benutzeroberfläche bereit",
+	"chameleon-desc": "Stellt eine flexible wie responsive, auf Twitter Bootstrap 5 gestützte, Benutzeroberfläche bereit",
 	"chameleon-loggedin": "{{#FORMAL:Du bist|Sie sind}} als $1 angemeldet.",
 	"chameleon-notloggedin": "{{#FORMAL:Du bist|Sie sind}} nicht angemeldet.",
 	"chameleon-newmessages": "{{#FORMAL:Du hast|Sie haben}} neue Nachrichten.",

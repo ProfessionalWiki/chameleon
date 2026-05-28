@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Aursani",
-			"Mehtab ahmed"
+			"Mehtab ahmed",
+			"Neriah"
 		]
 	},
-	"chameleon-desc": "Bootstrap 4 استعمال ڪندي هڪ انتهائي لچڪدار رسپانسوِ کَلَ",
+	"chameleon-desc": "Bootstrap 5 استعمال ڪندي هڪ انتهائي لچڪدار رسپانسوِ کَلَ",
 	"chameleon-loggedin": "توھان $1 نالي سان داخل ٿيل آھيو.",
 	"chameleon-notloggedin": "توھان داخل ٿيل نہ آھيو.",
 	"chameleon-newmessages": "توهان لاءِ نوان نياپا آهن.",

@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Neriah",
 			"Xuacu",
 			"YoaR"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Una piel altamente flexible qu'usa Bootstrap 4",
+	"chameleon-desc": "Una piel altamente flexible qu'usa Bootstrap 5",
 	"chameleon-loggedin": "Aniciasti sesión como $1.",
 	"chameleon-notloggedin": "Nun aniciasti sesión",
 	"chameleon-newmessages": "Tienes mensaxes nuevos.",

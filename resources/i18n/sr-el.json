@@ -3,11 +3,12 @@
 		"authors": [
 			"Kizule",
 			"Milicevic01",
+			"Neriah",
 			"Zoranzoki21"
 		]
 	},
 	"skinname-chameleon": "Kameleon",
-	"chameleon-desc": "Veoma fleksibilna responzivna tema koja koristi Bootstrap 4",
+	"chameleon-desc": "Veoma fleksibilna responzivna tema koja koristi Bootstrap 5",
 	"chameleon-loggedin": "Prijavljeni ste kao $1.",
 	"chameleon-notloggedin": "Niste prijavljeni.",
 	"chameleon-newmessages": "Imate nove poruke.",

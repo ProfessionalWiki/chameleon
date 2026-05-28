@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Neriah",
 			"Sagan",
 			"З. ӘЙЛЕ",
 			"Рустам Нурыев"
 		]
 	},
-	"chameleon-desc": "Bootstrap 4 ҡулланған һығылмалы тема",
+	"chameleon-desc": "Bootstrap 5 ҡулланған һығылмалы тема",
 	"chameleon-loggedin": "$1 булып танылғанһығыҙ.",
 	"chameleon-notloggedin": "Танылмағанһығыҙ.",
 	"chameleon-newmessages": "Яңы хәбәрҙәрегеҙ бар.",

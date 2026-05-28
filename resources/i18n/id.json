@@ -4,11 +4,12 @@
 			"Arifin.wijaya",
 			"Daud I.F. Argana",
 			"Diki Ananta",
+			"Neriah",
 			"Sumbukompor"
 		]
 	},
 	"skinname-chameleon": "Bunglon",
-	"chameleon-desc": "Kulit responsif yang sangat fleksibel menggunakan Bootstrap 4",
+	"chameleon-desc": "Kulit responsif yang sangat fleksibel menggunakan Bootstrap 5",
 	"chameleon-loggedin": "Anda telah masuk log sebagai $1.",
 	"chameleon-notloggedin": "Anda belum masuk log",
 	"chameleon-newmessages": "Anda memiliki pesan baru.",

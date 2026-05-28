@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joetaras"
+			"Joetaras",
+			"Neriah"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "'Nu skin assaije flessibbele e responsive ausanne Bootstrap 4",
+	"chameleon-desc": "'Nu skin assaije flessibbele e responsive ausanne Bootstrap 5",
 	"chameleon-loggedin": "Tu è trasute cumme a $1.",
 	"chameleon-notloggedin": "Non gè trasute.",
 	"chameleon-newmessages": "Tìne 'nu messàgge nuève.",

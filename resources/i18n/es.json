@@ -3,11 +3,12 @@
 		"authors": [
 			"Avengium",
 			"DannyS712",
-			"Fitoschido"
+			"Fitoschido",
+			"Neriah"
 		]
 	},
 	"skinname-chameleon": "Chameleon",
-	"chameleon-desc": "Una apariencia responsiva altamente flexible usando Bootstrap 4",
+	"chameleon-desc": "Una apariencia responsiva altamente flexible usando Bootstrap 5",
 	"chameleon-loggedin": "Has accedido como $1.",
 	"chameleon-notloggedin": "No has accedido",
 	"chameleon-newmessages": "Tienes mensajes nuevos.",

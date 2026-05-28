@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"IJzeren Jan"
+			"IJzeren Jan",
+			"Neriah"
 		]
 	},
 	"skinname-chameleon": "Kameleon",
-	"chameleon-desc": "Mnogo gybka i adaptivna tema, ktora koristaje Bootstrap 4",
+	"chameleon-desc": "Mnogo gybka i adaptivna tema, ktora koristaje Bootstrap 5",
 	"chameleon-loggedin": "Vy jeste prijavjeni kako $1.",
 	"chameleon-notloggedin": "Vy ne jeste prijavjeni.",
 	"chameleon-newmessages": "Vy imajete nove soobčenja.",

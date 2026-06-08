@@ -67,8 +67,11 @@
 			list-style: none;
 			padding-left: 0;
 
-			// Override nav-link styling in case the menu item is in a dropdown
-			& > div > a:first-child:last-child {
+			// Override nav-link styling when the item is in a dropdown. Chameleon's
+			// own menu items are div-wrapped; the SkinAfterPortlet hook may also add
+			// a span-wrapped link here, which the second selector covers.
+			& > div > a:first-child:last-child,
+			& > span > a:first-child:last-child {
 
 				@extend .dropdown-item;
 

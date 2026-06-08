@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"skinname-chameleon": "Chameleon",
+	"chameleon-desc": "Vysoko flexibilná responzívna téma vzhľadu používajúca Bootstrap 5",
+	"chameleon-loggedin": "Ste prihlásení ako $1.",
+	"chameleon-notloggedin": "Nie ste prihlásení.",
+	"chameleon-newmessages": "Máte nové správy.",
+	"chameleon-nonewmessages": "Nemáte žiadne nové správy.",
+	"chameleon-search-aria-label": "Prejsť na stránku",
+	"chameleon-toggler": "Menu"
+}

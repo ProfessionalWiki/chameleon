@@ -24,7 +24,9 @@
 
 namespace Skins\Chameleon\Tests\Unit\Components\NavbarHorizontal;
 
+use Skins\Chameleon\Components\NavbarHorizontal\LangLinks;
 use Skins\Chameleon\Tests\Unit\Components\GenericComponentTestCase;
+use Skins\Chameleon\Tests\Util\MockupFactory;
 
 /**
  * @coversDefaultClass \Skins\Chameleon\Components\NavbarHorizontal\LangLinks
@@ -42,5 +44,27 @@ use Skins\Chameleon\Tests\Unit\Components\GenericComponentTestCase;
 class LangLinksTest extends GenericComponentTestCase {
 
 	protected $classUnderTest = '\Skins\Chameleon\Components\NavbarHorizontal\LangLinks';
+
+	/**
+	 * @covers ::getHtml
+	 */
+	public function testAfterPortletContentIsRenderedWithoutLanguageLinks() {
+		$factory = MockupFactory::makeFactory( $this );
+		$factory->set( 'AfterPortlet',
+			[ 'lang' => '<span class="wbc-editpage">AFTER_PORTLET_MARKER</span>' ] );
+
+		$component = new LangLinks( $factory->getChameleonSkinTemplateStub() );
+
+		$this->assertStringContainsString( 'AFTER_PORTLET_MARKER', $component->getHtml() );
+	}
+
+	/**
+	 * @covers ::getHtml
+	 */
+	public function testGetHtmlIsEmptyWithoutLanguageLinksOrAfterPortletContent() {
+		$component = new LangLinks( MockupFactory::makeFactory( $this )->getChameleonSkinTemplateStub() );
+
+		$this->assertSame( '', $component->getHtml() );
+	}
 
 }

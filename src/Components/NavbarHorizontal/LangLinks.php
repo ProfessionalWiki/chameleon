@@ -47,17 +47,21 @@ class LangLinks extends Component {
 	 * @throws \MWException
 	 */
 	public function getHtml() {
-		if ( !$this->hasLangLinks() ) {
+		$afterPortlet = $this->getSkin()->getAfterPortlet( 'lang' );
+
+		if ( !$this->hasLangLinks() && $afterPortlet === '' ) {
 			return '';
 		}
 
 		$introComment = $this->indent() . '<!-- languages -->';
 
+		$listItems = $this->hasLangLinks() ? implode( $this->getLinkListItems() ) : '';
+		$contents = $listItems . $afterPortlet;
+
 		if ( filter_var( $this->getAttribute( 'flatten' ), FILTER_VALIDATE_BOOLEAN ) ) {
-			$languageLinks = implode( $this->getLinkListItems() );
+			$languageLinks = $contents;
 		} else {
-			$languageLinks = $this->wrapDropdownMenu( 'otherlanguages',
-				implode( $this->getLinkListItems() ) );
+			$languageLinks = $this->wrapDropdownMenu( 'otherlanguages', $contents );
 		}
 
 		return $introComment . $languageLinks;

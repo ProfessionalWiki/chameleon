@@ -277,6 +277,12 @@ class MockupFactory {
 			->method( 'getConfig' )
 			->will( $this->testCase->returnValue( $this->getConfigStub() ) );
 
+		$skin->expects( $this->testCase->any() )
+			->method( 'getAfterPortlet' )
+			->willReturnCallback( function ( string $name ): string {
+				return $this->get( 'AfterPortlet', [] )[ $name ] ?? '';
+			} );
+
 		return $skin;
 	}
 

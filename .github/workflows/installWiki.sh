@@ -10,6 +10,10 @@ mv mediawiki-$MW_BRANCH mediawiki
 
 cd mediawiki
 
+# Mirrors the upstream fix in MW REL1_43+ / master (mediawiki commit
+# ef90ede, Phab T416518), which older branches never received.
+composer config audit.block-insecure false
+
 composer install
 php maintenance/install.php --dbtype sqlite --dbuser root --dbname mw --dbpath $(pwd) --pass AdminPassword WikiName AdminUser
 

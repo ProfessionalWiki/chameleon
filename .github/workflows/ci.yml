@@ -30,10 +30,10 @@ jobs:
             php: 8.3
             experimental: false
           - mw: 'REL1_45'
-            php: 8.4
+            php: 8.3
             experimental: false
           - mw: 'REL1_46'
-            php: 8.5
+            php: 8.4
             experimental: false
           - mw: 'master'
             php: 8.5

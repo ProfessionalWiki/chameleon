@@ -76,21 +76,15 @@ jobs:
       - name: Composer update
         run: composer update
 
-      # "master" currently tracks MW >= 1.46, where tests/phpunit/phpunit.php
-      # was removed. Once REL1_46 lands in the matrix, it needs the master
-      # invocation below as well.
-      - name: Run PHPUnit (MW < master)
-        if: matrix.mw != 'master'
-        run: php tests/phpunit/phpunit.php --group skins-chameleon
-
-      - name: Run PHPUnit (MW master)
-        if: matrix.mw == 'master'
+      - name: Run PHPUnit
         run: |
-          # TODO: phpunit.xml.template is export-ignored from GitHub's tarball
-          # archive, so we fetch it separately. Remove this once installWiki.sh
-          # switches to `git clone`, or MW drops the export-ignore.
-          if [ ! -f phpunit.xml.template ]; then
-            wget -q -O phpunit.xml.template "https://raw.githubusercontent.com/wikimedia/mediawiki/${{ matrix.mw }}/phpunit.xml.template"
+          if [ -f tests/phpunit/phpunit.php ]; then
+            php tests/phpunit/phpunit.php --group skins-chameleon
+          else
+            # MW 1.46 and later
+            if [ ! -f phpunit.xml.template ]; then
+              wget -q -O phpunit.xml.template "https://raw.githubusercontent.com/wikimedia/mediawiki/${{ matrix.mw }}/phpunit.xml.template"
+            fi
+            composer phpunit:config
+            vendor/bin/phpunit --group skins-chameleon
           fi
-          composer phpunit:config
-          vendor/bin/phpunit --group skins-chameleon

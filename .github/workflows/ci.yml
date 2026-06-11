@@ -32,6 +32,12 @@ jobs:
           - mw: 'REL1_45'
             php: 8.4
             experimental: false
+          - mw: 'REL1_46'
+            php: 8.5
+            experimental: false
+          - mw: 'master'
+            php: 8.5
+            experimental: true
 
     runs-on: ubuntu-latest
 
@@ -80,4 +86,14 @@ jobs:
         run: composer update
 
       - name: Run PHPUnit
-        run: php tests/phpunit/phpunit.php --group skins-chameleon
+        run: |
+          if [ -f tests/phpunit/phpunit.php ]; then
+            php tests/phpunit/phpunit.php --group skins-chameleon
+          else
+            # MW 1.46 and later
+            if [ ! -f phpunit.xml.template ]; then
+              wget -q -O phpunit.xml.template "https://raw.githubusercontent.com/wikimedia/mediawiki/${{ matrix.mw }}/phpunit.xml.template"
+            fi
+            composer phpunit:config
+            vendor/bin/phpunit --group skins-chameleon
+          fi

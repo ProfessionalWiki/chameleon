@@ -4,7 +4,7 @@
 [![Latest Stable Version](https://poser.pugx.org/mediawiki/chameleon-skin/v/stable)](https://packagist.org/packages/mediawiki/chameleon-skin)
 [![Packagist download count](https://poser.pugx.org/mediawiki/chameleon-skin/downloads)](https://packagist.org/packages/mediawiki/chameleon-skin)
 
-<img src='https://upload.wikimedia.org/wikipedia/mediawiki/thumb/3/31/Chameleon.svg/220px-Chameleon.svg.png' style='float:left;' align="left" title='Chameleon Skin Logo'>
+<img src='docs/Chameleon.svg' width='220' style='float:left;' align="left" title='Chameleon Skin Logo'>
 
 Chameleon is a highly customizable [MediaWiki][mw] skin that uses the
 [Bootstrap][twbs] framework.

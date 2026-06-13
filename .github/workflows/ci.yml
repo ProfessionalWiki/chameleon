@@ -61,7 +61,7 @@ jobs:
             mediawiki
             !mediawiki/extensions/
             !mediawiki/vendor/
-          key: mw_${{ matrix.mw }}-php${{ matrix.php }}-v20
+          key: mw_${{ matrix.mw }}-php${{ matrix.php }}-v21
 
       - name: Cache Composer cache
         uses: actions/cache@v4
@@ -91,9 +91,6 @@ jobs:
             php tests/phpunit/phpunit.php --group skins-chameleon
           else
             # MW 1.46 and later
-            if [ ! -f phpunit.xml.template ]; then
-              wget -q -O phpunit.xml.template "https://raw.githubusercontent.com/wikimedia/mediawiki/${{ matrix.mw }}/phpunit.xml.template"
-            fi
             composer phpunit:config
             vendor/bin/phpunit --group skins-chameleon
           fi

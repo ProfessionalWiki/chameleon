@@ -38,6 +38,17 @@ $cmln-grid-breakpoints: (
 
 $grid-breakpoints: $cmln-grid-breakpoints;
 
+// Container max widths. xxl deliberately matches xl, not Bootstrap 5's 1320px.
+$cmln-container-max-widths: (
+	sm: 540px,
+	md: 720px,
+	lg: 960px,
+	xl: 1140px,
+	xxl: 1140px
+) !default;
+
+$container-max-widths: $cmln-container-max-widths;
+
 // Global textual link colors.
 $cmln-link-format: $link-color none darken($link-color, 0.15) underline !default;
 

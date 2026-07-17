@@ -9,7 +9,7 @@ Under development.
 * Raised minimum Bootstrap extension version from 5.0 to 6.0
 * Added initial Bootstrap 5.3.8 compatibility (thanks @malberts)
 * Removed the Bootstrap 4 `.pull-left`/`.pull-right` compatibility classes
-* Removed obsolete CSS for the classic edit toolbar and other dead style code
+* Removed the obsolete `#toolbar` fixed-height CSS, unused SCSS variables, and other dead style code
 
 ### Chameleon 5.0.3
 

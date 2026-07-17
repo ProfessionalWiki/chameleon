@@ -8,6 +8,7 @@ Under development.
 * Raised minimum PHP version from 8.0 to 8.1
 * Raised minimum Bootstrap extension version from 5.0 to 6.0
 * Added initial Bootstrap 5.3.8 compatibility (thanks @malberts)
+* Updated the bundled Font Awesome from 5 to 6 (thanks @malberts)
 * Removed the Bootstrap 4 `.pull-left`/`.pull-right` compatibility classes
 * Removed the obsolete `#toolbar` fixed-height CSS, unused SCSS variables, and other dead style code
 

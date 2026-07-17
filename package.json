@@ -6,7 +6,7 @@
     "build": "npm run build:fontawesome && npm run build:docs"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "doctoc": "^2.2.1"
   }
 }

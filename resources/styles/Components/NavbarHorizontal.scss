@@ -9,7 +9,6 @@
 .p-navbar {
 
 	@extend .navbar;
-	@extend .navbar-light;
 
 	background-color: map-get( $theme-colors, $cmln-navbar-bg-color );
 

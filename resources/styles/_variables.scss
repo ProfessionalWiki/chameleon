@@ -71,7 +71,6 @@ $cmln-search-bar-btn-color: light !default; // @see $theme-colors
 
 // Navbar
 $cmln-navbar-bg-color: light !default; // @see $theme-colors
-$cmln-navbar-toggler-color: light !default; // @see $theme-colors
 
 $cmln-navbar-logo-height: 2 * $nav-link-padding-y + $font-size-base + $navbar-padding-y;
 
@@ -202,14 +201,7 @@ $error: $danger !default;
 
 /// ==> From Chameleon 1
 
-$thumbnail-caption-padding: 3px;
-
 // logo will be scaled down to this height to fit into the navbar
 // (this value should be less than the navbar-height)
 //$navbar-logo-height: .9 * $navbar-height;
 //
-$navbar-user-loggedin: map-get($theme-colors, "primary");
-$navbar-user-not-loggedin: $navbar-light-disabled-color; // FIXME: Fix color
-
-$navbar-newtalk-available: map-get($theme-colors, "primary"); // $brand-primary;
-$navbar-newtalk-not-available: $navbar-light-disabled-color; // FIXME: Fix color

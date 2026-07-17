@@ -166,8 +166,6 @@ Some examples are provided below:
  $cmln-page-tools-link-new                             | ('color': #6c757d, 'hover-color': #494f54)
  $cmln-personal-tools-font-size                        | 0.875rem
  $cmln-personal-tools-item-margin                      | 1.5rem
- $cmln-personal-tools-link                             | #1b599b none #10345a underline
- $cmln-personal-tools-link-new                         | ('color': #6c757d, 'hover-color': #494f54)
  $cmln-search-bar-btn-color                            | light
  $cmln-search-bar-collapse-point                       | cmln
  $cmln-toc-entry-number-padding-right                  | 0.5rem

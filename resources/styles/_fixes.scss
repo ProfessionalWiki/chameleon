@@ -8,7 +8,7 @@
 
 // Put the font setting on the :before pseudo element, not on the element itself
 // Do not set the line-height on the element
-.fa, .far, .fas, .fab {
+.fa, .far, .fas, .fab, .fa-solid, .fa-regular, .fa-brands {
 	font-family: inherit;
 	font-weight: inherit;
 	line-height: inherit;
@@ -18,19 +18,19 @@
 	}
 }
 
-.fa, .fas {
+.fa, .fas, .fa-solid {
 	&:before {
 		font-family: 'Font Awesome 6 Free';
 		font-weight: 900;
 	}
 }
 
-.far:before {
+.far:before, .fa-regular:before {
 	font-family: 'Font Awesome 6 Free';
 	font-weight: 400;
 }
 
-.fab:before {
+.fab:before, .fa-brands:before {
 	font-family: 'Font Awesome 6 Brands';
 }
 

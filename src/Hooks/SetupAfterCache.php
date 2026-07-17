@@ -98,15 +98,15 @@ class SetupAfterCache {
 		);
 
 		$this->bootstrapManager->addStyleFile(
-			$GLOBALS[ 'chameleonLocalPath' ] . 	'/resources/fontawesome/scss/fa-solid.scss'
+			$GLOBALS[ 'chameleonLocalPath' ] . 	'/resources/fontawesome/scss/solid.scss'
 		);
 
 		$this->bootstrapManager->addStyleFile(
-			$GLOBALS[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-regular.scss'
+			$GLOBALS[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/regular.scss'
 		);
 
 		$this->bootstrapManager->addStyleFile(
-			$GLOBALS[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/fa-brands.scss'
+			$GLOBALS[ 'chameleonLocalPath' ] . '/resources/fontawesome/scss/brands.scss'
 		);
 
 		$this->bootstrapManager->addStyleFile(

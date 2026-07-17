@@ -160,7 +160,6 @@ Some examples are provided below:
  $cmln-navbar-bg-color                                 | light
  $cmln-navbar-horizontal-collapse-point                | cmln
  $cmln-navbar-logo-height                              | 2.5rem
- $cmln-navbar-toggler-color                            | light
  $cmln-page-tools-font-size                            | 0.875rem
  $cmln-page-tools-item-margin                          | 1.5rem
  $cmln-page-tools-link                                 | #1b599b none #10345a underline
@@ -1563,16 +1562,12 @@ Some examples are provided below:
  $navbar-light-toggler-border-color                    | rgba(53, 91, 132, 0.5)
  $navbar-light-toggler-icon-bg                         | url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='%23355b84' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
  $navbar-nav-link-padding-x                            | 1rem
- $navbar-newtalk-available                             | #007bff
- $navbar-newtalk-not-available                         | rgba(53, 91, 132, 0.7)
  $navbar-padding-x                                     | 1rem
  $navbar-padding-y                                     | 0.5rem
  $navbar-toggler-border-radius                         | 0.25rem
  $navbar-toggler-font-size                             | 1rem
  $navbar-toggler-padding-x                             | 0.5rem
  $navbar-toggler-padding-y                             | 0.1rem
- $navbar-user-loggedin                                 | #007bff
- $navbar-user-not-loggedin                             | rgba(53, 91, 132, 0.7)
  $nested-kbd-font-weight                               | 700
  $orange                                               | #fd7e14
  $overflows                                            | auto, hidden
@@ -1690,7 +1685,6 @@ Some examples are provided below:
  $thumbnail-border-radius                              | 0.25rem
  $thumbnail-border-width                               | 1px
  $thumbnail-box-shadow                                 | 0 1px 2px rgba(0, 0, 0, 0.075)
- $thumbnail-caption-padding                            | 3px
  $thumbnail-padding                                    | 0.25rem
  $toast-background-color                               | rgba(255, 255, 255, 0.85)
  $toast-border-color                                   | rgba(0, 0, 0, 0.1)

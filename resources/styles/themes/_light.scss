@@ -38,14 +38,14 @@ $grays: map-merge((
 	"900": $gray-900
 ), $grays);
 
-$blue:    #007bff !default;
+$blue:    #36c !default;     // Codex color-progressive
 $indigo:  #6610f2 !default;
 $purple:  #6f42c1 !default;
 $pink:    #e83e8c !default;
-$red:     #dc3545 !default;
+$red:     #d73333 !default;  // Codex color-destructive
 $orange:  #fd7e14 !default;
 $yellow:  #ffc107 !default;
-$green:   #28a745 !default;
+$green:   #177860 !default;  // Codex color-success
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
 
@@ -100,8 +100,8 @@ $theme-colors: map-merge((
 //
 // Quickly modify global styling by enabling or disabling optional features.
 
-$enable-shadows:            true !default;
-$enable-gradients:          true !default;
+$enable-shadows:            false !default;
+$enable-gradients:          false !default;
 
 // Wiki pages tend to be text-heavy, so make headings not quite as large as might be appropriate for more
 // visually-oriented websites
@@ -116,7 +116,7 @@ $h5-font-size:                $font-size-base * 1.1 !default;
 $h6-font-size:                $font-size-base * 1.0 !default;
 
 // Links
-$link-color: $cobalt;
+$link-color: $primary;
 $cmln-link-formats: (
 	new: ('color': $burgundy, 'hover-color': darken($burgundy, 0.15)),
 );

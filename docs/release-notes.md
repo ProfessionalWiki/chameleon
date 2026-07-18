@@ -11,6 +11,7 @@ Under development.
 * Updated the bundled Font Awesome from 5 to 6 (thanks @malberts)
 * Removed the Bootstrap 4 `.pull-left`/`.pull-right` compatibility classes
 * Removed the obsolete `#toolbar` fixed-height CSS, unused SCSS variables, and other dead style code
+* Flattened the default theme and aligned its colors with MediaWiki's Codex design system and Bootstrap 5.3 (thanks @malberts)
 
 ### Chameleon 5.0.3
 

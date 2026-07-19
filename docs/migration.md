@@ -3,6 +3,7 @@
 ## Core items changed
 
 * Move from Bootstrap 4 to [Bootstrap 5](https://getbootstrap.com/docs/5.3)
+* Bundled Font Awesome updated from 5 to 6
 
 See the [release notes](release-notes.md).
 
@@ -11,12 +12,34 @@ See the [release notes](release-notes.md).
 Chameleon 6 supports
 * MediaWiki 1.43.0 and later
 * PHP 8.1 and later
+* Extension:Bootstrap 6.0 and later (which bundles Bootstrap 5.3)
 
 ## Move from Bootstrap 4 to Bootstrap 5
 
-Chameleon 6.0 comes with [Bootstrap 5](https://getbootstrap.com/docs/5.3), an upgraded version of Bootstrap 4 that came with Chameleon 2.x to 5.x. Class names from Bootstrap 4 could be different or removed in Bootstrap 5. It is highly recommended to read Bootstrap's migration guide here: https://getbootstrap.com/docs/5.3/migration/.
+Chameleon 6.0 comes with [Bootstrap 5](https://getbootstrap.com/docs/5.3), an upgraded version of Bootstrap 4 that came with Chameleon 2.x to 5.x. Class names and utilities from Bootstrap 4 may be renamed or removed in Bootstrap 5. If you use Bootstrap classes in your wikitext, templates, layouts or custom stylesheets, review them against Bootstrap's own migration guide: https://getbootstrap.com/docs/5.3/migration/. Common examples include `.ml-*` / `.mr-*` becoming `.ms-*` / `.me-*`, `.text-left` / `.text-right` becoming `.text-start` / `.text-end`, and `.sr-only` becoming `.visually-hidden`.
 
-In addition to the library-level changes covered by Bootstrap's own migration guide, Chameleon 6.0 removes the Bootstrap 4 `.pull-left` / `.pull-right` compatibility classes that earlier Chameleon releases shipped (previously emitted by `resources/styles/utilities/_float.scss`). If you used these in your own content, layouts or stylesheets, switch to Bootstrap 5's `.float-start` / `.float-end`.
+## Custom styles (SCSS)
+
+If you customize Chameleon's styling through `$egChameleonExternalStyleVariables` or a custom theme file (`$egChameleonThemeFile`), a few Bootstrap 5 changes affect the SCSS you provide:
+
+* The Bootstrap 4 SCSS functions `theme-color()`, `color()` and `theme-color-level()` no longer exist in Bootstrap 5. A custom theme file or style variable that calls them will fail to compile. Read colors from the Bootstrap maps instead, for example `map-get( $theme-colors, "danger" )`.
+* `$enable-responsive-font-sizes` has been replaced by `$enable-rfs`. Responsive font sizes stay on by default, so this only matters if you set the variable to turn them off: use `$enable-rfs: false` instead.
+* The search bar's button border now follows `$input-border-color` rather than `$input-group-addon-border-color`. Set `$input-border-color` if you restyle it.
+
+The theme file's color and breakpoint maps (`$colors`, `$grays`, `$theme-colors`, `$grid-breakpoints`) keep the same structure as in Chameleon 5, so an existing custom theme file continues to work apart from the points above.
+
+## Changes to Chameleon's own markup and behaviour
+
+Beyond the classes you write yourself, the move to Bootstrap 5 also changed some of the markup and JavaScript that Chameleon emits. If you have custom CSS or JavaScript targeting the skin's rendered output, note:
+
+* The `.pull-left` / `.pull-right` compatibility classes (previously emitted by `resources/styles/utilities/_float.scss`) are removed; use Bootstrap 5's `.float-start` / `.float-end`.
+* The search bar no longer wraps its buttons in a `.input-group-append` element (Bootstrap 5 removed `.input-group-*-append`); the buttons now sit directly inside `.input-group`.
+* Navigation dropdowns now use Bootstrap 5's `data-bs-*` attributes (for example `data-bs-toggle`) instead of the Bootstrap 4 `data-*` equivalents (`data-toggle`).
+* The Table of Contents (`Toc`) script now drives its collapsible sections with Bootstrap 5's `bootstrap.Collapse` API instead of the jQuery Bootstrap plugin.
+
+## Font Awesome 5 to 6
+
+The bundled Font Awesome is updated from version 5 to version 6. Font Awesome 6 retains the version 5 class aliases, so existing `fa-*` icon usage generally keeps working. If you reference an icon directly in wikitext or via the `$cmln-icons` SCSS variable and it no longer appears as expected, check its current name in the [Font Awesome 6 icon gallery](https://fontawesome.com/icons). Only the free icons are bundled.
 
 ---
 

@@ -4,6 +4,8 @@
 
 Released on July 19, 2026.
 
+Chameleon 6.0 is a major release upgrading from Bootstrap 4 to [Bootstrap 5](https://getbootstrap.com/docs/5.3).
+
 See the [migration guide](migration.md) for upgrade steps and breaking changes.
 
 * Raised minimum MediaWiki version from 1.39 to 1.43

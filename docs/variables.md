@@ -1,13 +1,10 @@
 ## SCSS Variables
 
-> **⚠️ Pending Bootstrap 5 regeneration.** This table still reflects
-> Bootstrap **4**-era variables and their Bootstrap 4 calculated values.
-> Chameleon now uses Bootstrap 5.3 (see
-> [issue #385](https://github.com/ProfessionalWiki/chameleon/issues/385)):
-> some variables listed here were removed or renamed in Bootstrap 5, several
-> values have changed, and new Bootstrap 5 variables are not yet listed. Do
-> not rely on the specific values below until this document is regenerated
-> for Bootstrap 5.
+> **⚠️ Out of date for Bootstrap 5 / Chameleon 6.** These values are
+> Bootstrap **4**-era: some variables listed here were removed or renamed in
+> Bootstrap 5, several values have changed, and new Bootstrap 5 variables are
+> missing. Do not rely on the specific values below. Reworking this page is
+> tracked in [issue #504](https://github.com/ProfessionalWiki/chameleon/issues/504).
 
 This is the list of all SCSS variables defined in the various style files used
 by the Chameleon skin (although not all of the variables are actually used).

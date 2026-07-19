@@ -27,6 +27,8 @@ each layout via its XML file.
 6. [Credits](docs/credits.md)
 7. [Licenses](docs/licenses.md)
 
+There is also a [migration guide](docs/migration.md) for users upgrading from Chameleon 5 (Bootstrap 4) to Chameleon 6 (Bootstrap 5).
+
 ## Contact
 
 [Paid professional support](https://professional.wiki/en/mediawiki-theme-development) is available via

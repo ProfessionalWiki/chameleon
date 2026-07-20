@@ -28,6 +28,10 @@ If you customize Chameleon's styling through `$egChameleonExternalStyleVariables
 
 The theme file's color and breakpoint maps (`$colors`, `$grays`, `$theme-colors`, `$grid-breakpoints`) keep the same structure as in Chameleon 5, so an existing custom theme file continues to work apart from the points above.
 
+### Bootswatch themes
+
+A Bootswatch theme's `_variables.scss` and `_bootswatch.scss` are built against a specific Bootstrap major version, and the Bootstrap 4 and Bootstrap 5 builds of a theme are not necessarily interchangeable. A Bootstrap 4 Bootswatch theme loaded through `$egChameleonThemeFile` or `$egChameleonExternalStyleModules` may render incorrectly under Chameleon 6. It can also fail to compile if it, or a stylesheet you load alongside it, uses a construct that Bootstrap 5 removed, such as `theme-color()`. Use the Bootstrap 5 build of the same Bootswatch theme instead.
+
 ## Changes to Chameleon's own markup and behaviour
 
 Beyond the classes you write yourself, the move to Bootstrap 5 also changed some of the markup and JavaScript that Chameleon emits. If you have custom CSS or JavaScript targeting the skin's rendered output, note:

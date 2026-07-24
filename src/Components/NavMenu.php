@@ -67,7 +67,7 @@ class NavMenu extends Component {
 				// Split on ';', trim whitespace, remove empty strings,
 				// and shove resulting tokens into an arrays as keys.
 				array_fill_keys( preg_split('/\s*;+\s*/', $include,
-						NULL, PREG_SPLIT_NO_EMPTY ), true ) );
+						null, PREG_SPLIT_NO_EMPTY ), true ) );
 		}
 
 		$exclude = $this->getAttribute( self::ATTR_EXCLUDE, false );
@@ -167,7 +167,7 @@ class NavMenu extends Component {
 	 */
 	protected function hasSubmenuItems( $menuDescription ) {
 		return is_array( $menuDescription['content'] ) &&
-			count( $menuDescription['content'] ) > 0;
+			!!count( $menuDescription['content'] );
 	}
 
 	/**
@@ -261,7 +261,7 @@ class NavMenu extends Component {
 
 	private function isHrefActive( string $href ): bool {
 		return filter_var( $this->getDomElement()->getAttribute( 'showActive' ), FILTER_VALIDATE_BOOLEAN )
-			&& $href === $this->getSkin()->getTitle()->getLocalURL();
+			&& $this->getSkin()->getTitle()->getLocalURL() === $href;
 	}
 
 }

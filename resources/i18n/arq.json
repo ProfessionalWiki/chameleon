@@ -5,9 +5,12 @@
 			"Oldstoneage"
 		]
 	},
+	"skinname-chameleon": "تاتا",
 	"chameleon-desc": "تصميم التاتا",
 	"chameleon-loggedin": "راك سجلت دخلتك كـ $1.",
 	"chameleon-notloggedin": "ما راكش مسجّل الدخول تاعك.",
 	"chameleon-newmessages": "عندك براوات جدُد.",
-	"chameleon-nonewmessages": "ما عندكش براوات جدُد."
+	"chameleon-nonewmessages": "ما عندكش براوات جدُد.",
+	"chameleon-search-aria-label": "روح للصفحه",
+	"chameleon-toggler": "القائمة"
 }

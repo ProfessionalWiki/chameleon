@@ -104,3 +104,17 @@
 .wikiEditor-ui * {
 	box-sizing: content-box;
 }
+
+/* Extension UniversalLanguageSelector */
+.skin-chameleon {
+	// The language trigger carries Vector's personal-menu metrics, imposed by an
+	// id selector over the .dropdown-item styling of the entries around it.
+	.dropdown-menu #pt-uls .uls-trigger {
+		padding-top: $dropdown-item-padding-y !important;
+		padding-left: $dropdown-item-padding-x;
+
+		&:before {
+			padding-left: $fa-fw-width;
+		}
+	}
+}

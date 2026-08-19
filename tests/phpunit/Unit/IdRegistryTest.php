@@ -15,6 +15,26 @@ use Skins\Chameleon\IdRegistry;
  */
 class IdRegistryTest extends TestCase {
 
+	public function testRequestedIdIsReturnedAsIs(): void {
+		$registry = new IdRegistry();
+
+		$this->assertSame( 'some-id', $registry->getId( 'some-id' ) );
+	}
+
+	public function testIdAlreadyInUseIsDerivedFromTheRequestedOne(): void {
+		$registry = new IdRegistry();
+		$registry->getId( 'some-id' );
+
+		$this->assertStringStartsWith( 'some-id-', $registry->getId( 'some-id' ) );
+	}
+
+	public function testTheSameIdIsNeverHandedOutTwice(): void {
+		$registry = new IdRegistry();
+		$registry->getId( 'some-id' );
+
+		$this->assertNotSame( $registry->getId( 'some-id' ), $registry->getId( 'some-id' ) );
+	}
+
 	public function testIdsAreAvailableAgainOnANewPage(): void {
 		$registry = new IdRegistry();
 		$registry->getId( 'some-id' );

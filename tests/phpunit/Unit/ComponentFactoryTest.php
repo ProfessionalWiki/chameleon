@@ -10,6 +10,8 @@ use Skins\Chameleon\ComponentFactory;
 
 /**
  * @covers \Skins\Chameleon\ComponentFactory
+ *
+ * @group skins-chameleon
  */
 class ComponentFactoryTest extends \MediaWikiIntegrationTestCase {
 

@@ -52,6 +52,10 @@ class IdRegistry {
 		return self::$sInstance;
 	}
 
+	public function startNewPage() {
+		$this->mRegistry = [];
+	}
+
 	/**
 	 * @param null|string $id
 	 * @param null|mixed $component

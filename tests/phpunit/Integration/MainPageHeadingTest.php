@@ -31,6 +31,9 @@ class MainPageHeadingTest extends MediaWikiIntegrationTestCase {
 
 		// The test environment ignores the MediaWiki namespace, which is where these headings are set.
 		$this->overrideConfigValue( MainConfigNames::UseDatabaseMessages, true );
+
+		// Chameleon does not declare its menus, which MediaWiki 1.46 deprecates. Unrelated to the heading.
+		$this->filterDeprecated( '/Skins must now pass `menus` key/' );
 	}
 
 	public function testMainPageHeadingComesFromTheMainpageTitleMessage(): void {

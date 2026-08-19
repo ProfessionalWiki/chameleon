@@ -5,6 +5,8 @@ declare( strict_types = 1 );
 namespace Skins\Chameleon\Tests\Integration;
 
 use Bootstrap\BootstrapManager;
+use DOMDocument;
+use DOMXPath;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Title\Title;
@@ -44,6 +46,13 @@ class RepeatedRenderingTest extends MediaWikiIntegrationTestCase {
 		$this->assertStringContainsString( 'Added after the first render', $context->getSkin()->generateHTML() );
 	}
 
+	public function testSecondRenderKeepsTheRequestedIds(): void {
+		$context = $this->newContext();
+		$context->getSkin()->generateHTML();
+
+		$this->assertSame( 1, $this->countElementsWithId( 'content', $context->getSkin()->generateHTML() ) );
+	}
+
 	private function newContext(): RequestContext {
 		$context = new RequestContext();
 		$context->setTitle( Title::makeTitle( NS_MAIN, 'Some page' ) );
@@ -51,6 +60,13 @@ class RepeatedRenderingTest extends MediaWikiIntegrationTestCase {
 		$context->setSkin( $this->getServiceContainer()->getSkinFactory()->makeSkin( 'chameleon' ) );
 
 		return $context;
+	}
+
+	private function countElementsWithId( string $id, string $html ): int {
+		$document = new DOMDocument();
+		$document->loadHTML( '<meta charset="utf-8">' . $html, LIBXML_NOERROR );
+
+		return ( new DOMXPath( $document ) )->query( "//*[@id='$id']" )->length;
 	}
 
 }

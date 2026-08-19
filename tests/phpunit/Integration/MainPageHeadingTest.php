@@ -34,6 +34,7 @@ class MainPageHeadingTest extends MediaWikiIntegrationTestCase {
 
 		// Chameleon does not declare its menus, which MediaWiki 1.46 deprecates. Unrelated to the heading.
 		$this->filterDeprecated( '/Skins must now pass `menus` key/' );
+		$this->filterDeprecated( '/Skin option menus contains/' );
 	}
 
 	public function testMainPageHeadingComesFromTheMainpageTitleMessage(): void {

@@ -55,7 +55,11 @@ class ContentHeader extends Component {
 
 		$firstHeading =
 			$this->indent( 1 ) . '<!-- title of the page -->' .
-			$this->indent() . $idRegistry->element( 'h1', [ 'id' => 'firstHeading' ],
+			$this->indent() . $idRegistry->element( 'h1',
+				[
+					'id' => 'firstHeading',
+					'style' => $skintemplate->get( 'is-title-blank' ) ? 'display: none' : null,
+				],
 				$skintemplate->get( 'title' ) );
 
 		// @codingStandardsIgnoreStart

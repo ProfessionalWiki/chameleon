@@ -99,11 +99,23 @@ class Chameleon extends SkinTemplate {
 	 */
 	protected function prepareQuickTemplate() {
 		$tpl = parent::prepareQuickTemplate();
+		$this->setPageHeading( $tpl );
 		$hookContainer = MediaWikiServices::getInstance()->getHookContainer()->run(
 			'ChameleonSkinTemplateOutputPageBeforeExec',
 			[ $this, $tpl ]
 		);
 		return $tpl;
+	}
+
+	/**
+	 * SkinTemplate sets the heading to the plain page title, while Skin::getTemplateData() also
+	 * applies the MediaWiki:Mainpage-title and MediaWiki:Mainpage-title-loggedin overrides.
+	 */
+	private function setPageHeading( QuickTemplate $tpl ): void {
+		$templateData = $this->getTemplateData();
+
+		$tpl->set( 'title', $templateData[ 'html-title' ] ?? '' );
+		$tpl->set( 'is-title-blank', $templateData[ 'is-title-blank' ] );
 	}
 
 	/**

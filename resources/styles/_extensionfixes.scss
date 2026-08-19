@@ -115,6 +115,7 @@
 
 		&:before {
 			padding-left: $fa-fw-width;
+			background-size: $fa-fw-width $fa-fw-width;
 		}
 	}
 }

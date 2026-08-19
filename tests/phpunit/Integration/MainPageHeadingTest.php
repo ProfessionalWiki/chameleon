@@ -93,10 +93,21 @@ class MainPageHeadingTest extends MediaWikiIntegrationTestCase {
 		$context = new RequestContext();
 		$context->setTitle( $title );
 		$context->setUser( $user ?? $this->getServiceContainer()->getUserFactory()->newAnonymous() );
-		$context->setSkin( new Chameleon() );
+		$context->setSkin( $this->newContentHeaderOnlySkin() );
 		$context->getOutput()->setPageTitle( self::PAGE_TITLE );
 
 		return $context->getSkin()->generateHTML();
+	}
+
+	/**
+	 * A layout holding nothing but the heading keeps the rendering to the components under test.
+	 */
+	private function newContentHeaderOnlySkin(): Chameleon {
+		return new class() extends Chameleon {
+			protected function getLayoutFilePath(): string {
+				return __DIR__ . '/../Fixture/ContentHeader.xml';
+			}
+		};
 	}
 
 }

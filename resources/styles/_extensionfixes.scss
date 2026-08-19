@@ -114,6 +114,7 @@
 		padding-left: $dropdown-item-padding-x;
 
 		&:before {
+			padding-top: 0;
 			padding-left: $fa-fw-width;
 			background-size: $fa-fw-width $fa-fw-width;
 		}

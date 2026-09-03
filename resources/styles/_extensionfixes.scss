@@ -104,3 +104,19 @@
 .wikiEditor-ui * {
 	box-sizing: content-box;
 }
+
+/* Extension UniversalLanguageSelector */
+.skin-chameleon {
+	// ULS styles this trigger through an id selector, with !important on the top
+	// padding, so it outranks the .dropdown-item styling of the entries around it.
+	.dropdown-menu #pt-uls .uls-trigger {
+		padding-top: $dropdown-item-padding-y !important;
+		padding-left: $dropdown-item-padding-x;
+
+		&:before {
+			padding-top: 0;
+			padding-left: $fa-fw-width;
+			background-size: $fa-fw-width $fa-fw-width;
+		}
+	}
+}

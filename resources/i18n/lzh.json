@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Davidzdh",
-			"SolidBlock"
+			"SolidBlock",
+			"XiaoAnIsMe"
 		]
 	},
+	"skinname-chameleon": "避役",
 	"chameleon-loggedin": "業已籍名曰$1。",
 	"chameleon-notloggedin": "未有籍記。",
 	"chameleon-newmessages": "新訊",

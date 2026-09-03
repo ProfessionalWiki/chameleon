@@ -107,8 +107,8 @@
 
 /* Extension UniversalLanguageSelector */
 .skin-chameleon {
-	// The language trigger carries Vector's personal-menu metrics, imposed by an
-	// id selector over the .dropdown-item styling of the entries around it.
+	// ULS styles this trigger through an id selector, with !important on the top
+	// padding, so it outranks the .dropdown-item styling of the entries around it.
 	.dropdown-menu #pt-uls .uls-trigger {
 		padding-top: $dropdown-item-padding-y !important;
 		padding-left: $dropdown-item-padding-x;

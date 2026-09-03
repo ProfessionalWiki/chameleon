@@ -55,6 +55,30 @@ class Chameleon extends SkinTemplate {
 
 	public const HOOK_GET_LAYOUT_XML = 'ChameleonGetLayoutXml';
 
+	public const PERSONAL_TOOLS_MENUS = [
+		'user-interface-preferences',
+		'user-page',
+		'notifications',
+		'user-menu',
+	];
+
+	/**
+	 * The menus this skin declares to MediaWiki through the `menus` skin option.
+	 *
+	 * MediaWiki before 1.46 strips the modern menus from the template data, and core's special pages stop
+	 * rendering their own navigation once a skin declares `associated-pages`, so on those versions the skin
+	 * keeps declaring the legacy menus.
+	 *
+	 * @return string[]
+	 */
+	public static function getSupportedMenus( string $mediaWikiVersion ): array {
+		if ( version_compare( $mediaWikiVersion, '1.46', '>=' ) ) {
+			return [ 'associated-pages', 'views', 'actions', 'variants', ...self::PERSONAL_TOOLS_MENUS ];
+		}
+
+		return [ 'namespaces', 'views', 'actions', 'variants' ];
+	}
+
 	/**
 	 * @throws \Exception
 	 */

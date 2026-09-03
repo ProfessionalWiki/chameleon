@@ -28,6 +28,7 @@ namespace Skins\Chameleon\Components;
 
 use Action;
 use MediaWiki\MediaWikiServices;
+use Skins\Chameleon\Chameleon;
 use Skins\Chameleon\ChameleonTemplate;
 use Skins\Chameleon\IdRegistry;
 
@@ -113,7 +114,10 @@ class PageTools extends Component {
 	 * @return array
 	 */
 	private function getContentNavigation(): array {
-		$contentNavigation = $this->getPageToolsStructure();
+		$contentNavigation = array_diff_key(
+			$this->getPageToolsStructure() ?? [],
+			array_flip( Chameleon::PERSONAL_TOOLS_MENUS )
+		);
 
 		$this->removeSelectedNamespaceIfNeedBe( $contentNavigation );
 		$this->removeDiscussionLinkIfNeedBe( $contentNavigation );
@@ -126,7 +130,9 @@ class PageTools extends Component {
 	 */
 	private function removeSelectedNamespaceIfNeedBe( array &$contentNavigation ) {
 		if ( $this->hideSelectedNamespace() ) {
-			unset( $contentNavigation[ 'namespaces' ][ $this->getNamespaceKey() ] );
+			$menu = $this->getAssociatedPagesMenuKey( $contentNavigation );
+
+			unset( $contentNavigation[ $menu ][ $this->getNamespaceKey() ] );
 		}
 	}
 
@@ -135,11 +141,17 @@ class PageTools extends Component {
 	 */
 	private function removeDiscussionLinkIfNeedBe( array &$contentNavigation ) {
 		if ( $this->hideDiscussionLink() ) {
+			$menu = $this->getAssociatedPagesMenuKey( $contentNavigation );
+
 			$talkNamespaceKey = $this->getNamespaceKey() === 'main' ? 'talk' :
 				$this->getNamespaceKey() . '_talk';
 
-			unset( $contentNavigation[ 'namespaces' ][ $talkNamespaceKey ] );
+			unset( $contentNavigation[ $menu ][ $talkNamespaceKey ] );
 		}
+	}
+
+	private function getAssociatedPagesMenuKey( array $contentNavigation ): string {
+		return array_key_exists( 'associated-pages', $contentNavigation ) ? 'associated-pages' : 'namespaces';
 	}
 
 	/**

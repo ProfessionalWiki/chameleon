@@ -1,5 +1,18 @@
 ## Release Notes
 
+### Chameleon 6.0.1
+
+Under development.
+
+* Fixed deprecation warnings on MediaWiki 1.46 (thanks @malberts)
+* Fixed the namespace tabs being shown after the view tabs on MediaWiki 1.46
+* Changed the page tools namespace group id from `p-namespaces` to `p-associated-pages` on MediaWiki 1.46 and later.
+  On special pages that group now holds the page's associated links (such as those of Special:Watchlist, previously
+  shown below the page title) instead of the static "Special page" tab; special pages without associated links show
+  no page tools at all.
+* Tabs that extensions add to the legacy `namespaces` menu through the `SkinTemplateNavigation::Universal` hook are no
+  longer shown on MediaWiki 1.46 and later; extensions need to add them to `associated-pages` instead.
+
 ### Chameleon 6.0.0
 
 Released on July 19, 2026.

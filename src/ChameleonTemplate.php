@@ -114,6 +114,26 @@ class ChameleonTemplate extends BaseTemplate {
 	}
 
 	/**
+	 * @return array[] Personal tools in the format expected by makeListItem
+	 */
+	public function getPersonalTools() {
+		return $this->getSkin()->getPersonalToolsForMakeListItem( $this->getPersonalUrls() );
+	}
+
+	private function getPersonalUrls(): array {
+		$contentNavigation = $this->get( 'content_navigation', [] );
+
+		if ( !isset( $contentNavigation[ 'user-menu' ] ) ) {
+			return $this->get( 'personal_urls', [] );
+		}
+
+		return array_merge( ...array_map(
+			static fn ( string $menu ) => $contentNavigation[ $menu ] ?? [],
+			Chameleon::PERSONAL_TOOLS_MENUS
+		) );
+	}
+
+	/**
 	 * @param array $options (optional) allows disabling certain sidebar elements.
 	 *  The keys `search`, `toolbox` and `languages` are accepted.
 	 * @return array representing the sidebar

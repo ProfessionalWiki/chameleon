@@ -57,6 +57,49 @@ class MockupFactory {
 		'UserRights' => [],
 	];
 
+	private const DEFAULT_CONTENT_NAVIGATION = [
+		'namespaces' =>
+			[
+				'talk' =>
+					[
+						'class'   => '',
+						'text'    => 'Discussion',
+						'href'    => '/mw/index.php?title=Talk:Main_Page',
+						'primary' => true,
+						'context' => 'talk',
+						'id'      => 'ca-talk',
+					],
+			],
+		'views'      =>
+			[
+				'view'    =>
+					[
+						'class'     => 'selected',
+						'text'      => 'View',
+						'href'      => '/mw/index.php/Main_Page',
+						'primary'   => true,
+						'redundant' => true,
+						'id'        => 'ca-view',
+					],
+				'edit'    =>
+					[
+						'class'   => '',
+						'text'    => 'Edit',
+						'href'    => '/mw/index.php?title=Main_Page&action=edit',
+						'primary' => true,
+						'id'      => 'ca-edit',
+					],
+				'history' =>
+					[
+						'class' => false,
+						'text'  => 'History',
+						'href'  => '/mw/index.php?title=Main_Page&action=history',
+						'rel'   => 'archives',
+						'id'    => 'ca-history',
+					],
+			],
+	];
+
 	/**
 	 * MockupFactory constructor.
 	 *
@@ -168,48 +211,7 @@ class MockupFactory {
 			],
 
 			// Required by PageTools
-			'content_navigation' => [
-				'namespaces' =>
-					[
-						'talk' =>
-							[
-								'class'   => '',
-								'text'    => 'Discussion',
-								'href'    => '/mw/index.php?title=Talk:Main_Page',
-								'primary' => true,
-								'context' => 'talk',
-								'id'      => 'ca-talk',
-							],
-					],
-				'views'      =>
-					[
-						'view'    =>
-							[
-								'class'     => 'selected',
-								'text'      => 'View',
-								'href'      => '/mw/index.php/Main_Page',
-								'primary'   => true,
-								'redundant' => true,
-								'id'        => 'ca-view',
-							],
-						'edit'    =>
-							[
-								'class'   => '',
-								'text'    => 'Edit',
-								'href'    => '/mw/index.php?title=Main_Page&action=edit',
-								'primary' => true,
-								'id'      => 'ca-edit',
-							],
-						'history' =>
-							[
-								'class' => false,
-								'text'  => 'History',
-								'href'  => '/mw/index.php?title=Main_Page&action=history',
-								'rel'   => 'archives',
-								'id'    => 'ca-history',
-							],
-					],
-			],
+			'content_navigation' => $this->get( 'ContentNavigation', self::DEFAULT_CONTENT_NAVIGATION ),
 
 			// Required by SearchBar
 			'wgScript'           => 'bam',
@@ -257,6 +259,10 @@ class MockupFactory {
 		$skin->expects( $this->testCase->any() )
 			->method( 'getRequest' )
 			->will( $this->testCase->returnValue( $request ) );
+
+		$skin->expects( $this->testCase->any() )
+			->method( 'getActionName' )
+			->will( $this->testCase->returnValue( $this->get( 'ActionName', 'view' ) ) );
 
 		$skin->expects( $this->testCase->any() )
 			->method( 'getComponentFactory' )

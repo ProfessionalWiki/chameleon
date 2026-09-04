@@ -53,6 +53,8 @@ class ContentHeader extends Component {
 		$skintemplate = $this->getSkinTemplate();
 		$idRegistry = IdRegistry::getRegistry();
 
+		// A blanked heading is hidden with an inline style rather than dropped, matching
+		// MediaWiki's own skins and keeping #firstHeading available to scripts.
 		$firstHeading =
 			$this->indent( 1 ) . '<!-- title of the page -->' .
 			$this->indent() . $idRegistry->element( 'h1',

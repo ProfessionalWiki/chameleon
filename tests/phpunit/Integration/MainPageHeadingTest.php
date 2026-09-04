@@ -31,6 +31,7 @@ class MainPageHeadingTest extends MediaWikiIntegrationTestCase {
 
 		// The test environment ignores the MediaWiki namespace, which is where these headings are set.
 		$this->overrideConfigValue( MainConfigNames::UseDatabaseMessages, true );
+		$this->setMwGlobals( 'egChameleonLayoutFile', __DIR__ . '/../Fixture/ContentHeader.xml' );
 
 		// Chameleon does not declare its menus, which MediaWiki 1.46 deprecates. Unrelated to the heading.
 		$this->filterDeprecated( '/Skins must now pass `menus` key/' );
@@ -99,21 +100,10 @@ class MainPageHeadingTest extends MediaWikiIntegrationTestCase {
 		$context = new RequestContext();
 		$context->setTitle( $title );
 		$context->setUser( $user ?? $this->getServiceContainer()->getUserFactory()->newAnonymous() );
-		$context->setSkin( $this->newContentHeaderOnlySkin() );
+		$context->setSkin( new Chameleon() );
 		$context->getOutput()->setPageTitle( self::PAGE_TITLE );
 
 		return $context->getSkin()->generateHTML();
-	}
-
-	/**
-	 * A layout holding nothing but the heading keeps the rendering to the components under test.
-	 */
-	private function newContentHeaderOnlySkin(): Chameleon {
-		return new class() extends Chameleon {
-			protected function getLayoutFilePath(): string {
-				return __DIR__ . '/../Fixture/ContentHeader.xml';
-			}
-		};
 	}
 
 }

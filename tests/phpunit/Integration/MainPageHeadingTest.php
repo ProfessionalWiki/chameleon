@@ -78,7 +78,9 @@ class MainPageHeadingTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( '', $this->getFirstHeading( Title::newMainPage() )->getAttribute( 'style' ) );
 	}
 
-	public function testOrdinaryPageHeadingIsNotHidden(): void {
+	public function testOrdinaryPageHeadingIsNotHiddenWhenTheMessageIsBlank(): void {
+		$this->editPage( 'MediaWiki:Mainpage-title', '' );
+
 		$heading = $this->getFirstHeading( Title::makeTitle( NS_MAIN, 'Some other page' ) );
 
 		$this->assertSame( '', $heading->getAttribute( 'style' ) );

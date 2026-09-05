@@ -24,9 +24,12 @@
 
 namespace Skins\Chameleon\Tests\Unit;
 
+use FileFetcher\InMemoryFileFetcher;
+use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\TestCase;
 use Skins\Chameleon\Chameleon;
 use Skins\Chameleon\ChameleonTemplate;
+use Skins\Chameleon\ComponentFactory;
 
 /**
  * @uses \Skins\Chameleon\ChameleonTemplate
@@ -87,6 +90,51 @@ class ChameleonTemplateTest extends TestCase {
 		$instance = new ChameleonTemplate;
 		$instance->set( 'skin', $skin );
 		$instance->execute();
+	}
+
+	/**
+	 * @covers \Skins\Chameleon\ChameleonTemplate
+	 */
+	public function testASecondRenderedPageUsesTheSameIdsAsTheFirst() {
+		$componentFactory = $this->newComponentFactory();
+
+		$this->assertSame(
+			$this->render( $componentFactory ),
+			$this->render( $componentFactory )
+		);
+	}
+
+	private function newComponentFactory(): ComponentFactory {
+		return new ComponentFactory(
+			'TestLayout.xml',
+			MediaWikiServices::getInstance()->getHookContainer(),
+			new InMemoryFileFetcher( [
+				'TestLayout.xml' => '<structure><component type="ContentBody"></component></structure>'
+			] )
+		);
+	}
+
+	/**
+	 * Mirrors what MediaWiki does per render: a fresh template, handed to the factory, then executed.
+	 */
+	private function render( ComponentFactory $componentFactory ): string {
+		$template = new ChameleonTemplate();
+		$template->set( 'skin', $this->newSkin( $componentFactory ) );
+		$template->set( 'bodytext', 'body text' );
+
+		$componentFactory->setSkinTemplate( $template );
+
+		ob_start();
+		$template->execute();
+
+		return ob_get_clean();
+	}
+
+	private function newSkin( ComponentFactory $componentFactory ): Chameleon {
+		$skin = $this->createStub( Chameleon::class );
+		$skin->method( 'getComponentFactory' )->willReturn( $componentFactory );
+
+		return $skin;
 	}
 
 }

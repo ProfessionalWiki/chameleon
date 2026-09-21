@@ -4,6 +4,7 @@
 			"Chrumps",
 			"G3raltJJ",
 			"Matma Rex",
+			"PanWor",
 			"Rail",
 			"Railfail536",
 			"Ty221"
@@ -11,8 +12,8 @@
 	},
 	"skinname-chameleon": "Kameleon",
 	"chameleon-desc": "Wysoce elastyczna, responsywna skórka używająca technologii Bootstrap 5",
-	"chameleon-loggedin": "Jesteś zalogowany jako $1.",
-	"chameleon-notloggedin": "Nie jesteś zalogowany",
+	"chameleon-loggedin": "Zalogowano się jako $1.",
+	"chameleon-notloggedin": "Nie zalogowano się",
 	"chameleon-newmessages": "Masz nowe wiadomości.",
 	"chameleon-nonewmessages": "Nie masz nowych wiadomości.",
 	"chameleon-search-aria-label": "Przejdź do strony",

@@ -43,6 +43,8 @@ class ChameleonTemplate extends BaseTemplate {
 	 * @throws \MWException
 	 */
 	public function execute() {
+		IdRegistry::getRegistry()->startNewPage();
+
 		echo $this->getSkin()->getComponentFactory()->getRootComponent()->getHtml();
 	}
 

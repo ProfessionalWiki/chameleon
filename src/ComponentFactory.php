@@ -180,6 +180,9 @@ class ComponentFactory {
 
 	public function setSkinTemplate( QuickTemplate $skinTemplate ) {
 		$this->skinTemplate = $skinTemplate;
+
+		// The components hold on to the template they were built with.
+		$this->rootComponent = null;
 	}
 
 	/**

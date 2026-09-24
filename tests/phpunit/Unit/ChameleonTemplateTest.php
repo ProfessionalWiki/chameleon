@@ -89,4 +89,57 @@ class ChameleonTemplateTest extends TestCase {
 		$instance->execute();
 	}
 
+	/**
+	 * @covers \Skins\Chameleon\ChameleonTemplate
+	 */
+	public function testPersonalToolsAreBuiltFromTheUserMenus() {
+		$instance = $this->newTemplate(
+			[
+				'user-interface-preferences' => [ 'uls' => [ 'href' => '/uls' ] ],
+				'user-page' => [ 'userpage' => [ 'href' => '/wiki/User:Foo' ] ],
+				'notifications' => [ 'notifications-alert' => [ 'href' => '/wiki/Special:Notifications' ] ],
+				'user-menu' => [
+					'mytalk' => [ 'href' => '/wiki/User_talk:Foo' ],
+					'logout' => [ 'href' => '/wiki/Special:UserLogout' ],
+				],
+			],
+			[]
+		);
+
+		$personalTools = $instance->getPersonalTools();
+
+		$this->assertSame(
+			[ 'uls', 'userpage', 'notifications-alert', 'mytalk', 'logout' ],
+			array_keys( $personalTools )
+		);
+		$this->assertSame( '/wiki/User_talk:Foo', $personalTools['mytalk']['links'][0]['href'] );
+	}
+
+	/**
+	 * @covers \Skins\Chameleon\ChameleonTemplate
+	 */
+	public function testPersonalToolsFallBackToPersonalUrlsWithoutUserMenus() {
+		$instance = $this->newTemplate(
+			[
+				'namespaces' => [ 'main' => [ 'href' => '/wiki/Foo' ] ],
+				'views' => [ 'edit' => [ 'href' => '/wiki/Foo?action=edit' ] ],
+			],
+			[ 'mytalk' => [ 'href' => '/wiki/User_talk:Foo' ] ]
+		);
+
+		$personalTools = $instance->getPersonalTools();
+
+		$this->assertSame( [ 'mytalk' ], array_keys( $personalTools ) );
+	}
+
+	private function newTemplate( array $contentNavigation, array $personalUrls ): ChameleonTemplate {
+		$instance = new ChameleonTemplate();
+
+		$instance->set( 'skin', new Chameleon() );
+		$instance->set( 'content_navigation', $contentNavigation );
+		$instance->set( 'personal_urls', $personalUrls );
+
+		return $instance;
+	}
+
 }

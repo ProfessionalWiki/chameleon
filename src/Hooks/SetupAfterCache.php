@@ -240,7 +240,8 @@ class SetupAfterCache {
 					'name' => 'chameleon',
 					'styles' => $styles,
 					'responsive' => true,
-					'bodyOnly' => true
+					'bodyOnly' => true,
+					'menus' => Chameleon::getSupportedMenus( MW_VERSION )
 				] );
 			} );
 	}

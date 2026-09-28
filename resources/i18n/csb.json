@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kaszeba"
+			"Kaszeba",
+			"Orbitminis"
 		]
 	},
 	"skinname-chameleon": "Kaméleòn",
-	"chameleon-desc": "Skórka Kaméleòn",
+	"chameleon-desc": "Wielce dżibkòwatô, responsywnô skórka brëkòwónô  technologie Bootstrap 5",
 	"chameleon-loggedin": "Jes wlogòwóny jakno $1.",
 	"chameleon-notloggedin": "Nie jes wlogòwóny",
 	"chameleon-newmessages": "Môsz nowé wiadła",

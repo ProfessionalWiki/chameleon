@@ -1,5 +1,16 @@
 ## Release Notes
 
+### Chameleon 6.0.1
+
+Released on October 15, 2026.
+
+* Fixed the main page heading ignoring MediaWiki:Mainpage-title and MediaWiki:Mainpage-title-loggedin (thanks @malberts)
+* Fixed the PageForms form not rendering below the diff or preview on "Show changes" and "Show preview"
+  (thanks @malberts)
+* Fixed the alignment of the UniversalLanguageSelector entry in the personal tools dropdown (thanks @malberts)
+* Improved compatibility with MediaWiki 1.46 (thanks @malberts)
+* Translation updates for system messages (thanks @translatewiki and its translator community)
+
 ### Chameleon 6.0.0
 
 Released on July 19, 2026.

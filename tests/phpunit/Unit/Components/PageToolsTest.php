@@ -104,6 +104,38 @@ class PageToolsTest extends GenericComponentTestCase {
 		$this->assertTag( [ 'class' => 'tool-talk' ], $html );
 	}
 
+	/**
+	 * @covers ::getHtml
+	 */
+	public function testGetHtml_HideSelectedNamespaceRemovesTheSelectedSpecialPageLink() {
+		$html = $this->getHtmlForContentNavigation(
+			[
+				'associated-pages' => [
+					'special-specialAssociatedNavigationLinks-link-0' => [
+						'text' => 'View watchlist',
+						'class' => null,
+						'id' => 'ca-special-specialAssociatedNavigationLinks-link-0',
+					],
+					'special-specialAssociatedNavigationLinks-link-1' => [
+						'text' => 'Edit watchlist',
+						'class' => 'selected',
+						'id' => 'ca-special-specialAssociatedNavigationLinks-link-1',
+					],
+					'special-specialAssociatedNavigationLinks-link-2' => [
+						'text' => 'Edit raw watchlist',
+						'class' => null,
+						'id' => 'ca-special-specialAssociatedNavigationLinks-link-2',
+					],
+				],
+			],
+			$this->newDomElementWithAttribute( 'hideSelectedNameSpace' )
+		);
+
+		$this->assertTag( [ 'class' => 'tool-special-specialAssociatedNavigationLinks-link-0' ], $html );
+		$this->assertNotTag( [ 'class' => 'tool-special-specialAssociatedNavigationLinks-link-1' ], $html );
+		$this->assertTag( [ 'class' => 'tool-special-specialAssociatedNavigationLinks-link-2' ], $html );
+	}
+
 	public static function namespaceMenuProvider(): array {
 		return [
 			'associated-pages' => [ 'associated-pages' ],

@@ -26,6 +26,9 @@ jobs:
           - mw: 'REL1_46'
             php: 8.4
             experimental: false
+          - mw: 'REL1_47'
+            php: 8.5
+            experimental: false
           - mw: 'master'
             php: 8.5
             experimental: true

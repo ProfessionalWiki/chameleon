@@ -133,7 +133,18 @@ class PageTools extends Component {
 			$menu = $this->getAssociatedPagesMenuKey( $contentNavigation );
 
 			unset( $contentNavigation[ $menu ][ $this->getNamespaceKey() ] );
+
+			if ( $menu === 'associated-pages' ) {
+				$contentNavigation[ $menu ] = array_filter(
+					$contentNavigation[ $menu ],
+					static fn ( array $tab ): bool => !self::isSelected( $tab )
+				);
+			}
 		}
+	}
+
+	private static function isSelected( array $tab ): bool {
+		return in_array( 'selected', explode( ' ', (string)( $tab[ 'class' ] ?? '' ) ), true );
 	}
 
 	/**

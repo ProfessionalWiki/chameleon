@@ -120,3 +120,21 @@
 		}
 	}
 }
+
+// UniversalLanguageSelector's grid, which Translate also uses, has the class names of Bootstrap's grid but floats its
+// columns. `:where()` keeps these overrides as weak as Bootstrap's rules, so the extensions' own rules still win.
+:where(.grid) .row {
+	--bs-gutter-x: 0;
+	display: block;
+}
+
+// Textareas keep the full width MediaWiki gives them.
+:where(.grid) .row > :where(:not(textarea)) {
+	width: auto;
+	max-width: none;
+}
+
+// In this grid, `collapse` only drops the padding of the columns, while Bootstrap hides the row.
+:where(.grid) .row.collapse {
+	display: block;
+}

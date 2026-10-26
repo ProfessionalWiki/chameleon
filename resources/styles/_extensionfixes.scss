@@ -120,3 +120,32 @@
 		}
 	}
 }
+
+// UniversalLanguageSelector's grid, which Translate also uses, floats its columns inside `.row` elements, which
+// Bootstrap turns into flex rows. Scoped to where that grid is used, so a `grid` class in wiki content keeps
+// Bootstrap's rows; the special pages need `.grid` because Chameleon's own layout uses `.row`. `:where()` keeps these
+// overrides as weak as Bootstrap's rules, so more specific rules from the extensions win over them.
+:where(
+	.uls-menu,
+	.mw-special-Translate .grid,
+	.mw-special-SearchTranslations .grid,
+	.mw-special-ManageTranslatorSandbox .grid,
+	.mw-special-TranslationStash .grid,
+	.mw-special-PageMigration .grid
+) {
+	.row {
+		--bs-gutter-x: 0;
+		display: block;
+	}
+
+	// Textareas keep the full width MediaWiki gives them.
+	.row > :where(:not(textarea)) {
+		width: auto;
+		max-width: none;
+	}
+
+	// In this grid, `collapse` only removes the spacing around the columns, while Bootstrap hides the row.
+	.row.collapse {
+		display: block;
+	}
+}

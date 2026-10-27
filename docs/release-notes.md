@@ -1,5 +1,12 @@
 ## Release Notes
 
+### Chameleon 6.0.2
+
+Released on October 27, 2026.
+
+* Fixed the layout of Translate's special pages and the UniversalLanguageSelector language menus
+  (thanks @kghbln and @malberts)
+
 ### Chameleon 6.0.1
 
 Released on October 15, 2026.

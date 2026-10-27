@@ -14,7 +14,7 @@ Here is a step by step procedure for Windows:
     and add the Chameleon skin to the `require` section:
     ```json
     "require": {
-        "mediawiki/chameleon-skin": "~5.0"
+        "mediawiki/chameleon-skin": "~6.0"
     },
     ```
 
@@ -24,7 +24,7 @@ Here is a step by step procedure for Windows:
     ```json
     {
         "require": {
-            "mediawiki/chameleon-skin": "~5.0"
+            "mediawiki/chameleon-skin": "~6.0"
         },
         "extra": {
             "merge-plugin": {
@@ -43,7 +43,7 @@ Here is a step by step procedure for Windows:
     command line window will open.
 
 5.  On the command line run the command
-    `composer require "mediawiki/chameleon-skin:~5.0"`
+    `composer require "mediawiki/chameleon-skin:~6.0"`
 
 6.  If there were no errors, close the command line window.
 
@@ -51,9 +51,10 @@ Here is a step by step procedure for Windows:
     endings (e.g. [Notepad++][] or [Kate][], but *not* the standard Notepad!)
     Include
     ```php
+    wfLoadExtension( 'Bootstrap' );
     wfLoadSkin( 'chameleon' );
     ```
-    as the last line.
+    as the last lines.
 
     To set Chameleon as the default skin, find `$wgDefaultSkin` and amend it:
     ```php

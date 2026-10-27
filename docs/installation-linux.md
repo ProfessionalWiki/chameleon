@@ -6,7 +6,8 @@ operating systems as well:
 1. Open a command line window (e.g. using Konsole or XTerm).
 2. If necessary [install Composer][]:
     ``` sh
-    wget -cO - https://getcomposer.org/composer-1.phar > composer.phar
+    wget -cO - https://getcomposer.org/composer-stable.phar > composer.phar
+    chmod +x composer.phar
     sudo mv composer.phar /usr/local/bin/composer
     ```
 3. Navigate to the root folder of your MediaWiki installation. That's the one
@@ -15,7 +16,7 @@ operating systems as well:
    to the `require` section:
    ``` json
    "require": {
-       "mediawiki/chameleon-skin": "~5.0"
+       "mediawiki/chameleon-skin": "~6.0"
    },
    ```
 
@@ -25,7 +26,7 @@ operating systems as well:
    ``` json
    {
        "require": {
-           "mediawiki/chameleon-skin": "~5.0"
+           "mediawiki/chameleon-skin": "~6.0"
        },
        "extra": {
            "merge-plugin": {
@@ -39,14 +40,16 @@ operating systems as well:
 
 5. To actually install Chameleon run the command
    ```bash
-   COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~3.0
-   composer update mediawiki/chameleon-skin --no-dev -o```
+   COMPOSER=composer.local.json composer require --no-update mediawiki/chameleon-skin:~6.0
+   composer update mediawiki/chameleon-skin --no-dev -o
+   ```
 6. If there were no errors, close the command line window.
 7. Open `LocalSettings.php` in an editor (e.g. Kate). Include
    ```php
+   wfLoadExtension( 'Bootstrap' );
    wfLoadSkin( 'chameleon' );
    ```
-   as the last line.
+   as the last lines.
 
    To set Chameleon as the default skin, find `$wgDefaultSkin` and amend it:
    ```php

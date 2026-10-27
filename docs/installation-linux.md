@@ -6,7 +6,7 @@ operating systems as well:
 1. Open a command line window (e.g. using Konsole or XTerm).
 2. If necessary [install Composer][]:
     ``` sh
-    wget -cO - https://getcomposer.org/composer-stable.phar > composer.phar
+    wget -cO - https://getcomposer.org/download/latest-stable/composer.phar > composer.phar
     chmod +x composer.phar
     sudo mv composer.phar /usr/local/bin/composer
     ```

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ooswesthoesbes"
+		]
+	},
+	"skinname-chameleon": "Kameleon",
+	"chameleon-desc": "'n Hieël soepel en flot antjwäördende vormgaeving det Bootstrap 5 broek",
+	"chameleon-loggedin": "Doe bös aangemeldj es $1.",
+	"chameleon-notloggedin": "Doe bös neet aangemeldj.",
+	"chameleon-newmessages": "Doe haes nuuj berichter.",
+	"chameleon-nonewmessages": "Doe haes gein nuuj berichter.",
+	"chameleon-search-aria-label": "Gank nao pagina",
+	"chameleon-toggler": "Menu"
+}

@@ -7,5 +7,7 @@
 	},
 	"skinname-chameleon": "Chameleon",
 	"chameleon-newmessages": "ⵍⵍⴰⵏⵜ ⵖⵓⵔⴽ ⵜⵓⵣⵉⵏⵉⵏ ⵜⵉⵎⴰⵢⵏⵓⵜⵉⵏ.",
-	"chameleon-nonewmessages": "ⵓⵔ ⵍⵍⴰⵏⵜ ⵖⵓⵔⴽ ⵜⵓⵣⵉⵏⵉⵏ ⵜⵉⵎⴰⵢⵏⵓⵜⵉⵏ."
+	"chameleon-nonewmessages": "ⵓⵔ ⵍⵍⴰⵏⵜ ⵖⵓⵔⴽ ⵜⵓⵣⵉⵏⵉⵏ ⵜⵉⵎⴰⵢⵏⵓⵜⵉⵏ.",
+	"chameleon-search-aria-label": "ⴷⴷⵓ ⵖⵔ ⵜⴰⵙⵏⴰ",
+	"chameleon-toggler": "ⵜⴰⵍⴳⴰⵎⵜ"
 }
